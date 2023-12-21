@@ -1,0 +1,25 @@
+﻿/*body {
+}*/
+
+
+.RPopcionConsulta {
+    margin-left: 55px;
+    margin-top: 0;
+    padding: 0px;
+   vertical-align:middle;
+}
+
+.elementPanelConsulta {
+    display: inline-block;
+}
+
+.RPpanelGraficas {
+    margin-left: 65%;
+    margin-top: 0;
+    padding: 0px;
+}
+
+.dx-fab-active-button {
+    transform: scale(.7);
+    background-color: #9e311c !important;
+}

@@ -1,0 +1,118 @@
+﻿@font-face {
+    font-family: "Engschrift";
+    src: url("/fonts/DINEngschrift.ttf");
+}
+
+@font-face {
+    font-family: "DIN";
+    src: url("/fonts/DINRegular.ttf");
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0px;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+.contmenu {
+    background-color: aliceblue;
+    width: 100%;
+    height: 99.9%;
+    margin-left: 0px;
+    margin-top: 0px;
+    border: 0px solid #a52a2a;
+}
+
+
+.treMenu {
+    position: relative;
+    height: 100% !important;
+    width: 100% !important;
+    /*overflow-y: scroll;*/
+    /*scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;*/
+}
+
+.imageCls {
+    height: 50px;
+    width: 50px;
+    border: 2px solid #9e311c;
+    border-radius: 50%;
+    margin: 10px;
+    margin-top: 0px;
+}
+
+.UserMenu {
+    width: 100%;
+    height: 20%;
+    /*background-image: linear-gradient(to bottom right, red, rgba(166,29,35,0.7));*/
+    background-image: url(/imagenes/menu/BackGroundUserMenu.png);
+    /*background-color: rgba(255, 69, 68, 0.9);*/
+    /*background-color: rgba(166, 29, 35, 0.8);*/
+    background-size: 100% 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    font-family: "DIN",sans-serif;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 5px;
+    padding-bottom: 15px;
+}
+
+.menuitem {
+    height: 100%;
+    width: 100%;
+}
+
+.clsusuario {
+    color: #f2f2f2;
+    font-family: "DIN",sans-serif;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.clsmail {
+    color: #f2f2f2;
+    font-family: "DIN",sans-serif;
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.clsperfil {
+    border: 0px solid black;
+    color: #f2f2f2;
+    font-family: "DIN",sans-serif;
+    font-size: 24px;
+    margin-left: 15px;
+}
+
+#menuPanel {
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+    border: 0px solid red;
+    scrollbar-color: rgba(0, 0, 0, .4) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+/*@media screen and (min-height:700px) {
+    .contmenu {
+        height: 100%;
+    }
+    .treMenu {
+        position: relative;
+        height:100%;
+        width: 100% !important;
+        overflow-y: scroll;
+        margin-bottom: 2px;
+        padding-bottom: 2px;
+        scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+        scrollbar-width:thin; 
+    }
+    
+    
+}*/

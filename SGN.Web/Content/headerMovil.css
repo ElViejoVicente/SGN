@@ -1,0 +1,174 @@
+﻿@font-face {
+    font-family: "Engschrift";
+    src: url("/fonts/DINEngschrift.ttf");
+}
+
+@font-face {
+    font-family: "DIN";
+    src: url("/fonts/DINRegular.ttf");
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1px;
+    border: 1px solid red;
+    overflow: hidden;
+}
+
+header {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-image: url('../imagenes/header/fondoHeader.png');
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+}
+
+.logo {
+    color: #f2f2f2;
+    font-family: "DIN";
+    font-size: 25px;
+    font-weight:600;
+    margin-left: 2%;
+    float: left;
+}
+
+header .Title {
+    color: #f2f2f2;
+    font-family: "DIN";
+    font-size: 25px;
+    line-height: 110px;
+    margin-left: 10px;
+    float: left;
+}
+
+.imagenCL {
+    width: 50px;
+    height: auto;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+.imagenGG {
+    width:20px;
+    height:auto;
+    margin-left:9%;
+}
+
+
+.login_btn {
+    color: black;
+    background: none;
+    border: solid 2px black;
+    background-image: url('../imagenes/header/cerrarSessionMin.png');
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top:1%;
+    padding-top:0%;
+    margin-left:10%;
+    width: 90%;
+    height: 99%;
+}
+
+.close {
+    float: right;
+    line-height: 200px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    line-height: normal;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+
+.menuitem {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    /*line-height: 200px;*/
+    display: inline-flex;
+    color: #fff;
+    text-decoration: none;
+    padding-top: 0px;
+    line-height: normal;
+    font-family: "DIN";
+    font-size: 10px;
+    font-weight: bold;
+    padding-left:20px;
+    -webkit-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+    align-items:center;
+}
+
+.lblheader1 {
+    font-size: 15px;
+    width:30%;
+    text-align:left;
+}
+.lblheader2 {
+    font-size: 12px;
+    width: 70%;
+    text-align: left;
+}
+
+header nav a:hover {
+    background: #f56f3a;
+    border-radius: 50px;
+}
+
+.header2 {
+    position: fixed;
+    height: 100px;
+}
+
+.header2 .logo {
+    line-height: 50px;
+    font-size: 10px;
+}
+
+.header2 nav {
+    line-height: 100px;
+}
+
+
+
+
+.frmclass{
+    width:100%;
+    height:100%;
+}
+
+
+elemento {
+    width: 100%;
+    height: 100%;
+}
+
+.columnHeader {
+    height: 100%;
+    margin: 0px;
+    padding-left: 3px;
+    vertical-align:middle;
+}
+
+
+/*@media screen and (orientation:landscape) {
+    .frmclass {
+        width: 100%;
+        height: 0%;
+        visibility: collapse;
+    }
+
+}*/

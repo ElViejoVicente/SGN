@@ -1,0 +1,741 @@
+﻿
+@font-face {
+    font-family: "Engschrift";
+    src: url("/fonts/DINEngschrift.ttf");
+}
+
+@font-face {
+    font-family: "DIN";
+    src: url("/fonts/DINRegular.ttf");
+}
+
+@font-face {
+    font-family: "fa-solid-900";
+    src: url("/fonts/fa-solid-900.woff");
+}
+
+@font-face {
+    font-family: "fa-solid-900-2";
+    src: url("/fonts/fa-solid-900.woff2");
+}
+
+
+
+
+
+.form-control {
+}
+
+body {
+    /*background-image: url(/imagenes/login/fondoFundicion3per.png);*/
+    /*background-image: url('../imagenes/login/fondoSGN2.jpg');*/
+    background-color: rgba(24, 25, 26, 0.48);
+    background-size: 100% 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+
+.bb, .bb::before, .bb::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bb {
+    width: 400px;
+    height: 200px;
+    margin-left: 41%;
+    margin-top: 4%;
+    /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+    background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.2);
+    background-color: rgba(211, 214, 223, 0.48) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+    .bb::before, .bb::after {
+        content: '';
+        z-index: -1;
+        margin: -5%;
+        box-shadow: inset 0 0 0 2px;
+        animation: clipMe 8s linear infinite;
+    }
+
+    .bb::before {
+        animation-delay: -4s;
+    }
+
+    .bb:hover::after, .bb:hover::before {
+        background-color: rgba(254, 0, 0, 0.3);
+    }
+
+/*@keyframes clipMe {
+    0%, 100% {
+        clip: rect(0px, 220px, 2px, 0px);
+    }
+
+    25% {
+        clip: rect(0px, 2px, 220px, 0px);
+    }
+
+    50% {
+        clip: rect(218px, 220px, 220px, 0px);
+    }
+
+    75% {
+        clip: rect(0px, 220px, 220px, 218px);
+    }
+}*/
+
+
+@keyframes clipMe {
+    0%, 100% {
+        clip: rect(0px, 440px, 2px, 0px);
+    }
+
+    25% {
+        clip: rect(0px, 2px, 220px, 0px);
+    }
+
+    50% {
+        clip: rect(218px, 440px, 440px, 0px);
+    }
+
+    75% {
+        clip: rect(0px, 440px, 220px, 440px);
+    }
+}
+
+html, body {
+    height: 100%;
+    font-family: 'DIN', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+container {
+    height: 100%;
+    align-content: center;
+}
+
+.card {
+    height: 370px;
+    margin-top: 30%;
+    margin-left: 5%;
+    width: 400px;
+    /*background-color: rgba(209,39,39,0.8) !important;*/
+    background-color: rgba(211, 214, 223, 0.48) !important;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
+}
+
+.social_icon span:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.card-header h3 {
+    color: white;
+    text-align: center;
+}
+
+.card-header h5 {
+    color: black;
+    text-align: center;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    /*background-color: #FFC312;*/
+    background-color:midnightblue;
+    /*color: black;*/
+    color:white;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.login_btn {
+    color: white;
+    background: none;
+    background-color:darkblue;
+    width: 100px;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.links {
+    color: white;
+}
+
+    .links a {
+        margin-left: 4px;
+    }
+
+.textmin1 {
+    font-size: 10px;
+    color: white;
+    text-align: left !important;
+}
+
+.textmin2 {
+    font-size: 8px;
+    color: black;
+    text-align: left !important;
+}
+
+.titles-header {
+    display: none;
+
+}
+
+@media screen and (max-width:1650px) {
+    .bb {
+        width: 400px;
+        height: 200px;
+        /*margin-left: 670px;
+        margin-top: 130px;*/
+        margin-left: 37%;
+        margin-top: 6%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        height: 370px;
+        /*margin-top: 350px;
+        margin-left: 610px;*/
+        margin-top: 30%;
+        margin-left: 5%;
+        width: 300px;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+}
+
+
+@media screen and (max-width:1300px) {
+    .bb {
+        width: 400px;
+        height: 200px;
+        /*margin-left: 450px;
+        margin-top: 130px;*/
+        margin-left: 36%;
+        margin-top: 6%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        height: 370px;
+        /*margin-top: 350px;
+        margin-left: 35px;*/
+        margin-top: 30%;
+        margin-left: 5%;
+        width: 300px;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+}
+
+
+
+
+@media screen and (max-width:1024px) {
+    .bb {
+        width: 260px;
+        height: 130px;
+        /*margin-left: 470px;
+        margin-top: 80px;*/
+        margin-left: 40%;
+        margin-top: 6%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        height: 370px;
+        /*margin-top: 230px;
+        margin-left: 30px;*/
+        margin-top: 30%;
+        margin-left: 5%;
+        width: 400px;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+
+    .bb::before, .bb::after {
+        content: '';
+        z-index: -1;
+        margin: -5%;
+        box-shadow: inset 0 0 0 2px;
+        animation: clipMe1 8s linear infinite;
+    }
+
+    @keyframes clipMe1 {
+        0%, 100% {
+            clip: rect(0px, 300px, 1px, 0px);
+        }
+
+        25% {
+            clip: rect(0px, 1px, 150px, 0px);
+        }
+
+        50% {
+            clip: rect(148px, 300px, 300px, 0px);
+        }
+
+        75% {
+            clip: rect(0px, 300px, 150px, 300px);
+        }
+    }
+
+
+
+    .bb::before {
+        animation-delay: -4s;
+    }
+
+    .bb:hover::after, .bb:hover::before {
+        background-color: rgba(255, 0, 0, 0.3);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .bb {
+        width: 230px;
+        height: 130px;
+        /*margin-left: 340px;
+        margin-top: 80px;*/
+        margin-left: 25%;
+        margin-top: 6%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        height: 370px;
+        /*margin-top: 230px;
+        margin-left: 30px;*/
+        margin-top: 32%;
+        margin-left: 5%;
+        width: 350px;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+}
+
+@media (max-width:768px) {
+    body {
+        background-color:brown;
+    }
+
+    .bb {
+        width: 200px;
+        height: 100px;
+        /*margin-left: 340px;
+        margin-top: 80px;*/
+        margin-left: 25%;
+        margin-top: 6%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        height: 370px;
+        /*margin-top: 230px;
+        margin-left: 30px;*/
+        margin-top: 32%;
+        margin-left: 5%;
+        width: 400px;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+}
+
+
+ @media (max-width : 480px) {
+        body {
+            background-color: lightgray;
+        }
+
+    .bb {
+        margin-left: 30%;
+        margin-top: 20%;
+        width: 200px;
+        height: 100px;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+        .card {
+            width: 80%;
+            height: 250px;
+            margin-top: 10%;
+            margin-left: 25%;
+            margin-right: 0px;
+            padding-left: 0px !important;
+            padding-right: 0px;
+            background-color: rgba(0,0,0,0.5) !important;
+        }
+
+        .card-header {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .container {
+            padding-left: 10px;
+            height: 100%;
+        }
+
+        h3, h5 {
+            display: none;
+        }
+
+        .titles-header {
+            display: inline;
+            font-size: 25px;
+            font-weight:800;
+            color: white;
+            text-align: left !important;
+        }
+
+        .card-footer {
+            display: none;
+        }
+    }
+
+    @media (max-width : 375px) {
+        body {
+            background-color: lightgray;
+        }
+
+        .bb {
+            width: 200px;
+            height: 100px;
+            margin-left: 30%;
+            margin-top: 10%;
+            /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+            background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+            background-color: rgba(211, 214, 223, 0.48) !important;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+        }
+
+        .card {
+            width: 100%;
+            height: 70%;
+            margin-top: 150px;
+            margin-left: 0px;
+            padding-left: 0px !important;
+            background-color: rgba(0,0,0,0.5) !important;
+        }
+
+
+        .container {
+            padding-left: 10px;
+            height: 100%;
+        }
+
+        h3, h5 {
+            display: inline-block;
+            font-size: 25px;
+        }
+
+        .card-header {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .card-footer {
+            display: inline-block;
+        }
+
+        .titles-header {
+            display: none;
+        }
+    }
+    .contentButtons {
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
+
+@media screen and (orientation:portrait) {
+    body {
+        background-color:aqua ;
+    }
+
+    .bb {
+        width: 500px;
+        height: 250px;
+        margin-left: 25%;
+        margin-top: 10%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        width: 100%;
+        height: 50%;
+        margin-top: 65%;
+        margin-left: 0px;
+        padding-left: 0px !important;
+        background-color: rgba(45, 46, 55, 0.80) !important;
+    }
+
+
+    .container {
+        padding-left: 10px;
+        height: 100%;
+    }
+
+    h3, h5 {
+        display: inline-block;
+        font-size: 50px;
+    }
+
+    .card-header {
+        display: inline-grid;
+        text-align: center;
+        margin-bottom:50px;
+    }
+
+    .card-footer {
+        display: inline-block;
+
+    }
+
+    .titles-header {
+        display: none;
+    }
+    .input-group-prepend span {
+        width: 50px;
+        background-color: black;
+        color: white;
+        border: 0 !important;
+    }
+    .login_btn {
+        color: black;
+        background: none;
+        background-color: #d12727;
+        font-size: 50px;
+        width: 300px;
+        height: 100px;
+        margin-top: 50px;
+    }
+    .form-control{
+
+    }
+    .cajas{
+        width:95%;
+        height:100px;
+        font-size:50px;
+    }
+    .textmin1 {
+        font-size: 30px;
+        color: white;
+        text-align: left !important;
+    }
+
+    .textmin2 {
+        font-size: 20px;
+        color: #9e311c;
+        text-align: left !important;
+    }
+
+    .bb::before, .bb::after {
+        content: '';
+        z-index: -1;
+        margin: -5%;
+        box-shadow: inset 0 0 0 2px;
+        animation: clipMe 8s linear infinite;
+    }
+
+    @keyframes clipMe {
+        0%, 100% {
+            clip: rect(0px, 560px, 2px, 0px);
+        }
+
+        25% {
+            clip: rect(0px, 2px, 270px, 0px);
+        }
+
+        50% {
+            clip: rect(268px, 560px, 540px, 0px);
+        }
+
+        75% {
+            clip: rect(0px, 560px, 270px, 560px);
+        }
+    }
+
+    .bb::before {
+        animation-delay: -4s;
+    }
+
+    .bb:hover::after, .bb:hover::before {
+        background-color: rgba(255, 0, 0, 0.3);
+    }
+    
+}
+
+
+@media screen and (max-device-width: 1000px) 
+              and (orientation:landscape){
+/*@media screen and (orientation:landscape) {*/
+    body {
+        background-color: aqua
+    }
+
+                .bb {
+                    margin-left: 5%;
+                    margin-top: 14%;
+                    width: 330px;
+                    height: 150px;
+                    /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+                    background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+                    background-color: rgba(211, 214, 223, 0.48) !important;
+                    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+                }
+
+    .card {
+        width: 100%;
+        height: 330px;
+        margin-top: 11%;
+        margin-left: 45%;
+        /*margin-right: 0px;*/
+        padding-left: 0px !important;
+        padding-right: 0px;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+
+    .card-header {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .container {
+        padding-left: 10px;
+        height: 100%;
+    }
+
+    h3, h5 {
+        display: none;
+    }
+
+    .titles-header {
+        display: inline;
+        font-size: 20px;
+        color: white;
+        text-align: left !important;
+    }
+
+    .card-footer {
+        display: none;
+    }
+
+    .cajas {
+        width: 80%;
+        height: 40px;
+        font-size: 25px;
+    }
+
+                .bb::before, .bb::after {
+                    content: '';
+                    z-index: -1;
+                    margin: -5%;
+                    box-shadow: inset 0 0 0 2px;
+                    animation: clipMe2 8s linear infinite;
+                }
+
+                @keyframes clipMe2 {
+                    0%, 100% {
+                        clip: rect(0px, 370px, 2px, 0px);
+                    }
+
+                    25% {
+                        clip: rect(0px, 2px, 170px, 0px);
+                    }
+
+                    50% {
+                        clip: rect(168px, 370px, 370px, 0px);
+                    }
+
+                    75% {
+                        clip: rect(0px, 370px, 170px, 370px);
+                    }
+                }
+
+
+              
+
+                .bb::before {
+                    animation-delay: -4s;
+                }
+
+                .bb:hover::after, .bb:hover::before {
+                    background-color: rgba(255, 0, 0, 0.3);
+                }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
