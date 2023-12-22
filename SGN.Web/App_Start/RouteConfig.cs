@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Routing;
 
-namespace GPS.Web
+namespace SGN.Web
 {
     public static class RouteConfig
     {

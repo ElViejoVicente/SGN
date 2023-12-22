@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GPS.Web.Controles.Usuario
+namespace SGN.Web.Controles.Usuario
 {
     public partial class InfoMsgBoxMovil : System.Web.UI.UserControl
     {

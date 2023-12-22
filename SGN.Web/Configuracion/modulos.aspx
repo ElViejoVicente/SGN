@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="modulos.aspx.cs" Inherits=" GPS.Web.Configuracion.Modulos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="modulos.aspx.cs" Inherits=" SGN.Web.Configuracion.Modulos" %>
 
 
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>

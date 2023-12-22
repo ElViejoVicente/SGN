@@ -51,7 +51,7 @@ function msgGPBWarning(mensaje) {
 
 function msgGPBError(mensaje) {
     console.log(mensaje);
-    swal(mensaje, "Ha ocurrido un error en sistema GPS!", "error");
+    swal(mensaje, "Ha ocurrido un error en sistema SGN.", "error");
 }
 
 function msgGPBQuestion(mensaje) {

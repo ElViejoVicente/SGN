@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GPS.Negocio.Operativa
+namespace SGN.Negocio.Operativa
 {
     public class ItemMenu
     {

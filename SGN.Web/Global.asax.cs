@@ -7,7 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace GPS.Web
+namespace SGN.Web
 {
     public class Global : HttpApplication
     {

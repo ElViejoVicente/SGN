@@ -1,4 +1,4 @@
-﻿using GPS.Web.Controles.Servidor;
+﻿using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +6,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
-using GPS.Negocio.Operativa;
+using SGN.Negocio.Operativa;
 using System.Data;
-using ItemMenu = GPS.Negocio.Operativa.ItemMenu;
+using ItemMenu = SGN.Negocio.Operativa.ItemMenu;
 
-namespace GPS.Web
+namespace SGN.Web
 {
     public partial class menuMovil : PageBase
     {

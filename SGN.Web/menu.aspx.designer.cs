@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace GPS.Web {
+namespace SGN.Web {
     
     
     public partial class menu {

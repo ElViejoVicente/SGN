@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace GPS.Web.Controles.Usuario {
+namespace SGN.Web.Controles.Usuario {
     
     
     public partial class InfoMsgBoxMovil {

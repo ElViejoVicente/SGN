@@ -1,2 +1,2 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="GPS.Web.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SGN.Web.Global" Language="C#" %>
 

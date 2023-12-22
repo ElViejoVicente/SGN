@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="header.aspx.cs" Inherits=" GPS.Web.header" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="header.aspx.cs" Inherits=" SGN.Web.header" %>
 
 <!DOCTYPE html>
 
@@ -99,7 +99,7 @@
                 <asp:HiddenField ID="HidUsuario" runat="server" ClientIDMode="Static" />
                 <div style="position: absolute; width: 13%; height: 100%; display: inline-block; padding-top: 0.5%">
                     <img class="imagenGG" src="imagenes/header/logo-siknoT.png" height="30px" alt="Grupo Gallardo" />
-                    <div class="logo" style="">GPS</div>
+                    <div class="logo" style="">SGN<div>
                 </div>
                 <div style="position: absolute; width: 71%; height: 100%; display: inline-block; margin-left: 14%; padding-top: 12px;">
                     <div style="width: 70%; height: 100%; display: inline-block;">
@@ -121,8 +121,8 @@
                     </dx:ASPxComboBox>
                 </div>
                 <div style="position: absolute; width: 5.5%; height: 100%; display: inline-block; margin-left: 94%; padding-top: 0.5%">
-                    <dx:ASPxButton runat="server" ID="btnCerrarSesion" Text="..." OnClick="btnCerrarSesion_Click" CssClass="custom-btn vertical clsSalir" RenderMode="Danger"
-                        ToolTip="Salir GPS">
+                    <dx:ASPxButton runat="server" ID="btnCerrarSesion" Text="..." OnClick="btnCerrarSesion_Click" CssClass="custom-btn vertical clsSalir" RenderMode="Danger">
+                     
                         <%--<ClientSideEvents Init="setHeartbeat" />--%>
                     </dx:ASPxButton>
                 </div>
@@ -146,7 +146,7 @@
                 </div>
                 <img class="imagenCL" src="imagenes/logo-cl.png" height="70" alt="CL Grupo Industrial" />
                 <div style="display: block">
-                    <div class="logo">GPS</div>
+                    <div class="logo">SGN./div>
                     <div class="Title">Control y Gestión de la planificación y producción</div>
                 </div>
                 <div id="bienvenida" class="menuitem">

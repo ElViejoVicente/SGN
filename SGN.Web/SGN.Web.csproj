@@ -153,6 +153,7 @@
     <Content Include="Content\stylePc.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
+    <Content Include="Expedientes\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\GPB.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
@@ -547,6 +548,13 @@
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Expedientes\PanelExpedientes.aspx.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Expedientes\PanelExpedientes.aspx.designer.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -645,9 +653,6 @@
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionHeartbeat.ashx.cs">
-      <DependentUpon>SessionHeartbeat.ashx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -657,7 +662,6 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="SwitcherResources\Content\LICENSE" />
-    <Content Include="SessionHeartbeat.ashx" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
