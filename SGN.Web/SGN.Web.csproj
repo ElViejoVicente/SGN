@@ -153,6 +153,7 @@
     <Content Include="Content\stylePc.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
+    <Content Include="Expedientes\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\GPB.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
@@ -546,6 +547,13 @@
     </Compile>
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Expedientes\PanelExpedientes.aspx.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Expedientes\PanelExpedientes.aspx.designer.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>
