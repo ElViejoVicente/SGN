@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SGN.Negocio.Expedientes
+namespace SGN.Negocio.Expediente
 {
     class DatosExpedientes
     {

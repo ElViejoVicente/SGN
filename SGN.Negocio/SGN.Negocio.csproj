@@ -82,7 +82,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="CRUD\DatosCrud.cs" />
-    <Compile Include="Expedientes\DatosExpedientes.cs" />
+    <Compile Include="Expediente\DatosExpedientes.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_Estatus.cs" />
