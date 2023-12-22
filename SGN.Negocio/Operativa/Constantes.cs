@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SAP.Middleware.Connector;
 
-namespace GPS.Negocio.Operativa
+namespace SGN.Negocio.Operativa
 {
     public class Constantes
     {

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="paginaConstruccion.aspx.cs" Inherits=" GPS.Web.paginaConstruccion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="paginaConstruccion.aspx.cs" Inherits=" SGN.Web.paginaConstruccion" %>
 
 <!DOCTYPE html>
 

@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace GPS.Web.Configuracion {
+namespace SGN.Web.Configuracion {
     
     
     public partial class Perfiles {
@@ -28,7 +28,7 @@ namespace GPS.Web.Configuracion {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GPS.Web.Controles.Usuario.InfoMsgBox cuInfoMsgbox1;
+        protected global::SGN.Web.Controles.Usuario.InfoMsgBox cuInfoMsgbox1;
         
         /// <summary>
         /// Control carTabPage.

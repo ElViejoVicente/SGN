@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace GPS.Web {
+namespace SGN.Web {
     
     
     public partial class PlantillaMovil {
@@ -28,7 +28,7 @@ namespace GPS.Web {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::GPS.Web.Controles.Usuario.InfoMsgBoxMovil cuInfoMsgboxMovil;
+        protected global::SGN.Web.Controles.Usuario.InfoMsgBoxMovil cuInfoMsgboxMovil;
         
         /// <summary>
         /// Control imgLogo.

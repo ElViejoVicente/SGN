@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits=" GPS.Web.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits=" SGN.Web.Login" %>
 
 <%@ Register Assembly="DevExpress.Web.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>GPS</title>
+    <title>SGN</title>
     <%--<link rel="icon" href="imagenes/GPB.ico">--%>
     <link rel="icon" href="imagenes/siknoRIcono.ico">
     <link rel="stylesheet" href="Content/bootstrap.min.css" crossorigin="anonymous" />
@@ -59,7 +59,7 @@
             <div class="d-flex justify-content-center h-100">
                 <div class="card">
                     <div class="card-header">
-                        <h1 class="titles-header">Bienvenido  Sistema  SGN</h1>
+                        <h1 class="titles-header">Bienvenido  Sistema  SGN </h1>
                         <h3>Bienvenido</h3>
                         <h5>Sistema de gestion</h5>
                     </div>

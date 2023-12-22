@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InfoMsgBoxMovil.ascx.cs" Inherits=" GPS.Web.Controles.Usuario.InfoMsgBoxMovil" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InfoMsgBoxMovil.ascx.cs" Inherits=" SGN.Web.Controles.Usuario.InfoMsgBoxMovil" %>
 
 <dx:ASPxPopupControl ID="ppControl" runat="server" Height="30px" Width="300px" EnableClientSideAPI="True" PopupElementID="grid" Modal="True"
     PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AppearAfter="4000" DisappearAfter="4000" AllowResize="false" AllowDragging="false">

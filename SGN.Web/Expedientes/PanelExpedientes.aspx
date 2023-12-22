@@ -94,7 +94,7 @@
 
 
 
-    <title>SGN</title>
+    <title> SGN </title>
 </head>
 <body>
     <form id="frmPage" runat="server" class="Principal">

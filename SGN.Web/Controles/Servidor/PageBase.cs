@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using GPS.Web.Controles.Servidor;
-using GPS.Negocio.Operativa;
-using System.Data;
+using SGN.Web.Controles.Servidor;
 using SGN.Negocio.Operativa;
+using System.Data;
 
-namespace GPS.Web.Controles.Servidor
+
+namespace SGN.Web.Controles.Servidor
 {
     public class PageBase : System.Web.UI.Page
     {
         #region Variables privadas
         public DatosUsuario datosUsuario = new DatosUsuario();
         
-        public GPS.Negocio.Operativa.Usuario UsuarioPagina
+        public SGN.Negocio.Operativa.Usuario UsuarioPagina
         {
             get
             {
-                GPS.Negocio.Operativa.Usuario user = null;
+                SGN.Negocio.Operativa.Usuario user = null;
                 if (Session["usuario"] != null)
                 {
-                    return (GPS.Negocio.Operativa.Usuario)Session["usuario"];
+                    return (SGN.Negocio.Operativa.Usuario)Session["usuario"];
                 }
                 else
                 {

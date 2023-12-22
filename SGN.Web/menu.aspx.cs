@@ -1,6 +1,6 @@
 ﻿using DevExpress.Web;
-using GPS.Negocio.Operativa;
-using GPS.Web.Controles.Servidor;
+using SGN.Negocio.Operativa;
+using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GPS.Web
+namespace SGN.Web
 {
     public partial class menu : PageBase
     {

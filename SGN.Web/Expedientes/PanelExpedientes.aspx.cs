@@ -1,4 +1,4 @@
-﻿using Web.Controles.Servidor;
+﻿using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,14 +1,14 @@
-﻿using GPS.Web.Controles.Servidor;
+﻿using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using GPS.Web.Controles.Usuario;
+using SGN.Web.Controles.Usuario;
 using System.Data;
 
-namespace GPS.Web
+namespace SGN.Web
 {
 	public partial class PlantillaMovil : PageBase
     {

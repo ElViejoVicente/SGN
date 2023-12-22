@@ -1,5 +1,5 @@
 ﻿using DevExpress.Web;
-using GPS.Negocio.Operativa;
+using SGN.Negocio.Operativa;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +9,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DevExpress.CodeParser;
-using GPS.Web.Controles.Servidor;
+using SGN.Web.Controles.Servidor;
 
-namespace GPS.Web.Configuracion
+namespace SGN.Web.Configuracion
 {
     public partial class Perfiles : PageBase
     {

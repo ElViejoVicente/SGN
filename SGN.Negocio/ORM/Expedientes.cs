@@ -1,4 +1,4 @@
-﻿using GPS.Negocio.Operativa;
+﻿using SGN.Negocio.Operativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;

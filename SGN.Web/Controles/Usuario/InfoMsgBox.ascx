@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InfoMsgBox.ascx.cs" Inherits=" GPS.Web.Controles.Usuario.InfoMsgBox" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InfoMsgBox.ascx.cs" Inherits=" SGN.Web.Controles.Usuario.InfoMsgBox" %>
 <%@ Register Assembly="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
  <script>
