@@ -191,6 +191,90 @@ namespace SGN.Negocio.CRUD
         #endregion
         #region Cat_Proyectistas
 
+        public List<Cat_Proyectistas> ConsultaCatProyectista()
+        {
+            try
+            {
+                List<Cat_Proyectistas> resultado = new List<Cat_Proyectistas>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_Proyectistas>(sql: "sp_CRUD_Cat_Proyectistas_Select").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Proyectistas_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean AltaCatProyectista(Cat_Proyectistas values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_Proyectistas_Insert", param: new
+                    {
+                       values.NombreProyectista,
+                       values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Proyectistas_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarCatEstatus(Cat_Proyectistas values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_Proyectistas_Update", param: new
+                    {
+                        values.idProyectista,
+                        values.NombreProyectista,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Proyectistas_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarCatEstatus(Cat_Proyectistas values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_Proyectistas_Delete", param: new
+                    {
+                        values.idProyectista
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Proyectistas_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
         #endregion
         #region Expedientes
 
