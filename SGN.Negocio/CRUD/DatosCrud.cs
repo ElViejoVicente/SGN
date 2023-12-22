@@ -89,7 +89,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_Actos_Delete", param: new
                     {
-                       values.IdActo 
+                        values.IdActo
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -175,7 +175,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_Estatus_Delete", param: new
                     {
-                       values.IdEstatus
+                        values.IdEstatus
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -217,8 +217,8 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_Proyectistas_Insert", param: new
                     {
-                       values.NombreProyectista,
-                       values.Activo
+                        values.NombreProyectista,
+                        values.Activo
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -277,6 +277,170 @@ namespace SGN.Negocio.CRUD
 
         #endregion
         #region Expedientes
+
+        public Expedientes ConsultaExpediente(string numExp)
+        {
+            try
+            {
+                Expedientes resultado = new Expedientes();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Expedientes>
+                        (
+                        sql: "sp_CRUD_Expedientes_Select", param: new
+                        {
+                            IdExpediente = numExp
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Expedientes_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean AltaExpediente(Expedientes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Expedientes_Insert", param: new
+                    {
+
+                        values.IdEstatus,
+                        values.IdActo,
+                        values.FechaIngreso,
+                        values.Otorga,
+                        values.AfavorDe,
+                        values.OperacionProyectada,
+                        values.UbicacionPredio,
+                        values.Faltantes,
+                        values.FechaElaboracion,
+                        values.FechaEnvioRPP,
+                        values.EsTramitePorSistema,
+                        values.FechaPagoBoleta,
+                        values.FechaRecibidoRPP,
+                        values.NombreProyectista,
+                        values.FechaAsignacionProyectista,
+                        values.FechaPrevistaTerminoProyectista,
+                        values.AvisoPreventivo,
+                        values.ISR,
+                        values.NotasFirma,
+                        values.Escritura,
+                        values.Volumen,
+                        values.FechaTrasladoEntregado,
+                        values.FechaElaboracionDefinitivo,
+                        values.FechaEnvioRPPDefinitivo,
+                        values.EsTramitePorSistemaDefinitivo,
+                        values.FechaPagoBoletaDefinitivo,
+                        values.FechaRecibidoRPPDefinitivo,
+                        values.FechaRecepcionTerminoEscrituta,
+                        values.FechaAsignacionMesa,
+                        values.FechaTerminoMesa,
+                        values.UbicacionMesa,
+                        values.RevisionEntrega,
+                        values.AutorizadoEntrega,
+                        values.RegistroEntrega,
+                        values.FechaRegistroEntrega,
+                        values.FechaBoletaPagoRegistroEntrega,
+                        values.ParaEntregar,
+                        values.FechaSalida,
+                        values.ObservacionesTramiteTerminado
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Expedientes_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarExpediente(Expedientes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
+                    {
+                        values.IdExpediente,
+                        values.IdEstatus,
+                        values.IdActo,
+                        values.FechaIngreso,
+                        values.Otorga,
+                        values.AfavorDe,
+                        values.OperacionProyectada,
+                        values.UbicacionPredio,
+                        values.Faltantes,
+                        values.FechaElaboracion,
+                        values.FechaEnvioRPP,
+                        values.EsTramitePorSistema,
+                        values.FechaPagoBoleta,
+                        values.FechaRecibidoRPP,
+                        values.NombreProyectista,
+                        values.FechaAsignacionProyectista,
+                        values.FechaPrevistaTerminoProyectista,
+                        values.AvisoPreventivo,
+                        values.ISR,
+                        values.NotasFirma,
+                        values.Escritura,
+                        values.Volumen,
+                        values.FechaTrasladoEntregado,
+                        values.FechaElaboracionDefinitivo,
+                        values.FechaEnvioRPPDefinitivo,
+                        values.EsTramitePorSistemaDefinitivo,
+                        values.FechaPagoBoletaDefinitivo,
+                        values.FechaRecibidoRPPDefinitivo,
+                        values.FechaRecepcionTerminoEscrituta,
+                        values.FechaAsignacionMesa,
+                        values.FechaTerminoMesa,
+                        values.UbicacionMesa,
+                        values.RevisionEntrega,
+                        values.AutorizadoEntrega,
+                        values.RegistroEntrega,
+                        values.FechaRegistroEntrega,
+                        values.FechaBoletaPagoRegistroEntrega,
+                        values.ParaEntregar,
+                        values.FechaSalida,
+                        values.ObservacionesTramiteTerminado
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Expedientes_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarExpediente (Expedientes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Expedientes_Delete", param: new
+                    {
+                        values.IdExpediente
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Expedientes_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
 
         #endregion
     }
