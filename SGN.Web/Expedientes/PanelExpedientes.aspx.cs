@@ -12,8 +12,12 @@ namespace SGN.Web.Expedientes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
+            if (!Page.IsPostBack)
+            {
+                dtFechaInicio.Date = DateTime.Now.Date;
+                dtFechaFin.Date= DateTime.Now.Date;
+            }
+        }            
 
         protected void gvExpedientes_DataBinding(object sender, EventArgs e)
         {
