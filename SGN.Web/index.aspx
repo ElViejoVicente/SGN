@@ -27,7 +27,7 @@
 
     .embed-container1 {
 		position: relative;
-		height: 5%;
+		height: 7%;
         width: 100%;
 		overflow: hidden;
         border:0px solid red;
@@ -48,7 +48,7 @@
 		height: 96%;
         width: 100%;
 		overflow: hidden;
-        border:0px solid #e14544;
+        border:0px solid #243757;
 	}
 
     #menu {
@@ -57,8 +57,8 @@
 		left: 0;
 		width: 13%;
 		height:98.5%;
-        border-bottom:2px solid #e14544;
-        border-right:4px solid #e14544;
+        border-bottom:2px solid #243757;
+        border-right:4px solid #243757;
 	}
 
      #basefrm {
@@ -68,8 +68,8 @@
 		width: 86.5%;
 		height: 98.5%;
         margin-left:13.4%;
-        border-bottom:2px solid #e14544;
-        border-right:2px solid #e14544;
+        border-bottom:2px solid #243757;
+        border-right:2px solid #243757;
 	}
 
     @media screen and (max-width:1520px){

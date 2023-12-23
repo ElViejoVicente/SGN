@@ -60,15 +60,6 @@ namespace SGN.Web
         protected global::DevExpress.Web.ASPxLabel lblVersion;
 
         /// <summary>
-        /// Control ASPxComboBox1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxComboBox1;
-
-        /// <summary>
         /// Control btnCerrarSesion.
         /// </summary>
         /// <remarks>
