@@ -310,7 +310,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Insert", param: new
                     {
-
+                        values.numReciboPago,
                         values.IdEstatus,
                         values.IdActo,
                         values.FechaIngreso,
@@ -372,6 +372,7 @@ namespace SGN.Negocio.CRUD
                     db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
                     {
                         values.IdExpediente,
+                        values.numReciboPago,
                         values.IdEstatus,
                         values.IdActo,
                         values.FechaIngreso,

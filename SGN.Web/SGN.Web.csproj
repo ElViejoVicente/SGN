@@ -156,7 +156,7 @@
     <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
-    <Content Include="Expedientes\PanelExpedientes.aspx" />
+    <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
@@ -549,11 +549,11 @@
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Expedientes\PanelExpedientes.aspx.cs">
+    <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Expedientes\PanelExpedientes.aspx.designer.cs">
+    <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.designer.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">

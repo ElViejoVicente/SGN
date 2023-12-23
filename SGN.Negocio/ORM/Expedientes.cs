@@ -10,7 +10,8 @@ namespace SGN.Negocio.ORM
 	public class Expedientes
 	{
 		public string IdExpediente { get; set; } = "";
-		public int IdEstatus { get; set; } = 0;
+        public string numReciboPago { get; set; } = "";
+        public int IdEstatus { get; set; } = 0;
 		public int IdActo { get; set; } = 0;
 		public DateTime FechaIngreso { get; set; } = Constantes.FechaGlobal;
 		public string Otorga { get; set; } = "";
