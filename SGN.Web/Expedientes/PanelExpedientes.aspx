@@ -22,7 +22,7 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight;  // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight -60;  // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
 
@@ -116,13 +116,13 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxCalendar runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
-                                                        </dx:ASPxCalendar>
+                                                        <dx:ASPxDateEdit Caption="Inicio: " runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" >
+                                                        </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxCalendar runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
-                                                        </dx:ASPxCalendar>
+                                                        <dx:ASPxDateEdit Caption="Fin: " runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
@@ -151,7 +151,7 @@
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvExpedientes"></dx:ASPxGridViewExporter>
 
 
-            <dx:ASPxGridView runat="server" ID="gvExpedientes" ClientInstanceName="gvExpedientes" AutoGenerateColumns="False" Width="100%" KeyFieldName="Id_Registro"
+            <dx:ASPxGridView runat="server" ID="gvExpedientes" ClientInstanceName="gvExpedientes" AutoGenerateColumns="False" Width="100%" KeyFieldName="Id_Registro" 
                 OnDataBinding="gvExpedientes_DataBinding"
                 OnCustomCallback="gvExpedientes_CustomCallback"
                 OnToolbarItemClick="gvExpedientes_ToolbarItemClick"

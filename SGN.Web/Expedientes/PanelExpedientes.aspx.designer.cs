@@ -48,7 +48,7 @@ namespace SGN.Web.Expedientes
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCalendar dtFechaInicio;
+        protected global::DevExpress.Web.ASPxDateEdit dtFechaInicio;
 
         /// <summary>
         /// Control dtFechaFin.
@@ -57,7 +57,7 @@ namespace SGN.Web.Expedientes
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCalendar dtFechaFin;
+        protected global::DevExpress.Web.ASPxDateEdit dtFechaFin;
 
         /// <summary>
         /// Control btnActualizar.
