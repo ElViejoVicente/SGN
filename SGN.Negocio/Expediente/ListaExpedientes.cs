@@ -21,8 +21,10 @@ namespace SGN.Negocio.Expediente
 		public DateTime FechaElaboracion { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaEnvioRPP { get; set; } = Constantes.FechaGlobal;
 		public bool EsTramitePorSistema { get; set; }
+
 		public DateTime FechaPagoBoleta { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaRecibidoRPP { get; set; } = Constantes.FechaGlobal;
+
 		public string NombreProyectista { get; set; } = "";
 		public DateTime FechaAsignacionProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaPrevistaTerminoProyectista { get; set; } = Constantes.FechaGlobal;
