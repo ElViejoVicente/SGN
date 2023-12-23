@@ -27,8 +27,10 @@
 }
 
 body {
-    /*background-image: url(/imagenes/login/fondoFundicion3per.png);*/
-    /*background-image: url('../imagenes/login/fondoSGN2.jpg');*/
+    /*background-image: url(../../imagenes/login/fondoLogin.jpg);*/
+    background-image: url(../../imagenes/login/notaria-inicioOpa90.jpg);
+    /* background-image: url('../imagenes/login/fondoSGN2.jpg');*/
+    /*background-color: rgba(24, 25, 26, 0.48);*/
     background-color: rgba(24, 25, 26, 0.48);
     background-size: 100% 100%;
     background-position: bottom;
@@ -68,7 +70,7 @@ body {
     }
 
     .bb:hover::after, .bb:hover::before {
-        background-color: rgba(254, 0, 0, 0.3);
+        /*background-color: rgba(254, 0, 0, 0.3);*/
     }
 
 /*@keyframes clipMe {
@@ -126,7 +128,7 @@ container {
 .card {
     height: 370px;
     margin-top: 30%;
-    margin-left: 5%;
+    margin-left: 1%;
     width: 400px;
     /*background-color: rgba(209,39,39,0.8) !important;*/
     background-color: rgba(211, 214, 223, 0.48) !important;
@@ -138,19 +140,22 @@ container {
     color: #FFC312;
 }
 
-.social_icon span:hover {
-    color: white;
-    cursor: pointer;
-}
+    .social_icon span:hover {
+        color: white;
+        cursor: pointer;
+    }
 
 .card-header h3 {
     color: white;
     text-align: center;
 }
 
-.card-header h5 {
-    color: black;
+.card-header h4 {
+    /*font-family: 'Engschrift';*/
+    color: #243757;
     text-align: center;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .social_icon {
@@ -162,9 +167,9 @@ container {
 .input-group-prepend span {
     width: 50px;
     /*background-color: #FFC312;*/
-    background-color:midnightblue;
+    background-color: midnightblue;
     /*color: black;*/
-    color:white;
+    color: white;
     border: 0 !important;
 }
 
@@ -177,24 +182,24 @@ input:focus {
     color: white;
 }
 
-.remember input {
-    width: 20px;
-    height: 20px;
-    margin-left: 15px;
-    margin-right: 5px;
-}
+    .remember input {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        margin-right: 5px;
+    }
 
 .login_btn {
     color: white;
     background: none;
-    background-color:darkblue;
+    background-color: #243757;
     width: 100px;
 }
 
-.login_btn:hover {
-    color: black;
-    background-color: white;
-}
+    .login_btn:hover {
+        color: black;
+        background-color: white;
+    }
 
 .links {
     color: white;
@@ -218,8 +223,26 @@ input:focus {
 
 .titles-header {
     display: none;
-
 }
+
+
+.footer {
+    height:5%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
 
 @media screen and (max-width:1650px) {
     .bb {
@@ -363,7 +386,7 @@ input:focus {
 
 @media (max-width:768px) {
     body {
-        background-color:brown;
+        background-color: brown;
     }
 
     .bb {
@@ -391,10 +414,10 @@ input:focus {
 }
 
 
- @media (max-width : 480px) {
-        body {
-            background-color: lightgray;
-        }
+@media (max-width : 480px) {
+    body {
+        background-color: lightgray;
+    }
 
     .bb {
         margin-left: 30%;
@@ -407,102 +430,103 @@ input:focus {
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
 
-        .card {
-            width: 80%;
-            height: 250px;
-            margin-top: 10%;
-            margin-left: 25%;
-            margin-right: 0px;
-            padding-left: 0px !important;
-            padding-right: 0px;
-            background-color: rgba(0,0,0,0.5) !important;
-        }
-
-        .card-header {
-            display: inline-block;
-            text-align: center;
-        }
-
-        .container {
-            padding-left: 10px;
-            height: 100%;
-        }
-
-        h3, h5 {
-            display: none;
-        }
-
-        .titles-header {
-            display: inline;
-            font-size: 25px;
-            font-weight:800;
-            color: white;
-            text-align: left !important;
-        }
-
-        .card-footer {
-            display: none;
-        }
+    .card {
+        width: 80%;
+        height: 250px;
+        margin-top: 10%;
+        margin-left: 25%;
+        margin-right: 0px;
+        padding-left: 0px !important;
+        padding-right: 0px;
+        background-color: rgba(0,0,0,0.5) !important;
     }
 
-    @media (max-width : 375px) {
-        body {
-            background-color: lightgray;
-        }
-
-        .bb {
-            width: 200px;
-            height: 100px;
-            margin-left: 30%;
-            margin-top: 10%;
-            /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-            background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
-            background-color: rgba(211, 214, 223, 0.48) !important;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-        }
-
-        .card {
-            width: 100%;
-            height: 70%;
-            margin-top: 150px;
-            margin-left: 0px;
-            padding-left: 0px !important;
-            background-color: rgba(0,0,0,0.5) !important;
-        }
-
-
-        .container {
-            padding-left: 10px;
-            height: 100%;
-        }
-
-        h3, h5 {
-            display: inline-block;
-            font-size: 25px;
-        }
-
-        .card-header {
-            display: inline-block;
-            text-align: center;
-        }
-
-        .card-footer {
-            display: inline-block;
-        }
-
-        .titles-header {
-            display: none;
-        }
+    .card-header {
+        display: inline-block;
+        text-align: center;
     }
-    .contentButtons {
-        padding-top: 20px;
-        padding-bottom: 10px;
+
+    .container {
+        padding-left: 10px;
+        height: 100%;
     }
+
+    h3, h5 {
+        display: none;
+    }
+
+    .titles-header {
+        display: inline;
+        font-size: 25px;
+        font-weight: 800;
+        color: white;
+        text-align: left !important;
+    }
+
+    .card-footer {
+        display: none;
+    }
+}
+
+@media (max-width : 375px) {
+    body {
+        background-color: lightgray;
+    }
+
+    .bb {
+        width: 200px;
+        height: 100px;
+        margin-left: 30%;
+        margin-top: 10%;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .card {
+        width: 100%;
+        height: 70%;
+        margin-top: 150px;
+        margin-left: 0px;
+        padding-left: 0px !important;
+        background-color: rgba(0,0,0,0.5) !important;
+    }
+
+
+    .container {
+        padding-left: 10px;
+        height: 100%;
+    }
+
+    h3, h5 {
+        display: inline-block;
+        font-size: 25px;
+    }
+
+    .card-header {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .card-footer {
+        display: inline-block;
+    }
+
+    .titles-header {
+        display: none;
+    }
+}
+
+.contentButtons {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
 
 
 @media screen and (orientation:portrait) {
     body {
-        background-color:aqua ;
+        background-color: aqua;
     }
 
     .bb {
@@ -539,23 +563,24 @@ input:focus {
     .card-header {
         display: inline-grid;
         text-align: center;
-        margin-bottom:50px;
+        margin-bottom: 50px;
     }
 
     .card-footer {
         display: inline-block;
-
     }
 
     .titles-header {
         display: none;
     }
+
     .input-group-prepend span {
         width: 50px;
         background-color: black;
         color: white;
         border: 0 !important;
     }
+
     .login_btn {
         color: black;
         background: none;
@@ -565,14 +590,16 @@ input:focus {
         height: 100px;
         margin-top: 50px;
     }
-    .form-control{
 
+    .form-control {
     }
-    .cajas{
-        width:95%;
-        height:100px;
-        font-size:50px;
+
+    .cajas {
+        width: 95%;
+        height: 100px;
+        font-size: 50px;
     }
+
     .textmin1 {
         font-size: 30px;
         color: white;
@@ -618,27 +645,25 @@ input:focus {
     .bb:hover::after, .bb:hover::before {
         background-color: rgba(255, 0, 0, 0.3);
     }
-    
 }
 
 
-@media screen and (max-device-width: 1000px) 
-              and (orientation:landscape){
-/*@media screen and (orientation:landscape) {*/
+@media screen and (max-device-width: 1000px) and (orientation:landscape) {
+    /*@media screen and (orientation:landscape) {*/
     body {
         background-color: aqua
     }
 
-                .bb {
-                    margin-left: 5%;
-                    margin-top: 14%;
-                    width: 330px;
-                    height: 150px;
-                    /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-                    background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
-                    background-color: rgba(211, 214, 223, 0.48) !important;
-                    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-                }
+    .bb {
+        margin-left: 5%;
+        margin-top: 14%;
+        width: 330px;
+        height: 150px;
+        /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
+        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background-color: rgba(211, 214, 223, 0.48) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
 
     .card {
         width: 100%;
@@ -682,60 +707,40 @@ input:focus {
         font-size: 25px;
     }
 
-                .bb::before, .bb::after {
-                    content: '';
-                    z-index: -1;
-                    margin: -5%;
-                    box-shadow: inset 0 0 0 2px;
-                    animation: clipMe2 8s linear infinite;
-                }
+    .bb::before, .bb::after {
+        content: '';
+        z-index: -1;
+        margin: -5%;
+        box-shadow: inset 0 0 0 2px;
+        animation: clipMe2 8s linear infinite;
+    }
 
-                @keyframes clipMe2 {
-                    0%, 100% {
-                        clip: rect(0px, 370px, 2px, 0px);
-                    }
+    @keyframes clipMe2 {
+        0%, 100% {
+            clip: rect(0px, 370px, 2px, 0px);
+        }
 
-                    25% {
-                        clip: rect(0px, 2px, 170px, 0px);
-                    }
+        25% {
+            clip: rect(0px, 2px, 170px, 0px);
+        }
 
-                    50% {
-                        clip: rect(168px, 370px, 370px, 0px);
-                    }
+        50% {
+            clip: rect(168px, 370px, 370px, 0px);
+        }
 
-                    75% {
-                        clip: rect(0px, 370px, 170px, 370px);
-                    }
-                }
+        75% {
+            clip: rect(0px, 370px, 170px, 370px);
+        }
+    }
 
 
-              
 
-                .bb::before {
-                    animation-delay: -4s;
-                }
 
-                .bb:hover::after, .bb:hover::before {
-                    background-color: rgba(255, 0, 0, 0.3);
-                }
+    .bb::before {
+        animation-delay: -4s;
+    }
+
+    .bb:hover::after, .bb:hover::before {
+        background-color: rgba(255, 0, 0, 0.3);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

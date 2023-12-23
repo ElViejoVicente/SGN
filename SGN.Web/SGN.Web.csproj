@@ -145,17 +145,20 @@
     <Content Include="Content\Expediciones.js" />
     <Content Include="Content\ExpedicionesAsig.js" />
     <Content Include="Content\generic\pageMinimalStyle.css" />
+    <Content Include="Content\headers.css" />
     <Content Include="Content\indexMovil.css" />
     <Content Include="Content\jquery.countdown.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\menuMovil.css" />
     <Content Include="Content\paginas\flujo-procesos.css" />
     <Content Include="Content\paginas\flujo-procesos.js" />
     <Content Include="Content\stylePc.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
     <Content Include="Expedientes\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="imagenes\GPB.ico" />
+    <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
     <Content Include="imagenes\header\ban-usa.png" />
     <Content Include="imagenes\header\cerrarSessionMinHoverN.png" />
@@ -164,8 +167,10 @@
     <Content Include="imagenes\header\fondoHeaderGPSBborde.png" />
     <Content Include="imagenes\header\logo-sikno.png" />
     <Content Include="imagenes\header\logo-siknoT.png" />
+    <Content Include="imagenes\header\LogoNotariaRecorte.png" />
     <Content Include="imagenes\header\logoS.png" />
     <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />
     <Content Include="imagenes\menu\BackGroundUserMenu.png" />
     <Content Include="imagenes\login\fondoGps.png" />
@@ -218,7 +223,6 @@
     <Content Include="imagenes\Produccion\finalizadoSmall.png" />
     <Content Include="imagenes\Produccion\pendiente.png" />
     <Content Include="imagenes\Produccion\pendienteSmall.png" />
-    <Content Include="imagenes\siknoRIcono.ico" />
     <Content Include="paginaConstruccion.aspx" />
     <Content Include="PlantillaMovil.aspx">
       <BrowseToURL>~/PlantillaMovil.aspx</BrowseToURL>
@@ -254,10 +258,7 @@
     <Content Include="Content\generic\pageStyle.css" />
     <Content Include="Content\generic\StylesMovil.css" />
     <Content Include="Content\headerMovil.css" />
-    <Content Include="Content\headers.css" />
-    <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\styles.css" />
     <Content Include="headerMovil.aspx" />
     <Content Include="imagenes\login\fondoCapas2.png" />
     <Content Include="imagenes\login\fondoCapas3.png" />
