@@ -100,23 +100,21 @@
 
                 case "cmdEditarExpediente":
 
-                    if (gvExpedientes.GetFocusedRowIndex() >= 0)
-                    {
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
                         ppEditarExpediente.Show();
                         ppEditarExpediente.PerformCallback("CargarDatos");
                     }
-    
+
 
                     break;
 
 
                 case "cmdEstatusExpediente":
-                    if (gvExpedientes.GetFocusedRowIndex() >= 0)
-                    {
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
                         ppCambiarEstatus.Show();
                         ppCambiarEstatus.PerformCallback("CargarEstados");
                     }
-            
+
 
                     break;
 
@@ -574,6 +572,35 @@
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
+
+                        <dx:ASPxFormLayout runat="server" ID="frmEstatus" ClientInstanceName="frmEstatus" ColCount="3" ColumnCount="3" Width="100%">
+
+                            <Items>
+                                <dx:LayoutItem Caption="Expediente seleccionado" ColSpan="3" ColumnSpan="3">
+                                    <LayoutItemNestedControlCollection>
+                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                            <dx:ASPxTextBox runat="server" ID="txtProyecSelecEstatus" ReadOnly="true"></dx:ASPxTextBox>
+                                        </dx:LayoutItemNestedControlContainer>
+                                    </LayoutItemNestedControlCollection>
+                                </dx:LayoutItem>
+                                <dx:LayoutGroup Caption="Catalogo de estatus" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="1" Caption="">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxRadioButtonList runat="server" ID="rbEstados" AutoPostBack="false" OnDataBinding="rbEstados_DataBinding" RepeatColumns="2">
+                                                    </dx:ASPxRadioButtonList>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                            </Items>
+                        </dx:ASPxFormLayout>
+
+
+
+
                     </dx:PopupControlContentControl>
                 </ContentCollection>
 
@@ -598,6 +625,102 @@
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
+                        <dx:ASPxFormLayout runat="server" ID="frmExpedienteExistente" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%">
+
+                            <Items>
+                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="3" Caption="Numero de recibo" ColumnSpan="3" FieldName="ExfnNumeroRecibo" Width="100%">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="ASPxTextBox1" AutoPostBack="false" Width="100%">
+                                                        <ValidationSettings ValidationGroup="requerido">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxTextBox>
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Fecha de ingreso" FieldName="ExfnFechaIngreso" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="ASPxDateEdit1" AutoPostBack="false" Width="100%">
+                                                        <ValidationSettings ValidationGroup="requerido">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Acto" FieldName="ExfnActo" ColSpan="3" ColumnSpan="3">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxComboBox runat="server" ID="ASPxComboBox1" OnDataBinding="cbActosNuevo_DataBinding" AutoPostBack="false" Width="100%">
+                                                        <ValidationSettings ValidationGroup="requerido">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxComboBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="3" ColumnSpan="3">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo1" AutoPostBack="false" Width="100%">
+                                                        <ValidationSettings ValidationGroup="requerido">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="3" ColumnSpan="3">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo2" AutoPostBack="false" Width="100%">
+                                                        <ValidationSettings ValidationGroup="requerido">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Operacion proyectada" FieldName="ExfnOperacionProyectada" ColSpan="3" ColumnSpan="3">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo3" AutoPostBack="false" Width="100%">
+                                                        <ValidationSettings ValidationGroup="requerido">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="3" ColumnSpan="3">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="ASPxTextBox2" AutoPostBack="false" Width="100%"></dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Documentos faltantes" FieldName="ExfnDocumentosFaltantes" ColSpan="3" ColumnSpan="3">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo4" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Proyecto" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Firmas" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Escrituracion" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                            </Items>
+                        </dx:ASPxFormLayout>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
 
@@ -606,7 +729,7 @@
                         <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="AceptarCambios" AutoPostBack="false" ClientInstanceName="btnAceptar">
                             <ClientSideEvents Click="function(s, e) 
                                                         {                                             
-                                                        ppEditarExpediente.PerformCallback('guardar');                                                      
+                                                        ppEditarExpediente.PerformCallback('guardarCambios');                                                      
                                                         }" />
 
                         </dx:ASPxButton>

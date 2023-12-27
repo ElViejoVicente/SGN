@@ -14,6 +14,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace SGN.Web.ExpedientesTramites
 {
@@ -42,6 +43,28 @@ namespace SGN.Web.ExpedientesTramites
             }
 
         }
+
+        public List<Cat_Estatus> catEstatus
+        {
+            get
+
+            {
+                List<Cat_Estatus> sseCatEstatus = new List<Cat_Estatus>();
+                if (this.Session["sseCatEstatus"] != null)
+                {
+                    sseCatEstatus = (List<Cat_Estatus>)this.Session["sseCatEstatus"];
+                }
+
+                return sseCatEstatus;
+            }
+            set
+            {
+                this.Session["sseCatEstatus"] = value;
+            }
+
+        }
+
+
         public List<ListaExpedientes> lsExpediente
         {
             get
@@ -67,7 +90,7 @@ namespace SGN.Web.ExpedientesTramites
         private void DameCatalogos()
         {
 
-
+            catEstatus = datosCrud.ConsultaCatEstatus();
             catActos = datosCrud.ConsultaCatActos();
             cbActosNuevo.DataBind();
 
@@ -246,12 +269,53 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppCambiarEstatus_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
+            if (e.Parameter == "CargarEstados")
+            {
 
+                string numExpedinte = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
+
+
+                txtProyecSelecEstatus.Text = numExpedinte;
+
+                rbEstados.DataBind();               
+                return;
+
+            }
         }
 
         protected void ppEditarExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
+            if (e.Parameter == "CargarRegistros")
+            {
+                Expedientes registroExistente = new Expedientes();
 
+                string numExpediente = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
+
+                registroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
+
+                if (registroExistente != null)
+                {
+
+                    // cargamos los campos en el form layaout
+
+                }
+
+
+                return;
+            }
+
+            if (e.Parameter== "guardarCambios")
+            {
+                return;
+            }
+        }
+
+        protected void rbEstados_DataBinding(object sender, EventArgs e)
+        {
+            rbEstados.ValueField = "IdEstatus";
+            rbEstados.TextField = "Descripcion";            
+            rbEstados.DataSource = catEstatus;
+     
         }
     }
 }
