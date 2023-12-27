@@ -149,11 +149,11 @@ namespace SGN.Web.ExpedientesTramites
 
                 if (string.IsNullOrEmpty(txtDocumentoFaltantesNuevo.Text))
                 {
-                    nuevoRegistro.IdEstatus = 1;
+                    nuevoRegistro.IdEstatus = "EX1";
                 }
                 else
                 {
-                    nuevoRegistro.IdEstatus = 2;
+                    nuevoRegistro.IdEstatus = "EX2";
                 }
 
      
