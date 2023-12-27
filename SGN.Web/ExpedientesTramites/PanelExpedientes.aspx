@@ -54,6 +54,8 @@
             if (s.cp_swType != null && s.cp_swAlert == null) {
 
                 ppOrdenNuevoExpediente.Hide();
+                ppEditarExpediente.Hide();
+                ppCambiarEstatus.Hide();
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvExpedientes.PerformCallback('CargarRegistros');
@@ -88,13 +90,35 @@
                     break;
 
 
-                case "cmdNuevoAxpediente":
+                case "cmdNuevoExpediente":
 
                     ppOrdenNuevoExpediente.Show();
-                    ppOrdenNuevoExpediente.PerformCallback("NuevoExpedeinte");
+                    ppOrdenNuevoExpediente.PerformCallback("NuevoExpediente");
 
                     break;
 
+
+                case "cmdEditarExpediente":
+
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0)
+                    {
+                        ppEditarExpediente.Show();
+                        ppEditarExpediente.PerformCallback("CargarDatos");
+                    }
+    
+
+                    break;
+
+
+                case "cmdEstatusExpediente":
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0)
+                    {
+                        ppCambiarEstatus.Show();
+                        ppCambiarEstatus.PerformCallback("CargarEstados");
+                    }
+            
+
+                    break;
 
 
             }
@@ -179,10 +203,12 @@
 
                 <Settings ShowFooter="True" ShowFilterRow="true" ShowFilterBar="Auto" ShowFilterRowMenu="True" ShowHeaderFilterButton="True" ShowGroupPanel="True" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
 
-<%--                <SettingsCookies Enabled="true" />--%>
+                <%--                <SettingsCookies Enabled="true" />--%>
 
                 <SettingsResizing ColumnResizeMode="Control" />
-                <%--    <SettingsDetail ExportMode="All" ShowDetailRow="true" />--%>
+
+
+                <SettingsDetail ExportMode="All" ShowDetailRow="true" AllowOnlyOneMasterRowExpanded="true" />
 
                 <SettingsBehavior
                     AllowGroup="true"
@@ -216,7 +242,7 @@
                 <Columns>
 
 
-
+                    <%--  columnas expedientes--%>
 
                     <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Num Expediente" FieldName="IdExpediente" Width="100px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
@@ -258,110 +284,21 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="11" Caption="Elaboracion" FieldName="FechaElaboracion" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="12" Caption="Envio al RPP" FieldName="FechaEnvioRPP" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataCheckColumn VisibleIndex="13" Caption="Es tramite por sistema" FieldName="EsTramitePorSistema" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataCheckColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="14" Caption="Pago boleta" FieldName="FechaPagoBoleta" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="15" Caption="Recibo RPP" FieldName="FechaRecibidoRPP" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="16" Caption="Proyectista" FieldName="NombreProyectista" Width="50px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="17" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true" ToolTip="Fecha de Asignacion al Proyectista">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="18" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="19" Caption="Aviso preventivo" FieldName="AvisoPreventivo" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataSpinEditColumn VisibleIndex="20" Caption="I.S.R." FieldName="ISR" ReadOnly="true" Visible="true" Width="100px">
-                        <PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataSpinEditColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="21" Caption="Anotaciones firma" FieldName="NotasFirma" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataSpinEditColumn VisibleIndex="22" Caption="Escritura" FieldName="Escritura" ReadOnly="true"  Width="100px" Visible="true" >
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataSpinEditColumn>
 
-                    <dx:GridViewDataSpinEditColumn VisibleIndex="23" Caption="Volumen" FieldName="Volumen" ReadOnly="true"   Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataSpinEditColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="24" Caption="Fecha traslado entregado" FieldName="FechaTrasladoEntregado" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="25" Caption="Fecha elaboracion definitivo" FieldName="FechaElaboracionDefinitivo" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="26" Caption="Fecha Envio RPP Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataCheckColumn VisibleIndex="27" Caption="Es tramite por sistema Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataCheckColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="28" Caption="Fecha de traslado entregado" FieldName="FechaPagoBoletaDefinitivo" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="29" Caption="Fecha recibido RPP definitivo" FieldName="FechaRecibidoRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="30" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscrituta" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="31" Caption="Fecha asignacion mesa" FieldName="FechaAsignacionMesa" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="32" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="33" Caption="Fecha registro entrega" FieldName="FechaRegistroEntrega" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="34" Caption="Fecha boleta pago registro entrega" FieldName="FechaBoletaPagoRegistroEntrega" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="35" Caption="Fecha salida" FieldName="FechaSalida" Width="100px" Visible="true" ToolTip="">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="36" Caption="Observaciones de tramite terminado" FieldName="ObservacionesTramiteTerminado" Width="200px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
 
 
                 </Columns>
@@ -375,7 +312,13 @@
 
 
 
-                            <dx:GridViewToolbarItem Text="Nuevo Expediente" Image-IconID="tasks_newtask_16x16" Name="cmdNuevoAxpediente" />
+                            <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />
+
+                            <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarExpediente" />
+
+                            <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
+
+
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
                             <dx:GridViewToolbarItem Text="Export to" Image-IconID="actions_download_16x16office2013" BeginGroup="true" AdaptivePriority="1" Alignment="Right">
@@ -404,7 +347,274 @@
                 </Toolbars>
 
 
+                <Templates>
+                    <DetailRow>
+                        <div style="padding: 3px 3px 2px 3px">
+                            <dx:ASPxPageControl runat="server" ID="pageControl" Width="100%" EnableCallBacks="true">
+                                <TabPages>
+                                    <dx:TabPage Text="Aviso preventivo" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+
+                                                <dx:ASPxGridView runat="server" ID="gvAvisoPreventivo" ClientInstanceName="gvAvisoPreventivo" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvAvisoPreventivo_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+
+                                                        <%--  columnas aviso preventivo --%>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Elaboracion" FieldName="FechaElaboracion" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Envio al RPP" FieldName="FechaEnvioRPP" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Es tramite por sistema" FieldName="EsTramitePorSistema" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataCheckColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Pago boleta" FieldName="FechaPagoBoleta" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Recibo RPP" FieldName="FechaRecibidoRPP" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Text="Proyecto" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvProyecto" ClientInstanceName="gvProyecto" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvProyecto_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+                                                        <%--  columnas  Proyecto --%>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Proyectista" FieldName="NombreProyectista" Width="50px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true" ToolTip="Fecha de Asignacion al Proyectista">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Aviso preventivo" FieldName="AvisoPreventivo" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="5" Caption="I.S.R." FieldName="ISR" ReadOnly="true" Visible="true" Width="100px">
+                                                            <PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataSpinEditColumn>
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Text="Firmas" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvFirmas" ClientInstanceName="gvFirmas" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvFirmas_BeforePerformDataSelect">
+
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+                                                        <%--  columnas firmas --%>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Anotaciones firma" FieldName="NotasFirma" Width="150px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="2" Caption="Escritura" FieldName="Escritura" ReadOnly="true" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataSpinEditColumn>
+
+                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="3" Caption="Volumen" FieldName="Volumen" ReadOnly="true" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataSpinEditColumn>
+
+                                                        <dx:GridViewDataCheckColumn VisibleIndex="4" Caption="Aplica Traslado" FieldName="AplicaTraslado" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataCheckColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Text="Aviso Definitivo" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvAvisoDefinitivo" ClientInstanceName="gvAvisoDefinitivo" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvAvisoDefinitivo_BeforePerformDataSelect">
+
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+
+                                                        <%--  Aviso definitivo --%>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha elaboracion definitivo" FieldName="FechaElaboracionDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha Envio RPP Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Es tramite por sistema Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataCheckColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha de traslado entregado" FieldName="FechaPagoBoletaDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha recibido RPP definitivo" FieldName="FechaRecibidoRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Text="Escrituracion" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvEscrituracion" ClientInstanceName="gvEscrituracion" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvEscrituracion_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+                                                        <%--  Escrituracion --%>
+                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha recibo traslado" FieldName="FechaRecibioTraslado" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha asignacion mesa" FieldName="FechaAsignacionMesa" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                    <dx:TabPage Text="Entregas" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvEntregas" ClientInstanceName="gvEntregas" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvEntregas_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+                                                        <%--  Entregas --%>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Observaciones Entrega" FieldName="ObservacionesEngrega" Width="150px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+                                                        <dx:GridViewDataCheckColumn VisibleIndex="2" Caption="Registro Entrega" FieldName="RegistroEntrega" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataCheckColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha registro entrega" FieldName="FechaRegistroEntrega" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha boleta pago registro entrega" FieldName="FechaBoletaPagoRegistroEntrega" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha regreso registro" FieldName="FechaRegresoRegistro" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="6" Caption="Fecha salida" FieldName="FechaSalida" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Observaciones de tramite terminado" FieldName="ObservacionesTramiteTerminado" Width="200px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+                                </TabPages>
+                            </dx:ASPxPageControl>
+                        </div>
+                    </DetailRow>
+                </Templates>
+
+
             </dx:ASPxGridView>
+
+            <dx:ASPxPopupControl runat="server" ID="ppCambiarEstatus" ClientInstanceName="ppCambiarEstatus" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Cambiar estatus del Expediente"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppCambiarEstatus_WindowCallback">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
+                <FooterContentTemplate>
+                    <div>
+                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptarstatus" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
+                            <ClientSideEvents Click="function(s, e) 
+                                                        {                                             
+                                                        ppCambiarEstatus.PerformCallback('guardar');                                                      
+                                                        }" />
+
+                        </dx:ASPxButton>
+                    </div>
+                </FooterContentTemplate>
+
+            </dx:ASPxPopupControl>
+
+
+            <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
+                <FooterContentTemplate>
+                    <div>
+                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="AceptarCambios" AutoPostBack="false" ClientInstanceName="btnAceptar">
+                            <ClientSideEvents Click="function(s, e) 
+                                                        {                                             
+                                                        ppEditarExpediente.PerformCallback('guardar');                                                      
+                                                        }" />
+
+                        </dx:ASPxButton>
+                    </div>
+                </FooterContentTemplate>
+
+            </dx:ASPxPopupControl>
+
 
             <dx:ASPxPopupControl runat="server" ID="ppOrdenNuevoExpediente" ClientInstanceName="ppOrdenNuevoExpediente" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nuevo Expediente"
@@ -504,7 +714,7 @@
                 </ContentCollection>
                 <FooterContentTemplate>
                     <div>
-                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnOrdenar" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnOrdenar">
+                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
                             <ClientSideEvents Click="function(s, e) {
                                                       if (ASPxClientEdit.ValidateGroup('requerido'))
                                                           {

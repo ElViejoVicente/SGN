@@ -9,7 +9,8 @@ namespace SGN.Negocio.ORM
 {
 	public class Expedientes
 	{
-		public string IdExpediente { get; set; } = "";
+        //Expedientes
+        public string IdExpediente { get; set; } = "";
         public string numReciboPago { get; set; } = "";
         public string numReciboPago2 { get; set; }
         public string IdEstatus { get; set; } = "";
@@ -21,40 +22,40 @@ namespace SGN.Negocio.ORM
 		public string UbicacionPredio { get; set; } = "";
 		public string Faltantes { get; set; } = "";
 
-
-		public DateTime FechaElaboracion { get; set; } = Constantes.FechaGlobal;
+        //Aviso preventivo
+        public DateTime FechaElaboracion { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaEnvioRPP { get; set; } = Constantes.FechaGlobal;
 		public bool EsTramitePorSistema { get; set; } = false;
 		public DateTime FechaPagoBoleta { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaRecibidoRPP { get; set; } = Constantes.FechaGlobal;
 
-
-		public string NombreProyectista { get; set; } = "";
+        //Proyecto
+        public string NombreProyectista { get; set; } = "";
 		public DateTime FechaAsignacionProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaPrevistaTerminoProyectista { get; set; } = Constantes.FechaGlobal;
 		public string AvisoPreventivo { get; set; } = "";
 		public decimal ISR { get; set; } = 0;
 
-
-		public string NotasFirma { get; set; } = "";
+        //Firmas
+        public string NotasFirma { get; set; } = "";
 		public int Escritura { get; set; } = 0;
 		public int Volumen { get; set; } = 0;
         public bool AplicaTraslado { get; set; } = false;
 		public DateTime FechaRecepcionTerminoEscritura { get; set; } = Constantes.FechaGlobal;
 
-
+        //Aviso definitivo
         public DateTime FechaElaboracionDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaEnvioRPPDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public bool EsTramitePorSistemaDefinitivo { get; set; } = false;
 		public DateTime FechaPagoBoletaDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaRecibidoRPPDefinitivo { get; set; } = Constantes.FechaGlobal;
 
-
+        //Escrituracion
         public DateTime FechaRecibioTraslado { get; set; } = Constantes.FechaGlobal;
         public DateTime FechaAsignacionMesa { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaTerminoMesa { get; set; } = Constantes.FechaGlobal;
 
-
+        //Entrega
         public string ObservacionesEngrega { get; set; } = "";
         public bool RegistroEntrega { get; set; } = false;       
         public DateTime FechaRegistroEntrega { get; set; } = Constantes.FechaGlobal;

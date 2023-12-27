@@ -81,10 +81,10 @@ namespace SGN.Web.ExpedientesTramites
             if (!Page.IsPostBack)
             {
                 dtFechaInicio.Date = DateTime.Now.Date;
-                dtFechaFin.Date= DateTime.Now.Date;
+                dtFechaFin.Date = DateTime.Now.Date;
                 DameCatalogos();
             }
-        }            
+        }
 
         protected void gvExpedientes_DataBinding(object sender, EventArgs e)
         {
@@ -95,7 +95,7 @@ namespace SGN.Web.ExpedientesTramites
         protected void gvExpedientes_CustomCallback(object sender, DevExpress.Web.ASPxGridViewCustomCallbackEventArgs e)
         {
             //ASPxGridView control = (ASPxGridView)sender;
-            if (e.Parameters== "CargarRegistros")
+            if (e.Parameters == "CargarRegistros")
             {
                 lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date);// cargamos registros
                 gvExpedientes.DataBind();
@@ -126,26 +126,26 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
         {
-            if (e.Parameter == "NuevoExpedeinte")
+            if (e.Parameter == "NuevoExpediente")
             {
                 dtFechaIngresoNuevo.Date = DateTime.Now;
                 return;
 
             }
 
-            if (e.Parameter== "guardar")
+            if (e.Parameter == "guardar")
             {
                 Expedientes nuevoRegistro = new Expedientes();
                 nuevoRegistro.IdExpediente = "123456";
                 nuevoRegistro.numReciboPago = txtNumReciboNuevo.Text;
-              
+
                 nuevoRegistro.FechaIngreso = dtFechaIngresoNuevo.Date;
-                nuevoRegistro.IdActo = Convert.ToInt32( cbActosNuevo.Value.ToString());
+                nuevoRegistro.IdActo = Convert.ToInt32(cbActosNuevo.Value.ToString());
                 nuevoRegistro.Otorga = txtOtorgaNuevo.Text;
-                nuevoRegistro.AfavorDe=txtAfavorDeNuevo.Text;
-                nuevoRegistro.OperacionProyectada=txtOperacionProyectadaNuevo.Text;
+                nuevoRegistro.AfavorDe = txtAfavorDeNuevo.Text;
+                nuevoRegistro.OperacionProyectada = txtOperacionProyectadaNuevo.Text;
                 nuevoRegistro.UbicacionPredio = txtUbicacionPredioNuevo.Text;
-                nuevoRegistro.Faltantes=txtDocumentoFaltantesNuevo.Text;
+                nuevoRegistro.Faltantes = txtDocumentoFaltantesNuevo.Text;
 
                 if (string.IsNullOrEmpty(txtDocumentoFaltantesNuevo.Text))
                 {
@@ -156,7 +156,7 @@ namespace SGN.Web.ExpedientesTramites
                     nuevoRegistro.IdEstatus = "EX2";
                 }
 
-     
+
                 if (datosCrud.AltaExpediente(nuevoRegistro))
                 {
                     ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Registro creado!";
@@ -186,6 +186,72 @@ namespace SGN.Web.ExpedientesTramites
             control.DataSource = catActos;
         }
 
-       
+        protected void gvAvisoPreventivo_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+
+        }
+
+
+        protected void gvProyecto_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
+
+
+
+        protected void gvFirmas_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
+
+
+
+        protected void gvAvisoDefinitivo_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
+
+  
+
+        protected void gvEscrituracion_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
+
+   
+
+        protected void gvEntregas_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
+
+        protected void ppCambiarEstatus_WindowCallback(object source, PopupWindowCallbackArgs e)
+        {
+
+        }
+
+        protected void ppEditarExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
+        {
+
+        }
     }
 }
