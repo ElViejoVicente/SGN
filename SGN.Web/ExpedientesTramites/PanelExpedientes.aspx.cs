@@ -108,13 +108,34 @@ namespace SGN.Web.ExpedientesTramites
         }
 
 
+        public Expedientes RegistroExistente
+        {
+            get
+
+            {
+                Expedientes ssRegistroExistente = new Expedientes();
+                if (this.Session["ssRegistroExistente"] != null)
+                {
+                    ssRegistroExistente = (Expedientes)this.Session["ssRegistroExistente"];
+                }
+
+                return ssRegistroExistente;
+            }
+            set
+            {
+                this.Session["ssRegistroExistente"] = value;
+            }
+
+        }
+
+
         #region Funciones
         private void DameCatalogos()
         {
 
             catEstatus = datosCrud.ConsultaCatEstatus();
             catActos = datosCrud.ConsultaCatActos();
-            catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x=> x.EsProyectista==true).ToList();
+            catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x => x.EsProyectista == true).ToList();
 
             cbActosNuevo.DataBind();
             cbExfnActo.DataBind();
@@ -184,7 +205,7 @@ namespace SGN.Web.ExpedientesTramites
             if (e.Parameter == "guardar")
             {
                 Expedientes nuevoRegistro = new Expedientes();
-                nuevoRegistro.IdExpediente = "123456";
+                nuevoRegistro.IdExpediente = "";
                 nuevoRegistro.numReciboPago = txtNumReciboNuevo.Text;
 
                 nuevoRegistro.FechaIngreso = dtFechaIngresoNuevo.Date;
@@ -214,7 +235,7 @@ namespace SGN.Web.ExpedientesTramites
                 else
                 {
 
-                    ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar la nueva accion.";
+                    ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar el registro.";
                     ppOrdenNuevoExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
                     return;
                 }
@@ -272,7 +293,7 @@ namespace SGN.Web.ExpedientesTramites
             detailGrid.DataSource = result;
         }
 
-  
+
 
         protected void gvEscrituracion_BeforePerformDataSelect(object sender, EventArgs e)
         {
@@ -282,7 +303,7 @@ namespace SGN.Web.ExpedientesTramites
             detailGrid.DataSource = result;
         }
 
-   
+
 
         protected void gvEntregas_BeforePerformDataSelect(object sender, EventArgs e)
         {
@@ -302,7 +323,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 txtProyecSelecEstatus.Text = numExpedinte;
 
-                rbEstados.DataBind();               
+                rbEstados.DataBind();
                 return;
 
             }
@@ -312,75 +333,75 @@ namespace SGN.Web.ExpedientesTramites
         {
             if (e.Parameter == "CargarRegistros")
             {
-                Expedientes registroExistente = new Expedientes();
+                RegistroExistente = new Expedientes();
 
                 string numExpediente = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
 
-                registroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
+                RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
 
-                if (registroExistente != null)
+                if (RegistroExistente != null)
                 {
 
                     // cargamos los campos en el form layaout
 
                     //Expediente 
-                    txtNumExpediente.Text = registroExistente.IdExpediente;
+                    txtNumExpediente.Text = RegistroExistente.IdExpediente;
 
-                    txtExfnNumeroRecibo.Text = registroExistente.numReciboPago;
-                    dtExfnFechaIngreso.Date = registroExistente.FechaIngreso;
+                    txtExfnNumeroRecibo.Text = RegistroExistente.numReciboPago;
+                    dtExfnFechaIngreso.Date = RegistroExistente.FechaIngreso;
 
-                    cbExfnActo.Value = registroExistente.IdActo;
-                    cbExfnActo.SelectedIndex = catActos.FindIndex(w => w.IdActo == registroExistente.IdActo);
+                    cbExfnActo.Value = RegistroExistente.IdActo;
+                    cbExfnActo.SelectedIndex = catActos.FindIndex(w => w.IdActo == RegistroExistente.IdActo);
 
-                    txtExfnOtorga.Text = registroExistente.Otorga;
-                    txtEXfnAfavorde.Text = registroExistente.AfavorDe;
-                    txtExfnOperacionProyectada.Text = registroExistente.OperacionProyectada;
-                    txtExfnUbicacionPredio.Text = registroExistente.UbicacionPredio;
-                    txtExfnDocumentosFaltantes.Text = registroExistente.Faltantes;
+                    txtExfnOtorga.Text = RegistroExistente.Otorga;
+                    txtEXfnAfavorde.Text = RegistroExistente.AfavorDe;
+                    txtExfnOperacionProyectada.Text = RegistroExistente.OperacionProyectada;
+                    txtExfnUbicacionPredio.Text = RegistroExistente.UbicacionPredio;
+                    txtExfnDocumentosFaltantes.Text = RegistroExistente.Faltantes;
 
                     //Aviso preventivo
-                    dtAPfnFechaElaboracion.Date = registroExistente.FechaElaboracion;
-                    dtAPfnFechaEnvioAlRPP.Date = registroExistente.FechaEnvioRPP;
-                    chkAPfnEsTramitePorSistema.Checked = registroExistente.EsTramitePorSistema;
-                    dtAPfnFechaPagoBoleta.Date = registroExistente.FechaPagoBoleta;
-                    dtAPfnFechaRecibido.Date = registroExistente.FechaRecibidoRPP;
+                    dtAPfnFechaElaboracion.Date = RegistroExistente.FechaElaboracion;
+                    dtAPfnFechaEnvioAlRPP.Date = RegistroExistente.FechaEnvioRPP;
+                    chkAPfnEsTramitePorSistema.Checked = RegistroExistente.EsTramitePorSistema;
+                    dtAPfnFechaPagoBoleta.Date = RegistroExistente.FechaPagoBoleta;
+                    dtAPfnFechaRecibido.Date = RegistroExistente.FechaRecibidoRPP;
 
                     //Proyecto
-                    cbPRfnProyectista.Value = registroExistente.NombreProyectista;
-                    cbPRfnProyectista.SelectedIndex = catProyectistas.FindIndex(w => w.Nombre == registroExistente.NombreProyectista);
+                    cbPRfnProyectista.Value = RegistroExistente.NombreProyectista;
+                    cbPRfnProyectista.SelectedIndex = catProyectistas.FindIndex(w => w.Nombre == RegistroExistente.NombreProyectista);
 
-                    dtPRfnFechaAsignacionProyectista.Date = registroExistente.FechaAsignacionProyectista;
-                    dtPRfnFechaPrevistaTermino.Date = registroExistente.FechaPrevistaTerminoProyectista;
-                    dtPRfnFechaAvisoPreventivo.Date = registroExistente.FechaAvisoPreventivo;
-                    txtPRfnISR.Value = registroExistente.ISR;
+                    dtPRfnFechaAsignacionProyectista.Date = RegistroExistente.FechaAsignacionProyectista;
+                    dtPRfnFechaPrevistaTermino.Date = RegistroExistente.FechaPrevistaTerminoProyectista;
+                    dtPRfnFechaAvisoPreventivo.Date = RegistroExistente.FechaAvisoPreventivo;
+                    txtPRfnISR.Value = RegistroExistente.ISR;
 
                     //Firmas
-                    txtFIfnNotasFirmas.Text = registroExistente.NotasFirma;
-                    txtFIfnNumEscritura.Value = registroExistente.Escritura;
-                    txtFIfnNumVolumen.Value = registroExistente.Volumen;
-                    chkFIfnAplicaTraslado.Checked = registroExistente.AplicaTraslado;
-                    dtFIfnFechaRecepcionTerminoEscritura.Date = registroExistente.FechaRecepcionTerminoEscritura;
+                    txtFIfnNotasFirmas.Text = RegistroExistente.NotasFirma;
+                    txtFIfnNumEscritura.Value = RegistroExistente.Escritura;
+                    txtFIfnNumVolumen.Value = RegistroExistente.Volumen;
+                    chkFIfnAplicaTraslado.Checked = RegistroExistente.AplicaTraslado;
+                    dtFIfnFechaRecepcionTerminoEscritura.Date = RegistroExistente.FechaRecepcionTerminoEscritura;
 
                     //Aviso definitivo
-                    dtAdfnFechaElaboracion.Date = registroExistente.FechaElaboracionDefinitivo;
-                    dtAdfnFechaEnvioRPP.Date = registroExistente.FechaEnvioRPPDefinitivo;
-                    chkAdfnEsTramitePorSistema.Checked = registroExistente.EsTramitePorSistemaDefinitivo;
-                    dtAdfnFechaPagoBoleta.Date = registroExistente.FechaPagoBoletaDefinitivo;
-                    dtAdfnFechaRecibido.Date = registroExistente.FechaRecibidoRPPDefinitivo;
+                    dtAdfnFechaElaboracion.Date = RegistroExistente.FechaElaboracionDefinitivo;
+                    dtAdfnFechaEnvioRPP.Date = RegistroExistente.FechaEnvioRPPDefinitivo;
+                    chkAdfnEsTramitePorSistema.Checked = RegistroExistente.EsTramitePorSistemaDefinitivo;
+                    dtAdfnFechaPagoBoleta.Date = RegistroExistente.FechaPagoBoletaDefinitivo;
+                    dtAdfnFechaRecibido.Date = RegistroExistente.FechaRecibidoRPPDefinitivo;
 
                     //Escrituracion 
-                    dtEsfnRecibioTraslado.Date = registroExistente.FechaRecibioTraslado;
-                    dtAdfnFechaAsignacionMesa.Date = registroExistente.FechaAsignacionMesa;
-                    dtAdfnFechaTerminoTramite.Date = registroExistente.FechaTerminoMesa;
+                    dtEsfnRecibioTraslado.Date = RegistroExistente.FechaRecibioTraslado;
+                    dtAdfnFechaAsignacionMesa.Date = RegistroExistente.FechaAsignacionMesa;
+                    dtAdfnFechaTerminoTramite.Date = RegistroExistente.FechaTerminoMesa;
 
                     //Entregas
-                    txtEnfnObservacionesEntrega.Text = registroExistente.ObservacionesEngrega;
-                    chkEnfnRegistroSolicitado.Checked = registroExistente.RegistroEntrega;
-                    dtEnfnFechaRegistro.Date = registroExistente.FechaRegistroEntrega;
-                    dtEnfnFechaBoletaPago.Date = registroExistente.FechaBoletaPagoRegistroEntrega;
-                    dtEnfnFechaRegresoRegistro.Date = registroExistente.FechaRegresoRegistro;
-                    dtEnfnFechaSalida.Date = registroExistente.FechaSalida;
-                    txtEnfnObservacionesSobreTramiteTerminado.Text = registroExistente.ObservacionesTramiteTerminado;
+                    txtEnfnObservacionesEntrega.Text = RegistroExistente.ObservacionesEngrega;
+                    chkEnfnRegistroSolicitado.Checked = RegistroExistente.RegistroEntrega;
+                    dtEnfnFechaRegistro.Date = RegistroExistente.FechaRegistroEntrega;
+                    dtEnfnFechaBoletaPago.Date = RegistroExistente.FechaBoletaPagoRegistroEntrega;
+                    dtEnfnFechaRegresoRegistro.Date = RegistroExistente.FechaRegresoRegistro;
+                    dtEnfnFechaSalida.Date = RegistroExistente.FechaSalida;
+                    txtEnfnObservacionesSobreTramiteTerminado.Text = RegistroExistente.ObservacionesTramiteTerminado;
 
                 }
 
@@ -388,8 +409,83 @@ namespace SGN.Web.ExpedientesTramites
                 return;
             }
 
-            if (e.Parameter== "guardarCambios")
+            if (e.Parameter == "guardarCambios")
             {
+                if (RegistroExistente != null)
+                {
+
+                    
+
+                    RegistroExistente.numReciboPago = txtExfnNumeroRecibo.Text;
+                    RegistroExistente.FechaIngreso = dtExfnFechaIngreso.Date;
+
+                    RegistroExistente.IdActo = cbExfnActo.Value == null ? 0 : Convert.ToInt32(cbExfnActo.Value.ToString()); // validar que no sea  nulo
+
+                    RegistroExistente.Otorga = txtExfnOtorga.Text;
+                    RegistroExistente.AfavorDe = txtEXfnAfavorde.Text;
+                    RegistroExistente.OperacionProyectada = txtExfnOperacionProyectada.Text;
+                    RegistroExistente.UbicacionPredio = txtExfnUbicacionPredio.Text;
+                    RegistroExistente.Faltantes = txtExfnDocumentosFaltantes.Text;
+
+                    //Aviso preventivo
+                    RegistroExistente.FechaElaboracion = dtAPfnFechaElaboracion.Date;
+                    RegistroExistente.FechaEnvioRPP = dtAPfnFechaEnvioAlRPP.Date;
+                    RegistroExistente.EsTramitePorSistema = chkAPfnEsTramitePorSistema.Checked;
+                    RegistroExistente.FechaPagoBoleta = dtAPfnFechaPagoBoleta.Date;
+                    RegistroExistente.FechaRecibidoRPP = dtAPfnFechaRecibido.Date;
+
+                    //Proyecto
+                    RegistroExistente.NombreProyectista = cbPRfnProyectista.Value == null ? "" :  cbPRfnProyectista.Value.ToString();
+                    RegistroExistente.FechaAsignacionProyectista = dtPRfnFechaAsignacionProyectista.Date;
+                    RegistroExistente.FechaPrevistaTerminoProyectista = dtPRfnFechaPrevistaTermino.Date;
+                    RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;
+                    RegistroExistente.ISR= txtPRfnISR.Value ==null ?0 : Convert.ToDecimal(txtPRfnISR.Value.ToString());
+
+                    //Firmas
+                    RegistroExistente.NotasFirma = txtFIfnNotasFirmas.Text;
+                    RegistroExistente.Escritura = txtFIfnNumEscritura.Value == null ? 0 : Convert.ToInt32(txtFIfnNumEscritura.Value.ToString()); // validar nulos
+                    RegistroExistente.Volumen = txtFIfnNumVolumen.Value == null ? 0 :  Convert.ToInt32(txtFIfnNumVolumen.Value.ToString());
+                    RegistroExistente.AplicaTraslado = chkFIfnAplicaTraslado.Checked;
+                    RegistroExistente.FechaRecepcionTerminoEscritura = dtFIfnFechaRecepcionTerminoEscritura.Date;
+
+                    //Aviso definitivo
+                    RegistroExistente.FechaElaboracionDefinitivo = dtAdfnFechaElaboracion.Date;
+                    RegistroExistente.FechaEnvioRPPDefinitivo = dtAdfnFechaEnvioRPP.Date;
+                    RegistroExistente.EsTramitePorSistemaDefinitivo = chkAdfnEsTramitePorSistema.Checked;
+                    RegistroExistente.FechaPagoBoletaDefinitivo = dtAdfnFechaPagoBoleta.Date;
+                    RegistroExistente.FechaRecibidoRPPDefinitivo = dtAdfnFechaRecibido.Date;
+
+                    //Escrituracion 
+                    RegistroExistente.FechaRecibioTraslado = dtEsfnRecibioTraslado.Date;
+                    RegistroExistente.FechaAsignacionMesa = dtAdfnFechaAsignacionMesa.Date;
+                    RegistroExistente.FechaTerminoMesa = dtAdfnFechaTerminoTramite.Date;
+
+                    //Entregas
+                    RegistroExistente.ObservacionesEngrega = txtEnfnObservacionesEntrega.Text;
+                    RegistroExistente.RegistroEntrega = chkEnfnRegistroSolicitado.Checked;
+                    RegistroExistente.FechaRegistroEntrega = dtEnfnFechaRegistro.Date;
+                    RegistroExistente.FechaBoletaPagoRegistroEntrega = dtEnfnFechaBoletaPago.Date;
+                    RegistroExistente.FechaRegresoRegistro = dtEnfnFechaRegresoRegistro.Date;
+                    RegistroExistente.FechaSalida = dtEnfnFechaSalida.Date;
+                    RegistroExistente.ObservacionesTramiteTerminado = txtEnfnObservacionesSobreTramiteTerminado.Text;
+
+
+
+                    if (datosCrud.ActualizarExpediente(RegistroExistente))
+                    {
+                        ppEditarExpediente.JSProperties["cp_swMsg"] = "Registro Modificado!";
+                        ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+                       
+                    }
+                    else
+                    {
+
+                        ppEditarExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el registro.";
+                        ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+                       
+                    }
+
+                }
                 return;
             }
         }
@@ -397,9 +493,9 @@ namespace SGN.Web.ExpedientesTramites
         protected void rbEstados_DataBinding(object sender, EventArgs e)
         {
             rbEstados.ValueField = "IdEstatus";
-            rbEstados.TextField = "Descripcion";            
+            rbEstados.TextField = "Descripcion";
             rbEstados.DataSource = catEstatus;
-     
+
         }
 
         protected void cbExfnActo_DataBinding(object sender, EventArgs e)
