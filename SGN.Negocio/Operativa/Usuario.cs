@@ -20,13 +20,12 @@ namespace SGN.Negocio.Operativa
         public Boolean Activo { get;  set; } = false;
         public string Mail { get;  set; } = string.Empty;
         public DateTime FechaBaja { get;  set; } = Constantes.FechaGlobal;
-        public string PIN { get;  set; } = string.Empty;
-        public int PuestoTrabajo { get;  set; } = 0;
-        public int CodProveedor { get; set; } = 0;
-        public string NombreAgencia { get; set; } = string.Empty;
+        public Boolean Avisoemail { get; set; } = false;
+        public string AreaTrabajo { get; set; } = string.Empty;
+        public Boolean EsProyectista { get; set; } = false;
         public int Perfil { get; set; } = 0;
         public Boolean Creado { get;  set; } = false;
-        public Boolean Avisoemail { get; set; } = false;
+      
         #endregion
     }
 }

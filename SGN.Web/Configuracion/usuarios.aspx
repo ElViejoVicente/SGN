@@ -104,10 +104,10 @@
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataDateColumn FieldName="FechaBaja" Caption="" VisibleIndex="8" />
-                        <dx:GridViewDataTextColumn FieldName="PIN" Caption="" VisibleIndex="9" Visible="false" />
-                        <dx:GridViewDataCheckColumn FieldName="PuestoTrabajo" Caption="" VisibleIndex="10" />
-                        <dx:GridViewDataTextColumn FieldName="CodProveedor" Caption="Cod. Proveedor" VisibleIndex="11" />
+            
                         <dx:GridViewDataCheckColumn FieldName="Avisoemail" Caption="Aviso Email" VisibleIndex="12" />
+
+                                 <dx:GridViewDataCheckColumn FieldName="EsProyectista" Caption="Es proyectista" VisibleIndex="13" />
                     </Columns>
                       <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
                 </dx:ASPxGridView>

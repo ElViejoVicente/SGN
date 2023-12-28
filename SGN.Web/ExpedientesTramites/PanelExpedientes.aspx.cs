@@ -5,6 +5,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraSpreadsheet.Import.OpenXml;
 using SGN.Negocio.CRUD;
 using SGN.Negocio.Expediente;
+using SGN.Negocio.Operativa;
 using SGN.Negocio.ORM;
 
 using SGN.Web.Controles.Servidor;
@@ -23,6 +24,7 @@ namespace SGN.Web.ExpedientesTramites
 
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
+        DatosUsuario datosUsuario = new DatosUsuario();
         DatosExpedientes datosExpediente = new DatosExpedientes();
         public List<Cat_Actos> catActos
         {
@@ -64,6 +66,26 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+        public List<Usuario> catProyectistas
+        {
+            get
+
+            {
+                List<Usuario> sseCatProyectistas = new List<Usuario>();
+                if (this.Session["sseCatProyectistas"] != null)
+                {
+                    sseCatProyectistas = (List<Usuario>)this.Session["sseCatProyectistas"];
+                }
+
+                return sseCatProyectistas;
+            }
+            set
+            {
+                this.Session["sseCatProyectistas"] = value;
+            }
+
+        }
+
 
         public List<ListaExpedientes> lsExpediente
         {
@@ -92,8 +114,11 @@ namespace SGN.Web.ExpedientesTramites
 
             catEstatus = datosCrud.ConsultaCatEstatus();
             catActos = datosCrud.ConsultaCatActos();
-            cbActosNuevo.DataBind();
+            catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x=> x.EsProyectista==true).ToList();
 
+            cbActosNuevo.DataBind();
+            cbExfnActo.DataBind();
+            cbPRfnProyectista.DataBind();
 
         }
         #endregion
@@ -299,6 +324,62 @@ namespace SGN.Web.ExpedientesTramites
                     // cargamos los campos en el form layaout
 
                     //Expediente
+                    txtExfnNumeroRecibo.Text = registroExistente.numReciboPago;
+                    dtExfnFechaIngreso.Date = registroExistente.FechaIngreso;
+
+                    cbExfnActo.Value = registroExistente.IdActo;
+                    cbExfnActo.SelectedIndex = catActos.FindIndex(w => w.IdActo == registroExistente.IdActo);
+
+                    txtExfnOtorga.Text = registroExistente.Otorga;
+                    txtEXfnAfavorde.Text = registroExistente.AfavorDe;
+                    txtExfnOperacionProyectada.Text = registroExistente.OperacionProyectada;
+                    txtExfnUbicacionPredio.Text = registroExistente.UbicacionPredio;
+                    txtExfnDocumentosFaltantes.Text = registroExistente.Faltantes;
+
+                    //Aviso preventivo
+                    dtAPfnFechaElaboracion.Date = registroExistente.FechaElaboracion;
+                    dtAPfnFechaEnvioAlRPP.Date = registroExistente.FechaEnvioRPP;
+                    chkAPfnEsTramitePorSistema.Checked = registroExistente.EsTramitePorSistema;
+                    dtAPfnFechaPagoBoleta.Date = registroExistente.FechaPagoBoleta;
+                    dtAPfnFechaRecibido.Date = registroExistente.FechaRecibidoRPP;
+
+                    //Proyecto
+                    cbPRfnProyectista.Value = registroExistente.NombreProyectista;
+                    cbPRfnProyectista.SelectedIndex = catProyectistas.FindIndex(w => w.Nombre == registroExistente.NombreProyectista);
+
+
+                    //dtPRfnFechaAsignacionProyectista.Date =
+                    //dtPRfnFechaPrevistaTermino.Date =
+                    //dtPRfnFechaAvisoPreventivo.Date =
+                    //txtPRfnISR.Text =
+
+                    ////Firmas
+                    //txtFIfnNotasFirmas.Text =
+                    //txtFIfnNumEscritura.Text =
+                    //txtFIfnNumVolumen.Text =
+                    //chkFIfnAplicaTraslado.Checked =
+                    //dtFIfnFechaRecepcionTerminoEscritura.Date =
+
+                    ////Aviso definitivo
+                    //dtAdfnFechaElaboracion.Date =
+                    //dtAdfnFechaEnvioRPP.Date =
+                    //chkAdfnEsTramitePorSistema.Checked =
+                    //dtAdfnFechaPagoBoleta.Date =
+                    //dtAdfnFechaRecibido.Date =
+
+                    ////Escrituracion 
+                    //dtEsfnRecibioTraslado.Date =
+                    //dtAdfnFechaAsignacionMesa.Date =
+                    //dtAdfnFechaTerminoTramite.Date =
+
+                    ////Entregas
+                    //txtEnfnObservacionesEntrega.Text =
+                    //chkEnfnRegistroSolicitado.Checked =
+                    //dtEnfnFechaRegistro.Date =
+                    //dtEnfnFechaBoletaPago.Date =
+                    //dtEnfnFechaRegresoRegistro.Date =
+                    //dtEnfnFechaSalida.Date =
+                    //txtEnfnObservacionesSobreTramiteTerminado.Text =
 
 
 
@@ -325,11 +406,20 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void cbExfnActo_DataBinding(object sender, EventArgs e)
         {
+            ASPxComboBox control = (ASPxComboBox)sender;
 
+            control.ValueField = "IdActo";
+            control.TextField = "TextoActo";
+            control.DataSource = catActos;
         }
 
         protected void cbPRfnProyectista_DataBinding(object sender, EventArgs e)
         {
+            ASPxComboBox control = (ASPxComboBox)sender;
+
+            control.ValueField = "Nombre";
+            control.TextField = "Nombre";
+            control.DataSource = catProyectistas;
 
         }
     }

@@ -588,7 +588,7 @@
                                         <dx:LayoutItem ColSpan="1" Caption="">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxRadioButtonList runat="server" ID="rbEstados" AutoPostBack="false" OnDataBinding="rbEstados_DataBinding" RepeatColumns="2">
+                                                    <dx:ASPxRadioButtonList runat="server" ID="rbEstados" AutoPostBack="false" OnDataBinding="rbEstados_DataBinding" RepeatColumns="2" RepeatLayout="Table">
                                                     </dx:ASPxRadioButtonList>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
