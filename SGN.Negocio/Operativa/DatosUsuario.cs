@@ -83,7 +83,7 @@ namespace SGN.Negocio.Operativa
                 dtresultado = BaseDatossql.LoadDataSet("sp_AltaNuevoUsuario", parametros).Tables[0];
 
 
-                if (int.Parse(dtresultado.Rows[0]["RES"].ToString()) == 1)
+                if (int.Parse(dtresultado.Rows[0]["RES"].ToString()) > 0)
                 {
                     return true;
                 }

@@ -76,9 +76,10 @@ namespace SGN.Web.Configuracion
         {
             try
             {
-                if (codPAgina == 36)
+                if (codPAgina == 16)
                 {
                     MiUsuario = true;
+                  
                 }
                 else
                 {
@@ -208,7 +209,7 @@ namespace SGN.Web.Configuracion
                     {
                         miUsuario.Nombre = e.NewValues["Nombre"].ToString();
                         miUsuario.Mail = e.NewValues["Mail"].ToString();
-                        miUsuario.Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString());
+                       // miUsuario.Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString());
                         if (e.OldValues["Contraseña"].ToString() != e.NewValues["Contraseña"].ToString())
                         {
                             if (e.NewValues["Contraseña"].ToString().Length < 8 || e.NewValues["Contraseña"].ToString() == "12345678" || e.NewValues["Contraseña"].ToString() == "87654321")
@@ -361,12 +362,28 @@ namespace SGN.Web.Configuracion
                 gvUsuarios.Columns[8].Visible = false;
                 gvUsuarios.Columns[9].Visible = false;
                 gvUsuarios.Columns[10].Visible = false;
-                gvUsuarios.Columns[11].Visible = false;
+                //gvUsuarios.Columns[11].Visible = false;
                 GridViewCommandColumn col = (GridViewCommandColumn)gvUsuarios.Columns[0];
                 col.ShowNewButtonInHeader = false;
             }
         }
 
-       
+        protected void gvUsuarios_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (MiUsuario)
+            {
+                if (e.ButtonType== ColumnCommandButtonType.New)
+                {
+                    e.Visible = false;
+                }
+            }
+            else
+            {
+                if (e.ButtonType == ColumnCommandButtonType.New)
+                {
+                    e.Visible = true;
+                }
+            }
+        }
     }
 }

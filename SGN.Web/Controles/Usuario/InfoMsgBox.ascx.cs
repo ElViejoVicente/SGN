@@ -37,31 +37,31 @@ namespace SGN.Web.Controles.Usuario
                 {
                     //ejemplo de mensaje
                     //cuSweetMsgbox1.mostrarMensaje("Seleccione un filtro de busqueda antes de consultar.", Controles.Usuario.SweetMsgBox.tipoMsg.info);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgGPBInfo(\"" + mensaje + "\")", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgInfo(\"" + mensaje + "\")", true);
                 }
                 else if (tipoMenssaje == tipoMsg.success)
                 {
                     //ejemplo de mensaje
                     //cuInfoMsgbox1.mostrarMensaje("Usuario dado de alta con éxito.", Controles.Usuario.InfoMsgBox.tipoMsg.success);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgGPBSuccess(\"" + mensaje + "\")", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgSuccess(\"" + mensaje + "\")", true);
                 }
                 else if (tipoMenssaje == tipoMsg.warning)
                 {
                     //ejemplo de mensaje
                     //cuInfoMsgbox1.mostrarMensaje("No todas las familias cuentan con una  planificación.", Controles.Usuario.InfoMsgBox.tipoMsg.warning);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgGPBWarning(\"" + mensaje + "\")", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgWarning(\"" + mensaje + "\")", true);
                 }
                 else if (tipoMenssaje == tipoMsg.error)
                 {
                     //ejemplo de mensaje
                     //cuInfoMsgbox1.mostrarMensaje("ha fallado el procedimiento almacenado storeProcedurotest en la base de datos.", Controles.Usuario.InfoMsgBox.tipoMsg.error);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgGPBError(\"" + mensaje + "\")", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgError(\"" + mensaje + "\")", true);
                 }
                 else if (tipoMenssaje == tipoMsg.preguntar)
                 {
                     //ejemplo de mensaje
                     //cuInfoMsgbox1.mostrarMensaje("¿Esta seguro de eliminar toda la base de datos y todo el GPB?", Controles.Usuario.InfoMsgBox.tipoMsg.preguntar);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgGPBQuestion(\"" + mensaje + "\")", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "msgQuestion(\"" + mensaje + "\")", true);
                 }
                 return true;
             }

@@ -14,6 +14,12 @@
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
 
+
+    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/mensajes.js"></script>
+
+
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <script>
@@ -37,7 +43,9 @@
                     OnDataBinding="gvUsuarios_DataBinding"
                     OnRowUpdating="gvUsuarios_RowUpdating"
                     OnRowInserting="gvUsuarios_RowInserting"
-                    OnInitNewRow="gvUsuarios_InitNewRow"   OnDataBound="gvUsuarios_DataBound" 
+                    OnInitNewRow="gvUsuarios_InitNewRow"
+                    OnDataBound="gvUsuarios_DataBound"
+                    OnCommandButtonInitialize="gvUsuarios_CommandButtonInitialize"
                     >
                     <Toolbars>
                         <dx:GridViewToolbar>
