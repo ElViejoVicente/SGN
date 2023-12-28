@@ -102,7 +102,7 @@
 
                     if (gvExpedientes.GetFocusedRowIndex() >= 0) {
                         ppEditarExpediente.Show();
-                        ppEditarExpediente.PerformCallback("CargarDatos");
+                        ppEditarExpediente.PerformCallback("CargarRegistros");
                     }
 
 
@@ -409,12 +409,14 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Aviso preventivo" FieldName="AvisoPreventivo" Width="100px" Visible="true">
+                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
+                                                        </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="5" Caption="I.S.R." FieldName="ISR" ReadOnly="true" Visible="true" Width="100px">
-                                                            <PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
+                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="5" Caption="I.S.R." FieldName="ISR" ReadOnly="true" Visible="true" Width="100px" PropertiesSpinEdit-DisplayFormatString="C">
+                                                            <PropertiesSpinEdit>
+                                                                <SpinButtons ClientVisible="false" />
+                                                            </PropertiesSpinEdit>
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataSpinEditColumn>
                                                     </Columns>
@@ -622,20 +624,29 @@
             <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
                 PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto">
-                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp"  />
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
-                    <dx:PopupControlContentControl runat="server" >
-                        <dx:ASPxFormLayout runat="server" ID="frmExpedienteExistente" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%" >
+                    <dx:PopupControlContentControl runat="server">
+                        <dx:ASPxFormLayout runat="server" ID="frmExpedienteExistente" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%">
 
                             <Items>
                                 <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
                                     <Items>
-                                        <dx:LayoutItem ColSpan="2" Caption="Numero de recibo" ColumnSpan="2" FieldName="ExfnNumeroRecibo" Width="100%">
+                                        <dx:LayoutItem ColSpan="2" Caption="Numero" ColumnSpan="2" FieldName="ExfnNumeroExpediente">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="txtExfnNumeroRecibo" AutoPostBack="false" Width="100%">
-                                                   
-                                                    </dx:ASPxTextBox>
+                                                    <dx:ASPxLabel runat="server" ID="txtNumExpediente" Font-Bold="true" Font-Size="Medium"></dx:ASPxLabel>
+
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Numero de recibo" FieldName="ExfnNumeroRecibo" ColSpan="2" ColumnSpan="2" Width="100%">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" Width="100%" ID="txtExfnNumeroRecibo"></dx:ASPxTextBox>
+
+
 
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -643,18 +654,18 @@
                                         <dx:LayoutItem Caption="Fecha de ingreso" FieldName="ExfnFechaIngreso" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtExfnFechaIngreso" AutoPostBack="false" Width="100%">
-                                                   
-                                                    </dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" Width="100%" ID="dtExfnFechaIngreso"></dx:ASPxDateEdit>
+
+
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Acto" FieldName="ExfnActo" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxComboBox runat="server" ID="cbExfnActo" OnDataBinding="cbExfnActo_DataBinding" AutoPostBack="false" Width="100%">
-                                                        
-                                                    </dx:ASPxComboBox>
+                                                    <dx:ASPxComboBox runat="server" Width="100%" ID="cbExfnActo" OnDataBinding="cbExfnActo_DataBinding"></dx:ASPxComboBox>
+
+
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -662,7 +673,6 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%">
-                                                    
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -671,7 +681,6 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%">
-                                                    
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -679,23 +688,26 @@
                                         <dx:LayoutItem Caption="Operacion proyectada" FieldName="ExfnOperacionProyectada" ColSpan="2" ColumnSpan="2" RowSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtExfnOperacionProyectada" AutoPostBack="false" Width="100%">
-                                                    
-                                                    </dx:ASPxMemo>
+                                                    <dx:ASPxMemo runat="server" Width="100%" ID="txtExfnOperacionProyectada"></dx:ASPxMemo>
+
+
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="txtExfnUbicacionPredio" AutoPostBack="false" Width="100%"></dx:ASPxTextBox>
+                                                    <dx:ASPxTextBox runat="server" Width="100%" ID="txtExfnUbicacionPredio"></dx:ASPxTextBox>
+
+
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Documentos faltantes" FieldName="ExfnDocumentosFaltantes" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtExfnDocumentosFaltantes" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                    <dx:ASPxMemo runat="server" Width="100%" ID="txtExfnDocumentosFaltantes"></dx:ASPxMemo>
+
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -773,7 +785,8 @@
                                         <dx:LayoutItem Caption="I.S.R." FieldName="PRfnISR" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtPRfnISR" AutoPostBack="false" Width="100%"></dx:ASPxSpinEdit>
+                                                    <dx:ASPxSpinEdit runat="server" ID="txtPRfnISR" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0" NumberType="Float" DisplayFormatString="C">
+                                                    </dx:ASPxSpinEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -791,14 +804,14 @@
                                         <dx:LayoutItem Caption="Num Escritura" FieldName="FIfnNumEscritura" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumEscritura" AutoPostBack="false" Width="100%"></dx:ASPxSpinEdit>
+                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumEscritura" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0"></dx:ASPxSpinEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Num Volumen" FieldName="FIfnNumVolumen" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumVolumen" AutoPostBack="false" Width="100%"></dx:ASPxSpinEdit>
+                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumVolumen" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0"></dx:ASPxSpinEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>

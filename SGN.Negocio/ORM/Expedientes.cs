@@ -33,8 +33,8 @@ namespace SGN.Negocio.ORM
         public string NombreProyectista { get; set; } = "";
 		public DateTime FechaAsignacionProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaPrevistaTerminoProyectista { get; set; } = Constantes.FechaGlobal;
-		public string AvisoPreventivo { get; set; } = "";
-		public decimal ISR { get; set; } = 0;
+		public DateTime FechaAvisoPreventivo { get; set; } = Constantes.FechaGlobal;
+        public decimal ISR { get; set; } = 0;
 
         //Firmas
         public string NotasFirma { get; set; } = "";

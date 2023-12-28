@@ -323,7 +323,9 @@ namespace SGN.Web.ExpedientesTramites
 
                     // cargamos los campos en el form layaout
 
-                    //Expediente
+                    //Expediente 
+                    txtNumExpediente.Text = registroExistente.IdExpediente;
+
                     txtExfnNumeroRecibo.Text = registroExistente.numReciboPago;
                     dtExfnFechaIngreso.Date = registroExistente.FechaIngreso;
 
@@ -347,42 +349,38 @@ namespace SGN.Web.ExpedientesTramites
                     cbPRfnProyectista.Value = registroExistente.NombreProyectista;
                     cbPRfnProyectista.SelectedIndex = catProyectistas.FindIndex(w => w.Nombre == registroExistente.NombreProyectista);
 
+                    dtPRfnFechaAsignacionProyectista.Date = registroExistente.FechaAsignacionProyectista;
+                    dtPRfnFechaPrevistaTermino.Date = registroExistente.FechaPrevistaTerminoProyectista;
+                    dtPRfnFechaAvisoPreventivo.Date = registroExistente.FechaAvisoPreventivo;
+                    txtPRfnISR.Value = registroExistente.ISR;
 
-                    //dtPRfnFechaAsignacionProyectista.Date =
-                    //dtPRfnFechaPrevistaTermino.Date =
-                    //dtPRfnFechaAvisoPreventivo.Date =
-                    //txtPRfnISR.Text =
+                    //Firmas
+                    txtFIfnNotasFirmas.Text = registroExistente.NotasFirma;
+                    txtFIfnNumEscritura.Value = registroExistente.Escritura;
+                    txtFIfnNumVolumen.Value = registroExistente.Volumen;
+                    chkFIfnAplicaTraslado.Checked = registroExistente.AplicaTraslado;
+                    dtFIfnFechaRecepcionTerminoEscritura.Date = registroExistente.FechaRecepcionTerminoEscritura;
 
-                    ////Firmas
-                    //txtFIfnNotasFirmas.Text =
-                    //txtFIfnNumEscritura.Text =
-                    //txtFIfnNumVolumen.Text =
-                    //chkFIfnAplicaTraslado.Checked =
-                    //dtFIfnFechaRecepcionTerminoEscritura.Date =
+                    //Aviso definitivo
+                    dtAdfnFechaElaboracion.Date = registroExistente.FechaElaboracionDefinitivo;
+                    dtAdfnFechaEnvioRPP.Date = registroExistente.FechaEnvioRPPDefinitivo;
+                    chkAdfnEsTramitePorSistema.Checked = registroExistente.EsTramitePorSistemaDefinitivo;
+                    dtAdfnFechaPagoBoleta.Date = registroExistente.FechaPagoBoletaDefinitivo;
+                    dtAdfnFechaRecibido.Date = registroExistente.FechaRecibidoRPPDefinitivo;
 
-                    ////Aviso definitivo
-                    //dtAdfnFechaElaboracion.Date =
-                    //dtAdfnFechaEnvioRPP.Date =
-                    //chkAdfnEsTramitePorSistema.Checked =
-                    //dtAdfnFechaPagoBoleta.Date =
-                    //dtAdfnFechaRecibido.Date =
+                    //Escrituracion 
+                    dtEsfnRecibioTraslado.Date = registroExistente.FechaRecibioTraslado;
+                    dtAdfnFechaAsignacionMesa.Date = registroExistente.FechaAsignacionMesa;
+                    dtAdfnFechaTerminoTramite.Date = registroExistente.FechaTerminoMesa;
 
-                    ////Escrituracion 
-                    //dtEsfnRecibioTraslado.Date =
-                    //dtAdfnFechaAsignacionMesa.Date =
-                    //dtAdfnFechaTerminoTramite.Date =
-
-                    ////Entregas
-                    //txtEnfnObservacionesEntrega.Text =
-                    //chkEnfnRegistroSolicitado.Checked =
-                    //dtEnfnFechaRegistro.Date =
-                    //dtEnfnFechaBoletaPago.Date =
-                    //dtEnfnFechaRegresoRegistro.Date =
-                    //dtEnfnFechaSalida.Date =
-                    //txtEnfnObservacionesSobreTramiteTerminado.Text =
-
-
-
+                    //Entregas
+                    txtEnfnObservacionesEntrega.Text = registroExistente.ObservacionesEngrega;
+                    chkEnfnRegistroSolicitado.Checked = registroExistente.RegistroEntrega;
+                    dtEnfnFechaRegistro.Date = registroExistente.FechaRegistroEntrega;
+                    dtEnfnFechaBoletaPago.Date = registroExistente.FechaBoletaPagoRegistroEntrega;
+                    dtEnfnFechaRegresoRegistro.Date = registroExistente.FechaRegresoRegistro;
+                    dtEnfnFechaSalida.Date = registroExistente.FechaSalida;
+                    txtEnfnObservacionesSobreTramiteTerminado.Text = registroExistente.ObservacionesTramiteTerminado;
 
                 }
 

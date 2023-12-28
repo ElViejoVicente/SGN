@@ -32,7 +32,7 @@ namespace SGN.Negocio.Expediente
 		public string NombreProyectista { get; set; } = "";
 		public DateTime FechaAsignacionProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaPrevistaTerminoProyectista { get; set; } = Constantes.FechaGlobal;
-		public string AvisoPreventivo { get; set; } = "";
+		public string FechaAvisoPreventivo { get; set; } = "";
 		public decimal ISR { get; set; } = 0;
 
 		//Firmas
