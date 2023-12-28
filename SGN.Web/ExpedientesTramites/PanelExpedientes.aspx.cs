@@ -298,6 +298,11 @@ namespace SGN.Web.ExpedientesTramites
 
                     // cargamos los campos en el form layaout
 
+                    //Expediente
+
+
+
+
                 }
 
 
@@ -316,6 +321,16 @@ namespace SGN.Web.ExpedientesTramites
             rbEstados.TextField = "Descripcion";            
             rbEstados.DataSource = catEstatus;
      
+        }
+
+        protected void cbExfnActo_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cbPRfnProyectista_DataBinding(object sender, EventArgs e)
+        {
+
         }
     }
 }

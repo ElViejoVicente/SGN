@@ -619,24 +619,22 @@
             </dx:ASPxPopupControl>
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback">
-                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+            <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp"  />
                 <ContentCollection>
-                    <dx:PopupControlContentControl runat="server">
-                        <dx:ASPxFormLayout runat="server" ID="frmExpedienteExistente" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%">
+                    <dx:PopupControlContentControl runat="server" >
+                        <dx:ASPxFormLayout runat="server" ID="frmExpedienteExistente" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%" >
 
                             <Items>
-                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3">
+                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
                                     <Items>
-                                        <dx:LayoutItem ColSpan="3" Caption="Numero de recibo" ColumnSpan="3" FieldName="ExfnNumeroRecibo" Width="100%">
+                                        <dx:LayoutItem ColSpan="2" Caption="Numero de recibo" ColumnSpan="2" FieldName="ExfnNumeroRecibo" Width="100%">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="ASPxTextBox1" AutoPostBack="false" Width="100%">
-                                                        <ValidationSettings ValidationGroup="requerido">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxTextBox runat="server" ID="txtExfnNumeroRecibo" AutoPostBack="false" Width="100%">
+                                                   
                                                     </dx:ASPxTextBox>
 
                                                 </dx:LayoutItemNestedControlContainer>
@@ -645,80 +643,298 @@
                                         <dx:LayoutItem Caption="Fecha de ingreso" FieldName="ExfnFechaIngreso" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="ASPxDateEdit1" AutoPostBack="false" Width="100%">
-                                                        <ValidationSettings ValidationGroup="requerido">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtExfnFechaIngreso" AutoPostBack="false" Width="100%">
+                                                   
                                                     </dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Acto" FieldName="ExfnActo" ColSpan="3" ColumnSpan="3">
+                                        <dx:LayoutItem Caption="Acto" FieldName="ExfnActo" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxComboBox runat="server" ID="ASPxComboBox1" OnDataBinding="cbActosNuevo_DataBinding" AutoPostBack="false" Width="100%">
-                                                        <ValidationSettings ValidationGroup="requerido">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxComboBox runat="server" ID="cbExfnActo" OnDataBinding="cbExfnActo_DataBinding" AutoPostBack="false" Width="100%">
+                                                        
                                                     </dx:ASPxComboBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="3" ColumnSpan="3">
+                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo1" AutoPostBack="false" Width="100%">
-                                                        <ValidationSettings ValidationGroup="requerido">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%">
+                                                    
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="3" ColumnSpan="3">
+                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo2" AutoPostBack="false" Width="100%">
-                                                        <ValidationSettings ValidationGroup="requerido">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%">
+                                                    
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Operacion proyectada" FieldName="ExfnOperacionProyectada" ColSpan="3" ColumnSpan="3">
+                                        <dx:LayoutItem Caption="Operacion proyectada" FieldName="ExfnOperacionProyectada" ColSpan="2" ColumnSpan="2" RowSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo3" AutoPostBack="false" Width="100%">
-                                                        <ValidationSettings ValidationGroup="requerido">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxMemo runat="server" ID="txtExfnOperacionProyectada" AutoPostBack="false" Width="100%">
+                                                    
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="3" ColumnSpan="3">
+                                        <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="ASPxTextBox2" AutoPostBack="false" Width="100%"></dx:ASPxTextBox>
+                                                    <dx:ASPxTextBox runat="server" ID="txtExfnUbicacionPredio" AutoPostBack="false" Width="100%"></dx:ASPxTextBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Documentos faltantes" FieldName="ExfnDocumentosFaltantes" ColSpan="3" ColumnSpan="3">
+                                        <dx:LayoutItem Caption="Documentos faltantes" FieldName="ExfnDocumentosFaltantes" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="ASPxMemo4" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                    <dx:ASPxMemo runat="server" ID="txtExfnDocumentosFaltantes" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Proyecto" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Firmas" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Escrituracion" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="3" ColumnCount="3"></dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem Caption="Elaboracion" FieldName="APfnFechaElaboracion" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaElaboracion" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Envio al R.P.P." FieldName="APfnFechaEnvioAlRPP" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaEnvioAlRPP" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Es tramite por sistema" FieldName="APfnEsTramitePorSistema" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkAPfnEsTramitePorSistema" AutoPostBack="false"></dx:ASPxCheckBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Pago de la boleta" FieldName="APfnFechaPagoBoleta" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaPagoBoleta" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Recibido" FieldName="APfnFechaRecibido" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaRecibido" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Proyecto" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem Caption="Proyectista" FieldName="PRfnProyectista" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxComboBox runat="server" ID="cbPRfnProyectista" OnDataBinding="cbPRfnProyectista_DataBinding" AutoPostBack="false" Width="100%"></dx:ASPxComboBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Asignacion" FieldName="PRfnFechaAsignacionProyectista" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAsignacionProyectista" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="I.S.R." FieldName="PRfnISR" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxSpinEdit runat="server" ID="txtPRfnISR" AutoPostBack="false" Width="100%"></dx:ASPxSpinEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Firmas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem Caption="Notas" FieldName="FIfnNotasFirmas" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="txtFIfnNotasFirmas" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Num Escritura" FieldName="FIfnNumEscritura" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumEscritura" AutoPostBack="false" Width="100%"></dx:ASPxSpinEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Num Volumen" FieldName="FIfnNumVolumen" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumVolumen" AutoPostBack="false" Width="100%"></dx:ASPxSpinEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Aplica traslado" FieldName="FIfnAplicaTraslado" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkFIfnAplicaTraslado" AutoPostBack="false"></dx:ASPxCheckBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtFIfnFechaRecepcionTerminoEscritura" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="1" Caption="Elaboracion" FieldName="AdfnFechaElaboracion">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaElaboracion" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Envio R.P.P." FieldName="AdfnFechaEnvioRPP">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaEnvioRPP" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Tramite por sistema" FieldName="AdfnEsTramitePorSistema">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkAdfnEsTramitePorSistema" AutoPostBack="false"></dx:ASPxCheckBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Pago boleta" FieldName="AdfnFechaPagoBoleta">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaPagoBoleta" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Recibido" FieldName="AdfnFechaRecibido">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaRecibido" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Escrituracion" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="1" Caption="Recibio traslado" FieldName="EsfnRecibioTraslado">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEsfnRecibioTraslado" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Asignacion a mesa (sube)" FieldName="AdfnFechaAsignacionMesa">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaAsignacionMesa" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Termino del tramite" FieldName="AdfnFechaTerminoTramite">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaTerminoTramite" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones" FieldName="EnfnObservacionesEntrega ">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="txtEnfnObservacionesEntrega" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="¿Requiere Registro?" FieldName="EnfnRegistroSolicitado">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkEnfnRegistroSolicitado" AutoPostBack="false"></dx:ASPxCheckBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Registro" FieldName="EnfnFechaRegistro">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegistro" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Boleta Pago" FieldName="EnfnFechaBoletaPago">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaBoletaPago" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Regreso registro" FieldName="EnfnFechaRegresoRegistro">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegresoRegistro" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="1" Caption="Salida" FieldName="EnfnFechaSalida">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaSalida" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones del tramite terminado" FieldName="EnfnObservacionesSobreTramiteTerminado">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="txtEnfnObservacionesSobreTramiteTerminado" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
                             </Items>
                         </dx:ASPxFormLayout>
                     </dx:PopupControlContentControl>
