@@ -206,7 +206,7 @@
                 <SettingsResizing ColumnResizeMode="Control" />
 
 
-                <SettingsDetail ExportMode="All" ShowDetailRow="true" AllowOnlyOneMasterRowExpanded="true" />
+                <SettingsDetail ExportMode="All" ShowDetailRow="true"  />
 
                 <SettingsBehavior
                     AllowGroup="true"
@@ -897,7 +897,7 @@
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
                                     <Items>
-                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones" FieldName="EnfnObservacionesEntrega ">
+                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones" FieldName="EnfnObservacionesEntrega">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxMemo runat="server" ID="txtEnfnObservacionesEntrega" AutoPostBack="false" Width="100%"></dx:ASPxMemo>

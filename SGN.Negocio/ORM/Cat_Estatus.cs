@@ -10,6 +10,9 @@ namespace SGN.Negocio.ORM
     {
         public string IdEstatus { get; set; }
         public string Modulo { get; set; }
+        public int Nivel { get; set; }
+        public int Orden { get; set; }
+        public string PerfilesAutorizados { get; set; }
         public string TextoEstatus { get; set; }
         public string Descripcion { get; set; }
     }

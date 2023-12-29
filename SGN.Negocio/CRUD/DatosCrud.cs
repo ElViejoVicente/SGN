@@ -122,70 +122,7 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_Cat_Estatus_Select, detalle: \n" + ex.Message, ex);
             }
         }
-        public Boolean AltaCatEstatus(Cat_Estatus values)
-        {
-            try
-            {
-                using (var db = new SqlConnection(cnn))
-                {
-                    db.Execute(sql: "sp_CRUD_Cat_Estatus_Insert", param: new
-                    {
-                        values.TextoEstatus,
-                        values.Descripcion
 
-                    }, commandType: CommandType.StoredProcedure);
-                }
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception("Error al ejecutar sp_CRUD_Cat_Estatus_Insert, detalle: \n" + ex.Message, ex);
-            }
-        }
-        public Boolean ActualizarCatEstatus(Cat_Estatus values)
-        {
-            try
-            {
-                using (var db = new SqlConnection(cnn))
-                {
-                    db.Execute(sql: "sp_CRUD_Cat_Estatus_Update ", param: new
-                    {
-                        values.IdEstatus,
-                        values.TextoEstatus,
-                        values.Descripcion
-
-                    }, commandType: CommandType.StoredProcedure);
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al ejecutar sp_CRUD_Cat_Estatus_Update, detalle: \n" + ex.Message, ex);
-            }
-        }
-        public Boolean EliminarCatEstatus(Cat_Estatus values)
-        {
-            try
-            {
-                using (var db = new SqlConnection(cnn))
-                {
-                    db.Execute(sql: "sp_CRUD_Cat_Estatus_Delete", param: new
-                    {
-                        values.IdEstatus
-
-                    }, commandType: CommandType.StoredProcedure);
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al ejecutar sp_CRUD_Cat_Estatus_Delete, detalle: \n" + ex.Message, ex);
-            }
-        }
 
 
         #endregion
