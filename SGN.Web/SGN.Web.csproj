@@ -170,14 +170,10 @@
     <Content Include="imagenes\header\LogoNotariaRecorte.png" />
     <Content Include="imagenes\header\logoS.png" />
     <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\login\LogoNotaria.svg" />
     <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />
     <Content Include="imagenes\menu\BackGroundUserMenu.png" />
-    <Content Include="imagenes\login\fondoGps.png" />
-    <Content Include="imagenes\login\fondoGpsR.png" />
-    <Content Include="imagenes\login\fondoGpsRed.png" />
-    <Content Include="imagenes\login\Sikno.png" />
-    <Content Include="imagenes\login\siknoRed.jpg" />
     <Content Include="imagenes\mensajes\close10Negro.png" />
     <Content Include="imagenes\mensajes\close20Negro.png" />
     <Content Include="imagenes\menu\altaretornochico.ico" />
@@ -260,9 +256,6 @@
     <Content Include="Content\headerMovil.css" />
     <Content Include="Content\Site.css" />
     <Content Include="headerMovil.aspx" />
-    <Content Include="imagenes\login\fondoCapas2.png" />
-    <Content Include="imagenes\login\fondoCapas3.png" />
-    <Content Include="imagenes\login\fondoFundicion3per.png" />
     <Content Include="imagenes\menu\configuracion.ico" />
     <Content Include="imagenes\menu\controlProduccion.ico" />
     <Content Include="imagenes\menu\controlProduccionLarge.ico" />
@@ -343,11 +336,6 @@
     <Content Include="imagenes\header\logo_gallardo_big.jpg" />
     <Content Include="imagenes\mensajes\close.png" />
     <Content Include="imagenes\mensajes\close20.png" />
-    <Content Include="imagenes\login\fondo.gif" />
-    <Content Include="imagenes\login\fondo.jpg" />
-    <Content Include="imagenes\login\fondoFundicion.jpg" />
-    <Content Include="imagenes\login\logo_gallardo_big.jpg" />
-    <Content Include="imagenes\login\siderurgia-slider.jpg" />
     <Content Include="imagenes\logo-cl.png" />
     <Content Include="imagenes\mensajes\errorsinFondo.png" />
     <Content Include="imagenes\mensajes\infoSinfondo.png" />
