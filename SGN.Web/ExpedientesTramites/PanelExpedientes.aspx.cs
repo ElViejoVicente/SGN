@@ -563,6 +563,7 @@ namespace SGN.Web.ExpedientesTramites
                     rutaArchivosRoot = "~/GNArchivosRoot/"+ numeroExpediente;
                     fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
                     fmArchivosControl.Refresh();
+                    
                 }
                 return;
             }
