@@ -200,7 +200,12 @@
                 OnToolbarItemClick="gvExpedientes_ToolbarItemClick"
                 OnHtmlDataCellPrepared="gvExpedientes_HtmlDataCellPrepared">
 
-                <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
+                <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback"   
+                   SelectionChanged= "function(s, e) 
+                                                        {                                             
+                                                        gvExpedientes.PerformCallback('AsignarRutaExpediente');                                                     
+                                                        }"   
+                    />
 
                 <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
 
@@ -1116,9 +1121,9 @@
                             </SettingsUpload>
                             <SettingsPermissions>
                                 <AccessRules>
-                                    <dx:FileManagerFolderAccessRule Path="" Edit="Deny" Browse="Allow" />
+                            <%--        <dx:FileManagerFolderAccessRule Path="" Edit="Deny" Browse="Allow" />
 
-                                    <dx:FileManagerFolderAccessRule EditContents="Allow" Upload="Allow" Path="Avisos" Browse="Allow"></dx:FileManagerFolderAccessRule>
+                                    <dx:FileManagerFolderAccessRule EditContents="Allow" Upload="Allow" Path="Avisos" Browse="Allow"></dx:FileManagerFolderAccessRule>--%>
 
                                 </AccessRules>
                             </SettingsPermissions>

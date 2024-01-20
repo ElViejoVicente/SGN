@@ -549,7 +549,24 @@ namespace SGN.Web.ExpedientesTramites
             {
                 lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date);// cargamos registros
                 gvExpedientes.DataBind();
+                return;
             }
+
+            if (e.Parameters=="AsignarRutaExpediente")
+            {
+
+                ASPxGridView control = (ASPxGridView)sender;
+                if (control.Selection.Count>0)
+                {
+                   var datosExpediente =  control.GetSelectedFieldValues("IdExpediente");
+                    string numeroExpediente = datosExpediente[0].ToString().Replace("/","-");
+                    rutaArchivosRoot = "~/GNArchivosRoot/"+ numeroExpediente;
+                    fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+                    fmArchivosControl.Refresh();
+                }
+                return;
+            }
+
         }
 
         protected void gvExpedientes_ToolbarItemClick(object source, DevExpress.Web.Data.ASPxGridViewToolbarItemClickEventArgs e)
@@ -900,9 +917,10 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppArchivos_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
-            rutaArchivosRoot = "~/GNArchivosRoot/20-01-2024/";
+            //rutaArchivosRoot = "~/GNArchivosRoot/20-01-2024/";
 
             fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+            //fmArchivosControl.Refresh();
 
            // fmArchivosControl.Settings.ThumbnailFolder = "~/GNArchivosRoot/";
            // fmArchivosControl.SettingsPermissions.AccessRules.Clear();
