@@ -129,6 +129,27 @@ namespace SGN.Web.ExpedientesTramites
         }
 
 
+        public string rutaArchivosRoot
+        {
+            get
+
+            {
+                string ssRutaArchivosRoot = "";
+                if (this.Session["ssRutaArchivosRoot"] != null)
+                {
+                    ssRutaArchivosRoot = this.Session["ssRutaArchivosRoot"].ToString();
+                }
+
+                return ssRutaArchivosRoot;
+            }
+            set
+            {
+                this.Session["ssRutaArchivosRoot"] = value;
+            }
+
+        }
+
+
         #region Funciones
         private void DameCatalogos()
         {
@@ -501,6 +522,12 @@ namespace SGN.Web.ExpedientesTramites
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (rutaArchivosRoot != "")
+            {
+                fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+            }
+          
+
             if (!Page.IsPostBack)
             {
                 dtFechaInicio.Date = DateTime.Now.Date;
@@ -870,5 +897,38 @@ namespace SGN.Web.ExpedientesTramites
             control.DataSource = catProyectistas;
 
         }
+
+        protected void ppArchivos_WindowCallback(object source, PopupWindowCallbackArgs e)
+        {
+            rutaArchivosRoot = "~/GNArchivosRoot/20-01-2024/";
+
+            fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+
+           // fmArchivosControl.Settings.ThumbnailFolder = "~/GNArchivosRoot/";
+           // fmArchivosControl.SettingsPermissions.AccessRules.Clear();
+
+            //FileManagerFileAccessRule ruleFile = new FileManagerFileAccessRule();
+
+            //FileManagerFolderAccessRule ruleFolder =  new FileManagerFolderAccessRule();
+
+            //ruleFolder.Path = "20-01-01";
+            //ruleFolder.Browse = Rights.Allow;
+            //ruleFolder.EditContents= Rights.Allow;
+            //ruleFolder.Upload= Rights.Allow;
+            //ruleFolder.Role = "usuario";
+
+            //fmArchivosControl.SettingsPermissions.AccessRules.Add(ruleFolder);
+            //fmArchivosControl.SettingsPermissions.Role = "usuario";
+            //ruleFile.
+
+            //FileManagerAccessRuleBase regla;
+            //regla.
+
+            // fmArchivosControl.SettingsPermissions.AccessRu
+        }
+
+    
+
+       
     }
 }

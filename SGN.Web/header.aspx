@@ -10,7 +10,7 @@
     <script src="Scripts/jquery-3.3.1.min.js"></script>
 
     <%--    <script src="Scripts/jquery-3.3.1.slim.min.js"></script>--%>
-    <script src="Scripts/popper.min.js"></script>
+   <%-- <script src="Scripts/popper.min.js"></script>
     <script src="Scripts/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="Scripts/bootstrap/js/bootstrap.js"></script>
@@ -29,7 +29,7 @@
 
     <link href="Scripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
 
-    <link href="Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" />--%>
 
     <link rel="stylesheet" type="text/css" href="Content/headers.css" />
 

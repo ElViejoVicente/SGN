@@ -56,6 +56,7 @@
                 ppOrdenNuevoExpediente.Hide();
                 ppEditarExpediente.Hide();
                 ppCambiarEstatus.Hide();
+                ppArchivos.Hide();
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvExpedientes.PerformCallback('CargarRegistros');
@@ -117,6 +118,12 @@
 
 
                     break;
+
+                case "cmdArchivos":
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+                        ppArchivos.Show();
+                        ppArchivos.PerformCallback("CargarArchivos");
+                    }
 
 
             }
@@ -206,7 +213,7 @@
                 <SettingsResizing ColumnResizeMode="Control" />
 
 
-                <SettingsDetail ExportMode="All" ShowDetailRow="true"  />
+                <SettingsDetail ExportMode="All" ShowDetailRow="true" />
 
                 <SettingsBehavior
                     AllowGroup="true"
@@ -316,6 +323,7 @@
 
                             <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
 
+                            <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
@@ -1084,6 +1092,44 @@
                         </dx:ASPxButton>--%>
                     </div>
                 </FooterContentTemplate>
+            </dx:ASPxPopupControl>
+
+            <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Archivos del expediente"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppArchivos_WindowCallback">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+
+
+
+                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server">
+                            <Settings AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.avi,.png,.mp3,.xml,.doc,.pdf" EnableMultiSelect="true" />
+                            <SettingsEditing AllowCreate="false" AllowDelete="true" AllowMove="true" AllowRename="true" AllowCopy="true" AllowDownload="true" />
+                            <SettingsFileList View="Details">
+                                <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false" />
+                            </SettingsFileList>
+                            <SettingsFileList ShowFolders="true" ShowParentFolder="true" />
+                            <SettingsBreadcrumbs Visible="true" ShowParentFolderButton="true" Position="Top" />
+                            <SettingsUpload UseAdvancedUploadMode="true">
+                                <AdvancedModeSettings EnableMultiSelect="true" />
+                            </SettingsUpload>
+                            <SettingsPermissions>
+                                <AccessRules>
+                                    <dx:FileManagerFolderAccessRule Path="" Edit="Deny" Browse="Allow" />
+
+                                    <dx:FileManagerFolderAccessRule EditContents="Allow" Upload="Allow" Path="Avisos" Browse="Allow"></dx:FileManagerFolderAccessRule>
+
+                                </AccessRules>
+                            </SettingsPermissions>
+                            <SettingsAdaptivity Enabled="true" />
+                        </dx:ASPxFileManager>
+
+
+
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
             </dx:ASPxPopupControl>
 
         </section>
