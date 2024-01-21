@@ -170,6 +170,11 @@
     <Content Include="imagenes\header\LogoNotariaRecorte.png" />
     <Content Include="imagenes\header\logoS.png" />
     <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\Iconos\application-pdf-2.ico" />
+    <Content Include="imagenes\Iconos\image-x-generic.ico" />
+    <Content Include="imagenes\Iconos\text-x-generic.ico" />
+    <Content Include="imagenes\Iconos\x-office-document.ico" />
+    <Content Include="imagenes\Iconos\x-office-spreadsheet.ico" />
     <Content Include="imagenes\login\LogoNotaria.svg" />
     <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />

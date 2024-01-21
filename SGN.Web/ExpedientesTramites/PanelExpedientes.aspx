@@ -135,13 +135,6 @@
             }
         }
 
-        //function onCallbackOneValue(value) {
-
-        //   // alert(value);
-
-
-        //    //fmArchivosControl.SetCurrentFolderPath(value);
-        //}
 
 
 
@@ -1099,7 +1092,7 @@
                                                       }" />
 
                         </dx:ASPxButton>
-
+            
                         <%-- <dx:ASPxButton Style="float: right" Image-IconID="actions_cancel_16x16office2013" HorizontalAlign="Right" runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" ClientInstanceName="btnCancelar">
                             <ClientSideEvents Click="function(s, e) 
                                                     {                                     
@@ -1119,8 +1112,8 @@
 
 
 
-                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server" >
-                            <Settings RootFolder="~/GNArchivosRoot" AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.png,.xls,.xlsx,.docx,.doc,.pdf" EnableMultiSelect="true" />
+                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server" OnCustomThumbnail="fmArchivosControl_CustomThumbnail" >
+                            <Settings RootFolder="~/GNArchivosRoot"  AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.png,.xls,.xlsx,.docx,.doc,.pdf" EnableMultiSelect="true" />
                             <SettingsEditing AllowCreate="false" AllowDelete="true" AllowMove="true" AllowRename="true" AllowCopy="true" AllowDownload="true" />
                             <SettingsFileList View="Details">
                                 <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false" />

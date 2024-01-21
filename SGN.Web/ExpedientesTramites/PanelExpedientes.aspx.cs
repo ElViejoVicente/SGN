@@ -967,42 +967,52 @@ namespace SGN.Web.ExpedientesTramites
         protected void ppArchivos_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
 
-            var x  = GetRootFolder(fmArchivosControl.SelectedFolder);
-
-            //var yyy = x.Parent;
-
-            //ApplyRules(yyy);
-
-            //rutaArchivosRoot = "~/GNArchivosRoot/20-01-2024/";
-
-            // fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
-            //fmArchivosControl.Refresh();
-
-            // fmArchivosControl.Settings.ThumbnailFolder = "~/GNArchivosRoot/";
-            // fmArchivosControl.SettingsPermissions.AccessRules.Clear();
-
-            //FileManagerFileAccessRule ruleFile = new FileManagerFileAccessRule();
-
-            //FileManagerFolderAccessRule ruleFolder =  new FileManagerFolderAccessRule();
-
-            //ruleFolder.Path = "20-01-01";
-            //ruleFolder.Browse = Rights.Allow;
-            //ruleFolder.EditContents= Rights.Allow;
-            //ruleFolder.Upload= Rights.Allow;
-            //ruleFolder.Role = "usuario";
-
-            //fmArchivosControl.SettingsPermissions.AccessRules.Add(ruleFolder);
-            //fmArchivosControl.SettingsPermissions.Role = "usuario";
-            //ruleFile.
-
-            //FileManagerAccessRuleBase regla;
-            //regla.
-
-            // fmArchivosControl.SettingsPermissions.AccessRu
         }
 
-    
+        protected void fmArchivosControl_CustomThumbnail(object source, FileManagerThumbnailCreateEventArgs e)
+        {
+            if (e.File==null)
+            {
+                return;
+            }
 
-       
+            switch (((FileManagerFile)e.Item).Extension)
+            {
+                case ".pdf":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/application-pdf-2.ico";
+                    break;
+                case ".doc":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/x-office-document.ico";
+                    break;
+                case ".docx":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/x-office-document.ico";
+                    break;
+                case ".xlsx":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/x-office-spreadsheet.ico";
+                    break;
+                case ".xls":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/x-office-spreadsheet.ico";
+                    break;
+                case ".png":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/image-x-generic.ico";
+                    break;
+                case ".txt":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/text-x-generic.ico";
+                    break;
+                case ".rtf":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/image-x-generic.ico";
+                    break;
+                case ".gif":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/image-x-generic.ico";
+                    break;
+                case ".jpeg":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/image-x-generic.ico";
+                    break;
+                case ".jpg":
+                    e.ThumbnailImage.Url = "../imagenes/Iconos/image-x-generic.ico";
+                    break;
+            }
+        }
+    
     }
 }
