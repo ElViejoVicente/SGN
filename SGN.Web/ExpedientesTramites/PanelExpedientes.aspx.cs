@@ -520,13 +520,24 @@ namespace SGN.Web.ExpedientesTramites
         #endregion
 
         #endregion
-        protected void Page_Load(object sender, EventArgs e)
+
+        protected void Page_Init(object sender, EventArgs e)
         {
             if (rutaArchivosRoot != "")
             {
                 fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+
+                var rootFolder = GetRootFolder(fmArchivosControl.SelectedFolder);
+
+                ApplyRules(rootFolder);
+
             }
-          
+
+
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        
 
             if (!Page.IsPostBack)
             {
@@ -562,7 +573,7 @@ namespace SGN.Web.ExpedientesTramites
                     string numeroExpediente = datosExpediente[0].ToString().Replace("/","-");
                     rutaArchivosRoot = "~/GNArchivosRoot/"+ numeroExpediente;
                     fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
-                    fmArchivosControl.Refresh();
+                    //fmArchivosControl.Refresh();
                     
                 }
                 return;
@@ -915,16 +926,60 @@ namespace SGN.Web.ExpedientesTramites
             control.DataSource = catProyectistas;
 
         }
+        void ApplyRules(FileManagerFolder folder)
+        {
+            FileManagerFolder[] folders = folder.GetFolders();
+
+         
+
+            for (int i = 0; i < folders.Length; i++)
+            {
+                FileManagerFolderAccessRule folderEditingRule = new FileManagerFolderAccessRule(folders[i].RelativeName);
+                folderEditingRule.Edit = Rights.Deny;
+                FileManagerFolderAccessRule folderContentEditingRule = new FileManagerFolderAccessRule(folders[i].RelativeName);
+                folderContentEditingRule.EditContents = Rights.Allow;
+
+                fmArchivosControl.SettingsPermissions.AccessRules.Add(folderEditingRule);
+                fmArchivosControl.SettingsPermissions.AccessRules.Add(folderContentEditingRule);
+
+                ApplyRules(folders[i]);
+            }
+        }
+
+        FileManagerFolder root = null;
+        FileManagerFolder  GetRootFolder (FileManagerFolder folder) 
+        {
+           
+
+            if (folder.Parent==null)
+            {
+                root =folder;
+            }
+            else
+            {
+                GetRootFolder(folder.Parent);
+            }
+
+            return root;
+        }
+
 
         protected void ppArchivos_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
+
+            var x  = GetRootFolder(fmArchivosControl.SelectedFolder);
+
+            //var yyy = x.Parent;
+
+            //ApplyRules(yyy);
+
             //rutaArchivosRoot = "~/GNArchivosRoot/20-01-2024/";
 
-            fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+            // fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
             //fmArchivosControl.Refresh();
 
-           // fmArchivosControl.Settings.ThumbnailFolder = "~/GNArchivosRoot/";
-           // fmArchivosControl.SettingsPermissions.AccessRules.Clear();
+            // fmArchivosControl.Settings.ThumbnailFolder = "~/GNArchivosRoot/";
+            // fmArchivosControl.SettingsPermissions.AccessRules.Clear();
 
             //FileManagerFileAccessRule ruleFile = new FileManagerFileAccessRule();
 
