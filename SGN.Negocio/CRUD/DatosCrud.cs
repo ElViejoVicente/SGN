@@ -243,9 +243,10 @@ namespace SGN.Negocio.CRUD
         {
             try
             {
+                string idNuevoExpediente = "";
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute(sql: "sp_CRUD_Expedientes_Insert", param: new
+                    idNuevoExpediente = db.QuerySingle<string>(sql: "sp_CRUD_Expedientes_Insert", param: new
                     {
                         values.numReciboPago,
                         values.numReciboPago2,
@@ -290,7 +291,7 @@ namespace SGN.Negocio.CRUD
 
                     }, commandType: CommandType.StoredProcedure);
                 }
-
+                values.IdExpediente = idNuevoExpediente;
                 return true;
 
             }
@@ -360,7 +361,7 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_Expedientes_Update, detalle: \n" + ex.Message, ex);
             }
         }
-        public Boolean EliminarExpediente (Expedientes values)
+        public Boolean EliminarExpediente(Expedientes values)
         {
             try
             {

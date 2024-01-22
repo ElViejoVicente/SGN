@@ -11,6 +11,7 @@ using SGN.Negocio.ORM;
 using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -617,6 +618,7 @@ namespace SGN.Web.ExpedientesTramites
                 Expedientes nuevoRegistro = new Expedientes();
                 nuevoRegistro.IdExpediente = "";
                 nuevoRegistro.numReciboPago = txtNumReciboNuevo.Text;
+                nuevoRegistro.numReciboPago2 = "";
 
                 nuevoRegistro.FechaIngreso = dtFechaIngresoNuevo.Date;
                 nuevoRegistro.IdActo = Convert.ToInt32(cbActosNuevo.Value.ToString());
@@ -636,9 +638,53 @@ namespace SGN.Web.ExpedientesTramites
                 }
 
 
+
                 if (datosCrud.AltaExpediente(nuevoRegistro))
                 {
-                    ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Registro creado!";
+
+                    // 2024-01-22 creamos la carpetas necesarias para la gestion del expediente.
+
+                    
+
+                    string directorioVirtual = "~/GNArchivosRoot";
+                    string directorioFisico = MapPath(directorioVirtual);
+
+
+
+
+                    string rutaFisicaCalculada = Path.Combine(directorioFisico, nuevoRegistro.IdExpediente);
+
+                    if (!Directory.Exists(rutaFisicaCalculada))
+                    {
+                        Directory.CreateDirectory(rutaFisicaCalculada);
+
+                        if (Directory.Exists(rutaFisicaCalculada))
+                        {
+                            string carpetaAvisos = Path.Combine(rutaFisicaCalculada, "Avisos");
+                            string carpetaFirmados = Path.Combine(rutaFisicaCalculada, "Firmados");
+                            string carpetaPendientesFirma = Path.Combine(rutaFisicaCalculada, "PedientesFirma");
+                            string carpetaProyecto = Path.Combine(rutaFisicaCalculada, "Proyecto");
+                            string carpetaDocumentos = Path.Combine(rutaFisicaCalculada, "Documentos");
+
+                            Directory.CreateDirectory(carpetaAvisos);
+
+                            Directory.CreateDirectory(carpetaFirmados);
+
+                            Directory.CreateDirectory(carpetaPendientesFirma);
+
+                            Directory.CreateDirectory(carpetaProyecto);
+
+                            Directory.CreateDirectory(carpetaDocumentos);
+
+
+
+
+                        }
+
+                    }
+
+
+                    ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Nuevo expediente: " + nuevoRegistro.IdExpediente + " listo.!";
                     ppOrdenNuevoExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
                     return;
                 }
