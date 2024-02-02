@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HojaDeDatos.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.HojaDeDatos" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
     <script src="../Scripts/sweetalert.min.js"></script>
     <script src="../Scripts/mensajes.js"></script>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
         /* Script de funcionalidad de la pagina OJO solo colocar en este bloque */
         window.onresize = function (event) {
@@ -24,7 +24,7 @@
 
             var height = document.getElementById('maindiv').clientHeight - 60;  // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
-            gvExpedientes.SetHeight(height);
+            gvHojaDatos.SetHeight(height);
 
         }
 
@@ -41,8 +41,8 @@
 
             if (s.cp_Update != null) {
 
-                gvExpedientes.UnselectRows();
-                gvExpedientes.PerformCallback('CargarRegistros');
+                gvHojaDatos.UnselectRows();
+                gvHojaDatos.PerformCallback('CargarRegistros');
                 s.cp_Update = null;
             }
         }
@@ -59,7 +59,7 @@
                 ppArchivos.Hide();
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
-                gvExpedientes.PerformCallback('CargarRegistros');
+                gvHojaDatos.PerformCallback('CargarRegistros');
                 s.cp_swType = null;
                 s.cp_swMsg = null;
                 s.cp_swAlert = null;
@@ -91,17 +91,17 @@
                     break;
 
 
-                //case "cmdNuevoExpediente": // Esta opracion ya noes valida en este modulo ya que la informacion inicial (alta) partira de la hoja de datos
+                case "cmdNuevoExpediente": // Esta opracion ya noes valida en este modulo ya que la informacion inicial (alta) partira de la hoja de datos
 
-                //    ppOrdenNuevoExpediente.Show();
-                //    ppOrdenNuevoExpediente.PerformCallback("NuevoExpediente");
+                    ppOrdenNuevoExpediente.Show();
+                    ppOrdenNuevoExpediente.PerformCallback("NuevoExpediente");
 
-                //    break;
+                    break;
 
 
                 case "cmdEditarExpediente":
 
-                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+                    if (gvHojaDatos.GetFocusedRowIndex() >= 0) {
                         ppEditarExpediente.Show();
                         ppEditarExpediente.PerformCallback("CargarRegistros");
                     }
@@ -110,27 +110,7 @@
                     break;
 
 
-                case "cmdEstatusExpediente":
-                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
-                        ppCambiarEstatus.Show();
-                        ppCambiarEstatus.PerformCallback("CargarEstados");
-                    }
-
-
-                    break;
-
-                case "cmdArchivos":
-                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
-
-
-                        ppArchivos.Show();
-                        ppArchivos.PerformCallback("CargarArchivos");
-
-                       // gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackOneValue);
-
-                        
-                    }
-
+        
 
             }
         }
@@ -138,18 +118,14 @@
 
 
 
-    </script>
+        </script>
 
 
 
-    <title>SGN </title>
+    <title>SGN</title>
 </head>
 <body>
     <form id="frmPage" runat="server" class="Principal">
-
-
-
-
         <dx:ASPxPanel ID="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
@@ -175,7 +151,7 @@
                                                     <td>&nbsp;</td>
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
+                                                            <ClientSideEvents Click="function(s, e) {  gvHojaDatos.PerformCallback('CargarRegistros'); }" />
                                                         </dx:ASPxButton>
                                                     </td>
                                                 </tr>
@@ -193,22 +169,21 @@
         </dx:ASPxPanel>
 
 
-
-
+        
         <section class="CLPageContent" id="maindiv">
-            <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvExpedientes"></dx:ASPxGridViewExporter>
+            <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvHojaDatos"></dx:ASPxGridViewExporter>
 
 
-            <dx:ASPxGridView runat="server" ID="gvExpedientes" ClientInstanceName="gvExpedientes" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdExpediente"
-                OnDataBinding="gvExpedientes_DataBinding"
-                OnCustomCallback="gvExpedientes_CustomCallback"
-                OnToolbarItemClick="gvExpedientes_ToolbarItemClick"
-                OnHtmlDataCellPrepared="gvExpedientes_HtmlDataCellPrepared">
+            <dx:ASPxGridView runat="server" ID="gvHojaDatos" ClientInstanceName="gvHojaDatos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdExpediente"
+                OnDataBinding="gvHojaDatos_DataBinding"
+                OnCustomCallback="gvHojaDatos_CustomCallback"
+                OnToolbarItemClick="gvHojaDatos_ToolbarItemClick"
+                OnHtmlDataCellPrepared="gvHojaDatos_HtmlDataCellPrepared">
 
                 <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback"
                     SelectionChanged="function(s, e) 
                                                         {                                             
-                                                        gvExpedientes.PerformCallback('AsignarRutaExpediente');                                                     
+                                                        gvHojaDatos.PerformCallback('AsignarRutaExpediente');                                                     
                                                         }" />
 
                 <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
@@ -256,7 +231,7 @@
                 <Columns>
 
 
-                    <%--  columnas expedientes--%>
+                    <%--  columnas datos generales de la hoja de datos--%>
 
                     <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Num Expediente" FieldName="IdExpediente" Width="100px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
@@ -300,21 +275,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </Columns>
 
 
@@ -326,14 +286,11 @@
 
 
 
-         <%--                   <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />--%>
+                            <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />
 
                             <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarExpediente" />
 
-                            <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
-
-                            <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />
-
+  
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
                             <dx:GridViewToolbarItem Text="Export to" Image-IconID="actions_download_16x16office2013" BeginGroup="true" AdaptivePriority="1" Alignment="Right">
@@ -476,106 +433,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Aviso Definitivo" Visible="true">
-                                        <ContentCollection>
-                                            <dx:ContentControl>
-                                                <dx:ASPxGridView runat="server" ID="gvAvisoDefinitivo" ClientInstanceName="gvAvisoDefinitivo" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvAvisoDefinitivo_BeforePerformDataSelect">
-
-                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
-                                                    <Columns>
-
-                                                        <%--  Aviso definitivo --%>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha elaboracion definitivo" FieldName="FechaElaboracionDefinitivo" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha Envio RPP Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Es tramite por sistema Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataCheckColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha de traslado entregado" FieldName="FechaPagoBoletaDefinitivo" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha recibido RPP definitivo" FieldName="FechaRecibidoRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                    </Columns>
-                                                </dx:ASPxGridView>
-                                            </dx:ContentControl>
-                                        </ContentCollection>
-                                    </dx:TabPage>
-                                    <dx:TabPage Text="Escrituracion" Visible="true">
-                                        <ContentCollection>
-                                            <dx:ContentControl>
-                                                <dx:ASPxGridView runat="server" ID="gvEscrituracion" ClientInstanceName="gvEscrituracion" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvEscrituracion_BeforePerformDataSelect">
-                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
-                                                    <Columns>
-                                                        <%--  Escrituracion --%>
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha recibo traslado" FieldName="FechaRecibioTraslado" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha asignacion mesa" FieldName="FechaAsignacionMesa" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-                                                    </Columns>
-                                                </dx:ASPxGridView>
-                                            </dx:ContentControl>
-                                        </ContentCollection>
-                                    </dx:TabPage>
-                                    <dx:TabPage Text="Entregas" Visible="true">
-                                        <ContentCollection>
-                                            <dx:ContentControl>
-                                                <dx:ASPxGridView runat="server" ID="gvEntregas" ClientInstanceName="gvEntregas" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvEntregas_BeforePerformDataSelect">
-                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
-                                                    <Columns>
-                                                        <%--  Entregas --%>
-
-                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Observaciones Entrega" FieldName="ObservacionesEngrega" Width="150px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
-
-
-                                                        <dx:GridViewDataCheckColumn VisibleIndex="2" Caption="Registro Entrega" FieldName="RegistroEntrega" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataCheckColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha registro entrega" FieldName="FechaRegistroEntrega" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha boleta pago registro entrega" FieldName="FechaBoletaPagoRegistroEntrega" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha regreso registro" FieldName="FechaRegresoRegistro" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="6" Caption="Fecha salida" FieldName="FechaSalida" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Observaciones de tramite terminado" FieldName="ObservacionesTramiteTerminado" Width="200px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
-                                                    </Columns>
-                                                </dx:ASPxGridView>
-                                            </dx:ContentControl>
-                                        </ContentCollection>
-                                    </dx:TabPage>
+                      
                                 </TabPages>
                             </dx:ASPxPageControl>
                         </div>
@@ -585,57 +443,6 @@
 
             </dx:ASPxGridView>
 
-            <dx:ASPxPopupControl runat="server" ID="ppCambiarEstatus" ClientInstanceName="ppCambiarEstatus" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Cambiar estatus del Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppCambiarEstatus_WindowCallback">
-                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
-                <ContentCollection>
-                    <dx:PopupControlContentControl runat="server">
-
-                        <dx:ASPxFormLayout runat="server" ID="frmEstatus" ClientInstanceName="frmEstatus" ColCount="3" ColumnCount="3" Width="100%">
-
-                            <Items>
-                                <dx:LayoutItem Caption="Expediente seleccionado" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxTextBox runat="server" ID="txtProyecSelecEstatus" ReadOnly="true"></dx:ASPxTextBox>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutGroup Caption="Catalogo de estatus" ColSpan="3" ColumnSpan="3">
-                                    <Items>
-                                        <dx:LayoutItem ColSpan="1" Caption="">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxRadioButtonList runat="server" ID="rbEstados" AutoPostBack="false" OnDataBinding="rbEstados_DataBinding" RepeatColumns="2" RepeatLayout="Table">
-                                                    </dx:ASPxRadioButtonList>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                            </Items>
-                        </dx:ASPxFormLayout>
-
-
-
-
-                    </dx:PopupControlContentControl>
-                </ContentCollection>
-
-                <FooterContentTemplate>
-                    <div>
-                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptarstatus" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
-                            <ClientSideEvents Click="function(s, e) 
-                                                        {                                             
-                                                        ppCambiarEstatus.PerformCallback('guardar');                                                      
-                                                        }" />
-
-                        </dx:ASPxButton>
-                    </div>
-                </FooterContentTemplate>
-
-            </dx:ASPxPopupControl>
 
 
             <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
@@ -1103,37 +910,11 @@
                 </FooterContentTemplate>
             </dx:ASPxPopupControl>
 
-            <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Archivos del expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppArchivos_WindowCallback">
-                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
-                <ContentCollection>
-                    <dx:PopupControlContentControl runat="server">
 
-
-
-                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server" OnCustomThumbnail="fmArchivosControl_CustomThumbnail" >
-                            <Settings RootFolder="~/GNArchivosRoot"  AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.png,.xls,.xlsx,.docx,.doc,.pdf" EnableMultiSelect="true" />
-                            <SettingsEditing AllowCreate="false" AllowDelete="true" AllowMove="true" AllowRename="true" AllowCopy="true" AllowDownload="true" />
-                            <SettingsFileList View="Details">
-                                <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false" />
-                            </SettingsFileList>
-                            <SettingsFileList ShowFolders="true" ShowParentFolder="true" />
-                            <SettingsBreadcrumbs Visible="true" ShowParentFolderButton="true" Position="Top" />
-                            <SettingsUpload UseAdvancedUploadMode="true">
-                                <AdvancedModeSettings EnableMultiSelect="true" />
-                            </SettingsUpload>
-                            <SettingsAdaptivity Enabled="true" />
-                        </dx:ASPxFileManager>
-
-
-
-                    </dx:PopupControlContentControl>
-                </ContentCollection>
-
-            </dx:ASPxPopupControl>
 
         </section>
+
+
     </form>
 </body>
 </html>

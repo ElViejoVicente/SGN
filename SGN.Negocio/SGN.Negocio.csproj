@@ -86,9 +86,17 @@
     <Compile Include="Expediente\ListaExpedientes.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
+    <Compile Include="ORM\Cat_DocumentosPorActo.cs" />
     <Compile Include="ORM\Cat_Estatus.cs" />
     <Compile Include="ORM\Cat_Proyectistas.cs" />
+    <Compile Include="ORM\Cat_RolParticipantes.cs" />
+    <Compile Include="ORM\Cat_VariantesPorActo.cs" />
+    <Compile Include="ORM\DatosDocumentos.cs" />
+    <Compile Include="ORM\DatosParticipantes.cs" />
+    <Compile Include="ORM\DatosVariantes.cs" />
     <Compile Include="ORM\Expedientes.cs" />
+    <Compile Include="ORM\HojaDatos.cs" />
+    <Compile Include="ORM\RecibosDePago.cs" />
     <Compile Include="Properties\ApiGoogle\ApiGoogle.cs" />
     <Compile Include="Connected Services\WS_GESAG\Reference.cs">
       <AutoGen>True</AutoGen>

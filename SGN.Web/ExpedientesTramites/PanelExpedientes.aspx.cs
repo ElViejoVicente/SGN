@@ -604,103 +604,103 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
-        protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
-        {
-            if (e.Parameter == "NuevoExpediente")
-            {
-                dtFechaIngresoNuevo.Date = DateTime.Now;
-                return;
+        //protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
+        //{
+        //    if (e.Parameter == "NuevoExpediente")
+        //    {
+        //        dtFechaIngresoNuevo.Date = DateTime.Now;
+        //        return;
 
-            }
+        //    }
 
-            if (e.Parameter == "guardar")
-            {
-                Expedientes nuevoRegistro = new Expedientes();
-                nuevoRegistro.IdExpediente = "";
-                nuevoRegistro.numReciboPago = txtNumReciboNuevo.Text;
-                nuevoRegistro.numReciboPago2 = "";
+        //    if (e.Parameter == "guardar")
+        //    {
+        //        Expedientes nuevoRegistro = new Expedientes();
+        //        nuevoRegistro.IdExpediente = "";
+        //        nuevoRegistro.numReciboPago = txtNumReciboNuevo.Text;
+        //        nuevoRegistro.numReciboPago2 = "";
 
-                nuevoRegistro.FechaIngreso = dtFechaIngresoNuevo.Date;
-                nuevoRegistro.IdActo = Convert.ToInt32(cbActosNuevo.Value.ToString());
-                nuevoRegistro.Otorga = txtOtorgaNuevo.Text;
-                nuevoRegistro.AfavorDe = txtAfavorDeNuevo.Text;
-                nuevoRegistro.OperacionProyectada = txtOperacionProyectadaNuevo.Text;
-                nuevoRegistro.UbicacionPredio = txtUbicacionPredioNuevo.Text;
-                nuevoRegistro.Faltantes = txtDocumentoFaltantesNuevo.Text;
+        //        nuevoRegistro.FechaIngreso = dtFechaIngresoNuevo.Date;
+        //        nuevoRegistro.IdActo = Convert.ToInt32(cbActosNuevo.Value.ToString());
+        //        nuevoRegistro.Otorga = txtOtorgaNuevo.Text;
+        //        nuevoRegistro.AfavorDe = txtAfavorDeNuevo.Text;
+        //        nuevoRegistro.OperacionProyectada = txtOperacionProyectadaNuevo.Text;
+        //        nuevoRegistro.UbicacionPredio = txtUbicacionPredioNuevo.Text;
+        //        nuevoRegistro.Faltantes = txtDocumentoFaltantesNuevo.Text;
 
-                if (string.IsNullOrEmpty(txtDocumentoFaltantesNuevo.Text))
-                {
-                    nuevoRegistro.IdEstatus = "EX1";
-                }
-                else
-                {
-                    nuevoRegistro.IdEstatus = "EX2";
-                }
+        //        if (string.IsNullOrEmpty(txtDocumentoFaltantesNuevo.Text))
+        //        {
+        //            nuevoRegistro.IdEstatus = "EX1";
+        //        }
+        //        else
+        //        {
+        //            nuevoRegistro.IdEstatus = "EX2";
+        //        }
 
 
 
-                if (datosCrud.AltaExpediente(nuevoRegistro))
-                {
+        //        if (datosCrud.AltaExpediente(nuevoRegistro))
+        //        {
 
-                    // 2024-01-22 creamos la carpetas necesarias para la gestion del expediente.
+        //            // 2024-01-22 creamos la carpetas necesarias para la gestion del expediente.
 
                     
 
-                    string directorioVirtual = "~/GNArchivosRoot";
-                    string directorioFisico = MapPath(directorioVirtual);
+        //            string directorioVirtual = "~/GNArchivosRoot";
+        //            string directorioFisico = MapPath(directorioVirtual);
 
 
 
 
-                    string rutaFisicaCalculada = Path.Combine(directorioFisico, nuevoRegistro.IdExpediente);
+        //            string rutaFisicaCalculada = Path.Combine(directorioFisico, nuevoRegistro.IdExpediente);
 
-                    if (!Directory.Exists(rutaFisicaCalculada))
-                    {
-                        Directory.CreateDirectory(rutaFisicaCalculada);
+        //            if (!Directory.Exists(rutaFisicaCalculada))
+        //            {
+        //                Directory.CreateDirectory(rutaFisicaCalculada);
 
-                        if (Directory.Exists(rutaFisicaCalculada))
-                        {
-                            string carpetaAvisos = Path.Combine(rutaFisicaCalculada, "Avisos");
-                            string carpetaFirmados = Path.Combine(rutaFisicaCalculada, "Firmados");
-                            string carpetaPendientesFirma = Path.Combine(rutaFisicaCalculada, "PedientesFirma");
-                            string carpetaProyecto = Path.Combine(rutaFisicaCalculada, "Proyecto");
-                            string carpetaDocumentos = Path.Combine(rutaFisicaCalculada, "Documentos");
+        //                if (Directory.Exists(rutaFisicaCalculada))
+        //                {
+        //                    string carpetaAvisos = Path.Combine(rutaFisicaCalculada, "Avisos");
+        //                    string carpetaFirmados = Path.Combine(rutaFisicaCalculada, "Firmados");
+        //                    string carpetaPendientesFirma = Path.Combine(rutaFisicaCalculada, "PedientesFirma");
+        //                    string carpetaProyecto = Path.Combine(rutaFisicaCalculada, "Proyecto");
+        //                    string carpetaDocumentos = Path.Combine(rutaFisicaCalculada, "Documentos");
 
-                            Directory.CreateDirectory(carpetaAvisos);
+        //                    Directory.CreateDirectory(carpetaAvisos);
 
-                            Directory.CreateDirectory(carpetaFirmados);
+        //                    Directory.CreateDirectory(carpetaFirmados);
 
-                            Directory.CreateDirectory(carpetaPendientesFirma);
+        //                    Directory.CreateDirectory(carpetaPendientesFirma);
 
-                            Directory.CreateDirectory(carpetaProyecto);
+        //                    Directory.CreateDirectory(carpetaProyecto);
 
-                            Directory.CreateDirectory(carpetaDocumentos);
-
-
-
-
-                        }
-
-                    }
-
-
-                    ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Nuevo expediente: " + nuevoRegistro.IdExpediente + " listo.!";
-                    ppOrdenNuevoExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
-                    return;
-                }
-                else
-                {
-
-                    ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar el registro.";
-                    ppOrdenNuevoExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
-                    return;
-                }
+        //                    Directory.CreateDirectory(carpetaDocumentos);
 
 
 
-            }
 
-        }
+        //                }
+
+        //            }
+
+
+        //            ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Nuevo expediente: " + nuevoRegistro.IdExpediente + " listo.!";
+        //            ppOrdenNuevoExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+        //            return;
+        //        }
+        //        else
+        //        {
+
+        //            ppOrdenNuevoExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar el registro.";
+        //            ppOrdenNuevoExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+        //            return;
+        //        }
+
+
+
+        //    }
+
+        //}
 
         protected void cbActosNuevo_DataBinding(object sender, EventArgs e)
         {

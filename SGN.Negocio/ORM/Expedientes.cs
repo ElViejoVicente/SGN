@@ -9,18 +9,24 @@ namespace SGN.Negocio.ORM
 {
 	public class Expedientes
 	{
-        //Expedientes
-        public string IdExpediente { get; set; } = "";
-        public string numReciboPago { get; set; } = "";
-        public string numReciboPago2 { get; set; }
+        // Datos ya no necesario ya que ahora estan en la tabla hoja de datos
+
+        //      public string IdExpediente { get; set; } = "";
+        //      public string numReciboPago { get; set; } = "";
+        //      public string numReciboPago2 { get; set; }
+        public int IdRegistro { get; set; } = 0;
+        public int IdHojaDatos { get; set; } = 0;
         public string IdEstatus { get; set; } = "";
-		public int IdActo { get; set; } = 0;
-		public DateTime FechaIngreso { get; set; } = Constantes.FechaGlobal;
-		public string Otorga { get; set; } = "";
+        //      public int IdActo { get; set; } = 0;
+        //      public DateTime FechaIngreso { get; set; } = Constantes.FechaGlobal;
+        //      public string Faltantes { get; set; } = "";
+
+        //Expedientes
+        public string Otorga { get; set; } = "";
 		public string AfavorDe { get; set; } = "";
-		public string OperacionProyectada { get; set; } = "";
+		//public string OperacionProyectada { get; set; } = "";
 		public string UbicacionPredio { get; set; } = "";
-		public string Faltantes { get; set; } = "";
+		
 
         //Aviso preventivo
         public DateTime FechaElaboracion { get; set; } = Constantes.FechaGlobal;

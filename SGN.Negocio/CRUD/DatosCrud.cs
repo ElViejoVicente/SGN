@@ -215,7 +215,7 @@ namespace SGN.Negocio.CRUD
         #endregion
         #region Expedientes
 
-        public Expedientes ConsultaExpediente(string numExp)
+        public Expedientes ConsultaExpediente(int idRegistro)
         {
             try
             {
@@ -227,7 +227,7 @@ namespace SGN.Negocio.CRUD
                         (
                         sql: "sp_CRUD_Expedientes_Select", param: new
                         {
-                            IdExpediente = numExp
+                            IdRegistro = idRegistro
                         }, commandType: CommandType.StoredProcedure
                         ).FirstOrDefault();
                 }
@@ -248,16 +248,11 @@ namespace SGN.Negocio.CRUD
                 {
                     idNuevoExpediente = db.QuerySingle<string>(sql: "sp_CRUD_Expedientes_Insert", param: new
                     {
-                        values.numReciboPago,
-                        values.numReciboPago2,
-                        values.IdEstatus,
-                        values.IdActo,
-                        values.FechaIngreso,
+                        values.IdHojaDatos,                       
+                        values.IdEstatus,                        
                         values.Otorga,
-                        values.AfavorDe,
-                        values.OperacionProyectada,
-                        values.UbicacionPredio,
-                        values.Faltantes,
+                        values.AfavorDe,                        
+                        values.UbicacionPredio,                        
                         values.FechaElaboracion,
                         values.FechaEnvioRPP,
                         values.EsTramitePorSistema,
@@ -291,7 +286,7 @@ namespace SGN.Negocio.CRUD
 
                     }, commandType: CommandType.StoredProcedure);
                 }
-                values.IdExpediente = idNuevoExpediente;
+                //values.IdExpediente = idNuevoExpediente;
                 return true;
 
             }
@@ -309,17 +304,12 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
                     {
-                        values.IdExpediente,
-                        values.numReciboPago,
-                        values.numReciboPago2,
-                        values.IdEstatus,
-                        values.IdActo,
-                        values.FechaIngreso,
+                        values.IdRegistro,
+                        values.IdHojaDatos,                     
+                        values.IdEstatus,                   
                         values.Otorga,
-                        values.AfavorDe,
-                        values.OperacionProyectada,
-                        values.UbicacionPredio,
-                        values.Faltantes,
+                        values.AfavorDe,                
+                        values.UbicacionPredio,                   
                         values.FechaElaboracion,
                         values.FechaEnvioRPP,
                         values.EsTramitePorSistema,
@@ -369,7 +359,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Delete", param: new
                     {
-                        values.IdExpediente
+                        values.IdRegistro 
 
                     }, commandType: CommandType.StoredProcedure);
                 }
