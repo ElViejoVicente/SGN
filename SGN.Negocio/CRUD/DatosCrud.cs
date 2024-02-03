@@ -16,6 +16,69 @@ namespace SGN.Negocio.CRUD
 
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
 
+        #region Cat_DocumentosPorActo
+        public List<Cat_DocumentosPorActo> ConsultaCatDocumentosPorActo()
+        {
+            try
+            {
+                List<Cat_DocumentosPorActo> resultado = new List<Cat_DocumentosPorActo>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_DocumentosPorActo>(sql: "[sp_CRUD_Cat_DocumentosPorActo_Select]").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar [sp_CRUD_Cat_DocumentosPorActo_Select], detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
+        #region Cat_RolParticipantes
+        public List<Cat_RolParticipantes> ConsultaCatRolParticipantes()
+        {
+            try
+            {
+                List<Cat_RolParticipantes> resultado = new List<Cat_RolParticipantes>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_RolParticipantes>(sql: "[sp_CRUD_Cat_RolParticipantes_Select]").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar [sp_CRUD_Cat_RolParticipantes_Select], detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
+        #region Cat_VariantesPorActo
+        public List<Cat_VariantesPorActo> ConsultaCatVariantesPorActo()
+        {
+            try
+            {
+                List<Cat_VariantesPorActo> resultado = new List<Cat_VariantesPorActo>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_VariantesPorActo>(sql: "sp_CRUD_Cat_VariantesPorActo_Select").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_VariantesPorActo_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
         #region Cat_Actos
         public List<Cat_Actos> ConsultaCatActos()
         {
@@ -215,7 +278,7 @@ namespace SGN.Negocio.CRUD
         #endregion
         #region Expedientes
 
-        public Expedientes ConsultaExpediente(int idRegistro)
+        public Expedientes ConsultaExpediente(string numExp)
         {
             try
             {
@@ -227,7 +290,7 @@ namespace SGN.Negocio.CRUD
                         (
                         sql: "sp_CRUD_Expedientes_Select", param: new
                         {
-                            IdRegistro = idRegistro
+                            IdExpediente = numExp
                         }, commandType: CommandType.StoredProcedure
                         ).FirstOrDefault();
                 }
@@ -248,6 +311,7 @@ namespace SGN.Negocio.CRUD
                 {
                     idNuevoExpediente = db.QuerySingle<string>(sql: "sp_CRUD_Expedientes_Insert", param: new
                     {
+                        
                         values.IdHojaDatos,                       
                         values.IdEstatus,                        
                         values.Otorga,
@@ -304,7 +368,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
                     {
-                        values.IdRegistro,
+                        values.IdExpediente,
                         values.IdHojaDatos,                     
                         values.IdEstatus,                   
                         values.Otorga,
@@ -359,7 +423,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Delete", param: new
                     {
-                        values.IdRegistro 
+                        values.IdExpediente
 
                     }, commandType: CommandType.StoredProcedure);
                 }

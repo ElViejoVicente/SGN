@@ -10,7 +10,7 @@
     <script src="../Scripts/sweetalert.min.js"></script>
     <script src="../Scripts/mensajes.js"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
         /* Script de funcionalidad de la pagina OJO solo colocar en este bloque */
         window.onresize = function (event) {
@@ -53,10 +53,8 @@
 
             if (s.cp_swType != null && s.cp_swAlert == null) {
 
-                ppOrdenNuevoExpediente.Hide();
-                ppEditarExpediente.Hide();
-                ppCambiarEstatus.Hide();
-                ppArchivos.Hide();
+                ppNuevaHojaDatos.Hide();
+                ppEditarHojaDatos.Hide();
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvHojaDatos.PerformCallback('CargarRegistros');
@@ -91,26 +89,26 @@
                     break;
 
 
-                case "cmdNuevoExpediente": // Esta opracion ya noes valida en este modulo ya que la informacion inicial (alta) partira de la hoja de datos
+                case "cmdNuevaHojaDatos": // Esta opracion ya noes valida en este modulo ya que la informacion inicial (alta) partira de la hoja de datos
 
-                    ppOrdenNuevoExpediente.Show();
-                    ppOrdenNuevoExpediente.PerformCallback("NuevoExpediente");
+                    ppNuevaHojaDatos.Show();
+                    ppNuevaHojaDatos.PerformCallback("NuevaHojaDatos");
 
                     break;
 
 
-                case "cmdEditarExpediente":
+                case "cmdEditarHojaDatos":
 
                     if (gvHojaDatos.GetFocusedRowIndex() >= 0) {
-                        ppEditarExpediente.Show();
-                        ppEditarExpediente.PerformCallback("CargarRegistros");
+                        ppEditarHojaDatos.Show();
+                        ppEditarHojaDatos.PerformCallback("EditarHojaDatos");
                     }
 
 
                     break;
 
 
-        
+
 
             }
         }
@@ -118,7 +116,7 @@
 
 
 
-        </script>
+    </script>
 
 
 
@@ -169,7 +167,7 @@
         </dx:ASPxPanel>
 
 
-        
+
         <section class="CLPageContent" id="maindiv">
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvHojaDatos"></dx:ASPxGridViewExporter>
 
@@ -180,11 +178,7 @@
                 OnToolbarItemClick="gvHojaDatos_ToolbarItemClick"
                 OnHtmlDataCellPrepared="gvHojaDatos_HtmlDataCellPrepared">
 
-                <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback"
-                    SelectionChanged="function(s, e) 
-                                                        {                                             
-                                                        gvHojaDatos.PerformCallback('AsignarRutaExpediente');                                                     
-                                                        }" />
+                <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
 
                 <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
 
@@ -232,49 +226,6 @@
 
 
                     <%--  columnas datos generales de la hoja de datos--%>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Num Expediente" FieldName="IdExpediente" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Num recibo pago" FieldName="numReciboPago" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Estatus" FieldName="TextoEstatus" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Acto" FieldName="TextoActo" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataDateColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Otorga" FieldName="Otorga" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="A favor De" FieldName="AfavorDe" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Operacion Proyectada" FieldName="OperacionProyectada" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Ubicacion del Predio" FieldName="UbicacionPredio" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-
-
                 </Columns>
 
 
@@ -286,11 +237,11 @@
 
 
 
-                            <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />
+                            <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevaHojaDatos" />
 
-                            <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarExpediente" />
+                            <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarHojaDatos" />
 
-  
+
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
                             <dx:GridViewToolbarItem Text="Export to" Image-IconID="actions_download_16x16office2013" BeginGroup="true" AdaptivePriority="1" Alignment="Right">
@@ -324,116 +275,20 @@
                         <div style="padding: 3px 3px 2px 3px">
                             <dx:ASPxPageControl runat="server" ID="pageControl" Width="100%" EnableCallBacks="true">
                                 <TabPages>
-                                    <dx:TabPage Text="Aviso preventivo" Visible="true">
+                                    <dx:TabPage Text="Otorga o solicitante" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
-
-                                                <dx:ASPxGridView runat="server" ID="gvAvisoPreventivo" ClientInstanceName="gvAvisoPreventivo" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvAvisoPreventivo_BeforePerformDataSelect">
-                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
-                                                    <Columns>
-
-                                                        <%--  columnas aviso preventivo --%>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Elaboracion" FieldName="FechaElaboracion" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Envio al RPP" FieldName="FechaEnvioRPP" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Es tramite por sistema" FieldName="EsTramitePorSistema" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataCheckColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Pago boleta" FieldName="FechaPagoBoleta" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Recibo RPP" FieldName="FechaRecibidoRPP" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-
-                                                    </Columns>
-                                                </dx:ASPxGridView>
-
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Proyecto" Visible="true">
+                                    <dx:TabPage Text="A favor de " Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
-                                                <dx:ASPxGridView runat="server" ID="gvProyecto" ClientInstanceName="gvProyecto" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvProyecto_BeforePerformDataSelect">
-                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
-                                                    <Columns>
-                                                        <%--  columnas  Proyecto --%>
-
-                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Proyectista" FieldName="NombreProyectista" Width="50px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true" ToolTip="Fecha de Asignacion al Proyectista">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="5" Caption="I.S.R." FieldName="ISR" ReadOnly="true" Visible="true" Width="100px" PropertiesSpinEdit-DisplayFormatString="C">
-                                                            <PropertiesSpinEdit>
-                                                                <SpinButtons ClientVisible="false" />
-                                                            </PropertiesSpinEdit>
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataSpinEditColumn>
-                                                    </Columns>
-                                                </dx:ASPxGridView>
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Firmas" Visible="true">
-                                        <ContentCollection>
-                                            <dx:ContentControl>
-                                                <dx:ASPxGridView runat="server" ID="gvFirmas" ClientInstanceName="gvFirmas" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvFirmas_BeforePerformDataSelect">
 
-                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
-                                                    <Columns>
-                                                        <%--  columnas firmas --%>
 
-                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Anotaciones firma" FieldName="NotasFirma" Width="150px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
-
-                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="2" Caption="Escritura" FieldName="Escritura" ReadOnly="true" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataSpinEditColumn>
-
-                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="3" Caption="Volumen" FieldName="Volumen" ReadOnly="true" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataSpinEditColumn>
-
-                                                        <dx:GridViewDataCheckColumn VisibleIndex="4" Caption="Aplica Traslado" FieldName="AplicaTraslado" Width="100px" Visible="true">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataCheckColumn>
-
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
-
-                                                    </Columns>
-                                                </dx:ASPxGridView>
-                                            </dx:ContentControl>
-                                        </ContentCollection>
-                                    </dx:TabPage>
-                      
                                 </TabPages>
                             </dx:ASPxPageControl>
                         </div>
@@ -445,334 +300,13 @@
 
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
+            <dx:ASPxPopupControl runat="server" ID="ppEditarHojaDatos" ClientInstanceName="ppEditarHojaDatos" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto">
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarHojaDatos_WindowCallback1" ScrollBars="Auto">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
-                        <dx:ASPxFormLayout runat="server" ID="frmExpedienteExistente" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%">
-
-                            <Items>
-                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem ColSpan="2" Caption="Numero" ColumnSpan="2" FieldName="ExfnNumeroExpediente">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxLabel runat="server" ID="txtNumExpediente" Font-Bold="true" Font-Size="Medium"></dx:ASPxLabel>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Numero de recibo" FieldName="ExfnNumeroRecibo" ColSpan="2" ColumnSpan="2" Width="100%">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" Width="100%" ID="txtExfnNumeroRecibo"></dx:ASPxTextBox>
-
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Fecha de ingreso" FieldName="ExfnFechaIngreso" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" Width="100%" ID="dtExfnFechaIngreso"></dx:ASPxDateEdit>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Acto" FieldName="ExfnActo" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxComboBox runat="server" Width="100%" ID="cbExfnActo" OnDataBinding="cbExfnActo_DataBinding"></dx:ASPxComboBox>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%">
-                                                    </dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%">
-                                                    </dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Operacion proyectada" FieldName="ExfnOperacionProyectada" ColSpan="2" ColumnSpan="2" RowSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" Width="100%" ID="txtExfnOperacionProyectada"></dx:ASPxMemo>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" Width="100%" ID="txtExfnUbicacionPredio"></dx:ASPxTextBox>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Documentos faltantes" FieldName="ExfnDocumentosFaltantes" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" Width="100%" ID="txtExfnDocumentosFaltantes"></dx:ASPxMemo>
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem Caption="Elaboracion" FieldName="APfnFechaElaboracion" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaElaboracion" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Envio al R.P.P." FieldName="APfnFechaEnvioAlRPP" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaEnvioAlRPP" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Es tramite por sistema" FieldName="APfnEsTramitePorSistema" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkAPfnEsTramitePorSistema" AutoPostBack="false"></dx:ASPxCheckBox>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Pago de la boleta" FieldName="APfnFechaPagoBoleta" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaPagoBoleta" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Recibido" FieldName="APfnFechaRecibido" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaRecibido" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Proyecto" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem Caption="Proyectista" FieldName="PRfnProyectista" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxComboBox runat="server" ID="cbPRfnProyectista" OnDataBinding="cbPRfnProyectista_DataBinding" AutoPostBack="false" Width="100%"></dx:ASPxComboBox>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Asignacion" FieldName="PRfnFechaAsignacionProyectista" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAsignacionProyectista" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="I.S.R." FieldName="PRfnISR" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtPRfnISR" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0" NumberType="Float" DisplayFormatString="C">
-                                                    </dx:ASPxSpinEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Firmas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem Caption="Notas" FieldName="FIfnNotasFirmas" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtFIfnNotasFirmas" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Num Escritura" FieldName="FIfnNumEscritura" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumEscritura" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0"></dx:ASPxSpinEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Num Volumen" FieldName="FIfnNumVolumen" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtFIfnNumVolumen" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0"></dx:ASPxSpinEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Aplica traslado" FieldName="FIfnAplicaTraslado" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkFIfnAplicaTraslado" AutoPostBack="false"></dx:ASPxCheckBox>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFIfnFechaRecepcionTerminoEscritura" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem ColSpan="1" Caption="Elaboracion" FieldName="AdfnFechaElaboracion">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaElaboracion" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Envio R.P.P." FieldName="AdfnFechaEnvioRPP">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaEnvioRPP" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Tramite por sistema" FieldName="AdfnEsTramitePorSistema">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkAdfnEsTramitePorSistema" AutoPostBack="false"></dx:ASPxCheckBox>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Pago boleta" FieldName="AdfnFechaPagoBoleta">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaPagoBoleta" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Recibido" FieldName="AdfnFechaRecibido">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaRecibido" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Escrituracion" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem ColSpan="1" Caption="Recibio traslado" FieldName="EsfnRecibioTraslado">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEsfnRecibioTraslado" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Asignacion a mesa (sube)" FieldName="AdfnFechaAsignacionMesa">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaAsignacionMesa" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Termino del tramite" FieldName="AdfnFechaTerminoTramite">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaTerminoTramite" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
-                                    <Items>
-                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones" FieldName="EnfnObservacionesEntrega">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtEnfnObservacionesEntrega" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="¿Requiere Registro?" FieldName="EnfnRegistroSolicitado">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxCheckBox runat="server" CheckState="Unchecked" ID="chkEnfnRegistroSolicitado" AutoPostBack="false"></dx:ASPxCheckBox>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Registro" FieldName="EnfnFechaRegistro">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegistro" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Boleta Pago" FieldName="EnfnFechaBoletaPago">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaBoletaPago" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Regreso registro" FieldName="EnfnFechaRegresoRegistro">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegresoRegistro" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="1" Caption="Salida" FieldName="EnfnFechaSalida">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaSalida" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones del tramite terminado" FieldName="EnfnObservacionesSobreTramiteTerminado">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtEnfnObservacionesSobreTramiteTerminado" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                    </Items>
-                                </dx:LayoutGroup>
-                            </Items>
+                        <dx:ASPxFormLayout runat="server" ID="frmHojaDatosExistente" ClientInstanceName="frmHojaDatosExistente" ColCount="3" ColumnCount="3" Width="100%">
                         </dx:ASPxFormLayout>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
@@ -782,7 +316,7 @@
                         <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="AceptarCambios" AutoPostBack="false" ClientInstanceName="btnAceptar">
                             <ClientSideEvents Click="function(s, e) 
                                                         {                                             
-                                                        ppEditarExpediente.PerformCallback('guardarCambios');                                                      
+                                                        ppEditarHojaDatos.PerformCallback('guardarCambios');                                                      
                                                         }" />
 
                         </dx:ASPxButton>
@@ -792,97 +326,489 @@
             </dx:ASPxPopupControl>
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppOrdenNuevoExpediente" ClientInstanceName="ppOrdenNuevoExpediente" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nuevo Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppOrdenNuevoExpediente_WindowCallback">
+            <dx:ASPxPopupControl runat="server" ID="ppNuevaHojaDatos" ClientInstanceName="ppNuevaHojaDatos" Height="700px" Width="1300px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nueva hoja de datos"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppNuevaHojaDatos_WindowCallback1">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
 
-                        <dx:ASPxFormLayout runat="server" ID="frmNuevoExpediente" ClientInstanceName="frmNuevoExpediente" ColCount="3" ColumnCount="3" Width="100%">
+                        <dx:ASPxFormLayout runat="server" ID="frmNuevaHojaDatos" ClientInstanceName="frmNuevaHojaDatos" ColCount="4" ColumnCount="4" Width="100%">
 
                             <Items>
-                                <dx:LayoutItem ColSpan="3" Caption="Numero de recibo" ColumnSpan="3" FieldName="fnNumeroRecibo" Width="100%">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxTextBox runat="server" ID="txtNumReciboNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxTextBox>
+                                <dx:LayoutGroup Caption="Operacion" ColCount="4" ColumnCount="4" ColSpan="4" ColumnSpan="4">
+                                    <Items>
+                                        <dx:LayoutItem FieldName="FechaIngreso" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaIngreso" ClientEnabled="false" AutoPostBack="false"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="Acto" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxComboBox runat="server" AutoPostBack="false" ID="cbActosNuevo" OnDataBinding="cbActosNuevo_DataBinding">
+                                                        <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
 
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Fecha de ingreso" FieldName="fnFechaIngreso" ColSpan="1">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxDateEdit runat="server" ID="dtFechaIngresoNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxDateEdit>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Acto" FieldName="fnActo" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxComboBox runat="server" ID="cbActosNuevo" OnDataBinding="cbActosNuevo_DataBinding" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxComboBox>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Otorga" FieldName="fnOtorga" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtOtorgaNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="A favor de" FieldName="fnAfavorde" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtAfavorDeNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Operacion proyectada" FieldName="fnOperacionProyectada" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtOperacionProyectadaNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Ubicacion de predio" FieldName="fnUbicacionPredio" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxTextBox runat="server" ID="txtUbicacionPredioNuevo" AutoPostBack="false" Width="100%"></dx:ASPxTextBox>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Documentos faltantes" FieldName="fnDocumentosFaltantes" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtDocumentoFaltantesNuevo" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
+                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) 
+                                                                                     {     
+                                                                                           
+                                                                                              ppNuevaHojaDatos.PerformCallback('CargarVariantes~'+ s.GetSelectedItem().value);
+
+                                                                                     }" />
+                                                    </dx:ASPxComboBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="Variante" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxComboBox runat="server" AutoPostBack="false" ID="cbVarienteNuevo" OnDataBinding="cbVarienteNuevo_DataBinding">
+                                                        <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxComboBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="Asesor" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtNombreAsesor" ClientEnabled="false" AutoPostBack="false"></dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="NumReciboInicio" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtReciboPagoIni" AutoPostBack="false">
+                                                        <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="Cliente:" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtClienteTramita" AutoPostBack="false">
+                                                        <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="NumCelular" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtNumCelular" AutoPostBack="false">
+                                                        <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                        <MaskSettings Mask="0000000000" ErrorText="10 Digitos" />
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem FieldName="Correo" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="ASPxTextBox2" AutoPostBack="false">
+                                                        <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                            <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                        </ValidationSettings>
+                                                        <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                                            <RegularExpression ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorText="e-mail. no valido" />
+                                                        </ValidationSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Otorga o solicitante" ColCount="4" ColumnCount="4" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxGridView runat="server" ID="gvOtorgaSolicita" ClientInstanceName="gvOtorgaSolicita" AutoGenerateColumns="False" Width="933px" KeyFieldName="IdRegistro"
+                                                        OnDataBinding="gvOtorgaSolicita_DataBinding"
+                                                        OnRowValidating="gvOtorgaSolicita_RowValidating"
+                                                        OnRowInserting="gvOtorgaSolicita_RowInserting">
+
+                                                        <SettingsPager Mode="ShowAllRecords" />
+
+                                                        <Settings ShowFooter="True" ShowFilterRow="false"
+                                                            ShowFilterBar="Auto" ShowFilterRowMenu="false"
+                                                            ShowHeaderFilterButton="True" ShowGroupPanel="false"
+                                                            VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+
+                                                        <SettingsResizing ColumnResizeMode="Control" />
+
+                                                        <SettingsEditing Mode="PopupEditForm" />
+
+                                                        <SettingsDetail ExportMode="All" ShowDetailRow="false" />
+
+                                                        <SettingsBehavior
+                                                            AllowGroup="true"
+                                                            AllowDragDrop="false"
+                                                            AllowFixedGroups="false"
+                                                            AllowSelectByRowClick="true"
+                                                            AllowSelectSingleRowOnly="false"
+                                                            AutoExpandAllGroups="true"
+                                                            AllowFocusedRow="True"
+                                                            ProcessFocusedRowChangedOnServer="False"
+                                                            AllowSort="true"
+                                                            ConfirmDelete="true"
+                                                            EnableCustomizationWindow="true"></SettingsBehavior>
+
+
+                                                        <SettingsCommandButton>
+                                                            <EditButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
+                                                            </EditButton>
+
+                                                            <DeleteButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Eliminar" IconID="edit_delete_16x16"></Image>
+                                                            </DeleteButton>
+
+                                                            <NewButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Nuevo" IconID="actions_add_16x16"></Image>
+                                                            </NewButton>
+
+                                                            <UpdateButton Text="" ButtonType="Image">
+
+
+                                                                <Image ToolTip="Aceptar" IconID="actions_apply_16x16"></Image>
+                                                            </UpdateButton>
+
+                                                            <CancelButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Cancelar" IconID="actions_cancel_16x16"></Image>
+                                                            </CancelButton>
+
+                                                        </SettingsCommandButton>
+
+
+                                                        <SettingsDataSecurity AllowInsert="true" AllowDelete="true" AllowEdit="true" />
+                                                        <SettingsSearchPanel Visible="false" />
+
+                                                        <Columns>
+
+                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="false" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="30px"></dx:GridViewCommandColumn>
+
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="80px">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbRolOtorgaSolicita" ClientInstanceName="cbRolOtorgaSolicita" Value='<%# Bind("RolOperacion") %>' runat="server" AutoPostBack="false"
+                                                                        OnInit="cbRolOtorgaSolicita_Init" Width="100%">
+
+                                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) 
+                                                                                     {                                                                                           
+                                                                                              cbAnafabetaOtorgaSolicita.PerformCallback(s.GetSelectedItem().value);
+                                                                                     }" />
+
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+
+                                                            </dx:GridViewDataComboBoxColumn>
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombres" FieldName="Nombres" Width="80px">
+                                                            </dx:GridViewDataTextColumn>
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="4" Caption="Apellido paterno" FieldName="ApellidoPaterno" Width="">
+                                                            </dx:GridViewDataTextColumn>
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
+                                                            </dx:GridViewDataTextColumn>
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
+                                                                        OnInit="cbSexoOtorgaSolicita_Init">
+
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Masculino" Value="Masculino" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Femenino" Value="Femenino"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Otro" Value="Otro"></dx:ListEditItem>
+                                                                        </Items>
+
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="7" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
+                                                            </dx:GridViewDataTextColumn>
+
+
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="8" FieldName="EstadoCivil" Caption="Estado civil">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbEstadoCivilOtorgaSolicita" ClientInstanceName="cbEstadoCivilOtorgaSolicita" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
+                                                                        OnInit="cbEstadoCivilOtorgaSolicita_Init">
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Casado(a)" Value="Casado" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Soltero(a)" Value="Soltero"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Divorciado(a)" Value="Divorciado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
+                                                                        </Items>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbRegimenConyugalOtorgaSolicita" ClientInstanceName="cbRegimenConyugalOtorgaSolicita" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
+                                                                        OnInit="cbRegimenConyugalOtorgaSolicita_Init">
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Sociedad conyugal" Value="Sociedad Conyugal" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Separacion de bienes(a)" Value="Bienes separado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
+                                                                        </Items>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbAnafabetaOtorgaSolicita" ClientInstanceName="cbAnafabetaOtorgaSolicita" OnCallback="cbAnafabetaOtorgaSolicita_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Si" Value="Si" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No" Value="No"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
+                                                                        </Items>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="10" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                            </dx:GridViewDataTextColumn>
+
+                                                            <%--  columnas datos generales de la hoja de datos--%>
+                                                        </Columns>
+
+
+
+                                                    </dx:ASPxGridView>
+
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Documentacion" ColCount="4" ColumnCount="4" ColSpan="1" Width="100%">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita"  SelectionMode="CheckColumn"  Width="100%" Height="255px" 
+                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding" >
+
+                                                    </dx:ASPxListBox>
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="A favor de " ColCount="4" ColumnCount="4" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxGridView runat="server" ID="gvaFavorDe" ClientInstanceName="gvaFavorDe" AutoGenerateColumns="False" Width="933px" KeyFieldName="IdRegistro"
+                                                        OnDataBinding="gvaFavorDe_DataBinding"
+                                                        OnRowValidating="gvaFavorDe_RowValidating"
+                                                        OnRowInserting="gvaFavorDe_RowInserting">
+
+                                                        <SettingsPager Mode="ShowAllRecords" />
+
+                                                        <Settings ShowFooter="True" ShowFilterRow="false"
+                                                            ShowFilterBar="Auto" ShowFilterRowMenu="false"
+                                                            ShowHeaderFilterButton="True" ShowGroupPanel="false"
+                                                            VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+
+                                                        <SettingsResizing ColumnResizeMode="Control" />
+
+                                                        <SettingsEditing Mode="PopupEditForm" />
+
+                                                        <SettingsDetail ExportMode="All" ShowDetailRow="false" />
+
+                                                        <SettingsBehavior
+                                                            AllowGroup="true"
+                                                            AllowDragDrop="false"
+                                                            AllowFixedGroups="false"
+                                                            AllowSelectByRowClick="true"
+                                                            AllowSelectSingleRowOnly="false"
+                                                            AutoExpandAllGroups="true"
+                                                            AllowFocusedRow="True"
+                                                            ProcessFocusedRowChangedOnServer="False"
+                                                            AllowSort="true"
+                                                            ConfirmDelete="true"
+                                                            EnableCustomizationWindow="true"></SettingsBehavior>
+
+
+                                                        <SettingsCommandButton>
+                                                            <EditButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
+                                                            </EditButton>
+
+                                                            <DeleteButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Eliminar" IconID="edit_delete_16x16"></Image>
+                                                            </DeleteButton>
+
+                                                            <NewButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Nuevo" IconID="actions_add_16x16"></Image>
+                                                            </NewButton>
+
+                                                            <UpdateButton Text="" ButtonType="Image">
+
+
+                                                                <Image ToolTip="Aceptar" IconID="actions_apply_16x16"></Image>
+                                                            </UpdateButton>
+
+                                                            <CancelButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Cancelar" IconID="actions_cancel_16x16"></Image>
+                                                            </CancelButton>
+
+                                                        </SettingsCommandButton>
+
+
+                                                        <SettingsDataSecurity AllowInsert="true" AllowDelete="true" AllowEdit="true" />
+                                                        <SettingsSearchPanel Visible="false" />
+
+                                                        <Columns>
+
+                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="false" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="30px"></dx:GridViewCommandColumn>
+
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="80px">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbRolAfavorDe" ClientInstanceName="cbRolAfavorDe" Value='<%# Bind("RolOperacion") %>' runat="server" AutoPostBack="false"
+                                                                        OnInit="cbRolAfavorDe_Init" Width="100%">
+
+                                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) 
+                                                                                             {                                                                                           
+                                                                                                      cbAnafabetaAFavorDe.PerformCallback(s.GetSelectedItem().value);
+                                                                                             }" />
+
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+
+                                                            </dx:GridViewDataComboBoxColumn>
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombres" FieldName="Nombres" Width="80px">
+                                                            </dx:GridViewDataTextColumn>
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="4" Caption="Apellido paterno" FieldName="ApellidoPaterno" Width="">
+                                                            </dx:GridViewDataTextColumn>
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
+                                                            </dx:GridViewDataTextColumn>
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbSexoAfavorDe" ClientInstanceName="cbSexoAfavorDe" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
+                                                                        OnInit="cbSexoAfavorDe_Init">
+
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Masculino" Value="Masculino" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Femenino" Value="Femenino"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Otro" Value="Otro"></dx:ListEditItem>
+                                                                        </Items>
+
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="7" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
+                                                            </dx:GridViewDataTextColumn>
+
+
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="8" FieldName="EstadoCivil" Caption="Estado civil">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbEstadoCivilAfavorDe" ClientInstanceName="cbEstadoCivilAfavorDe" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
+                                                                        OnInit="cbEstadoCivilAfavorDe_Init">
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Casado(a)" Value="Casado" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Soltero(a)" Value="Soltero"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Divorciado(a)" Value="Divorciado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
+                                                                        </Items>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbRegimenConyugalAfavorDe" ClientInstanceName="cbRegimenConyugalAfavorDe" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
+                                                                        OnInit="cbRegimenConyugalAfavorDe_Init">
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Sociedad conyugal" Value="Sociedad Conyugal" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Separacion de bienes(a)" Value="Bienes separado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
+                                                                        </Items>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbAnafabetaAFavorDe" ClientInstanceName="cbAnafabetaAFavorDe" OnCallback="cbAnafabetaAFavorDe_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Si" Value="Si" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No" Value="No"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
+                                                                        </Items>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="10" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                            </dx:GridViewDataTextColumn>
+
+                                                            <%--  columnas datos generales de la hoja de datos--%>
+                                                        </Columns>
+
+
+
+                                                    </dx:ASPxGridView>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Documentacion" ColCount="4" ColumnCount="4" ColSpan="1"  Width="100%">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" SelectionMode="CheckColumn"    Width="100%" Height="255px" 
+                                                        OnDataBinding="lbDocumentacionAfavorDe_DataBinding"></dx:ASPxListBox>
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
                             </Items>
                         </dx:ASPxFormLayout>
 
@@ -894,12 +820,12 @@
                             <ClientSideEvents Click="function(s, e) {
                                                       if (ASPxClientEdit.ValidateGroup('requerido'))
                                                           {
-                                                          ppOrdenNuevoExpediente.PerformCallback('guardar');   
+                                                          ppNuevaHojaDatos.PerformCallback('guardar');   
                                                           }
                                                       }" />
 
                         </dx:ASPxButton>
-            
+
                         <%-- <dx:ASPxButton Style="float: right" Image-IconID="actions_cancel_16x16office2013" HorizontalAlign="Right" runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" ClientInstanceName="btnCancelar">
                             <ClientSideEvents Click="function(s, e) 
                                                     {                                     

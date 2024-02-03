@@ -658,34 +658,7 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Numero de recibo" FieldName="ExfnNumeroRecibo" ColSpan="2" ColumnSpan="2" Width="100%">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" Width="100%" ID="txtExfnNumeroRecibo"></dx:ASPxTextBox>
-
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Fecha de ingreso" FieldName="ExfnFechaIngreso" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" Width="100%" ID="dtExfnFechaIngreso"></dx:ASPxDateEdit>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Acto" FieldName="ExfnActo" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxComboBox runat="server" Width="100%" ID="cbExfnActo" OnDataBinding="cbExfnActo_DataBinding"></dx:ASPxComboBox>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+                  
                                         <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
@@ -702,15 +675,7 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Operacion proyectada" FieldName="ExfnOperacionProyectada" ColSpan="2" ColumnSpan="2" RowSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" Width="100%" ID="txtExfnOperacionProyectada"></dx:ASPxMemo>
-
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+               
                                         <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
@@ -720,14 +685,7 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Documentos faltantes" FieldName="ExfnDocumentosFaltantes" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" Width="100%" ID="txtExfnDocumentosFaltantes"></dx:ASPxMemo>
-
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+                     
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
@@ -985,123 +943,7 @@
             </dx:ASPxPopupControl>
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppOrdenNuevoExpediente" ClientInstanceName="ppOrdenNuevoExpediente" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nuevo Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppOrdenNuevoExpediente_WindowCallback">
-                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
-                <ContentCollection>
-                    <dx:PopupControlContentControl runat="server">
 
-                        <dx:ASPxFormLayout runat="server" ID="frmNuevoExpediente" ClientInstanceName="frmNuevoExpediente" ColCount="3" ColumnCount="3" Width="100%">
-
-                            <Items>
-                                <dx:LayoutItem ColSpan="3" Caption="Numero de recibo" ColumnSpan="3" FieldName="fnNumeroRecibo" Width="100%">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxTextBox runat="server" ID="txtNumReciboNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxTextBox>
-
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Fecha de ingreso" FieldName="fnFechaIngreso" ColSpan="1">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxDateEdit runat="server" ID="dtFechaIngresoNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxDateEdit>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Acto" FieldName="fnActo" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxComboBox runat="server" ID="cbActosNuevo" OnDataBinding="cbActosNuevo_DataBinding" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxComboBox>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Otorga" FieldName="fnOtorga" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtOtorgaNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="A favor de" FieldName="fnAfavorde" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtAfavorDeNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Operacion proyectada" FieldName="fnOperacionProyectada" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtOperacionProyectadaNuevo" AutoPostBack="false" Width="100%">
-                                                <ValidationSettings ValidationGroup="requerido">
-                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                </ValidationSettings>
-                                            </dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Ubicacion de predio" FieldName="fnUbicacionPredio" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxTextBox runat="server" ID="txtUbicacionPredioNuevo" AutoPostBack="false" Width="100%"></dx:ASPxTextBox>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                                <dx:LayoutItem Caption="Documentos faltantes" FieldName="fnDocumentosFaltantes" ColSpan="3" ColumnSpan="3">
-                                    <LayoutItemNestedControlCollection>
-                                        <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxMemo runat="server" ID="txtDocumentoFaltantesNuevo" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
-                                        </dx:LayoutItemNestedControlContainer>
-                                    </LayoutItemNestedControlCollection>
-                                </dx:LayoutItem>
-                            </Items>
-                        </dx:ASPxFormLayout>
-
-                    </dx:PopupControlContentControl>
-                </ContentCollection>
-                <FooterContentTemplate>
-                    <div>
-                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
-                            <ClientSideEvents Click="function(s, e) {
-                                                      if (ASPxClientEdit.ValidateGroup('requerido'))
-                                                          {
-                                                          ppOrdenNuevoExpediente.PerformCallback('guardar');   
-                                                          }
-                                                      }" />
-
-                        </dx:ASPxButton>
-            
-                        <%-- <dx:ASPxButton Style="float: right" Image-IconID="actions_cancel_16x16office2013" HorizontalAlign="Right" runat="server" ID="btnCancelar" Text="Cancelar" AutoPostBack="false" ClientInstanceName="btnCancelar">
-                            <ClientSideEvents Click="function(s, e) 
-                                                    {                                     
-                                                        ppOrdenNuevoExpediente.Hide() 
-                                                    }" />
-                        </dx:ASPxButton>--%>
-                    </div>
-                </FooterContentTemplate>
-            </dx:ASPxPopupControl>
 
             <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Archivos del expediente"

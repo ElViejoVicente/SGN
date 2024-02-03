@@ -11,10 +11,10 @@ namespace SGN.Negocio.ORM
 	{
         // Datos ya no necesario ya que ahora estan en la tabla hoja de datos
 
-        //      public string IdExpediente { get; set; } = "";
+
         //      public string numReciboPago { get; set; } = "";
         //      public string numReciboPago2 { get; set; }
-        public int IdRegistro { get; set; } = 0;
+        public string IdExpediente { get; set; } = "";
         public int IdHojaDatos { get; set; } = 0;
         public string IdEstatus { get; set; } = "";
         //      public int IdActo { get; set; } = 0;

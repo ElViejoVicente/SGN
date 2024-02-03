@@ -150,33 +150,6 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxLabel txtNumExpediente;
 
         /// <summary>
-        /// Control txtExfnNumeroRecibo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtExfnNumeroRecibo;
-
-        /// <summary>
-        /// Control dtExfnFechaIngreso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit dtExfnFechaIngreso;
-
-        /// <summary>
-        /// Control cbExfnActo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbExfnActo;
-
-        /// <summary>
         /// Control txtExfnOtorga.
         /// </summary>
         /// <remarks>
@@ -195,15 +168,6 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxMemo txtEXfnAfavorde;
 
         /// <summary>
-        /// Control txtExfnOperacionProyectada.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo txtExfnOperacionProyectada;
-
-        /// <summary>
         /// Control txtExfnUbicacionPredio.
         /// </summary>
         /// <remarks>
@@ -211,15 +175,6 @@ namespace SGN.Web.ExpedientesTramites
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtExfnUbicacionPredio;
-
-        /// <summary>
-        /// Control txtExfnDocumentosFaltantes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo txtExfnDocumentosFaltantes;
 
         /// <summary>
         /// Control dtAPfnFechaElaboracion.
@@ -490,96 +445,6 @@ namespace SGN.Web.ExpedientesTramites
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxMemo txtEnfnObservacionesSobreTramiteTerminado;
-
-        /// <summary>
-        /// Control ppOrdenNuevoExpediente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ppOrdenNuevoExpediente;
-
-        /// <summary>
-        /// Control frmNuevoExpediente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout frmNuevoExpediente;
-
-        /// <summary>
-        /// Control txtNumReciboNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtNumReciboNuevo;
-
-        /// <summary>
-        /// Control dtFechaIngresoNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit dtFechaIngresoNuevo;
-
-        /// <summary>
-        /// Control cbActosNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbActosNuevo;
-
-        /// <summary>
-        /// Control txtOtorgaNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo txtOtorgaNuevo;
-
-        /// <summary>
-        /// Control txtAfavorDeNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo txtAfavorDeNuevo;
-
-        /// <summary>
-        /// Control txtOperacionProyectadaNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo txtOperacionProyectadaNuevo;
-
-        /// <summary>
-        /// Control txtUbicacionPredioNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtUbicacionPredioNuevo;
-
-        /// <summary>
-        /// Control txtDocumentoFaltantesNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMemo txtDocumentoFaltantesNuevo;
 
         /// <summary>
         /// Control ppArchivos.
