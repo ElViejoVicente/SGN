@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using DevExpress.Export;
 using SGN.Negocio.Expediente;
+using SGN.Negocio.WS_GESAG;
 
 namespace SGN.Web.ExpedientesTramites
 {
@@ -964,6 +965,42 @@ namespace SGN.Web.ExpedientesTramites
             control.DataSource = catDocumentoAfavorDe; ;
             control.TextField = "TextoDocumento";
             control.ValueField = "IdDoc";
+        }
+
+        protected void gvOtorgaSolictaDetalle_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            List<DatosParticipantes> detalle = new List<DatosParticipantes>();
+            string numHojaDatos = detailGrid.GetMasterRowKeyValue().ToString();
+
+
+            ListaHojaDatos registroHojaDatos = lsHojaDatos.Where(x => x.IdHojaDatos.ToString()== numHojaDatos).FirstOrDefault();
+
+            if (registroHojaDatos != null)
+            {
+                detalle = registroHojaDatos.DetalleParticipantes.Where(x => x.FiguraOperacion == "Otorga o Solicita").ToList();
+            }
+
+
+            detailGrid.DataSource = detalle;
+        }
+
+        protected void gvAfavorDeDetalle_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            List<DatosParticipantes> detalle = new List<DatosParticipantes>();
+            string numHojaDatos = detailGrid.GetMasterRowKeyValue().ToString();
+
+
+            ListaHojaDatos registroHojaDatos = lsHojaDatos.Where(x => x.IdHojaDatos.ToString() == numHojaDatos).FirstOrDefault();
+
+            if (registroHojaDatos != null)
+            {
+                detalle = registroHojaDatos.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de").ToList();
+            }
+
+
+            detailGrid.DataSource = detalle;
         }
     }
 }

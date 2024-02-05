@@ -172,7 +172,7 @@
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvHojaDatos"></dx:ASPxGridViewExporter>
 
 
-            <dx:ASPxGridView runat="server" ID="gvHojaDatos" ClientInstanceName="gvHojaDatos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdExpediente"
+            <dx:ASPxGridView runat="server" ID="gvHojaDatos" ClientInstanceName="gvHojaDatos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdHojaDatos"
                 OnDataBinding="gvHojaDatos_DataBinding"
                 OnCustomCallback="gvHojaDatos_CustomCallback"
                 OnToolbarItemClick="gvHojaDatos_ToolbarItemClick">
@@ -222,6 +222,60 @@
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
                 <Columns>
+                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Num hoja datos" FieldName="IdHojaDatos" Width="100px" Visible="false">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Estatus" FieldName="TextoEstatus" Width="100px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataDateColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Num Expediente" FieldName="numExpediente" Width="100px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="5" Caption="Acto" FieldName="TextoActo" Width="120px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Variente" FieldName="TextoVariante" Width="100px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Otorga o Solicita" FieldName="Otorga" Width="300px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="8" Caption="A favor de" FieldName="AfavorDe" Width="300px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+
+                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Asesor" FieldName="NombreAsesor" Width="150px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+
+
+                    <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Tramita" FieldName="NumbreUsuarioTramita" Width="150px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+
+                    <dx:GridViewDataTextColumn VisibleIndex="11" Caption="Telefono" FieldName="NumTelCelular1" Width="100px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+
+
+                    <dx:GridViewDataTextColumn VisibleIndex="11" Caption="Correo" FieldName="CorreoElectronico" Width="150px" Visible="false">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
 
 
                     <%--  columnas datos generales de la hoja de datos--%>
@@ -277,12 +331,130 @@
                                     <dx:TabPage Text="Otorga o solicitante" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
+
+
+                                                <dx:ASPxGridView runat="server" ID="gvOtorgaSolictaDetalle" ClientInstanceName="gvOtorgaSolictaDetalle" KeyFieldName="IdHojaDatos"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvOtorgaSolictaDetalle_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+
+                                                        <%--  columnas Otorga Solicta Detalle --%>
+
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Rol" FieldName="RolOperacion" Width="120px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Nombre(s)" FieldName="Nombres" Width="120px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Apellido paterno" FieldName="ApellidoPaterno" Width="110px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="110px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Sabe Leer/escribir " FieldName="SabeLeerEscribir" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Estado civil" FieldName="EstadoCivil" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        
+                                                        <dx:GridViewDataTextColumn VisibleIndex="9" Caption="regimen conyugal" FieldName="RegimenConyugal" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                                      
+                                                        <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Anotaciones" FieldName="Notas" Width="300px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
                                     <dx:TabPage Text="A favor de " Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
+
+                                                
+                                                <dx:ASPxGridView runat="server" ID="gvAfavorDeDetalle" ClientInstanceName="gvAfavorDeDetalle" KeyFieldName="IdHojaDatos"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvAfavorDeDetalle_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+
+                                                        <%--  columnas Otorga Solicta Detalle --%>
+
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Rol" FieldName="RolOperacion" Width="120px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Nombre(s)" FieldName="Nombres" Width="120px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Apellido paterno" FieldName="ApellidoPaterno" Width="110px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="110px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Sabe Leer/escribir " FieldName="SabeLeerEscribir" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Estado civil" FieldName="EstadoCivil" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        
+                                                        <dx:GridViewDataTextColumn VisibleIndex="9" Caption="regimen conyugal" FieldName="RegimenConyugal" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                                      
+                                                        <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Anotaciones" FieldName="Notas" Width="300px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
