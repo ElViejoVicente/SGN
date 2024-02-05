@@ -16,6 +16,36 @@ namespace SGN.Negocio.CRUD
 
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
 
+
+        #region DatosDocumentos
+        public Boolean AltaDatosDocumentos(DatosDocumentos values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosDocumentos_Insert", param: new
+                    {
+                        values.IdHojaDatos,
+                        values.IdVariente,
+                        values.TextoFigura,
+                        values.IdDoc ,
+                        values.Observaciones                        
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosDocumentos_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
         #region RecibosDePago
         public Boolean AltaRecibosDePago(RecibosDePago values)
         {

@@ -181,6 +181,46 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+        public string OtorgaSolicitanteSeleccion
+        {
+            get
+
+            {
+                string ssOtorgaSolicitanteSeleccion = "";
+                if (this.Session["ssOtorgaSolicitanteSeleccion"] != null)
+                {
+                    ssOtorgaSolicitanteSeleccion = Session["ssOtorgaSolicitanteSeleccion"].ToString();
+                }
+
+                return ssOtorgaSolicitanteSeleccion;
+            }
+            set
+            {
+                this.Session["ssOtorgaSolicitanteSeleccion"] = value;
+            }
+
+        }
+
+        public string AfavorDESeleccion
+        {
+            get
+
+            {
+                string ssAfavorDESeleccion = "";
+                if (this.Session["ssAfavorDESeleccion"] != null)
+                {
+                    ssAfavorDESeleccion = Session["ssAfavorDESeleccion"].ToString();
+                }
+
+                return ssAfavorDESeleccion;
+            }
+            set
+            {
+                this.Session["ssAfavorDESeleccion"] = value;
+            }
+
+        }
+
 
         #endregion
 
@@ -199,6 +239,7 @@ namespace SGN.Web.ExpedientesTramites
         }
         protected void Page_Init(object sender, EventArgs e)
         {
+            cbVarienteNuevo.DataBind();
             lbDocumentacionOtorgaSolicita.DataBind();
             lbDocumentacionAfavorDe.DataBind();
         }
@@ -239,6 +280,8 @@ namespace SGN.Web.ExpedientesTramites
             {
                 lsOtorgaSolicitante = new List<DatosParticipantes>();
                 lsAfavorDE = new List<DatosParticipantes>();
+                OtorgaSolicitanteSeleccion = "";
+                AfavorDESeleccion = "";
                 gvOtorgaSolicita.DataBind();
                 gvaFavorDe.DataBind();
                 return;
@@ -246,8 +289,17 @@ namespace SGN.Web.ExpedientesTramites
 
             if (e.Parameter.Contains("DocSelecOtorgaSolicita"))
             {
-                var docSelec   = e.Parameter.Split('~')[1].ToString();
+                OtorgaSolicitanteSeleccion = e.Parameter.Split('~')[1].ToString();
+                return;
             }
+
+
+            if (e.Parameter.Contains("DocSelecAfavorDe"))
+            {
+                AfavorDESeleccion = e.Parameter.Split('~')[1].ToString();
+                return;
+            }
+
 
 
             if (e.Parameter.Contains("CargarDocXvariantes"))
@@ -290,6 +342,13 @@ namespace SGN.Web.ExpedientesTramites
             {
                 string idActo = e.Parameter.Split('~')[1].ToString();
 
+
+                catDocumentoOtorgaSolicita = new List<Cat_DocumentosPorActo>();
+                catDocumentoAfavorDe = new List<Cat_DocumentosPorActo>();
+
+                lbDocumentacionOtorgaSolicita.DataBind() ;
+                lbDocumentacionAfavorDe.DataBind();
+
                 catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo();
 
                 catRolParticipantesOtorgaSolicita = datosCrud.ConsultaCatRolParticipantes();
@@ -315,8 +374,6 @@ namespace SGN.Web.ExpedientesTramites
                 {
                     catRolParticipantesAfavorDe = catRolParticipantesAfavorDe.Where(x => x.IdActo.ToString() == idActo && x.TextoFigura == "A favor de").ToList();
                 }
-
-
 
 
                 cbVarienteNuevo.SelectedIndex = -1;
@@ -386,15 +443,34 @@ namespace SGN.Web.ExpedientesTramites
 
                     // se rellenan  la lista de documento para proceder al guardado
 
-                    foreach (ListEditItem item in lbDocumentacionOtorgaSolicita.SelectedItems)
+
+                 
+
+                    foreach (var item in OtorgaSolicitanteSeleccion.Split(',').ToList())
                     {
-                        var x = item.Value;
+                        nuevahojaDocumentos = new DatosDocumentos();
+                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                        nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                        nuevahojaDocumentos.TextoFigura = "Otorga o Solicita";
+                        nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
+                        nuevahojaDocumentos.Observaciones = "";
+
+                        datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+
                     }
 
-                    foreach (var item in lbDocumentacionAfavorDe.SelectedItems)
+                    foreach (var item in AfavorDESeleccion.Split(',').ToList())
                     {
+                        nuevahojaDocumentos = new DatosDocumentos();
+                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                        nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                        nuevahojaDocumentos.TextoFigura = "A favor de";
+                        nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
+                        nuevahojaDocumentos.Observaciones = "";
 
+                        datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
                     }
+
 
                     // se registra el primer recibo de pago
 
@@ -403,8 +479,8 @@ namespace SGN.Web.ExpedientesTramites
                     nuevaHojaReciboPago.CantidadTotal = 0;
                     nuevaHojaReciboPago.CantidadAbonada = 0;
                     nuevaHojaReciboPago.Concepto = "Recibo Inicial Expediente";
-                    nuevaHojaReciboPago.Concepto = "No Definido";
-                    nuevaHojaReciboPago.NotaComentario = "Recibo no controlado por sistema";
+                    nuevaHojaReciboPago.UsuarioRecibe = "No Definido";                    
+                    nuevaHojaReciboPago.NotaComentario = "Recibo no controlado por sistema.";
 
                     if (!datosCrud.AltaRecibosDePago(nuevaHojaReciboPago))
                     {
@@ -416,6 +492,8 @@ namespace SGN.Web.ExpedientesTramites
 
                     nuevoExpediente.IdExpediente = nuevaHoja.numExpediente;
                     nuevoExpediente.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                    nuevoExpediente.FechaElaboracion = nuevaHoja.FechaIngreso;
+                    
 
                     foreach (var item in lsOtorgaSolicitante)
                     {

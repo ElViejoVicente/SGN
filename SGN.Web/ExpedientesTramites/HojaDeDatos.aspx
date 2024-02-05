@@ -375,7 +375,7 @@
                                                                                            
                                                                                               ppNuevaHojaDatos.PerformCallback('CargarDocXvariantes~'+ s.GetSelectedItem().value);
 
-                                                                                     }"  />
+                                                                                     }" />
 
                                                     </dx:ASPxComboBox>
                                                 </dx:LayoutItemNestedControlContainer>
@@ -619,10 +619,10 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita"  ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn"  EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
-                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding" >
-                                                          <FilteringSettings ShowSearchUI="true" />
-                                                        <ClientSideEvents SelectedIndexChanged ="function(s, e) 
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita" ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
+                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding">
+                                                        <FilteringSettings ShowSearchUI="true" />
+                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) 
                                                                                      {     
                                                                                            ppNuevaHojaDatos.PerformCallback('DocSelecOtorgaSolicita~'+ lbDocumentacionOtorgaSolicita.GetSelectedValues());                                                                                              
 
@@ -808,14 +808,20 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Documentacion" ColCount="4" ColumnCount="4" ColSpan="1"  Width="100%">
+                                <dx:LayoutGroup Caption="Documentacion" ColCount="4" ColumnCount="4" ColSpan="1" Width="100%">
                                     <Items>
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" SelectionMode="CheckColumn"  EnableSelectAll="true"  Width="100%" Height="255px"  AutoPostBack="false"
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" ClientInstanceName="lbDocumentacionAfavorDe" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
                                                         OnDataBinding="lbDocumentacionAfavorDe_DataBinding">
-                                                          <FilteringSettings ShowSearchUI="true" />
+                                                        <FilteringSettings ShowSearchUI="true" />
+                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) 
+                                                                                                  {     
+                                                                                                        ppNuevaHojaDatos.PerformCallback('DocSelecAfavorDe~'+ lbDocumentacionAfavorDe.GetSelectedValues());                                                                                              
+
+                                                                                                  }" />
+
                                                     </dx:ASPxListBox>
 
                                                 </dx:LayoutItemNestedControlContainer>
