@@ -45,13 +45,14 @@ namespace SGN.Negocio.Expediente
                     {
                         // consultamos los datos DatosVariantes
 
-                        item.DetalleVariantes = datosCrud.ConsultaDatosVariantes(item.IdHojaDatos);
+                        item.DetalleVariantes = DameDatosVariantes(item.IdHojaDatos);
 
                         item.DetalleParticipantes=DameListaParticipantes(item.IdHojaDatos);
 
                         item.DetalleDocumentos= DameListaDocumentos(item.IdHojaDatos);
 
-                        item.DetalleRecibosPago = null;
+                        item.DetalleRecibosPago = DameRecibosDePago(item.IdHojaDatos);
+
 
                     }
                 }
@@ -63,6 +64,61 @@ namespace SGN.Negocio.Expediente
             {
 
                 throw new Exception("Error al ejecutar sp_DameHojaDatosPorFecha , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+        public List<DatosVariantes> DameDatosVariantes(int idHojaDatos)
+        {
+            try
+            {
+                List<DatosVariantes> resultado = new List<DatosVariantes>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<DatosVariantes>
+                        (
+                        sql: "sp_DameDatosVariantesporHojaDatos", param: new
+                        {
+                            idHojaDatos
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameDatosVariantesporHojaDatos , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+        public List<RecibosDePago> DameRecibosDePago(int idHojaDatos)
+        {
+            try
+            {
+                List<RecibosDePago> resultado = new List<RecibosDePago>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<RecibosDePago>
+                        (
+                        sql: "sp_DameRecibosDePagoPorHojaDatos", param: new
+                        {
+                            idHojaDatos
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameRecibosDePagoPorHojaDatos , detalle: \n" + ex.Message, ex);
             }
         }
 

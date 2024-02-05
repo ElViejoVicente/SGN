@@ -29,7 +29,7 @@ namespace SGN.Negocio.Expediente
         public string Otorga { get; set; } = "";
         public string AfavorDe { get; set; } = "";
 
-        public DatosVariantes DetalleVariantes { get; set; }=null;
+        public List<DatosVariantes> DetalleVariantes { get; set; }=null;
         public List<DatosParticipantes> DetalleParticipantes { get;set; }=null;
         public List<DatosDocumentos> DetalleDocumentos { get; set;} =null;
         public List<RecibosDePago> DetalleRecibosPago { get; set; } = null;
