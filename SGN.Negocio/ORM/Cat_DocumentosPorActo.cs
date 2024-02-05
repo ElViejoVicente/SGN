@@ -10,8 +10,10 @@ namespace SGN.Negocio.ORM
     {
         public int IdDoc { get; set; } = 0;
         public int IdActo { get; set; } = 0;
+        public int IdVariente { get; set; } = 0;
+        public string TextoFigura { get; set; } = "";
         public string TextoDocumento { get; set; } = "";
-        public bool CopiaRequerida { get; set; } = false;
+        public bool CopiaRequerida { get; set; }=false;
         public string Descripcion { get; set; } = "";
         public bool Activo { get; set; }=false;
     }

@@ -16,6 +16,151 @@ namespace SGN.Negocio.CRUD
 
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
 
+        #region RecibosDePago
+        public Boolean AltaRecibosDePago(RecibosDePago values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_RecibosDePago_Insert", param: new
+                    {
+                        values.NumRecibo,
+                        values.IdHojaDatos,
+                        values.CantidadTotal,
+                        values.CantidadAbonada,
+                        values.Concepto,
+                        values.UsuarioRecibe,
+                        values.NotaComentario
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_RecibosDePago_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
+
+        #region DatosParticipantes
+        public Boolean AltaDatosParticipantes(DatosParticipantes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosParticipantes_Insert", param: new
+                    {
+                        values.IdHojaDatos,
+                        values.FiguraOperacion,
+                        values.RolOperacion,
+                        values.Nombres,
+                        values.ApellidoPaterno,
+                        values.ApellidoMaterno,
+                        values.FechaNacimiento,
+                        values.Sexo,
+                        values.Ocupacion,
+                        values.EstadoCivil,
+                        values.RegimenConyugal,
+                        values.SabeLeerEscribir,
+                        values.Notas
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosParticipantes_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+            #endregion
+
+            #region DatosVariantes
+
+            public Boolean AltaDatosVariantes(DatosVariantes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosVariantes_Insert", param: new
+                    {
+                        values.IdHojaDatos,
+                        values.IdActo,
+                        values.IdVariante,   
+                        values.NotasEspeciales,
+                        values.Dispocisiones,
+                        values.NotasClausulasEspeciales,
+                        values.CoApActaNacNum,
+                        values.CoApActaNacFecha,
+                        values.OtrosNombres,
+                        values.NominacionPermisoSE,
+                        values.TipoSociedad,
+                        values.DatosFaltantes
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosVariantes_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+            #endregion
+        
+            #region HojaDatos
+            public Boolean AltaHojaDatos(ref HojaDatos values)
+        {
+            try
+            {
+                HojaDatos nuevahoja = new HojaDatos();
+                using (var db = new SqlConnection(cnn))
+                {
+                    nuevahoja = db.QuerySingle<HojaDatos>(sql: "sp_CRUD_HojaDatos_Insert", param: new
+                    {
+
+                        values.numExpediente,
+                        values.NombreAsesor,
+                        values.FechaIngreso,
+                        values.FechaCompleto,
+                        values.IdUsuarioResponsable,
+                        values.IdEquipoResponsable,
+                        values.NumbreUsuarioTramita,
+                        values.NumTelCelular1,
+                        values.NumTelCelular2,
+                        values.CorreoElectronico
+                     
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                values = nuevahoja;
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_HojaDatos_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
+
+
         #region Cat_DocumentosPorActo
         public List<Cat_DocumentosPorActo> ConsultaCatDocumentosPorActo()
         {
@@ -306,12 +451,14 @@ namespace SGN.Negocio.CRUD
         {
             try
             {
-                string idNuevoExpediente = "";
+            
                 using (var db = new SqlConnection(cnn))
                 {
-                    idNuevoExpediente = db.QuerySingle<string>(sql: "sp_CRUD_Expedientes_Insert", param: new
+
+
+                    db.Execute(sql: "sp_CRUD_Expedientes_Insert", param: new
                     {
-                        
+                        values.IdExpediente,
                         values.IdHojaDatos,                       
                         values.IdEstatus,                        
                         values.Otorga,
@@ -350,7 +497,7 @@ namespace SGN.Negocio.CRUD
 
                     }, commandType: CommandType.StoredProcedure);
                 }
-                //values.IdExpediente = idNuevoExpediente;
+                
                 return true;
 
             }

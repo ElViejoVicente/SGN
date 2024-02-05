@@ -186,13 +186,13 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxTextBox txtNumCelular;
 
         /// <summary>
-        /// Control ASPxTextBox2.
+        /// Control txtCorreoElectronico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox2;
+        protected global::DevExpress.Web.ASPxTextBox txtCorreoElectronico;
 
         /// <summary>
         /// Control gvOtorgaSolicita.

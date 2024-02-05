@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace SGN.Web.ExpedientesTramites
 {
@@ -193,7 +194,7 @@ namespace SGN.Web.ExpedientesTramites
                 dtFechaIngreso.Date = DateTime.Now.Date;
                 txtNombreAsesor.Text = UsuarioPagina.Nombre;
                 DameCatalogos();
-     
+
             }
         }
 
@@ -229,7 +230,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppNuevaHojaDatos_WindowCallback1(object source, DevExpress.Web.PopupWindowCallbackArgs e)
         {
-            if (e.Parameter== "NuevaHojaDatos")
+            if (e.Parameter == "NuevaHojaDatos")
             {
                 lsOtorgaSolicitante = new List<DatosParticipantes>();
                 lsAfavorDE = new List<DatosParticipantes>();
@@ -238,6 +239,41 @@ namespace SGN.Web.ExpedientesTramites
                 return;
             }
 
+            if (e.Parameter.Contains("CargarDocXvariantes"))
+            {
+                string idVariante = e.Parameter.Split('~')[1].ToString();
+                var idActo = cbActosNuevo.Value;
+
+
+                catDocumentoOtorgaSolicita = datosCrud.ConsultaCatDocumentosPorActo();
+
+                catDocumentoAfavorDe = datosCrud.ConsultaCatDocumentosPorActo();
+
+
+                if (idActo != null && catDocumentoOtorgaSolicita.Count > 0)
+                {
+                    catDocumentoOtorgaSolicita = catDocumentoOtorgaSolicita.Where(x => x.IdActo.ToString() == idActo.ToString() &
+                                                                                  x.IdVariente.ToString() == idVariante.ToString() &
+                                                                                  x.TextoFigura == "Otorga o Solicita").ToList();
+                }
+
+                if (idActo != null && catDocumentoAfavorDe.Count > 0)
+                {
+                    catDocumentoAfavorDe = catDocumentoAfavorDe.Where(x => x.IdActo.ToString() == idActo.ToString() &
+                                                                      x.IdVariente.ToString() == idVariante.ToString() &
+                                                                      x.TextoFigura == "A favor de").ToList();
+                }
+
+
+
+                lbDocumentacionOtorgaSolicita.DataBind();
+                lbDocumentacionAfavorDe.DataBind();
+
+
+
+                return;
+
+            }
 
             if (e.Parameter.Contains("CargarVariantes"))
             {
@@ -250,51 +286,208 @@ namespace SGN.Web.ExpedientesTramites
                 catRolParticipantesAfavorDe = datosCrud.ConsultaCatRolParticipantes();
 
 
-                catDocumentoOtorgaSolicita = datosCrud.ConsultaCatDocumentosPorActo();
 
-                catDocumentoAfavorDe = datosCrud.ConsultaCatDocumentosPorActo();
 
-            
 
-                if (catVarientesPorActo.Count>0)
+                if (catVarientesPorActo.Count > 0)
                 {
                     catVarientesPorActo = catVarientesPorActo.Where(x => x.IdActo.ToString() == idActo).ToList();
                 }
 
                 if (catRolParticipantesOtorgaSolicita.Count > 0)
                 {
-                    catRolParticipantesOtorgaSolicita = catRolParticipantesOtorgaSolicita.Where(x=> x.IdActo.ToString()== idActo && x.TextoFigura== "Otorga o Solicita").ToList();
+                    catRolParticipantesOtorgaSolicita = catRolParticipantesOtorgaSolicita.Where(x => x.IdActo.ToString() == idActo && x.TextoFigura == "Otorga o Solicita").ToList();
                 }
 
 
-                if (catRolParticipantesAfavorDe.Count> 0)
+                if (catRolParticipantesAfavorDe.Count > 0)
                 {
                     catRolParticipantesAfavorDe = catRolParticipantesAfavorDe.Where(x => x.IdActo.ToString() == idActo && x.TextoFigura == "A favor de").ToList();
                 }
 
 
-                if (catDocumentoOtorgaSolicita.Count>0)
-                {
-                    catDocumentoOtorgaSolicita = catDocumentoOtorgaSolicita.Where(x=> x.IdActo.ToString()== idActo).ToList();
-                }
 
-                if (catDocumentoAfavorDe.Count>0)
-                {
-                    catDocumentoAfavorDe = catDocumentoAfavorDe.Where(x => x.IdActo.ToString() == idActo).ToList();
-                }
-
-
-
-                lbDocumentacionOtorgaSolicita.DataBind();
-                lbDocumentacionAfavorDe.DataBind();
 
                 cbVarienteNuevo.SelectedIndex = -1;
                 cbVarienteNuevo.DataBind();
 
-                
+
 
                 return;
             }
+
+            if (e.Parameter.Contains("guardar"))
+            {
+                Boolean existeError = false;
+
+                // guardamos en base de datos la HojaDatos ,  DatosParticipantes , DatosDocumentos
+                // ademas se crea el numero de expediente en la tabla  Expedientes con los datos del solicitante y ortorgante 
+                // tambien hay que crear la ruta de carpeta
+
+                // 1- se guarda la hoja de datos
+
+                HojaDatos nuevaHoja = new HojaDatos();
+                DatosVariantes nuevaHojaComplemento = new DatosVariantes();
+                DatosDocumentos nuevahojaDocumentos = new DatosDocumentos();
+                RecibosDePago nuevaHojaReciboPago = new RecibosDePago();
+                Expedientes nuevoExpediente = new Expedientes();
+
+                nuevaHoja.IdHojaDatos = 0;
+                nuevaHoja.FechaIngreso = dtFechaIngreso.Date;
+                nuevaHoja.NombreAsesor = txtNombreAsesor.Text;
+                nuevaHoja.NumbreUsuarioTramita = txtClienteTramita.Text;
+                nuevaHoja.NumTelCelular1 = txtNumCelular.Text;
+                nuevaHoja.CorreoElectronico = txtCorreoElectronico.Text;
+
+                if (datosCrud.AltaHojaDatos(ref nuevaHoja))
+                {
+                    nuevaHojaComplemento.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                    nuevaHojaComplemento.IdActo = cbActosNuevo.Value == null ? 0 : Convert.ToInt32(cbActosNuevo.Value);
+                    nuevaHojaComplemento.IdVariante = cbVarienteNuevo.Value == null ? 0 : Convert.ToInt32(cbVarienteNuevo.Value);
+                    // se guardan los datos extras de al hoja 
+
+                    if (!datosCrud.AltaDatosVariantes(nuevaHojaComplemento))
+                    {
+                        existeError = true;
+                    }
+
+
+                    // guardamos a los participantes del acto
+                    foreach (var item in lsOtorgaSolicitante)
+                    {
+                        item.IdHojaDatos = nuevaHoja.IdHojaDatos;
+
+                        if (!datosCrud.AltaDatosParticipantes(item))
+                        {
+                            existeError = true;
+                        }
+                    }
+
+                    foreach (var item in lsAfavorDE)
+                    {
+                        item.IdHojaDatos = nuevaHoja.IdHojaDatos;
+
+                        if (!datosCrud.AltaDatosParticipantes(item))
+                        {
+                            existeError = true;
+                        }
+                    }
+
+                    // se rellenan  la lista de documento para proceder al guardado
+
+                    foreach (ListEditItem item in lbDocumentacionOtorgaSolicita.SelectedItems)
+                    {
+                        var x = item.Value;
+                    }
+
+                    foreach (var item in lbDocumentacionAfavorDe.SelectedItems)
+                    {
+
+                    }
+
+                    // se registra el primer recibo de pago
+
+                    nuevaHojaReciboPago.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                    nuevaHojaReciboPago.NumRecibo = txtReciboPagoIni.Text;
+                    nuevaHojaReciboPago.CantidadTotal = 0;
+                    nuevaHojaReciboPago.CantidadAbonada = 0;
+                    nuevaHojaReciboPago.Concepto = "Recibo Inicial Expediente";
+                    nuevaHojaReciboPago.Concepto = "No Definido";
+                    nuevaHojaReciboPago.NotaComentario = "Recibo no controlado por sistema";
+
+                    if (!datosCrud.AltaRecibosDePago(nuevaHojaReciboPago))
+                    {
+                        existeError = true;
+                    }
+
+
+                    //se crear el registro del expediente
+
+                    nuevoExpediente.IdExpediente = nuevaHoja.numExpediente;
+                    nuevoExpediente.IdHojaDatos = nuevaHoja.IdHojaDatos;
+
+                    foreach (var item in lsOtorgaSolicitante)
+                    {
+                        nuevoExpediente.Otorga += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
+                    }
+
+                    foreach (var item in lsAfavorDE)
+                    {
+                        nuevoExpediente.AfavorDe += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
+                    }
+
+
+                    if (!datosCrud.AltaExpediente(nuevoExpediente))
+                    {
+                        existeError = true;
+                    }
+
+
+
+                    //  se crean las carpetas necesarias para el expediente
+
+
+                    string directorioVirtual = "~/GNArchivosRoot";
+                    string directorioFisico = MapPath(directorioVirtual);
+
+
+
+
+                    string rutaFisicaCalculada = Path.Combine(directorioFisico, nuevaHoja.numExpediente);
+
+                    if (!Directory.Exists(rutaFisicaCalculada))
+                    {
+                        Directory.CreateDirectory(rutaFisicaCalculada);
+
+                        if (Directory.Exists(rutaFisicaCalculada))
+                        {
+                            string carpetaAvisos = Path.Combine(rutaFisicaCalculada, "Avisos");
+                            string carpetaFirmados = Path.Combine(rutaFisicaCalculada, "Firmados");
+                            string carpetaPendientesFirma = Path.Combine(rutaFisicaCalculada, "PedientesFirma");
+                            string carpetaProyecto = Path.Combine(rutaFisicaCalculada, "Proyecto");
+                            string carpetaDocumentos = Path.Combine(rutaFisicaCalculada, "Documentos");
+
+                            Directory.CreateDirectory(carpetaAvisos);
+
+                            Directory.CreateDirectory(carpetaFirmados);
+
+                            Directory.CreateDirectory(carpetaPendientesFirma);
+
+                            Directory.CreateDirectory(carpetaProyecto);
+
+                            Directory.CreateDirectory(carpetaDocumentos);
+
+
+
+
+                        }
+
+                    }
+
+
+                }
+
+
+                if (!existeError)
+                {
+
+
+                    ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Nuevo expediente: " + nuevaHoja.numExpediente + " listo.!";
+                    ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+                    return;
+                }
+                else
+                {
+                    ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar el registro.";
+                    ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+                    return;
+                }
+
+
+
+                return;
+            }
+
 
         }
 
@@ -329,9 +522,9 @@ namespace SGN.Web.ExpedientesTramites
         #region Funciones
 
         private void DameCatalogos()
-        {            
+        {
             catActos = datosCrud.ConsultaCatActos();
-            cbActosNuevo.DataBind();           
+            cbActosNuevo.DataBind();
 
         }
 
@@ -343,7 +536,7 @@ namespace SGN.Web.ExpedientesTramites
         protected void cbRolOtorgaSolicita_Init(object sender, EventArgs e)
         {
             ASPxComboBox cb = (ASPxComboBox)sender;
-           
+
             cb.DataSource = catRolParticipantesOtorgaSolicita;
             cb.TextField = "TextoRol";
             cb.ValueField = "TextoRol";
@@ -360,7 +553,7 @@ namespace SGN.Web.ExpedientesTramites
 
             if (!rol.PreguntarSiEsAnafabeta)
             {
-                cb.Value= "No Aplica";
+                cb.Value = "No Aplica";
                 cb.Text = "No Aplica";
             }
             else
@@ -408,9 +601,9 @@ namespace SGN.Web.ExpedientesTramites
             if (RegimenConyugal == null)
             {
                 e.RowError += "El campo Regimen conyugal Operacion es obligatorio.\n ";
-            }        
+            }
 
-            if (e.NewValues["Nombres"]==null)
+            if (e.NewValues["Nombres"] == null)
             {
                 e.RowError += "El campo Nombre es obligatorio.\n ";
             }
@@ -468,7 +661,7 @@ namespace SGN.Web.ExpedientesTramites
 
             lsOtorgaSolicitante.Add(datos);
 
-            e.Cancel = true;       
+            e.Cancel = true;
             gvOtorgaSolicita.CancelEdit();
 
             gvOtorgaSolicita.DataBind();
@@ -545,7 +738,7 @@ namespace SGN.Web.ExpedientesTramites
         {
             ASPxComboBox cb = (ASPxComboBox)sender;
 
-            Cat_RolParticipantes rol =  catRolParticipantesAfavorDe.Where(x => x.TextoRol.ToString() == e.Parameter).FirstOrDefault();
+            Cat_RolParticipantes rol = catRolParticipantesAfavorDe.Where(x => x.TextoRol.ToString() == e.Parameter).FirstOrDefault();
 
             if (!rol.PreguntarSiEsAnafabeta)
             {
@@ -574,7 +767,7 @@ namespace SGN.Web.ExpedientesTramites
             ASPxListBox control = (ASPxListBox)sender;
 
 
-            control.DataSource = catDocumentoAfavorDe ; ;
+            control.DataSource = catDocumentoAfavorDe; ;
             control.TextField = "TextoDocumento";
             control.ValueField = "IdDoc";
         }

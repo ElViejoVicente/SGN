@@ -370,6 +370,13 @@
                                                         <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                             <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                         </ValidationSettings>
+                                                        <ClientSideEvents SelectedIndexChanged="function(s, e) 
+                                                                                     {     
+                                                                                           
+                                                                                              ppNuevaHojaDatos.PerformCallback('CargarDocXvariantes~'+ s.GetSelectedItem().value);
+
+                                                                                     }"  />
+
                                                     </dx:ASPxComboBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -418,7 +425,7 @@
                                         <dx:LayoutItem FieldName="Correo" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="ASPxTextBox2" AutoPostBack="false">
+                                                    <dx:ASPxTextBox runat="server" ID="txtCorreoElectronico" AutoPostBack="false">
                                                         <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                             <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                         </ValidationSettings>
@@ -612,7 +619,7 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita"  SelectionMode="CheckColumn"  Width="100%" Height="255px" 
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita"  SelectionMode="CheckColumn"  Width="100%" Height="255px" AutoPostBack="false"
                                                         OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding" >
 
                                                     </dx:ASPxListBox>
@@ -801,7 +808,7 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" SelectionMode="CheckColumn"    Width="100%" Height="255px" 
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" SelectionMode="CheckColumn"    Width="100%" Height="255px"  AutoPostBack="false"
                                                         OnDataBinding="lbDocumentacionAfavorDe_DataBinding"></dx:ASPxListBox>
 
                                                 </dx:LayoutItemNestedControlContainer>
