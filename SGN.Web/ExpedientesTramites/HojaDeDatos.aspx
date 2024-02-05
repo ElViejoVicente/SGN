@@ -619,9 +619,14 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita"  SelectionMode="CheckColumn"  Width="100%" Height="255px" AutoPostBack="false"
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita"  ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn"  EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
                                                         OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding" >
+                                                          <FilteringSettings ShowSearchUI="true" />
+                                                        <ClientSideEvents SelectedIndexChanged ="function(s, e) 
+                                                                                     {     
+                                                                                           ppNuevaHojaDatos.PerformCallback('DocSelecOtorgaSolicita~'+ lbDocumentacionOtorgaSolicita.GetSelectedValues());                                                                                              
 
+                                                                                     }" />
                                                     </dx:ASPxListBox>
 
                                                 </dx:LayoutItemNestedControlContainer>
@@ -808,8 +813,10 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" SelectionMode="CheckColumn"    Width="100%" Height="255px"  AutoPostBack="false"
-                                                        OnDataBinding="lbDocumentacionAfavorDe_DataBinding"></dx:ASPxListBox>
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" SelectionMode="CheckColumn"  EnableSelectAll="true"  Width="100%" Height="255px"  AutoPostBack="false"
+                                                        OnDataBinding="lbDocumentacionAfavorDe_DataBinding">
+                                                          <FilteringSettings ShowSearchUI="true" />
+                                                    </dx:ASPxListBox>
 
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>

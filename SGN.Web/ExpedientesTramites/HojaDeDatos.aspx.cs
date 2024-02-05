@@ -197,6 +197,11 @@ namespace SGN.Web.ExpedientesTramites
 
             }
         }
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            lbDocumentacionOtorgaSolicita.DataBind();
+            lbDocumentacionAfavorDe.DataBind();
+        }
 
 
 
@@ -238,6 +243,12 @@ namespace SGN.Web.ExpedientesTramites
                 gvaFavorDe.DataBind();
                 return;
             }
+
+            if (e.Parameter.Contains("DocSelecOtorgaSolicita"))
+            {
+                var docSelec   = e.Parameter.Split('~')[1].ToString();
+            }
+
 
             if (e.Parameter.Contains("CargarDocXvariantes"))
             {
@@ -482,10 +493,7 @@ namespace SGN.Web.ExpedientesTramites
                     ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
                     return;
                 }
-
-
-
-                return;
+                
             }
 
 
