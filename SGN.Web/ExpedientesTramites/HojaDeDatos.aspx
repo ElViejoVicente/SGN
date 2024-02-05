@@ -215,7 +215,10 @@
                     </DeleteButton>
                 </SettingsCommandButton>
 
-
+                <Styles>
+                    <AlternatingRow Enabled="true" />
+                    <SelectedRow BackColor="#0066ff"></SelectedRow>
+                </Styles>
 
                 <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="false" />
                 <SettingsSearchPanel Visible="true" />
@@ -290,9 +293,9 @@
 
 
 
-                            <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevaHojaDatos" />
+                            <dx:GridViewToolbarItem Text="Nueva hoja datos" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevaHojaDatos" />
 
-                            <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarHojaDatos" />
+                            <dx:GridViewToolbarItem Text="Editar hoja datos" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarHojaDatos" />
 
 
 
@@ -375,12 +378,12 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        
+
                                                         <dx:GridViewDataTextColumn VisibleIndex="9" Caption="regimen conyugal" FieldName="RegimenConyugal" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                                      
+
                                                         <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Anotaciones" FieldName="Notas" Width="300px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
@@ -397,7 +400,7 @@
                                         <ContentCollection>
                                             <dx:ContentControl>
 
-                                                
+
                                                 <dx:ASPxGridView runat="server" ID="gvAfavorDeDetalle" ClientInstanceName="gvAfavorDeDetalle" KeyFieldName="IdHojaDatos"
                                                     EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvAfavorDeDetalle_BeforePerformDataSelect">
                                                     <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
@@ -440,12 +443,12 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        
+
                                                         <dx:GridViewDataTextColumn VisibleIndex="9" Caption="regimen conyugal" FieldName="RegimenConyugal" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                                      
+
                                                         <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Anotaciones" FieldName="Notas" Width="300px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>

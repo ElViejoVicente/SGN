@@ -126,9 +126,9 @@
                         ppArchivos.Show();
                         ppArchivos.PerformCallback("CargarArchivos");
 
-                       // gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackOneValue);
+                        // gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackOneValue);
 
-                        
+
                     }
 
 
@@ -262,9 +262,9 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Num recibo pago" FieldName="numReciboPago" Width="100px" Visible="true">
+                    <%--                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Num recibo pago" FieldName="numReciboPago" Width="100px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
+                    </dx:GridViewDataTextColumn>--%>
 
                     <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Estatus" FieldName="TextoEstatus" Width="100px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
@@ -274,45 +274,29 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="5" Caption="Variante" FieldName="TextoVariante" Width="150px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataDateColumn VisibleIndex="6" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Otorga" FieldName="Otorga" Width="150px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Otorga" FieldName="Otorga" Width="350px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="A favor De" FieldName="AfavorDe" Width="150px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="A favor De" FieldName="AfavorDe" Width="350px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Operacion Proyectada" FieldName="OperacionProyectada" Width="150px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Ubicacion del Predio" FieldName="UbicacionPredio" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Ubicacion del Predio" FieldName="UbicacionPredio" Width="100px" Visible="true">
+<%--                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    </dx:GridViewDataTextColumn>--%>
 
 
                 </Columns>
@@ -326,7 +310,7 @@
 
 
 
-         <%--                   <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />--%>
+                            <%--                   <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />--%>
 
                             <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarExpediente" />
 
@@ -658,24 +642,24 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                  
+
                                         <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%">
+                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%" ClientEnabled="false"  >
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
+                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2" >
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%">
+                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%"  ClientEnabled="false">
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-               
+
                                         <dx:LayoutItem Caption="Ubicacion de predio" FieldName="ExfnUbicacionPredio" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
@@ -685,7 +669,7 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                     
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
@@ -954,8 +938,8 @@
 
 
 
-                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server" OnCustomThumbnail="fmArchivosControl_CustomThumbnail" >
-                            <Settings RootFolder="~/GNArchivosRoot"  AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.png,.xls,.xlsx,.docx,.doc,.pdf" EnableMultiSelect="true" />
+                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server" OnCustomThumbnail="fmArchivosControl_CustomThumbnail">
+                            <Settings RootFolder="~/GNArchivosRoot" AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.png,.xls,.xlsx,.docx,.doc,.pdf" EnableMultiSelect="true" />
                             <SettingsEditing AllowCreate="false" AllowDelete="true" AllowMove="true" AllowRename="true" AllowCopy="true" AllowDownload="true" />
                             <SettingsFileList View="Details">
                                 <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false" />

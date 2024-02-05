@@ -538,7 +538,7 @@ namespace SGN.Web.ExpedientesTramites
 
                     nuevoExpediente.IdExpediente = nuevaHoja.numExpediente;
                     nuevoExpediente.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                    nuevoExpediente.FechaElaboracion = nuevaHoja.FechaIngreso;
+                    //nuevoExpediente.FechaElaboracion = nuevaHoja.FechaIngreso;
                     
 
                     foreach (var item in lsOtorgaSolicitante)
