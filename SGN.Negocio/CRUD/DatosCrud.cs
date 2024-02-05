@@ -28,9 +28,10 @@ namespace SGN.Negocio.CRUD
                     {
                         values.IdHojaDatos,
                         values.IdVariente,
+                        values.TextoVariante,
                         values.TextoFigura,
-                        values.IdDoc ,
-                        values.Observaciones                        
+                        values.IdDoc,
+                        values.Observaciones
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -113,11 +114,11 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_DatosParticipantes_Insert, detalle: \n" + ex.Message, ex);
             }
         }
-            #endregion
+        #endregion
 
-            #region DatosVariantes
+        #region DatosVariantes
 
-            public Boolean AltaDatosVariantes(DatosVariantes values)
+        public Boolean AltaDatosVariantes(DatosVariantes values)
         {
             try
             {
@@ -127,7 +128,9 @@ namespace SGN.Negocio.CRUD
                     {
                         values.IdHojaDatos,
                         values.IdActo,
-                        values.IdVariante,   
+                        values.IdVariante,
+                        values.TextoActo,
+                        values.TextoVariante,
                         values.NotasEspeciales,
                         values.Dispocisiones,
                         values.NotasClausulasEspeciales,
@@ -150,10 +153,40 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_DatosVariantes_Insert, detalle: \n" + ex.Message, ex);
             }
         }
-            #endregion
-        
-            #region HojaDatos
-            public Boolean AltaHojaDatos(ref HojaDatos values)
+
+
+        public DatosVariantes ConsultaDatosVariantes(int IdRegistro)
+        {
+            try
+            {
+                DatosVariantes resultado = new DatosVariantes();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<DatosVariantes>
+                        (
+                        sql: "sp_CRUD_DatosVariantes_Select", param: new
+                        {
+                            IdRegistro
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosVariantes_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+        #endregion
+
+        #region HojaDatos
+        public Boolean AltaHojaDatos(ref HojaDatos values)
         {
             try
             {
@@ -173,7 +206,7 @@ namespace SGN.Negocio.CRUD
                         values.NumTelCelular1,
                         values.NumTelCelular2,
                         values.CorreoElectronico
-                     
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -481,7 +514,7 @@ namespace SGN.Negocio.CRUD
         {
             try
             {
-            
+
                 using (var db = new SqlConnection(cnn))
                 {
 
@@ -489,11 +522,11 @@ namespace SGN.Negocio.CRUD
                     db.Execute(sql: "sp_CRUD_Expedientes_Insert", param: new
                     {
                         values.IdExpediente,
-                        values.IdHojaDatos,                       
-                        values.IdEstatus,                        
+                        values.IdHojaDatos,
+                        values.IdEstatus,
                         values.Otorga,
-                        values.AfavorDe,                        
-                        values.UbicacionPredio,                        
+                        values.AfavorDe,
+                        values.UbicacionPredio,
                         values.FechaElaboracion,
                         values.FechaEnvioRPP,
                         values.EsTramitePorSistema,
@@ -527,7 +560,7 @@ namespace SGN.Negocio.CRUD
 
                     }, commandType: CommandType.StoredProcedure);
                 }
-                
+
                 return true;
 
             }
@@ -546,11 +579,11 @@ namespace SGN.Negocio.CRUD
                     db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
                     {
                         values.IdExpediente,
-                        values.IdHojaDatos,                     
-                        values.IdEstatus,                   
+                        values.IdHojaDatos,
+                        values.IdEstatus,
                         values.Otorga,
-                        values.AfavorDe,                
-                        values.UbicacionPredio,                   
+                        values.AfavorDe,
+                        values.UbicacionPredio,
                         values.FechaElaboracion,
                         values.FechaEnvioRPP,
                         values.EsTramitePorSistema,

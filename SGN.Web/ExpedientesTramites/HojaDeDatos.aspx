@@ -175,8 +175,7 @@
             <dx:ASPxGridView runat="server" ID="gvHojaDatos" ClientInstanceName="gvHojaDatos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdExpediente"
                 OnDataBinding="gvHojaDatos_DataBinding"
                 OnCustomCallback="gvHojaDatos_CustomCallback"
-                OnToolbarItemClick="gvHojaDatos_ToolbarItemClick"
-                OnHtmlDataCellPrepared="gvHojaDatos_HtmlDataCellPrepared">
+                OnToolbarItemClick="gvHojaDatos_ToolbarItemClick">
 
                 <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
 
@@ -551,13 +550,18 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
+                                                            <dx:GridViewDataDateColumn Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
+                                                            </dx:GridViewDataDateColumn>
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="7" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
+
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="8" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
                                                             </dx:GridViewDataTextColumn>
 
 
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="8" FieldName="EstadoCivil" Caption="Estado civil">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="EstadoCivil" Caption="Estado civil">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbEstadoCivilOtorgaSolicita" ClientInstanceName="cbEstadoCivilOtorgaSolicita" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
                                                                         OnInit="cbEstadoCivilOtorgaSolicita_Init">
@@ -571,7 +575,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="RegimenConyugal" Caption="Regimen conyugal">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRegimenConyugalOtorgaSolicita" ClientInstanceName="cbRegimenConyugalOtorgaSolicita" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
                                                                         OnInit="cbRegimenConyugalOtorgaSolicita_Init">
@@ -584,7 +588,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="11" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbAnafabetaOtorgaSolicita" ClientInstanceName="cbAnafabetaOtorgaSolicita" OnCallback="cbAnafabetaOtorgaSolicita_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
                                                                         <Items>
@@ -598,7 +602,7 @@
 
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="10" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas" Width="100%">
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>
@@ -747,13 +751,17 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
+                                                            <dx:GridViewDataDateColumn Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
+                                                            </dx:GridViewDataDateColumn>
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="7" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
+
+
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="8" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
                                                             </dx:GridViewDataTextColumn>
 
 
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="8" FieldName="EstadoCivil" Caption="Estado civil">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="EstadoCivil" Caption="Estado civil">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbEstadoCivilAfavorDe" ClientInstanceName="cbEstadoCivilAfavorDe" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
                                                                         OnInit="cbEstadoCivilAfavorDe_Init">
@@ -767,7 +775,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="RegimenConyugal" Caption="Regimen conyugal">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRegimenConyugalAfavorDe" ClientInstanceName="cbRegimenConyugalAfavorDe" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
                                                                         OnInit="cbRegimenConyugalAfavorDe_Init">
@@ -780,7 +788,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="11" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbAnafabetaAFavorDe" ClientInstanceName="cbAnafabetaAFavorDe" OnCallback="cbAnafabetaAFavorDe_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
                                                                         <Items>
@@ -794,7 +802,7 @@
 
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="10" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas" Width="100%">
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>

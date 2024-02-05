@@ -10,6 +10,8 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using DevExpress.Export;
+using SGN.Negocio.Expediente;
 
 namespace SGN.Web.ExpedientesTramites
 {
@@ -18,6 +20,7 @@ namespace SGN.Web.ExpedientesTramites
 
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
+        DatosExpedientes datosExpediente = new DatosExpedientes();
 
         public List<Cat_DocumentosPorActo> catDocumentoOtorgaSolicita
         {
@@ -160,7 +163,6 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
-
         public List<DatosParticipantes> lsAfavorDE
         {
             get
@@ -222,6 +224,28 @@ namespace SGN.Web.ExpedientesTramites
         }
 
 
+        public List<ListaHojaDatos> lsHojaDatos
+        {
+            get
+
+            {
+                List<ListaHojaDatos> sselsHojaDatos = new List<ListaHojaDatos>();
+                if (this.Session["sselsHojaDatos"] != null)
+                {
+                    sselsHojaDatos = (List<ListaHojaDatos>)this.Session["sselsHojaDatos"];
+                }
+
+                return sselsHojaDatos;
+            }
+            set
+            {
+                this.Session["sselsHojaDatos"] = value;
+            }
+
+        }
+
+
+
         #endregion
 
 
@@ -231,6 +255,10 @@ namespace SGN.Web.ExpedientesTramites
 
             if (!Page.IsPostBack)
             {
+
+                dtFechaInicio.Date=  DateTime.Now.Date;
+                dtFechaFin.Date  = DateTime.Now.Date;
+
                 dtFechaIngreso.Date = DateTime.Now.Date;
                 txtNombreAsesor.Text = UsuarioPagina.Nombre;
                 DameCatalogos();
@@ -249,22 +277,35 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvHojaDatos_DataBinding(object sender, EventArgs e)
         {
-
+            ASPxGridView control = (ASPxGridView)sender;
+            control.DataSource = lsHojaDatos;
         }
 
         protected void gvHojaDatos_CustomCallback(object sender, DevExpress.Web.ASPxGridViewCustomCallbackEventArgs e)
         {
-
+            if (e.Parameters == "CargarRegistros")
+            {
+                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date);// cargamos registros
+                gvHojaDatos.DataBind();
+                return;
+            }
         }
 
         protected void gvHojaDatos_ToolbarItemClick(object source, DevExpress.Web.Data.ASPxGridViewToolbarItemClickEventArgs e)
         {
+            switch (e.Item.Name)
+            {
 
-        }
+                case "CustomExportToXLS":
+                    ASPxGridViewExporter1.WriteXlsToResponse(new XlsExportOptionsEx() { ExportType = ExportType.WYSIWYG });
+                    break;
+                case "CustomExportToXLSX":
+                    ASPxGridViewExporter1.WriteXlsxToResponse(new XlsxExportOptionsEx() { ExportType = ExportType.WYSIWYG });
+                    break;
 
-        protected void gvHojaDatos_HtmlDataCellPrepared(object sender, DevExpress.Web.ASPxGridViewTableDataCellEventArgs e)
-        {
-
+                default:
+                    break;
+            }
         }
 
 
@@ -412,6 +453,8 @@ namespace SGN.Web.ExpedientesTramites
                     nuevaHojaComplemento.IdHojaDatos = nuevaHoja.IdHojaDatos;
                     nuevaHojaComplemento.IdActo = cbActosNuevo.Value == null ? 0 : Convert.ToInt32(cbActosNuevo.Value);
                     nuevaHojaComplemento.IdVariante = cbVarienteNuevo.Value == null ? 0 : Convert.ToInt32(cbVarienteNuevo.Value);
+                    nuevaHojaComplemento.TextoActo = cbActosNuevo.Text == null ? "" : cbActosNuevo.Text;
+                    nuevaHojaComplemento.TextoVariante = cbVarienteNuevo.Text == null ? "" : cbVarienteNuevo.Text;
                     // se guardan los datos extras de al hoja 
 
                     if (!datosCrud.AltaDatosVariantes(nuevaHojaComplemento))
@@ -449,8 +492,9 @@ namespace SGN.Web.ExpedientesTramites
                     foreach (var item in OtorgaSolicitanteSeleccion.Split(',').ToList())
                     {
                         nuevahojaDocumentos = new DatosDocumentos();
-                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;                        
                         nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                        nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
                         nuevahojaDocumentos.TextoFigura = "Otorga o Solicita";
                         nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
                         nuevahojaDocumentos.Observaciones = "";
@@ -464,6 +508,7 @@ namespace SGN.Web.ExpedientesTramites
                         nuevahojaDocumentos = new DatosDocumentos();
                         nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
                         nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                        nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
                         nuevahojaDocumentos.TextoFigura = "A favor de";
                         nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
                         nuevahojaDocumentos.Observaciones = "";
@@ -680,6 +725,12 @@ namespace SGN.Web.ExpedientesTramites
             {
                 e.RowError += "El campo sexo  es obligatorio.\n ";
             }
+
+            if (e.NewValues["FechaNacimiento"] == null)
+            {
+                e.RowError += "El fecha nacimiento es obligatorio.\n ";
+            }
+
             if (estadoCivil == null)
             {
                 e.RowError += "El campo estado civil Operacion es obligatorio.\n ";
@@ -739,6 +790,7 @@ namespace SGN.Web.ExpedientesTramites
             datos.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
             datos.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
             datos.Sexo = e.NewValues["Sexo"].ToString();
+            datos.FechaNacimiento= Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
             datos.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
             datos.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
             datos.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
@@ -762,8 +814,63 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvaFavorDe_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
-            ASPxGridView control = (ASPxGridView)sender;
-            control.DataSource = lsAfavorDE;
+            object rolOperacion = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
+                    gvaFavorDe.Columns["RolOperacion"] as GridViewDataComboBoxColumn,
+                    "cbRolAfavorDe")).Value;
+
+            object sexo = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
+                gvaFavorDe.Columns["Sexo"] as GridViewDataComboBoxColumn,
+                "cbSexoAfavorDe")).Value;
+
+            object estadoCivil = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
+                gvaFavorDe.Columns["EstadoCivil"] as GridViewDataComboBoxColumn,
+                "cbEstadoCivilAfavorDe")).Value;
+
+            object RegimenConyugal = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
+                gvaFavorDe.Columns["RegimenConyugal"] as GridViewDataComboBoxColumn,
+                "cbRegimenConyugalAfavorDe")).Value;
+
+
+            if (rolOperacion == null)
+            {
+                e.RowError += "El campo Rol Operacion es obligatorio.\n ";
+            }
+
+            if (sexo == null)
+            {
+                e.RowError += "El campo sexo  es obligatorio.\n ";
+            }
+
+            if (e.NewValues["FechaNacimiento"] == null)
+            {
+                e.RowError += "El fecha nacimiento es obligatorio.\n ";
+            }
+
+            if (estadoCivil == null)
+            {
+                e.RowError += "El campo estado civil Operacion es obligatorio.\n ";
+            }
+            if (RegimenConyugal == null)
+            {
+                e.RowError += "El campo Regimen conyugal Operacion es obligatorio.\n ";
+            }
+
+            if (e.NewValues["Nombres"] == null)
+            {
+                e.RowError += "El campo Nombre es obligatorio.\n ";
+            }
+
+            if (e.NewValues["ApellidoPaterno"] == null)
+            {
+                e.RowError += "El campo Apellido Paterno es obligatorio.\n ";
+            }
+
+            if (e.NewValues["ApellidoMaterno"] == null)
+            {
+                e.RowError += "El campo Apellido Materno es obligatorio.\n ";
+            }
+
+
         }
 
         protected void gvaFavorDe_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -776,6 +883,7 @@ namespace SGN.Web.ExpedientesTramites
             datos.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
             datos.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
             datos.Sexo = e.NewValues["Sexo"].ToString();
+            datos.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
             datos.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
             datos.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
             datos.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();

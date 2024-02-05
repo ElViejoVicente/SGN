@@ -84,6 +84,7 @@
     <Compile Include="CRUD\DatosCrud.cs" />
     <Compile Include="Expediente\DatosExpedientes.cs" />
     <Compile Include="Expediente\ListaExpedientes.cs" />
+    <Compile Include="Expediente\ListaHojaDatos.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_DocumentosPorActo.cs" />
