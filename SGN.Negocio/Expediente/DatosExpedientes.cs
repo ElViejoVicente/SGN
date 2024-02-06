@@ -16,6 +16,7 @@ namespace SGN.Negocio.Expediente
     {
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
         DatosCrud datosCrud = new DatosCrud();
+
         public List<ListaHojaDatos> DameListaHojaDatos(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
@@ -27,19 +28,22 @@ namespace SGN.Negocio.Expediente
                 {
                     resultado = db.Query<ListaHojaDatos>
                         (
+
                         sql: "sp_DameHojaDatosPorFecha", param: new
                         {
                             fechaInicial,
                             fechaFinal
 
                         }, commandType: CommandType.StoredProcedure
+
+
                         ).ToList();
                 }
 
-                if (resultado.Count>0)
+                if (resultado.Count > 0)
                 {
 
-                    
+
 
                     foreach (var item in resultado)
                     {
@@ -47,9 +51,9 @@ namespace SGN.Negocio.Expediente
 
                         item.DetalleVariantes = DameDatosVariantes(item.IdHojaDatos);
 
-                        item.DetalleParticipantes=DameListaParticipantes(item.IdHojaDatos);
+                        item.DetalleParticipantes = DameListaParticipantes(item.IdHojaDatos);
 
-                        item.DetalleDocumentos= DameListaDocumentos(item.IdHojaDatos);
+                        item.DetalleDocumentos = DameListaDocumentos(item.IdHojaDatos);
 
                         item.DetalleDocumentosOtorgSolicita = DameListaDocumentos(item.IdHojaDatos, "Otorga o Solicita");
 
@@ -68,6 +72,56 @@ namespace SGN.Negocio.Expediente
             {
 
                 throw new Exception("Error al ejecutar sp_DameHojaDatosPorFecha , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+        public ListaHojaDatos DameHojaDatosDetalle(int idHojaDatosdate)
+        {
+            try
+            {
+
+                ListaHojaDatos resultado = new ListaHojaDatos();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.QuerySingle<ListaHojaDatos>
+                        (
+                         sql: "sp_DameHojaDatosPorID", param: new
+                         {
+                             idHojaDatosdate
+                        
+                         }, commandType: CommandType.StoredProcedure
+                        );
+                }
+
+                if (resultado != null)
+                {
+
+
+                    // consultamos los datos DatosVariantes
+
+                    resultado.DetalleVariantes = DameDatosVariantes(resultado.IdHojaDatos);
+
+                    resultado.DetalleParticipantes = DameListaParticipantes(resultado.IdHojaDatos);
+
+                    resultado.DetalleDocumentos = DameListaDocumentos(resultado.IdHojaDatos);
+
+                    resultado.DetalleDocumentosOtorgSolicita = DameListaDocumentos(resultado.IdHojaDatos, "Otorga o Solicita");
+
+                    resultado.DetalleDocumentosAfavorDe = DameListaDocumentos(resultado.IdHojaDatos, "A favor de");
+
+                    resultado.DetalleRecibosPago = DameRecibosDePago(resultado.IdHojaDatos);
+
+                }
+
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameHojaDatosPorID , detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -144,7 +198,7 @@ namespace SGN.Negocio.Expediente
                         ).ToList();
                 }
 
-                if (resultado.Count>0)
+                if (resultado.Count > 0)
                 {
                     resultado = resultado.Where(x => x.TextoFigura == textoFigura).ToList();
                 }
