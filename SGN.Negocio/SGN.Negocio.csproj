@@ -128,6 +128,11 @@
     <Compile Include="Operativa\SociedadXUsuario.cs" />
     <Compile Include="Operativa\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\dsHojaDatos.Designer.cs">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SGN.Datos\SGN.Datos.csproj">
@@ -387,6 +392,17 @@
     <None Include="Connected Services\WS_SAP_UNI\zws_sapletra_ggb_bnd.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <Content Include="Reportes\dsHojaDatos.xsc">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+    </Content>
+    <None Include="Reportes\dsHojaDatos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHojaDatos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reportes\dsHojaDatos.xss">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\WS_GESAG\" />
