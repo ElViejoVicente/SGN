@@ -51,6 +51,10 @@ namespace SGN.Negocio.Expediente
 
                         item.DetalleDocumentos= DameListaDocumentos(item.IdHojaDatos);
 
+                        item.DetalleDocumentosOtorgSolicita = DameListaDocumentos(item.IdHojaDatos, "Otorga o Solicita");
+
+                        item.DetalleDocumentosAfavorDe = DameListaDocumentos(item.IdHojaDatos, "A favor de");
+
                         item.DetalleRecibosPago = DameRecibosDePago(item.IdHojaDatos);
 
 
@@ -119,6 +123,38 @@ namespace SGN.Negocio.Expediente
             {
 
                 throw new Exception("Error al ejecutar sp_DameRecibosDePagoPorHojaDatos , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public List<DatosDocumentos> DameListaDocumentos(int idHojaDatos, string textoFigura)
+        {
+            try
+            {
+                List<DatosDocumentos> resultado = new List<DatosDocumentos>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<DatosDocumentos>
+                        (
+                        sql: "sp_DameDatosDocumentosPorHojaDatos", param: new
+                        {
+                            idHojaDatos
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+
+                if (resultado.Count>0)
+                {
+                    resultado = resultado.Where(x => x.TextoFigura == textoFigura).ToList();
+                }
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameDatosDocumentosPorHojaDatos , detalle: \n" + ex.Message, ex);
             }
         }
 

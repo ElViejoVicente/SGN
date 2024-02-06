@@ -31,7 +31,9 @@ namespace SGN.Negocio.Expediente
 
         public List<DatosVariantes> DetalleVariantes { get; set; }=null;
         public List<DatosParticipantes> DetalleParticipantes { get;set; }=null;
-        public List<DatosDocumentos> DetalleDocumentos { get; set;} =null;
+        public List<DatosDocumentos> DetalleDocumentos { get; set; } = null;
+        public List<DatosDocumentos> DetalleDocumentosOtorgSolicita { get; set;} =null;
+        public List<DatosDocumentos> DetalleDocumentosAfavorDe { get; set; } = null;
         public List<RecibosDePago> DetalleRecibosPago { get; set; } = null;
 
 

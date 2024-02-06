@@ -14,6 +14,7 @@ namespace SGN.Negocio.ORM
         public string TextoVariante { get; set; } = "";
         public string TextoFigura { get; set; } = "";
         public int IdDoc { get; set; } = 0;
+        public string TextoDocumento { get; set; } = "";
         public string Observaciones { get; set; } = "";
     }
 }

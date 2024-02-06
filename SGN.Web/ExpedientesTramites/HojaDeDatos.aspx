@@ -107,13 +107,20 @@
 
                     break;
 
-
+                case "cmdReporteHojaDatos":
+                    if (gvHojaDatos.GetFocusedRowIndex() >= 0) {
+                        gvHojaDatos.GetRowValues(gvHojaDatos.GetFocusedRowIndex(), 'IdHojaDatos', onCallbackReport);
+                    }
+                    break;
 
 
             }
         }
 
-
+        function onCallbackReport(value) {
+            console.log(value);
+            window.open("../Reportes/reporteHojaDatos?idHojaDatos=" + value, "_blank");
+        }
 
 
     </script>
@@ -297,7 +304,7 @@
 
                             <dx:GridViewToolbarItem Text="Editar hoja datos" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarHojaDatos" />
 
-
+                            <dx:GridViewToolbarItem Text="Generar Impresion" Image-IconID="actions_print_16x16devav" Name="cmdReporteHojaDatos" />
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
                             <dx:GridViewToolbarItem Text="Export to" Image-IconID="actions_download_16x16office2013" BeginGroup="true" AdaptivePriority="1" Alignment="Right">
