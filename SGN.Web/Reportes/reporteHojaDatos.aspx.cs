@@ -44,7 +44,7 @@ namespace SGN.Web.Reportes
                     datosReporte.TextoVariante, datosReporte.Otorga, datosReporte.AfavorDe);
 
 
-
+                // se rellenana los dt de los prticipantes
                 foreach (var item in datosReporte.DetalleParticipantes.Where(x=> x.FiguraOperacion== "Otorga o Solicita").ToList())
                 {
                     origen.DatosParticipantesOtorga.AddDatosParticipantesOtorgaRow(item.IdRegistro, item.IdHojaDatos, item.FiguraOperacion, item.RolOperacion,
@@ -58,6 +58,27 @@ namespace SGN.Web.Reportes
                      item.Nombres, item.ApellidoPaterno, item.ApellidoMaterno, item.FechaNacimiento, item.Sexo, item.Ocupacion, item.EstadoCivil,
                      item.RegimenConyugal, item.SabeLeerEscribir, item.Notas);
                 }
+
+
+                // se rellenando los DT de los documentos
+
+
+                foreach (var item in datosReporte.DetalleDocumentosOtorgSolicita)
+                {
+                    origen.DatosDocumentosOtorga.AddDatosDocumentosOtorgaRow(item.IdRegistro, item.IdHojaDatos, item.IdVariente, item.TextoVariante,
+                        item.TextoFigura, item.IdDoc, item.TextoDocumento, item.Observaciones);
+
+                }
+
+
+                foreach (var item in datosReporte.DetalleDocumentosAfavorDe)
+                {
+
+                    origen.DatosDocumentosAfavorDe.AddDatosDocumentosAfavorDeRow(item.IdRegistro, item.IdHojaDatos, item.IdVariente, item.TextoVariante,
+                        item.TextoFigura, item.IdDoc, item.TextoDocumento, item.Observaciones);
+
+                }
+
 
 
 
