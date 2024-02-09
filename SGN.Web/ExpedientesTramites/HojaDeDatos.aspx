@@ -178,6 +178,7 @@
         <section class="CLPageContent" id="maindiv">
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvHojaDatos"></dx:ASPxGridViewExporter>
 
+            <dx:ASPxHiddenField runat="server" ID="HidDocumentoSelect" ClientInstanceName="HidDocumentoSelect" ></dx:ASPxHiddenField>
 
             <dx:ASPxGridView runat="server" ID="gvHojaDatos" ClientInstanceName="gvHojaDatos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdHojaDatos"
                 OnDataBinding="gvHojaDatos_DataBinding"
@@ -806,11 +807,11 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita" ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
-                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding">
+                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding" >
                                                         <FilteringSettings ShowSearchUI="true" />
                                                         <ClientSideEvents SelectedIndexChanged="function(s, e) 
                                                                                      {     
-                                                                                           ppNuevaHojaDatos.PerformCallback('DocSelecOtorgaSolicita~'+ lbDocumentacionOtorgaSolicita.GetSelectedValues());                                                                                              
+                                                                                          HidDocumentoSelect.Set('OtorgaSolicita',lbDocumentacionOtorgaSolicita.GetSelectedValues());                                                                                              
 
                                                                                      }" />
                                                     </dx:ASPxListBox>
@@ -1008,7 +1009,8 @@
                                                         <FilteringSettings ShowSearchUI="true" />
                                                         <ClientSideEvents SelectedIndexChanged="function(s, e) 
                                                                                                   {     
-                                                                                                        ppNuevaHojaDatos.PerformCallback('DocSelecAfavorDe~'+ lbDocumentacionAfavorDe.GetSelectedValues());                                                                                              
+
+                                                                                                        HidDocumentoSelect.Set('AfavorDe',lbDocumentacionAfavorDe.GetSelectedValues());                                                                                                              
 
                                                                                                   }" />
 

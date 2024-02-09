@@ -257,6 +257,9 @@ namespace SGN.Web.ExpedientesTramites
             if (!Page.IsPostBack)
             {
 
+                HidDocumentoSelect.Add("OtorgaSolicita", "");
+                HidDocumentoSelect.Add("AfavorDe", "");
+
                 dtFechaInicio.Date=  DateTime.Now.Date;
                 dtFechaFin.Date  = DateTime.Now.Date;
 
@@ -268,9 +271,9 @@ namespace SGN.Web.ExpedientesTramites
         }
         protected void Page_Init(object sender, EventArgs e)
         {
-            cbVarienteNuevo.DataBind();
-            lbDocumentacionOtorgaSolicita.DataBind();
-            lbDocumentacionAfavorDe.DataBind();
+           // cbVarienteNuevo.DataBind();
+          //  lbDocumentacionOtorgaSolicita.DataBind();
+           // lbDocumentacionAfavorDe.DataBind();
         }
 
 
@@ -331,15 +334,27 @@ namespace SGN.Web.ExpedientesTramites
 
             if (e.Parameter.Contains("DocSelecOtorgaSolicita"))
             {
-                OtorgaSolicitanteSeleccion = e.Parameter.Split('~')[1].ToString();
+              //  OtorgaSolicitanteSeleccion = e.Parameter.Split('~')[1].ToString();
+
+                //cbVarienteNuevo.DataBind();
+                //lbDocumentacionOtorgaSolicita.DataBind();
+                //lbDocumentacionAfavorDe.DataBind();
+
+                //lbDocumentacionOtorgaSolicita.
+
                 return;
             }
 
 
             if (e.Parameter.Contains("DocSelecAfavorDe"))
             {
-                AfavorDESeleccion = e.Parameter.Split('~')[1].ToString();
-                return;
+               // AfavorDESeleccion = e.Parameter.Split('~')[1].ToString();
+
+               //// cbVarienteNuevo.DataBind();
+               // //lbDocumentacionOtorgaSolicita.DataBind();
+               // //lbDocumentacionAfavorDe.DataBind();
+
+               // return;
             }
 
 
@@ -488,9 +503,10 @@ namespace SGN.Web.ExpedientesTramites
                     // se rellenan  la lista de documento para proceder al guardado
 
 
-                 
 
-                    foreach (var item in OtorgaSolicitanteSeleccion.Split(',').ToList())
+
+                    object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
+                    foreach (var item in (Object[])itemsOS)
                     {
                         nuevahojaDocumentos = new DatosDocumentos();
                         nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;                        
@@ -503,8 +519,8 @@ namespace SGN.Web.ExpedientesTramites
                         datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
 
                     }
-
-                    foreach (var item in AfavorDESeleccion.Split(',').ToList())
+                    object itemsFv = HidDocumentoSelect["AfavorDe"];
+                    foreach (var item in (Object[])itemsFv)
                     {
                         nuevahojaDocumentos = new DatosDocumentos();
                         nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
@@ -955,6 +971,8 @@ namespace SGN.Web.ExpedientesTramites
             control.DataSource = catDocumentoOtorgaSolicita; ;
             control.TextField = "TextoDocumento";
             control.ValueField = "IdDoc";
+
+            cbVarienteNuevo.DataBind();
         }
 
         protected void lbDocumentacionAfavorDe_DataBinding(object sender, EventArgs e)
@@ -965,6 +983,8 @@ namespace SGN.Web.ExpedientesTramites
             control.DataSource = catDocumentoAfavorDe; ;
             control.TextField = "TextoDocumento";
             control.ValueField = "IdDoc";
+
+            cbVarienteNuevo.DataBind();
         }
 
         protected void gvOtorgaSolictaDetalle_BeforePerformDataSelect(object sender, EventArgs e)
@@ -1002,5 +1022,7 @@ namespace SGN.Web.ExpedientesTramites
 
             detailGrid.DataSource = detalle;
         }
+
+
     }
 }
