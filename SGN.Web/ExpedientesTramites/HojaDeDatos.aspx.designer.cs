@@ -96,24 +96,6 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxGridView gvHojaDatos;
 
         /// <summary>
-        /// Control ppEditarHojaDatos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ppEditarHojaDatos;
-
-        /// <summary>
-        /// Control frmHojaDatosExistente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout frmHojaDatosExistente;
-
-        /// <summary>
         /// Control ppNuevaHojaDatos.
         /// </summary>
         /// <remarks>

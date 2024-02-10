@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Exchange.WebServices.Data;
 using SGN.Negocio.CRUD;
 using SGN.Negocio.ORM;
 using System;
@@ -49,7 +50,11 @@ namespace SGN.Negocio.Expediente
                     {
                         // consultamos los datos DatosVariantes
 
-                        item.DetalleVariantes = DameDatosVariantes(item.IdHojaDatos);
+                        item.DetalleHojaDatos = datosCrud.ConsultaHojaDatos(item.IdHojaDatos);
+
+                        item.DetalleVariante = ConsultaDatosVariantesXHojaDatos(item.IdHojaDatos);
+
+                        item.DetalleExpediente = ConsultaExpedienteXHojaDatos(item.IdHojaDatos);
 
                         item.DetalleParticipantes = DameListaParticipantes(item.IdHojaDatos);
 
@@ -74,6 +79,60 @@ namespace SGN.Negocio.Expediente
                 throw new Exception("Error al ejecutar sp_DameHojaDatosPorFecha , detalle: \n" + ex.Message, ex);
             }
         }
+
+
+
+        public DatosVariantes ConsultaDatosVariantesXHojaDatos(int IdRegistro)
+        {
+            try
+            {
+                DatosVariantes resultado = new DatosVariantes();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<DatosVariantes>
+                        (
+                        sql: "sp_DameDatosVariantesXHojaDatos", param: new
+                        {
+                            IdRegistro
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameDatosVariantesXHojaDatos, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Expedientes ConsultaExpedienteXHojaDatos(int IdRegistro)
+        {
+            try
+            {
+                Expedientes resultado = new Expedientes();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Expedientes>
+                        (
+                        sql: "sp_DameExpedienteXHojaDatos ", param: new
+                        {
+                            IdRegistro
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameExpedienteXHojaDatos , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
 
 
         public ListaHojaDatos DameHojaDatosDetalle(int idHojaDatosdate)
@@ -101,7 +160,11 @@ namespace SGN.Negocio.Expediente
 
                     // consultamos los datos DatosVariantes
 
-                    resultado.DetalleVariantes = DameDatosVariantes(resultado.IdHojaDatos);
+                    resultado.DetalleHojaDatos = datosCrud.ConsultaHojaDatos(resultado.IdHojaDatos);
+
+                    resultado.DetalleVariante = ConsultaDatosVariantesXHojaDatos(resultado.IdHojaDatos);
+
+                    resultado.DetalleExpediente = ConsultaExpedienteXHojaDatos(resultado.IdHojaDatos);
 
                     resultado.DetalleParticipantes = DameListaParticipantes(resultado.IdHojaDatos);
 
@@ -151,6 +214,29 @@ namespace SGN.Negocio.Expediente
                 throw new Exception("Error al ejecutar sp_DameDatosVariantesporHojaDatos , detalle: \n" + ex.Message, ex);
             }
         }
+
+
+        public Boolean BorraDatosParticipantesDocumentos(int idHojaDatos)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_BorraDatosParticipantesPorIdHojaDatos", param: new
+                    {
+                        idHojaDatos
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_BorraDatosParticipantesPorIdHojaDatos, detalle: \n" + ex.Message, ex);
+            }
+        }
+
 
 
 

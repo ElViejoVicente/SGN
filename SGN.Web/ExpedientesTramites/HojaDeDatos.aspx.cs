@@ -13,6 +13,7 @@ using System.IO;
 using DevExpress.Export;
 using SGN.Negocio.Expediente;
 using SGN.Negocio.WS_GESAG;
+using DevExpress.CodeParser;
 
 namespace SGN.Web.ExpedientesTramites
 {
@@ -22,6 +23,7 @@ namespace SGN.Web.ExpedientesTramites
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
         DatosExpedientes datosExpediente = new DatosExpedientes();
+
 
         public List<Cat_DocumentosPorActo> catDocumentoOtorgaSolicita
         {
@@ -224,6 +226,48 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+        public object[] docSelecOtorgaSol
+        {
+            get
+
+            {
+                object[] ssdocSelecOtorgaSol = null;
+                if (this.Session["ssdocSelecOtorgaSol"] != null)
+                {
+                    ssdocSelecOtorgaSol = (object[])Session["ssdocSelecOtorgaSol"];
+                }
+
+                return ssdocSelecOtorgaSol;
+            }
+            set
+            {
+                this.Session["ssdocSelecOtorgaSol"] = value;
+            }
+
+        }
+
+
+        public object[] docAfavorDe
+        {
+            get
+
+            {
+                object[] ssdocAfavorDe = null;
+                if (this.Session["ssdocAfavorDe"] != null)
+                {
+                    ssdocAfavorDe = (object[])Session["ssdocAfavorDe"];
+                }
+
+                return ssdocAfavorDe;
+            }
+            set
+            {
+                this.Session["ssdocAfavorDe"] = value;
+            }
+
+        }
+
+
 
         public List<ListaHojaDatos> lsHojaDatos
         {
@@ -245,7 +289,87 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+        public Boolean EsNuevaHojaDatos
+        {
+            get
 
+            {
+                Boolean ssEsNuevaHojaDatos = false;
+                if (this.Session["ssEsNuevaHojaDatos"] != null)
+                {
+                    ssEsNuevaHojaDatos = (Boolean)Session["ssEsNuevaHojaDatos"];
+                }
+
+                return ssEsNuevaHojaDatos;
+            }
+            set
+            {
+                this.Session["ssEsNuevaHojaDatos"] = value;
+            }
+
+        }
+
+
+        public HojaDatos hojaDatosSeleccionada
+        {
+            get
+
+            {
+                HojaDatos sshojaDatosSeleccionada = null;
+                if (this.Session["sshojaDatosSeleccionada"] != null)
+                {
+                    sshojaDatosSeleccionada = (HojaDatos)Session["sshojaDatosSeleccionada"];
+                }
+
+                return sshojaDatosSeleccionada;
+            }
+            set
+            {
+                this.Session["sshojaDatosSeleccionada"] = value;
+            }
+
+        }
+
+        public DatosVariantes varienteSeleccionada
+        {
+            get
+
+            {
+                DatosVariantes ssvarienteSeleccionada = null;
+                if (this.Session["ssvarienteSeleccionada"] != null)
+                {
+                    ssvarienteSeleccionada = (DatosVariantes)Session["ssvarienteSeleccionada"];
+                }
+
+                return ssvarienteSeleccionada;
+            }
+            set
+            {
+                this.Session["ssvarienteSeleccionada"] = value;
+            }
+
+        }
+
+
+        public Expedientes ExpedienteSeleccionado
+        {
+            get
+
+            {
+                Expedientes ssExpedienteSeleccionado = null;
+                if (this.Session["ssExpedienteSeleccionado"] != null)
+                {
+                    ssExpedienteSeleccionado = (Expedientes)Session["ssExpedienteSeleccionado"];
+                }
+
+                return ssExpedienteSeleccionado;
+            }
+            set
+            {
+                this.Session["ssExpedienteSeleccionado"] = value;
+            }
+
+        }
 
         #endregion
 
@@ -263,7 +387,7 @@ namespace SGN.Web.ExpedientesTramites
                 dtFechaInicio.Date=  DateTime.Now.Date;
                 dtFechaFin.Date  = DateTime.Now.Date;
 
-                dtFechaIngreso.Date = DateTime.Now.Date;
+                dtFechaIngreso.Date = DateTime.Now;
                 txtNombreAsesor.Text = UsuarioPagina.Nombre;
                 DameCatalogos();
 
@@ -323,40 +447,198 @@ namespace SGN.Web.ExpedientesTramites
         {
             if (e.Parameter == "NuevaHojaDatos")
             {
+                EsNuevaHojaDatos = true;
+
                 lsOtorgaSolicitante = new List<DatosParticipantes>();
                 lsAfavorDE = new List<DatosParticipantes>();
                 OtorgaSolicitanteSeleccion = "";
                 AfavorDESeleccion = "";
                 gvOtorgaSolicita.DataBind();
                 gvaFavorDe.DataBind();
-                return;
-            }
-
-            if (e.Parameter.Contains("DocSelecOtorgaSolicita"))
-            {
-              //  OtorgaSolicitanteSeleccion = e.Parameter.Split('~')[1].ToString();
-
-                //cbVarienteNuevo.DataBind();
-                //lbDocumentacionOtorgaSolicita.DataBind();
-                //lbDocumentacionAfavorDe.DataBind();
-
-                //lbDocumentacionOtorgaSolicita.
-
+                cbActosNuevo.SelectedIndex = -1;
+                cbVarienteNuevo.SelectedIndex = -1;
+                txtReciboPagoIni.Text = "";
+                txtClienteTramita.Text = "";
+                txtNumCelular.Text = "";
+                txtCorreoElectronico.Text = "";
                 return;
             }
 
 
-            if (e.Parameter.Contains("DocSelecAfavorDe"))
+            if (e.Parameter.Contains("EditarHojaDatos"))
             {
-               // AfavorDESeleccion = e.Parameter.Split('~')[1].ToString();
 
-               //// cbVarienteNuevo.DataBind();
-               // //lbDocumentacionOtorgaSolicita.DataBind();
-               // //lbDocumentacionAfavorDe.DataBind();
+                EsNuevaHojaDatos = false;
 
-               // return;
+                // limpieza
+                catDocumentoOtorgaSolicita = new List<Cat_DocumentosPorActo>();
+                catDocumentoAfavorDe = new List<Cat_DocumentosPorActo>();
+                lsOtorgaSolicitante = new List<DatosParticipantes>();
+
+                hojaDatosSeleccionada = null;
+                varienteSeleccionada = null;
+                ExpedienteSeleccionado = null;
+
+
+                docSelecOtorgaSol = null;
+                docAfavorDe = null;
+
+
+                lsAfavorDE = new List<DatosParticipantes>();
+                OtorgaSolicitanteSeleccion = "";
+                AfavorDESeleccion = "";
+                gvOtorgaSolicita.DataBind();
+                gvaFavorDe.DataBind();
+
+
+                int idHojaDatosSelect = Convert.ToInt32(e.Parameter.Split('~')[1].ToString());
+
+                //buscamos el registro en el listado  lsHojaDatos
+
+                ListaHojaDatos hojaSeleccionada = lsHojaDatos.Where(x => x.IdHojaDatos == idHojaDatosSelect).FirstOrDefault();
+
+                if (hojaSeleccionada != null )
+                {
+
+                    hojaDatosSeleccionada = hojaSeleccionada.DetalleHojaDatos;
+                    varienteSeleccionada = hojaSeleccionada.DetalleVariante;
+                    ExpedienteSeleccionado = hojaSeleccionada.DetalleExpediente;
+
+                    // empezamos a cargar los registros  en el control
+
+                    // Cargamos los datos generales
+                    dtFechaIngreso.Date = hojaSeleccionada.FechaIngreso;
+                    if (hojaSeleccionada.DetalleRecibosPago.Exists(x=> x.Concepto== "Recibo Inicial Expediente"))
+                    {
+                        txtReciboPagoIni.Text = hojaSeleccionada.DetalleRecibosPago.Where(x => x.Concepto == "Recibo Inicial Expediente").First().NumRecibo;
+                    }
+
+                    txtClienteTramita.Text = hojaSeleccionada.NumbreUsuarioTramita;
+                    txtNumCelular.Text = hojaSeleccionada.NumTelCelular1;
+                    txtCorreoElectronico.Text = hojaSeleccionada.CorreoElectronico;
+       
+
+
+
+
+                    // se carga el acto selccionado
+                    cbActosNuevo.Text = hojaSeleccionada.TextoActo;
+                    cbActosNuevo.SelectedIndex = catActos.FindIndex(w => w.TextoActo == hojaSeleccionada.TextoActo);
+
+                    catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo();
+
+
+                    // se carga la variante seleccionada
+                    if (catVarientesPorActo.Count > 0)
+                    {
+                        catVarientesPorActo = catVarientesPorActo.Where(x => x.IdActo.ToString() == cbActosNuevo.Value.ToString()).ToList();
+                        cbVarienteNuevo.DataBind();
+                    }
+
+                    cbVarienteNuevo.Text = hojaSeleccionada.TextoVariante;
+                    cbVarienteNuevo.SelectedIndex= catVarientesPorActo.FindIndex(w => w.TextoVariante == hojaSeleccionada.TextoVariante);
+
+
+                    // se cargan los tipos de roles por acto
+
+                    catRolParticipantesOtorgaSolicita = datosCrud.ConsultaCatRolParticipantes();
+                    catRolParticipantesAfavorDe = datosCrud.ConsultaCatRolParticipantes();
+
+                    if (catRolParticipantesOtorgaSolicita.Count > 0)
+                    {
+                        catRolParticipantesOtorgaSolicita = catRolParticipantesOtorgaSolicita.Where(x => x.IdActo.ToString() == cbActosNuevo.Value.ToString() && x.TextoFigura == "Otorga o Solicita").ToList();
+                    }
+
+
+                    if (catRolParticipantesAfavorDe.Count > 0)
+                    {
+                        catRolParticipantesAfavorDe = catRolParticipantesAfavorDe.Where(x => x.IdActo.ToString() == cbActosNuevo.Value.ToString() && x.TextoFigura == "A favor de").ToList();
+                    }
+
+                    //se cargam los tipos de documentos por variante
+
+                    catDocumentoOtorgaSolicita = datosCrud.ConsultaCatDocumentosPorActo();
+                    catDocumentoAfavorDe = datosCrud.ConsultaCatDocumentosPorActo();
+
+
+                    if (cbActosNuevo.Value.ToString() != null && catDocumentoOtorgaSolicita.Count > 0)
+                    {
+                        catDocumentoOtorgaSolicita = catDocumentoOtorgaSolicita.Where(x => x.IdActo.ToString() == cbActosNuevo.Value.ToString() &
+                                                                                      x.IdVariente.ToString() == cbVarienteNuevo.Value.ToString() &
+                                                                                      x.TextoFigura == "Otorga o Solicita").ToList();
+                    }
+
+                    if (cbActosNuevo.Value.ToString() != null && catDocumentoAfavorDe.Count > 0)
+                    {
+                        catDocumentoAfavorDe = catDocumentoAfavorDe.Where(x => x.IdActo.ToString() == cbActosNuevo.Value.ToString() &
+                                                                          x.IdVariente.ToString() == cbVarienteNuevo.Value.ToString() &
+                                                                          x.TextoFigura == "A favor de").ToList();
+                    }
+
+
+                    lbDocumentacionOtorgaSolicita.DataBind();
+                    lbDocumentacionAfavorDe.DataBind();
+
+                    //HidDocumentoSelect["AfavorDe"] = "";
+                    //HidDocumentoSelect["OtorgaSolicita"] = "";
+
+                    //string docSelecOtorgaSol = "";
+                    //string docAfavorDe = "";
+
+                    //HidDocumentoSelect.Set("AfavorDe", "");
+                    //HidDocumentoSelect.Set("OtorgaSolicita", "");
+
+                    docAfavorDe = new object[hojaSeleccionada.DetalleDocumentosAfavorDe.Count];
+                    int contador = 0;
+
+                    foreach (var doc in hojaSeleccionada.DetalleDocumentosAfavorDe)
+                    {
+                        lbDocumentacionAfavorDe.Items.FindByText(doc.TextoDocumento).Selected=true;
+
+                        docAfavorDe[contador] = doc.IdDoc;
+                        contador++;
+                    }
+
+                    //if (docAfavorDe.Length>1)
+                    //{
+                    //    docAfavorDe = docAfavorDe.Substring(0, docAfavorDe.ToString().Length - 1);
+                    //}
+
+                    docSelecOtorgaSol = new object[hojaSeleccionada.DetalleDocumentosOtorgSolicita.Count];
+                    contador = 0;
+                    foreach (var doc in hojaSeleccionada.DetalleDocumentosOtorgSolicita)
+                    {
+                        lbDocumentacionOtorgaSolicita.Items.FindByText(doc.TextoDocumento).Selected = true;
+
+                        //docSelecOtorgaSol = docSelecOtorgaSol + doc.IdDoc.ToString() + ",";
+                        docSelecOtorgaSol[contador] = doc.IdDoc;
+                        contador++;
+                    }
+                    //if (docSelecOtorgaSol.Length>1)
+                    //{
+                    //    docSelecOtorgaSol = docSelecOtorgaSol.Substring(0, docSelecOtorgaSol.ToString().Length - 1);
+                    //}
+
+                    HidDocumentoSelect.Set("AfavorDe", docAfavorDe);
+                    HidDocumentoSelect.Set("OtorgaSolicita", docSelecOtorgaSol);
+
+
+
+
+                    //cargamos los datos de las personas involucradas 
+
+                    lsOtorgaSolicitante = hojaSeleccionada.DetalleParticipantes.Where(x => x.FiguraOperacion == "Otorga o Solicita").ToList();
+                    lsAfavorDE = hojaSeleccionada.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de").ToList();
+
+                    gvaFavorDe.DataBind();
+                    gvOtorgaSolicita.DataBind();
+
+
+                }
+
+
+                return;
             }
-
 
 
             if (e.Parameter.Contains("CargarDocXvariantes"))
@@ -443,75 +725,109 @@ namespace SGN.Web.ExpedientesTramites
 
             if (e.Parameter.Contains("guardar"))
             {
-                Boolean existeError = false;
 
-                // guardamos en base de datos la HojaDatos ,  DatosParticipantes , DatosDocumentos
-                // ademas se crea el numero de expediente en la tabla  Expedientes con los datos del solicitante y ortorgante 
-                // tambien hay que crear la ruta de carpeta
-
-                // 1- se guarda la hoja de datos
-
-                HojaDatos nuevaHoja = new HojaDatos();
-                DatosVariantes nuevaHojaComplemento = new DatosVariantes();
-                DatosDocumentos nuevahojaDocumentos = new DatosDocumentos();
-                RecibosDePago nuevaHojaReciboPago = new RecibosDePago();
-                Expedientes nuevoExpediente = new Expedientes();
-
-                nuevaHoja.IdHojaDatos = 0;
-                nuevaHoja.FechaIngreso = dtFechaIngreso.Date;
-                nuevaHoja.NombreAsesor = txtNombreAsesor.Text;
-                nuevaHoja.NumbreUsuarioTramita = txtClienteTramita.Text;
-                nuevaHoja.NumTelCelular1 = txtNumCelular.Text;
-                nuevaHoja.CorreoElectronico = txtCorreoElectronico.Text;
-
-                if (datosCrud.AltaHojaDatos(ref nuevaHoja))
+                if (EsNuevaHojaDatos)
                 {
-                    nuevaHojaComplemento.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                    nuevaHojaComplemento.IdActo = cbActosNuevo.Value == null ? 0 : Convert.ToInt32(cbActosNuevo.Value);
-                    nuevaHojaComplemento.IdVariante = cbVarienteNuevo.Value == null ? 0 : Convert.ToInt32(cbVarienteNuevo.Value);
-                    nuevaHojaComplemento.TextoActo = cbActosNuevo.Text == null ? "" : cbActosNuevo.Text;
-                    nuevaHojaComplemento.TextoVariante = cbVarienteNuevo.Text == null ? "" : cbVarienteNuevo.Text;
-                    // se guardan los datos extras de al hoja 
+                    GuardaNuevoHojaDatos();
+                }
+                else
+                {
+                    ModificarHojaDatos();
+                }
 
-                    if (!datosCrud.AltaDatosVariantes(nuevaHojaComplemento))
+                return;
+            }
+
+
+        }
+
+
+        private void ModificarHojaDatos()
+        {
+            Boolean existeError = false;
+
+
+            DatosDocumentos nuevahojaDocumentos = new DatosDocumentos();
+            RecibosDePago nuevaHojaReciboPago = new RecibosDePago();
+     
+
+            hojaDatosSeleccionada.NombreAsesor = txtNombreAsesor.Text;
+            hojaDatosSeleccionada.NumbreUsuarioTramita = txtClienteTramita.Text;
+            hojaDatosSeleccionada.NumTelCelular1 = txtNumCelular.Text;
+            hojaDatosSeleccionada.CorreoElectronico = txtCorreoElectronico.Text;
+
+            if (datosCrud.ActualizarHojaDatos(hojaDatosSeleccionada))
+            {
+
+                //modificamos los datos de la variantes varienteSeleccionada
+                if (!datosCrud.ActualizarDatosVariantes(varienteSeleccionada))
+                {
+                    existeError = true;
+                }
+
+                //borramos los datos relacionados a esa hoja de datos en la base para insertarlos los nuevos valores
+
+                // borrarParticipantes
+                //borrarDocumentos
+                //borrarReciboPago inicial
+
+
+            
+                if (datosExpediente.BorraDatosParticipantesDocumentos(hojaDatosSeleccionada.IdHojaDatos))
+                {
+
+                }
+
+                // guardamos a los participantes del acto
+                foreach (var item in lsOtorgaSolicitante)
+                {
+                    item.IdHojaDatos = hojaDatosSeleccionada.IdHojaDatos;
+
+                    if (!datosCrud.AltaDatosParticipantes(item))
                     {
                         existeError = true;
                     }
+                }
 
+                foreach (var item in lsAfavorDE)
+                {
+                    item.IdHojaDatos = hojaDatosSeleccionada.IdHojaDatos;
 
-                    // guardamos a los participantes del acto
-                    foreach (var item in lsOtorgaSolicitante)
+                    if (!datosCrud.AltaDatosParticipantes(item))
                     {
-                        item.IdHojaDatos = nuevaHoja.IdHojaDatos;
-
-                        if (!datosCrud.AltaDatosParticipantes(item))
-                        {
-                            existeError = true;
-                        }
+                        existeError = true;
                     }
+                }
 
-                    foreach (var item in lsAfavorDE)
-                    {
-                        item.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                // se rellenan  la lista de documento para proceder al guardado
 
-                        if (!datosCrud.AltaDatosParticipantes(item))
-                        {
-                            existeError = true;
-                        }
-                    }
+                if (HidDocumentoSelect["OtorgaSolicita"].ToString()=="")
+                {
+                    HidDocumentoSelect.Set("OtorgaSolicita", docSelecOtorgaSol);
 
-                    // se rellenan  la lista de documento para proceder al guardado
+                }
 
 
 
+                if (HidDocumentoSelect["AfavorDe"].ToString() == "")
+                {
+                    HidDocumentoSelect.Set("AfavorDe", docAfavorDe);
+                }
 
-                    object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
+
+       
+
+
+                object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
+
+                if (itemsOS.ToString()!= "")                    
+                {
                     foreach (var item in (Object[])itemsOS)
                     {
                         nuevahojaDocumentos = new DatosDocumentos();
-                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;                        
-                        nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
-                        nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
+                        nuevahojaDocumentos.IdHojaDatos = hojaDatosSeleccionada.IdHojaDatos;
+                        nuevahojaDocumentos.IdVariente = varienteSeleccionada.IdVariante;
+                        nuevahojaDocumentos.TextoVariante = varienteSeleccionada.TextoVariante;
                         nuevahojaDocumentos.TextoFigura = "Otorga o Solicita";
                         nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
                         nuevahojaDocumentos.Observaciones = "";
@@ -519,124 +835,278 @@ namespace SGN.Web.ExpedientesTramites
                         datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
 
                     }
-                    object itemsFv = HidDocumentoSelect["AfavorDe"];
+                }
+  
+                object itemsFv = HidDocumentoSelect["AfavorDe"];
+                if (itemsFv.ToString()!= "")
+                {
                     foreach (var item in (Object[])itemsFv)
                     {
                         nuevahojaDocumentos = new DatosDocumentos();
-                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                        nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
-                        nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
+                        nuevahojaDocumentos.IdHojaDatos = hojaDatosSeleccionada.IdHojaDatos;
+                        nuevahojaDocumentos.IdVariente = varienteSeleccionada.IdVariante;
+                        nuevahojaDocumentos.TextoVariante = varienteSeleccionada.TextoVariante;
                         nuevahojaDocumentos.TextoFigura = "A favor de";
                         nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
                         nuevahojaDocumentos.Observaciones = "";
 
                         datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
                     }
-
-
-                    // se registra el primer recibo de pago
-
-                    nuevaHojaReciboPago.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                    nuevaHojaReciboPago.NumRecibo = txtReciboPagoIni.Text;
-                    nuevaHojaReciboPago.CantidadTotal = 0;
-                    nuevaHojaReciboPago.CantidadAbonada = 0;
-                    nuevaHojaReciboPago.Concepto = "Recibo Inicial Expediente";
-                    nuevaHojaReciboPago.UsuarioRecibe = "No Definido";                    
-                    nuevaHojaReciboPago.NotaComentario = "Recibo no controlado por sistema.";
-
-                    if (!datosCrud.AltaRecibosDePago(nuevaHojaReciboPago))
-                    {
-                        existeError = true;
-                    }
-
-
-                    //se crear el registro del expediente
-
-                    nuevoExpediente.IdExpediente = nuevaHoja.numExpediente;
-                    nuevoExpediente.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                    //nuevoExpediente.FechaElaboracion = nuevaHoja.FechaIngreso;
-                    
-
-                    foreach (var item in lsOtorgaSolicitante)
-                    {
-                        nuevoExpediente.Otorga += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
-                    }
-
-                    foreach (var item in lsAfavorDE)
-                    {
-                        nuevoExpediente.AfavorDe += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
-                    }
-
-
-                    if (!datosCrud.AltaExpediente(nuevoExpediente))
-                    {
-                        existeError = true;
-                    }
-
-
-
-                    //  se crean las carpetas necesarias para el expediente
-
-
-                    string directorioVirtual = "~/GNArchivosRoot";
-                    string directorioFisico = MapPath(directorioVirtual);
-
-
-
-
-                    string rutaFisicaCalculada = Path.Combine(directorioFisico, nuevaHoja.numExpediente);
-
-                    if (!Directory.Exists(rutaFisicaCalculada))
-                    {
-                        Directory.CreateDirectory(rutaFisicaCalculada);
-
-                        if (Directory.Exists(rutaFisicaCalculada))
-                        {
-                            string carpetaAvisos = Path.Combine(rutaFisicaCalculada, "Avisos");
-                            string carpetaFirmados = Path.Combine(rutaFisicaCalculada, "Firmados");
-                            string carpetaPendientesFirma = Path.Combine(rutaFisicaCalculada, "PedientesFirma");
-                            string carpetaProyecto = Path.Combine(rutaFisicaCalculada, "Proyecto");
-                            string carpetaDocumentos = Path.Combine(rutaFisicaCalculada, "Documentos");
-
-                            Directory.CreateDirectory(carpetaAvisos);
-
-                            Directory.CreateDirectory(carpetaFirmados);
-
-                            Directory.CreateDirectory(carpetaPendientesFirma);
-
-                            Directory.CreateDirectory(carpetaProyecto);
-
-                            Directory.CreateDirectory(carpetaDocumentos);
-
-
-
-
-                        }
-
-                    }
-
-
                 }
+        
 
 
-                if (!existeError)
+                // se registra el primer recibo de pago
+
+                nuevaHojaReciboPago.IdHojaDatos = hojaDatosSeleccionada.IdHojaDatos;
+                nuevaHojaReciboPago.NumRecibo = txtReciboPagoIni.Text;
+                nuevaHojaReciboPago.CantidadTotal = 0;
+                nuevaHojaReciboPago.CantidadAbonada = 0;
+                nuevaHojaReciboPago.Concepto = "Recibo Inicial Expediente";
+                nuevaHojaReciboPago.UsuarioRecibe = "No Definido";
+                nuevaHojaReciboPago.NotaComentario = "Recibo no controlado por sistema.";
+
+                if (!datosCrud.AltaRecibosDePago(nuevaHojaReciboPago))
                 {
-
-
-                    ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Nuevo expediente: " + nuevaHoja.numExpediente + " listo.!";
-                    ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
-                    return;
+                    existeError = true;
                 }
-                else
+
+
+                //se actuliza los datos del expediente
+
+                ExpedienteSeleccionado.Otorga = "";
+                foreach (var item in lsOtorgaSolicitante)
                 {
-                    ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar el registro.";
-                    ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
-                    return;
+                    ExpedienteSeleccionado.Otorga += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
                 }
-                
+                ExpedienteSeleccionado.AfavorDe = "";
+                foreach (var item in lsAfavorDE)
+                {
+                    ExpedienteSeleccionado.AfavorDe += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
+                }
+
+
+                if (!datosCrud.ActualizarExpediente(ExpedienteSeleccionado))
+                {
+                    existeError = true;
+                }
+
+
             }
 
 
+
+            if (!existeError)
+            {
+
+
+                ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Datos del expediente: " + hojaDatosSeleccionada.numExpediente + " Actualizados.!";
+                ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+                return;
+            }
+            else
+            {
+                ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar modificat el registro.";
+                ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+                return;
+            }
+
+
+        }
+
+
+        private void GuardaNuevoHojaDatos()
+        {
+            Boolean existeError = false;
+
+            // guardamos en base de datos la HojaDatos ,  DatosParticipantes , DatosDocumentos
+            // ademas se crea el numero de expediente en la tabla  Expedientes con los datos del solicitante y ortorgante 
+            // tambien hay que crear la ruta de carpeta
+
+            // 1- se guarda la hoja de datos
+
+            HojaDatos nuevaHoja = new HojaDatos();
+            DatosVariantes nuevaHojaComplemento = new DatosVariantes();
+            DatosDocumentos nuevahojaDocumentos = new DatosDocumentos();
+            RecibosDePago nuevaHojaReciboPago = new RecibosDePago();
+            Expedientes nuevoExpediente = new Expedientes();
+
+            nuevaHoja.IdHojaDatos = 0;
+            nuevaHoja.FechaIngreso = dtFechaIngreso.Date;
+            nuevaHoja.NombreAsesor = txtNombreAsesor.Text;
+            nuevaHoja.NumbreUsuarioTramita = txtClienteTramita.Text;
+            nuevaHoja.NumTelCelular1 = txtNumCelular.Text;
+            nuevaHoja.CorreoElectronico = txtCorreoElectronico.Text;
+
+            if (datosCrud.AltaHojaDatos(ref nuevaHoja))
+            {
+                nuevaHojaComplemento.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                nuevaHojaComplemento.IdActo = cbActosNuevo.Value == null ? 0 : Convert.ToInt32(cbActosNuevo.Value);
+                nuevaHojaComplemento.IdVariante = cbVarienteNuevo.Value == null ? 0 : Convert.ToInt32(cbVarienteNuevo.Value);
+                nuevaHojaComplemento.TextoActo = cbActosNuevo.Text == null ? "" : cbActosNuevo.Text;
+                nuevaHojaComplemento.TextoVariante = cbVarienteNuevo.Text == null ? "" : cbVarienteNuevo.Text;
+                // se guardan los datos extras de al hoja 
+
+                if (!datosCrud.AltaDatosVariantes(nuevaHojaComplemento))
+                {
+                    existeError = true;
+                }
+
+
+                // guardamos a los participantes del acto
+                foreach (var item in lsOtorgaSolicitante)
+                {
+                    item.IdHojaDatos = nuevaHoja.IdHojaDatos;
+
+                    if (!datosCrud.AltaDatosParticipantes(item))
+                    {
+                        existeError = true;
+                    }
+                }
+
+                foreach (var item in lsAfavorDE)
+                {
+                    item.IdHojaDatos = nuevaHoja.IdHojaDatos;
+
+                    if (!datosCrud.AltaDatosParticipantes(item))
+                    {
+                        existeError = true;
+                    }
+                }
+
+                // se rellenan  la lista de documento para proceder al guardado
+
+
+
+
+                object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
+                foreach (var item in (Object[])itemsOS)
+                {
+                    nuevahojaDocumentos = new DatosDocumentos();
+                    nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                    nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                    nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
+                    nuevahojaDocumentos.TextoFigura = "Otorga o Solicita";
+                    nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
+                    nuevahojaDocumentos.Observaciones = "";
+
+                    datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+
+                }
+                object itemsFv = HidDocumentoSelect["AfavorDe"];
+                foreach (var item in (Object[])itemsFv)
+                {
+                    nuevahojaDocumentos = new DatosDocumentos();
+                    nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                    nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                    nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
+                    nuevahojaDocumentos.TextoFigura = "A favor de";
+                    nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
+                    nuevahojaDocumentos.Observaciones = "";
+
+                    datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+                }
+
+
+                // se registra el primer recibo de pago
+
+                nuevaHojaReciboPago.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                nuevaHojaReciboPago.NumRecibo = txtReciboPagoIni.Text;
+                nuevaHojaReciboPago.CantidadTotal = 0;
+                nuevaHojaReciboPago.CantidadAbonada = 0;
+                nuevaHojaReciboPago.Concepto = "Recibo Inicial Expediente";
+                nuevaHojaReciboPago.UsuarioRecibe = "No Definido";
+                nuevaHojaReciboPago.NotaComentario = "Recibo no controlado por sistema.";
+
+                if (!datosCrud.AltaRecibosDePago(nuevaHojaReciboPago))
+                {
+                    existeError = true;
+                }
+
+
+                //se crear el registro del expediente
+
+                nuevoExpediente.IdExpediente = nuevaHoja.numExpediente;
+                nuevoExpediente.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                //nuevoExpediente.FechaElaboracion = nuevaHoja.FechaIngreso;
+
+
+                foreach (var item in lsOtorgaSolicitante)
+                {
+                    nuevoExpediente.Otorga += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
+                }
+
+                foreach (var item in lsAfavorDE)
+                {
+                    nuevoExpediente.AfavorDe += item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + " / ";
+                }
+
+
+                if (!datosCrud.AltaExpediente(nuevoExpediente))
+                {
+                    existeError = true;
+                }
+
+
+
+                //  se crean las carpetas necesarias para el expediente
+
+
+                string directorioVirtual = "~/GNArchivosRoot";
+                string directorioFisico = MapPath(directorioVirtual);
+
+
+
+
+                string rutaFisicaCalculada = Path.Combine(directorioFisico, nuevaHoja.numExpediente);
+
+                if (!Directory.Exists(rutaFisicaCalculada))
+                {
+                    Directory.CreateDirectory(rutaFisicaCalculada);
+
+                    if (Directory.Exists(rutaFisicaCalculada))
+                    {
+                        string carpetaAvisos = Path.Combine(rutaFisicaCalculada, "Avisos");
+                        string carpetaFirmados = Path.Combine(rutaFisicaCalculada, "Firmados");
+                        string carpetaPendientesFirma = Path.Combine(rutaFisicaCalculada, "PedientesFirma");
+                        string carpetaProyecto = Path.Combine(rutaFisicaCalculada, "Proyecto");
+                        string carpetaDocumentos = Path.Combine(rutaFisicaCalculada, "Documentos");
+
+                        Directory.CreateDirectory(carpetaAvisos);
+
+                        Directory.CreateDirectory(carpetaFirmados);
+
+                        Directory.CreateDirectory(carpetaPendientesFirma);
+
+                        Directory.CreateDirectory(carpetaProyecto);
+
+                        Directory.CreateDirectory(carpetaDocumentos);
+
+
+
+
+                    }
+
+                }
+
+
+            }
+
+
+            if (!existeError)
+            {
+
+
+                ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Nuevo expediente: " + nuevaHoja.numExpediente + " listo.!";
+                ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+                return;
+            }
+            else
+            {
+                ppNuevaHojaDatos.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar guardar el registro.";
+                ppNuevaHojaDatos.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+                return;
+            }
         }
 
         protected void gvOtorgaSolicita_DataBinding(object sender, EventArgs e)
@@ -800,7 +1270,8 @@ namespace SGN.Web.ExpedientesTramites
         protected void gvOtorgaSolicita_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             DatosParticipantes datos = new DatosParticipantes();
-            datos.IdHojaDatos = 0;
+            datos.IdRegistro = lsOtorgaSolicitante.Count + 1;
+            datos.IdHojaDatos = 0;            
             datos.FiguraOperacion = "Otorga o Solicita";
             datos.RolOperacion = e.NewValues["RolOperacion"].ToString();
             datos.Nombres = e.NewValues["Nombres"].ToString();
@@ -893,6 +1364,7 @@ namespace SGN.Web.ExpedientesTramites
         protected void gvaFavorDe_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             DatosParticipantes datos = new DatosParticipantes();
+            datos.IdRegistro = lsAfavorDE.Count + 1;
             datos.IdHojaDatos = 0;
             datos.FiguraOperacion = "A favor de";
             datos.RolOperacion = e.NewValues["RolOperacion"].ToString();
@@ -912,6 +1384,29 @@ namespace SGN.Web.ExpedientesTramites
             e.Cancel = true;
             gvaFavorDe.CancelEdit();
 
+            gvaFavorDe.DataBind();
+        }
+
+        protected void gvOtorgaSolicita_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+
+            var participanteBorrar = lsOtorgaSolicitante.Where(x=> x.IdRegistro == Convert.ToInt32(e.Keys[0])).FirstOrDefault();
+
+            lsOtorgaSolicitante.Remove (participanteBorrar);
+            e.Cancel= true;
+            gvOtorgaSolicita.CancelEdit();
+            gvOtorgaSolicita.DataBind();
+
+
+        }
+
+        protected void gvaFavorDe_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            var participanteBorrar = lsAfavorDE.Where(x => x.IdRegistro == Convert.ToInt32(e.Keys[0])).FirstOrDefault();
+
+            lsAfavorDE.Remove(participanteBorrar);
+            e.Cancel = true;
+            gvaFavorDe.CancelEdit();
             gvaFavorDe.DataBind();
         }
 

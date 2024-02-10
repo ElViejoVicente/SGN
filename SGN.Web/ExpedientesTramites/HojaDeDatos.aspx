@@ -54,7 +54,7 @@
             if (s.cp_swType != null && s.cp_swAlert == null) {
 
                 ppNuevaHojaDatos.Hide();
-                ppEditarHojaDatos.Hide();
+
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvHojaDatos.PerformCallback('CargarRegistros');
@@ -100,8 +100,8 @@
                 case "cmdEditarHojaDatos":
 
                     if (gvHojaDatos.GetFocusedRowIndex() >= 0) {
-                        ppEditarHojaDatos.Show();
-                        ppEditarHojaDatos.PerformCallback("EditarHojaDatos");
+
+                        gvHojaDatos.GetRowValues(gvHojaDatos.GetFocusedRowIndex(), 'IdHojaDatos', onCallbackEditarHoja);
                     }
 
 
@@ -118,8 +118,14 @@
         }
 
         function onCallbackReport(value) {
-            console.log(value);
+            
             window.open("../Reportes/reporteHojaDatos?idHojaDatos=" + value, "_blank");
+        }
+
+        function onCallbackEditarHoja(value) {
+            
+            ppNuevaHojaDatos.Show();
+            ppNuevaHojaDatos.PerformCallback("EditarHojaDatos~" + value );
         }
 
 
@@ -482,30 +488,7 @@
 
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppEditarHojaDatos" ClientInstanceName="ppEditarHojaDatos" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarHojaDatos_WindowCallback1" ScrollBars="Auto">
-                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
-                <ContentCollection>
-                    <dx:PopupControlContentControl runat="server">
-                        <dx:ASPxFormLayout runat="server" ID="frmHojaDatosExistente" ClientInstanceName="frmHojaDatosExistente" ColCount="3" ColumnCount="3" Width="100%">
-                        </dx:ASPxFormLayout>
-                    </dx:PopupControlContentControl>
-                </ContentCollection>
 
-                <FooterContentTemplate>
-                    <div>
-                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="AceptarCambios" AutoPostBack="false" ClientInstanceName="btnAceptar">
-                            <ClientSideEvents Click="function(s, e) 
-                                                        {                                             
-                                                        ppEditarHojaDatos.PerformCallback('guardarCambios');                                                      
-                                                        }" />
-
-                        </dx:ASPxButton>
-                    </div>
-                </FooterContentTemplate>
-
-            </dx:ASPxPopupControl>
 
 
             <dx:ASPxPopupControl runat="server" ID="ppNuevaHojaDatos" ClientInstanceName="ppNuevaHojaDatos" Height="700px" Width="1300px" EnableClientSideAPI="true" ShowFooter="true"
@@ -523,7 +506,9 @@
                                         <dx:LayoutItem FieldName="FechaIngreso" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaIngreso" ClientEnabled="false" AutoPostBack="false"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaIngreso" ClientEnabled="false" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy HH:mm">
+                                                         <TimeSectionProperties Visible="true"></TimeSectionProperties>  
+                                                    </dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -628,7 +613,8 @@
                                                     <dx:ASPxGridView runat="server" ID="gvOtorgaSolicita" ClientInstanceName="gvOtorgaSolicita" AutoGenerateColumns="False" Width="933px" KeyFieldName="IdRegistro"
                                                         OnDataBinding="gvOtorgaSolicita_DataBinding"
                                                         OnRowValidating="gvOtorgaSolicita_RowValidating"
-                                                        OnRowInserting="gvOtorgaSolicita_RowInserting">
+                                                        OnRowInserting="gvOtorgaSolicita_RowInserting"
+                                                        OnRowDeleting="gvOtorgaSolicita_RowDeleting">
 
                                                         <SettingsPager Mode="ShowAllRecords" />
 
@@ -829,7 +815,8 @@
                                                     <dx:ASPxGridView runat="server" ID="gvaFavorDe" ClientInstanceName="gvaFavorDe" AutoGenerateColumns="False" Width="933px" KeyFieldName="IdRegistro"
                                                         OnDataBinding="gvaFavorDe_DataBinding"
                                                         OnRowValidating="gvaFavorDe_RowValidating"
-                                                        OnRowInserting="gvaFavorDe_RowInserting">
+                                                        OnRowInserting="gvaFavorDe_RowInserting"
+                                                        OnRowDeleting="gvaFavorDe_RowDeleting">
 
                                                         <SettingsPager Mode="ShowAllRecords" />
 

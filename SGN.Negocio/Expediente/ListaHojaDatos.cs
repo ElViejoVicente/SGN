@@ -29,12 +29,20 @@ namespace SGN.Negocio.Expediente
         public string Otorga { get; set; } = "";
         public string AfavorDe { get; set; } = "";
 
-        public List<DatosVariantes> DetalleVariantes { get; set; }=null;
+
+        public HojaDatos DetalleHojaDatos { get; set; } = null;
+        public DatosVariantes DetalleVariante { get; set; }=null;
+        public Expedientes DetalleExpediente { get; set; } = null;
         public List<DatosParticipantes> DetalleParticipantes { get;set; }=null;
         public List<DatosDocumentos> DetalleDocumentos { get; set; } = null;
+        public List<RecibosDePago> DetalleRecibosPago { get; set; } = null;
+
+
+
+        // estos son solo para uso en los reportes
         public List<DatosDocumentos> DetalleDocumentosOtorgSolicita { get; set;} =null;
         public List<DatosDocumentos> DetalleDocumentosAfavorDe { get; set; } = null;
-        public List<RecibosDePago> DetalleRecibosPago { get; set; } = null;
+
 
 
 

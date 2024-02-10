@@ -155,6 +155,43 @@ namespace SGN.Negocio.CRUD
         }
 
 
+
+        public Boolean ActualizarDatosVariantes(DatosVariantes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosVariantes_Update", param: new
+                    {
+                        values.IdRegistro,
+                        values.IdHojaDatos,
+                        values.IdActo,
+                        values.IdVariante,
+                        values.TextoActo,
+                        values.TextoVariante,
+                        values.NotasEspeciales,
+                        values.Dispocisiones,
+                        values.NotasClausulasEspeciales,
+                        values.CoApActaNacNum,
+                        values.CoApActaNacFecha,
+                        values.OtrosNombres,
+                        values.NominacionPermisoSE,
+                        values.TipoSociedad,
+                        values.DatosFaltantes
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_DatosVariantes_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
         public DatosVariantes ConsultaDatosVariantes(int IdRegistro)
         {
             try
@@ -220,6 +257,65 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_HojaDatos_Insert, detalle: \n" + ex.Message, ex);
             }
         }
+
+        public Boolean ActualizarHojaDatos(HojaDatos values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_HojaDatos_Update", param: new
+                    {
+                        values.IdHojaDatos,
+                        values.numExpediente,
+                        values.NombreAsesor,
+                        values.FechaIngreso,
+                        values.FechaCompleto,
+                        values.IdUsuarioResponsable,
+                        values.IdEquipoResponsable,
+                        values.NumbreUsuarioTramita,
+                        values.NumTelCelular1,
+                        values.NumTelCelular2,
+                        values.CorreoElectronico
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_HojaDatos_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+        public HojaDatos ConsultaHojaDatos(int IdHojaDatos)
+        {
+            try
+            {
+                HojaDatos resultado = new HojaDatos();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.QuerySingle<HojaDatos>
+                        (
+                        sql: "sp_CRUD_HojaDatos_Select", param: new
+                        {
+                            IdHojaDatos
+                        }, commandType: CommandType.StoredProcedure
+                        );
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_HojaDatos_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
         #endregion
 
 
@@ -578,7 +674,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
                     {
-                        values.IdExpediente,
+                        values.IdExpediente,                        
                         values.IdHojaDatos,
                         values.IdEstatus,
                         values.Otorga,
