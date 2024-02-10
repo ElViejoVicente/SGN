@@ -95,7 +95,7 @@ namespace SGN.Web.Reportes
 
                 hojaDatos.RequestParameters = false;
                 hojaDatos.CreateDocument();
-                report.Pages.Add(hojaDatos.Pages[0]);
+                report.Pages.AddRange(hojaDatos.Pages);
 
 
                 reportePrinsipalView.OpenReport(report);
