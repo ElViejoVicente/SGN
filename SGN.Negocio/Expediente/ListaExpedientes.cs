@@ -10,7 +10,8 @@ namespace SGN.Negocio.Expediente
     public class ListaExpedientes
     {
 		//Expedientes
-		public string IdExpediente { get; set; } = "";        
+		public string IdExpediente { get; set; } = "";
+        public string IdEstatus { get; set; } = "";
         public string TextoEstatus { get; set; } = "";
 		public string TextoActo { get; set; } = "";
 		public DateTime FechaIngreso { get; set; } = Constantes.FechaGlobal;

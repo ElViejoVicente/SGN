@@ -1,6 +1,7 @@
 ﻿using DevExpress.CodeParser;
 using DevExpress.Export;
 using DevExpress.Web;
+using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraSpreadsheet.Import.OpenXml;
 using SGN.Negocio.CRUD;
@@ -43,6 +44,26 @@ namespace SGN.Web.ExpedientesTramites
             set
             {
                 this.Session["sseCatActos"] = value;
+            }
+
+        }
+
+        public List<PerfilesXestatus > lsPerfilesXestatus
+        {
+            get
+
+            {
+                List<PerfilesXestatus> ssPerfilesXestatus = new List<PerfilesXestatus>();
+                if (this.Session["ssPerfilesXestatus"] != null)
+                {
+                    ssPerfilesXestatus = (List<PerfilesXestatus>)this.Session["ssPerfilesXestatus"];
+                }
+
+                return ssPerfilesXestatus;
+            }
+            set
+            {
+                this.Session["ssPerfilesXestatus"] = value;
             }
 
         }
@@ -164,15 +185,358 @@ namespace SGN.Web.ExpedientesTramites
             catEstatus = datosCrud.ConsultaCatEstatus();
             catActos = datosCrud.ConsultaCatActos();
             catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x => x.EsProyectista == true).ToList();
+            lsPerfilesXestatus = datosCrud.ConsultaPerfilesXestatus();
+
+            if (lsPerfilesXestatus.Count>0)
+            {
+
+                var estatusPermitidos = (from dato in catEstatus where lsPerfilesXestatus.Exists(p => p.esIdEstatus == dato.IdEstatus && p.esIdPerfil==UsuarioPagina.Perfil)  select dato).ToList();
+                catEstatus = estatusPermitidos;
+            }     
+
 
             //cbActosNuevo.DataBind();
             cbPRfnProyectista.DataBind();
+            trlEstatusExpedientes.DataBind();
 
-            //MostrarCampoPorPerfil(UsuarioPagina.NombrePerfil);
+            MostrarCampoPorPerfil(UsuarioPagina.NombrePerfil);
 
         }
 
+        private void MostrarCampoPorPerfil(string nombrePerfil)
+        {
 
+            frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = false;          
+            frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = false;
+
+
+            frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = false;
+
+            frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = false;
+
+            frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = false;
+
+            frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = false;
+
+            frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = false;
+
+            frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = false;
+
+            switch (nombrePerfil)
+            {
+                case "Consultoria-IT":
+
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+                    break;
+                case "Dirección":
+
+
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;   
+                    frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                   // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
+                   // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+
+                    break;
+                case "Datos":
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                   // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
+                   // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+                    break;
+                case "Firmas":
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+         
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
+
+
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+                    break;
+                case "Mesas":
+
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroRecibo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnFechaIngreso").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnActo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+                    break;
+                case "Entregas":
+
+
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroRecibo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnFechaIngreso").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnActo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaPagoBoleta").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("APfnFechaRecibido").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnProyectista").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
+
+                    //frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+                    break;
+                case "Coordinacion":
+                    break;
+            }
+        }
         #endregion
 
         protected void Page_Init(object sender, EventArgs e)
@@ -187,11 +551,19 @@ namespace SGN.Web.ExpedientesTramites
 
             }
 
+            //if (catEstatus.Count>0)
+            //{
 
+            //    trlEstatusExpedientes.DataSource= catEstatus;
+
+            //   // trlEstatusExpedientes.DataBind();
+
+
+            //}
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+
 
             if (!Page.IsPostBack)
             {
@@ -217,18 +589,18 @@ namespace SGN.Web.ExpedientesTramites
                 return;
             }
 
-            if (e.Parameters=="AsignarRutaExpediente")
+            if (e.Parameters == "AsignarRutaExpediente")
             {
 
                 ASPxGridView control = (ASPxGridView)sender;
-                if (control.Selection.Count>0)
+                if (control.Selection.Count > 0)
                 {
-                   var datosExpediente =  control.GetSelectedFieldValues("IdExpediente");
-                    string numeroExpediente = datosExpediente[0].ToString().Replace("/","-");
-                    rutaArchivosRoot = "~/GNArchivosRoot/"+ numeroExpediente;
+                    var datosExpediente = control.GetSelectedFieldValues("IdExpediente");
+                    string numeroExpediente = datosExpediente[0].ToString().Replace("/", "-");
+                    rutaArchivosRoot = "~/GNArchivosRoot/" + numeroExpediente;
                     fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
                     //fmArchivosControl.Refresh();
-                    
+
                 }
                 return;
             }
@@ -254,7 +626,39 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvExpedientes_HtmlDataCellPrepared(object sender, DevExpress.Web.ASPxGridViewTableDataCellEventArgs e)
         {
+            if (e.DataColumn.FieldName == "TextoEstatus")
+            {
 
+                var numExpediente =  lsExpediente.Where(x=> x.IdExpediente== e.KeyValue.ToString()).FirstOrDefault();
+                if (numExpediente != null)
+                {
+                    switch (numExpediente.IdEstatus)
+                    {
+                        case "EX1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33ccff");
+                            break;
+                        case "AP1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccccff");
+                            break;
+                        case "PR1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33cc33");
+                            break;
+                        case "FI1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#cc33ff");
+                            break;
+                        case "AD1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff9900");
+                            break;
+                        case "ES1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#999999");
+                            break;
+                        case "EN1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#0066ff");
+                            break;
+                    }
+                }                
+
+            }
         }
 
         //protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
@@ -297,7 +701,7 @@ namespace SGN.Web.ExpedientesTramites
 
         //            // 2024-01-22 creamos la carpetas necesarias para la gestion del expediente.
 
-                    
+
 
         //            string directorioVirtual = "~/GNArchivosRoot";
         //            string directorioFisico = MapPath(directorioVirtual);
@@ -424,7 +828,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppCambiarEstatus_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
-            if (e.Parameter == "CargarEstados")
+            if (e.Parameter.Contains("CargarEstados"))
             {
 
                 string numExpedinte = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
@@ -432,10 +836,44 @@ namespace SGN.Web.ExpedientesTramites
 
                 txtProyecSelecEstatus.Text = numExpedinte;
 
-                rbEstados.DataBind();
+                //trlEstatusExpedientes.DataSource = catEstatus;
+
+                trlEstatusExpedientes.DataBind();
+                trlEstatusExpedientes.ExpandAll();
+                // rbEstados.DataBind();
                 return;
 
             }
+            if (e.Parameter.Contains("guardar"))
+            {
+                var EstadoSelec = e.Parameter.Split('~')[1].ToString();
+
+                RegistroExistente = new Expedientes();
+
+                string numExpediente = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
+
+                RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
+
+                RegistroExistente.IdEstatus = EstadoSelec;
+
+
+                if (datosCrud.ActualizarExpediente(RegistroExistente))
+                {
+                    ppCambiarEstatus.JSProperties["cp_swMsg"] = "Estatus Modificado!";
+                    ppCambiarEstatus.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+
+                }
+                else
+                {
+
+                    ppCambiarEstatus.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el Estatus.";
+                    ppCambiarEstatus.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+
+                }
+
+                return;
+            }
+
         }
 
         protected void ppEditarExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
@@ -513,7 +951,7 @@ namespace SGN.Web.ExpedientesTramites
             {
                 if (RegistroExistente != null)
                 {
-                                      
+
 
 
 
@@ -532,16 +970,16 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaRecibidoRPP = dtAPfnFechaRecibido.Date;
 
                     //Proyecto
-                    RegistroExistente.NombreProyectista = cbPRfnProyectista.Value == null ? "" :  cbPRfnProyectista.Value.ToString();
+                    RegistroExistente.NombreProyectista = cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString();
                     RegistroExistente.FechaAsignacionProyectista = dtPRfnFechaAsignacionProyectista.Date;
                     RegistroExistente.FechaPrevistaTerminoProyectista = dtPRfnFechaPrevistaTermino.Date;
                     RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;
-                    RegistroExistente.ISR= txtPRfnISR.Value ==null ?0 : Convert.ToDecimal(txtPRfnISR.Value.ToString());
+                    RegistroExistente.ISR = txtPRfnISR.Value == null ? 0 : Convert.ToDecimal(txtPRfnISR.Value.ToString());
 
                     //Firmas
                     RegistroExistente.NotasFirma = txtFIfnNotasFirmas.Text;
                     RegistroExistente.Escritura = txtFIfnNumEscritura.Value == null ? 0 : Convert.ToInt32(txtFIfnNumEscritura.Value.ToString()); // validar nulos
-                    RegistroExistente.Volumen = txtFIfnNumVolumen.Value == null ? 0 :  Convert.ToInt32(txtFIfnNumVolumen.Value.ToString());
+                    RegistroExistente.Volumen = txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString());
                     RegistroExistente.AplicaTraslado = chkFIfnAplicaTraslado.Checked;
                     RegistroExistente.FechaRecepcionTerminoEscritura = dtFIfnFechaRecepcionTerminoEscritura.Date;
 
@@ -572,14 +1010,14 @@ namespace SGN.Web.ExpedientesTramites
                     {
                         ppEditarExpediente.JSProperties["cp_swMsg"] = "Registro Modificado!";
                         ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
-                       
+
                     }
                     else
                     {
 
                         ppEditarExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el registro.";
                         ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
-                       
+
                     }
 
                 }
@@ -587,13 +1025,13 @@ namespace SGN.Web.ExpedientesTramites
             }
         }
 
-        protected void rbEstados_DataBinding(object sender, EventArgs e)
+        protected void trlEstatusExpedientes_DataBinding(object sender, EventArgs e)
         {
-            rbEstados.ValueField = "IdEstatus";
-            rbEstados.TextField = "Descripcion";
-            rbEstados.DataSource = catEstatus;
-
+            trlEstatusExpedientes.DataSource = catEstatus.OrderBy(x => x.Orden);
+            trlEstatusExpedientes.ExpandAll();
         }
+
+
 
         protected void cbExfnActo_DataBinding(object sender, EventArgs e)
         {
@@ -617,7 +1055,7 @@ namespace SGN.Web.ExpedientesTramites
         {
             FileManagerFolder[] folders = folder.GetFolders();
 
-         
+
 
             for (int i = 0; i < folders.Length; i++)
             {
@@ -634,13 +1072,13 @@ namespace SGN.Web.ExpedientesTramites
         }
 
         FileManagerFolder root = null;
-        FileManagerFolder  GetRootFolder (FileManagerFolder folder) 
+        FileManagerFolder GetRootFolder(FileManagerFolder folder)
         {
-           
 
-            if (folder.Parent==null)
+
+            if (folder.Parent == null)
             {
-                root =folder;
+                root = folder;
             }
             else
             {
@@ -658,7 +1096,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void fmArchivosControl_CustomThumbnail(object source, FileManagerThumbnailCreateEventArgs e)
         {
-            if (e.File==null)
+            if (e.File == null)
             {
                 return;
             }
@@ -700,6 +1138,7 @@ namespace SGN.Web.ExpedientesTramites
                     break;
             }
         }
-    
+
+
     }
 }

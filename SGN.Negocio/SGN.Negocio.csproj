@@ -99,6 +99,7 @@
     <Compile Include="ORM\DatosVariantes.cs" />
     <Compile Include="ORM\Expedientes.cs" />
     <Compile Include="ORM\HojaDatos.cs" />
+    <Compile Include="ORM\PerfilesXestatus.cs" />
     <Compile Include="ORM\RecibosDePago.cs" />
     <Compile Include="Properties\ApiGoogle\ApiGoogle.cs" />
     <Compile Include="Connected Services\WS_GESAG\Reference.cs">

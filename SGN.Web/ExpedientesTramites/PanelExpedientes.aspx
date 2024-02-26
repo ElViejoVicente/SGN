@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,7 +55,7 @@
 
             if (s.cp_swType != null && s.cp_swAlert == null) {
 
-                ppOrdenNuevoExpediente.Hide();
+              
                 ppEditarExpediente.Hide();
                 ppCambiarEstatus.Hide();
                 ppArchivos.Hide();
@@ -142,7 +144,7 @@
 
 
 
-    <title>SGN </title>
+    <title>SGN</title>
 </head>
 <body>
     <form id="frmPage" runat="server" class="Principal">
@@ -294,11 +296,9 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-<%--                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
+                    <%--                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>--%>
-
-
                 </Columns>
 
 
@@ -569,12 +569,13 @@
 
             </dx:ASPxGridView>
 
-            <dx:ASPxPopupControl runat="server" ID="ppCambiarEstatus" ClientInstanceName="ppCambiarEstatus" Height="300px" Width="700px" EnableClientSideAPI="true" ShowFooter="true"
+            <dx:ASPxPopupControl runat="server" ID="ppCambiarEstatus" ClientInstanceName="ppCambiarEstatus" Height="500px" Width="800px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Cambiar estatus del Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppCambiarEstatus_WindowCallback">
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppCambiarEstatus_WindowCallback" ScrollBars="Auto" >
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
+
 
                         <dx:ASPxFormLayout runat="server" ID="frmEstatus" ClientInstanceName="frmEstatus" ColCount="3" ColumnCount="3" Width="100%">
 
@@ -586,13 +587,32 @@
                                         </dx:LayoutItemNestedControlContainer>
                                     </LayoutItemNestedControlCollection>
                                 </dx:LayoutItem>
-                                <dx:LayoutGroup Caption="Catalogo de estatus" ColSpan="3" ColumnSpan="3">
-                                    <Items>
-                                        <dx:LayoutItem ColSpan="1" Caption="">
+                                <dx:LayoutGroup Caption="Catalogo de estatus" ColSpan="3" ColumnSpan="3" >
+                                    <Items >
+                                        <dx:LayoutItem ColSpan="1" Caption="" >
                                             <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxRadioButtonList runat="server" ID="rbEstados" AutoPostBack="false" OnDataBinding="rbEstados_DataBinding" RepeatColumns="2" RepeatLayout="Table">
-                                                    </dx:ASPxRadioButtonList>
+                                                <dx:LayoutItemNestedControlContainer runat="server" >
+
+
+                                                    <dx:ASPxTreeList ID="trlEstatusExpedientes" ClientInstanceName="trlEstatusExpedientes" runat="server" KeyFieldName="IdEstatus" 
+                                                        ParentFieldName="IdEstadoPadre" AutoGenerateColumns="False" OnDataBinding="trlEstatusExpedientes_DataBinding">
+                                                  
+                                                        <Columns>
+                                                            <dx:TreeListDataColumn FieldName="Orden" Caption="Orden" VisibleIndex="1"  Visible="false"  SortOrder="Ascending" />
+                                                            <dx:TreeListDataColumn FieldName="IdEstatus" Caption="Id Estatus" VisibleIndex="2" SortOrder="None" />
+                                                            <dx:TreeListDataColumn FieldName="TextoEstatus" Caption="Estatus" VisibleIndex="3" SortOrder="None" />
+                                                            <dx:TreeListDataColumn FieldName="Descripcion" VisibleIndex="4" SortOrder="None"  />
+                                                        </Columns>
+                                                        <SettingsBehavior AllowFocusedNode="true"  AllowSort="false"  AutoExpandAllNodes="True"></SettingsBehavior>
+
+                                                        <SettingsDataSecurity AllowEdit="False" AllowInsert="False" AllowDelete="False" ></SettingsDataSecurity>
+
+                                                        <SettingsPopup>
+                                                            <FilterControl AutoUpdatePosition="False"></FilterControl>
+                                                        </SettingsPopup>
+                                                        <Border BorderStyle="Solid" />
+                                                    </dx:ASPxTreeList>
+
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -600,9 +620,6 @@
                                 </dx:LayoutGroup>
                             </Items>
                         </dx:ASPxFormLayout>
-
-
-
 
                     </dx:PopupControlContentControl>
                 </ContentCollection>
@@ -612,7 +629,7 @@
                         <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptarstatus" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
                             <ClientSideEvents Click="function(s, e) 
                                                         {                                             
-                                                        ppCambiarEstatus.PerformCallback('guardar');                                                      
+                                                        ppCambiarEstatus.PerformCallback('guardar~'+trlEstatusExpedientes.GetFocusedNodeKey());                                                      
                                                         }" />
 
                         </dx:ASPxButton>
@@ -646,15 +663,15 @@
                                         <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%" ClientEnabled="false"  >
+                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorga" AutoPostBack="false" Width="100%" ClientEnabled="false">
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2" >
+                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%"  ClientEnabled="false">
+                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavorde" AutoPostBack="false" Width="100%" ClientEnabled="false">
                                                     </dx:ASPxMemo>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -960,6 +977,67 @@
             </dx:ASPxPopupControl>
 
         </section>
+
+        
+        <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
+            <PanelCollection>
+                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                    <table>
+                        <tr>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="Nuevo Expediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Aviso preventivo" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Proyecto(Mesa)" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Firmas" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En aviso definitivo" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Escrituracion" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Entrega" BackColor="#0066ff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+
+
+                        </tr>
+                    </table>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>
+
+
     </form>
 </body>
 </html>

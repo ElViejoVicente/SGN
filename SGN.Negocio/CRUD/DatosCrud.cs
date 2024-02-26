@@ -78,7 +78,6 @@ namespace SGN.Negocio.CRUD
         }
         #endregion
 
-
         #region DatosParticipantes
         public Boolean AltaDatosParticipantes(DatosParticipantes values)
         {
@@ -318,8 +317,6 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
-
-
         #region Cat_DocumentosPorActo
         public List<Cat_DocumentosPorActo> ConsultaCatDocumentosPorActo()
         {
@@ -493,6 +490,30 @@ namespace SGN.Negocio.CRUD
 
 
         #endregion
+
+        #region PerfilesXestatus
+
+        public List<PerfilesXestatus> ConsultaPerfilesXestatus()
+        {
+            try
+            {
+                List<PerfilesXestatus> resultado = new List<PerfilesXestatus>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<PerfilesXestatus>(sql: "sp_CRUD_PerfilesXestatus_Select").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_PerfilesXestatus_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        #endregion
+
         #region Cat_Proyectistas
 
         public List<Cat_Proyectistas> ConsultaCatProyectista()
@@ -580,6 +601,7 @@ namespace SGN.Negocio.CRUD
 
 
         #endregion
+        
         #region Expedientes
 
         public Expedientes ConsultaExpediente(string numExp)

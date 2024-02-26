@@ -980,32 +980,44 @@ namespace SGN.Web.ExpedientesTramites
 
 
                 object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
-                foreach (var item in (Object[])itemsOS)
+                if (itemsOS.ToString()!=null)
                 {
-                    nuevahojaDocumentos = new DatosDocumentos();
-                    nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                    nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
-                    nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
-                    nuevahojaDocumentos.TextoFigura = "Otorga o Solicita";
-                    nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
-                    nuevahojaDocumentos.Observaciones = "";
+                    foreach (var item in (Object[])itemsOS)
+                    {
+                        nuevahojaDocumentos = new DatosDocumentos();
+                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                        nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                        nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
+                        nuevahojaDocumentos.TextoFigura = "Otorga o Solicita";
+                        nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
+                        nuevahojaDocumentos.Observaciones = "";
 
-                    datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+                        datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+
+                    }
 
                 }
+          
                 object itemsFv = HidDocumentoSelect["AfavorDe"];
-                foreach (var item in (Object[])itemsFv)
-                {
-                    nuevahojaDocumentos = new DatosDocumentos();
-                    nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
-                    nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
-                    nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
-                    nuevahojaDocumentos.TextoFigura = "A favor de";
-                    nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
-                    nuevahojaDocumentos.Observaciones = "";
 
-                    datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+                if (itemsFv.ToString()!="")
+                {
+                    foreach (var item in (Object[])itemsFv)
+                    {
+                        nuevahojaDocumentos = new DatosDocumentos();
+                        nuevahojaDocumentos.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                        nuevahojaDocumentos.IdVariente = nuevaHojaComplemento.IdVariante;
+                        nuevahojaDocumentos.TextoVariante = nuevaHojaComplemento.TextoVariante;
+                        nuevahojaDocumentos.TextoFigura = "A favor de";
+                        nuevahojaDocumentos.IdDoc = Convert.ToInt32(item);
+                        nuevahojaDocumentos.Observaciones = "";
+
+                        datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
+                    }
+
                 }
+
+            
 
 
                 // se registra el primer recibo de pago
@@ -1028,6 +1040,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 nuevoExpediente.IdExpediente = nuevaHoja.numExpediente;
                 nuevoExpediente.IdHojaDatos = nuevaHoja.IdHojaDatos;
+                nuevoExpediente.IdEstatus = "EX1";
                 //nuevoExpediente.FechaElaboracion = nuevaHoja.FechaIngreso;
 
 
@@ -1518,6 +1531,41 @@ namespace SGN.Web.ExpedientesTramites
             detailGrid.DataSource = detalle;
         }
 
+        protected void gvHojaDatos_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
+        {
+            if (e.DataColumn.FieldName == "TextoEstatus")
+            {
 
+                var numExpediente = lsHojaDatos.Where(x => x.IdHojaDatos.ToString() == e.KeyValue.ToString()).FirstOrDefault();
+                if (numExpediente != null)
+                {
+                    switch (numExpediente.IdEstatus)
+                    {
+                        case "EX1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33ccff");
+                            break;
+                        case "AP1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccccff");
+                            break;
+                        case "PR1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33cc33");
+                            break;
+                        case "FI1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#cc33ff");
+                            break;
+                        case "AD1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff9900");
+                            break;
+                        case "ES1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#999999");
+                            break;
+                        case "EN1":
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#0066ff");
+                            break;
+                    }
+                }
+
+            }
+        }
     }
 }

@@ -118,14 +118,14 @@
         }
 
         function onCallbackReport(value) {
-            
+
             window.open("../Reportes/reporteHojaDatos?idHojaDatos=" + value, "_blank");
         }
 
         function onCallbackEditarHoja(value) {
-            
+
             ppNuevaHojaDatos.Show();
-            ppNuevaHojaDatos.PerformCallback("EditarHojaDatos~" + value );
+            ppNuevaHojaDatos.PerformCallback("EditarHojaDatos~" + value);
         }
 
 
@@ -184,12 +184,12 @@
         <section class="CLPageContent" id="maindiv">
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvHojaDatos"></dx:ASPxGridViewExporter>
 
-            <dx:ASPxHiddenField runat="server" ID="HidDocumentoSelect" ClientInstanceName="HidDocumentoSelect" ></dx:ASPxHiddenField>
+            <dx:ASPxHiddenField runat="server" ID="HidDocumentoSelect" ClientInstanceName="HidDocumentoSelect"></dx:ASPxHiddenField>
 
             <dx:ASPxGridView runat="server" ID="gvHojaDatos" ClientInstanceName="gvHojaDatos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdHojaDatos"
                 OnDataBinding="gvHojaDatos_DataBinding"
                 OnCustomCallback="gvHojaDatos_CustomCallback"
-                OnToolbarItemClick="gvHojaDatos_ToolbarItemClick">
+                OnToolbarItemClick="gvHojaDatos_ToolbarItemClick" OnHtmlDataCellPrepared="gvHojaDatos_HtmlDataCellPrepared">
 
                 <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
 
@@ -350,15 +350,38 @@
                                             <dx:ContentControl>
 
 
-                                                <dx:ASPxGridView runat="server" ID="gvOtorgaSolictaDetalle" ClientInstanceName="gvOtorgaSolictaDetalle" KeyFieldName="IdHojaDatos"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvOtorgaSolictaDetalle_BeforePerformDataSelect">
+                                                <dx:ASPxGridView runat="server"
+                                                    ID="gvOtorgaSolictaDetalle"
+                                                    ClientInstanceName="gvOtorgaSolictaDetalle"
+                                                    KeyFieldName="IdHojaDatos"
+                                                    EnablePagingGestures="False"
+                                                    AutoGenerateColumns="true"
+                                                    OnBeforePerformDataSelect="gvOtorgaSolictaDetalle_BeforePerformDataSelect">
                                                     <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+
+                                                    <Settings ShowFooter="false" ShowFilterRow="false" ShowFilterBar="Hidden" ShowFilterRowMenu="false" ShowHeaderFilterButton="false" ShowGroupPanel="false" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+
+
+                                                    <SettingsBehavior
+                                                        AllowGroup="false"
+                                                        AllowDragDrop="false"
+                                                        AllowFixedGroups="false"
+                                                        AllowSelectByRowClick="true"
+                                                        AllowSelectSingleRowOnly="false"
+                                                        AutoExpandAllGroups="false"
+                                                        AllowFocusedRow="True"
+                                                        ProcessFocusedRowChangedOnServer="False"
+                                                        AllowSort="false"
+                                                        ConfirmDelete="true"
+                                                        EnableCustomizationWindow="true"></SettingsBehavior>
+
+
                                                     <Columns>
 
                                                         <%--  columnas Otorga Solicta Detalle --%>
 
 
-                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Rol" FieldName="RolOperacion" Width="120px" Visible="true">
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Rol" FieldName="RolOperacion" Width="120px" Visible="true" Settings-AllowSort="False">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
@@ -507,7 +530,7 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxDateEdit runat="server" ID="dtFechaIngreso" ClientEnabled="false" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy HH:mm">
-                                                         <TimeSectionProperties Visible="true"></TimeSectionProperties>  
+                                                        <TimeSectionProperties Visible="true"></TimeSectionProperties>
                                                     </dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -793,7 +816,7 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita" ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
-                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding" >
+                                                        OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding">
                                                         <FilteringSettings ShowSearchUI="true" />
                                                         <ClientSideEvents SelectedIndexChanged="function(s, e) 
                                                                                      {     
@@ -1038,6 +1061,65 @@
 
 
         </section>
+
+                <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
+            <PanelCollection>
+                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                    <table>
+                        <tr>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="Nuevo Expediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Aviso preventivo" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Proyecto(Mesa)" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Firmas" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En aviso definitivo" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Escrituracion" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <dx:ASPxLabel runat="server" Text="En Entrega" BackColor="#0066ff" Font-Size="Small"></dx:ASPxLabel>
+                            </td>
+
+
+                        </tr>
+                    </table>
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>
+
 
 
     </form>

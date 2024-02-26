@@ -114,13 +114,13 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxTextBox txtProyecSelecEstatus;
 
         /// <summary>
-        /// Control rbEstados.
+        /// Control trlEstatusExpedientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxRadioButtonList rbEstados;
+        protected global::DevExpress.Web.ASPxTreeList.ASPxTreeList trlEstatusExpedientes;
 
         /// <summary>
         /// Control ppEditarExpediente.
@@ -463,5 +463,14 @@ namespace SGN.Web.ExpedientesTramites
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxFileManager fmArchivosControl;
+
+        /// <summary>
+        /// Control BottomPanelx.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel BottomPanelx;
     }
 }
