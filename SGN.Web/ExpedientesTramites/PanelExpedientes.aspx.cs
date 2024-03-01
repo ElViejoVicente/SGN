@@ -179,27 +179,33 @@ namespace SGN.Web.ExpedientesTramites
         #region Funciones
         private void DameCatalogos()
         {
-            //UsuarioPagina.NombrePerfil
+            try
+            {
+             
+                catEstatus = datosCrud.ConsultaCatEstatus();
+                catActos = datosCrud.ConsultaCatActos();
+                catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x => x.EsProyectista == true).ToList();
+                lsPerfilesXestatus = datosCrud.ConsultaPerfilesXestatus();
+
+                if (lsPerfilesXestatus.Count > 0)
+                {
+
+                    var estatusPermitidos = (from dato in catEstatus where lsPerfilesXestatus.Exists(p => p.esIdEstatus == dato.IdEstatus && p.esIdPerfil == UsuarioPagina.Perfil) select dato).ToList();
+                    catEstatus = estatusPermitidos;
+                }
 
 
-            catEstatus = datosCrud.ConsultaCatEstatus();
-            catActos = datosCrud.ConsultaCatActos();
-            catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x => x.EsProyectista == true).ToList();
-            lsPerfilesXestatus = datosCrud.ConsultaPerfilesXestatus();
+                //cbActosNuevo.DataBind();
+                cbPRfnProyectista.DataBind();
+                trlEstatusExpedientes.DataBind();
 
-            if (lsPerfilesXestatus.Count>0)
+                MostrarCampoPorPerfil(UsuarioPagina.NombrePerfil);
+            }
+            catch (Exception ex)
             {
 
-                var estatusPermitidos = (from dato in catEstatus where lsPerfilesXestatus.Exists(p => p.esIdEstatus == dato.IdEstatus && p.esIdPerfil==UsuarioPagina.Perfil)  select dato).ToList();
-                catEstatus = estatusPermitidos;
-            }     
-
-
-            //cbActosNuevo.DataBind();
-            cbPRfnProyectista.DataBind();
-            trlEstatusExpedientes.DataBind();
-
-            MostrarCampoPorPerfil(UsuarioPagina.NombrePerfil);
+                throw ex;
+            }
 
         }
 
@@ -541,25 +547,26 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            if (rutaArchivosRoot != "")
+            try
             {
-                fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+                if (rutaArchivosRoot != "")
+                {
+                    fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
 
-                var rootFolder = GetRootFolder(fmArchivosControl.SelectedFolder);
+                    var rootFolder = GetRootFolder(fmArchivosControl.SelectedFolder);
 
-                ApplyRules(rootFolder);
+                    ApplyRules(rootFolder);
+
+                }
 
             }
+            catch (Exception ex)
+            {
 
-            //if (catEstatus.Count>0)
-            //{
-
-            //    trlEstatusExpedientes.DataSource= catEstatus;
-
-            //   // trlEstatusExpedientes.DataBind();
-
-
-            //}
+                throw ex;
+            }
+      
+            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
