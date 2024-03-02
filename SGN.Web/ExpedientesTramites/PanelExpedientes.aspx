@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+
 <%@ Register Assembly="DevExpress.Web.ASPxTreeList.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
@@ -7,6 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../SwitcherResources/Content/Cosmo/bootstrap.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
     <script src="../Scripts/sweetalert.min.js"></script>
@@ -55,7 +58,7 @@
 
             if (s.cp_swType != null && s.cp_swAlert == null) {
 
-              
+
                 ppEditarExpediente.Hide();
                 ppCambiarEstatus.Hide();
                 ppArchivos.Hide();
@@ -178,6 +181,8 @@
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
                                                             <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
+
+                                                            <Image IconID="xaf_action_reload_svg_16x16"></Image>
                                                         </dx:ASPxButton>
                                                     </td>
                                                 </tr>
@@ -316,7 +321,7 @@
 
                             <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
 
-                            <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />
+                    <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
@@ -571,7 +576,7 @@
 
             <dx:ASPxPopupControl runat="server" ID="ppCambiarEstatus" ClientInstanceName="ppCambiarEstatus" Height="500px" Width="800px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Cambiar estatus del Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppCambiarEstatus_WindowCallback" ScrollBars="Auto" >
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppCambiarEstatus_WindowCallback" ScrollBars="Auto">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
@@ -587,25 +592,25 @@
                                         </dx:LayoutItemNestedControlContainer>
                                     </LayoutItemNestedControlCollection>
                                 </dx:LayoutItem>
-                                <dx:LayoutGroup Caption="Catalogo de estatus" ColSpan="3" ColumnSpan="3" >
-                                    <Items >
-                                        <dx:LayoutItem ColSpan="1" Caption="" >
+                                <dx:LayoutGroup Caption="Catalogo de estatus" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="1" Caption="">
                                             <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server" >
+                                                <dx:LayoutItemNestedControlContainer runat="server">
 
 
-                                                    <dx:ASPxTreeList ID="trlEstatusExpedientes" ClientInstanceName="trlEstatusExpedientes" runat="server" KeyFieldName="IdEstatus" 
+                                                    <dx:ASPxTreeList ID="trlEstatusExpedientes" ClientInstanceName="trlEstatusExpedientes" runat="server" KeyFieldName="IdEstatus"
                                                         ParentFieldName="IdEstadoPadre" AutoGenerateColumns="False" OnDataBinding="trlEstatusExpedientes_DataBinding">
-                                                  
+
                                                         <Columns>
-                                                            <dx:TreeListDataColumn FieldName="Orden" Caption="Orden" VisibleIndex="1"  Visible="false"  SortOrder="Ascending" />
+                                                            <dx:TreeListDataColumn FieldName="Orden" Caption="Orden" VisibleIndex="1" Visible="false" SortOrder="Ascending" />
                                                             <dx:TreeListDataColumn FieldName="IdEstatus" Caption="Id Estatus" VisibleIndex="2" SortOrder="None" />
                                                             <dx:TreeListDataColumn FieldName="TextoEstatus" Caption="Estatus" VisibleIndex="3" SortOrder="None" />
-                                                            <dx:TreeListDataColumn FieldName="Descripcion" VisibleIndex="4" SortOrder="None"  />
+                                                            <dx:TreeListDataColumn FieldName="Descripcion" VisibleIndex="4" SortOrder="None" />
                                                         </Columns>
-                                                        <SettingsBehavior AllowFocusedNode="true"  AllowSort="false"  AutoExpandAllNodes="True"></SettingsBehavior>
+                                                        <SettingsBehavior AllowFocusedNode="true" AllowSort="false" AutoExpandAllNodes="True"></SettingsBehavior>
 
-                                                        <SettingsDataSecurity AllowEdit="False" AllowInsert="False" AllowDelete="False" ></SettingsDataSecurity>
+                                                        <SettingsDataSecurity AllowEdit="False" AllowInsert="False" AllowDelete="False"></SettingsDataSecurity>
 
                                                         <SettingsPopup>
                                                             <FilterControl AutoUpdatePosition="False"></FilterControl>
@@ -955,19 +960,16 @@
 
 
 
-                        <dx:ASPxFileManager ID="fmArchivosControl" ClientInstanceName="fmArchivosControl" runat="server" OnCustomThumbnail="fmArchivosControl_CustomThumbnail">
-                            <Settings RootFolder="~/GNArchivosRoot" AllowedFileExtensions=".jpg,.jpeg,.gif,.rtf,.txt,.png,.xls,.xlsx,.docx,.doc,.pdf" EnableMultiSelect="true" />
-                            <SettingsEditing AllowCreate="false" AllowDelete="true" AllowMove="true" AllowRename="true" AllowCopy="true" AllowDownload="true" />
-                            <SettingsFileList View="Details">
-                                <DetailsViewSettings AllowColumnResize="true" AllowColumnDragDrop="true" AllowColumnSort="true" ShowHeaderFilterButton="false" />
+                   <%--     <dx:BootstrapFileManager runat="server" ID="ASPxFileManager1" Height="480px" Settings-EnableMultiSelect="true" ClientInstanceName="ASPxFileManager1" ClientIDMode="Static" >
+                            <SettingsFileList View="Details" ShowFolders="true" ShowParentFolder="true">
+                                <DetailsViewSettings AllowColumnDragDrop="true" ShowSelectAllCheckbox="true" ShowHeaderFilterButton="true" />
                             </SettingsFileList>
-                            <SettingsFileList ShowFolders="true" ShowParentFolder="true" />
-                            <SettingsBreadcrumbs Visible="true" ShowParentFolderButton="true" Position="Top" />
-                            <SettingsUpload UseAdvancedUploadMode="true">
-                                <AdvancedModeSettings EnableMultiSelect="true" />
-                            </SettingsUpload>
-                            <SettingsAdaptivity Enabled="true" />
-                        </dx:ASPxFileManager>
+                            <Settings RootFolder="~/GNArchivosRoot" />
+                            <SettingsEditing AllowCreate="true" AllowDelete="true" AllowMove="true" AllowCopy="true" AllowRename="true"
+                                AllowDownload="true" TemporaryFolder="~/GNArchivosRoot" />
+                            <SettingsToolbar ShowPath="false" />
+                            <SettingsAdaptivity Enabled="true" CollapseFolderContainerAtWindowInnerWidth="991" />
+                        </dx:BootstrapFileManager>--%>
 
 
 
@@ -978,7 +980,7 @@
 
         </section>
 
-        
+
         <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
@@ -1036,6 +1038,9 @@
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxPanel>
+
+
+
 
 
     </form>

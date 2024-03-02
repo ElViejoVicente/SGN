@@ -178,6 +178,7 @@ namespace SGN.Web.ExpedientesTramites
 
         #region Funciones
         private void DameCatalogos()
+        
         {
             try
             {
@@ -547,24 +548,26 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            try
-            {
-                if (rutaArchivosRoot != "")
-                {
-                    fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+            //try
+            //{
+            //    if (rutaArchivosRoot != "")
+            //    {
+            //        ASPxFileManager1.Settings.RootFolder = rutaArchivosRoot;
 
-                    var rootFolder = GetRootFolder(fmArchivosControl.SelectedFolder);
+            //        ASPxFileManager1.Refresh();
 
-                    ApplyRules(rootFolder);
+            //        var rootFolder = GetRootFolder(ASPxFileManager1.SelectedFolder);
 
-                }
+            //        ApplyRules(rootFolder);
 
-            }
-            catch (Exception ex)
-            {
+            //    }
 
-                throw ex;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw ex;
+            //}
       
             
         }
@@ -605,7 +608,7 @@ namespace SGN.Web.ExpedientesTramites
                     var datosExpediente = control.GetSelectedFieldValues("IdExpediente");
                     string numeroExpediente = datosExpediente[0].ToString().Replace("/", "-");
                     rutaArchivosRoot = "~/GNArchivosRoot/" + numeroExpediente;
-                    fmArchivosControl.Settings.RootFolder = rutaArchivosRoot;
+                  //  ASPxFileManager1.Settings.RootFolder = rutaArchivosRoot;
                     //fmArchivosControl.Refresh();
 
                 }
@@ -1071,8 +1074,8 @@ namespace SGN.Web.ExpedientesTramites
                 FileManagerFolderAccessRule folderContentEditingRule = new FileManagerFolderAccessRule(folders[i].RelativeName);
                 folderContentEditingRule.EditContents = Rights.Allow;
 
-                fmArchivosControl.SettingsPermissions.AccessRules.Add(folderEditingRule);
-                fmArchivosControl.SettingsPermissions.AccessRules.Add(folderContentEditingRule);
+                //ASPxFileManager1.SettingsPermissions.AccessRules.Add(folderEditingRule);
+                //ASPxFileManager1.SettingsPermissions.AccessRules.Add(folderContentEditingRule);
 
                 ApplyRules(folders[i]);
             }
