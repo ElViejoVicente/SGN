@@ -759,8 +759,7 @@
                                                                         OnInit="cbEstadoCivilOtorgaSolicita_Init">
                                                                         <Items>
                                                                             <dx:ListEditItem Text="Casado(a)" Value="Casado" Selected="true"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Soltero(a)" Value="Soltero"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Divorciado(a)" Value="Divorciado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Soltero(a)" Value="Soltero"></dx:ListEditItem>                                                                           
                                                                             <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
                                                                         </Items>
                                                                     </dx:ASPxComboBox>

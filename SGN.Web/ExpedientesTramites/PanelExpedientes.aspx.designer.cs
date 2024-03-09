@@ -264,7 +264,7 @@ namespace SGN.Web.ExpedientesTramites
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtPRfnISR;
+        protected global::DevExpress.Web.ASPxTextBox txtPRfnISR;
 
         /// <summary>
         /// Control txtFIfnNotasFirmas.

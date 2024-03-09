@@ -398,33 +398,33 @@
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvProyecto" ClientInstanceName="gvProyecto" KeyFieldName="IdExpediente"
-                                                    EnablePagingGestures="False" AutoGenerateColumns="true" OnBeforePerformDataSelect="gvProyecto_BeforePerformDataSelect">
+                                                    EnablePagingGestures="False" AutoGenerateColumns="False" OnBeforePerformDataSelect="gvProyecto_BeforePerformDataSelect">
                                                     <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
                                                     <Columns>
                                                         <%--  columnas  Proyecto --%>
 
-                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Proyectista" FieldName="NombreProyectista" Width="50px" Visible="true">
+                                                        <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Proyectista" FieldName="NombreProyectista" Width="50px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true" ToolTip="Fecha de Asignacion al Proyectista">
+                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true" ToolTip="Fecha de Asignacion al Proyectista">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
+                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
+                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
-
-                                                        <dx:GridViewDataSpinEditColumn VisibleIndex="5" Caption="I.S.R." FieldName="ISR" ReadOnly="true" Visible="true" Width="100px" PropertiesSpinEdit-DisplayFormatString="C">
-                                                            <PropertiesSpinEdit>
-                                                                <SpinButtons ClientVisible="false" />
-                                                            </PropertiesSpinEdit>
+                                                        <dx:GridViewDataTextColumn FieldName="ISR" ReadOnly="True" Width="100px" Caption="I.S.R." VisibleIndex="4">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataSpinEditColumn>
+                                                        </dx:GridViewDataTextColumn>
+
                                                     </Columns>
                                                 </dx:ASPxGridView>
                                             </dx:ContentControl>
@@ -766,8 +766,9 @@
                                         <dx:LayoutItem Caption="I.S.R." FieldName="PRfnISR" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxSpinEdit runat="server" ID="txtPRfnISR" AutoPostBack="false" Width="100%" SpinButtons-ClientVisible="false" MinValue="0" NumberType="Float" DisplayFormatString="C">
-                                                    </dx:ASPxSpinEdit>
+                                                    <dx:ASPxTextBox runat="server" ID="txtPRfnISR">
+                                                        <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol" />
+                                                    </dx:ASPxTextBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>

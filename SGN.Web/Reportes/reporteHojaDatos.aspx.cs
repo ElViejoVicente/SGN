@@ -85,17 +85,26 @@ namespace SGN.Web.Reportes
                 XtraReport report = new XtraReport();
                 report.CreateDocument();
                 XtraHojaDatos hojaDatos = new XtraHojaDatos();
+                XtraHojaDatosSinOtorga hojaDatosSinAfavor = new XtraHojaDatosSinOtorga();
 
-               // DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource();
-                //objectDataSource.DataSource = origen; 
+                if (origen.DatosParticipantesAfavorDe.Count==0 & origen.DatosDocumentosAfavorDe.Count  ==0)
+                {
+                    hojaDatosSinAfavor.DataSource = origen;
+                    hojaDatosSinAfavor.RequestParameters = false;
+                    hojaDatosSinAfavor.CreateDocument();
+                    report.Pages.AddRange(hojaDatosSinAfavor.Pages);
 
-                //objectDataSource.Fill();
-  
-                hojaDatos.DataSource = origen;
+                }
+                else
+                {
 
-                hojaDatos.RequestParameters = false;
-                hojaDatos.CreateDocument();
-                report.Pages.AddRange(hojaDatos.Pages);
+                    hojaDatos.DataSource = origen;
+                    hojaDatos.RequestParameters = false;
+                    hojaDatos.CreateDocument();
+                    report.Pages.AddRange(hojaDatos.Pages);
+
+
+                }
 
 
                 reportePrinsipalView.OpenReport(report);
