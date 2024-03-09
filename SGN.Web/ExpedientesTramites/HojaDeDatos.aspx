@@ -397,14 +397,14 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                <%--        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
+                                                        </dx:GridViewDataTextColumn>--%>
 
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Sabe Leer/escribir " FieldName="SabeLeerEscribir" Width="100px" Visible="true">
@@ -462,14 +462,14 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                           <%--             <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
+                                                        </dx:GridViewDataTextColumn>--%>
 
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Sabe Leer/escribir " FieldName="SabeLeerEscribir" Width="100px" Visible="true">
@@ -726,7 +726,7 @@
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
                                                             </dx:GridViewDataTextColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                     <%--       <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -743,7 +743,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataDateColumn Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
-                                                            </dx:GridViewDataDateColumn>
+                                                            </dx:GridViewDataDateColumn>--%>
 
 
 
@@ -928,7 +928,7 @@
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
                                                             </dx:GridViewDataTextColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+<%--                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoAfavorDe" ClientInstanceName="cbSexoAfavorDe" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -945,7 +945,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataDateColumn Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
-                                                            </dx:GridViewDataDateColumn>
+                                                            </dx:GridViewDataDateColumn>--%>
 
 
 
