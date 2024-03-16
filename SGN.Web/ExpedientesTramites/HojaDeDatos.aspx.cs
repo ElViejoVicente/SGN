@@ -384,7 +384,7 @@ namespace SGN.Web.ExpedientesTramites
                 HidDocumentoSelect.Add("OtorgaSolicita", "");
                 HidDocumentoSelect.Add("AfavorDe", "");
 
-                dtFechaInicio.Date=  DateTime.Now.Date;
+                dtFechaInicio.Date=  DateTime.Now.Date.AddDays(-15);
                 dtFechaFin.Date  = DateTime.Now.Date;
 
                 dtFechaIngreso.Date = DateTime.Now;

@@ -169,12 +169,12 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio: " runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Fin: " runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
