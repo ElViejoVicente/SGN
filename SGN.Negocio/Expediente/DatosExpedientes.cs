@@ -352,7 +352,7 @@ namespace SGN.Negocio.Expediente
             }
         }
 
-        public List<ListaExpedientes> DameListaExpediente(DateTime fechaInicial, DateTime fechaFinal)
+        public List<ListaExpedientes> DameListaExpediente(DateTime fechaInicial, DateTime fechaFinal,  int idUsuario)
         {
             try
             {
@@ -365,7 +365,8 @@ namespace SGN.Negocio.Expediente
                         sql: "sp_DameExpedientePorFecha", param: new
                         {
                             fechaInicial,
-                            fechaFinal
+                            fechaFinal,
+                            idUsuario
 
                         }, commandType: CommandType.StoredProcedure
                         ).ToList();

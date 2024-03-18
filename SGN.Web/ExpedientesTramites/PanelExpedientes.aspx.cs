@@ -594,7 +594,16 @@ namespace SGN.Web.ExpedientesTramites
             //ASPxGridView control = (ASPxGridView)sender;
             if (e.Parameters == "CargarRegistros")
             {
-                lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date);// cargamos registros
+                if (UsuarioPagina.NombrePerfil == "Mesas") //2024-03-17 si el perfil es de mesas entonces solo mostramos lo registros del usuario 
+                {
+                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,idUsuario: UsuarioPagina.Id);// cargamos registros
+                }
+                else
+                {
+                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario:0);// cargamos todos los registros
+                }
+
+    
                 gvExpedientes.DataBind();
                 return;
             }
