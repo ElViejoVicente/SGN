@@ -301,6 +301,10 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
+                    <dx:GridViewDataSpinEditColumn VisibleIndex="9" Caption="Escritura" FieldName="Escritura" Width="100px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataSpinEditColumn>
+
                     <%--                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>--%>
@@ -321,7 +325,7 @@
 
                             <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
 
-                    <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
+                            <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
@@ -484,7 +488,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Es tramite por sistema Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true">
+                                                        <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Es tramite por sistema Definitivo" FieldName="EsTramitePorSistemaDefinitivo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
@@ -961,7 +965,7 @@
 
 
 
-                   <%--     <dx:BootstrapFileManager runat="server" ID="ASPxFileManager1" Height="480px" Settings-EnableMultiSelect="true" ClientInstanceName="ASPxFileManager1" ClientIDMode="Static" >
+                        <%--     <dx:BootstrapFileManager runat="server" ID="ASPxFileManager1" Height="480px" Settings-EnableMultiSelect="true" ClientInstanceName="ASPxFileManager1" ClientIDMode="Static" >
                             <SettingsFileList View="Details" ShowFolders="true" ShowParentFolder="true">
                                 <DetailsViewSettings AllowColumnDragDrop="true" ShowSelectAllCheckbox="true" ShowHeaderFilterButton="true" />
                             </SettingsFileList>
@@ -971,9 +975,6 @@
                             <SettingsToolbar ShowPath="false" />
                             <SettingsAdaptivity Enabled="true" CollapseFolderContainerAtWindowInnerWidth="991" />
                         </dx:BootstrapFileManager>--%>
-
-
-
                     </dx:PopupControlContentControl>
                 </ContentCollection>
 
