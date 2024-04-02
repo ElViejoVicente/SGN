@@ -166,6 +166,7 @@
     <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
+    <Content Include="ExpedientesTramites\ArchivosExpedientes.aspx" />
     <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
@@ -552,6 +553,13 @@
     </Compile>
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedientesTramites\ArchivosExpedientes.aspx.cs">
+      <DependentUpon>ArchivosExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedientesTramites\ArchivosExpedientes.aspx.designer.cs">
+      <DependentUpon>ArchivosExpedientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExpedientesTramites\HojaDeDatos.aspx.cs">
       <DependentUpon>HojaDeDatos.aspx</DependentUpon>

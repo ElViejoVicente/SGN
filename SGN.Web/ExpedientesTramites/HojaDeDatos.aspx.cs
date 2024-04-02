@@ -12,8 +12,6 @@ using System.Web.UI.WebControls;
 using System.IO;
 using DevExpress.Export;
 using SGN.Negocio.Expediente;
-using SGN.Negocio.WS_GESAG;
-using DevExpress.CodeParser;
 
 namespace SGN.Web.ExpedientesTramites
 {
