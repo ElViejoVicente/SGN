@@ -30,6 +30,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,34 +57,44 @@
     <Reference Include="AspNet.ScriptManager.jQuery, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.6.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Docs.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v22.2.Export, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Charts.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataVisualization.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Spreadsheet.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxPivotGrid.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxScheduler.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.Bootstrap.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.Resources.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v22.2.UI, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v22.2.Web, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.CodeParser.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Docs.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v23.1.Export, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataVisualization.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxScheduler.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.1.UI, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.1.Web, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v22.2.Core.Desktop, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v22.2.Core, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.1.Web, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.1.Web.WebForms, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.1.Core.Desktop, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
     </Reference>
@@ -109,7 +120,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
@@ -119,7 +129,6 @@
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -129,17 +138,14 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Catalogos\Operaciones.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
-    <Content Include="Configuracion\pedidosGPS.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
-    <Content Include="Configuracion\TestSap.aspx" />
-    <Content Include="Consultas\ConsultasGSAC.aspx" />
     <Content Include="Content\AsignacionMatricula.js" />
     <Content Include="Content\AsignacionRet.js" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -149,17 +155,21 @@
     <Content Include="Content\Expediciones.js" />
     <Content Include="Content\ExpedicionesAsig.js" />
     <Content Include="Content\generic\pageMinimalStyle.css" />
+    <Content Include="Content\headers.css" />
     <Content Include="Content\indexMovil.css" />
     <Content Include="Content\jquery.countdown.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\menuMovil.css" />
     <Content Include="Content\paginas\flujo-procesos.css" />
     <Content Include="Content\paginas\flujo-procesos.js" />
     <Content Include="Content\stylePc.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
-    <Content Include="Controles\Usuario\UcMixPlanificacion.ascx" />
+    <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
+    <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="imagenes\GPB.ico" />
+    <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
     <Content Include="imagenes\header\ban-usa.png" />
     <Content Include="imagenes\header\cerrarSessionMinHoverN.png" />
@@ -168,15 +178,18 @@
     <Content Include="imagenes\header\fondoHeaderGPSBborde.png" />
     <Content Include="imagenes\header\logo-sikno.png" />
     <Content Include="imagenes\header\logo-siknoT.png" />
+    <Content Include="imagenes\header\LogoNotariaRecorte.png" />
     <Content Include="imagenes\header\logoS.png" />
     <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\Iconos\application-pdf-2.ico" />
+    <Content Include="imagenes\Iconos\image-x-generic.ico" />
+    <Content Include="imagenes\Iconos\text-x-generic.ico" />
+    <Content Include="imagenes\Iconos\x-office-document.ico" />
+    <Content Include="imagenes\Iconos\x-office-spreadsheet.ico" />
+    <Content Include="imagenes\login\LogoNotaria.svg" />
+    <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />
     <Content Include="imagenes\menu\BackGroundUserMenu.png" />
-    <Content Include="imagenes\login\fondoGps.png" />
-    <Content Include="imagenes\login\fondoGpsR.png" />
-    <Content Include="imagenes\login\fondoGpsRed.png" />
-    <Content Include="imagenes\login\Sikno.png" />
-    <Content Include="imagenes\login\siknoRed.jpg" />
     <Content Include="imagenes\mensajes\close10Negro.png" />
     <Content Include="imagenes\mensajes\close20Negro.png" />
     <Content Include="imagenes\menu\altaretornochico.ico" />
@@ -222,7 +235,6 @@
     <Content Include="imagenes\Produccion\finalizadoSmall.png" />
     <Content Include="imagenes\Produccion\pendiente.png" />
     <Content Include="imagenes\Produccion\pendienteSmall.png" />
-    <Content Include="imagenes\siknoRIcono.ico" />
     <Content Include="paginaConstruccion.aspx" />
     <Content Include="PlantillaMovil.aspx">
       <BrowseToURL>~/PlantillaMovil.aspx</BrowseToURL>
@@ -258,14 +270,8 @@
     <Content Include="Content\generic\pageStyle.css" />
     <Content Include="Content\generic\StylesMovil.css" />
     <Content Include="Content\headerMovil.css" />
-    <Content Include="Content\headers.css" />
-    <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\styles.css" />
     <Content Include="headerMovil.aspx" />
-    <Content Include="imagenes\login\fondoCapas2.png" />
-    <Content Include="imagenes\login\fondoCapas3.png" />
-    <Content Include="imagenes\login\fondoFundicion3per.png" />
     <Content Include="imagenes\menu\configuracion.ico" />
     <Content Include="imagenes\menu\controlProduccion.ico" />
     <Content Include="imagenes\menu\controlProduccionLarge.ico" />
@@ -312,12 +318,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
-    <Content Include="Produccion\CargarDatosProveedores.aspx" />
-    <Content Include="Produccion\ConsultaCargaCapacidad.aspx" />
-    <Content Include="Produccion\ConsultaOrdenesFabricacionSap.aspx" />
-    <Content Include="Produccion\FlujoProcesos.aspx" />
-    <Content Include="Produccion\OperariosXSeccion.aspx" />
-    <Content Include="Produccion\ProveedoresMateriales.aspx" />
+    <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.css.map" />
@@ -352,11 +353,6 @@
     <Content Include="imagenes\header\logo_gallardo_big.jpg" />
     <Content Include="imagenes\mensajes\close.png" />
     <Content Include="imagenes\mensajes\close20.png" />
-    <Content Include="imagenes\login\fondo.gif" />
-    <Content Include="imagenes\login\fondo.jpg" />
-    <Content Include="imagenes\login\fondoFundicion.jpg" />
-    <Content Include="imagenes\login\logo_gallardo_big.jpg" />
-    <Content Include="imagenes\login\siderurgia-slider.jpg" />
     <Content Include="imagenes\logo-cl.png" />
     <Content Include="imagenes\mensajes\errorsinFondo.png" />
     <Content Include="imagenes\mensajes\infoSinfondo.png" />
@@ -369,12 +365,6 @@
     <Content Include="login.aspx" />
     <Content Include="menu.aspx" />
     <Content Include="PaginaVacia.html" />
-    <Content Include="Produccion\CalendarioProduccion.aspx" />
-    <Content Include="Produccion\consultaMateriales.aspx" />
-    <Content Include="Produccion\ConsultaPedido.aspx" />
-    <Content Include="Produccion\ContProduccion.aspx" />
-    <Content Include="Produccion\MaestroFamilias.aspx" />
-    <Content Include="Produccion\PlanificacionProduccion.aspx" />
     <Content Include="Scripts\active.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -408,7 +398,6 @@
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -536,13 +525,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Catalogos\Operaciones.aspx.cs">
-      <DependentUpon>Operaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Operaciones.aspx.designer.cs">
-      <DependentUpon>Operaciones.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Configuracion\modulos.aspx.cs">
       <DependentUpon>modulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -550,33 +532,12 @@
     <Compile Include="Configuracion\modulos.aspx.designer.cs">
       <DependentUpon>modulos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Configuracion\pedidosGPS.aspx.cs">
-      <DependentUpon>pedidosGPS.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Configuracion\pedidosGPS.aspx.designer.cs">
-      <DependentUpon>pedidosGPS.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Configuracion\sociedades.aspx.cs">
       <DependentUpon>sociedades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Configuracion\sociedades.aspx.designer.cs">
       <DependentUpon>sociedades.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Configuracion\TestSap.aspx.cs">
-      <DependentUpon>TestSap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Configuracion\TestSap.aspx.designer.cs">
-      <DependentUpon>TestSap.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Consultas\ConsultasGSAC.aspx.cs">
-      <DependentUpon>ConsultasGSAC.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Consultas\ConsultasGSAC.aspx.designer.cs">
-      <DependentUpon>ConsultasGSAC.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controles\paginas\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
@@ -592,12 +553,19 @@
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\Usuario\UcMixPlanificacion.ascx.cs">
-      <DependentUpon>UcMixPlanificacion.ascx</DependentUpon>
+    <Compile Include="ExpedientesTramites\HojaDeDatos.aspx.cs">
+      <DependentUpon>HojaDeDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controles\Usuario\UcMixPlanificacion.ascx.designer.cs">
-      <DependentUpon>UcMixPlanificacion.ascx</DependentUpon>
+    <Compile Include="ExpedientesTramites\HojaDeDatos.aspx.designer.cs">
+      <DependentUpon>HojaDeDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.designer.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>
@@ -696,103 +664,40 @@
     <Compile Include="menu.aspx.designer.cs">
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Produccion\CalendarioProduccion.aspx.cs">
-      <DependentUpon>CalendarioProduccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\CalendarioProduccion.aspx.designer.cs">
-      <DependentUpon>CalendarioProduccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\CargarDatosProveedores.aspx.cs">
-      <DependentUpon>CargarDatosProveedores.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\CargarDatosProveedores.aspx.designer.cs">
-      <DependentUpon>CargarDatosProveedores.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\ConsultaCargaCapacidad.aspx.cs">
-      <DependentUpon>ConsultaCargaCapacidad.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\ConsultaCargaCapacidad.aspx.designer.cs">
-      <DependentUpon>ConsultaCargaCapacidad.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\consultaMateriales.aspx.cs">
-      <DependentUpon>consultaMateriales.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\consultaMateriales.aspx.designer.cs">
-      <DependentUpon>consultaMateriales.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\ConsultaOrdenesFabricacionSap.aspx.cs">
-      <DependentUpon>ConsultaOrdenesFabricacionSap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\ConsultaOrdenesFabricacionSap.aspx.designer.cs">
-      <DependentUpon>ConsultaOrdenesFabricacionSap.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\ConsultaPedido.aspx.cs">
-      <DependentUpon>ConsultaPedido.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\ConsultaPedido.aspx.designer.cs">
-      <DependentUpon>ConsultaPedido.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\ContProduccion.aspx.cs">
-      <DependentUpon>ContProduccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\ContProduccion.aspx.designer.cs">
-      <DependentUpon>ContProduccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\FlujoProcesos.aspx.cs">
-      <DependentUpon>FlujoProcesos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\FlujoProcesos.aspx.designer.cs">
-      <DependentUpon>FlujoProcesos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\MaestroFamilias.aspx.cs">
-      <DependentUpon>MaestroFamilias.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\MaestroFamilias.aspx.designer.cs">
-      <DependentUpon>MaestroFamilias.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\OperariosXSeccion.aspx.cs">
-      <DependentUpon>OperariosXSeccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\OperariosXSeccion.aspx.designer.cs">
-      <DependentUpon>OperariosXSeccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\PlanificacionProduccion.aspx.cs">
-      <DependentUpon>PlanificacionProduccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\PlanificacionProduccion.aspx.designer.cs">
-      <DependentUpon>PlanificacionProduccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Produccion\ProveedoresMateriales.aspx.cs">
-      <DependentUpon>ProveedoresMateriales.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Produccion\ProveedoresMateriales.aspx.designer.cs">
-      <DependentUpon>ProveedoresMateriales.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionHeartbeat.ashx.cs">
-      <DependentUpon>SessionHeartbeat.ashx</DependentUpon>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteHojaDatos.aspx.cs">
+      <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
+      <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSinOtorga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSinOtorga.Designer.cs">
+      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatos.Designer.cs">
+      <DependentUpon>XtraHojaDatos.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Produccion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="SwitcherResources\Content\LICENSE" />
-    <Content Include="SessionHeartbeat.ashx" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -813,13 +718,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GPS.Negocio\SGN.Negocio.csproj">
+    <ProjectReference Include="..\SGN.Negocio\SGN.Negocio.csproj">
       <Project>{271c2299-dd95-49de-b836-d5f37dc61301}</Project>
       <Name>SGN.Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatosSinOtorga.resx">
+      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatos.resx">
+      <DependentUpon>XtraHojaDatos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
