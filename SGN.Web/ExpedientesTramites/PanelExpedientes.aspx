@@ -305,6 +305,10 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataSpinEditColumn>
 
+                    <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Proyectista" FieldName="NombreProyectista" Width="150px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
                     <%--                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>--%>

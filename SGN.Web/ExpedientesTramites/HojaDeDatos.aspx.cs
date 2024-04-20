@@ -411,7 +411,7 @@ namespace SGN.Web.ExpedientesTramites
         {
             if (e.Parameters == "CargarRegistros")
             {
-                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date);// cargamos registros
+                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date).OrderBy(x=> x.FechaIngreso).ToList();// cargamos registros
                 gvHojaDatos.DataBind();
                 return;
             }
