@@ -488,6 +488,8 @@ namespace SGN.Negocio.Reportes {
             
             private global::System.Data.DataColumn columnAfavorDe;
             
+            private global::System.Data.DataColumn columnNumReciboInicial;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public HojaDatosDataTable() {
@@ -659,6 +661,14 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NumReciboInicialColumn {
+                get {
+                    return this.columnNumReciboInicial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -711,7 +721,8 @@ namespace SGN.Negocio.Reportes {
                         string TextoActo, 
                         string TextoVariante, 
                         string Otorga, 
-                        string AfavorDe) {
+                        string AfavorDe, 
+                        string NumReciboInicial) {
                 HojaDatosRow rowHojaDatosRow = ((HojaDatosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdEstatus,
@@ -730,7 +741,8 @@ namespace SGN.Negocio.Reportes {
                         TextoActo,
                         TextoVariante,
                         Otorga,
-                        AfavorDe};
+                        AfavorDe,
+                        NumReciboInicial};
                 rowHojaDatosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowHojaDatosRow);
                 return rowHojaDatosRow;
@@ -770,6 +782,7 @@ namespace SGN.Negocio.Reportes {
                 this.columnTextoVariante = base.Columns["TextoVariante"];
                 this.columnOtorga = base.Columns["Otorga"];
                 this.columnAfavorDe = base.Columns["AfavorDe"];
+                this.columnNumReciboInicial = base.Columns["NumReciboInicial"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -809,6 +822,8 @@ namespace SGN.Negocio.Reportes {
                 base.Columns.Add(this.columnOtorga);
                 this.columnAfavorDe = new global::System.Data.DataColumn("AfavorDe", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAfavorDe);
+                this.columnNumReciboInicial = new global::System.Data.DataColumn("NumReciboInicial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumReciboInicial);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3214,6 +3229,22 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NumReciboInicial {
+                get {
+                    try {
+                        return ((string)(this[this.tableHojaDatos.NumReciboInicialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumReciboInicial\' de la tabla \'HojaDatos\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHojaDatos.NumReciboInicialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdEstatusNull() {
                 return this.IsNull(this.tableHojaDatos.IdEstatusColumn);
             }
@@ -3414,6 +3445,18 @@ namespace SGN.Negocio.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetAfavorDeNull() {
                 this[this.tableHojaDatos.AfavorDeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNumReciboInicialNull() {
+                return this.IsNull(this.tableHojaDatos.NumReciboInicialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNumReciboInicialNull() {
+                this[this.tableHojaDatos.NumReciboInicialColumn] = global::System.Convert.DBNull;
             }
         }
         

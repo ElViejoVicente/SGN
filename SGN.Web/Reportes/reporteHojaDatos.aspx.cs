@@ -22,12 +22,21 @@ namespace SGN.Web.Reportes
             if (!Page.IsPostBack)
             {
                 string idHojaDatos = Server.UrlEncode(Request.QueryString["idHojaDatos"]);
+                string numReciboPagoIni = "";
 
                 //consutamos los datos de la hoja de datos para tenerlos en la memoria del reporte.
                 ListaHojaDatos datosReporte = new ListaHojaDatos();
 
 
                 datosReporte = datosExpediente.DameHojaDatosDetalle(Convert.ToInt32(idHojaDatos));
+
+                if (datosReporte.DetalleRecibosPago.Where(x => x.Concepto == "Recibo Inicial Expediente")!=null)
+                {
+                    if (datosReporte.DetalleRecibosPago.Where(x => x.Concepto == "Recibo Inicial Expediente").ToList().Count>0)
+                    {
+                        numReciboPagoIni = datosReporte.DetalleRecibosPago.Where(x => x.Concepto == "Recibo Inicial Expediente").FirstOrDefault().NumRecibo;
+                    }
+                }
 
 
                 // se rellenan los abjetos a el dataSet
@@ -41,7 +50,7 @@ namespace SGN.Web.Reportes
                 origen.HojaDatos.AddHojaDatosRow(datosReporte.IdEstatus, datosReporte.TextoEstatus, datosReporte.IdHojaDatos, datosReporte.numExpediente,
                     datosReporte.NombreAsesor, datosReporte.FechaIngreso, datosReporte.FechaCompleto, datosReporte.IdUsuarioResponsable, datosReporte.IdEquipoResponsable,
                     datosReporte.NumbreUsuarioTramita, datosReporte.NumTelCelular1, datosReporte.NumTelCelular2, datosReporte.CorreoElectronico, datosReporte.TextoActo,
-                    datosReporte.TextoVariante, datosReporte.Otorga, datosReporte.AfavorDe);
+                    datosReporte.TextoVariante, datosReporte.Otorga, datosReporte.AfavorDe, numReciboPagoIni);
 
 
                 // se rellenana los dt de los prticipantes
