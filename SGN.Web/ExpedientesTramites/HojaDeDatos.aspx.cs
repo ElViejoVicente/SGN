@@ -382,7 +382,7 @@ namespace SGN.Web.ExpedientesTramites
                 HidDocumentoSelect.Add("OtorgaSolicita", "");
                 HidDocumentoSelect.Add("AfavorDe", "");
 
-                dtFechaInicio.Date=  DateTime.Now.Date.AddDays(-15);
+                dtFechaInicio.Date=  DateTime.Now.Date.AddDays(-30);
                 dtFechaFin.Date  = DateTime.Now.Date;
 
                 dtFechaIngreso.Date = DateTime.Now;
@@ -411,7 +411,7 @@ namespace SGN.Web.ExpedientesTramites
         {
             if (e.Parameters == "CargarRegistros")
             {
-                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date).OrderBy(x=> x.FechaIngreso).ToList();// cargamos registros
+                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date).OrderByDescending(x=> x.FechaIngreso).ToList();// cargamos registros
                 gvHojaDatos.DataBind();
                 return;
             }
