@@ -273,7 +273,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>--%>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Estatus" FieldName="TextoEstatus" Width="100px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Estatus" FieldName="TextoEstatus" Width="120px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
@@ -289,11 +289,11 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Otorga" FieldName="Otorga" Width="350px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Otorga" FieldName="Otorga" Width="250px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="A favor De" FieldName="AfavorDe" Width="350px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="A favor De" FieldName="AfavorDe" Width="250px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
@@ -993,50 +993,44 @@
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxLabel runat="server" Text="Nuevo Expediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
+                                <dx:ASPxLabel runat="server" Text="NuevoExpediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                                <dx:ASPxLabel runat="server" Text="En Aviso preventivo" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
+                                <dx:ASPxLabel runat="server" Text="EnProyecto(Mesa)" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                                <dx:ASPxLabel runat="server" Text="En Proyecto(Mesa)" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
+                                <dx:ASPxLabel runat="server" Text="ProyectoTerminado" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                                <dx:ASPxLabel runat="server" Text="En Firmas" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
+                                <dx:ASPxLabel runat="server" Text="SeAcentoEscritura" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                                <dx:ASPxLabel runat="server" Text="En aviso definitivo" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
+                                <dx:ASPxLabel runat="server" Text="ConProblemas" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
                             </td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                                <dx:ASPxLabel runat="server" Text="En Escrituracion" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
+                                <dx:ASPxLabel runat="server" Text="Entregado" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
                             </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="En Entrega" BackColor="#0066ff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
+                           
 
 
                         </tr>

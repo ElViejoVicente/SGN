@@ -1539,26 +1539,23 @@ namespace SGN.Web.ExpedientesTramites
                 {
                     switch (numExpediente.IdEstatus)
                     {
-                        case "EX1":
+                        case "EX1": //NuevoExpediente
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33ccff");
                             break;
-                        case "AP1":
+                        case "PR1": //EnProyecto(Mesa)
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccccff");
                             break;
-                        case "PR1":
+                        case "PR3": //ProyectoTerminado
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33cc33");
                             break;
-                        case "FI1":
+                        case "FI5":  //SeAcentoEscritura
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#cc33ff");
                             break;
-                        case "AD1":
+                        case "EN6": //ConProblemas
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff9900");
                             break;
-                        case "ES1":
+                        case "EN5": //Entregado
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#999999");
-                            break;
-                        case "EN1":
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#0066ff");
                             break;
                     }
                 }
