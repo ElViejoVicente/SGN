@@ -151,12 +151,12 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
@@ -247,7 +247,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
+                    <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
 
@@ -397,7 +397,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                <%--        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                <%--        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -462,7 +462,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                           <%--             <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                           <%--             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -742,7 +742,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataDateColumn Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
+                                                            <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
                                                             </dx:GridViewDataDateColumn>--%>
 
 
@@ -943,7 +943,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataDateColumn Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
+                                                            <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
                                                             </dx:GridViewDataDateColumn>--%>
 
 

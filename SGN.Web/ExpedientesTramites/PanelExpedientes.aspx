@@ -169,12 +169,12 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio" AutoPostBack="false"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
@@ -285,7 +285,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataDateColumn VisibleIndex="6" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
+                   <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
 
@@ -375,11 +375,11 @@
 
                                                         <%--  columnas aviso preventivo --%>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Elaboracion" FieldName="FechaElaboracion" Width="100px" Visible="true">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Elaboracion" FieldName="FechaElaboracion" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Envio al RPP" FieldName="FechaEnvioRPP" Width="100px" Visible="true">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Envio al RPP" FieldName="FechaEnvioRPP" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -387,11 +387,11 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Pago boleta" FieldName="FechaPagoBoleta" Width="100px" Visible="true">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="4" Caption="Pago boleta" FieldName="FechaPagoBoleta" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Recibo RPP" FieldName="FechaRecibidoRPP" Width="100px" Visible="true">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Recibo RPP" FieldName="FechaRecibidoRPP" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -415,15 +415,16 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true" ToolTip="Fecha de Asignacion al Proyectista">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha asignacion" FieldName="FechaAsignacionProyectista" Width="100px" Visible="true"  ToolTip="Fecha de Asignacion al Proyectista">
+                                                           
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
                                                         <dx:GridViewDataTextColumn FieldName="ISR" ReadOnly="True" Width="100px" Caption="I.S.R." VisibleIndex="4">
@@ -464,7 +465,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -484,11 +485,11 @@
 
                                                         <%--  Aviso definitivo --%>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha elaboracion definitivo" FieldName="FechaElaboracionDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha elaboracion definitivo" FieldName="FechaElaboracionDefinitivo" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha Envio RPP Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha Envio RPP Definitivo" FieldName="FechaEnvioRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -496,11 +497,11 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha de traslado entregado" FieldName="FechaPagoBoletaDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="4" Caption="Fecha de traslado entregado" FieldName="FechaPagoBoletaDefinitivo" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha recibido RPP definitivo" FieldName="FechaRecibidoRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha recibido RPP definitivo" FieldName="FechaRecibidoRPPDefinitivo" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -517,14 +518,14 @@
                                                     <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
                                                     <Columns>
                                                         <%--  Escrituracion --%>
-                                                        <dx:GridViewDataDateColumn VisibleIndex="1" Caption="Fecha recibo traslado" FieldName="FechaRecibioTraslado" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha recibo traslado" FieldName="FechaRecibioTraslado" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
-                                                        <dx:GridViewDataDateColumn VisibleIndex="2" Caption="Fecha asignacion mesa" FieldName="FechaAsignacionMesa" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha asignacion mesa" FieldName="FechaAsignacionMesa" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
                                                     </Columns>
@@ -550,18 +551,19 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="3" Caption="Fecha registro entrega" FieldName="FechaRegistroEntrega" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha registro entrega" FieldName="FechaRegistroEntrega" Width="100px" Visible="true" ToolTip="">
+                                                            
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="4" Caption="Fecha boleta pago registro entrega" FieldName="FechaBoletaPagoRegistroEntrega" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="4" Caption="Fecha boleta pago registro entrega" FieldName="FechaBoletaPagoRegistroEntrega" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
-                                                        <dx:GridViewDataDateColumn VisibleIndex="5" Caption="Fecha regreso registro" FieldName="FechaRegresoRegistro" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha regreso registro" FieldName="FechaRegresoRegistro" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn VisibleIndex="6" Caption="Fecha salida" FieldName="FechaSalida" Width="100px" Visible="true" ToolTip="">
+                                                       <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Fecha salida" FieldName="FechaSalida" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -707,14 +709,14 @@
                                         <dx:LayoutItem Caption="Elaboracion" FieldName="APfnFechaElaboracion" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaElaboracion" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaElaboracion" AutoPostBack="false" Width="100%"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Envio al R.P.P." FieldName="APfnFechaEnvioAlRPP" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaEnvioAlRPP" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaEnvioAlRPP" AutoPostBack="false" Width="100%"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -728,14 +730,14 @@
                                         <dx:LayoutItem Caption="Pago de la boleta" FieldName="APfnFechaPagoBoleta" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaPagoBoleta" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaPagoBoleta" AutoPostBack="false" Width="100%"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Recibido" FieldName="APfnFechaRecibido" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaRecibido" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAPfnFechaRecibido" AutoPostBack="false" Width="100%"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -753,21 +755,21 @@
                                         <dx:LayoutItem Caption="Asignacion" FieldName="PRfnFechaAsignacionProyectista" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAsignacionProyectista" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAsignacionProyectista" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -815,7 +817,7 @@
                                         <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFIfnFechaRecepcionTerminoEscritura" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtFIfnFechaRecepcionTerminoEscritura" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -826,14 +828,14 @@
                                         <dx:LayoutItem ColSpan="1" Caption="Elaboracion" FieldName="AdfnFechaElaboracion">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaElaboracion" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaElaboracion" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Envio R.P.P." FieldName="AdfnFechaEnvioRPP">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaEnvioRPP" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaEnvioRPP" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -847,14 +849,14 @@
                                         <dx:LayoutItem ColSpan="1" Caption="Pago boleta" FieldName="AdfnFechaPagoBoleta">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaPagoBoleta" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaPagoBoleta" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Recibido" FieldName="AdfnFechaRecibido">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaRecibido" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaRecibido" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -865,21 +867,21 @@
                                         <dx:LayoutItem ColSpan="1" Caption="Recibio traslado" FieldName="EsfnRecibioTraslado">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEsfnRecibioTraslado" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEsfnRecibioTraslado" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Asignacion a mesa (sube)" FieldName="AdfnFechaAsignacionMesa">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaAsignacionMesa" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaAsignacionMesa" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Termino del tramite" FieldName="AdfnFechaTerminoTramite">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaTerminoTramite" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtAdfnFechaTerminoTramite" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -904,28 +906,28 @@
                                         <dx:LayoutItem ColSpan="1" Caption="Registro" FieldName="EnfnFechaRegistro">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegistro" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegistro" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Boleta Pago" FieldName="EnfnFechaBoletaPago">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaBoletaPago" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaBoletaPago" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Regreso registro" FieldName="EnfnFechaRegresoRegistro">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegresoRegistro" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaRegresoRegistro" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
                                         <dx:LayoutItem ColSpan="1" Caption="Salida" FieldName="EnfnFechaSalida">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaSalida" AutoPostBack="false" Width="100%"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtEnfnFechaSalida" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
