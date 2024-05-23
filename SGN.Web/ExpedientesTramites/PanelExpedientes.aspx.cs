@@ -894,11 +894,12 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppEditarExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
-            if (e.Parameter == "CargarRegistros")
+            if (e.Parameter.Contains( "CargarRegistros"))
             {
                 RegistroExistente = new Expedientes();
 
-                string numExpediente = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
+
+                string numExpediente = e.Parameter.Split('~')[1].ToString();
 
                 RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
 

@@ -107,8 +107,9 @@
                 case "cmdEditarExpediente":
 
                     if (gvExpedientes.GetFocusedRowIndex() >= 0) {
-                        ppEditarExpediente.Show();
-                        ppEditarExpediente.PerformCallback("CargarRegistros");
+                      
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackEditarRegistroExp);
+
                     }
 
 
@@ -142,6 +143,12 @@
 
 
 
+        function onCallbackEditarRegistroExp(value) {
+            console.log(value);
+            ppEditarExpediente.Show();
+            ppEditarExpediente.PerformCallback("CargarRegistros~" + value );
+           
+        }
 
     </script>
 
@@ -236,7 +243,7 @@
                     AllowDragDrop="true"
                     AllowFixedGroups="false"
                     AllowSelectByRowClick="true"
-                    AllowSelectSingleRowOnly="false"
+                    AllowSelectSingleRowOnly="true"
                     AutoExpandAllGroups="true"
                     AllowFocusedRow="True"
                     ProcessFocusedRowChangedOnServer="False"
