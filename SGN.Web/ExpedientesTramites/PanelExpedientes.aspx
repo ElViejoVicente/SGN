@@ -118,8 +118,8 @@
 
                 case "cmdEstatusExpediente":
                     if (gvExpedientes.GetFocusedRowIndex() >= 0) {
-                        ppCambiarEstatus.Show();
-                        ppCambiarEstatus.PerformCallback("CargarEstados");
+
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackEditarEstatusExp);
                     }
 
 
@@ -148,6 +148,14 @@
             ppEditarExpediente.Show();
             ppEditarExpediente.PerformCallback("CargarRegistros~" + value );
            
+        }
+
+
+        function onCallbackEditarEstatusExp(value) {
+            console.log(value);
+            ppCambiarEstatus.Show();
+            ppCambiarEstatus.PerformCallback("CargarEstados~" + value);
+
         }
 
     </script>

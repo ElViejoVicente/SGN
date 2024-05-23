@@ -847,7 +847,7 @@ namespace SGN.Web.ExpedientesTramites
             if (e.Parameter.Contains("CargarEstados"))
             {
 
-                string numExpedinte = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
+                string numExpedinte = e.Parameter.Split('~')[1].ToString();
 
 
                 txtProyecSelecEstatus.Text = numExpedinte;
