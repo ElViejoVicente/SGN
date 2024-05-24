@@ -399,15 +399,12 @@ namespace SGN.Web.ExpedientesTramites
         
                 case "Mesas":
 
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroRecibo").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnFechaIngreso").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnActo").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
 
                     //frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
@@ -449,15 +446,12 @@ namespace SGN.Web.ExpedientesTramites
                 case "Entregas":
 
 
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnNumeroRecibo").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnFechaIngreso").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnActo").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
 
                     //frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
@@ -483,16 +477,16 @@ namespace SGN.Web.ExpedientesTramites
                     //frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
 
-                    //frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
 
                     frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesEntrega").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EnfnRegistroSolicitado").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegistro").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("EnfnFechaBoletaPago").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
 
                     break;

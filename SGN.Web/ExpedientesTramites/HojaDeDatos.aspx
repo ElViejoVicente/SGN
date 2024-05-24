@@ -128,6 +128,8 @@
             ppNuevaHojaDatos.PerformCallback("EditarHojaDatos~" + value);
         }
 
+      
+
 
     </script>
 
@@ -211,7 +213,7 @@
                     AllowDragDrop="true"
                     AllowFixedGroups="false"
                     AllowSelectByRowClick="true"
-                    AllowSelectSingleRowOnly="false"
+                    AllowSelectSingleRowOnly="true"
                     AutoExpandAllGroups="true"
                     AllowFocusedRow="True"
                     ProcessFocusedRowChangedOnServer="False"
