@@ -1531,36 +1531,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvHojaDatos_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
         {
-            if (e.DataColumn.FieldName == "TextoEstatus")
-            {
-
-                var numExpediente = lsHojaDatos.Where(x => x.IdHojaDatos.ToString() == e.KeyValue.ToString()).FirstOrDefault();
-                if (numExpediente != null)
-                {
-                    switch (numExpediente.IdEstatus)
-                    {
-                        case "EX1": //NuevoExpediente
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33ccff");
-                            break;
-                        case "PR1": //EnProyecto(Mesa)
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccccff");
-                            break;
-                        case "PR3": //ProyectoTerminado
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33cc33");
-                            break;
-                        case "FI5":  //SeAcentoEscritura
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#cc33ff");
-                            break;
-                        case "EN6": //ConProblemas
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff9900");
-                            break;
-                        case "EN5": //Entregado
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#999999");
-                            break;
-                    }
-                }
-
-            }
+          
         }
     }
 }

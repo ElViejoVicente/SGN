@@ -27,7 +27,7 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight-9 ;  // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight - 15;  // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
 
@@ -296,15 +296,18 @@
 
                     <%--  columnas expedientes--%>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Num Expediente" FieldName="IdExpediente" Width="100px" Visible="true">
+
+                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num Expediente" FieldName="IdExpediente" Width="110px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <%--                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Num recibo pago" FieldName="numReciboPago" Width="100px" Visible="true">
+                    <dx:GridViewDataImageColumn VisibleIndex="1" Caption="Semaforo" FieldName="Semaforo" Width="80px">
+                        <PropertiesImage ImageUrlFormatString="~/imagenes/Produccion/{0}"></PropertiesImage>
                         <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>--%>
+                    </dx:GridViewDataImageColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Estatus" FieldName="TextoEstatus" Width="120px" Visible="true">
+
+                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Estatus" FieldName="TextoEstatus" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
@@ -1020,60 +1023,7 @@
         </section>
 
 
-        <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
-            <PanelCollection>
-                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                    <table>
-                        <tr>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="NuevoExpediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="EnProyecto(Mesa)" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="ProyectoTerminado" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="SeAcentoEscritura" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="ConProblemas" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="Entregado" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-
-
-
-                        </tr>
-                    </table>
-                </dx:PanelContent>
-            </PanelCollection>
-        </dx:ASPxPanel>
-
-
-
+      
 
 
     </form>

@@ -686,36 +686,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvExpedientes_HtmlDataCellPrepared(object sender, DevExpress.Web.ASPxGridViewTableDataCellEventArgs e)
         {
-            if (e.DataColumn.FieldName == "TextoEstatus")
-            {
-
-                var numExpediente =  lsExpediente.Where(x=> x.IdExpediente== e.KeyValue.ToString()).FirstOrDefault();
-                if (numExpediente != null)
-                {
-                    switch (numExpediente.IdEstatus)
-                    {
-                        case "EX1": //NuevoExpediente
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33ccff");
-                            break;
-                        case "PR1": //EnProyecto(Mesa)
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ccccff");
-                            break;
-                        case "PR3": //ProyectoTerminado
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#33cc33");
-                            break;
-                        case "FI5":  //SeAcentoEscritura
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#cc33ff");
-                            break;
-                        case "EN6": //ConProblemas
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff9900");
-                            break;
-                        case "EN5": //Entregado
-                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#999999");
-                            break;
-                    }
-                }                
-
-            }
+            
         }
 
         //protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
