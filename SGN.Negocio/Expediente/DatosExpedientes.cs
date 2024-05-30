@@ -18,7 +18,7 @@ namespace SGN.Negocio.Expediente
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
         DatosCrud datosCrud = new DatosCrud();
 
-        public List<ListaHojaDatos> DameListaHojaDatos(DateTime fechaInicial, DateTime fechaFinal)
+        public List<ListaHojaDatos> DameListaHojaDatos(DateTime fechaInicial, DateTime fechaFinal, Boolean todasLasFechas)
         {
             try
             {
@@ -33,7 +33,8 @@ namespace SGN.Negocio.Expediente
                         sql: "sp_DameHojaDatosPorFecha", param: new
                         {
                             fechaInicial,
-                            fechaFinal
+                            fechaFinal,
+                            todasLasFechas
 
                         }, commandType: CommandType.StoredProcedure
 
@@ -352,7 +353,7 @@ namespace SGN.Negocio.Expediente
             }
         }
 
-        public List<ListaExpedientes> DameListaExpediente(DateTime fechaInicial, DateTime fechaFinal,  int idUsuario)
+        public List<ListaExpedientes> DameListaExpediente(DateTime fechaInicial, DateTime fechaFinal,  int idUsuario, Boolean todasLasFechas)
         {
             try
             {
@@ -366,7 +367,8 @@ namespace SGN.Negocio.Expediente
                         {
                             fechaInicial,
                             fechaFinal,
-                            idUsuario
+                            idUsuario,
+                            todasLasFechas
 
                         }, commandType: CommandType.StoredProcedure
                         ).ToList();

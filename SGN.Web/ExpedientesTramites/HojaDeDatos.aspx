@@ -22,7 +22,7 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 60;  // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight - 130;  // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvHojaDatos.SetHeight(height);
 
@@ -128,7 +128,7 @@
             ppNuevaHojaDatos.PerformCallback("EditarHojaDatos~" + value);
         }
 
-      
+
 
 
     </script>
@@ -153,15 +153,33 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaInicio"  DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
+                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
+                                                    <td>
+                                                        <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                            <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                                                             if (chkBusquedaCompleta.GetChecked()) 
+                                                                                             {
+                                                                                             dtFechaInicio.SetEnabled(false);
+                                                                                             dtFechaFin.SetEnabled(false);
+                                                                                             }
+                                                                                             else
+                                                                                             {
+                                                                                             dtFechaInicio.SetEnabled(true);
+                                                                                             dtFechaFin.SetEnabled(true);
+                                                                                             }                }" />
+                                                        </dx:ASPxCheckBox>
+                                                    </td>
+                                                    <td>&nbsp;</td>
+
+
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
                                                             <ClientSideEvents Click="function(s, e) {  gvHojaDatos.PerformCallback('CargarRegistros'); }" />
@@ -197,7 +215,8 @@
 
                 <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
 
-                <SettingsPager Mode="ShowAllRecords" />
+             
+                <SettingsPager Mode="ShowPager" PageSize="100" />
 
                 <Settings ShowFooter="True" ShowFilterRow="true" ShowFilterBar="Auto" ShowFilterRowMenu="True" ShowHeaderFilterButton="True" ShowGroupPanel="True" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
 
@@ -399,7 +418,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                <%--        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                        <%--        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -464,7 +483,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                           <%--             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                        <%--             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
@@ -728,7 +747,7 @@
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
                                                             </dx:GridViewDataTextColumn>
 
-                                                     <%--       <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                            <%--       <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -761,7 +780,7 @@
                                                                         OnInit="cbEstadoCivilOtorgaSolicita_Init">
                                                                         <Items>
                                                                             <dx:ListEditItem Text="Casado(a)" Value="Casado" Selected="true"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Soltero(a)" Value="Soltero"></dx:ListEditItem>                                                                           
+                                                                            <dx:ListEditItem Text="Soltero(a)" Value="Soltero"></dx:ListEditItem>
                                                                             <dx:ListEditItem Text="No Aplica" Value="NA"></dx:ListEditItem>
                                                                         </Items>
                                                                     </dx:ASPxComboBox>
@@ -929,7 +948,7 @@
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
                                                             </dx:GridViewDataTextColumn>
 
-<%--                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                            <%--                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoAfavorDe" ClientInstanceName="cbSexoAfavorDe" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -1063,10 +1082,10 @@
 
         </section>
 
-                <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
+        <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                     <table>
+                    <table>
                         <tr>
                             <td>
                                 <dx:ASPxLabel runat="server" Text="NuevoExpediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
@@ -1106,7 +1125,7 @@
                             <td>
                                 <dx:ASPxLabel runat="server" Text="Entregado" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
                             </td>
-                           
+
 
 
                         </tr>

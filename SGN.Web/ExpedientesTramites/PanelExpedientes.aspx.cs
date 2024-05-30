@@ -590,11 +590,11 @@ namespace SGN.Web.ExpedientesTramites
             {
                 if (UsuarioPagina.NombrePerfil == "Mesas") //2024-03-17 si el perfil es de mesas entonces solo mostramos lo registros del usuario 
                 {
-                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,idUsuario: UsuarioPagina.Id).OrderByDescending(x=> x.FechaIngreso).ToList();// cargamos registros
+                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,idUsuario: UsuarioPagina.Id, todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x=> x.FechaIngreso).ToList();// cargamos registros
                 }
                 else
                 {
-                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario:0).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
+                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario:0 ,todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
                 }
 
     
