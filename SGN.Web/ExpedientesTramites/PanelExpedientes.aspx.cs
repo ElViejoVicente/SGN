@@ -11,6 +11,7 @@ using SGN.Negocio.ORM;
 
 using SGN.Web.Controles.Servidor;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -727,7 +728,28 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvExpedientes_HtmlDataCellPrepared(object sender, DevExpress.Web.ASPxGridViewTableDataCellEventArgs e)
         {
-            
+            if (e.DataColumn.FieldName == "IdExpediente")
+            {
+
+                if (e.CellValue != null)                {
+
+                    var miExpediente =lsExpediente.Where(x=> x.IdExpediente==e.KeyValue.ToString()).FirstOrDefault();
+
+                    if (miExpediente !=null)
+                    {
+
+                        ASPxImage Campo = (ASPxImage)gvExpedientes.FindRowCellTemplateControl(e.VisibleIndex, e.DataColumn, "imgExpedienteAlerta");
+                        Campo.Caption= Convert.ToString(e.CellValue);
+
+                        if (miExpediente.AlertaActiva )
+                        {
+                            Campo.EmptyImage.IconID= "status_warning_16x16";
+                           
+                        }
+                    }
+                }
+
+            } 
         }
 
         //protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
@@ -1270,6 +1292,60 @@ namespace SGN.Web.ExpedientesTramites
             gvAlertas.CancelEdit();
 
             gvAlertas.DataBind();
+        }
+
+  
+        protected void gvAlertas_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            //Validar si existen cambios de lo contrario no es necesario actulizar nada
+            Boolean existenCambios = false;
+
+            foreach (DictionaryEntry item in e.OldValues)
+            {
+                if (e.NewValues.Contains(item.Key))
+                {
+                    if (e.NewValues[item.Key] != null && !e.NewValues[item.Key].Equals(item.Value))
+                    {
+                        existenCambios = true;
+                    }
+                }
+            }
+
+            if (existenCambios == false)
+            {         
+                e.Cancel = true;
+                return;
+            }
+
+
+            var miAlerta = lsAlertas.Where(x=> x.IdAlerta==int.Parse(e.Keys[0].ToString())).First();
+
+            if (miAlerta != null)
+            {
+                miAlerta.MensajeAlerta = e.NewValues["MensajeAlerta"].ToString();
+                miAlerta.AlertaActiva = Convert.ToBoolean(e.NewValues["AlertaActiva"].ToString());
+
+                if (miAlerta.AlertaActiva ==false)
+                {
+                    miAlerta.NomUsuarioCierra = UsuarioPagina.Nombre;
+                }
+
+            }
+
+            datosCrud.ActualizarAlerta(miAlerta);
+
+
+            lsAlertas = datosExpediente.DameAlertasPorExpediente(NumExpSelccionadoAlerta).OrderByDescending(x => x.IdAlerta).ToList();
+
+
+            // actualiozamos el control 
+
+            e.Cancel = true;
+            gvAlertas.CancelEdit();
+
+            gvAlertas.DataBind();
+
+
         }
     }
 }

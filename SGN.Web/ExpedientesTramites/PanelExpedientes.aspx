@@ -27,7 +27,7 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 9;  // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight - 9;   // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
 
@@ -313,15 +313,27 @@
 
                     <%--  columnas expedientes--%>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Num Expediente" FieldName="IdExpediente" Width="100px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num Expediente" FieldName="IdExpediente" Width="110px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
+
+                        <DataItemTemplate>
+
+                            <dx:ASPxImage ID="imgExpedienteAlerta" runat="server" ImageAlign="Right"  ClientInstanceName="imgExpedienteAlerta" >
+                                <CaptionSettings ShowColon="false" Position="Left"/>
+                            
+                            </dx:ASPxImage>
+
+                        </DataItemTemplate>
+
                     </dx:GridViewDataTextColumn>
 
-                    <%--                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Num recibo pago" FieldName="numReciboPago" Width="100px" Visible="true">
+                    <dx:GridViewDataImageColumn VisibleIndex="1" Caption="Semaforo" FieldName="Semaforo" Width="80px">
+                        <PropertiesImage ImageUrlFormatString="~/imagenes/Produccion/{0}"></PropertiesImage>
                         <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>--%>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Estatus" FieldName="TextoEstatus" Width="120px" Visible="true">
+                    </dx:GridViewDataImageColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Estatus" FieldName="TextoEstatus" Width="150px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
@@ -704,7 +716,7 @@
 
             </dx:ASPxPopupControl>
 
-            <dx:ASPxPopupControl runat="server" ID="ppAlertasExpediente" ClientInstanceName="ppAlertasExpediente" Height="600px" Width="1100px" EnableClientSideAPI="true" ShowFooter="true"
+            <dx:ASPxPopupControl runat="server" ID="ppAlertasExpediente" ClientInstanceName="ppAlertasExpediente" Height="600px" Width="1100px" EnableClientSideAPI="true" ShowFooter="false"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Alertas por Expediente"
                 PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppAlertasExpediente_WindowCallback" ScrollBars="Auto">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
@@ -751,7 +763,8 @@
 
                                                     <dx:ASPxGridView ID="gvAlertas" runat="server" AutoGenerateColumns="false" Width="100%" KeyFieldName="IdAlerta"
                                                         OnDataBinding="gvAlertas_DataBinding"
-                                                        OnRowInserting="gvAlertas_RowInserting">
+                                                        OnRowInserting="gvAlertas_RowInserting"
+                                                        OnRowUpdating="gvAlertas_RowUpdating">
 
 
                                                         <SettingsPager Mode="ShowAllRecords" />
@@ -818,17 +831,30 @@
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataDateColumn FieldName="FechaAlta" Caption="Fecha Reporte" VisibleIndex="2" ReadOnly="true" Width="100px">
                                                                 <EditFormSettings Visible="False" />
+                                                                <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormatString="dd/MM/yyyy HH:mm">
+                                                                    <TimeSectionProperties Visible="true">
+                                                                        <TimeEditProperties EditFormatString="HH:mm" DisplayFormatString="HH:mm"></TimeEditProperties>
+                                                                    </TimeSectionProperties>
+                                                                </PropertiesDateEdit>
                                                             </dx:GridViewDataDateColumn>
                                                             <dx:GridViewDataTextColumn FieldName="NomUsuarioInformante" Caption="Usuario Reporta" VisibleIndex="3" ReadOnly="true" Width="150px">
                                                                 <EditFormSettings Visible="False" />
                                                             </dx:GridViewDataTextColumn>
                                                             <dx:GridViewDataMemoColumn FieldName="MensajeAlerta" Caption="Mensaje" VisibleIndex="4" ReadOnly="false" Width="500px"></dx:GridViewDataMemoColumn>
-                                                            <dx:GridViewDataCheckColumn FieldName="AlertaActiva" Caption="Activo" VisibleIndex="5"  Width="60px"> </dx:GridViewDataCheckColumn>
+                                                            <dx:GridViewDataCheckColumn FieldName="AlertaActiva" Caption="Activo" VisibleIndex="5" Width="60px"></dx:GridViewDataCheckColumn>
                                                             <dx:GridViewDataDateColumn FieldName="FechaCierre" Caption="Fecha Cierre" VisibleIndex="6" ReadOnly="true" Width="90px">
                                                                 <EditFormSettings Visible="False" />
+                                                                <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy HH:mm" EditFormatString="dd/MM/yyyy HH:mm">
+                                                                    <TimeSectionProperties Visible="true">
+                                                                        <TimeEditProperties EditFormatString="HH:mm" DisplayFormatString="HH:mm"></TimeEditProperties>
+                                                                    </TimeSectionProperties>
+                                                                </PropertiesDateEdit>
                                                             </dx:GridViewDataDateColumn>
+                                                            <dx:GridViewDataTextColumn FieldName="NomUsuarioCierra" Caption="Usuario Cierre" VisibleIndex="7" ReadOnly="true" Width="150px">
+                                                                <EditFormSettings Visible="False" />
+                                                            </dx:GridViewDataTextColumn>
 
-                                                        </Columns>               
+                                                        </Columns>
 
                                                     </dx:ASPxGridView>
 
@@ -844,18 +870,6 @@
 
                     </dx:PopupControlContentControl>
                 </ContentCollection>
-
-                <FooterContentTemplate>
-                    <div>
-                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptarstatus" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
-                            <ClientSideEvents Click="function(s, e) 
-                                             {                                             
-                                             ppAlertasExpediente.PerformCallback('guardar~'+trlEstatusExpedientes.GetFocusedNodeKey());                                                      
-                                             }" />
-
-                        </dx:ASPxButton>
-                    </div>
-                </FooterContentTemplate>
 
             </dx:ASPxPopupControl>
 
@@ -1193,57 +1207,7 @@
         </section>
 
 
-        <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
-            <PanelCollection>
-                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                    <table>
-                        <tr>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="NuevoExpediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="EnProyecto(Mesa)" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="ProyectoTerminado" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="SeAcentoEscritura" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="ConProblemas" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="Entregado" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
 
-
-
-                        </tr>
-                    </table>
-                </dx:PanelContent>
-            </PanelCollection>
-        </dx:ASPxPanel>
 
 
 

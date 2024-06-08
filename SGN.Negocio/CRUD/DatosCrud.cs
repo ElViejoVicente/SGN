@@ -821,7 +821,7 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_Alertas_Insert, detalle: \n" + ex.Message, ex);
             }
         }
-        public Boolean ActualizarExpediente(Alertas values)
+        public Boolean ActualizarAlerta(Alertas values)
         {
             try
             {
@@ -829,11 +829,8 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Alertas_Update", param: new
                     {
-                        values.IdAlerta,
-                        values.NumExpediente,
-                        values.NomUsuarioInformante,
-                        values.MensajeAlerta,
-                        values.Prioridad,
+                        values.IdAlerta,                    
+                        values.MensajeAlerta,               
                         values.AlertaActiva,
                         values.NomUsuarioCierra                
 
@@ -848,7 +845,7 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_Alertas_Update, detalle: \n" + ex.Message, ex);
             }
         }
-        public Boolean EliminarExpediente(Alertas values)
+        public Boolean EliminarAlerta(Alertas values)
         {
             try
             {

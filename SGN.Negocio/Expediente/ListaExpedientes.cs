@@ -10,6 +10,8 @@ namespace SGN.Negocio.Expediente
     public class ListaExpedientes
     {
         //Expedientes
+
+		public bool AlertaActiva { get; set; } = false;
         public string Semaforo { get; set; } = "";
         public string IdExpediente { get; set; } = "";
         public string IdEstatus { get; set; } = "";
