@@ -764,5 +764,112 @@ namespace SGN.Negocio.CRUD
         }
 
         #endregion
+
+
+        #region Alertas
+
+        public Alertas ConsultaAlertas (string IdAlerta)
+        {
+            try
+            {
+                Alertas resultado = new Alertas();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Alertas>
+                        (
+                        sql: "sp_CRUD_Alertas_Select", param: new
+                        {
+                            IdAlerta
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Alertas_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean AltaAlertas(Alertas values)
+        {
+            try
+            {
+
+                using (var db = new SqlConnection(cnn))
+                {
+
+
+                    db.Execute(sql: "sp_CRUD_Alertas_Insert", param: new
+                    {
+                        values.NumExpediente,
+                        values.NomUsuarioInformante,
+                        values.MensajeAlerta,
+                        values.Prioridad           
+                  
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Alertas_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarExpediente(Alertas values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Alertas_Update", param: new
+                    {
+                        values.IdAlerta,
+                        values.NumExpediente,
+                        values.NomUsuarioInformante,
+                        values.MensajeAlerta,
+                        values.Prioridad,
+                        values.AlertaActiva,
+                        values.NomUsuarioCierra                
+
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Alertas_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarExpediente(Alertas values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Alertas_Delete", param: new
+                    {
+                        values.IdAlerta
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Alertas_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+        #endregion
     }
 }

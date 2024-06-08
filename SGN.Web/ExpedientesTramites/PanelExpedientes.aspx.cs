@@ -129,6 +129,26 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+        public List<Alertas> lsAlertas
+        {
+            get
+
+            {
+                List<Alertas> sseListaAlertas= new List<Alertas>();
+                if (this.Session["sseListaAlertas"] != null)
+                {
+                    sseListaAlertas = (List<Alertas>)this.Session["sseListaAlertas"];
+                }
+
+                return sseListaAlertas;
+            }
+            set
+            {
+                this.Session["sseListaAlertas"] = value;
+            }
+
+        }
+
 
         public Expedientes RegistroExistente
         {
@@ -170,6 +190,27 @@ namespace SGN.Web.ExpedientesTramites
             }
 
         }
+
+        public string NumExpSelccionadoAlerta 
+        {
+            get
+
+            {
+                string ssNumExpSelccionadoAlerta = "";
+                if (this.Session["ssNumExpSelccionadoAlerta"] != null)
+                {
+                    ssNumExpSelccionadoAlerta = this.Session["ssNumExpSelccionadoAlerta"].ToString();
+                }
+
+                return ssNumExpSelccionadoAlerta;
+            }
+            set
+            {
+                this.Session["ssNumExpSelccionadoAlerta"] = value;
+            }
+
+        }
+
 
 
 
@@ -932,6 +973,40 @@ namespace SGN.Web.ExpedientesTramites
             }
 
         }
+        protected void ppAlertasExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
+        {
+            if (e.Parameter.Contains("CargarRegistros"))
+            {
+                RegistroExistente = new Expedientes();
+                string numExpediente = e.Parameter.Split('~')[1].ToString();
+                NumExpSelccionadoAlerta = numExpediente;
+                RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
+
+
+
+                // consultamos las alertas por expediente 
+
+                lsAlertas = datosExpediente.DameAlertasPorExpediente(NumExpSelccionadoAlerta).OrderByDescending(x => x.IdAlerta).ToList();
+
+                if (RegistroExistente != null)
+                {
+                    //Expediente 
+                    txtNumExpedienteAlert.Text = RegistroExistente.IdExpediente;
+                    txtExfnOtorgaAlert.Text = RegistroExistente.Otorga;
+                    txtEXfnAfavordeAlert.Text = RegistroExistente.AfavorDe;
+
+                    //cargar registro de alertas de BD
+                }
+
+                gvAlertas.DataBind();
+            }
+        }
+
+        protected void gvAlertas_DataBinding(object sender, EventArgs e)
+        {
+            gvAlertas.DataSource = lsAlertas;
+        }
+
 
         protected void ppEditarExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
@@ -1198,6 +1273,32 @@ namespace SGN.Web.ExpedientesTramites
             }
         }
 
+        protected void gvAlertas_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            Alertas nuevaAlerta = new Alertas();
+            nuevaAlerta.IdAlerta = 0;
+            nuevaAlerta.NumExpediente = NumExpSelccionadoAlerta;
+            nuevaAlerta.FechaAlta = DateTime.Now;
+            nuevaAlerta.AlertaActiva = true;
+            nuevaAlerta.NomUsuarioInformante = UsuarioPagina.Nombre;
+            nuevaAlerta.MensajeAlerta= e.NewValues["MensajeAlerta"].ToString();
+            nuevaAlerta.Prioridad = "";
 
+           
+
+            // guardamos en BD
+
+            datosCrud.AltaAlertas(nuevaAlerta);
+
+            lsAlertas= datosExpediente.DameAlertasPorExpediente(NumExpSelccionadoAlerta).OrderByDescending(x=> x.IdAlerta).ToList();
+
+
+            // actualiozamos el control 
+
+            e.Cancel = true;
+            gvAlertas.CancelEdit();
+
+            gvAlertas.DataBind();
+        }
     }
 }

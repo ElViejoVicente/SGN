@@ -27,7 +27,7 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight-9 ;  // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight - 9;  // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
 
@@ -62,6 +62,8 @@
                 ppEditarExpediente.Hide();
                 ppCambiarEstatus.Hide();
                 ppArchivos.Hide();
+                ppAlertasExpediente.Hide();
+
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvExpedientes.PerformCallback('CargarRegistros');
@@ -125,6 +127,14 @@
 
                     break;
 
+                case "cmdAlertasExpediente":
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackAlertaPorExp);
+                    }
+
+                    break;
+
                 case "cmdArchivos":
                     if (gvExpedientes.GetFocusedRowIndex() >= 0) {
 
@@ -147,6 +157,13 @@
             console.log(value);
             ppEditarExpediente.Show();
             ppEditarExpediente.PerformCallback("CargarRegistros~" + value);
+
+        }
+
+        function onCallbackAlertaPorExp(value) {
+            console.log(value);
+            ppAlertasExpediente.Show();
+            ppAlertasExpediente.PerformCallback("CargarRegistros~" + value);
 
         }
 
@@ -359,6 +376,9 @@
                             <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarExpediente" />
 
                             <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
+
+                            <dx:GridViewToolbarItem Text="Alertas" Image-IconID="status_warning_16x16" Name="cmdAlertasExpediente" />
+
 
                             <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
 
@@ -684,6 +704,161 @@
 
             </dx:ASPxPopupControl>
 
+            <dx:ASPxPopupControl runat="server" ID="ppAlertasExpediente" ClientInstanceName="ppAlertasExpediente" Height="600px" Width="1100px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Alertas por Expediente"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppAlertasExpediente_WindowCallback" ScrollBars="Auto">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+
+                        <dx:ASPxFormLayout runat="server" ID="ASPxFormLayout1" ClientInstanceName="frmExpedienteExistente" ColCount="3" ColumnCount="3" Width="100%">
+
+                            <Items>
+                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="2" Caption="Numero" ColumnSpan="2" FieldName="ExfnNumeroExpediente">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxLabel runat="server" ID="txtNumExpedienteAlert" Font-Bold="true" Font-Size="Medium"></dx:ASPxLabel>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
+                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="txtExfnOtorgaAlert" AutoPostBack="false" Width="100%" ClientEnabled="false">
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="txtEXfnAfavordeAlert" AutoPostBack="false" Width="100%" ClientEnabled="false">
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Alertas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="2" Caption="" ColumnSpan="2" FieldName="ExfnAlertas">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+
+                                                    <dx:ASPxGridView ID="gvAlertas" runat="server" AutoGenerateColumns="false" Width="100%" KeyFieldName="IdAlerta"
+                                                        OnDataBinding="gvAlertas_DataBinding"
+                                                        OnRowInserting="gvAlertas_RowInserting">
+
+
+                                                        <SettingsPager Mode="ShowAllRecords" />
+
+                                                        <Settings ShowFooter="True" ShowFilterRow="false"
+                                                            ShowFilterBar="Auto" ShowFilterRowMenu="false"
+                                                            ShowHeaderFilterButton="True" ShowGroupPanel="false"
+                                                            VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+
+                                                        <SettingsResizing ColumnResizeMode="Control" />
+
+                                                        <SettingsEditing Mode="PopupEditForm" />
+
+                                                        <SettingsDetail ExportMode="All" ShowDetailRow="false" />
+
+                                                        <SettingsBehavior
+                                                            AllowGroup="true"
+                                                            AllowDragDrop="false"
+                                                            AllowFixedGroups="false"
+                                                            AllowSelectByRowClick="true"
+                                                            AllowSelectSingleRowOnly="false"
+                                                            AutoExpandAllGroups="true"
+                                                            AllowFocusedRow="True"
+                                                            ProcessFocusedRowChangedOnServer="False"
+                                                            AllowSort="true"
+                                                            ConfirmDelete="true"
+                                                            EnableCustomizationWindow="true"></SettingsBehavior>
+
+
+                                                        <SettingsCommandButton>
+                                                            <EditButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
+                                                            </EditButton>
+
+                                                            <DeleteButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Eliminar" IconID="edit_delete_16x16"></Image>
+                                                            </DeleteButton>
+
+                                                            <NewButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Nuevo" IconID="actions_add_16x16"></Image>
+                                                            </NewButton>
+
+                                                            <UpdateButton Text="" ButtonType="Image">
+
+
+                                                                <Image ToolTip="Aceptar" IconID="actions_apply_16x16"></Image>
+                                                            </UpdateButton>
+
+                                                            <CancelButton Text="" ButtonType="Image">
+                                                                <Image ToolTip="Cancelar" IconID="actions_cancel_16x16"></Image>
+                                                            </CancelButton>
+
+                                                        </SettingsCommandButton>
+
+                                                        <SettingsDataSecurity AllowInsert="true" AllowDelete="true" AllowEdit="true" />
+                                                        <SettingsSearchPanel Visible="false" />
+
+                                                        <Columns>
+
+                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="0" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="30px"></dx:GridViewCommandColumn>
+
+                                                            <dx:GridViewDataTextColumn FieldName="IdAlerta" Caption="n°" VisibleIndex="1" ReadOnly="true" Width="40px">
+                                                                <EditFormSettings Visible="False" />
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataDateColumn FieldName="FechaAlta" Caption="Fecha Reporte" VisibleIndex="2" ReadOnly="true" Width="100px">
+                                                                <EditFormSettings Visible="False" />
+                                                            </dx:GridViewDataDateColumn>
+                                                            <dx:GridViewDataTextColumn FieldName="NomUsuarioInformante" Caption="Usuario Reporta" VisibleIndex="3" ReadOnly="true" Width="150px">
+                                                                <EditFormSettings Visible="False" />
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataMemoColumn FieldName="MensajeAlerta" Caption="Mensaje" VisibleIndex="4" ReadOnly="false" Width="500px"></dx:GridViewDataMemoColumn>
+                                                            <dx:GridViewDataCheckColumn FieldName="AlertaActiva" Caption="Activo" VisibleIndex="5"  Width="60px"> </dx:GridViewDataCheckColumn>
+                                                            <dx:GridViewDataDateColumn FieldName="FechaCierre" Caption="Fecha Cierre" VisibleIndex="6" ReadOnly="true" Width="90px">
+                                                                <EditFormSettings Visible="False" />
+                                                            </dx:GridViewDataDateColumn>
+
+                                                        </Columns>               
+
+                                                    </dx:ASPxGridView>
+
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                            </Items>
+                        </dx:ASPxFormLayout>
+
+
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
+                <FooterContentTemplate>
+                    <div>
+                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptarstatus" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
+                            <ClientSideEvents Click="function(s, e) 
+                                             {                                             
+                                             ppAlertasExpediente.PerformCallback('guardar~'+trlEstatusExpedientes.GetFocusedNodeKey());                                                      
+                                             }" />
+
+                        </dx:ASPxButton>
+                    </div>
+                </FooterContentTemplate>
+
+            </dx:ASPxPopupControl>
+
 
             <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
@@ -989,8 +1164,6 @@
                 </FooterContentTemplate>
 
             </dx:ASPxPopupControl>
-
-
 
 
             <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false"

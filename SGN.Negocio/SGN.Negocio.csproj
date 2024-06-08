@@ -78,6 +78,7 @@
     <Compile Include="Expediente\ListaExpedientes.cs" />
     <Compile Include="Expediente\ListaHojaDatos.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
+    <Compile Include="ORM\Alertas.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_DocumentosPorActo.cs" />
     <Compile Include="ORM\Cat_Estatus.cs" />

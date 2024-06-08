@@ -18,6 +18,34 @@ namespace SGN.Negocio.Expediente
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
         DatosCrud datosCrud = new DatosCrud();
 
+
+        public List<Alertas> DameAlertasPorExpediente(string NumExpediente)
+        {
+            try
+            {
+                List<Alertas> resultado = new List<Alertas>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Alertas>
+                        (
+                        sql: "sp_DameAlertaPorExpediente", param: new
+                        {
+                            NumExpediente
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameAlertaPorExpediente , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
         public List<ListaHojaDatos> DameListaHojaDatos(DateTime fechaInicial, DateTime fechaFinal, Boolean todasLasFechas)
         {
             try

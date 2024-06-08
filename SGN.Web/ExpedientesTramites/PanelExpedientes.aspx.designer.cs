@@ -132,6 +132,60 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxTreeList.ASPxTreeList trlEstatusExpedientes;
 
         /// <summary>
+        /// Control ppAlertasExpediente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl ppAlertasExpediente;
+
+        /// <summary>
+        /// Control ASPxFormLayout1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
+
+        /// <summary>
+        /// Control txtNumExpedienteAlert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel txtNumExpedienteAlert;
+
+        /// <summary>
+        /// Control txtExfnOtorgaAlert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMemo txtExfnOtorgaAlert;
+
+        /// <summary>
+        /// Control txtEXfnAfavordeAlert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMemo txtEXfnAfavordeAlert;
+
+        /// <summary>
+        /// Control gvAlertas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gvAlertas;
+
+        /// <summary>
         /// Control ppEditarExpediente.
         /// </summary>
         /// <remarks>
