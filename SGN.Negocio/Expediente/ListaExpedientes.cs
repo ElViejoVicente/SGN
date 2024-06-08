@@ -9,8 +9,9 @@ namespace SGN.Negocio.Expediente
 {
     public class ListaExpedientes
     {
-		//Expedientes
-		public string IdExpediente { get; set; } = "";
+        //Expedientes
+        public string Semaforo { get; set; } = "";
+        public string IdExpediente { get; set; } = "";
         public string IdEstatus { get; set; } = "";
         public string TextoEstatus { get; set; } = "";
 		public string TextoActo { get; set; } = "";

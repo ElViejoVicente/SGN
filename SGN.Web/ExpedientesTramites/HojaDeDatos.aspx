@@ -264,6 +264,8 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
+
+
                     <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Estatus" FieldName="TextoEstatus" Width="120px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
@@ -1082,57 +1084,6 @@
 
         </section>
 
-        <dx:ASPxPanel ID="BottomPanelx" ClientInstanceName="BottomPanelx" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true" ClientVisible="true">
-            <PanelCollection>
-                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
-                    <table>
-                        <tr>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="NuevoExpediente" BackColor="#33ccff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="EnProyecto(Mesa)" BackColor="#ccccff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="ProyectoTerminado" BackColor="#33cc33" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="SeAcentoEscritura" BackColor="#cc33ff" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="ConProblemas" BackColor="#ff9900" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <dx:ASPxLabel runat="server" Text="Entregado" BackColor="#999999" Font-Size="Small"></dx:ASPxLabel>
-                            </td>
-
-
-
-                        </tr>
-                    </table>
-                </dx:PanelContent>
-            </PanelCollection>
-        </dx:ASPxPanel>
 
 
 
