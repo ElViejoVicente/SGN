@@ -236,6 +236,7 @@
     <Content Include="imagenes\Produccion\EN2.png" />
     <Content Include="imagenes\Produccion\EN3.png" />
     <Content Include="imagenes\Produccion\EN4.png" />
+    <Content Include="imagenes\Produccion\EN5.png" />
     <Content Include="imagenes\Produccion\EN6.png" />
     <Content Include="imagenes\Produccion\enmarcha.png" />
     <Content Include="imagenes\Produccion\enmarchaSmall.png" />
