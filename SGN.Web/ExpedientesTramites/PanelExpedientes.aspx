@@ -226,6 +226,24 @@
                                                         </dx:ASPxCheckBox>
                                                     </td>
                                                     <td>&nbsp;</td>
+
+                                                    <td>
+
+                                                        <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
+                                                        </dx:ASPxCheckBox>
+
+                                                    </td>
+                                                    <td>&nbsp;</td>
+
+                                                    <td>
+
+                                                        <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaNoActiva" Width="150px" ClientInstanceName="chkVerExpAlertaNoActiva" Text="Ver expedientes que tuvieron alertas" ToggleSwitchDisplayMode="Always">
+                                                        </dx:ASPxCheckBox>
+
+                                                    </td>
+                                                    <td>&nbsp;</td>
+
+
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
                                                             <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
@@ -260,11 +278,14 @@
                 OnToolbarItemClick="gvExpedientes_ToolbarItemClick"
                 OnHtmlDataCellPrepared="gvExpedientes_HtmlDataCellPrepared">
 
-                <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback"
+                <%--    <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback"
                     SelectionChanged="function(s, e) 
                                                         {                                             
                                                         gvExpedientes.PerformCallback('AsignarRutaExpediente');                                                     
-                                                        }" />
+                                                        }" />--%>
+
+
+                <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
 
                 <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
 
@@ -313,14 +334,27 @@
 
                     <%--  columnas expedientes--%>
 
+                    <%--
+                    <dx:GridViewDataColumn Caption="" VisibleIndex="0" CellStyle-HorizontalAlign="Center">
+                        <DataItemTemplate>
+                            <dx:ASPxButton ID="btnEditar" runat="server" AutoPostBack="false" Height="20px" ImagePosition="Top">
+                                <ClientSideEvents />
+                                <Image IconID="cmdEditarExpediente" ></Image>
+                              
+                            </dx:ASPxButton>
+                    
+                        </DataItemTemplate>
+                    </dx:GridViewDataColumn>--%>
+
+
                     <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num Expediente" FieldName="IdExpediente" Width="110px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
 
                         <DataItemTemplate>
 
-                            <dx:ASPxImage ID="imgExpedienteAlerta" runat="server" ImageAlign="Right"  ClientInstanceName="imgExpedienteAlerta" >
-                                <CaptionSettings ShowColon="false" Position="Left"/>
-                            
+                            <dx:ASPxImage ID="imgExpedienteAlerta" runat="server" ImageAlign="Right" ClientInstanceName="imgExpedienteAlerta">
+                                <CaptionSettings ShowColon="false" Position="Left" />
+
                             </dx:ASPxImage>
 
                         </DataItemTemplate>

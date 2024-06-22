@@ -686,7 +686,21 @@ namespace SGN.Web.ExpedientesTramites
                     lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario:0 ,todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
                 }
 
-    
+
+                // 2024-06-22 filtramos por registros alertados
+
+                if (chkVerExpAlertaActiva.Checked)
+                {
+                    lsExpediente = lsExpediente.Where(x => x.AlertaActiva == true).ToList();
+                }
+
+
+                if (chkVerExpAlertaNoActiva.Checked)
+                {
+                    lsExpediente = lsExpediente.Where(x => x.ExistenAlertas == true).ToList();
+                }
+
+
                 gvExpedientes.DataBind();
                 return;
             }
@@ -746,6 +760,13 @@ namespace SGN.Web.ExpedientesTramites
                             Campo.EmptyImage.IconID= "status_warning_16x16";
                            
                         }
+                        else if (miExpediente.ExistenAlertas)
+                        {
+                            Campo.EmptyImage.IconID = "status_warning_svg_gray_16x16";
+                        }
+                    
+                       
+
                     }
                 }
 
@@ -991,7 +1012,7 @@ namespace SGN.Web.ExpedientesTramites
                     //cargar registro de alertas de BD
                 }
 
-                gvAlertas.DataBind();
+                gvAlertas.DataBind(); 
             }
         }
 

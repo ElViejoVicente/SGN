@@ -396,7 +396,8 @@ namespace SGN.Negocio.Expediente
                             fechaInicial,
                             fechaFinal,
                             idUsuario,
-                            todasLasFechas
+                            todasLasFechas,
+                            
 
                         }, commandType: CommandType.StoredProcedure
                         ).ToList();
