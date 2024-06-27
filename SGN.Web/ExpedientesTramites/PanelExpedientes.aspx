@@ -46,8 +46,9 @@
 
             if (s.cp_Update != null) {
 
-                gvExpedientes.UnselectRows();
+                
                 gvExpedientes.PerformCallback('CargarRegistros');
+
                 s.cp_Update = null;
             }
         }
@@ -64,9 +65,23 @@
                 ppArchivos.Hide();
                 ppAlertasExpediente.Hide();
 
+                //2024-06-26 borramos seleccion
+
+                //gvExpedientes.UnselectRows();
+                //gvExpedientes.ClearFilter();
+                //gvExpedientes.ApplySearchPanelFilter('');
+
+
+            
+
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvExpedientes.PerformCallback('CargarRegistros');
+
+         
+
+                
+
                 s.cp_swType = null;
                 s.cp_swMsg = null;
                 s.cp_swAlert = null;
@@ -326,7 +341,7 @@
 
 
                 <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="false" />
-                <SettingsSearchPanel Visible="true" />
+                <SettingsSearchPanel Visible="true" ShowApplyButton="true" ShowClearButton="true"   />
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
                 <Columns>
@@ -741,7 +756,8 @@
                         <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptarstatus" Text="Aceptar" AutoPostBack="false" ClientInstanceName="btnAceptar">
                             <ClientSideEvents Click="function(s, e) 
                                                         {                                             
-                                                        ppCambiarEstatus.PerformCallback('guardar~'+trlEstatusExpedientes.GetFocusedNodeKey());                                                      
+                                                        ppCambiarEstatus.PerformCallback('guardar~'+trlEstatusExpedientes.GetFocusedNodeKey());                                                   
+
                                                         }" />
 
                         </dx:ASPxButton>

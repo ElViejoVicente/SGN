@@ -211,7 +211,25 @@ namespace SGN.Web.ExpedientesTramites
             }
 
         }
+        public string NumExpSelccionadoCambioEstatus
+        {
+            get
 
+            {
+                string ssNumExpSelccionadoCambioEstatus = "";
+                if (this.Session["ssNumExpSelccionadoCambioEstatus"] != null)
+                {
+                    ssNumExpSelccionadoCambioEstatus = this.Session["ssNumExpSelccionadoCambioEstatus"].ToString();
+                }
+
+                return ssNumExpSelccionadoCambioEstatus;
+            }
+            set
+            {
+                this.Session["ssNumExpSelccionadoCambioEstatus"] = value;
+            }
+
+        }
 
 
 
@@ -945,6 +963,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 string numExpedinte = e.Parameter.Split('~')[1].ToString();
 
+                NumExpSelccionadoCambioEstatus = e.Parameter.Split('~')[1].ToString();
 
                 txtProyecSelecEstatus.Text = numExpedinte;
 
@@ -962,7 +981,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 RegistroExistente = new Expedientes();
 
-                string numExpediente = gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
+                string numExpediente = NumExpSelccionadoCambioEstatus; //txtProyecSelecEstatus.Text;//gvExpedientes.GetSelectedFieldValues("IdExpediente")[0].ToString();
 
                 RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
 
@@ -971,6 +990,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 if (datosCrud.ActualizarExpediente(RegistroExistente))
                 {
+                    gvExpedientes.SearchPanelFilter = "";
                     ppCambiarEstatus.JSProperties["cp_swMsg"] = "Estatus Modificado!";
                     ppCambiarEstatus.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
 
