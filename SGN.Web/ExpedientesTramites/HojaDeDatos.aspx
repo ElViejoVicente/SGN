@@ -660,7 +660,8 @@
                                                         OnDataBinding="gvOtorgaSolicita_DataBinding"
                                                         OnRowValidating="gvOtorgaSolicita_RowValidating"
                                                         OnRowInserting="gvOtorgaSolicita_RowInserting"
-                                                        OnRowDeleting="gvOtorgaSolicita_RowDeleting">
+                                                        OnRowDeleting="gvOtorgaSolicita_RowDeleting" 
+                                                        OnRowUpdating="gvOtorgaSolicita_RowUpdating">
 
                                                         <SettingsPager Mode="ShowAllRecords" />
 
@@ -720,7 +721,7 @@
 
                                                         <Columns>
 
-                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="false" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="30px"></dx:GridViewCommandColumn>
+                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="80px">
@@ -861,7 +862,8 @@
                                                         OnDataBinding="gvaFavorDe_DataBinding"
                                                         OnRowValidating="gvaFavorDe_RowValidating"
                                                         OnRowInserting="gvaFavorDe_RowInserting"
-                                                        OnRowDeleting="gvaFavorDe_RowDeleting">
+                                                        OnRowDeleting="gvaFavorDe_RowDeleting" 
+                                                        OnRowUpdating="gvaFavorDe_RowUpdating">
 
                                                         <SettingsPager Mode="ShowAllRecords" />
 
@@ -921,7 +923,7 @@
 
                                                         <Columns>
 
-                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="false" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="30px"></dx:GridViewCommandColumn>
+                                                            <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="80px">

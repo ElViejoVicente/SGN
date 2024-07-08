@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using DevExpress.Export;
 using SGN.Negocio.Expediente;
+using System.Collections;
 
 namespace SGN.Web.ExpedientesTramites
 {
@@ -382,8 +383,8 @@ namespace SGN.Web.ExpedientesTramites
                 HidDocumentoSelect.Add("OtorgaSolicita", "");
                 HidDocumentoSelect.Add("AfavorDe", "");
 
-                dtFechaInicio.Date=  DateTime.Now.Date.AddDays(-30);
-                dtFechaFin.Date  = DateTime.Now.Date;
+                dtFechaInicio.Date = DateTime.Now.Date.AddDays(-30);
+                dtFechaFin.Date = DateTime.Now.Date;
 
                 dtFechaIngreso.Date = DateTime.Now;
                 txtNombreAsesor.Text = UsuarioPagina.Nombre;
@@ -393,9 +394,9 @@ namespace SGN.Web.ExpedientesTramites
         }
         protected void Page_Init(object sender, EventArgs e)
         {
-           // cbVarienteNuevo.DataBind();
-          //  lbDocumentacionOtorgaSolicita.DataBind();
-           // lbDocumentacionAfavorDe.DataBind();
+            // cbVarienteNuevo.DataBind();
+            //  lbDocumentacionOtorgaSolicita.DataBind();
+            // lbDocumentacionAfavorDe.DataBind();
         }
 
 
@@ -411,7 +412,7 @@ namespace SGN.Web.ExpedientesTramites
         {
             if (e.Parameters == "CargarRegistros")
             {
-                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x=> x.FechaIngreso).ToList();// cargamos registros
+                lsHojaDatos = datosExpediente.DameListaHojaDatos(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos registros
                 gvHojaDatos.DataBind();
                 return;
             }
@@ -495,7 +496,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 ListaHojaDatos hojaSeleccionada = lsHojaDatos.Where(x => x.IdHojaDatos == idHojaDatosSelect).FirstOrDefault();
 
-                if (hojaSeleccionada != null )
+                if (hojaSeleccionada != null)
                 {
 
                     hojaDatosSeleccionada = hojaSeleccionada.DetalleHojaDatos;
@@ -506,7 +507,7 @@ namespace SGN.Web.ExpedientesTramites
 
                     // Cargamos los datos generales
                     dtFechaIngreso.Date = hojaSeleccionada.FechaIngreso;
-                    if (hojaSeleccionada.DetalleRecibosPago.Exists(x=> x.Concepto== "Recibo Inicial Expediente"))
+                    if (hojaSeleccionada.DetalleRecibosPago.Exists(x => x.Concepto == "Recibo Inicial Expediente"))
                     {
                         txtReciboPagoIni.Text = hojaSeleccionada.DetalleRecibosPago.Where(x => x.Concepto == "Recibo Inicial Expediente").First().NumRecibo;
                     }
@@ -514,7 +515,7 @@ namespace SGN.Web.ExpedientesTramites
                     txtClienteTramita.Text = hojaSeleccionada.NumbreUsuarioTramita;
                     txtNumCelular.Text = hojaSeleccionada.NumTelCelular1;
                     txtCorreoElectronico.Text = hojaSeleccionada.CorreoElectronico;
-       
+
 
 
 
@@ -534,7 +535,7 @@ namespace SGN.Web.ExpedientesTramites
                     }
 
                     cbVarienteNuevo.Text = hojaSeleccionada.TextoVariante;
-                    cbVarienteNuevo.SelectedIndex= catVarientesPorActo.FindIndex(w => w.TextoVariante == hojaSeleccionada.TextoVariante);
+                    cbVarienteNuevo.SelectedIndex = catVarientesPorActo.FindIndex(w => w.TextoVariante == hojaSeleccionada.TextoVariante);
 
 
                     // se cargan los tipos de roles por acto
@@ -591,7 +592,7 @@ namespace SGN.Web.ExpedientesTramites
 
                     foreach (var doc in hojaSeleccionada.DetalleDocumentosAfavorDe)
                     {
-                        lbDocumentacionAfavorDe.Items.FindByText(doc.TextoDocumento).Selected=true;
+                        lbDocumentacionAfavorDe.Items.FindByText(doc.TextoDocumento).Selected = true;
 
                         docAfavorDe[contador] = doc.IdDoc;
                         contador++;
@@ -683,7 +684,7 @@ namespace SGN.Web.ExpedientesTramites
                 catDocumentoOtorgaSolicita = new List<Cat_DocumentosPorActo>();
                 catDocumentoAfavorDe = new List<Cat_DocumentosPorActo>();
 
-                lbDocumentacionOtorgaSolicita.DataBind() ;
+                lbDocumentacionOtorgaSolicita.DataBind();
                 lbDocumentacionAfavorDe.DataBind();
 
                 catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo();
@@ -747,7 +748,7 @@ namespace SGN.Web.ExpedientesTramites
 
             DatosDocumentos nuevahojaDocumentos = new DatosDocumentos();
             RecibosDePago nuevaHojaReciboPago = new RecibosDePago();
-     
+
 
             hojaDatosSeleccionada.NombreAsesor = txtNombreAsesor.Text;
             hojaDatosSeleccionada.NumbreUsuarioTramita = txtClienteTramita.Text;
@@ -770,7 +771,7 @@ namespace SGN.Web.ExpedientesTramites
                 //borrarReciboPago inicial
 
 
-            
+
                 if (datosExpediente.BorraDatosParticipantesDocumentos(hojaDatosSeleccionada.IdHojaDatos))
                 {
 
@@ -799,7 +800,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 // se rellenan  la lista de documento para proceder al guardado
 
-                if (HidDocumentoSelect["OtorgaSolicita"].ToString()=="")
+                if (HidDocumentoSelect["OtorgaSolicita"].ToString() == "")
                 {
                     HidDocumentoSelect.Set("OtorgaSolicita", docSelecOtorgaSol);
 
@@ -813,12 +814,12 @@ namespace SGN.Web.ExpedientesTramites
                 }
 
 
-       
+
 
 
                 object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
 
-                if (itemsOS.ToString()!= "")                    
+                if (itemsOS.ToString() != "")
                 {
                     foreach (var item in (Object[])itemsOS)
                     {
@@ -834,9 +835,9 @@ namespace SGN.Web.ExpedientesTramites
 
                     }
                 }
-  
+
                 object itemsFv = HidDocumentoSelect["AfavorDe"];
-                if (itemsFv.ToString()!= "")
+                if (itemsFv.ToString() != "")
                 {
                     foreach (var item in (Object[])itemsFv)
                     {
@@ -851,7 +852,7 @@ namespace SGN.Web.ExpedientesTramites
                         datosCrud.AltaDatosDocumentos(nuevahojaDocumentos);
                     }
                 }
-        
+
 
 
                 // se registra el primer recibo de pago
@@ -978,7 +979,7 @@ namespace SGN.Web.ExpedientesTramites
 
 
                 object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
-                if (itemsOS.ToString()!=null)
+                if (itemsOS.ToString() != null)
                 {
                     foreach (var item in (Object[])itemsOS)
                     {
@@ -995,10 +996,10 @@ namespace SGN.Web.ExpedientesTramites
                     }
 
                 }
-          
+
                 object itemsFv = HidDocumentoSelect["AfavorDe"];
 
-                if (itemsFv.ToString()!="")
+                if (itemsFv.ToString() != "")
                 {
                     foreach (var item in (Object[])itemsFv)
                     {
@@ -1015,7 +1016,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 }
 
-            
+
 
 
                 // se registra el primer recibo de pago
@@ -1282,7 +1283,7 @@ namespace SGN.Web.ExpedientesTramites
         {
             DatosParticipantes datos = new DatosParticipantes();
             datos.IdRegistro = lsOtorgaSolicitante.Count + 1;
-            datos.IdHojaDatos = 0;            
+            datos.IdHojaDatos = 0;
             datos.FiguraOperacion = "Otorga o Solicita";
             datos.RolOperacion = e.NewValues["RolOperacion"].ToString();
             datos.Nombres = e.NewValues["Nombres"].ToString();
@@ -1401,10 +1402,10 @@ namespace SGN.Web.ExpedientesTramites
         protected void gvOtorgaSolicita_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
 
-            var participanteBorrar = lsOtorgaSolicitante.Where(x=> x.IdRegistro == Convert.ToInt32(e.Keys[0])).FirstOrDefault();
+            var participanteBorrar = lsOtorgaSolicitante.Where(x => x.IdRegistro == Convert.ToInt32(e.Keys[0])).FirstOrDefault();
 
-            lsOtorgaSolicitante.Remove (participanteBorrar);
-            e.Cancel= true;
+            lsOtorgaSolicitante.Remove(participanteBorrar);
+            e.Cancel = true;
             gvOtorgaSolicita.CancelEdit();
             gvOtorgaSolicita.DataBind();
 
@@ -1500,7 +1501,7 @@ namespace SGN.Web.ExpedientesTramites
             string numHojaDatos = detailGrid.GetMasterRowKeyValue().ToString();
 
 
-            ListaHojaDatos registroHojaDatos = lsHojaDatos.Where(x => x.IdHojaDatos.ToString()== numHojaDatos).FirstOrDefault();
+            ListaHojaDatos registroHojaDatos = lsHojaDatos.Where(x => x.IdHojaDatos.ToString() == numHojaDatos).FirstOrDefault();
 
             if (registroHojaDatos != null)
             {
@@ -1531,7 +1532,110 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void gvHojaDatos_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
         {
-          
+
+        }
+
+        protected void gvOtorgaSolicita_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+
+            Boolean existenCambios = false;
+
+
+            foreach (DictionaryEntry item in e.OldValues)
+            {
+                if (e.NewValues.Contains(item.Key))
+                {
+                    if (!e.NewValues[item.Key].Equals(item.Value))
+                    {
+                        existenCambios = true;
+                    }
+                }
+            }
+
+            if (existenCambios == false)
+            {
+                gvOtorgaSolicita.CancelEdit();
+                e.Cancel = true;
+                return;
+            }
+
+            var miRegistro = lsOtorgaSolicitante.Where(x => x.IdRegistro == Convert.ToInt64(e.Keys[0])).First();
+
+            if (miRegistro != null)
+            {
+
+                //miRegistro.FiguraOperacion = "Otorga o Solicita";
+                miRegistro.RolOperacion = e.NewValues["RolOperacion"].ToString();
+                miRegistro.Nombres = e.NewValues["Nombres"].ToString();
+                miRegistro.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
+                miRegistro.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
+                //datos.Sexo = e.NewValues["Sexo"].ToString();
+                //datos.FechaNacimiento= Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
+                miRegistro.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
+                miRegistro.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
+                miRegistro.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
+                miRegistro.SabeLeerEscribir = e.NewValues["SabeLeerEscribir"].ToString();
+                miRegistro.Notas = e.NewValues["Notas"] == null ? "" : e.NewValues["Notas"].ToString();
+
+            }
+
+
+            gvOtorgaSolicita.CancelEdit();
+            e.Cancel = true;
+            gvOtorgaSolicita.DataBind();
+
+
+        }
+
+        protected void gvaFavorDe_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+
+            Boolean existenCambios = false;
+
+
+            foreach (DictionaryEntry item in e.OldValues)
+            {
+                if (e.NewValues.Contains(item.Key))
+                {
+                    if (!e.NewValues[item.Key].Equals(item.Value))
+                    {
+                        existenCambios = true;
+                    }
+                }
+            }
+
+            if (existenCambios == false)
+            {
+                gvaFavorDe.CancelEdit();
+                e.Cancel = true;
+                return;
+            }
+
+            var miRegistro = lsAfavorDE.Where(x => x.IdRegistro == Convert.ToInt64(e.Keys[0])).First();
+
+            if (miRegistro != null)
+            {
+
+               // miRegistro.FiguraOperacion = "A favor de";
+                miRegistro.RolOperacion = e.NewValues["RolOperacion"].ToString();
+                miRegistro.Nombres = e.NewValues["Nombres"].ToString();
+                miRegistro.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
+                miRegistro.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
+                //datos.Sexo = e.NewValues["Sexo"].ToString();
+                //datos.FechaNacimiento= Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
+                miRegistro.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
+                miRegistro.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
+                miRegistro.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
+                miRegistro.SabeLeerEscribir = e.NewValues["SabeLeerEscribir"].ToString();
+                miRegistro.Notas = e.NewValues["Notas"] == null ? "" : e.NewValues["Notas"].ToString();
+
+            }
+
+
+            gvaFavorDe.CancelEdit();
+            e.Cancel = true;
+            gvaFavorDe.DataBind();
+
         }
     }
 }
