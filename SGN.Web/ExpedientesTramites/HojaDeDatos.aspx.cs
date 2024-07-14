@@ -1545,9 +1545,11 @@ namespace SGN.Web.ExpedientesTramites
             {
                 if (e.NewValues.Contains(item.Key))
                 {
-                    if (!e.NewValues[item.Key].Equals(item.Value))
+                  
+                    if (e.NewValues[item.Key]!=null && !e.NewValues[item.Key].Equals(item.Value))
                     {
                         existenCambios = true;
+                        break;
                     }
                 }
             }
@@ -1597,9 +1599,10 @@ namespace SGN.Web.ExpedientesTramites
             {
                 if (e.NewValues.Contains(item.Key))
                 {
-                    if (!e.NewValues[item.Key].Equals(item.Value))
+                    if (e.NewValues[item.Key] != null && !e.NewValues[item.Key].Equals(item.Value))
                     {
                         existenCambios = true;
+                        break;
                     }
                 }
             }

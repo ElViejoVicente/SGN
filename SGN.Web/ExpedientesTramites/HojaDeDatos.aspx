@@ -817,7 +817,7 @@
 
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas"  Width="100%">
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>
