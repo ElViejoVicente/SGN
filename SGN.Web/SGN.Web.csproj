@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Catalogos\CatActos.aspx" />
+    <Content Include="Catalogos\CatVariantesXActo.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
     <Content Include="Content\AsignacionMatricula.js" />
@@ -550,6 +551,13 @@
     </Compile>
     <Compile Include="Catalogos\CatActos.aspx.designer.cs">
       <DependentUpon>CatActos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatVariantesXActo.aspx.cs">
+      <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatVariantesXActo.aspx.designer.cs">
+      <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Configuracion\modulos.aspx.cs">
       <DependentUpon>modulos.aspx</DependentUpon>
