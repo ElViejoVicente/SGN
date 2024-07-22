@@ -431,6 +431,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_Actos_Update", param: new
                     {
+                        values.IdActo,
                         values.TextoActo,
                         values.Descripcion,
                         values.Activo

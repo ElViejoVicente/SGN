@@ -144,6 +144,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Catalogos\CatActos.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
     <Content Include="Content\AsignacionMatricula.js" />
@@ -543,6 +544,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Catalogos\CatActos.aspx.cs">
+      <DependentUpon>CatActos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatActos.aspx.designer.cs">
+      <DependentUpon>CatActos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion\modulos.aspx.cs">
       <DependentUpon>modulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
