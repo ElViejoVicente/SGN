@@ -116,7 +116,6 @@ namespace SGN.Negocio.CRUD
         #endregion
 
         #region DatosVariantes
-
         public Boolean AltaDatosVariantes(DatosVariantes values)
         {
             try
@@ -153,8 +152,6 @@ namespace SGN.Negocio.CRUD
             }
         }
 
-
-
         public Boolean ActualizarDatosVariantes(DatosVariantes values)
         {
             try
@@ -189,7 +186,6 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_DatosVariantes_Update, detalle: \n" + ex.Message, ex);
             }
         }
-
 
         public DatosVariantes ConsultaDatosVariantes(int IdRegistro)
         {
@@ -378,6 +374,83 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_Cat_VariantesPorActo_Select, detalle: \n" + ex.Message, ex);
             }
         }
+
+
+        public Boolean AltaCatVariantePorActo(Cat_VariantesPorActo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_VariantesPorActo_Insert", param: new
+                    {
+                        values.IdActo,
+                        values.TextoVariante,
+                        values.Descripcion,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_VariantesPorActo_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarCatVariantePorActo(Cat_VariantesPorActo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_VariantesPorActo_Update", param: new
+                    {
+                        values.IdVariante,
+                        values.IdActo,
+                        values.TextoVariante,
+                        values.Descripcion,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_VariantesPorActo_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarCatVariantePorActo(Cat_VariantesPorActo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_VariantesPorActo_Delete", param: new
+                    {
+                        values.IdVariante 
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_VariantesPorActo_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+
+
+
         #endregion
 
         #region Cat_Actos
@@ -602,7 +675,7 @@ namespace SGN.Negocio.CRUD
 
 
         #endregion
-        
+
         #region Expedientes
 
         public Expedientes ConsultaExpediente(string numExp)
@@ -697,7 +770,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Expedientes_Update", param: new
                     {
-                        values.IdExpediente,                        
+                        values.IdExpediente,
                         values.IdHojaDatos,
                         values.IdEstatus,
                         values.Otorga,
@@ -769,7 +842,7 @@ namespace SGN.Negocio.CRUD
 
         #region Alertas
 
-        public Alertas ConsultaAlertas (string IdAlerta)
+        public Alertas ConsultaAlertas(string IdAlerta)
         {
             try
             {
@@ -807,8 +880,8 @@ namespace SGN.Negocio.CRUD
                         values.NumExpediente,
                         values.NomUsuarioInformante,
                         values.MensajeAlerta,
-                        values.Prioridad           
-                  
+                        values.Prioridad
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -830,10 +903,10 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Alertas_Update", param: new
                     {
-                        values.IdAlerta,                    
-                        values.MensajeAlerta,               
+                        values.IdAlerta,
+                        values.MensajeAlerta,
                         values.AlertaActiva,
-                        values.NomUsuarioCierra                
+                        values.NomUsuarioCierra
 
 
                     }, commandType: CommandType.StoredProcedure);

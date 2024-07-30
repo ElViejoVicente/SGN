@@ -145,6 +145,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Catalogos\CatActos.aspx" />
+    <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
+    <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
     <Content Include="Catalogos\CatVariantesXActo.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
@@ -551,6 +553,20 @@
     </Compile>
     <Compile Include="Catalogos\CatActos.aspx.designer.cs">
       <DependentUpon>CatActos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXVariante.aspx.cs">
+      <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXVariante.aspx.designer.cs">
+      <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.cs">
+      <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.designer.cs">
+      <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\CatVariantesXActo.aspx.cs">
       <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
