@@ -353,6 +353,85 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar [sp_CRUD_Cat_RolParticipantes_Select], detalle: \n" + ex.Message, ex);
             }
         }
+
+
+        public Boolean AltaCatRolParticipantes(Cat_RolParticipantes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_RolParticipantes_Insert", param: new
+                    {
+                        values.IdActo,
+                        values.TextoFigura,
+                        values.TextoRol,
+                        values.PreguntarSiEsAnafabeta,
+                        values.Descripcion,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_RolParticipantes_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarCatRolParticipantes(Cat_RolParticipantes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_RolParticipantes_Update", param: new
+                    {
+                        values.IdRol,
+                        values.IdActo,
+                        values.TextoFigura,
+                        values.TextoRol,
+                        values.PreguntarSiEsAnafabeta,
+                        values.Descripcion,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_RolParticipantes_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarCatRolParticipantes(Cat_RolParticipantes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_RolParticipantes_Delete", param: new
+                    {
+                        values.IdRol
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_RolParticipantes_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+
         #endregion
 
         #region Cat_VariantesPorActo
