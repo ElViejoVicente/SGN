@@ -203,7 +203,7 @@
 
                     <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" Caption="Rol" FieldName="TextoFigura" Width="150"   >
+                    <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" Caption="Rol" FieldName="TextoFigura" Width="150"  GroupIndex="0"  >
                         <PropertiesComboBox>
                             <Items>
                                 <dx:ListEditItem Text="Otorga o Solicita" Value="Otorga o Solicita" />

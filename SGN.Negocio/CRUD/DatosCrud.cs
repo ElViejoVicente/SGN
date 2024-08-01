@@ -332,6 +332,86 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar [sp_CRUD_Cat_DocumentosPorActo_Select], detalle: \n" + ex.Message, ex);
             }
         }
+
+        public Boolean AltaCatDocumentosPorActo(Cat_DocumentosPorActo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_DocumentosPorActo_Insert", param: new
+                    {
+                        values.IdActo,
+                        values.IdVariente,
+                        values.TextoFigura,
+                        values.TextoDocumento,
+                        values.CopiaRequerida,
+                        values.Descripcion,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorActo_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarCatDocumentosPorActo(Cat_DocumentosPorActo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_DocumentosPorActo_Update", param: new
+                    {
+                        values.IdDoc,
+                        values.IdActo,
+                        values.IdVariente,
+                        values.TextoFigura,
+                        values.TextoDocumento,
+                        values.CopiaRequerida,
+                        values.Descripcion,
+                        values.Activo
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorActo_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarCatDocumentosPorActo(Cat_DocumentosPorActo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_DocumentosPorActo_Delete", param: new
+                    {
+                        values.IdDoc
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorActo_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+
         #endregion
 
         #region Cat_RolParticipantes
