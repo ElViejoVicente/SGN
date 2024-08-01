@@ -59,7 +59,7 @@
             if (s.cp_Update != null) {
 
                 gvDocumentosXvariente.UnselectRows();
-                gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text);
+                gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text + '~' + cbVarientes.GetSelectedItem().text);  
                 s.cp_Update = null;
             }
         }
@@ -126,7 +126,7 @@
 
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text );  }" />
+                                                            <ClientSideEvents Click="function(s, e) { gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text +'~'+ cbVarientes.GetSelectedItem().text  );    }" />
                                                         </dx:ASPxButton>
                                                     </td>
                                                 </tr>
@@ -150,6 +150,7 @@
                 OnRowInserting="gvDocumentosXvariente_RowInserting"
                 OnRowUpdating="gvDocumentosXvariente_RowUpdating"
                 OnRowValidating="gvDocumentosXvariente_RowValidating"
+                OnRowDeleting="gvDocumentosXvariente_RowDeleting"
                 OnToolbarItemClick="gvDocumentosXvariente_ToolbarItemClick"
                 OnCustomCallback="gvDocumentosXvariente_CustomCallback">
 
@@ -215,7 +216,7 @@
                 </SettingsCommandButton>
 
 
-                <SettingsDataSecurity AllowInsert="true" AllowDelete="false" AllowEdit="true" />
+                <SettingsDataSecurity AllowInsert="true" AllowDelete="true" AllowEdit="true" />
                 <SettingsSearchPanel Visible="true" />
 
                 <Columns>

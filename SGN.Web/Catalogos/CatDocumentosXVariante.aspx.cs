@@ -308,6 +308,15 @@ namespace SGN.Web.Catalogos
 
         }
 
+        protected void gvDocumentosXvariente_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            var miRegistro = catDocumentosXVariante.Where(x => x.IdDoc == Convert.ToInt64(e.Keys[0])).First();
 
+            datosCrud.EliminarCatDocumentosPorActo(miRegistro);
+
+            e.Cancel = true;
+            gvDocumentosXvariente.CancelEdit();
+            gvDocumentosXvariente.DataBind();
+        }
     }
 }
