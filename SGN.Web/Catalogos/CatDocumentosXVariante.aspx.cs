@@ -316,7 +316,9 @@ namespace SGN.Web.Catalogos
 
             e.Cancel = true;
             gvDocumentosXvariente.CancelEdit();
-            gvDocumentosXvariente.DataBind();
+
+            gvDocumentosXvariente.JSProperties["cp_Update"] = "OK";
+           
         }
     }
 }
