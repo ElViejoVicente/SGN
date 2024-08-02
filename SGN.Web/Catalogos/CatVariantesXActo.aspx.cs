@@ -117,7 +117,7 @@ namespace SGN.Web.Catalogos
                     return;
                 }
 
-                idActo = catActos.Where(x => x.TextoActo == parameters[1].ToString().Trim()).FirstOrDefault().IdActo;
+                idActo = catActos.Where(x => x.TextoActo.Trim() == parameters[1].ToString().Trim()).FirstOrDefault().IdActo;
 
 
                 if (command.Contains("CargarRegistros"))

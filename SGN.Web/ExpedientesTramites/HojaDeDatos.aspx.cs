@@ -524,7 +524,7 @@ namespace SGN.Web.ExpedientesTramites
                     cbActosNuevo.Text = hojaSeleccionada.TextoActo;
                     cbActosNuevo.SelectedIndex = catActos.FindIndex(w => w.TextoActo == hojaSeleccionada.TextoActo);
 
-                    catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo();
+                    catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo().Where(x=> x.Activo==true).ToList();
 
 
                     // se carga la variante seleccionada
@@ -646,9 +646,9 @@ namespace SGN.Web.ExpedientesTramites
                 var idActo = cbActosNuevo.Value;
 
 
-                catDocumentoOtorgaSolicita = datosCrud.ConsultaCatDocumentosPorActo();
+                catDocumentoOtorgaSolicita = datosCrud.ConsultaCatDocumentosPorActo().Where(x=> x.Activo==true).ToList();
 
-                catDocumentoAfavorDe = datosCrud.ConsultaCatDocumentosPorActo();
+                catDocumentoAfavorDe = datosCrud.ConsultaCatDocumentosPorActo().Where(x => x.Activo == true).ToList();
 
 
                 if (idActo != null && catDocumentoOtorgaSolicita.Count > 0)
@@ -687,11 +687,11 @@ namespace SGN.Web.ExpedientesTramites
                 lbDocumentacionOtorgaSolicita.DataBind();
                 lbDocumentacionAfavorDe.DataBind();
 
-                catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo();
+                catVarientesPorActo = catVarientesPorActo = datosCrud.ConsultaCatVariantesPorActo().Where(x => x.Activo == true).ToList(); 
 
-                catRolParticipantesOtorgaSolicita = datosCrud.ConsultaCatRolParticipantes();
+                catRolParticipantesOtorgaSolicita = datosCrud.ConsultaCatRolParticipantes().Where(x => x.Activo == true).ToList(); 
 
-                catRolParticipantesAfavorDe = datosCrud.ConsultaCatRolParticipantes();
+                catRolParticipantesAfavorDe = datosCrud.ConsultaCatRolParticipantes().Where(x => x.Activo == true).ToList(); 
 
 
 
@@ -1153,7 +1153,7 @@ namespace SGN.Web.ExpedientesTramites
 
         private void DameCatalogos()
         {
-            catActos = datosCrud.ConsultaCatActos();
+            catActos = datosCrud.ConsultaCatActos().Where(x=> x.Activo==true).ToList();
             cbActosNuevo.DataBind();
 
         }

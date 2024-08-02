@@ -174,8 +174,8 @@ namespace SGN.Web.Catalogos
                     return;
                 }
 
-                idActo = catActos.Where(x => x.TextoActo == parameters[1].ToString().Trim()).FirstOrDefault().IdActo;
-                idVariante = catVariantesActo.Where(x => x.TextoVariante == parameters[2].ToString().Trim()).FirstOrDefault().IdVariante;
+                idActo = catActos.Where(x => x.TextoActo.Trim() == parameters[1].ToString().Trim()).FirstOrDefault().IdActo;
+                idVariante = catVariantesActo.Where(x => x.TextoVariante.Trim() == parameters[2].ToString().Trim()).FirstOrDefault().IdVariante;
 
                 if (command.Contains("CargarRegistros"))
                 {
