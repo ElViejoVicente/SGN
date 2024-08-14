@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits=" GPS.Web.menu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="menu.aspx.cs" Inherits=" SGN.Web.menu" %>
 
 <!DOCTYPE html>
 
@@ -42,7 +42,7 @@
         }
 
         function AdjustSize() {
-            var height = document.getElementById('menudiv').clientHeight;  
+            var height = document.getElementById('menudiv').clientHeight;
             var width = document.getElementById('menudiv').clientWidth;
             rtvMenu.SetHeight(height);
         }
@@ -55,8 +55,8 @@
         var swm = 0;
         function rendererMenu() {
             var ifrMenu = parent.document.getElementById('menu');
-            var ifrcontent =parent.document.getElementById('basefrm');
-             var imgClip = document.getElementById('imgObj');
+            var ifrcontent = parent.document.getElementById('basefrm');
+            var imgClip = document.getElementById('imgObj');
 
             if (swm == 0) {
 
@@ -84,7 +84,7 @@
 
     <div style="width:100%;height:3.5%; float:left">
         <button type="button" class="navbar-toggle" data-toggle="collapse" 
-                    data-target="#menudiv" onclick="rendererMenu()" style="background-color:brown">
+                    data-target="#menudiv" onclick="rendererMenu()" style="background-color:#3a5f6f">
                     <img id="imgObj" src="imagenes/menu/Ocultar.ico" alt="Ocultar Menú" width="17" height="17"  />       
         </button>
     </div>

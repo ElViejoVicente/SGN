@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 
 
 
-namespace GPS.Negocio.ApiGoogle
+namespace SGN.Negocio.ApiGoogle
 {
     public class ApiGoogle
     {

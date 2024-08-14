@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace GPS.Negocio.Operativa
+namespace SGN.Negocio.Operativa
 {
     [Serializable]
     public class Usuario

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="indexMovil.aspx.cs" Inherits=" GPS.Web.indexMovil" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="indexMovil.aspx.cs" Inherits=" SGN.Web.indexMovil" %>
 
 <!DOCTYPE html>
 

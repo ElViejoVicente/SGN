@@ -1,6 +1,6 @@
 ﻿using DevExpress.Web;
-using GPS.Negocio.Operativa;
-using GPS.Web.Controles.Servidor;
+using SGN.Negocio.Operativa;
+using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GPS.Web.Configuracion
+namespace SGN.Web.Configuracion
 {
     public partial class usuarios : PageBase
     {

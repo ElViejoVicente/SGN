@@ -1,4 +1,4 @@
-﻿using GPS.Negocio.Operativa;
+﻿using SGN.Negocio.Operativa;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GPS.Web.Controles.paginas
+namespace SGN.Web.Controles.paginas
 {
 
         public partial class Error : System.Web.UI.Page

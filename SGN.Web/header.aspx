@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="header.aspx.cs" Inherits=" GPS.Web.header" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="header.aspx.cs" Inherits=" SGN.Web.header" %>
 
 <!DOCTYPE html>
 
@@ -50,7 +50,7 @@
             font-size     : 0.5rem;
             padding       : 0px;
         }*/
-        .btn:hover {
+       /* .btn:hover {
             cursor: pointer;
         }
         .custom-btn {
@@ -62,7 +62,76 @@
         }
         .vertical {
             transform: rotate(-90deg);
+        }*/
+
+
+        /* Estilo general del botón */
+/*.button {
+    font-size: 16px;
+    padding: 10px 20px;*/
+   /* background-color: #ff0000;*/
+    /*color: #243757;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}*/
+
+/* Estilo del botón al pasar el cursor por encima */
+/*.button:hover {
+    background-color: #dad5b7;
+    color: #3a5f6f;
+}
+*/
+/* Estilo del botón al hacer clic */
+/*.button:active {
+    background-color: #3a5f6f;
+    box-shadow: 0 5px #660000;
+    transform: translateY(4px);
+}*/
+
+.containerbtn {
+            position: relative;
+            display: inline-block;
+           
         }
+        
+        .close-button {
+            position: relative;
+            top: -6px;
+            right: -110px;
+            width: auto;
+            height: auto;
+            background-color: #3a5f6f;
+            border: solid 0px white;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 4px;
+            cursor: pointer;
+            border-radius: 9px;
+            transition-duration: 0.8s;
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+        }
+
+         .dxbButton {
+             background:#3a5f6f;
+         }
+
+         .btn-image {
+    background-image: url('/imagenes/header/cerrarSession.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    transition: background 0.5s;
+}
+
     </style>
      <script type="text/javascript">
 
@@ -76,7 +145,7 @@
         //    var obj = {};          
         //    obj.usuario = document.getElementById("HidUsuario").value;         
         //    console.log("jso envio:"+ Object.values(obj));
-       
+
         //    var jsonData = JSON.stringify(obj);
 
         //    $.post("/SessionHeartbeat.ashx",
@@ -97,9 +166,9 @@
         <header>
             <div class="wrapper">
                 <asp:HiddenField ID="HidUsuario" runat="server" ClientIDMode="Static" />
-                <div style="position: absolute; width: 13%; height: 100%; display: inline-block; padding-top: 0.5%">
-                    <img class="imagenGG" src="imagenes/header/logo-siknoT.png" height="30px" alt="Grupo Gallardo" />
-                    <div class="logo" style="">GPS</div>
+                <div style="position: absolute; width: 50%; height: 100%; display: inline-block; padding-top:0%">
+                    <img class="imagenGG" src="/imagenes/login/LogoNotaria.svg" height="50px" width="50px" alt="Sistema Notaria" />
+                    <div class="logo" style="">SGN (Sistema de Gestión Notaria 1 Huamantla)</div>
                 </div>
                 <div style="position: absolute; width: 71%; height: 100%; display: inline-block; margin-left: 14%; padding-top: 12px;">
                     <div style="width: 70%; height: 100%; display: inline-block;">
@@ -110,7 +179,7 @@
                     </div>
                 </div>
                 <div style="position: absolute; width: 9%; height: 100%; display: inline-block; margin-left: 85%; padding-top: 0.5%">
-                    <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" Width="65%" CssClass="clsidioma"
+                    <%--<dx:ASPxComboBox ID="ASPxComboBox1" runat="server" Width="65%" CssClass="clsidioma"
                         ImageUrlField="ImageUrl" TextField="Text" ValueField="Name" ValueType="System.String"
                         ShowImageInEditBox="True" SelectedIndex="0" Enabled="false">
                         <ItemImage Height="24px" Width="23px" />
@@ -118,13 +187,27 @@
                             <dx:ListEditItem Text="Español" Value="esp" Selected="True" ImageUrl="imagenes/header/ban-spain.png" />
                             <dx:ListEditItem Text="Inglés" Value="us" Selected="True" ImageUrl="imagenes/header/ban-usa.png" />
                         </Items>
-                    </dx:ASPxComboBox>
+                    </dx:ASPxComboBox>--%>
                 </div>
-                <div style="position: absolute; width: 5.5%; height: 100%; display: inline-block; margin-left: 94%; padding-top: 0.5%">
-                    <dx:ASPxButton runat="server" ID="btnCerrarSesion" Text="..." OnClick="btnCerrarSesion_Click" CssClass="custom-btn vertical clsSalir" RenderMode="Danger"
-                        ToolTip="Salir GPS">
-                        <%--<ClientSideEvents Init="setHeartbeat" />--%>
-                    </dx:ASPxButton>
+                <div style="position: absolute; width: 5.5%; height: 100%; display: inline-block; margin-left: 92%; padding-top: 0.5%">
+                   <%-- <asp:Button ID="Button1" runat="server" Text="Cerrar sesión" CssClass="button"  />--%>
+                   <%-- <dx:ASPxButton runat="server" ID="btnCerrarSesion" Text="..." OnClick="btnCerrarSesion_Click" CssClass="button" RenderMode="Danger"
+                        ToolTip="Salir">
+                       
+                    </dx:ASPxButton>--%>
+
+
+                   <%-- <dx:ASPxButton runat="server" ID="btnCerrarSesion" Text="Cerrar sesión" OnClick="btnCerrarSesion_Click" CssClass="button" 
+                        ToolTip="Salir">
+                    </dx:ASPxButton>--%>
+
+                     <div class="containerbtn">
+                        <%--<img src="/imagenes/header/cerrarSession.png" style="width:40px;height:40px" alt="Your Image">--%>
+                        <%--<button class="close-button" onclick="window.close()">X</button>--%>
+                         <dx:ASPxButton runat="server" ID="btnCerrarSesion" Text="X" OnClick="btnCerrarSesion_Click" CssClass="close-button" 
+                            ToolTip="Salir">
+                        </dx:ASPxButton>
+                    </div>
                 </div>
                 <div style="position: absolute; width: 0.5%; height: 100%; display: inline-block; margin-left: 99.5%">
                 </div>

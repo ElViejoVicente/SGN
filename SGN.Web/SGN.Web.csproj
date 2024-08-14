@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SGN.Web</RootNamespace>
     <AssemblyName>SGN.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -30,6 +30,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -109,7 +110,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
@@ -119,7 +119,6 @@
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -129,6 +128,7 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -145,16 +145,20 @@
     <Content Include="Content\Expediciones.js" />
     <Content Include="Content\ExpedicionesAsig.js" />
     <Content Include="Content\generic\pageMinimalStyle.css" />
+    <Content Include="Content\headers.css" />
     <Content Include="Content\indexMovil.css" />
     <Content Include="Content\jquery.countdown.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\menuMovil.css" />
     <Content Include="Content\paginas\flujo-procesos.css" />
     <Content Include="Content\paginas\flujo-procesos.js" />
     <Content Include="Content\stylePc.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
+    <Content Include="Expedientes\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="imagenes\GPB.ico" />
+    <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
     <Content Include="imagenes\header\ban-usa.png" />
     <Content Include="imagenes\header\cerrarSessionMinHoverN.png" />
@@ -163,8 +167,10 @@
     <Content Include="imagenes\header\fondoHeaderGPSBborde.png" />
     <Content Include="imagenes\header\logo-sikno.png" />
     <Content Include="imagenes\header\logo-siknoT.png" />
+    <Content Include="imagenes\header\LogoNotariaRecorte.png" />
     <Content Include="imagenes\header\logoS.png" />
     <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />
     <Content Include="imagenes\menu\BackGroundUserMenu.png" />
     <Content Include="imagenes\login\fondoGps.png" />
@@ -217,7 +223,6 @@
     <Content Include="imagenes\Produccion\finalizadoSmall.png" />
     <Content Include="imagenes\Produccion\pendiente.png" />
     <Content Include="imagenes\Produccion\pendienteSmall.png" />
-    <Content Include="imagenes\siknoRIcono.ico" />
     <Content Include="paginaConstruccion.aspx" />
     <Content Include="PlantillaMovil.aspx">
       <BrowseToURL>~/PlantillaMovil.aspx</BrowseToURL>
@@ -253,10 +258,7 @@
     <Content Include="Content\generic\pageStyle.css" />
     <Content Include="Content\generic\StylesMovil.css" />
     <Content Include="Content\headerMovil.css" />
-    <Content Include="Content\headers.css" />
-    <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\styles.css" />
     <Content Include="headerMovil.aspx" />
     <Content Include="imagenes\login\fondoCapas2.png" />
     <Content Include="imagenes\login\fondoCapas3.png" />
@@ -547,6 +549,13 @@
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Expedientes\PanelExpedientes.aspx.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Expedientes\PanelExpedientes.aspx.designer.cs">
+      <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -645,9 +654,6 @@
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionHeartbeat.ashx.cs">
-      <DependentUpon>SessionHeartbeat.ashx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -657,7 +663,6 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="SwitcherResources\Content\LICENSE" />
-    <Content Include="SessionHeartbeat.ashx" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />

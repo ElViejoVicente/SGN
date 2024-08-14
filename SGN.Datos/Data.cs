@@ -10,7 +10,7 @@ using System.Data.OleDb;
 using System.Collections;
 
 
-namespace GPS.Datos
+namespace SGN.Datos
 {
  
     public class DataTableHelper

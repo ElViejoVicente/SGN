@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GPS.Web
+namespace SGN.Web
 {
     public partial class paginaConstruccion : System.Web.UI.Page
     {

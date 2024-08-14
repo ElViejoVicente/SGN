@@ -1,4 +1,4 @@
-﻿using GPS.Datos;
+﻿using SGN.Datos;
 using SGN.Negocio.Operativa;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace GPS.Negocio.Operativa
+namespace SGN.Negocio.Operativa
 {
     public class DatosUsuario
     {

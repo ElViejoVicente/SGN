@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits=" GPS.Web.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits=" SGN.Web.index" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <xmlns="http://www.w3.org/1999/xhtml">
@@ -6,7 +6,7 @@
 <head runat="server"> 
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>GPS- CL Grupo Industrial</title>
+    <title>SGN. CL Grupo Industrial</title>
 
 <style>
     html, body {
@@ -27,7 +27,7 @@
 
     .embed-container1 {
 		position: relative;
-		height: 5%;
+		height: 7%;
         width: 100%;
 		overflow: hidden;
         border:0px solid red;
@@ -48,7 +48,7 @@
 		height: 96%;
         width: 100%;
 		overflow: hidden;
-        border:0px solid #e14544;
+        border:0px solid #243757;
 	}
 
     #menu {
@@ -57,8 +57,8 @@
 		left: 0;
 		width: 13%;
 		height:98.5%;
-        border-bottom:2px solid #e14544;
-        border-right:4px solid #e14544;
+        border-bottom:2px solid #243757;
+        border-right:4px solid #243757;
 	}
 
      #basefrm {
@@ -68,8 +68,8 @@
 		width: 86.5%;
 		height: 98.5%;
         margin-left:13.4%;
-        border-bottom:2px solid #e14544;
-        border-right:2px solid #e14544;
+        border-bottom:2px solid #243757;
+        border-right:2px solid #243757;
 	}
 
     @media screen and (max-width:1520px){

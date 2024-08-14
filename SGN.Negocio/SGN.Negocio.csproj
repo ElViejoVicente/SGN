@@ -9,13 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SGN.Negocio</RootNamespace>
     <AssemblyName>SGN.Negocio</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.24\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Exchange.WebServices, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\Microsoft.Exchange.WebServices.dll</HintPath>
@@ -77,7 +81,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="CRUD\DatosCrud.cs" />
+    <Compile Include="Expediente\DatosExpedientes.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
+    <Compile Include="ORM\Cat_Actos.cs" />
+    <Compile Include="ORM\Cat_Estatus.cs" />
+    <Compile Include="ORM\Cat_Proyectistas.cs" />
+    <Compile Include="ORM\Expedientes.cs" />
     <Compile Include="Properties\ApiGoogle\ApiGoogle.cs" />
     <Compile Include="Connected Services\WS_GESAG\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -365,6 +375,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WS_SAP_UNI\zws_sapletra_ggb_bnd.wsdl" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
   </ItemGroup>
   <ItemGroup>
@@ -419,6 +430,7 @@
   <ItemGroup>
     <Content Include="DLL\sapnco.dll" />
     <Content Include="DLL\sapnco_utils.dll" />
+    <Content Include="ORM\Leeme.txt" />
     <None Include="Connected Services\WS_SAP_UNI\configuration91.svcinfo" />
     <None Include="Connected Services\WS_SAP_UNI\configuration.svcinfo" />
     <None Include="Connected Services\WS_SAP_UNI\Reference.svcmap">

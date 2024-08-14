@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PlantillaMovil.aspx.cs" Inherits=" GPS.Web.PlantillaMovil" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PlantillaMovil.aspx.cs" Inherits=" SGN.Web.PlantillaMovil" %>
 
 <%@ Register Src="~/Controles/Usuario/InfoMsgBoxMovil.ascx" TagPrefix="uc1" TagName="cuInfoMsgboxMovil" %>
 <%@ Register Assembly="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>

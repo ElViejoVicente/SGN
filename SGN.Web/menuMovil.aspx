@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="menuMovil.aspx.cs" Inherits=" GPS.Web.menuMovil" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="menuMovil.aspx.cs" Inherits=" SGN.Web.menuMovil" %>
 
 
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>

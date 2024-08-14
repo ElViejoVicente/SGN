@@ -14,7 +14,7 @@ using System.Data.Common;
 
 
 
-namespace GPS.Negocio.Operativa
+namespace SGN.Negocio.Operativa
 {
     public class Funcioneslog
     {
