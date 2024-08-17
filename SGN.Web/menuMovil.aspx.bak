@@ -1,9 +1,9 @@
 ﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="menuMovil.aspx.cs" Inherits=" GPS.Web.menuMovil" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="menuMovil.aspx.cs" Inherits=" SGN.Web.menuMovil" %>
 
 
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 <html lang="en">

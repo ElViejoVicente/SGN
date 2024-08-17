@@ -42,13 +42,12 @@ namespace SGN.Negocio.Operativa
                     Activo = Convert.ToBoolean(dtresultado.Rows[0]["usActivo"]),
                     Mail = dtresultado.Rows[0]["usMail"].ToString().Trim(),
                     FechaBaja = Convert.ToDateTime(dtresultado.Rows[0]["usFecBaja"] != DBNull.Value ? dtresultado.Rows[0]["usFecBaja"] : "1900-01-01"),
-                    PIN = (dtresultado.Rows[0]["usPIN"]) != DBNull.Value ? dtresultado.Rows[0]["usPIN"].ToString().Trim() : "",
-                    PuestoTrabajo = Convert.ToInt32(dtresultado.Rows[0]["usPuestoTrabajo"] != DBNull.Value ? dtresultado.Rows[0]["usPuestoTrabajo"] : ""),
-                    CodProveedor = Convert.ToInt32((dtresultado.Rows[0]["usCodProveedor"]) != DBNull.Value ? dtresultado.Rows[0]["usCodProveedor"] : ""),
-                    Perfil = Convert.ToInt32((dtresultado.Rows[0]["puPerfil"]) != DBNull.Value ? dtresultado.Rows[0]["puPerfil"] : ""),
-                    NombreAgencia = dtresultado.Rows[0]["usNombreAgencia"].ToString().Trim(),
-                    NombrePerfil = dtresultado.Rows[0]["usNombrePerfil"].ToString().Trim(),
                     Avisoemail = Convert.ToBoolean(dtresultado.Rows[0]["usAvisosEmail"]),
+                    AreaTrabajo = dtresultado.Rows[0]["usArea"].ToString().Trim(),
+                    EsProyectista = Convert.ToBoolean(dtresultado.Rows[0]["usEsproyectista"]),
+                    Perfil = Convert.ToInt32((dtresultado.Rows[0]["puPerfil"]) != DBNull.Value ? dtresultado.Rows[0]["puPerfil"] : ""),
+                    NombrePerfil = dtresultado.Rows[0]["usNombrePerfil"].ToString().Trim(),
+
                     Creado = true
                 };
 
@@ -76,17 +75,15 @@ namespace SGN.Negocio.Operativa
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@Activo", SqlDbType.Bit), _SqlValue: miUsuario.Activo),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@Mail", SqlDbType.VarChar), _SqlValue: miUsuario.Mail),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@FechaBaja", SqlDbType.DateTime), _SqlValue: miUsuario.FechaBaja),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@PIN", SqlDbType.VarChar), _SqlValue: miUsuario.PIN),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@PuestoTrabajo", SqlDbType.Int), _SqlValue: miUsuario.PuestoTrabajo),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@CodProveedor", SqlDbType.Int), _SqlValue: miUsuario.CodProveedor),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@NombreProveedor", SqlDbType.Int), _SqlValue: miUsuario.NombreAgencia),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@avisoemail", SqlDbType.Bit), _SqlValue: miUsuario.Avisoemail),
+                new SqlParamTranfer( _SqlParameter: new SqlParameter("@AreaTrabajo", SqlDbType.VarChar), _SqlValue: miUsuario.AreaTrabajo),
+                new SqlParamTranfer( _SqlParameter: new SqlParameter("@esProyectista", SqlDbType.Bit), _SqlValue: miUsuario.EsProyectista)
                 };
 
                 dtresultado = BaseDatossql.LoadDataSet("sp_AltaNuevoUsuario", parametros).Tables[0];
 
 
-                if (int.Parse(dtresultado.Rows[0]["RES"].ToString()) == 1)
+                if (int.Parse(dtresultado.Rows[0]["RES"].ToString()) > 0)
                 {
                     return true;
                 }
@@ -117,10 +114,10 @@ namespace SGN.Negocio.Operativa
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@Activo", SqlDbType.Bit), _SqlValue: miUsuario.Activo),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@Mail", SqlDbType.VarChar), _SqlValue: miUsuario.Mail),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@FechaBaja", SqlDbType.DateTime), _SqlValue: miUsuario.FechaBaja),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@CodProveedor", SqlDbType.Int), _SqlValue: miUsuario.CodProveedor),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@NombreAgencia", SqlDbType.VarChar), _SqlValue: miUsuario.NombreAgencia),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@avisoemail", SqlDbType.Bit), _SqlValue: miUsuario.Avisoemail),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@contrasena", SqlDbType.Bit), _SqlValue: miUsuario.Contraseña),
+                new SqlParamTranfer( _SqlParameter: new SqlParameter("@AreaTrabajo", SqlDbType.VarChar), _SqlValue: miUsuario.AreaTrabajo),
+                new SqlParamTranfer( _SqlParameter: new SqlParameter("@esProyectista", SqlDbType.Bit), _SqlValue: miUsuario.EsProyectista),
                 };
 
 
@@ -160,7 +157,7 @@ namespace SGN.Negocio.Operativa
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@mail", SqlDbType.DateTime), _SqlValue: miUsuario.Mail),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@pwd", SqlDbType.VarChar), _SqlValue: miUsuario.Contraseña),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@avisomail", SqlDbType.DateTime), _SqlValue: miUsuario.Avisoemail)
-                
+
                 };
 
 
@@ -200,7 +197,7 @@ namespace SGN.Negocio.Operativa
                 }
                 if (codusuario != -1)
                 {
-                   DataRow[] dtusuario= dtresultado.Select("usCodigo=" + codusuario);
+                    DataRow[] dtusuario = dtresultado.Select("usCodigo=" + codusuario);
                     miListaUsuarios = (from elemento in dtusuario.AsEnumerable()
                                        select new Usuario
                                        {
@@ -211,12 +208,10 @@ namespace SGN.Negocio.Operativa
                                            FechaAlta = Convert.ToDateTime(elemento["usFecAlta"]),
                                            Activo = Convert.ToBoolean(elemento["usActivo"]),
                                            Mail = elemento["usMail"].ToString().Trim(),
-                                           FechaBaja = Convert.ToDateTime(elemento["usFecBaja"]),
-                                           PIN = elemento["usPIN"].ToString().Trim(),
-                                           PuestoTrabajo = Convert.ToInt32(elemento["usPuestoTrabajo"]),
-                                           CodProveedor = Convert.ToInt32(elemento["usCodProveedor"]),
-                                           NombreAgencia = elemento["usNombreAgencia"].ToString().Trim(),
+                                           FechaBaja = Convert.ToDateTime(elemento["usFecBaja"]),                                          
                                            Avisoemail = Convert.ToBoolean(elemento["usAvisosEmail"]),
+                                           AreaTrabajo = elemento["usArea"].ToString().Trim(),
+                                           EsProyectista = Convert.ToBoolean(elemento["usEsproyectista"]),
                                            Creado = true
                                        }).ToList();
                     return miListaUsuarios;
@@ -233,12 +228,10 @@ namespace SGN.Negocio.Operativa
                                            FechaAlta = Convert.ToDateTime(elemento["usFecAlta"]),
                                            Activo = Convert.ToBoolean(elemento["usActivo"]),
                                            Mail = elemento["usMail"].ToString().Trim(),
-                                           FechaBaja = Convert.ToDateTime(elemento["usFecBaja"]),
-                                           PIN = elemento["usPIN"].ToString().Trim(),
-                                           PuestoTrabajo = Convert.ToInt32(elemento["usPuestoTrabajo"]),
-                                           CodProveedor = Convert.ToInt32(elemento["usCodProveedor"]),
-                                           NombreAgencia = elemento["usNombreAgencia"].ToString().Trim(),
+                                           FechaBaja = Convert.ToDateTime(elemento["usFecBaja"]),                                          
                                            Avisoemail = Convert.ToBoolean(elemento["usAvisosEmail"]),
+                                           AreaTrabajo = elemento["usArea"].ToString().Trim(),
+                                           EsProyectista = Convert.ToBoolean(elemento["usEsproyectista"]),
                                            Creado = true
                                        }).ToList();
                     return miListaUsuarios;
@@ -608,7 +601,7 @@ namespace SGN.Negocio.Operativa
                                       Descripcion = elemento["fcDescModulo"].ToString().Trim(),
                                       DescripcioLarga = elemento["fcDesModuloLargo"].ToString().Trim(),
                                       URL = elemento["fcURL"].ToString().Trim(),
-                                      ParentID = elemento["fiParentId"] != DBNull.Value ? Convert.ToInt32(elemento["fiParentId"]):0,
+                                      ParentID = elemento["fiParentId"] != DBNull.Value ? Convert.ToInt32(elemento["fiParentId"]) : 0,
                                       UrlICon = elemento["fiUrlIco"].ToString().Trim(),
                                       UrlIConLarge = elemento["fiUrlIcoLarge"].ToString().Trim(),
                                       Orden = Convert.ToInt32(elemento["fiOrden"]),
@@ -724,15 +717,15 @@ namespace SGN.Negocio.Operativa
 
 
                 miListaSociedades = (from elemento in dtresultado.AsEnumerable()
-                                   select new Sociedad
-                                   {
-                                       IdCodigo = Convert.ToInt32(elemento["scCodigo"]),
-                                       Nombre = elemento["scNombre"].ToString().Trim(),
-                                       codSociedad = elemento["scSociedad"].ToString().Trim(),
-                                       SociedadSAP = Convert.ToInt32(elemento["scSociedadSAP"]),
-                                       DiasLaborales = Convert.ToInt32(elemento["scDiasLaborales"]),
-                                       Creado = true
-                                   }).ToList();
+                                     select new Sociedad
+                                     {
+                                         IdCodigo = Convert.ToInt32(elemento["scCodigo"]),
+                                         Nombre = elemento["scNombre"].ToString().Trim(),
+                                         codSociedad = elemento["scSociedad"].ToString().Trim(),
+                                         SociedadSAP = Convert.ToInt32(elemento["scSociedadSAP"]),
+                                         DiasLaborales = Convert.ToInt32(elemento["scDiasLaborales"]),
+                                         Creado = true
+                                     }).ToList();
                 return miListaSociedades;
             }
             catch (Exception ex)
@@ -781,7 +774,7 @@ namespace SGN.Negocio.Operativa
             }
         }
 
-        public Boolean ActualizaSociedadesUsuario(int idUsuario, int idSociedad,int porDefecto, int operacion)
+        public Boolean ActualizaSociedadesUsuario(int idUsuario, int idSociedad, int porDefecto, int operacion)
         {
             try
             {
@@ -814,7 +807,7 @@ namespace SGN.Negocio.Operativa
         }
 
 
-         public Boolean NuevaSociedad(string Nombre, string CodSociedad, int SociedadSAP,int DiasLaborales)
+        public Boolean NuevaSociedad(string Nombre, string CodSociedad, int SociedadSAP, int DiasLaborales)
         {
             try
             {
@@ -849,79 +842,6 @@ namespace SGN.Negocio.Operativa
 
 
 
-
-        public Boolean limpiezaUnitTest()
-        {
-            try
-            {
-                DataTable dtresultado;
-
-                List<SqlParamTranfer> parametros = new List<SqlParamTranfer>();
-
-                    dtresultado = BaseDatossql.LoadDataSet("sp_cleanTestUnit", parametros).Tables[0];
-
-                if (int.Parse(dtresultado.Rows[0]["RES"].ToString()) == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    throw new Exception("Error en sp_cleanTestUnit detalle: la operacion de insercion retorno @@rowcount =0");
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception("Error al ejecutar sp_cleanTestUnit detalle: \n" + ex.Message, ex);
-            }
-        }
-
-        public  DataTable dameemailagencias(int idagencia,Boolean conaviso)
-        {
-            try
-            {
-                DataTable dtresultado;
-
-                List<SqlParamTranfer> parametros = new List<SqlParamTranfer>
-                {
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@idagencia", SqlDbType.Int), _SqlValue: idagencia),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@conaviso", SqlDbType.Bit), _SqlValue: conaviso)
-                
-                };
-
-                dtresultado = BaseDatossql.LoadDataSet("sp_dameemailagencia", parametros).Tables[0];
-                return dtresultado;
-                
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception("Error al ejecutar sp_altaSociedad detalle: \n" + ex.Message, ex);
-            }
-
-        }
-
-        public void actualizaHoraBloqueo(int idUsuario)
-        {
-
-            try
-            {
-
-                List<SqlParamTranfer> parametros = new List<SqlParamTranfer>
-                {
-                new SqlParamTranfer(_SqlParameter: new SqlParameter("@IdUsuario", SqlDbType.Int), _SqlValue: idUsuario)
-                };
-
-                BaseDatossql.ExecuteNonQuery("sp_Actualiza_HearthBeat", parametros);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
 
     }
 }

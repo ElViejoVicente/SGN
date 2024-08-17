@@ -26,7 +26,7 @@ namespace SGN.Web
             try
             {
 
-                // window.location.href='/login.aspx'; 
+                 //window.location.href='/login.aspx'; 
    
             }
             catch (Exception)

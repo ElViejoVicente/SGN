@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits=" SGN.Web.Login" %>
 
-<%@ Register Assembly="DevExpress.Web.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
                     <div class="card-header">
                         <h1 class="titles-header">Bienvenido</h1>
                         <h3>Bienvenido</h3>
-                        <h4>Sistema de Gestión Notarial</h4>
+                        <h4>Sistema de Gestión Notarial v1.0</h4>
                     </div>
                     <div class="card-body">
                         <form id="frmLogin" runat="server">
@@ -118,7 +118,7 @@
         </div>
     </div>
     <div class="footer">
-        © 2023 Derechos Reservados | Desarrollado por: <a href="www.consultoria.it.com" target="_blank">Consultoria IT  |  55 4800 5547 Francisco I. Madero 3A Humantla, Tlax.</a>
+        © 2024 Derechos Reservados | By: <a href="www.consultoria-it.com" target="_blank">Consultoria IT  |  55 4800 5547 Francisco I. Madero 3A Humantla, Tlax.</a>
     </div>
 </body>
 </html>

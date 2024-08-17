@@ -13,14 +13,16 @@ namespace SGN.Web
     public partial class header : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
-        {      
-           
+        {
+
 
             if (!Page.IsPostBack)
             {
                 Response.Expires = 0;
 
-               
+
+
+
                 obtieneDatosUsuario();
 
             }
@@ -31,41 +33,38 @@ namespace SGN.Web
         {
             try
             {
-                string strHora= DateTime.Now.ToString("HH:mm:ss");
-                if(UsuarioPagina != null)
+                if (Session["usuario"] != null)
                 {
+                    string strHora = DateTime.Now.ToString("HH:mm:ss");
                     HidUsuario.Value = UsuarioPagina.Id.ToString();
-                }
-
-
-                //lblHora.Text = System.DateTime.Today.ToLongDateString();
-                //lblNomUsuario.Text = ((Usuario)Session["usuario"]).Nombre;
-                try
-                {
-                    if (Session["urlMenu"] != null)
+                    //lblHora.Text = System.DateTime.Today.ToLongDateString();
+                    //lblNomUsuario.Text = ((Usuario)Session["usuario"]).Nombre;
+                    try
                     {
-                        String url = Session["urlMenu"].ToString();
-                        string[] paramsURL = url.Split('=');
+                        if (Session["urlMenu"] != null)
+                        {
+                            String url = Session["urlMenu"].ToString();
+                            string[] paramsURL = url.Split('=');
 
-                        //foreach (var parameter in paramsURL)
-                        //{
-                        //    System.Console.WriteLine($"<{word}>");
-                        //}
-                        CargarConfigruacionHead(int.Parse(paramsURL[1].ToString()));
+                            //foreach (var parameter in paramsURL)
+                            //{
+                            //    System.Console.WriteLine($"<{word}>");
+                            //}
+                            CargarConfigruacionHead(int.Parse(paramsURL[1].ToString()));
 
+                        }
                     }
-                }
-                catch (Exception)
-                {
+                    catch (Exception)
+                    {
+                    }
+
                 }
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 throw;
             }
         }
-
-
 
         protected void CargarConfigruacionHead(int codPAgina)
         {
@@ -74,8 +73,15 @@ namespace SGN.Web
                 DataTable confiPAgina = datosUsuario.DameConfiguracionPagina(codPAgina);
                 if (confiPAgina.Rows.Count > 0)
                 {
+                    // imagenLogo.ImageUrl = confiPAgina.Rows[0]["fiUrlIcoLarge"].ToString();
                     lblNombrePagina.Text = "/" + confiPAgina.Rows[0]["fcDesModuloLargo"].ToString() + "  -  " + confiPAgina.Rows[0]["fiVersion"].ToString();
-                    
+                    //lblVersion.Text = confiPAgina.Rows[0]["fiVersion"].ToString();
+
+
+
+
+
+
                 }
             }
             catch (Exception ex)
@@ -85,21 +91,16 @@ namespace SGN.Web
 
         }
 
+
+
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
-
-            {
-                SGN.Negocio.Operativa.Usuario usu = (SGN.Negocio.Operativa.Usuario)Session["usuario"];
-                //datosUsuario.borrarlogusuario(usu.UserName);
-                //datosUsuario.QuitarExpbloqueadas(usu.UserName);
-            }
 
             Session.Clear();
             Session.RemoveAll();
             Session.Abandon();
             ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "window.parent.location.href='/login.aspx'; ", true);
-
+            //Response.Redirect("login.aspx");
 
         }
     }

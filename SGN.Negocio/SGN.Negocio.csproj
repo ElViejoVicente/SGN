@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SGN.Negocio</RootNamespace>
     <AssemblyName>SGN.Negocio</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <SccProjectName>SAK</SccProjectName>
@@ -39,6 +39,8 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.1.24\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.DataAccess.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.Exchange.WebServices, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLL\Microsoft.Exchange.WebServices.dll</HintPath>
@@ -71,39 +73,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\WS_SAP_DES\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\WS_SAP_UNI\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="CRUD\DatosCrud.cs" />
     <Compile Include="Expediente\DatosExpedientes.cs" />
+    <Compile Include="Expediente\ListaExpedientes.cs" />
+    <Compile Include="Expediente\ListaHojaDatos.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
+    <Compile Include="ORM\Alertas.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
+    <Compile Include="ORM\Cat_DocumentosPorActo.cs" />
     <Compile Include="ORM\Cat_Estatus.cs" />
     <Compile Include="ORM\Cat_Proyectistas.cs" />
+    <Compile Include="ORM\Cat_RolParticipantes.cs" />
+    <Compile Include="ORM\Cat_VariantesPorActo.cs" />
+    <Compile Include="ORM\DatosDocumentos.cs" />
+    <Compile Include="ORM\DatosParticipantes.cs" />
+    <Compile Include="ORM\DatosVariantes.cs" />
     <Compile Include="ORM\Expedientes.cs" />
+    <Compile Include="ORM\HojaDatos.cs" />
+    <Compile Include="ORM\PerfilesXestatus.cs" />
+    <Compile Include="ORM\RecibosDePago.cs" />
     <Compile Include="Properties\ApiGoogle\ApiGoogle.cs" />
-    <Compile Include="Connected Services\WS_GESAG\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\WS_GESAG_DES\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\WS_SAP_PROD\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Operativa\Constantes.cs" />
     <Compile Include="Operativa\DatosUsuario.cs" />
     <Compile Include="Operativa\Funcioneslog.cs" />
@@ -118,6 +107,14 @@
     <Compile Include="Operativa\SociedadXUsuario.cs" />
     <Compile Include="Operativa\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\dsHojaDatos.cs">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsHojaDatos.Designer.cs">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SGN.Datos\SGN.Datos.csproj">
@@ -130,319 +127,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.DatosMatriculas.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.DetalleExpediciones.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.DetalleLetra.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.DetalleSituacion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.DetalleTransportista.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.EstadoExpedicion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.ExpedicionesPendientes.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.ExpedicionesRetrasadas.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.FabricacionesPlanficadasMaterial.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.MaterialesGGB.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.MaterialPendienteCarga.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\SGN.Negocio.WS_GESAG.PrevDemanda.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG\WsGesag.wsdl" />
-    <None Include="Connected Services\WS_GESAG\WsGesag.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG\WsGesag1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG\WsGesag11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG\WsGesag12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG\WsGesag13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.DatosMatriculas.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.DetalleExpediciones.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.DetalleLetra.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.DetalleSituacion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.DetalleTransportista.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.EstadoExpedicion.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.ExpedicionesPendientes.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.ExpedicionesRetrasadas.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.FabricacionesPlanficadasMaterial.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.MaterialesGGB.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.MaterialPendienteCarga.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\SGN.Negocio.WS_GESAG_DES.PrevDemanda.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag.wsdl" />
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_ASIGNAPROV_DISTResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_ASIGNAPROV_DISTResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_ENTREGA_ENTRANTEResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_ENTREGA_ENTRANTEResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_GASTOS_VENTAS_SIDERResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_GASTOS_VENTAS_SIDERResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_PROVEEDOR_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_PROVEEDOR_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_TRANS_VENTAS_SIDERResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_CREAR_TRANS_VENTAS_SIDERResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEENTEXPEDICION_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEENTEXPEDICION_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEMATERIALRETORNOResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEMATERIALRETORNOResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEMATERIALRETORNOXPROVResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEMATERIALRETORNOXPROVResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPAISES_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPAISES_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPOBLACIONESXPRVResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPOBLACIONESXPRVResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPROVEEDORES_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPROVEEDORES_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPROVEEDORRETORNO_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEPROVEEDORRETORNO_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEREGIONES_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_DAMEREGIONES_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_INSERTA_DIST_ENTRResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_INSERTA_DIST_ENTRResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_INS_PROVEEDOR_ENTREGASResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\SGN.Negocio.WS_SAP_DES.Z_INS_PROVEEDOR_ENTREGASResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\zws_sapletra_ggb_bnd.wsdl" />
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_CREAR_GASTOS_VENTAS_SIDERResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_CREAR_GASTOS_VENTAS_SIDERResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_CREAR_PROVEEDOR_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_CREAR_PROVEEDOR_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_CREAR_TRANS_VENTAS_SIDERResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_CREAR_TRANS_VENTAS_SIDERResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_DAMEPROVEEDORES_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\SGN.Negocio.WS_SAP_PROD.Z_DAMEPROVEEDORES_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_PROD\zws_sapletra_ggb_bnd.wsdl" />
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_CREAR_GASTOS_VENTAS_SIDERResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_CREAR_GASTOS_VENTAS_SIDERResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_CREAR_PROVEEDOR_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_CREAR_PROVEEDOR_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_CREAR_TRANS_VENTAS_SIDERResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_CREAR_TRANS_VENTAS_SIDERResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_DAMEPROVEEDORES_GGBResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\SGN.Negocio.WS_SAP_UNI.Z_DAMEPROVEEDORES_GGBResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WS_SAP_UNI\zws_sapletra_ggb_bnd.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WS_GESAG\" />
-    <WCFMetadataStorage Include="Connected Services\WS_GESAG_DES\" />
-    <WCFMetadataStorage Include="Connected Services\WS_SAP_DES\" />
-    <WCFMetadataStorage Include="Connected Services\WS_SAP_PROD\" />
-    <WCFMetadataStorage Include="Connected Services\WS_SAP_UNI\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <Content Include="Reportes\dsHojaDatos.xsc">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+    </Content>
+    <None Include="Reportes\dsHojaDatos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHojaDatos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_SAP_PROD\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_SAP_PROD\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_SAP_PROD\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG\WsGesag.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG_DES\WsGesag.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG_DES\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG_DES\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_GESAG_DES\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Content Include="Reportes\dsHojaDatos.xss">
+      <DependentUpon>dsHojaDatos.xsd</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DLL\sapnco.dll" />
     <Content Include="DLL\sapnco_utils.dll" />
     <Content Include="ORM\Leeme.txt" />
-    <None Include="Connected Services\WS_SAP_UNI\configuration91.svcinfo" />
-    <None Include="Connected Services\WS_SAP_UNI\configuration.svcinfo" />
-    <None Include="Connected Services\WS_SAP_UNI\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Connected Services\WS_SAP_DES\configuration91.svcinfo" />
-    <None Include="Connected Services\WS_SAP_DES\configuration.svcinfo" />
-    <None Include="Connected Services\WS_SAP_DES\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="DLL\Microsoft.Exchange.WebServices.dll" />
   </ItemGroup>
   <ItemGroup>

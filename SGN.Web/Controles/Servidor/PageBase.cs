@@ -6,6 +6,7 @@ using System.Web;
 using SGN.Web.Controles.Servidor;
 using SGN.Negocio.Operativa;
 using System.Data;
+using System.Web.UI;
 
 
 namespace SGN.Web.Controles.Servidor
@@ -95,14 +96,20 @@ namespace SGN.Web.Controles.Servidor
             {
                 if (UsuarioPagina == null)
                 {
-                    string str_Script = @"
-               <script type='text/javascript'> 
-                  
-                       window.parent.location.href='/login.aspx'; 
-                  
-               </script>";
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Redirect", str_Script);
+                    //string str_Script = @" <script type='text/javascript'> window.parent.location.href='/login.aspx'; </script>";
+                    //ClientScript.RegisterClientScriptBlock(this.GetType(), "Redirect", str_Script);
+                    ////Page.ClientScript.RegisterStartupScript(this.GetType(), "Redirect", str_Script, true);
 
+
+                    ////Server.Transfer("/Controles/paginas/Error.aspx", true);
+                    ////window.location.href
+
+                    ////Session.Clear();
+                    ////Session.RemoveAll();
+                    ////Session.Abandon();
+                    ////ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "window.parent.location.href='/login.aspx'; ", true);
+
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "window.parent.location.href='/login.aspx'; ", true);
 
                 }
             }

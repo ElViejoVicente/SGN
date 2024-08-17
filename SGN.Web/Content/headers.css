@@ -20,10 +20,8 @@ header {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: #2A385D;
     /*background-image: url('../imagenes/header/fondoHeader.png');*/
-    /*background-image: url('../imagenes/header/fondoHeaderGPSBborde.png');*/
-    /*background-image: url('../imagenes/header/fondoHeaderBlack.png');*/
-    background-color: #243757;
 }
 
 .wrapper {
@@ -38,12 +36,13 @@ header {
 header .logo {
     color: #f2f2f2;
     font-family: "DIN";
-    font-size: 25px;
+    font-size: 30px;
     padding-left: 1%;
-    margin-top: 2%;
+    margin-top: -8px;
     padding-top: 0px;
     float: left;
 }
+
 
 .etiquetas {
     color: #f2f2f2;
@@ -56,7 +55,6 @@ header .logo {
     width: 100%;
     height: 100%;
 }
-
 
 header .Title {
     color: #f2f2f2;
@@ -75,24 +73,22 @@ header .Title {
 }
 
 .imagenGG {
-    margin: 0px;
+    margin: 10px;
     margin-top: 0%;
     padding: 0px;
     float: left;
     border: 0px solid blue;
-    background-color: #dad5b7;
-    width: 280px;
-    height: 70px;
+    filter: brightness(0) invert(1);
 }
 
 
 .login_btn {
     color: black;
     background: none;
-    border:hidden;
+    border: hidden;
     background-image: url('../imagenes/header/cerrarSessionMin.png');
     background-size: 50px 50px;
-    background-position: center; 
+    background-position: center;
     background-repeat: no-repeat;
     width: 50px !important;
     height: 50px;
@@ -100,10 +96,9 @@ header .Title {
 
 .close {
     float: right;
-    line-height: 200px;
     display: inline-block;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px;
     line-height: normal;
     -webkit-transition: all 500ms ease;
     -o-transition: all 500ms ease;
@@ -142,8 +137,8 @@ header .Title {
     transition: all 500ms ease;
 }
 
-.usuario{
-    font-size:20px;
+.usuario {
+    font-size: 20px;
 }
 
 header nav a:hover {
@@ -153,17 +148,17 @@ header nav a:hover {
 
 .header2 {
     position: fixed;
-    height: 100px;
+    height: 10%;
 }
 
-.header2 .logo {
-    line-height: 100px;
-    font-size: 20px;
-}
+    .header2 .logo {
+        font-size: 30px;
+    }
 
-.header2 nav {
-    line-height: 100px;
-}
+    .header2 nav {
+        line-height: 10px;
+    }
+
 
 .idioma {
     padding: 0px;
@@ -181,37 +176,44 @@ header nav a:hover {
     font-size: 11px;
     font-weight: normal;
     color: #fff;
-    background: #e14544;
-    border-top: 2px solid #e14544;
-    border-left: 2px solid #e14544;
-    border-bottom: 2px solid #e14544;
-    border-right: 2px solid #e14544;
+    background: #2A385D;
+    border-top: 2px solid #2A385D;
+    border-left: 2px solid #2A385D;
+    border-bottom: 2px solid #2A385D;
+    border-right: 2px solid #2A385D;
     float: right;
 }
 
 .dxeButtonEdit {
     position: absolute;
-    background-color: #e14544;
-    border: 1px solid #e14544;
+    background-color: #2A385D;
+    border: 1px solid #2A385D;
     font: 14px "DIN", sans-serif;
     font-weight: bold;
     z-index: 1000;
 }
 
 .clsSalir {
-    background-color: #e14544;
+    background-color: #2A385D;
     float: right;
 }
 
+
+
+
+
 @media screen and (max-width:1900px) {
     .menuitem {
+        /*width: 500px;*/
         text-align: center;
         font-size: 20px;
         font-weight: bold;
     }
+
     header .Title {
         font-size: 25px;
     }
+
     .header2 .logo {
         font-size: 28px;
     }
@@ -219,29 +221,37 @@ header nav a:hover {
 
 @media screen and (max-width:1700px) {
     .menuitem {
+        /*width: 220px;*/
         text-align: center;
         font-size: 17px;
         font-weight: bold;
     }
+
     .menuitem2 {
         width: 15%;
     }
+
     header .Title {
         font-size: 25px;
     }
+
     .header2 .logo {
         font-size: 26px;
     }
 }
+
 @media screen and (max-width:1500px) {
     .menuitem {
+        /*width: 100px;*/
         text-align: center;
         font-size: 17px;
         font-weight: bold;
     }
+
     .menuitem2 {
         width: 15%;
     }
+
     header .Title {
         visibility: hidden;
     }
@@ -249,78 +259,83 @@ header nav a:hover {
     .header2 .logo {
         font-size: 26px;
     }
-
 }
 
-    @media screen and (max-width:1330px) {
-        .menuitem {
-            text-align: start;
-            font-size: 15px;
-            font-weight: normal;
-        }
-        .menuitem2 {
-           visibility:hidden;
-        }
-        .usuario {
-            font-size: 15px;
-        }
-
-        header .Title {
-            visibility: hidden;
-        }
-
-        .header2 .logo {
-            font-size: 24px;
-        }
+@media screen and (max-width:1330px) {
+    .menuitem {
+        text-align: start;
+        font-size: 15px;
+        font-weight: normal;
     }
 
-    @media screen and (max-width:1100px) {
-        .menuitem {
-            text-align: start;
-            font-size: 12px;
-            font-weight: normal;
-        }
-
-        .usuario {
-            font-size: 10px;
-        }
-        .menuitem2 {
-            visibility: hidden;
-        }
-        header .Title {
-            visibility: hidden;
-        }
-
-        .header2 .logo {
-            font-size: 22px;
-        }
+    .menuitem2 {
+        visibility: hidden;
     }
 
-    @media screen and (max-width:1024px) {
-        .menuitem {
-            text-align: left;
-            display: inline-block;
-            color: #fff;
-            text-decoration: none;
-            line-height: normal;
-            font-family: "DIN";
-            font-size: 10px;
-            margin-top: 20px;
-            margin-left: 30px;
-            padding-top: 35px;
-        }
-
-        .usuario {
-            font-size: 10px;
-        }
-
-        header .Title {
-            visibility: hidden;
-        }
-        .menuitem2 {
-            visibility: hidden;
-        }
-        .header2 .logo {
-            font-size: 20px;
-        }
+    .usuario {
+        font-size: 15px;
     }
+
+    header .Title {
+        visibility: hidden;
+    }
+
+    .header2 .logo {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .menuitem {
+        text-align: start;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .usuario {
+        font-size: 10px;
+    }
+
+    .menuitem2 {
+        visibility: hidden;
+    }
+
+    header .Title {
+        visibility: hidden;
+    }
+
+    .header2 .logo {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .menuitem {
+        text-align: left;
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        line-height: normal;
+        font-family: "DIN";
+        font-size: 10px;
+        margin-top: 20px;
+        margin-left: 30px;
+        padding-top: 35px;
+    }
+
+    .usuario {
+        font-size: 10px;
+    }
+
+    header .Title {
+        visibility: hidden;
+    }
+
+    .menuitem2 {
+        visibility: hidden;
+    }
+
+    .header2 .logo {
+        font-size: 20px;
+    }
+}

@@ -76,9 +76,10 @@ namespace SGN.Web.Configuracion
         {
             try
             {
-                if (codPAgina == 36)
+                if (codPAgina == 16)
                 {
                     MiUsuario = true;
+                  
                 }
                 else
                 {
@@ -181,8 +182,8 @@ namespace SGN.Web.Configuracion
                         miUsuario.Activo = Boolean.Parse(e.NewValues["Activo"].ToString());
                         miUsuario.Mail = e.NewValues["Mail"].ToString();
                         miUsuario.FechaBaja = DateTime.Parse(e.NewValues["FechaBaja"].ToString());
-                        miUsuario.CodProveedor = Convert.ToInt32(e.NewValues["CodProveedor"]);
-                       
+                        miUsuario.EsProyectista = Boolean.Parse(e.NewValues["EsProyectista"].ToString());
+
                         miUsuario.Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString());
                         if (e.OldValues["Contraseña"].ToString() != e.NewValues["Contraseña"].ToString())
                         {
@@ -208,7 +209,7 @@ namespace SGN.Web.Configuracion
                     {
                         miUsuario.Nombre = e.NewValues["Nombre"].ToString();
                         miUsuario.Mail = e.NewValues["Mail"].ToString();
-                        miUsuario.Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString());
+                       // miUsuario.Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString());
                         if (e.OldValues["Contraseña"].ToString() != e.NewValues["Contraseña"].ToString())
                         {
                             if (e.NewValues["Contraseña"].ToString().Length < 8 || e.NewValues["Contraseña"].ToString() == "12345678" || e.NewValues["Contraseña"].ToString() == "87654321")
@@ -246,8 +247,8 @@ namespace SGN.Web.Configuracion
         }
         protected void gvUsuarios_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            int codproveedor = 0;
-            string nombreproveedor = "";
+         
+            
             try
             {
 
@@ -269,11 +270,7 @@ namespace SGN.Web.Configuracion
                     e.Cancel = true;
                     return;
                 }
-                if (e.NewValues["CodProveedor"] != null)
-                {
-                    codproveedor = Convert.ToInt32(e.NewValues["CodProveedor"]);
-                    
-                }
+                
 
 
                 Usuario nuevoUsuario = new Usuario()
@@ -286,10 +283,7 @@ namespace SGN.Web.Configuracion
                     Activo = Boolean.Parse(e.NewValues["Activo"].ToString()),
                     Mail = e.NewValues["Mail"].ToString(),
                     FechaBaja = DateTime.Parse(e.NewValues["FechaBaja"].ToString()),
-                    PIN = "",
-                    PuestoTrabajo = 0,
-                    CodProveedor = codproveedor,
-                    NombreAgencia = nombreproveedor,
+                    EsProyectista = Boolean.Parse(e.NewValues["EsProyectista"].ToString()),
                     Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString()),
                     Creado = false
                 };
@@ -368,12 +362,28 @@ namespace SGN.Web.Configuracion
                 gvUsuarios.Columns[8].Visible = false;
                 gvUsuarios.Columns[9].Visible = false;
                 gvUsuarios.Columns[10].Visible = false;
-                gvUsuarios.Columns[11].Visible = false;
+                //gvUsuarios.Columns[11].Visible = false;
                 GridViewCommandColumn col = (GridViewCommandColumn)gvUsuarios.Columns[0];
                 col.ShowNewButtonInHeader = false;
             }
         }
 
-       
+        protected void gvUsuarios_CommandButtonInitialize(object sender, ASPxGridViewCommandButtonEventArgs e)
+        {
+            if (MiUsuario)
+            {
+                if (e.ButtonType== ColumnCommandButtonType.New)
+                {
+                    e.Visible = false;
+                }
+            }
+            else
+            {
+                if (e.ButtonType == ColumnCommandButtonType.New)
+                {
+                    e.Visible = true;
+                }
+            }
+        }
     }
 }

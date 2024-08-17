@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Error.aspx.cs" Inherits="SGN.Web.Controles.paginas.Error" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
 
 <!DOCTYPE html>
@@ -9,14 +9,14 @@
 <head runat="server">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="stylesheet" href="../SwitcherResources/Content/Simplex/bootstrap.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../Content/all.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" crossorigin="anonymous" />
-    <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
 
-    <script src="../Scripts/sweetalert.min.js"></script>
-    <script src="../Scripts/mensajes2.js"></script>
+    <link rel="stylesheet" href="../../Content/all.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../Content/generic/pageMinimalStyle.css" crossorigin="anonymous" />
+    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
+
+
+    <script src="../../Scripts/sweetalert.min.js"></script>
+    <script src="../../Scripts/mensajes.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

@@ -21,15 +21,14 @@ namespace SGN.Web
                 Response.Expires = 0;
                 if (Session["usuario"] != null)
                 {
+                    //Response.Redirect("login.aspx");
                     CargarConfiguracionUser();
                 }
                 GeneraArbol();
                 CargarOperacionXPerfil();
             }
-
         }
-
-        //2022-06-22 lo operaciones por perfil se utilizan para limitar en un modulo aspx las acciones por ejemplo que un perfil puedo ver o no un boton o ejecutar un accione
+        //2021-05-25 lo operaciones por perfil se utilizan para limitar en un modulo aspx las acciones por ejemplo que un perfil puedo ver o no un boton o ejecutar un accione
         protected void CargarOperacionXPerfil()
         {
             try
@@ -48,7 +47,6 @@ namespace SGN.Web
             }
             catch (Exception)
             {
-
                 // throw;
             }
         }
@@ -57,75 +55,75 @@ namespace SGN.Web
             DataSet ds = new DataSet();
             if (Session["usuario"] != null)
             {
-                DataTable nodos = datosUsuario.ObtenNodosMenu(parent:0,codUsuario:((Usuario)Session["usuario"]).Id,vertodo:false).Copy();
+                DataTable nodos = datosUsuario.ObtenNodosMenu(parent: 0, codUsuario: ((Usuario)Session["usuario"]).Id, vertodo: false).Copy();
                 ds.Tables.Add(nodos);
                 ds.Relations.Add("NodeRelation", ds.Tables[0].Columns["fiIdModulo"], ds.Tables[0].Columns["fiParentId"]);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     if (row.IsNull("fiParentId"))
                     {
-
                         TreeViewNode node = new TreeViewNode(text: row["fcDescModulo"].ToString(),
                                                             name: row["fiIdModulo"].ToString(),
-                                                            imageUrl: row["fiUrlIco"].ToString(),
+                                                            imageUrl: "",
                                                             navigateUrl: "");
                         node.Target = row["fcURL"].ToString();
 
                         rtvMenu.Nodes.Add(node);
                         AgregaHijos(row, node);
                         rtvMenu.ExpandToNode(node);
+                        rtvMenu.CollapseAll();
                     }
-
                 }
+                rtvMenu.Nodes[0].Expanded = true;
             }
-
         }
         private void AgregaHijos(DataRow dbRow, TreeViewNode node)
         {
             foreach (DataRow childRow in dbRow.GetChildRows("NodeRelation"))
             {
-               
                 TreeViewNode childNode = new TreeViewNode(text: childRow["fcDescModulo"].ToString(),
                                                         name: childRow["fiIdModulo"].ToString(),
-                                                        imageUrl: childRow["fiUrlIco"].ToString(),
+                                                        imageUrl: "",
                                                         navigateUrl: "");
                 childNode.Target = childRow["fcURL"].ToString();
-
 
                 node.Nodes.Add(childNode);
                 AgregaHijos(childRow, childNode);
                 rtvMenu.ExpandToNode(childNode);
             }
-
         }
-
 
         protected void rtvMenu_NodeClick(object source, DevExpress.Web.TreeViewNodeEventArgs e)
         {
+           
+            string usuario = String.Empty;
             try
             {
-                if (!string.IsNullOrEmpty( e.Node.Target.Trim() ))
+                if (!string.IsNullOrEmpty(e.Node.Target.Trim()))
                 {
-                    var ruta = e.Node.Target;                    
-                    Session.Add("urlMenu", ruta);
+                    var ruta = e.Node.Target;
+                    var id = e.Node.Name;
+
+                    Session["urlMenu"]= ruta;
+
+                    Session["idUltimaPagina"] = id;
                     //EjecutarJavaScript("vernodo(" + ruta + ");");
                     //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "vernodo("+ ruta + ")", true);
                     ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.headerGPB.location ='" + "header.aspx" + "'", true);
                     ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.basefrm.location ='" + ruta + "'", true);
                 }
-                //else
-                //{
-                //    var ruta = "paginaConstruccion.aspx";
-                //    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.basefrm.location ='" + ruta + "'", true);
-                //}
-               
+                else
+                {
+                    var ruta = "paginaConstruccion.aspx";
+                    //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.basefrm.location ='" + ruta + "'", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "", true);
+                }
+
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
 
         protected void CargarConfiguracionUser()
@@ -152,7 +150,21 @@ namespace SGN.Web
             {
 
             }
+        }
 
+        protected void rtvMenu_ExpandedChanging(object source, TreeViewNodeCancelEventArgs e)
+        {
+            string Nombre = e.Node.Name;
+
+            if (e.Node.Parent.Name != "")
+            {
+                e.Node.Expanded = true;
+            }
+            else
+            {
+                rtvMenu.CollapseAll();
+                e.Node.Expanded = true;
+            }
         }
     }
 }

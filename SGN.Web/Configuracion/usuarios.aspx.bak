@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usuarios.aspx.cs" Inherits=" GPS.Web.Configuracion.usuarios" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usuarios.aspx.cs" Inherits=" SGN.Web.Configuracion.usuarios" %>
 
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="../Content/generic/pageStyle.css" crossorigin="anonymous" />
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
+
+
+    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/mensajes.js"></script>
+
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
@@ -37,7 +43,9 @@
                     OnDataBinding="gvUsuarios_DataBinding"
                     OnRowUpdating="gvUsuarios_RowUpdating"
                     OnRowInserting="gvUsuarios_RowInserting"
-                    OnInitNewRow="gvUsuarios_InitNewRow"   OnDataBound="gvUsuarios_DataBound" 
+                    OnInitNewRow="gvUsuarios_InitNewRow"
+                    OnDataBound="gvUsuarios_DataBound"
+                    OnCommandButtonInitialize="gvUsuarios_CommandButtonInitialize"
                     >
                     <Toolbars>
                         <dx:GridViewToolbar>
@@ -104,10 +112,10 @@
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataDateColumn FieldName="FechaBaja" Caption="" VisibleIndex="8" />
-                        <dx:GridViewDataTextColumn FieldName="PIN" Caption="" VisibleIndex="9" Visible="false" />
-                        <dx:GridViewDataCheckColumn FieldName="PuestoTrabajo" Caption="" VisibleIndex="10" />
-                        <dx:GridViewDataTextColumn FieldName="CodProveedor" Caption="Cod. Proveedor" VisibleIndex="11" />
+            
                         <dx:GridViewDataCheckColumn FieldName="Avisoemail" Caption="Aviso Email" VisibleIndex="12" />
+
+                                 <dx:GridViewDataCheckColumn FieldName="EsProyectista" Caption="Es proyectista" VisibleIndex="13" />
                     </Columns>
                       <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
                 </dx:ASPxGridView>

@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SGN.Web</RootNamespace>
     <AssemblyName>SGN.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -57,34 +57,44 @@
     <Reference Include="AspNet.ScriptManager.jQuery, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.6.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Drawing.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Docs.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v23.1.Export, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Charts.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataVisualization.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Spreadsheet.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxPivotGrid.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxScheduler.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.Resources.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v23.1.UI, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v23.1.Web, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.CodeParser.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Docs.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v23.2.Export, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataVisualization.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxScheduler.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Bootstrap.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.Web, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v23.1.Core.Desktop, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.2.Web, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.2.Web.WebForms, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.2.Core.Desktop, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
     </Reference>
@@ -134,6 +144,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Catalogos\CatActos.aspx" />
+    <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
+    <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
+    <Content Include="Catalogos\CatVariantesXActo.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
     <Content Include="Content\AsignacionMatricula.js" />
@@ -156,7 +170,9 @@
     <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
-    <Content Include="Expedientes\PanelExpedientes.aspx" />
+    <Content Include="ExpedientesTramites\ArchivosExpedientes.aspx" />
+    <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
+    <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
@@ -170,14 +186,15 @@
     <Content Include="imagenes\header\LogoNotariaRecorte.png" />
     <Content Include="imagenes\header\logoS.png" />
     <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\Iconos\application-pdf-2.ico" />
+    <Content Include="imagenes\Iconos\image-x-generic.ico" />
+    <Content Include="imagenes\Iconos\text-x-generic.ico" />
+    <Content Include="imagenes\Iconos\x-office-document.ico" />
+    <Content Include="imagenes\Iconos\x-office-spreadsheet.ico" />
+    <Content Include="imagenes\login\LogoNotaria.svg" />
     <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />
     <Content Include="imagenes\menu\BackGroundUserMenu.png" />
-    <Content Include="imagenes\login\fondoGps.png" />
-    <Content Include="imagenes\login\fondoGpsR.png" />
-    <Content Include="imagenes\login\fondoGpsRed.png" />
-    <Content Include="imagenes\login\Sikno.png" />
-    <Content Include="imagenes\login\siknoRed.jpg" />
     <Content Include="imagenes\mensajes\close10Negro.png" />
     <Content Include="imagenes\mensajes\close20Negro.png" />
     <Content Include="imagenes\menu\altaretornochico.ico" />
@@ -217,12 +234,29 @@
     <Content Include="imagenes\menu\sociedades1.ico" />
     <Content Include="imagenes\menu\materialesLarge.ico" />
     <Content Include="imagenes\menu\materiales.ico" />
+    <Content Include="imagenes\Produccion\AD2.png" />
+    <Content Include="imagenes\Produccion\CO2.png" />
+    <Content Include="imagenes\Produccion\EN1.png" />
+    <Content Include="imagenes\Produccion\EN2.png" />
+    <Content Include="imagenes\Produccion\EN3.png" />
+    <Content Include="imagenes\Produccion\EN4.png" />
+    <Content Include="imagenes\Produccion\EN5.png" />
+    <Content Include="imagenes\Produccion\EN6.png" />
     <Content Include="imagenes\Produccion\enmarcha.png" />
     <Content Include="imagenes\Produccion\enmarchaSmall.png" />
+    <Content Include="imagenes\Produccion\EX1.png" />
+    <Content Include="imagenes\Produccion\EX2.png" />
+    <Content Include="imagenes\Produccion\FI2.png" />
+    <Content Include="imagenes\Produccion\FI3.png" />
     <Content Include="imagenes\Produccion\finalizado.png" />
     <Content Include="imagenes\Produccion\finalizadoSmall.png" />
     <Content Include="imagenes\Produccion\pendiente.png" />
     <Content Include="imagenes\Produccion\pendienteSmall.png" />
+    <Content Include="imagenes\Produccion\PR1.png" />
+    <Content Include="imagenes\Produccion\PR2.png" />
+    <Content Include="imagenes\Produccion\PR3.png" />
+    <Content Include="imagenes\Produccion\PR4.png" />
+    <Content Include="imagenes\Produccion\PR5.png" />
     <Content Include="paginaConstruccion.aspx" />
     <Content Include="PlantillaMovil.aspx">
       <BrowseToURL>~/PlantillaMovil.aspx</BrowseToURL>
@@ -260,9 +294,6 @@
     <Content Include="Content\headerMovil.css" />
     <Content Include="Content\Site.css" />
     <Content Include="headerMovil.aspx" />
-    <Content Include="imagenes\login\fondoCapas2.png" />
-    <Content Include="imagenes\login\fondoCapas3.png" />
-    <Content Include="imagenes\login\fondoFundicion3per.png" />
     <Content Include="imagenes\menu\configuracion.ico" />
     <Content Include="imagenes\menu\controlProduccion.ico" />
     <Content Include="imagenes\menu\controlProduccionLarge.ico" />
@@ -309,6 +340,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.css.map" />
@@ -343,11 +375,6 @@
     <Content Include="imagenes\header\logo_gallardo_big.jpg" />
     <Content Include="imagenes\mensajes\close.png" />
     <Content Include="imagenes\mensajes\close20.png" />
-    <Content Include="imagenes\login\fondo.gif" />
-    <Content Include="imagenes\login\fondo.jpg" />
-    <Content Include="imagenes\login\fondoFundicion.jpg" />
-    <Content Include="imagenes\login\logo_gallardo_big.jpg" />
-    <Content Include="imagenes\login\siderurgia-slider.jpg" />
     <Content Include="imagenes\logo-cl.png" />
     <Content Include="imagenes\mensajes\errorsinFondo.png" />
     <Content Include="imagenes\mensajes\infoSinfondo.png" />
@@ -393,7 +420,6 @@
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -521,6 +547,34 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Catalogos\CatActos.aspx.cs">
+      <DependentUpon>CatActos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatActos.aspx.designer.cs">
+      <DependentUpon>CatActos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXVariante.aspx.cs">
+      <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXVariante.aspx.designer.cs">
+      <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.cs">
+      <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.designer.cs">
+      <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatVariantesXActo.aspx.cs">
+      <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatVariantesXActo.aspx.designer.cs">
+      <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion\modulos.aspx.cs">
       <DependentUpon>modulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -549,11 +603,25 @@
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Expedientes\PanelExpedientes.aspx.cs">
+    <Compile Include="ExpedientesTramites\ArchivosExpedientes.aspx.cs">
+      <DependentUpon>ArchivosExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedientesTramites\ArchivosExpedientes.aspx.designer.cs">
+      <DependentUpon>ArchivosExpedientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedientesTramites\HojaDeDatos.aspx.cs">
+      <DependentUpon>HojaDeDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedientesTramites\HojaDeDatos.aspx.designer.cs">
+      <DependentUpon>HojaDeDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Expedientes\PanelExpedientes.aspx.designer.cs">
+    <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.designer.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
@@ -654,6 +722,30 @@
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteHojaDatos.aspx.cs">
+      <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
+      <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSinOtorga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSinOtorga.Designer.cs">
+      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatos.Designer.cs">
+      <DependentUpon>XtraHojaDatos.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -690,6 +782,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatosSinOtorga.resx">
+      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatos.resx">
+      <DependentUpon>XtraHojaDatos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

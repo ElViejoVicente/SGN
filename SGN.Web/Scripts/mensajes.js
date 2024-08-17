@@ -9,19 +9,19 @@ function mostrarMensajeSweet(type, message) {
         console.log("llamando a la funcion del mensaje Sweet...." + "[" + type+"]");
         switch (type) {
             case "info":
-                msgGPBInfo(message);
+                msgInfo(message);
                 break;
             case "success": 
-                msgGPBSuccess(message);
+                msgSuccess(message);
                 break; 
             case "warning": 
-                msgGPBWarning(message);
+                msgWarning(message);
                 break; 
             case "error":
-                msgGPBError(message);
+                msgError(message);
                 break;
             case "preguntar": 
-                msgGPBQuestion(message);
+                msgQuestion(message);
                 break; 
             default:
                 console.log('opcion incorrecta al llamar mensaje sweet');
@@ -34,27 +34,27 @@ function mostrarMensajeSweet(type, message) {
 }
 
 
-function msgGPBInfo(mensaje) {
+function msgInfo(mensaje) {
     console.log(mensaje);
     swal(mensaje, "Información importante!", "info");
 }
 
-function msgGPBSuccess(mensaje) {
+function msgSuccess(mensaje) {
     console.log(mensaje);
     swal(mensaje, "Proceso realizado con éxito!", "success");
 }
 
-function msgGPBWarning(mensaje) {
+function msgWarning(mensaje) {
     console.log(mensaje);
     swal(mensaje, "Precaución!", "warning");
 }
 
-function msgGPBError(mensaje) {
+function msgError(mensaje) {
     console.log(mensaje);
     swal(mensaje, "Ha ocurrido un error en sistema SGN.", "error");
 }
 
-function msgGPBQuestion(mensaje) {
+function msgQuestion(mensaje) {
     swal({
         title: "Atención",
         text: mensaje,
