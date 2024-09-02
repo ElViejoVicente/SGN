@@ -46,7 +46,7 @@
 
             if (s.cp_Update != null) {
 
-                
+
                 gvExpedientes.PerformCallback('CargarRegistros');
 
                 s.cp_Update = null;
@@ -72,15 +72,15 @@
                 //gvExpedientes.ApplySearchPanelFilter('');
 
 
-            
+
 
 
                 mostrarMensajeSweet(s.cp_swType, s.cp_swMsg);
                 gvExpedientes.PerformCallback('CargarRegistros');
 
-         
 
-                
+
+
 
                 s.cp_swType = null;
                 s.cp_swMsg = null;
@@ -313,7 +313,7 @@
                 <SettingsResizing ColumnResizeMode="Control" />
 
 
-                <SettingsDetail ExportMode="All" ShowDetailRow="true" />
+                <SettingsDetail ExportMode="Expanded" ShowDetailRow="true" />
 
                 <SettingsBehavior
                     AllowGroup="true"
@@ -341,7 +341,7 @@
 
 
                 <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="false" />
-                <SettingsSearchPanel Visible="true" ShowApplyButton="true" ShowClearButton="true"   />
+                <SettingsSearchPanel Visible="true" ShowApplyButton="true" ShowClearButton="true" />
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
                 <Columns>
@@ -418,9 +418,10 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <%--                    <dx:GridViewDataTextColumn VisibleIndex="9" Caption="Faltantes" FieldName="Faltantes" Width="150px" Visible="true">
+
+                    <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="11" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
                         <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>--%>
+                    </dx:GridViewDataDateColumn>
                 </Columns>
 
 

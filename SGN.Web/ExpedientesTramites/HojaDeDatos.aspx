@@ -225,7 +225,7 @@
                 <SettingsResizing ColumnResizeMode="Control" />
 
 
-                <SettingsDetail ExportMode="All" ShowDetailRow="true" />
+                <SettingsDetail ExportMode="Expanded" ShowDetailRow="true" />
 
                 <SettingsBehavior
                     AllowGroup="true"
