@@ -422,6 +422,16 @@
                     <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="11" Caption="Fecha prevista Termino" FieldName="FechaPrevistaTerminoProyectista" Width="100px" Visible="true" ToolTip=" Fecha prevista de Termino  por parte del proyectista">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
+
+
+
+                    <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="12" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="Fecha Termino por parte de la mesa">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataDateColumn>
+
+
+
+
                 </Columns>
 
 
