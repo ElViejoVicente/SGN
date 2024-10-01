@@ -94,15 +94,23 @@ namespace SGN.Web.Reportes
                 XtraReport report = new XtraReport();
                 report.CreateDocument();
                 XtraHojaDatos hojaDatos = new XtraHojaDatos();
-                XtraHojaDatosSinOtorga hojaDatosSinAfavor = new XtraHojaDatosSinOtorga();
+                XtraHojaDatosSoloOtorga hojaDatosSinAfavor = new XtraHojaDatosSoloOtorga();
+                XtraHojaDatosSoloFavorDe hojaDatosSinOtorga = new XtraHojaDatosSoloFavorDe();
 
-                if (origen.DatosParticipantesAfavorDe.Count==0 & origen.DatosDocumentosAfavorDe.Count  ==0)
+                if (origen.DatosParticipantesAfavorDe.Count==0 & origen.DatosDocumentosAfavorDe.Count ==0)
                 {
                     hojaDatosSinAfavor.DataSource = origen;
                     hojaDatosSinAfavor.RequestParameters = false;
                     hojaDatosSinAfavor.CreateDocument();
                     report.Pages.AddRange(hojaDatosSinAfavor.Pages);
 
+                }
+                else if (origen.DatosParticipantesOtorga.Count == 0 & origen.DatosDocumentosOtorga.Count==0  )
+                {
+                    hojaDatosSinOtorga.DataSource = origen;
+                    hojaDatosSinOtorga.RequestParameters = false;
+                    hojaDatosSinOtorga.CreateDocument();
+                    report.Pages.AddRange(hojaDatosSinOtorga.Pages);
                 }
                 else
                 {

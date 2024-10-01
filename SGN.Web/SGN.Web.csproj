@@ -734,11 +734,17 @@
     <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\XtraHojaDatosSinOtorga.cs">
+    <Compile Include="Reportes\XtraHojaDatosSoloFavorDe.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\XtraHojaDatosSinOtorga.Designer.cs">
-      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    <Compile Include="Reportes\XtraHojaDatosSoloFavorDe.Designer.cs">
+      <DependentUpon>XtraHojaDatosSoloFavorDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSoloOtorga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSoloOtorga.Designer.cs">
+      <DependentUpon>XtraHojaDatosSoloOtorga.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\XtraHojaDatos.cs">
       <SubType>Component</SubType>
@@ -786,8 +792,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\XtraHojaDatosSinOtorga.resx">
-      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\XtraHojaDatosSoloFavorDe.resx">
+      <DependentUpon>XtraHojaDatosSoloFavorDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatosSoloOtorga.resx">
+      <DependentUpon>XtraHojaDatosSoloOtorga.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraHojaDatos.resx">
       <DependentUpon>XtraHojaDatos.cs</DependentUpon>

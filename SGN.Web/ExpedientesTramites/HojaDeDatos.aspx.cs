@@ -979,7 +979,7 @@ namespace SGN.Web.ExpedientesTramites
 
 
                 object itemsOS = HidDocumentoSelect["OtorgaSolicita"];
-                if (itemsOS.ToString() != null)
+                if (itemsOS.ToString() != null && !string.IsNullOrEmpty(itemsOS.ToString()))
                 {
                     foreach (var item in (Object[])itemsOS)
                     {
@@ -999,7 +999,7 @@ namespace SGN.Web.ExpedientesTramites
 
                 object itemsFv = HidDocumentoSelect["AfavorDe"];
 
-                if (itemsFv.ToString() != "")
+                if (itemsFv.ToString() != "" && !string.IsNullOrEmpty(itemsFv.ToString()))
                 {
                     foreach (var item in (Object[])itemsFv)
                     {
