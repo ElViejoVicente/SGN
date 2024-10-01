@@ -1,5 +1,6 @@
 ﻿using DevExpress.CodeParser;
 using DevExpress.Export;
+using DevExpress.Utils.Extensions;
 using DevExpress.Web;
 using DevExpress.XtraEditors.Popup;
 using DevExpress.XtraPrinting;
@@ -49,7 +50,7 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
-        public List<PerfilesXestatus > lsPerfilesXestatus
+        public List<PerfilesXestatus> lsPerfilesXestatus
         {
             get
 
@@ -88,6 +89,27 @@ namespace SGN.Web.ExpedientesTramites
             }
 
         }
+
+        public List<Cat_Estatus> catEstatusFull
+        {
+            get
+
+            {
+                List<Cat_Estatus> sseCatEstatusFull = new List<Cat_Estatus>();
+                if (this.Session["sseCatEstatusFull"] != null)
+                {
+                    sseCatEstatusFull = (List<Cat_Estatus>)this.Session["sseCatEstatusFull"];
+                }
+
+                return sseCatEstatusFull;
+            }
+            set
+            {
+                this.Session["sseCatEstatusFull"] = value;
+            }
+
+        }
+
 
         public List<Usuario> catProyectistas
         {
@@ -135,7 +157,7 @@ namespace SGN.Web.ExpedientesTramites
             get
 
             {
-                List<Alertas> sseListaAlertas= new List<Alertas>();
+                List<Alertas> sseListaAlertas = new List<Alertas>();
                 if (this.Session["sseListaAlertas"] != null)
                 {
                     sseListaAlertas = (List<Alertas>)this.Session["sseListaAlertas"];
@@ -192,7 +214,7 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
-        public string NumExpSelccionadoAlerta 
+        public string NumExpSelccionadoAlerta
         {
             get
 
@@ -238,12 +260,14 @@ namespace SGN.Web.ExpedientesTramites
 
         #region Funciones
         private void DameCatalogos()
-        
+
         {
             try
             {
-             
+
                 catEstatus = datosCrud.ConsultaCatEstatus();
+                catEstatusFull = datosCrud.ConsultaCatEstatus();
+
                 catActos = datosCrud.ConsultaCatActos();
                 catProyectistas = datosUsuario.DameDatosUsuario(-1).Where(x => x.EsProyectista == true).ToList();
                 lsPerfilesXestatus = datosCrud.ConsultaPerfilesXestatus();
@@ -275,7 +299,7 @@ namespace SGN.Web.ExpedientesTramites
 
             frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = false;
-            frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = false;          
+            frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = false;
 
 
@@ -366,12 +390,12 @@ namespace SGN.Web.ExpedientesTramites
                 case "Dirección":
 
 
-                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;   
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
-                   // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
-                   // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
 
                     frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
@@ -415,9 +439,9 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
-                   // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnOperacionProyectada").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("ExfnUbicacionPredio").ClientVisible = true;
-                   // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
+                    // frmExpedienteExistente.FindItemByFieldName("ExfnDocumentosFaltantes").ClientVisible = true;
 
                     frmExpedienteExistente.FindItemByFieldName("APfnFechaElaboracion").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("APfnFechaEnvioAlRPP").ClientVisible = true;
@@ -456,7 +480,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
 
                     break;
-        
+
                 case "Mesas":
 
                     frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
@@ -478,19 +502,21 @@ namespace SGN.Web.ExpedientesTramites
                     //frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
 
+                    //Firmas
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumVolumen").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnAplicaTraslado").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnFechaRecepcionTerminoEscritura").ClientVisible = true;
 
+                    //Aviso definitivo
                     frmExpedienteExistente.FindItemByFieldName("AdfnFechaElaboracion").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("AdfnFechaEnvioRPP").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
 
-                    //frmExpedienteExistente.FindItemByFieldName("AdfnEsTramitePorSistema").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaPagoBoleta").ClientVisible = true;
-                    //frmExpedienteExistente.FindItemByFieldName("AdfnFechaRecibido").ClientVisible = true;
-
+                    //Escrituracion
                     //frmExpedienteExistente.FindItemByFieldName("EsfnRecibioTraslado").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("AdfnFechaAsignacionMesa").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("AdfnFechaTerminoTramite").ClientVisible = true;
@@ -669,8 +695,8 @@ namespace SGN.Web.ExpedientesTramites
 
             //    throw ex;
             //}
-      
-            
+
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -697,11 +723,11 @@ namespace SGN.Web.ExpedientesTramites
             {
                 if (UsuarioPagina.NombrePerfil == "Mesas") //2024-03-17 si el perfil es de mesas entonces solo mostramos lo registros del usuario 
                 {
-                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,idUsuario: UsuarioPagina.Id, todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x=> x.FechaIngreso).ToList();// cargamos registros
+                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario: UsuarioPagina.Id, todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos registros
                 }
                 else
                 {
-                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario:0 ,todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
+                    lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario: 0, todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
                 }
 
 
@@ -732,7 +758,7 @@ namespace SGN.Web.ExpedientesTramites
                     var datosExpediente = control.GetSelectedFieldValues("IdExpediente");
                     string numeroExpediente = datosExpediente[0].ToString().Replace("/", "-");
                     rutaArchivosRoot = "~/GNArchivosRoot/" + numeroExpediente;
-                  //  ASPxFileManager1.Settings.RootFolder = rutaArchivosRoot;
+                    //  ASPxFileManager1.Settings.RootFolder = rutaArchivosRoot;
                     //fmArchivosControl.Refresh();
 
                 }
@@ -763,32 +789,33 @@ namespace SGN.Web.ExpedientesTramites
             if (e.DataColumn.FieldName == "IdExpediente")
             {
 
-                if (e.CellValue != null)                {
+                if (e.CellValue != null)
+                {
 
-                    var miExpediente =lsExpediente.Where(x=> x.IdExpediente==e.KeyValue.ToString()).FirstOrDefault();
+                    var miExpediente = lsExpediente.Where(x => x.IdExpediente == e.KeyValue.ToString()).FirstOrDefault();
 
-                    if (miExpediente !=null)
+                    if (miExpediente != null)
                     {
 
                         ASPxImage Campo = (ASPxImage)gvExpedientes.FindRowCellTemplateControl(e.VisibleIndex, e.DataColumn, "imgExpedienteAlerta");
-                        Campo.Caption= Convert.ToString(e.CellValue);
+                        Campo.Caption = Convert.ToString(e.CellValue);
 
-                        if (miExpediente.AlertaActiva )
+                        if (miExpediente.AlertaActiva)
                         {
-                            Campo.EmptyImage.IconID= "status_warning_16x16";
-                           
+                            Campo.EmptyImage.IconID = "status_warning_16x16";
+
                         }
                         else if (miExpediente.ExistenAlertas)
                         {
                             Campo.EmptyImage.IconID = "status_warning_svg_gray_16x16";
                         }
-                    
-                       
+
+
 
                     }
                 }
 
-            } 
+            }
         }
 
         //protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
@@ -1032,7 +1059,7 @@ namespace SGN.Web.ExpedientesTramites
                     //cargar registro de alertas de BD
                 }
 
-                gvAlertas.DataBind(); 
+                gvAlertas.DataBind();
             }
         }
 
@@ -1044,7 +1071,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppEditarExpediente_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
-            if (e.Parameter.Contains( "CargarRegistros"))
+            if (e.Parameter.Contains("CargarRegistros"))
             {
                 RegistroExistente = new Expedientes();
 
@@ -1119,6 +1146,35 @@ namespace SGN.Web.ExpedientesTramites
             {
                 if (RegistroExistente != null)
                 {
+
+
+                    //2024-10-01 Vh Listado de reglas a considerar antes del guardado
+
+                    // 1.0 si el expediente es >= Estado EN1 no se permite el guardado por ningun perfil que no sea direccion o coordinacion.
+
+
+                    if (UsuarioPagina.NombrePerfil.Trim() == "Mesas")
+                    {
+                        // determinamos el valos del estado EN1
+                        var ValorEnI = catEstatusFull.Where(x => x.IdEstatus == "EN1").First();
+
+                        //determinamos el valor del estatus del proyecto
+
+                        var ValorExpediente = catEstatusFull.Where(x => x.IdEstatus == RegistroExistente.IdEstatus).First();
+
+                        if ( ValorExpediente.Orden >= ValorEnI.Orden )
+                        {
+                            // no se permite ser moficado por el perfil
+                            ppEditarExpediente.JSProperties["cp_swMsg"] = "El expediente se encuentra en un estatus: " + ValorExpediente.TextoEstatus.Trim() +
+                                                                          " No es permitido realizar modificaciones con tu perfil";
+                            ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.warning;
+                            return;
+
+                        }
+
+
+                    }
+
 
 
 
@@ -1315,16 +1371,16 @@ namespace SGN.Web.ExpedientesTramites
             nuevaAlerta.FechaAlta = DateTime.Now;
             nuevaAlerta.AlertaActiva = true;
             nuevaAlerta.NomUsuarioInformante = UsuarioPagina.Nombre;
-            nuevaAlerta.MensajeAlerta= e.NewValues["MensajeAlerta"].ToString();
+            nuevaAlerta.MensajeAlerta = e.NewValues["MensajeAlerta"].ToString();
             nuevaAlerta.Prioridad = "";
 
-           
+
 
             // guardamos en BD
 
             datosCrud.AltaAlertas(nuevaAlerta);
 
-            lsAlertas= datosExpediente.DameAlertasPorExpediente(NumExpSelccionadoAlerta).OrderByDescending(x=> x.IdAlerta).ToList();
+            lsAlertas = datosExpediente.DameAlertasPorExpediente(NumExpSelccionadoAlerta).OrderByDescending(x => x.IdAlerta).ToList();
 
 
             // actualiozamos el control 
@@ -1335,7 +1391,7 @@ namespace SGN.Web.ExpedientesTramites
             gvAlertas.DataBind();
         }
 
-  
+
         protected void gvAlertas_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             //Validar si existen cambios de lo contrario no es necesario actulizar nada
@@ -1353,20 +1409,20 @@ namespace SGN.Web.ExpedientesTramites
             }
 
             if (existenCambios == false)
-            {         
+            {
                 e.Cancel = true;
                 return;
             }
 
 
-            var miAlerta = lsAlertas.Where(x=> x.IdAlerta==int.Parse(e.Keys[0].ToString())).First();
+            var miAlerta = lsAlertas.Where(x => x.IdAlerta == int.Parse(e.Keys[0].ToString())).First();
 
             if (miAlerta != null)
             {
                 miAlerta.MensajeAlerta = e.NewValues["MensajeAlerta"].ToString();
                 miAlerta.AlertaActiva = Convert.ToBoolean(e.NewValues["AlertaActiva"].ToString());
 
-                if (miAlerta.AlertaActiva ==false)
+                if (miAlerta.AlertaActiva == false)
                 {
                     miAlerta.NomUsuarioCierra = UsuarioPagina.Nombre;
                 }
