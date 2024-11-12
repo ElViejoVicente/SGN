@@ -1107,6 +1107,7 @@ namespace SGN.Web.ExpedientesTramites
                     dtPRfnFechaPrevistaTermino.Date = RegistroExistente.FechaPrevistaTerminoProyectista;
                     dtPRfnFechaAvisoPreventivo.Date = RegistroExistente.FechaAvisoPreventivo;
                     txtPRfnISR.Value = RegistroExistente.ISR;
+                    txtPRfnValorOperacion.Value = RegistroExistente.ValorOperacion;
 
                     //Firmas
                     txtFIfnNotasFirmas.Text = RegistroExistente.NotasFirma;
@@ -1199,6 +1200,7 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaPrevistaTerminoProyectista = dtPRfnFechaPrevistaTermino.Date;
                     RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;
                     RegistroExistente.ISR = txtPRfnISR.Value == null ? 0 : Convert.ToDecimal(txtPRfnISR.Value.ToString());
+                    RegistroExistente.ValorOperacion= txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString());
 
                     //Firmas
                     RegistroExistente.NotasFirma = txtFIfnNotasFirmas.Text;

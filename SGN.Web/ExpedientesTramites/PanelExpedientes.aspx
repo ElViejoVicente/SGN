@@ -556,6 +556,12 @@
                                                             </PropertiesTextEdit>
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
+                                                        <dx:GridViewDataTextColumn FieldName="ValorOperacion" ReadOnly="True" Width="100px" Caption="Valor Operacion" VisibleIndex="5">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
 
                                                     </Columns>
                                                 </dx:ASPxGridView>
@@ -1058,6 +1064,15 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxTextBox runat="server" ID="txtPRfnISR">
+                                                        <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol" />
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Valor Operacion" FieldName="PRfnValorOperacion" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtPRfnValorOperacion">
                                                         <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol" />
                                                     </dx:ASPxTextBox>
                                                 </dx:LayoutItemNestedControlContainer>

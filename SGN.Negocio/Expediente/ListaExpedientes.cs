@@ -38,6 +38,7 @@ namespace SGN.Negocio.Expediente
 		public DateTime FechaPrevistaTerminoProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaAvisoPreventivo { get; set; } = Constantes.FechaGlobal;
 		public decimal ISR { get; set; } = 0;
+		public decimal ValorOperacion { get; set; } = 0;
 
 		//Firmas
 		public string NotasFirma { get; set; } = "";

@@ -907,7 +907,8 @@ namespace SGN.Negocio.CRUD
                         values.FechaBoletaPagoRegistroEntrega,
                         values.FechaRegresoRegistro,
                         values.FechaSalida,
-                        values.ObservacionesTramiteTerminado
+                        values.ObservacionesTramiteTerminado,
+                        values.ValorOperacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -964,7 +965,8 @@ namespace SGN.Negocio.CRUD
                         values.FechaBoletaPagoRegistroEntrega,
                         values.FechaRegresoRegistro,
                         values.FechaSalida,
-                        values.ObservacionesTramiteTerminado
+                        values.ObservacionesTramiteTerminado,
+                        values.ValorOperacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }

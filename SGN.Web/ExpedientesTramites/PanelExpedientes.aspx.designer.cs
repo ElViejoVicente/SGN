@@ -348,6 +348,15 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxTextBox txtPRfnISR;
 
         /// <summary>
+        /// Control txtPRfnValorOperacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtPRfnValorOperacion;
+
+        /// <summary>
         /// Control txtFIfnNotasFirmas.
         /// </summary>
         /// <remarks>
