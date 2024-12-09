@@ -173,6 +173,7 @@
     <Content Include="ExpedientesTramites\ArchivosExpedientes.aspx" />
     <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
+    <Content Include="ExpedienteUnico\PanelExpedienteUnico.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
@@ -623,6 +624,13 @@
     </Compile>
     <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.designer.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.cs">
+      <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.designer.cs">
+      <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
     </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>

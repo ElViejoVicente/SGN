@@ -13,5 +13,7 @@ namespace SGN.Negocio.ORM
         public string TextoVariante { get; set; } = "";
         public string Descripcion { get; set; } = "";       
         public bool Activo { get; set; } = false;
+        public bool RequiereExUnico { get; set; } = false;
+
     }
 }

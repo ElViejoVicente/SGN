@@ -58,7 +58,7 @@
             if (s.cp_Update != null) {
 
                 gvVariantesActo.UnselectRows();
-                gvVariantesActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text); 
+                gvVariantesActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text);
                 s.cp_Update = null;
             }
         }
@@ -83,19 +83,18 @@
                                                 <tr>
 
                                                     <td>
-                                                        <dx:ASPxComboBox runat="server" ID="cbActos" 
-                                                            ClientInstanceName="cbActos" 
-                                                            Width="200px" 
-                                                            AutoPostBack="false" 
-                                                            OnDataBinding="cbActos_DataBinding"                                                           
+                                                        <dx:ASPxComboBox runat="server" ID="cbActos"
+                                                            ClientInstanceName="cbActos"
+                                                            Width="200px"
+                                                            AutoPostBack="false"
+                                                            OnDataBinding="cbActos_DataBinding"
                                                             Caption="Actos:"
                                                             EnableMultiColumn="false"
                                                             DropDownStyle="DropDownList"
                                                             SelectInputTextOnClick="true"
                                                             IncrementalFilteringMode="None"
                                                             EnableCallbackMode="true"
-                                                            SelectedIndex="-1"
-                                                            >
+                                                            SelectedIndex="-1">
                                                             <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvVariantesActo.PerformCallback('CargarRegistros~' + s.GetSelectedItem().text );    }" />
                                                         </dx:ASPxComboBox>
                                                     </td>
@@ -134,7 +133,7 @@
 
                 <ClientSideEvents Init="AdjustSize" />
 
-                <ClientSideEvents ToolbarItemClick="OnToolbarItemClick"   EndCallback="gridView_EndCallback"/>
+                <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" EndCallback="gridView_EndCallback" />
 
 
                 <SettingsPager Mode="ShowAllRecords" />
@@ -212,7 +211,10 @@
                     </dx:GridViewDataTextColumn>
 
 
-                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Activo" FieldName="Activo" Width="100px">
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Activo" FieldName="Activo" Width="150px">
+                    </dx:GridViewDataCheckColumn>
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Requiere Expediente Unico" FieldName="RequiereExUnico" Width="180px">
                     </dx:GridViewDataCheckColumn>
 
 

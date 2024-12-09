@@ -99,7 +99,31 @@ namespace SGN.Negocio.CRUD
                         values.EstadoCivil,
                         values.RegimenConyugal,
                         values.SabeLeerEscribir,
-                        values.Notas
+                        values.Notas,
+
+                        values.PaisNacimiento,
+                        values.PaisNacionalidad,
+                        values.Domicilio,
+                        values.NumeroExterior,
+                        values.NumeroInterior,
+                        values.Colonia,
+                        values.Municipio,
+                        values.Ciudad,
+                        values.Estado,
+                        values.PaisDomicilio,
+                        values.CP,
+                        values.NumeroTefonico,
+                        values.CorreoElectronico,
+                        values.Curp,
+                        values.Rfc,
+                        values.DatosApoderado,
+                        values.RazonSocial,
+                        values.FechaConstitucion,
+                        values.PaisRazonSocial,
+                        values.ActividadRazonSocial,
+                        values.SeValidoEnListaNegra,
+                        values.FechaUltimaValidacion,
+                        values.ObseUltimaValidacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -113,6 +137,73 @@ namespace SGN.Negocio.CRUD
                 throw new Exception("Error al ejecutar sp_CRUD_DatosParticipantes_Insert, detalle: \n" + ex.Message, ex);
             }
         }
+
+
+        public Boolean ActualizaDatosParticipantes(DatosParticipantes values)
+        {
+
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosParticipantes_Update", param: new
+                    {
+                        values.IdRegistro,
+                        values.IdHojaDatos,
+
+                        values.FiguraOperacion,
+                        values.RolOperacion,
+                        values.Nombres,
+                        values.ApellidoPaterno,
+                        values.ApellidoMaterno,
+                        values.FechaNacimiento,
+                        values.Sexo,
+                        values.Ocupacion,
+                        values.EstadoCivil,
+                        values.RegimenConyugal,
+                        values.SabeLeerEscribir,
+                        values.Notas,
+
+                        values.PaisNacimiento,
+                        values.PaisNacionalidad,
+                        values.Domicilio,
+                        values.NumeroExterior,
+                        values.NumeroInterior,
+                        values.Colonia,
+                        values.Municipio,
+                        values.Ciudad,
+                        values.Estado,
+                        values.PaisDomicilio,
+                        values.CP,
+                        values.NumeroTefonico,
+                        values.CorreoElectronico,
+                        values.Curp,
+                        values.Rfc,
+                        values.DatosApoderado,
+                        values.RazonSocial,
+                        values.FechaConstitucion,
+                        values.PaisRazonSocial,
+                        values.ActividadRazonSocial,
+                        values.SeValidoEnListaNegra,
+                        values.FechaUltimaValidacion,
+                        values.ObseUltimaValidacion
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosParticipantes_Update, detalle: \n" + ex.Message, ex);
+            }
+
+        }
+
+    
+
         #endregion
 
         #region DatosVariantes
@@ -546,7 +637,8 @@ namespace SGN.Negocio.CRUD
                         values.IdActo,
                         values.TextoVariante,
                         values.Descripcion,
-                        values.Activo
+                        values.Activo,
+                        values.RequiereExUnico
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -572,7 +664,8 @@ namespace SGN.Negocio.CRUD
                         values.IdActo,
                         values.TextoVariante,
                         values.Descripcion,
-                        values.Activo
+                        values.Activo,
+                        values.RequiereExUnico
 
                     }, commandType: CommandType.StoredProcedure);
                 }
