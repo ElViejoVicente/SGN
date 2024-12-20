@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRUD\DatosCrud.cs" />
+    <Compile Include="ExpedienteUnico\DatosExpedienteUnico.cs" />
+    <Compile Include="ExpedienteUnico\ListaExpedienteUnico.cs" />
     <Compile Include="Expediente\DatosExpedientes.cs" />
     <Compile Include="Expediente\ListaExpedientes.cs" />
     <Compile Include="Expediente\ListaHojaDatos.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_DocumentosPorActo.cs" />
     <Compile Include="ORM\Cat_Estatus.cs" />
+    <Compile Include="ORM\Cat_Paises.cs" />
     <Compile Include="ORM\Cat_Proyectistas.cs" />
     <Compile Include="ORM\Cat_RolParticipantes.cs" />
     <Compile Include="ORM\Cat_VariantesPorActo.cs" />

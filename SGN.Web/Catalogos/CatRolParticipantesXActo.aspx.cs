@@ -153,6 +153,7 @@ namespace SGN.Web.Catalogos
             nuevoRegisto.Descripcion = e.NewValues["Descripcion"].ToString().Trim();
             nuevoRegisto.PreguntarSiEsAnafabeta = Convert.ToBoolean(e.NewValues["PreguntarSiEsAnafabeta"].ToString());
             nuevoRegisto.Activo = Convert.ToBoolean(e.NewValues["Activo"].ToString());
+            nuevoRegisto.RequiereExUnico= Convert.ToBoolean(e.NewValues["RequiereExUnico"].ToString());
 
             datosCrud.AltaCatRolParticipantes(nuevoRegisto);
 
@@ -200,6 +201,7 @@ namespace SGN.Web.Catalogos
                 miRegistro.Descripcion = e.NewValues["Descripcion"].ToString();
                 miRegistro.PreguntarSiEsAnafabeta = Convert.ToBoolean(e.NewValues["PreguntarSiEsAnafabeta"].ToString());
                 miRegistro.Activo = Convert.ToBoolean(e.NewValues["Activo"].ToString());
+                miRegistro.RequiereExUnico = Convert.ToBoolean(e.NewValues["RequiereExUnico"].ToString());
 
             }
 

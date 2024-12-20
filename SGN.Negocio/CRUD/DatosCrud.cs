@@ -539,7 +539,8 @@ namespace SGN.Negocio.CRUD
                         values.TextoRol,
                         values.PreguntarSiEsAnafabeta,
                         values.Descripcion,
-                        values.Activo
+                        values.Activo,
+                        values.RequiereExUnico
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -567,7 +568,8 @@ namespace SGN.Negocio.CRUD
                         values.TextoRol,
                         values.PreguntarSiEsAnafabeta,
                         values.Descripcion,
-                        values.Activo
+                        values.Activo,
+                        values.RequiereExUnico
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -788,6 +790,27 @@ namespace SGN.Negocio.CRUD
             catch (Exception ex)
             {
                 throw new Exception("Error al ejecutar sp_CRUD_Cat_Actos_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
+        #region Cat_Paises
+        public List<Cat_Paises> ConsultaCatPaises()
+        {
+            try
+            {
+                List<Cat_Paises> resultado = new List<Cat_Paises>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_Paises>(sql: "sp_CRUD_Cat_Paises_Select").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Paises_Select, detalle: \n" + ex.Message, ex);
             }
         }
         #endregion

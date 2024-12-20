@@ -15,5 +15,6 @@ namespace SGN.Negocio.ORM
         public bool PreguntarSiEsAnafabeta { get; set; }= false;
         public string Descripcion { get; set; } = "";
         public bool Activo { get; set; } = false;
+        public bool RequiereExUnico { get; set; } = false;
     }
 }

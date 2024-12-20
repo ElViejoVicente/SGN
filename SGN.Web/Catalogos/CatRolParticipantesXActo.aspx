@@ -13,7 +13,7 @@
     <title>SGN</title>
 
 
-    
+
     <script type="text/javascript">
         /* Script de funcionalidad de la pagina OJO solo colocar en este bloque */
         window.onresize = function (event) {
@@ -60,7 +60,7 @@
             if (s.cp_Update != null) {
 
                 gvRolXActo.UnselectRows();
-                gvRolXActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text); 
+                gvRolXActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text);
                 s.cp_Update = null;
             }
         }
@@ -85,19 +85,18 @@
                                                 <tr>
 
                                                     <td>
-                                                        <dx:ASPxComboBox runat="server" ID="cbActos" 
-                                                            ClientInstanceName="cbActos" 
-                                                            Width="200px" 
-                                                            AutoPostBack="false" 
-                                                            OnDataBinding="cbActos_DataBinding"                                                           
+                                                        <dx:ASPxComboBox runat="server" ID="cbActos"
+                                                            ClientInstanceName="cbActos"
+                                                            Width="200px"
+                                                            AutoPostBack="false"
+                                                            OnDataBinding="cbActos_DataBinding"
                                                             Caption="Actos:"
                                                             EnableMultiColumn="false"
                                                             DropDownStyle="DropDownList"
                                                             SelectInputTextOnClick="true"
                                                             IncrementalFilteringMode="None"
                                                             EnableCallbackMode="true"
-                                                            SelectedIndex="-1"
-                                                            >
+                                                            SelectedIndex="-1">
                                                             <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvRolXActo.PerformCallback('CargarRegistros~' + s.GetSelectedItem().text );    }" />
                                                         </dx:ASPxComboBox>
                                                     </td>
@@ -136,7 +135,7 @@
 
                 <ClientSideEvents Init="AdjustSize" />
 
-                <ClientSideEvents ToolbarItemClick="OnToolbarItemClick"   EndCallback="gridView_EndCallback"/>
+                <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" EndCallback="gridView_EndCallback" />
 
 
                 <SettingsPager Mode="ShowAllRecords" />
@@ -148,7 +147,7 @@
 
                 <SettingsResizing ColumnResizeMode="Control" />
 
-                <SettingsEditing Mode="EditForm" />
+                <SettingsEditing Mode="EditForm"/>
 
                 <SettingsPager Mode="ShowPager" PageSize="100" />
 
@@ -203,29 +202,33 @@
 
                     <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" Caption="Rol" FieldName="TextoFigura" Width="150"  GroupIndex="0"  >
+                    <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" Caption="Rol" FieldName="TextoFigura" Width="150" GroupIndex="0">
                         <PropertiesComboBox>
                             <Items>
                                 <dx:ListEditItem Text="Otorga o Solicita" Value="Otorga o Solicita" />
                                 <dx:ListEditItem Text="A favor de" Value="A favor de" />
                             </Items>
-                        </PropertiesComboBox> 
+                        </PropertiesComboBox>
                     </dx:GridViewDataComboBoxColumn>
 
 
                     <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombre del rol" FieldName="TextoRol" Width="300px">
                     </dx:GridViewDataTextColumn>
 
-                     
-                    <dx:GridViewDataMemoColumn Visible="true" VisibleIndex="4" Caption="Descripcion" FieldName="Descripcion" Width="450px" >
 
+                    <dx:GridViewDataMemoColumn Visible="true" VisibleIndex="4" Caption="Descripcion" FieldName="Descripcion" Width="450px">
                     </dx:GridViewDataMemoColumn>
 
-                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="5"  Caption="Pregunta es Analfabeta" FieldName ="PreguntarSiEsAnafabeta" Width ="150px"  > </dx:GridViewDataCheckColumn>
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="5" Caption="Pregunta es Analfabeta" FieldName="PreguntarSiEsAnafabeta" Width="150px"></dx:GridViewDataCheckColumn>
 
 
                     <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="6" Caption="Activo" FieldName="Activo" Width="100px">
                     </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="7" Caption="Requiere Expediente Unico" FieldName="RequiereExUnico" Width="180px">
+                    </dx:GridViewDataCheckColumn>
+                    
 
 
                 </Columns>

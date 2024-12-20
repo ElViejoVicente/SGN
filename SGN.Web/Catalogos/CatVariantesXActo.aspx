@@ -214,8 +214,7 @@
                     <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Activo" FieldName="Activo" Width="150px">
                     </dx:GridViewDataCheckColumn>
 
-                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Requiere Expediente Unico" FieldName="RequiereExUnico" Width="180px">
-                    </dx:GridViewDataCheckColumn>
+         
 
 
                 </Columns>

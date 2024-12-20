@@ -28,7 +28,7 @@ namespace SGN.Web.ExpedientesTramites
 
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
-        DatosUsuario datosUsuario = new DatosUsuario();
+        //DatosUsuario datosUsuario = new DatosUsuario();
         DatosExpedientes datosExpediente = new DatosExpedientes();
         public List<Cat_Actos> catActos
         {
@@ -672,6 +672,12 @@ namespace SGN.Web.ExpedientesTramites
             }
         }
         #endregion
+
+
+        #region Eventos
+
+    
+
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -1446,5 +1452,7 @@ namespace SGN.Web.ExpedientesTramites
 
 
         }
+
+        #endregion
     }
 }
