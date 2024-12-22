@@ -127,10 +127,67 @@ namespace SGN.Web.ExpedienteUnico
 
         }
 
+
+
+
         #endregion
 
+        protected void cbSexoOtorgaSolicita_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.SelectedIndex = -1;
+        }
 
+        protected void cbPaisNacimiento_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.SelectedIndex = -1;
 
+        }
 
+        protected void cbPaisNacimiento_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cbPaisNacionalidad_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.SelectedIndex = -1;
+        }
+
+        protected void cbPaisNacionalidad_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cbPaisDomicilio_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.SelectedIndex = -1;
+
+        }
+
+        protected void cbPaisDomicilio_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cbPaisRazonSocial_Init(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cbPaisRazonSocial_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cbTipoRegimen_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.SelectedIndex = -1;
+
+        }
     }
 }

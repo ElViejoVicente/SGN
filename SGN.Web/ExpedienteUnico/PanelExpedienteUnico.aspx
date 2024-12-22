@@ -16,7 +16,7 @@
     <script src="../Scripts/sweetalert.min.js"></script>
     <script src="../Scripts/mensajes.js"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
         /* Script de funcionalidad de la pagina OJO solo colocar en este bloque */
         window.onresize = function (event) {
@@ -115,7 +115,7 @@
                     }
 
 
-           
+
 
 
             }
@@ -131,7 +131,7 @@
         }
 
 
-        </script>
+    </script>
 
 
 
@@ -227,7 +227,7 @@
                 <SettingsResizing ColumnResizeMode="Control" />
 
 
-<%--                <SettingsDetail ExportMode="Expanded" ShowDetailRow="true" />--%>
+                <%--                <SettingsDetail ExportMode="Expanded" ShowDetailRow="true" />--%>
 
                 <SettingsBehavior
                     AllowGroup="true"
@@ -242,54 +242,217 @@
                     ConfirmDelete="true"
                     EnableCustomizationWindow="true"></SettingsBehavior>
 
-                <SettingsCommandButton>
+                <SettingsEditing Mode="PopupEditForm"   />
+
+                    <SettingsCommandButton>
                     <EditButton Text="" ButtonType="Image">
                         <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
                     </EditButton>
 
                     <DeleteButton Text="" ButtonType="Image">
-                        <Image ToolTip="Eliminar Fabricacion" IconID="edit_delete_16x16"></Image>
+                        <Image ToolTip="Eliminar" IconID="edit_delete_16x16"></Image>
                     </DeleteButton>
+
+                    <NewButton Text="" ButtonType="Image">
+                        <Image ToolTip="Nuevo" IconID="actions_add_16x16"></Image>
+                    </NewButton>
+
+                    <UpdateButton Text="" ButtonType="Image">
+
+
+                        <Image ToolTip="Aceptar" IconID="actions_apply_16x16"></Image>
+                    </UpdateButton>
+
+                    <CancelButton Text="" ButtonType="Image">
+                        <Image ToolTip="Cancelar" IconID="actions_cancel_16x16"></Image>
+                    </CancelButton>
+
                 </SettingsCommandButton>
 
 
 
-                <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="false" />
+                <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="true" />
                 <SettingsSearchPanel Visible="true" ShowApplyButton="true" ShowClearButton="true" />
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
                 <Columns>
 
+                    
+                    <dx:GridViewCommandColumn Visible="true" VisibleIndex="0" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false" 
+                        ShowNewButtonInHeader="false" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Num Expediente" FieldName="IdExpediente" Width="110px" Visible="true" GroupIndex="0">
+                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Resumen" FieldName="Resumen" Width="450px" Visible="true" GroupIndex="0" CellStyle-BackColor="#cccccc">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Estatus" FieldName="TextoEstatus" Width="150px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Acto" FieldName="TextoActo" Width="100px" Visible="true">
-                        <EditFormSettings Visible="False"></EditFormSettings>
-                    </dx:GridViewDataTextColumn>
-
-                    <dx:GridViewDataTextColumn VisibleIndex="5" Caption="Variante" FieldName="TextoVariante" Width="150px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Estatus" FieldName="TextoEstatus" Width="150px" Visible="False">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Acto" FieldName="TextoActo" Width="100px" Visible="False">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Variante" FieldName="TextoVariante" Width="150px" Visible="False">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Fecha ingreso" FieldName="FechaIngreso" Width="120px" Visible="False">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="5" Caption="Rol" FieldName="FiguraOperacion" Width="150px" Visible="true" GroupIndex="1">
+                    <dx:GridViewDataTextColumn VisibleIndex="4" Caption="Rol" FieldName="FiguraOperacion" Width="150px" Visible="False">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="5" Caption="Nombre del rol" FieldName="RolOperacion" Width="150px" Visible="true" >
-                        <EditFormSettings Visible="False" ></EditFormSettings>
+                    <dx:GridViewDataTextColumn VisibleIndex="5" Caption="Nombre del rol" FieldName="RolOperacion" Width="150px" Visible="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                 
 
+
+                    <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Nombre(s)" FieldName="Nombres" Width="150px" Visible="true" ReadOnly="true">
+         <%--               <EditFormSettings Visible="False"></EditFormSettings>--%>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Apellido Paterno" FieldName="ApellidoPaterno" Width="150px" Visible="true" ReadOnly="true">
+             <%--           <EditFormSettings Visible="False"></EditFormSettings>--%>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="150px" Visible="true" ReadOnly="true">
+<%--                        <EditFormSettings Visible="False"></EditFormSettings>--%>
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataDateColumn VisibleIndex="9" Caption="Fecha Nacimiento" FieldName="FechaNacimiento" Width="150px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
+                    </dx:GridViewDataDateColumn>
+
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="10" Caption="Sexo" FieldName="Sexo" Width="60px" Visible="true">
+
+                        <EditItemTemplate>
+                            <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
+                                OnInit="cbSexoOtorgaSolicita_Init">
+
+                                <Items>
+                                    <dx:ListEditItem Text="Masculino" Value="M" Selected="true"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Femenino" Value="F"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Otro" Value="Otro"></dx:ListEditItem>
+                                </Items>
+
+                            </dx:ASPxComboBox>
+                        </EditItemTemplate>
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="11" Caption="Estado Civil" FieldName="EstadoCivil" Width="150px" Visible="true" ReadOnly="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="12" Caption="RegimenConyugal" FieldName="RegimenConyugal" Width="150px" Visible="true" ReadOnly="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="13" Caption="Sabe leer y escribir" FieldName="SabeLeerEscribir" Width="150px" Visible="false" ReadOnly="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="14" Caption="Anotaciones (Datos)" FieldName="Notas" Width="150px" Visible="false" ReadOnly="true">
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
+
+                    
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="10" Caption="Tipo regimen" FieldName="TipoRegimen" Width="60px" Visible="true">
+
+                        <EditItemTemplate>
+                            <dx:ASPxComboBox ID="cbTipoRegimen" ClientInstanceName="cbTipoRegimen" runat="server" Value='<%# Bind("TipoRegimen") %>' Width="100%"
+                                OnInit="cbTipoRegimen_Init">
+
+                                <Items>
+                                    <dx:ListEditItem Text="Fisica" Value="Fisica" Selected="true"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Moral" Value="Moral"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Apoderado" Value="Apoderado"></dx:ListEditItem>
+                                </Items>
+
+                            </dx:ASPxComboBox>
+                        </EditItemTemplate>
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="15" Caption="Pais Nacimiento" FieldName="PaisNacimiento" Width="60px" Visible="true">
+                        <EditItemTemplate>
+                            <dx:ASPxComboBox ID="cbPaisNacimiento" ClientInstanceName="cbPaisNacimiento" runat="server" Value='<%# Bind("PaisNacimiento") %>' Width="100%"
+                                OnInit="cbPaisNacimiento_Init" OnDataBinding="cbPaisNacimiento_DataBinding">
+                            </dx:ASPxComboBox>
+                        </EditItemTemplate>
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="16" Caption="Pais Nacionalidad" FieldName="PaisNacionalidad" Width="60px" Visible="true">
+                        <EditItemTemplate>
+                            <dx:ASPxComboBox ID="cbPaisNacionalidad" ClientInstanceName="cbPaisNacionalidad" runat="server" Value='<%# Bind("PaisNacionalidad") %>' Width="100%"
+                                OnInit="cbPaisNacionalidad_Init" OnDataBinding="cbPaisNacionalidad_DataBinding">
+                            </dx:ASPxComboBox>
+                        </EditItemTemplate>
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="17" Caption="Domicilio (Calle)" FieldName="Domicilio" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="18" Caption="Numero Exterior" FieldName="NumeroExterior" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="19" Caption="Numero Exterior" FieldName="NumeroExterior" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="20" Caption="Colonia" FieldName="Colonia" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="21" Caption="Municipio" FieldName="Municipio" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="22" Caption="Ciudad" FieldName="Ciudad" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="23" Caption="Estado" FieldName="Estado" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="24" Caption="Pais Domicilio" FieldName="PaisDomicilio" Width="60px" Visible="true">
+                        <EditItemTemplate>
+                            <dx:ASPxComboBox ID="cbPaisDomicilio" ClientInstanceName="cbPaisDomicilio" runat="server" Value='<%# Bind("PaisDomicilio") %>' Width="100%"
+                                OnInit="cbPaisDomicilio_Init" OnDataBinding="cbPaisDomicilio_DataBinding">
+                            </dx:ASPxComboBox>
+                        </EditItemTemplate>
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="25" Caption="CP" FieldName="CP" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="26" Caption="Numero Tefonico" FieldName="NumeroTefonico" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="27" Caption="Correo Electronico" FieldName="CorreoElectronico" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="28" Caption="Curp" FieldName="Curp" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="29" Caption="Rfc" FieldName="Rfc" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="30" Caption="Datos Apoderado" FieldName="DatosApoderado" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="31" Caption="Razon Social" FieldName="RazonSocial" Width="150px" Visible="true">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataDateColumn VisibleIndex="32" Caption="Fecha de Constitucion" FieldName="FechaConstitucion" Width="150px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
+                    </dx:GridViewDataDateColumn>
+
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="33" Caption="Pais Razon Social" FieldName="PaisRazonSocial" Width="60px" Visible="true">
+                        <EditItemTemplate>
+                            <dx:ASPxComboBox ID="cbPaisRazonSocial" ClientInstanceName="cbPaisRazonSocial" runat="server" Value='<%# Bind("PaisRazonSocial") %>' Width="100%"
+                                OnInit="cbPaisRazonSocial_Init" OnDataBinding="cbPaisRazonSocial_DataBinding">
+                            </dx:ASPxComboBox>
+                        </EditItemTemplate>
+                    </dx:GridViewDataComboBoxColumn>
+
+                    <dx:GridViewDataDateColumn VisibleIndex="34" Caption="ActividadRazonSocial" FieldName="ActividadRazonSocial" Width="150px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
+                    </dx:GridViewDataDateColumn>
 
                 </Columns>
 
@@ -301,17 +464,9 @@
 
 
 
-
-                            <%--                   <dx:GridViewToolbarItem Text="Nuevo" Image-IconID="dashboards_new_svg_16x16" Name="cmdNuevoExpediente" />--%>
-
-                            <dx:GridViewToolbarItem Text="Editar" Image-IconID="dashboards_edit_svg_16x16" Name="cmdEditarExpediente" />
-
-                            <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
-
-                            <dx:GridViewToolbarItem Text="Alertas" Image-IconID="status_warning_16x16" Name="cmdAlertasExpediente" />
+                            <dx:GridViewToolbarItem Text="Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdEditarExpediente" />
 
 
-                            <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />

@@ -1,6 +1,7 @@
 ﻿using SGN.Negocio.Operativa;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace SGN.Negocio.ExpedienteUnico
         public int IdHojaDatos { get; set; } = 0;
         public string FiguraOperacion { get; set; } = "";
         public string RolOperacion { get; set; } = "";
+
         public string Nombres { get; set; } = "";
         public string ApellidoPaterno { get; set; } = "";
         public string ApellidoMaterno { get; set; } = "";
@@ -32,6 +34,7 @@ namespace SGN.Negocio.ExpedienteUnico
         public string SabeLeerEscribir { get; set; } = "";
         public string Notas { get; set; } = "";
 
+        public string TipoRegimen { get; set; } = "";
         public string PaisNacimiento { get; set; } = "";
         public string PaisNacionalidad { get; set; } = "";
         public string Domicilio { get; set; } = "";
@@ -53,8 +56,20 @@ namespace SGN.Negocio.ExpedienteUnico
         public string PaisRazonSocial { get; set; } = "";
         public string ActividadRazonSocial { get; set; } = "";
         public bool SeValidoEnListaNegra { get; set; } = false;
-        public DateTime FechaUltimaValidacion { get; set; } = Constantes.FechaGlobal;
-        public string ObseUltimaValidacion { get; set; } = "";
+        public DateTime FechaPrimeraValidacion { get; set; } = Constantes.FechaGlobal;
+        public string ObsePrimeraValidacion { get; set; } = "";
+        public DateTime FechaSegundaValicacion { get; set; } = Constantes.FechaGlobal;
+        public string ObseSegundaValidacion { get; set; } = "";
+
+        public string Resumen
+        {
+            get 
+            {
+                return IdExpediente.Trim() + " - " + TextoActo.Trim() + " - " + TextoVariante.Trim() + " - " + FechaIngreso.ToString() + " - " + TextoEstatus; 
+            }
+            
+        }
+
 
     }
 }
