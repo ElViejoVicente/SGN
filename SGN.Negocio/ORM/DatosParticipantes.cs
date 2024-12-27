@@ -23,7 +23,7 @@ namespace SGN.Negocio.ORM
         public string RegimenConyugal { get; set; } = "";
         public string SabeLeerEscribir { get; set; } = "";
         public string Notas { get; set; } = "";
-
+        public string TipoRegimen { get; set; } = "";
         public string PaisNacimiento { get; set; } = "";
         public string PaisNacionalidad { get; set; } = "";
         public string Domicilio { get; set; } = "";
@@ -45,8 +45,10 @@ namespace SGN.Negocio.ORM
         public string PaisRazonSocial { get; set; } = "";
         public string ActividadRazonSocial { get; set; } = "";
         public bool SeValidoEnListaNegra { get; set; }=false;
-        public DateTime FechaUltimaValidacion { get; set; } = Constantes.FechaGlobal;
-        public string ObseUltimaValidacion { get; set; } = "";
+        public DateTime FechaPrimeraValidacion { get; set; } = Constantes.FechaGlobal;
+        public string ObsePrimeraValidacion { get; set; } = "";
+        public DateTime FechaSegundaValicacion { get; set; } = Constantes.FechaGlobal;
+        public string ObseSegundaValidacion { get; set; } = "";
     }
 }
 

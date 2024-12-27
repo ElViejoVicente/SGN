@@ -79,6 +79,35 @@ namespace SGN.Negocio.CRUD
         #endregion
 
         #region DatosParticipantes
+
+
+        public DatosParticipantes ConsultaDatosParticipantes(int IdRegistro)
+        {
+            try
+            {
+                DatosParticipantes resultado = new DatosParticipantes();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.QuerySingle<DatosParticipantes>
+                        (
+                        sql: "sp_CRUD_DatosParticipantes_Select", param: new
+                        {
+                            IdRegistro
+                        }, commandType: CommandType.StoredProcedure
+                        );
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosParticipantes_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
         public Boolean AltaDatosParticipantes(DatosParticipantes values)
         {
             try
@@ -122,8 +151,10 @@ namespace SGN.Negocio.CRUD
                         values.PaisRazonSocial,
                         values.ActividadRazonSocial,
                         values.SeValidoEnListaNegra,
-                        values.FechaUltimaValidacion,
-                        values.ObseUltimaValidacion
+                        values.FechaPrimeraValidacion ,
+                        values.ObsePrimeraValidacion,
+                        values.FechaSegundaValicacion,
+                        values.ObseSegundaValidacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -163,6 +194,7 @@ namespace SGN.Negocio.CRUD
                         values.RegimenConyugal,
                         values.SabeLeerEscribir,
                         values.Notas,
+                        values.TipoRegimen,
 
                         values.PaisNacimiento,
                         values.PaisNacionalidad,
@@ -185,8 +217,10 @@ namespace SGN.Negocio.CRUD
                         values.PaisRazonSocial,
                         values.ActividadRazonSocial,
                         values.SeValidoEnListaNegra,
-                        values.FechaUltimaValidacion,
-                        values.ObseUltimaValidacion
+                        values.FechaPrimeraValidacion ,
+                        values.ObsePrimeraValidacion,
+                        values.FechaSegundaValicacion,
+                        values.ObseSegundaValidacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }

@@ -212,7 +212,9 @@
                 OnDataBinding="gvExpedienteUnico_DataBinding"
                 OnCustomCallback="gvExpedienteUnico_CustomCallback"
                 OnToolbarItemClick="gvExpedienteUnico_ToolbarItemClick"
-                OnHtmlDataCellPrepared="gvExpedienteUnico_HtmlDataCellPrepared">
+                OnHtmlDataCellPrepared="gvExpedienteUnico_HtmlDataCellPrepared" 
+                OnRowUpdating="gvExpedienteUnico_RowUpdating"
+                OnRowValidating="gvExpedienteUnico_RowValidating">
 
                 <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
 
@@ -242,9 +244,16 @@
                     ConfirmDelete="true"
                     EnableCustomizationWindow="true"></SettingsBehavior>
 
-                <SettingsEditing Mode="PopupEditForm"   />
+                <SettingsEditing Mode="PopupEditForm" />
 
-                    <SettingsCommandButton>
+                <SettingsPopup>
+                    <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter"  Modal="true">
+                        
+                    </EditForm>
+                    
+                </SettingsPopup>
+
+                <SettingsCommandButton>
                     <EditButton Text="" ButtonType="Image">
                         <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
                     </EditButton>
@@ -277,13 +286,15 @@
 
                 <Columns>
 
-                    
-                    <dx:GridViewCommandColumn Visible="true" VisibleIndex="0" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false" 
-                        ShowNewButtonInHeader="false" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Resumen" FieldName="Resumen" Width="450px" Visible="true" GroupIndex="0" CellStyle-BackColor="#cccccc">
-                        <EditFormSettings Visible="False"></EditFormSettings>
+                    <dx:GridViewCommandColumn Visible="true" VisibleIndex="0" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false"
+                        ShowNewButtonInHeader="false" ButtonRenderMode="Button" Width="50px">
+                    </dx:GridViewCommandColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Resumen" FieldName="Resumen" Width="500px" Visible="true" GroupIndex="0" ReadOnly="true">
+                        <EditFormSettings Visible="True" ColumnSpan="2" CaptionLocation="Top" Caption=" "></EditFormSettings>
                     </dx:GridViewDataTextColumn>
+
                     <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Estatus" FieldName="TextoEstatus" Width="150px" Visible="False">
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
@@ -311,15 +322,15 @@
 
 
                     <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Nombre(s)" FieldName="Nombres" Width="150px" Visible="true" ReadOnly="true">
-         <%--               <EditFormSettings Visible="False"></EditFormSettings>--%>
+                        <%--               <EditFormSettings Visible="False"></EditFormSettings>--%>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Apellido Paterno" FieldName="ApellidoPaterno" Width="150px" Visible="true" ReadOnly="true">
-             <%--           <EditFormSettings Visible="False"></EditFormSettings>--%>
+                        <%--           <EditFormSettings Visible="False"></EditFormSettings>--%>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="8" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="150px" Visible="true" ReadOnly="true">
-<%--                        <EditFormSettings Visible="False"></EditFormSettings>--%>
+                        <%--                        <EditFormSettings Visible="False"></EditFormSettings>--%>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataDateColumn VisibleIndex="9" Caption="Fecha Nacimiento" FieldName="FechaNacimiento" Width="150px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
                     </dx:GridViewDataDateColumn>
@@ -333,7 +344,6 @@
                                 <Items>
                                     <dx:ListEditItem Text="Masculino" Value="M" Selected="true"></dx:ListEditItem>
                                     <dx:ListEditItem Text="Femenino" Value="F"></dx:ListEditItem>
-                                    <dx:ListEditItem Text="Otro" Value="Otro"></dx:ListEditItem>
                                 </Items>
 
                             </dx:ASPxComboBox>
@@ -357,7 +367,7 @@
                     </dx:GridViewDataTextColumn>
 
 
-                    
+
                     <dx:GridViewDataComboBoxColumn VisibleIndex="10" Caption="Tipo regimen" FieldName="TipoRegimen" Width="60px" Visible="true">
 
                         <EditItemTemplate>
@@ -372,6 +382,7 @@
 
                             </dx:ASPxComboBox>
                         </EditItemTemplate>
+                            <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataComboBoxColumn>
 
                     <dx:GridViewDataComboBoxColumn VisibleIndex="15" Caption="Pais Nacimiento" FieldName="PaisNacimiento" Width="60px" Visible="true">
@@ -379,7 +390,9 @@
                             <dx:ASPxComboBox ID="cbPaisNacimiento" ClientInstanceName="cbPaisNacimiento" runat="server" Value='<%# Bind("PaisNacimiento") %>' Width="100%"
                                 OnInit="cbPaisNacimiento_Init" OnDataBinding="cbPaisNacimiento_DataBinding">
                             </dx:ASPxComboBox>
+
                         </EditItemTemplate>
+                    
                     </dx:GridViewDataComboBoxColumn>
 
                     <dx:GridViewDataComboBoxColumn VisibleIndex="16" Caption="Pais Nacionalidad" FieldName="PaisNacionalidad" Width="60px" Visible="true">
@@ -391,12 +404,13 @@
                     </dx:GridViewDataComboBoxColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="17" Caption="Domicilio (Calle)" FieldName="Domicilio" Width="150px" Visible="true">
+                        <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="18" Caption="Numero Exterior" FieldName="NumeroExterior" Width="150px" Visible="true">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="19" Caption="Numero Exterior" FieldName="NumeroExterior" Width="150px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="19" Caption="Numero Interior" FieldName="NumeroInterior" Width="150px" Visible="true">
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="20" Caption="Colonia" FieldName="Colonia" Width="150px" Visible="true">
@@ -426,6 +440,7 @@
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="27" Caption="Correo Electronico" FieldName="CorreoElectronico" Width="150px" Visible="true">
+                        <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="28" Caption="Curp" FieldName="Curp" Width="150px" Visible="true">
@@ -435,9 +450,11 @@
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="30" Caption="Datos Apoderado" FieldName="DatosApoderado" Width="150px" Visible="true">
+                            <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="31" Caption="Razon Social" FieldName="RazonSocial" Width="150px" Visible="true">
+                        <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataDateColumn VisibleIndex="32" Caption="Fecha de Constitucion" FieldName="FechaConstitucion" Width="150px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
@@ -450,9 +467,10 @@
                             </dx:ASPxComboBox>
                         </EditItemTemplate>
                     </dx:GridViewDataComboBoxColumn>
-
-                    <dx:GridViewDataDateColumn VisibleIndex="34" Caption="ActividadRazonSocial" FieldName="ActividadRazonSocial" Width="150px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
-                    </dx:GridViewDataDateColumn>
+                    
+                    <dx:GridViewDataTextColumn VisibleIndex="34" Caption="Actividad Razon Social" FieldName="ActividadRazonSocial" Width="150px" Visible="true">
+                           <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
 
                 </Columns>
 
