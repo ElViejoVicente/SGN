@@ -269,6 +269,7 @@ namespace SGN.Web.ExpedienteUnico
 
 
                 miRegistro.Sexo = e.NewValues["Sexo"].ToString();
+                miRegistro.Ocupacion = e.NewValues["Ocupacion"] == null ? "-" : e.NewValues["Ocupacion"].ToString();
                 miRegistro.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
                 miRegistro.TipoRegimen = e.NewValues["TipoRegimen"].ToString();
                 miRegistro.PaisNacimiento = e.NewValues["PaisNacimiento"].ToString();
@@ -286,8 +287,9 @@ namespace SGN.Web.ExpedienteUnico
                 miRegistro.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
                 miRegistro.Curp = e.NewValues["Curp"] == null ? "-" : e.NewValues["Curp"].ToString();
                 miRegistro.Rfc = e.NewValues["Rfc"] == null ? "-" : e.NewValues["Rfc"].ToString();
-
-                miRegistro.DatosApoderado =  e.NewValues["DatosApoderado"] == null ? "-" : e.NewValues["DatosApoderado"].ToString();
+                miRegistro.NombreIdentificacionID = e.NewValues["NombreIdentificacionID"] == null ? "-" : e.NewValues["NombreIdentificacionID"].ToString();
+                miRegistro.AutoridadEmiteID = e.NewValues["AutoridadEmiteID"] == null ? "-" : e.NewValues["AutoridadEmiteID"].ToString();
+                miRegistro.NumeroSerieID = e.NewValues["NumeroSerieID"] == null ? "-" : e.NewValues["NumeroSerieID"].ToString();
 
                 miRegistro.RazonSocial = e.NewValues["RazonSocial"] == null ? "-" : e.NewValues["RazonSocial"].ToString();
 
@@ -370,10 +372,10 @@ namespace SGN.Web.ExpedienteUnico
                 e.RowError += "El campo numero exterior es obligatorio.\n ";
             }
 
-            if (e.NewValues["NumeroInterior"] == null)
-            {
-                e.RowError += "El campo numero interior es obligatorio.\n ";
-            }
+            //if (e.NewValues["NumeroInterior"] == null)
+            //{
+            //    e.RowError += "El campo numero interior es obligatorio.\n ";
+            //}
 
             if (e.NewValues["Colonia"] == null)
             {
@@ -431,15 +433,31 @@ namespace SGN.Web.ExpedienteUnico
                 e.RowError += "El campo Rfc es obligatorio.\n ";
             }
 
-
-            if (tipoRegimen.ToString()== "Apoderado")
+            if (e.NewValues["NombreIdentificacionID"] == null)
             {
-
-                if (e.NewValues["Apoderado"] == null)
-                {
-                    e.RowError += "El campo Apoderado es obligatorio.\n ";
-                }
+                e.RowError += "El campo Identificacion es obligatorio.\n ";
             }
+
+            if (e.NewValues["AutoridadEmiteID"] == null)
+            {
+                e.RowError += "El campo Autoridad Emite es obligatorio.\n ";
+            }
+
+            if (e.NewValues["NumeroSerieID"] == null)
+            {
+                e.RowError += "El campo Numero ID es obligatorio.\n ";
+            }
+
+
+
+            //if (tipoRegimen.ToString()== "Apoderado")
+            //{
+
+            //    if (e.NewValues["Apoderado"] == null)
+            //    {
+            //        e.RowError += "El campo Apoderado es obligatorio.\n ";
+            //    }
+            //}
 
 
             if (tipoRegimen.ToString() == "Moral")

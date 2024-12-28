@@ -50,7 +50,9 @@ namespace SGN.Negocio.ExpedienteUnico
         public string CorreoElectronico { get; set; } = "";
         public string Curp { get; set; } = "";
         public string Rfc { get; set; } = "";
-        public string DatosApoderado { get; set; } = "";
+        public string NombreIdentificacionID { get; set; } = "";
+        public string AutoridadEmiteID { get; set; } = "";
+        public string NumeroSerieID { get; set; } = "";
         public string RazonSocial { get; set; } = "";
         public DateTime FechaConstitucion { get; set; } = Constantes.FechaGlobal;
         public string PaisRazonSocial { get; set; } = "";
