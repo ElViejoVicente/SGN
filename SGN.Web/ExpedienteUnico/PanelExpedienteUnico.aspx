@@ -110,12 +110,16 @@
 
                     if (gvExpedienteUnico.GetFocusedRowIndex() >= 0) {
 
-                        gvExpedienteUnico.GetRowValues(gvExpedienteUnico.GetFocusedRowIndex(), 'IdExpediente', onCallbackValidarEnListaNegra);
+                        gvExpedienteUnico.GetRowValues(gvExpedienteUnico.GetFocusedRowIndex(), 'IdRegistro', onCallbackValidarEnListaNegra);
 
                     }
 
 
-
+                case "cmdReporteExpUnico":
+                    if (gvHojaDatos.GetFocusedRowIndex() >= 0) {
+                        gvHojaDatos.GetRowValues(gvHojaDatos.GetFocusedRowIndex(), 'IdRegistro', onCallbackReport);
+                    }
+                    break;
 
 
             }
@@ -128,6 +132,12 @@
             ppEditarExpediente.Show();
             ppEditarExpediente.PerformCallback("CargarRegistros~" + value);
 
+        }
+
+
+        function onCallbackReport(value) {
+
+            window.open("../Reportes/reporteExUnico?idRegistro=" + value, "_blank");
         }
 
 
@@ -369,7 +379,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="18" Caption="T.Persona" FieldName="TipoRegimen" Width="80px" Visible="true" CellStyle-Font-Bold="true" >
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="18" Caption="T.Persona" FieldName="TipoRegimen" Width="80px" Visible="true" CellStyle-Font-Bold="true">
 
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbTipoRegimen" ClientInstanceName="cbTipoRegimen" runat="server" Value='<%# Bind("TipoRegimen") %>' Width="100%"
@@ -457,7 +467,7 @@
                     <dx:GridViewDataTextColumn VisibleIndex="35" Caption="Curp" FieldName="Curp" Width="100px" Visible="true">
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="36" Caption="Rfc" FieldName="Rfc" Width="120px" Visible="true" CellStyle-Font-Bold="true" >
+                    <dx:GridViewDataTextColumn VisibleIndex="36" Caption="Rfc" FieldName="Rfc" Width="120px" Visible="true" CellStyle-Font-Bold="true">
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="38" Caption="Razon Social" FieldName="RazonSocial" Width="200px" Visible="true">
@@ -491,7 +501,7 @@
 
                             <dx:GridViewToolbarItem Text="Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdEditarExpediente" />
 
-
+                            <dx:GridViewToolbarItem Text="Generar Impresion" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />

@@ -47,5 +47,32 @@ namespace SGN.Negocio.ExpedienteUnico
                 throw new Exception("Error al ejecutar sp_DameExUnicoPorFecha , detalle: \n" + ex.Message, ex);
             }
         }
+
+        public ListaExpedienteUnico DameExpedienteUnico(int IdRegistroCliente)
+        {
+            try
+            {
+                ListaExpedienteUnico resultado = new ListaExpedienteUnico();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.QuerySingle<ListaExpedienteUnico>
+                        (
+                        sql: "sp_DameExUnicoPorId", param: new
+                        {
+                            IdRegistroCliente             
+
+                        }, commandType: CommandType.StoredProcedure
+                        );
+                }
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameExUnicoPorId , detalle: \n" + ex.Message, ex);
+            }
+        }
     }
 }

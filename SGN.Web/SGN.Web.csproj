@@ -341,6 +341,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Reportes\reporteExUnico.aspx" />
     <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -734,6 +735,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteExUnico.aspx.cs">
+      <DependentUpon>reporteExUnico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteExUnico.aspx.designer.cs">
+      <DependentUpon>reporteExUnico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\reporteHojaDatos.aspx.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
