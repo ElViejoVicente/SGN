@@ -116,8 +116,8 @@
 
 
                 case "cmdReporteExpUnico":
-                    if (gvHojaDatos.GetFocusedRowIndex() >= 0) {
-                        gvHojaDatos.GetRowValues(gvHojaDatos.GetFocusedRowIndex(), 'IdRegistro', onCallbackReport);
+                    if (gvExpedienteUnico.GetFocusedRowIndex() >= 0) {
+                        gvExpedienteUnico.GetRowValues(gvExpedienteUnico.GetFocusedRowIndex(), 'IdRegistro', onCallbackReport);
                     }
                     break;
 

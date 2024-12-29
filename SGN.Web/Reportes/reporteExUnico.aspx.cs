@@ -51,13 +51,47 @@ namespace SGN.Web.Reportes
 
                 XtraReport reporte = new XtraReport();
                 reporte.CreateDocument();
+                XtraExUnicoPersonaFisica exUnicoPerFisica = new XtraExUnicoPersonaFisica();
 
 
 
 
+                if (datosReporte.TipoRegimen== "Fisica")
+                {
+                    exUnicoPerFisica.DataSource = origen;
+                    exUnicoPerFisica.RequestParameters = false;
+
+                    exUnicoPerFisica.Parameters["ActividadVulnerable"].Value= "Venta de casas robadas";
+                    exUnicoPerFisica.Parameters["Anio"].Value = "aa";
+                    exUnicoPerFisica.Parameters["Asesor"].Value = "aa";
+                    exUnicoPerFisica.Parameters["Dia"].Value = 10;
+                    exUnicoPerFisica.Parameters["Mes"].Value = "Dic";
+                    exUnicoPerFisica.Parameters["NumEscritura"].Value = "150";
+                    exUnicoPerFisica.Parameters["NumExpediente"].Value = "128-12-2024S";
+                    exUnicoPerFisica.Parameters["Volumen"].Value = "zzz4";
+
+
+                    exUnicoPerFisica.CreateDocument();
+                    reporte.Pages.AddRange(exUnicoPerFisica.Pages);
 
 
 
+                }
+
+
+
+                if (datosReporte.TipoRegimen == "Moral")
+                {
+
+                }
+
+
+                if (datosReporte.TipoRegimen == "Apoderado")
+                {
+
+                }
+
+                reportePrinsipalView.OpenReport(reporte);
 
             }
 
