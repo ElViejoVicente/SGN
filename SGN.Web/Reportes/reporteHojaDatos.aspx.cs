@@ -42,8 +42,8 @@ namespace SGN.Web.Reportes
                 // se rellenan los abjetos a el dataSet
 
 
-                Negocio.Reportes.dsHojaDatos.HojaDatosDataTable dtHojaDatos =
-                    new Negocio.Reportes.dsHojaDatos.HojaDatosDataTable();
+                //Negocio.Reportes.dsHojaDatos.HojaDatosDataTable dtHojaDatos =
+                //    new Negocio.Reportes.dsHojaDatos.HojaDatosDataTable();
 
                 Negocio.Reportes.dsHojaDatos origen = new Negocio.Reportes.dsHojaDatos();
 

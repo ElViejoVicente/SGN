@@ -90,7 +90,6 @@
             this.xrLabel20 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel21 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
-            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             this.DetailReport1 = new DevExpress.XtraReports.UI.DetailReportBand();
             this.Detail2 = new DevExpress.XtraReports.UI.DetailBand();
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
@@ -145,11 +144,12 @@
             this.xrLabel64 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel57 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel63 = new DevExpress.XtraReports.UI.XRLabel();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
@@ -909,11 +909,6 @@
             this.xrLabel22.StylePriority.UsePadding = false;
             this.xrLabel22.Text = "Apellido Materno";
             // 
-            // objectDataSource1
-            // 
-            this.objectDataSource1.DataSource = typeof(SGN.Negocio.Reportes.dsHojaDatos);
-            this.objectDataSource1.Name = "objectDataSource1";
-            // 
             // DetailReport1
             // 
             this.DetailReport1.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1574,6 +1569,11 @@
     "ato son correctos por haber sido proporcionados por:";
             this.xrLabel63.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify;
             // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(SGN.Negocio.Reportes.dsHojaDatos);
+            this.objectDataSource1.Name = "objectDataSource1";
+            // 
             // XtraHojaDatos
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1597,10 +1597,10 @@
             this.Watermarks.AddRange(new DevExpress.XtraPrinting.Drawing.Watermark[] {
             xrWatermark1});
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

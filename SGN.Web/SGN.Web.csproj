@@ -58,6 +58,7 @@
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.6.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.CodeParser.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.DataAccess.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Drawing.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -750,6 +751,12 @@
     <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\XtraExUnicoPersonaFisica.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoPersonaFisica.Designer.cs">
+      <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\XtraHojaDatosSoloFavorDe.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -807,6 +814,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoPersonaFisica.resx">
+      <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraHojaDatosSoloFavorDe.resx">
       <DependentUpon>XtraHojaDatosSoloFavorDe.cs</DependentUpon>

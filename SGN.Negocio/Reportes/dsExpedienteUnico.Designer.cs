@@ -379,6 +379,8 @@ namespace SGN.Negocio.Reportes {
             
             private global::System.Data.DataColumn columnResumen;
             
+            private global::System.Data.DataColumn columnResumenIdentificacion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ExpedienteUnicoDataTable() {
@@ -814,6 +816,14 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ResumenIdentificacionColumn {
+                get {
+                    return this.columnResumenIdentificacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -856,15 +866,15 @@ namespace SGN.Negocio.Reportes {
                         string TextoActo, 
                         System.DateTime FechaIngreso, 
                         string TextoVariante, 
-                        string RequiereExUnico, 
-                        string IdRegistro, 
-                        string IdHojaDatos, 
+                        bool RequiereExUnico, 
+                        int IdRegistro, 
+                        int IdHojaDatos, 
                         string FiguraOperacion, 
                         string RolOperacion, 
                         string Nombres, 
                         string ApellidoPaterno, 
                         string ApellidoMaterno, 
-                        string FechaNacimiento, 
+                        System.DateTime FechaNacimiento, 
                         string Sexo, 
                         string Ocupacion, 
                         string EstadoCivil, 
@@ -891,15 +901,16 @@ namespace SGN.Negocio.Reportes {
                         string AutoridadEmiteID, 
                         string NumeroSerieID, 
                         string RazonSocial, 
-                        string FechaConstitucion, 
+                        System.DateTime FechaConstitucion, 
                         string PaisRazonSocial, 
                         string ActividadRazonSocial, 
-                        string SeValidoEnListaNegra, 
-                        string FechaPrimeraValidacion, 
+                        bool SeValidoEnListaNegra, 
+                        System.DateTime FechaPrimeraValidacion, 
                         string ObsePrimeraValidacion, 
-                        string FechaSegundaValicacion, 
+                        System.DateTime FechaSegundaValicacion, 
                         string ObseSegundaValidacion, 
-                        string Resumen) {
+                        string Resumen, 
+                        string ResumenIdentificacion) {
                 ExpedienteUnicoRow rowExpedienteUnicoRow = ((ExpedienteUnicoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdExpediente,
@@ -951,7 +962,8 @@ namespace SGN.Negocio.Reportes {
                         ObsePrimeraValidacion,
                         FechaSegundaValicacion,
                         ObseSegundaValidacion,
-                        Resumen};
+                        Resumen,
+                        ResumenIdentificacion};
                 rowExpedienteUnicoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowExpedienteUnicoRow);
                 return rowExpedienteUnicoRow;
@@ -1024,6 +1036,7 @@ namespace SGN.Negocio.Reportes {
                 this.columnFechaSegundaValicacion = base.Columns["FechaSegundaValicacion"];
                 this.columnObseSegundaValidacion = base.Columns["ObseSegundaValidacion"];
                 this.columnResumen = base.Columns["Resumen"];
+                this.columnResumenIdentificacion = base.Columns["ResumenIdentificacion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1041,11 +1054,11 @@ namespace SGN.Negocio.Reportes {
                 base.Columns.Add(this.columnFechaIngreso);
                 this.columnTextoVariante = new global::System.Data.DataColumn("TextoVariante", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTextoVariante);
-                this.columnRequiereExUnico = new global::System.Data.DataColumn("RequiereExUnico", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnRequiereExUnico = new global::System.Data.DataColumn("RequiereExUnico", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequiereExUnico);
-                this.columnIdRegistro = new global::System.Data.DataColumn("IdRegistro", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnIdRegistro = new global::System.Data.DataColumn("IdRegistro", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdRegistro);
-                this.columnIdHojaDatos = new global::System.Data.DataColumn("IdHojaDatos", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnIdHojaDatos = new global::System.Data.DataColumn("IdHojaDatos", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdHojaDatos);
                 this.columnFiguraOperacion = new global::System.Data.DataColumn("FiguraOperacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFiguraOperacion);
@@ -1057,7 +1070,7 @@ namespace SGN.Negocio.Reportes {
                 base.Columns.Add(this.columnApellidoPaterno);
                 this.columnApellidoMaterno = new global::System.Data.DataColumn("ApellidoMaterno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnApellidoMaterno);
-                this.columnFechaNacimiento = new global::System.Data.DataColumn("FechaNacimiento", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaNacimiento = new global::System.Data.DataColumn("FechaNacimiento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaNacimiento);
                 this.columnSexo = new global::System.Data.DataColumn("Sexo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSexo);
@@ -1111,24 +1124,26 @@ namespace SGN.Negocio.Reportes {
                 base.Columns.Add(this.columnNumeroSerieID);
                 this.columnRazonSocial = new global::System.Data.DataColumn("RazonSocial", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRazonSocial);
-                this.columnFechaConstitucion = new global::System.Data.DataColumn("FechaConstitucion", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaConstitucion = new global::System.Data.DataColumn("FechaConstitucion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaConstitucion);
                 this.columnPaisRazonSocial = new global::System.Data.DataColumn("PaisRazonSocial", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPaisRazonSocial);
                 this.columnActividadRazonSocial = new global::System.Data.DataColumn("ActividadRazonSocial", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnActividadRazonSocial);
-                this.columnSeValidoEnListaNegra = new global::System.Data.DataColumn("SeValidoEnListaNegra", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSeValidoEnListaNegra = new global::System.Data.DataColumn("SeValidoEnListaNegra", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSeValidoEnListaNegra);
-                this.columnFechaPrimeraValidacion = new global::System.Data.DataColumn("FechaPrimeraValidacion", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaPrimeraValidacion = new global::System.Data.DataColumn("FechaPrimeraValidacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaPrimeraValidacion);
                 this.columnObsePrimeraValidacion = new global::System.Data.DataColumn("ObsePrimeraValidacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObsePrimeraValidacion);
-                this.columnFechaSegundaValicacion = new global::System.Data.DataColumn("FechaSegundaValicacion", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaSegundaValicacion = new global::System.Data.DataColumn("FechaSegundaValicacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaSegundaValicacion);
                 this.columnObseSegundaValidacion = new global::System.Data.DataColumn("ObseSegundaValidacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObseSegundaValidacion);
                 this.columnResumen = new global::System.Data.DataColumn("Resumen", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnResumen);
+                this.columnResumenIdentificacion = new global::System.Data.DataColumn("ResumenIdentificacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResumenIdentificacion);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1367,10 +1382,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string RequiereExUnico {
+            public bool RequiereExUnico {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.RequiereExUnicoColumn]));
+                        return ((bool)(this[this.tableExpedienteUnico.RequiereExUnicoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'RequiereExUnico\' de la tabla \'ExpedienteUnico\' es DBNull." +
@@ -1384,10 +1399,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string IdRegistro {
+            public int IdRegistro {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.IdRegistroColumn]));
+                        return ((int)(this[this.tableExpedienteUnico.IdRegistroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdRegistro\' de la tabla \'ExpedienteUnico\' es DBNull.", e);
@@ -1400,10 +1415,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string IdHojaDatos {
+            public int IdHojaDatos {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.IdHojaDatosColumn]));
+                        return ((int)(this[this.tableExpedienteUnico.IdHojaDatosColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'IdHojaDatos\' de la tabla \'ExpedienteUnico\' es DBNull.", e);
@@ -1499,10 +1514,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaNacimiento {
+            public System.DateTime FechaNacimiento {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.FechaNacimientoColumn]));
+                        return ((global::System.DateTime)(this[this.tableExpedienteUnico.FechaNacimientoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaNacimiento\' de la tabla \'ExpedienteUnico\' es DBNull." +
@@ -1938,10 +1953,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaConstitucion {
+            public System.DateTime FechaConstitucion {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.FechaConstitucionColumn]));
+                        return ((global::System.DateTime)(this[this.tableExpedienteUnico.FechaConstitucionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaConstitucion\' de la tabla \'ExpedienteUnico\' es DBNul" +
@@ -1989,10 +2004,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string SeValidoEnListaNegra {
+            public bool SeValidoEnListaNegra {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.SeValidoEnListaNegraColumn]));
+                        return ((bool)(this[this.tableExpedienteUnico.SeValidoEnListaNegraColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'SeValidoEnListaNegra\' de la tabla \'ExpedienteUnico\' es DB" +
@@ -2006,10 +2021,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaPrimeraValidacion {
+            public System.DateTime FechaPrimeraValidacion {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.FechaPrimeraValidacionColumn]));
+                        return ((global::System.DateTime)(this[this.tableExpedienteUnico.FechaPrimeraValidacionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaPrimeraValidacion\' de la tabla \'ExpedienteUnico\' es " +
@@ -2040,10 +2055,10 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaSegundaValicacion {
+            public System.DateTime FechaSegundaValicacion {
                 get {
                     try {
-                        return ((string)(this[this.tableExpedienteUnico.FechaSegundaValicacionColumn]));
+                        return ((global::System.DateTime)(this[this.tableExpedienteUnico.FechaSegundaValicacionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaSegundaValicacion\' de la tabla \'ExpedienteUnico\' es " +
@@ -2085,6 +2100,23 @@ namespace SGN.Negocio.Reportes {
                 }
                 set {
                     this[this.tableExpedienteUnico.ResumenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ResumenIdentificacion {
+                get {
+                    try {
+                        return ((string)(this[this.tableExpedienteUnico.ResumenIdentificacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ResumenIdentificacion\' de la tabla \'ExpedienteUnico\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExpedienteUnico.ResumenIdentificacionColumn] = value;
                 }
             }
             
@@ -2686,6 +2718,18 @@ namespace SGN.Negocio.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetResumenNull() {
                 this[this.tableExpedienteUnico.ResumenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsResumenIdentificacionNull() {
+                return this.IsNull(this.tableExpedienteUnico.ResumenIdentificacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetResumenIdentificacionNull() {
+                this[this.tableExpedienteUnico.ResumenIdentificacionColumn] = global::System.Convert.DBNull;
             }
         }
         
