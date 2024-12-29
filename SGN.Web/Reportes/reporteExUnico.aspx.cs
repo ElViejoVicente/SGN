@@ -52,6 +52,7 @@ namespace SGN.Web.Reportes
                 XtraReport reporte = new XtraReport();
                 reporte.CreateDocument();
                 XtraExUnicoPersonaFisica exUnicoPerFisica = new XtraExUnicoPersonaFisica();
+                XtraExUnicoPersonaMoral exUnicoPerMoral = new XtraExUnicoPersonaMoral();
 
 
 
@@ -67,14 +68,9 @@ namespace SGN.Web.Reportes
                     exUnicoPerFisica.Parameters["Dia"].Value = 10;
                     exUnicoPerFisica.Parameters["Mes"].Value = "Dic";
                     exUnicoPerFisica.Parameters["NumEscritura"].Value = "150";
-                    exUnicoPerFisica.Parameters["NumExpediente"].Value = "128-12-2024S";
                     exUnicoPerFisica.Parameters["Volumen"].Value = "zzz4";
-
-
                     exUnicoPerFisica.CreateDocument();
                     reporte.Pages.AddRange(exUnicoPerFisica.Pages);
-
-
 
                 }
 
@@ -82,6 +78,17 @@ namespace SGN.Web.Reportes
 
                 if (datosReporte.TipoRegimen == "Moral")
                 {
+                    exUnicoPerMoral.DataSource = origen;
+                    exUnicoPerMoral.RequestParameters = false;
+                    exUnicoPerMoral.Parameters["ActividadVulnerable"].Value = "Venta de casas robadas";
+                    exUnicoPerMoral.Parameters["Anio"].Value = "aa";
+                    exUnicoPerMoral.Parameters["Asesor"].Value = "aa";
+                    exUnicoPerMoral.Parameters["Dia"].Value = 10;
+                    exUnicoPerMoral.Parameters["Mes"].Value = "Dic";
+                    exUnicoPerMoral.Parameters["NumEscritura"].Value = "150";
+                    exUnicoPerMoral.Parameters["Volumen"].Value = "zzz4";
+                    exUnicoPerMoral.CreateDocument();
+                    reporte.Pages.AddRange(exUnicoPerMoral.Pages);
 
                 }
 

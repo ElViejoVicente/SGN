@@ -33,7 +33,6 @@
             DevExpress.XtraReports.UI.XRWatermark xrWatermark1 = new DevExpress.XtraReports.UI.XRWatermark();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrLabel57 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel56 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel55 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel54 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
@@ -43,6 +42,7 @@
             this.xrLabel65 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrLabel58 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel52 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel53 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel51 = new DevExpress.XtraReports.UI.XRLabel();
@@ -102,16 +102,15 @@
             this.Volumen = new DevExpress.XtraReports.Parameters.Parameter();
             this.ActividadVulnerable = new DevExpress.XtraReports.Parameters.Parameter();
             this.Asesor = new DevExpress.XtraReports.Parameters.Parameter();
-            this.NumExpediente = new DevExpress.XtraReports.Parameters.Parameter();
-            this.xrLabel58 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel56 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel57,
             this.xrLabel56,
+            this.xrLabel57,
             this.xrLabel55,
             this.xrLabel54,
             this.xrLabel1,
@@ -124,27 +123,18 @@
             // 
             this.xrLabel57.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Asesor")});
+            this.xrLabel57.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
             this.xrLabel57.LocationFloat = new DevExpress.Utils.PointFloat(129.1667F, 113.6633F);
             this.xrLabel57.Multiline = true;
             this.xrLabel57.Name = "xrLabel57";
             this.xrLabel57.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel57.SizeF = new System.Drawing.SizeF(270.4167F, 23.00001F);
+            this.xrLabel57.StylePriority.UseFont = false;
             this.xrLabel57.Text = "xrLabel57";
-            // 
-            // xrLabel56
-            // 
-            this.xrLabel56.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?NumExpediente")});
-            this.xrLabel56.LocationFloat = new DevExpress.Utils.PointFloat(484.8175F, 113.6633F);
-            this.xrLabel56.Multiline = true;
-            this.xrLabel56.Name = "xrLabel56";
-            this.xrLabel56.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel56.SizeF = new System.Drawing.SizeF(100F, 23F);
-            this.xrLabel56.Text = "xrLabel56";
             // 
             // xrLabel55
             // 
-            this.xrLabel55.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
+            this.xrLabel55.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
             this.xrLabel55.LocationFloat = new DevExpress.Utils.PointFloat(412.5834F, 113.6633F);
             this.xrLabel55.Multiline = true;
             this.xrLabel55.Name = "xrLabel55";
@@ -155,11 +145,13 @@
             // 
             // xrLabel54
             // 
+            this.xrLabel54.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
             this.xrLabel54.LocationFloat = new DevExpress.Utils.PointFloat(12.00002F, 113.6633F);
             this.xrLabel54.Multiline = true;
             this.xrLabel54.Name = "xrLabel54";
             this.xrLabel54.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel54.SizeF = new System.Drawing.SizeF(114.5833F, 23F);
+            this.xrLabel54.StylePriority.UseFont = false;
             this.xrLabel54.Text = "Asesor:";
             // 
             // xrLabel1
@@ -294,6 +286,24 @@
             this.xrLabel2});
             this.Detail.HeightF = 1778.982F;
             this.Detail.Name = "Detail";
+            // 
+            // xrLabel58
+            // 
+            this.xrLabel58.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrLabel58.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
+            this.xrLabel58.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel58.LocationFloat = new DevExpress.Utils.PointFloat(12.00002F, 889.7324F);
+            this.xrLabel58.Multiline = true;
+            this.xrLabel58.Name = "xrLabel58";
+            this.xrLabel58.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel58.SizeF = new System.Drawing.SizeF(737.9999F, 46.66681F);
+            this.xrLabel58.StylePriority.UseBorders = false;
+            this.xrLabel58.StylePriority.UseFont = false;
+            this.xrLabel58.StylePriority.UseForeColor = false;
+            this.xrLabel58.StylePriority.UseTextAlignment = false;
+            this.xrLabel58.Text = "LOS DOCUMENTOS EXHIBIDOS NO PRESENTAN TACHADURAS, NI ENMENDADURAS Y LAS COPIAS SI" +
+    "MPLES \r\nSE COTEJARON CON SU ORIGINAL. \r\n\r\n";
+            this.xrLabel58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
             // 
             // xrLabel52
             // 
@@ -983,28 +993,18 @@
             this.Asesor.Description = "Nombre del Asesor ";
             this.Asesor.Name = "Asesor";
             // 
-            // NumExpediente
+            // xrLabel56
             // 
-            this.NumExpediente.Description = "Numero de expediente";
-            this.NumExpediente.Name = "NumExpediente";
-            // 
-            // xrLabel58
-            // 
-            this.xrLabel58.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel58.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
-            this.xrLabel58.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel58.LocationFloat = new DevExpress.Utils.PointFloat(12.00002F, 889.7324F);
-            this.xrLabel58.Multiline = true;
-            this.xrLabel58.Name = "xrLabel58";
-            this.xrLabel58.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel58.SizeF = new System.Drawing.SizeF(737.9999F, 46.66681F);
-            this.xrLabel58.StylePriority.UseBorders = false;
-            this.xrLabel58.StylePriority.UseFont = false;
-            this.xrLabel58.StylePriority.UseForeColor = false;
-            this.xrLabel58.StylePriority.UseTextAlignment = false;
-            this.xrLabel58.Text = "LOS DOCUMENTOS EXHIBIDOS NO PRESENTAN TACHADURAS, NI ENMENDADURAS Y LAS COPIAS SI" +
-    "MPLES \r\nSE COTEJARON CON SU ORIGINAL. \r\n\r\n";
-            this.xrLabel58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
+            this.xrLabel56.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ExpedienteUnico].[IdExpediente]")});
+            this.xrLabel56.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
+            this.xrLabel56.LocationFloat = new DevExpress.Utils.PointFloat(483.8591F, 113.6633F);
+            this.xrLabel56.Multiline = true;
+            this.xrLabel56.Name = "xrLabel56";
+            this.xrLabel56.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel56.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrLabel56.StylePriority.UseFont = false;
+            this.xrLabel56.Text = "xrLabel56";
             // 
             // XtraExUnicoPersonaFisica
             // 
@@ -1025,8 +1025,7 @@
             new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.NumEscritura, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
             new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Volumen, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
             new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.ActividadVulnerable, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
-            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Asesor, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
-            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.NumExpediente, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
+            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Asesor, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.Dia,
             this.Mes,
@@ -1034,8 +1033,7 @@
             this.NumEscritura,
             this.Volumen,
             this.ActividadVulnerable,
-            this.Asesor,
-            this.NumExpediente});
+            this.Asesor});
             this.Version = "23.2";
             xrWatermark1.Id = "Watermark1";
             this.Watermarks.AddRange(new DevExpress.XtraPrinting.Drawing.Watermark[] {
@@ -1114,11 +1112,10 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel54;
         private DevExpress.XtraReports.UI.XRLabel xrLabel55;
         private DevExpress.XtraReports.Parameters.Parameter Asesor;
-        private DevExpress.XtraReports.Parameters.Parameter NumExpediente;
         private DevExpress.XtraReports.UI.XRLabel xrLabel57;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel56;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel65;
         private DevExpress.XtraReports.UI.XRLabel xrLabel58;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel56;
     }
 }
