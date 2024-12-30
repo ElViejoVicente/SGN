@@ -751,6 +751,12 @@
     <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\XtraExUnicoApoderado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoApoderado.Designer.cs">
+      <DependentUpon>XtraExUnicoApoderado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\XtraExUnicoPersonaMoral.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -820,6 +826,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoApoderado.resx">
+      <DependentUpon>XtraExUnicoApoderado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraExUnicoPersonaMoral.resx">
       <DependentUpon>XtraExUnicoPersonaMoral.cs</DependentUpon>

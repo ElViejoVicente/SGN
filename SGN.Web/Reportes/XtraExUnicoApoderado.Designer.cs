@@ -1,6 +1,6 @@
 ﻿namespace SGN.Web.Reportes
 {
-    partial class XtraExUnicoPersonaFisica
+    partial class XtraExUnicoApoderado
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraExUnicoPersonaFisica));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XtraExUnicoApoderado));
             DevExpress.XtraReports.UI.XRWatermark xrWatermark1 = new DevExpress.XtraReports.UI.XRWatermark();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrLabel56 = new DevExpress.XtraReports.UI.XRLabel();
@@ -354,11 +354,11 @@
             this.xrLabel49.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel49.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
             this.xrLabel49.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel49.LocationFloat = new DevExpress.Utils.PointFloat(13.7502F, 1176.712F);
+            this.xrLabel49.LocationFloat = new DevExpress.Utils.PointFloat(13.7502F, 1162.129F);
             this.xrLabel49.Multiline = true;
             this.xrLabel49.Name = "xrLabel49";
             this.xrLabel49.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel49.SizeF = new System.Drawing.SizeF(737.9999F, 336.2501F);
+            this.xrLabel49.SizeF = new System.Drawing.SizeF(737.9999F, 350.8335F);
             this.xrLabel49.StylePriority.UseBorders = false;
             this.xrLabel49.StylePriority.UseFont = false;
             this.xrLabel49.StylePriority.UseForeColor = false;
@@ -922,11 +922,11 @@
             this.xrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel2.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.00007F, 33.85417F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(10.0001F, 21.35417F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(737.9999F, 144.5833F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(737.9998F, 148.75F);
             this.xrLabel2.StylePriority.UseBorders = false;
             this.xrLabel2.StylePriority.UseFont = false;
             this.xrLabel2.StylePriority.UseForeColor = false;
@@ -978,7 +978,7 @@
             this.Asesor.Description = "Nombre del Asesor ";
             this.Asesor.Name = "Asesor";
             // 
-            // XtraExUnicoPersonaFisica
+            // XtraExUnicoApoderado
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.TopMargin,

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
 
 namespace SGN.Web.Reportes
 {
@@ -20,6 +21,11 @@ namespace SGN.Web.Reportes
 
                 string idRegistroCliente = Server.UrlEncode(Request.QueryString["idRegistro"]);
                 ListaExpedienteUnico datosReporte = new ListaExpedienteUnico();
+
+
+
+
+
 
                 datosReporte = datosExpedienteUnico.DameExpedienteUnico(int.Parse(idRegistroCliente));
 
@@ -53,7 +59,7 @@ namespace SGN.Web.Reportes
                 reporte.CreateDocument();
                 XtraExUnicoPersonaFisica exUnicoPerFisica = new XtraExUnicoPersonaFisica();
                 XtraExUnicoPersonaMoral exUnicoPerMoral = new XtraExUnicoPersonaMoral();
-
+                XtraExUnicoApoderado exUnicoApoderado = new XtraExUnicoApoderado();
 
 
 
@@ -61,12 +67,11 @@ namespace SGN.Web.Reportes
                 {
                     exUnicoPerFisica.DataSource = origen;
                     exUnicoPerFisica.RequestParameters = false;
-
-                    exUnicoPerFisica.Parameters["ActividadVulnerable"].Value= "Venta de casas robadas";
-                    exUnicoPerFisica.Parameters["Anio"].Value = "aa";
+                    exUnicoPerFisica.Parameters["ActividadVulnerable"].Value= "------Pendiente-------";
+                    exUnicoPerFisica.Parameters["Anio"].Value = DateTime.Now.Year;
                     exUnicoPerFisica.Parameters["Asesor"].Value = "aa";
-                    exUnicoPerFisica.Parameters["Dia"].Value = 10;
-                    exUnicoPerFisica.Parameters["Mes"].Value = "Dic";
+                    exUnicoPerFisica.Parameters["Dia"].Value = DateTime.Now.Day ;
+                    exUnicoPerFisica.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
                     exUnicoPerFisica.Parameters["NumEscritura"].Value = "150";
                     exUnicoPerFisica.Parameters["Volumen"].Value = "zzz4";
                     exUnicoPerFisica.CreateDocument();
@@ -80,11 +85,11 @@ namespace SGN.Web.Reportes
                 {
                     exUnicoPerMoral.DataSource = origen;
                     exUnicoPerMoral.RequestParameters = false;
-                    exUnicoPerMoral.Parameters["ActividadVulnerable"].Value = "Venta de casas robadas";
-                    exUnicoPerMoral.Parameters["Anio"].Value = "aa";
+                    exUnicoPerMoral.Parameters["ActividadVulnerable"].Value = "------Pendiente-------";
+                    exUnicoPerMoral.Parameters["Anio"].Value = DateTime.Now.Year;
                     exUnicoPerMoral.Parameters["Asesor"].Value = "aa";
-                    exUnicoPerMoral.Parameters["Dia"].Value = 10;
-                    exUnicoPerMoral.Parameters["Mes"].Value = "Dic";
+                    exUnicoPerMoral.Parameters["Dia"].Value = DateTime.Now.Day;
+                    exUnicoPerMoral.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
                     exUnicoPerMoral.Parameters["NumEscritura"].Value = "150";
                     exUnicoPerMoral.Parameters["Volumen"].Value = "zzz4";
                     exUnicoPerMoral.CreateDocument();
@@ -95,6 +100,17 @@ namespace SGN.Web.Reportes
 
                 if (datosReporte.TipoRegimen == "Apoderado")
                 {
+                    exUnicoApoderado.DataSource = origen;
+                    exUnicoApoderado.RequestParameters = false;
+                    exUnicoApoderado.Parameters["ActividadVulnerable"].Value = "------Pendiente-------";
+                    exUnicoApoderado.Parameters["Anio"].Value = DateTime.Now.Year;
+                    exUnicoApoderado.Parameters["Asesor"].Value = "aa";
+                    exUnicoApoderado.Parameters["Dia"].Value = DateTime.Now.Day;
+                    exUnicoApoderado.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
+                    exUnicoApoderado.Parameters["NumEscritura"].Value = "150";
+                    exUnicoApoderado.Parameters["Volumen"].Value = "zzz4";
+                    exUnicoApoderado.CreateDocument();
+                    reporte.Pages.AddRange(exUnicoApoderado.Pages);
 
                 }
 
