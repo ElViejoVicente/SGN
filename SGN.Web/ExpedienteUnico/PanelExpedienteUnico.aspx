@@ -300,7 +300,12 @@
                         ShowNewButtonInHeader="false" ButtonRenderMode="Button" Width="50px">
                     </dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Resumen" FieldName="Resumen" Width="500px" Visible="true" GroupIndex="0" ReadOnly="true" CellStyle-Font-Bold="true">
+                    <dx:GridViewDataImageColumn Visible="true" VisibleIndex="1" Caption="Estado" FieldName="ImageEstado" Width="70px">
+                        <PropertiesImage ImageUrlFormatString="~/imagenes/ExUnico/{0}"></PropertiesImage>
+                        <EditFormSettings Visible="False"></EditFormSettings>
+                    </dx:GridViewDataImageColumn>
+
+                    <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Resumen de la operacion:" FieldName="Resumen" Width="500px" Visible="true" GroupIndex="0" ReadOnly="true" CellStyle-Font-Bold="true">
                         <EditFormSettings Visible="True" ColumnSpan="2" CaptionLocation="Top" Caption=" "></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
@@ -464,7 +469,7 @@
                         <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="35" Caption="Curp" FieldName="Curp" Width="100px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="35" Caption="Curp" FieldName="Curp" Width="120px" Visible="true">
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="36" Caption="Rfc" FieldName="Rfc" Width="120px" Visible="true" CellStyle-Font-Bold="true">
@@ -499,9 +504,9 @@
 
 
 
-                            <dx:GridViewToolbarItem Text="Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdEditarExpediente" />
+                            <dx:GridViewToolbarItem Text="Buscar en Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdEditarExpediente" />
 
-                            <dx:GridViewToolbarItem Text="Generar Impresion" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
+                            <dx:GridViewToolbarItem Text="Generar Impresion del Expediente" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
@@ -540,6 +545,30 @@
             </dx:ASPxGridView>
 
 
+            <dx:ASPxPanel ID="BottomPanel" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true">
+                <PanelCollection>
+                    <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                        <table>
+                            <tr>
+                                <td>
+                                    <dx:ASPxImage runat="server" ImageUrl="~/imagenes/ExUnico/DatosCompletos.png" Caption="Datos Completos"></dx:ASPxImage>
+
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <dx:ASPxImage runat="server" ImageUrl="~/imagenes/ExUnico/FaltanDatos.png" Caption="Datos Incompletos"></dx:ASPxImage>
+                                </td>
+    
+
+
+                            </tr>
+                        </table>
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxPanel>
 
 
         </section>

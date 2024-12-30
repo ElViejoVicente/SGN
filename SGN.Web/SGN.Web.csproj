@@ -176,6 +176,8 @@
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="ExpedienteUnico\PanelExpedienteUnico.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="imagenes\ExUnico\DatosCompletos.png" />
+    <Content Include="imagenes\ExUnico\FaltanDatos.png" />
     <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
     <Content Include="imagenes\header\ban-usa.png" />

@@ -11,6 +11,7 @@ namespace SGN.Negocio.ExpedienteUnico
 {
     public  class ListaExpedienteUnico
     {
+        public string ImageEstado { get; set; } = "";
         public string IdExpediente { get; set; } = "";
         public string IdEstatus { get; set; } = "";
         public string TextoEstatus { get; set; } = "";

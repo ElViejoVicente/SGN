@@ -94,5 +94,14 @@ namespace SGN.Web.ExpedienteUnico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView gvExpedienteUnico;
+
+        /// <summary>
+        /// Control BottomPanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel BottomPanel;
     }
 }
