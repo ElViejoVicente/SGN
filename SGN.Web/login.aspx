@@ -61,7 +61,7 @@
                     <div class="card-header">
                         <h1 class="titles-header">Bienvenido</h1>
                         <h3>Bienvenido</h3>
-                        <h4>Sistema de Gestión Notarial v1.0</h4>
+                        <h4>Sistema de Gestión Notarial v1.3</h4>
                     </div>
                     <div class="card-body">
                         <form id="frmLogin" runat="server">
@@ -118,7 +118,7 @@
         </div>
     </div>
     <div class="footer">
-        © 2024 Derechos Reservados | By: <a href="www.consultoria-it.com" target="_blank">Consultoria IT  |  55 4800 5547 Francisco I. Madero 3A Humantla, Tlax.</a>
+        © 2025 Derechos Reservados | c : <a href="www.consultoria-it.com" target="_blank">Consultoria IT  |  55 4800 5547 Francisco I. Madero 3A Humantla, Tlax.</a>
     </div>
 </body>
 </html>
