@@ -129,6 +129,7 @@ namespace SGN.Negocio.CRUD
                         values.RegimenConyugal,
                         values.SabeLeerEscribir,
                         values.Notas,
+                        values.TipoRegimen,
 
                         values.PaisNacimiento,
                         values.PaisNacionalidad,
