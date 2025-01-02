@@ -68,13 +68,13 @@ namespace SGN.Web.Reportes
                 {
                     exUnicoPerFisica.DataSource = origen;
                     exUnicoPerFisica.RequestParameters = false;
-                    exUnicoPerFisica.Parameters["ActividadVulnerable"].Value= "------Pendiente-------";
+                    exUnicoPerFisica.Parameters["ActividadVulnerable"].Value = " "+expedientes.ActividadVulnerable+" ";
                     exUnicoPerFisica.Parameters["Anio"].Value = DateTime.Now.Year;
                     exUnicoPerFisica.Parameters["Asesor"].Value = "";
                     exUnicoPerFisica.Parameters["Dia"].Value = DateTime.Now.Day ;
                     exUnicoPerFisica.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
-                    exUnicoPerFisica.Parameters["NumEscritura"].Value = expedientes.Escritura.ToString();
-                    exUnicoPerFisica.Parameters["Volumen"].Value = expedientes.Volumen.ToString();
+                    exUnicoPerFisica.Parameters["NumEscritura"].Value = " "+expedientes.Escritura.ToString()+" ";
+                    exUnicoPerFisica.Parameters["Volumen"].Value = " " + expedientes.Volumen.ToString() + " ";
                     exUnicoPerFisica.CreateDocument();
                     reporte.Pages.AddRange(exUnicoPerFisica.Pages);
 
@@ -85,13 +85,13 @@ namespace SGN.Web.Reportes
                 {
                     exUnicoPerMoral.DataSource = origen;
                     exUnicoPerMoral.RequestParameters = false;
-                    exUnicoPerMoral.Parameters["ActividadVulnerable"].Value = "------Pendiente-------";
+                    exUnicoPerMoral.Parameters["ActividadVulnerable"].Value = " " + expedientes.ActividadVulnerable + " ";
                     exUnicoPerMoral.Parameters["Anio"].Value = DateTime.Now.Year;
                     exUnicoPerMoral.Parameters["Asesor"].Value = "aa";
                     exUnicoPerMoral.Parameters["Dia"].Value = DateTime.Now.Day;
                     exUnicoPerMoral.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
-                    exUnicoPerMoral.Parameters["NumEscritura"].Value = expedientes.Escritura.ToString();
-                    exUnicoPerMoral.Parameters["Volumen"].Value = expedientes.Volumen.ToString();
+                    exUnicoPerMoral.Parameters["NumEscritura"].Value = " " + expedientes.Escritura.ToString() + " ";
+                    exUnicoPerMoral.Parameters["Volumen"].Value = " " + expedientes.Volumen.ToString() + " ";
                     exUnicoPerMoral.CreateDocument();
                     reporte.Pages.AddRange(exUnicoPerMoral.Pages);
 
@@ -102,12 +102,12 @@ namespace SGN.Web.Reportes
                 {
                     exUnicoApoderado.DataSource = origen;
                     exUnicoApoderado.RequestParameters = false;
-                    exUnicoApoderado.Parameters["ActividadVulnerable"].Value = "------Pendiente-------";
+                    exUnicoApoderado.Parameters["ActividadVulnerable"].Value = " " + expedientes.ActividadVulnerable + " ";
                     exUnicoApoderado.Parameters["Anio"].Value = DateTime.Now.Year;
                     exUnicoApoderado.Parameters["Asesor"].Value = "aa";
                     exUnicoApoderado.Parameters["Dia"].Value = DateTime.Now.Day;
                     exUnicoApoderado.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
-                    exUnicoApoderado.Parameters["NumEscritura"].Value = expedientes.Escritura.ToString();
+                    exUnicoApoderado.Parameters["NumEscritura"].Value = " " + expedientes.Escritura.ToString() + " ";
                     exUnicoApoderado.Parameters["Volumen"].Value = expedientes.Volumen.ToString();
                     exUnicoApoderado.CreateDocument();
                     reporte.Pages.AddRange(exUnicoApoderado.Pages);
