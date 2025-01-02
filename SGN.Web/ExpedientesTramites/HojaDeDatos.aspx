@@ -215,7 +215,7 @@
 
                 <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
 
-             
+
                 <SettingsPager Mode="ShowPager" PageSize="100" />
 
                 <Settings ShowFooter="True" ShowFilterRow="true" ShowFilterBar="Auto" ShowFilterRowMenu="True" ShowHeaderFilterButton="True" ShowGroupPanel="True" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
@@ -660,7 +660,7 @@
                                                         OnDataBinding="gvOtorgaSolicita_DataBinding"
                                                         OnRowValidating="gvOtorgaSolicita_RowValidating"
                                                         OnRowInserting="gvOtorgaSolicita_RowInserting"
-                                                        OnRowDeleting="gvOtorgaSolicita_RowDeleting" 
+                                                        OnRowDeleting="gvOtorgaSolicita_RowDeleting"
                                                         OnRowUpdating="gvOtorgaSolicita_RowUpdating">
 
                                                         <SettingsPager Mode="ShowAllRecords" />
@@ -817,7 +817,7 @@
 
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas"  Width="100%">
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas" Width="100%">
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>
@@ -862,7 +862,7 @@
                                                         OnDataBinding="gvaFavorDe_DataBinding"
                                                         OnRowValidating="gvaFavorDe_RowValidating"
                                                         OnRowInserting="gvaFavorDe_RowInserting"
-                                                        OnRowDeleting="gvaFavorDe_RowDeleting" 
+                                                        OnRowDeleting="gvaFavorDe_RowDeleting"
                                                         OnRowUpdating="gvaFavorDe_RowUpdating">
 
                                                         <SettingsPager Mode="ShowAllRecords" />
@@ -1085,8 +1085,6 @@
 
 
         </section>
-
-
 
 
     </form>

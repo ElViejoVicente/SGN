@@ -96,6 +96,8 @@ namespace SGN.Web.Catalogos
             nuevoActo.TextoActo = e.NewValues["TextoActo"].ToString();
             nuevoActo.Descripcion = e.NewValues["Descripcion"].ToString();
             nuevoActo.Activo = Convert.ToBoolean(e.NewValues["Activo"].ToString());
+            nuevoActo.AvisoAcVulnerable= Convert.ToBoolean(e.NewValues["AvisoAcVulnerable"].ToString());
+            nuevoActo.UmbralAcVulnerable = Convert.ToDecimal(e.NewValues["UmbralAcVulnerable"].ToString());
 
             datosCrud.AltaCatActos(nuevoActo);
 
@@ -141,6 +143,8 @@ namespace SGN.Web.Catalogos
                 miRegistro.TextoActo = e.NewValues["TextoActo"].ToString();
                 miRegistro.Descripcion = e.NewValues["Descripcion"].ToString();
                 miRegistro.Activo = Convert.ToBoolean(e.NewValues["Activo"].ToString());
+                miRegistro.AvisoAcVulnerable = Convert.ToBoolean(e.NewValues["AvisoAcVulnerable"].ToString());
+                miRegistro.UmbralAcVulnerable = Convert.ToDecimal(e.NewValues["UmbralAcVulnerable"].ToString());
 
             }
 

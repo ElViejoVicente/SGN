@@ -550,12 +550,12 @@
                                                         <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha aviso preventivo" FieldName="FechaAvisoPreventivo" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
-                                                        <dx:GridViewDataTextColumn FieldName="ISR" ReadOnly="True" Width="100px" Caption="I.S.R." VisibleIndex="4">
+                                                        <%--             <dx:GridViewDataTextColumn FieldName="ISR" ReadOnly="True" Width="100px" Caption="I.S.R." VisibleIndex="4">
                                                             <PropertiesTextEdit>
                                                                 <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </PropertiesTextEdit>
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>
+                                                        </dx:GridViewDataTextColumn>--%>
                                                         <dx:GridViewDataTextColumn FieldName="ValorOperacion" ReadOnly="True" Width="100px" Caption="Valor Operacion" VisibleIndex="5">
                                                             <PropertiesTextEdit>
                                                                 <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
@@ -704,6 +704,80 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
+                                    <dx:TabPage Text="Contabilidad" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvContabilidad" ClientInstanceName="gvContabilidad" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="False" OnBeforePerformDataSelect="gvContabilidad_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+                                                        <%--  columnas  Contabilidad --%>
+
+                                                        <dx:GridViewDataTextColumn FieldName="ISR" ReadOnly="True" Width="100px" Caption="I.S.R." VisibleIndex="1">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn FieldName="ISRcalculado" ReadOnly="True" Width="100px" Caption="I.S.R. Calculado" VisibleIndex="2">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn FieldName="AvaluoCatastral" ReadOnly="True" Width="150px" Caption="Avaluo Catastral" VisibleIndex="3">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn FieldName="AvaluoFiscal" ReadOnly="True" Width="150px" Caption="Avaluo Fiscal" VisibleIndex="4">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+                                                        <dx:GridViewDataTextColumn FieldName="AvaluoComercial" ReadOnly="True" Width="150px" Caption="Avaluo Comercial" VisibleIndex="5">
+                                                            <PropertiesTextEdit>
+                                                                <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </PropertiesTextEdit>
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+
+                                    <dx:TabPage Text="PLD" Visible="true">
+                                        <ContentCollection>
+                                            <dx:ContentControl>
+                                                <dx:ASPxGridView runat="server" ID="gvPld" ClientInstanceName="gvPld" KeyFieldName="IdExpediente"
+                                                    EnablePagingGestures="False" AutoGenerateColumns="False" OnBeforePerformDataSelect="gvPld_BeforePerformDataSelect">
+                                                    <SettingsPager PageSize="100" NumericButtonCount="100"></SettingsPager>
+                                                    <Columns>
+                                                        <%--  columnas  PLD --%>
+
+                                          
+                                                        <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Actividad Vulnerable" FieldName="ActividadVulnerable" Width="150px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
+
+                                                    </Columns>
+                                                </dx:ASPxGridView>
+                                            </dx:ContentControl>
+                                        </ContentCollection>
+                                    </dx:TabPage>
+
+
+
                                 </TabPages>
                             </dx:ASPxPageControl>
                         </div>
@@ -1060,15 +1134,6 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="I.S.R." FieldName="PRfnISR" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="txtPRfnISR">
-                                                        <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol" />
-                                                    </dx:ASPxTextBox>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
                                         <dx:LayoutItem Caption="Valor Operacion" FieldName="PRfnValorOperacion" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
@@ -1231,6 +1296,67 @@
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxMemo runat="server" ID="txtEnfnObservacionesSobreTramiteTerminado" AutoPostBack="false" Width="100%"></dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="Contabilidad" ColCount="2" ColumnCount="2" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutItem Caption="I.S.R." FieldName="ContISR" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtContISR">
+                                                        <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                    </dx:ASPxTextBox>
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="I.S.R. Calculado" FieldName="ContISRCalculado" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtContISRCalculado">
+                                                        <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Avaluo Catastral" FieldName="ContAvaluoCatastral" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtContAvaluoCatastral">
+                                                        <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Avaluo Fiscal" FieldName="ContAvaluoFiscal" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtContAvaluoFiscal">
+                                                        <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Avaluo Comercial" FieldName="ContAvaluoComercial" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtContAvaluoComercial">
+                                                        <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                    </dx:ASPxTextBox>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                    </Items>
+                                </dx:LayoutGroup>
+                                <dx:LayoutGroup Caption="PLD" ColCount="3" ColumnCount="3" ColSpan="2" ColumnSpan="2">
+                                    <Items>
+                                        <dx:LayoutItem Caption="Actividad Vulnerable" FieldName="PldActVulnerable" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxTextBox runat="server" ID="txtPldActividadVulnerable"></dx:ASPxTextBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>

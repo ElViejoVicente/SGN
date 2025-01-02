@@ -68,5 +68,20 @@ namespace SGN.Negocio.Expediente
         public DateTime FechaSalida { get; set; } = Constantes.FechaGlobal;
         public string ObservacionesTramiteTerminado { get; set; } = "";
 
+
+        //contabilidad
+
+
+        public decimal ISRcalculado { get; set; } = 0;
+
+        public decimal AvaluoCatastral { get; set; } = 0;
+
+        public decimal AvaluoFiscal { get; set; } = 0;
+
+        public decimal AvaluoComercial { get; set; } = 0;
+
+        //PLD
+        public string ActividadVulnerable { get; set; } = "";
+
     }
 }

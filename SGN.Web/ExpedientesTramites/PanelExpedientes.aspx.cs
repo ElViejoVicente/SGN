@@ -313,7 +313,7 @@ namespace SGN.Web.ExpedientesTramites
             frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = false;
-            frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = false;
+
 
             frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = false;
@@ -339,6 +339,17 @@ namespace SGN.Web.ExpedientesTramites
             frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = false;
 
+
+            frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ContISRCalculado").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = false;
+
+            frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = false;
+
+
+
             switch (nombrePerfil)
             {
                 case "Consultoria-IT":
@@ -360,7 +371,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+       
 
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -385,6 +396,17 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+
+                    frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContISRCalculado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = true;
+
+
 
                     break;
                 case "Dirección":
@@ -407,7 +429,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+                 
 
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -434,6 +456,15 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
 
 
+                    frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContISRCalculado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = true;
+
+
                     break;
                 case "Datos":
                     frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
@@ -453,7 +484,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+   
 
                     //frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -478,6 +509,16 @@ namespace SGN.Web.ExpedientesTramites
                     //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+
+                    frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContISRCalculado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = true;
+
 
                     break;
 
@@ -576,6 +617,25 @@ namespace SGN.Web.ExpedientesTramites
                     //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
                     break;
 
+                case "Contabilidad":
+
+
+                    frmExpedienteExistente.FindItemByFieldName("ExfnNumeroExpediente").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ExfnOtorga").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EXfnAfavorde").ClientVisible = true;
+
+
+
+                    frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContISRCalculado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
+
+
+                    break;
+
+
                 case "Entregas":
 
 
@@ -643,7 +703,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-                    frmExpedienteExistente.FindItemByFieldName("PRfnISR").ClientVisible = true;
+     
 
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -668,6 +728,16 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+
+                    frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContISRCalculado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
+
+                    frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = true;
+
                     break;
             }
         }
@@ -988,6 +1058,21 @@ namespace SGN.Web.ExpedientesTramites
             var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
             detailGrid.DataSource = result;
         }
+        protected void gvContabilidad_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
+
+        protected void gvPld_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            ASPxGridView detailGrid = (ASPxGridView)sender;
+            string numExpediente = detailGrid.GetMasterRowKeyValue().ToString();
+            var result = lsExpediente.Where(x => x.IdExpediente == numExpediente).ToList();
+            detailGrid.DataSource = result;
+        }
 
         protected void ppCambiarEstatus_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
@@ -1112,7 +1197,7 @@ namespace SGN.Web.ExpedientesTramites
                     dtPRfnFechaAsignacionProyectista.Date = RegistroExistente.FechaAsignacionProyectista;
                     dtPRfnFechaPrevistaTermino.Date = RegistroExistente.FechaPrevistaTerminoProyectista;
                     dtPRfnFechaAvisoPreventivo.Date = RegistroExistente.FechaAvisoPreventivo;
-                    txtPRfnISR.Value = RegistroExistente.ISR;
+                
                     txtPRfnValorOperacion.Value = RegistroExistente.ValorOperacion;
 
                     //Firmas
@@ -1142,6 +1227,23 @@ namespace SGN.Web.ExpedientesTramites
                     dtEnfnFechaRegresoRegistro.Date = RegistroExistente.FechaRegresoRegistro;
                     dtEnfnFechaSalida.Date = RegistroExistente.FechaSalida;
                     txtEnfnObservacionesSobreTramiteTerminado.Text = RegistroExistente.ObservacionesTramiteTerminado;
+
+                    //Contabilidad
+
+                    txtContISR.Value = RegistroExistente.ISR;
+                    txtContISRCalculado.Value = RegistroExistente.ISRcalculado;
+                    txtContAvaluoCatastral.Value = RegistroExistente.AvaluoCatastral;
+                    txtContAvaluoComercial.Value = RegistroExistente.AvaluoComercial;
+                    txtContAvaluoFiscal.Value = RegistroExistente.AvaluoFiscal;
+
+
+
+
+
+                    //PLD
+
+                    txtPldActividadVulnerable.Value = RegistroExistente.ActividadVulnerable;
+
 
                 }
 
@@ -1204,8 +1306,7 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.NombreProyectista = cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString();
                     RegistroExistente.FechaAsignacionProyectista = dtPRfnFechaAsignacionProyectista.Date;
                     RegistroExistente.FechaPrevistaTerminoProyectista = dtPRfnFechaPrevistaTermino.Date;
-                    RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;
-                    RegistroExistente.ISR = txtPRfnISR.Value == null ? 0 : Convert.ToDecimal(txtPRfnISR.Value.ToString());
+                    RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;                 
                     RegistroExistente.ValorOperacion= txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString());
 
                     //Firmas
@@ -1235,6 +1336,18 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaRegresoRegistro = dtEnfnFechaRegresoRegistro.Date;
                     RegistroExistente.FechaSalida = dtEnfnFechaSalida.Date;
                     RegistroExistente.ObservacionesTramiteTerminado = txtEnfnObservacionesSobreTramiteTerminado.Text;
+
+                    //Contabilidad 
+                    RegistroExistente.ISR = txtContISR .Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString());
+                    RegistroExistente.ISRcalculado = txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString());
+                    RegistroExistente.AvaluoCatastral = txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString());
+                    RegistroExistente.AvaluoFiscal = txtContAvaluoFiscal.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoFiscal.Value.ToString());
+                    RegistroExistente.AvaluoComercial = txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString());
+
+
+                    //PLD
+
+                    RegistroExistente.ActividadVulnerable = txtPldActividadVulnerable.Text;
 
 
 
@@ -1454,5 +1567,7 @@ namespace SGN.Web.ExpedientesTramites
         }
 
         #endregion
+
+     
     }
 }

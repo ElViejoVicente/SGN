@@ -775,7 +775,10 @@ namespace SGN.Negocio.CRUD
                     {
                         values.TextoActo,
                         values.Descripcion,
-                        values.Activo
+                        values.Activo,
+                        values.AvisoAcVulnerable,
+                        values.UmbralAcVulnerable
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -800,7 +803,9 @@ namespace SGN.Negocio.CRUD
                         values.IdActo,
                         values.TextoActo,
                         values.Descripcion,
-                        values.Activo
+                        values.Activo,
+                        values.AvisoAcVulnerable,
+                        values.UmbralAcVulnerable
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1063,7 +1068,12 @@ namespace SGN.Negocio.CRUD
                         values.FechaRegresoRegistro,
                         values.FechaSalida,
                         values.ObservacionesTramiteTerminado,
-                        values.ValorOperacion
+                        values.ValorOperacion,
+                        values.ISRcalculado,
+                        values.AvaluoCatastral,
+                        values.AvaluoFiscal,
+                        values.AvaluoComercial,
+                        values.ActividadVulnerable,
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1121,7 +1131,12 @@ namespace SGN.Negocio.CRUD
                         values.FechaRegresoRegistro,
                         values.FechaSalida,
                         values.ObservacionesTramiteTerminado,
-                        values.ValorOperacion
+                        values.ValorOperacion,
+                        values.ISRcalculado,
+                        values.AvaluoCatastral,
+                        values.AvaluoFiscal,
+                        values.AvaluoComercial,
+                        values.ActividadVulnerable 
 
                     }, commandType: CommandType.StoredProcedure);
                 }

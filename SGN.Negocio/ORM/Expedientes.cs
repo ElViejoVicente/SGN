@@ -40,8 +40,9 @@ namespace SGN.Negocio.ORM
 		public DateTime FechaAsignacionProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaPrevistaTerminoProyectista { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaAvisoPreventivo { get; set; } = Constantes.FechaGlobal;
-        public decimal ISR { get; set; } = 0;
         public decimal ValorOperacion { get; set; } = 0;
+
+        public string ActividadVulnerable { get; set; } = "";
 
         //Firmas
         public string NotasFirma { get; set; } = "";
@@ -70,5 +71,20 @@ namespace SGN.Negocio.ORM
         public DateTime FechaRegresoRegistro { get; set; } = Constantes.FechaGlobal;      
 		public DateTime FechaSalida { get; set; } = Constantes.FechaGlobal;
 		public string ObservacionesTramiteTerminado { get; set; } = "";
-	}
+
+
+        //Contabilidad
+
+        public decimal ISR { get; set; } = 0;
+
+        public decimal ISRcalculado { get; set; } = 0;
+
+        public decimal AvaluoCatastral { get; set; } = 0;
+
+        public decimal AvaluoFiscal { get; set; } = 0;
+
+        public decimal AvaluoComercial { get; set; } = 0;
+
+
+    }
 }

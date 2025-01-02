@@ -339,15 +339,6 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxDateEdit dtPRfnFechaAvisoPreventivo;
 
         /// <summary>
-        /// Control txtPRfnISR.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtPRfnISR;
-
-        /// <summary>
         /// Control txtPRfnValorOperacion.
         /// </summary>
         /// <remarks>
@@ -535,6 +526,60 @@ namespace SGN.Web.ExpedientesTramites
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxMemo txtEnfnObservacionesSobreTramiteTerminado;
+
+        /// <summary>
+        /// Control txtContISR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtContISR;
+
+        /// <summary>
+        /// Control txtContISRCalculado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtContISRCalculado;
+
+        /// <summary>
+        /// Control txtContAvaluoCatastral.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtContAvaluoCatastral;
+
+        /// <summary>
+        /// Control txtContAvaluoFiscal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtContAvaluoFiscal;
+
+        /// <summary>
+        /// Control txtContAvaluoComercial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtContAvaluoComercial;
+
+        /// <summary>
+        /// Control txtPldActividadVulnerable.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtPldActividadVulnerable;
 
         /// <summary>
         /// Control ppArchivos.

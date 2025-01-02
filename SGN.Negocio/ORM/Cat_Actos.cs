@@ -12,5 +12,7 @@ namespace SGN.Negocio.ORM
 		public string TextoActo { get; set; } = "";
 		public string Descripcion { get; set; } = "";
 		public bool Activo { get; set; } = false;
-	}
+        public bool AvisoAcVulnerable { get; set; } = false;
+		public decimal UmbralAcVulnerable { get; set; } = 0;
+    }
 }

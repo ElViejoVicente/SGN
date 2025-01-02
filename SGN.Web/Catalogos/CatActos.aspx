@@ -91,11 +91,11 @@
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvActos"></dx:ASPxGridViewExporter>
 
             <dx:ASPxGridView runat="server" ID="gvActos" ClientInstanceName="gvActos" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdActo"
-                OnDataBinding="gvActos_DataBinding"                
-                OnRowInserting="gvActos_RowInserting"                
-                OnRowUpdating="gvActos_RowUpdating" 
+                OnDataBinding="gvActos_DataBinding"
+                OnRowInserting="gvActos_RowInserting"
+                OnRowUpdating="gvActos_RowUpdating"
                 OnRowValidating="gvActos_RowValidating"
-                OnToolbarItemClick="gvActos_ToolbarItemClick" 
+                OnToolbarItemClick="gvActos_ToolbarItemClick"
                 OnCustomCallback="gvActos_CustomCallback">
 
                 <ClientSideEvents Init="AdjustSize" />
@@ -174,12 +174,22 @@
                     </dx:GridViewDataTextColumn>
 
 
-                    <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Descripcion" FieldName="Descripcion" Width="650px">
+                    <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Descripcion" FieldName="Descripcion" Width="550px">
                     </dx:GridViewDataTextColumn>
 
 
                     <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Activo" FieldName="Activo" Width="100px">
                     </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Requiere Aviso por Actividad Vulnerable" FieldName="AvisoAcVulnerable" Width="250px">
+                    </dx:GridViewDataCheckColumn>
+
+                    <dx:GridViewDataTextColumn Visible="true"  VisibleIndex="4"  Caption="Umbral de aviso en MN. Actividad Vulnerable" FieldName="UmbralAcVulnerable" Width="250px" >
+                        <PropertiesTextEdit>
+                            <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                        </PropertiesTextEdit>                   
+                    </dx:GridViewDataTextColumn>
 
 
                 </Columns>
