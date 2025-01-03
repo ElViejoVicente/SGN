@@ -10,6 +10,7 @@ using System.Globalization;
 using SGN.Negocio.Expediente;
 using SGN.Negocio.ORM;
 using SGN.Negocio.Operativa;
+using SGN.Negocio.Reportes;
 
 
 namespace SGN.Web.Reportes
@@ -21,7 +22,7 @@ namespace SGN.Web.Reportes
 
             DatosExpedienteUnico datosExpedienteUnico = new DatosExpedienteUnico();
             DatosExpedientes datosExpedientes = new DatosExpedientes();
-            DatosUsuario datosUsuario = new DatosUsuario();
+           
 
             if (!IsPostBack)
             {
@@ -30,7 +31,7 @@ namespace SGN.Web.Reportes
 
 
                 ListaExpedienteUnico infReporte = new ListaExpedienteUnico();
-                List<ListaNegraSAT> infListaNegra = new List<ListaNegraSAT>();
+                List<ListaNegraSAT> infListaNegra = new List<ListaNegraSAT>();          
                 string infUsuarioConsulta = Session["UsuarioConsultaLN"].ToString();
 
 
@@ -39,6 +40,7 @@ namespace SGN.Web.Reportes
                 infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: infReporte.Rfc,NombreUsuarioConsulta: infUsuarioConsulta);
 
 
+                Expedientes expedientes = datosExpedientes.ConsultaExpedienteXHojaDatos(infReporte.IdHojaDatos);
 
                 Negocio.Reportes.dsDetConsListaNegra listaNegraDetalle = new Negocio.Reportes.dsDetConsListaNegra();
 
@@ -72,12 +74,12 @@ namespace SGN.Web.Reportes
 
 
 
-                Expedientes expedientes = datosExpedientes.ConsultaExpedienteXHojaDatos(infReporte.IdHojaDatos);
+        
 
 
                 XtraReport reporte = new XtraReport();
                 reporte.CreateDocument();
-                XtraAcuseConsultaListaNegra exAcuseListaNegra = new XtraAcuseConsultaListaNegra();
+                XtraAcuseConsultaListaNegra  exAcuseListaNegra = new XtraAcuseConsultaListaNegra();
 
       
 
@@ -91,7 +93,7 @@ namespace SGN.Web.Reportes
                     if (infListaNegra.FirstOrDefault().SitucacionContribuyente== "No localizado")
                     {
                         exAcuseListaNegra.Parameters["TituloResultadoConsulta"].Value = "No se encontraron registro de la persona en Lista Negra";
-                        exAcuseListaNegra.Parameters["Nombre"].Value = "";
+                        exAcuseListaNegra.Parameters["Nombre"].Value = infReporte.Nombres+" " + infReporte.ApellidoPaterno +" " + infReporte.ApellidoMaterno;
                     }
                     else
                     {
@@ -106,7 +108,7 @@ namespace SGN.Web.Reportes
                     exAcuseListaNegra.Parameters["FechaDatosLN"].Value = infListaNegra.First().FechaDatos;
                     exAcuseListaNegra.Parameters["FechaConsulta"].Value = infListaNegra.First().FechaConsulta;
                     exAcuseListaNegra.CreateDocument();
-                    reporte.Pages.AddRange(exAcuseListaNegra.Pages);
+                    reporte.Pages.Add(exAcuseListaNegra.Pages[0]);
                 }
 
      
