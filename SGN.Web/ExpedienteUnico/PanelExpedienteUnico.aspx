@@ -137,7 +137,17 @@
 
         function onCallbackReport(value) {
 
+
+
             window.open("../Reportes/reporteExUnico?idRegistro=" + value, "_blank");
+        }
+
+
+
+
+        function onCallbackValidarEnListaNegra(value) {            
+
+            window.open("../Reportes/reporteAcuseConsultaListaNegra?idRegistro=" + value, "_blank");
         }
 
 
@@ -215,6 +225,9 @@
 
 
         <section class="CLPageContent" id="maindiv">
+
+
+
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvExpedienteUnico"></dx:ASPxGridViewExporter>
 
 
@@ -504,7 +517,7 @@
 
 
 
-                            <dx:GridViewToolbarItem Text="Buscar en Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdEditarExpediente" />
+                            <dx:GridViewToolbarItem Text="Buscar en Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdValidarEnListaNegra" />
 
                             <dx:GridViewToolbarItem Text="Generar Impresion del Expediente" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
 

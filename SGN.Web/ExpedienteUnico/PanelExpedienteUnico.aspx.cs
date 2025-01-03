@@ -1,4 +1,5 @@
-﻿using DevExpress.Web;
+﻿using SGN.Web.Controles.Servidor;
+using DevExpress.Web;
 using DevExpress.Web.Internal.XmlProcessor;
 using DevExpress.XtraEditors.Filtering.Templates;
 using SGN.Negocio.CRUD;
@@ -17,7 +18,7 @@ using System.Web.UI.WebControls;
 
 namespace SGN.Web.ExpedienteUnico
 {
-    public partial class PanelExpedienteUnico : System.Web.UI.Page
+    public partial class PanelExpedienteUnico : PageBase
     {
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
@@ -110,6 +111,7 @@ namespace SGN.Web.ExpedienteUnico
         {
             if (!Page.IsPostBack)
             {
+                Session["UsuarioConsultaLN"] = UsuarioPagina.Nombre;
                 dtFechaInicio.Date = DateTime.Now.Date.AddDays(-15);
                 dtFechaFin.Date = DateTime.Now.Date;
                 DameCatalogos();

@@ -27,16 +27,16 @@ namespace SGN.Web.Reportes
             {
 
                 string idRegistroCliente = Server.UrlEncode(Request.QueryString["idRegistro"]);
-                string idUsuario = Server.UrlEncode(Request.QueryString["idUsuario"]);
+
 
                 ListaExpedienteUnico infReporte = new ListaExpedienteUnico();
                 List<ListaNegraSAT> infListaNegra = new List<ListaNegraSAT>();
-                Usuario infUsuarioConsulta = new Usuario();
+                string infUsuarioConsulta = Session["UsuarioConsultaLN"].ToString();
 
 
-                infUsuarioConsulta = datosUsuario.DameDatosUsuario(codUsuario: idUsuario);
+
                 infReporte = datosExpedienteUnico.DameExpedienteUnico(int.Parse(idRegistroCliente));
-                infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: infReporte.Rfc,NombreUsuarioConsulta: infUsuarioConsulta.Nombre);
+                infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: infReporte.Rfc,NombreUsuarioConsulta: infUsuarioConsulta);
 
 
 
@@ -79,23 +79,7 @@ namespace SGN.Web.Reportes
                 reporte.CreateDocument();
                 XtraAcuseConsultaListaNegra exAcuseListaNegra = new XtraAcuseConsultaListaNegra();
 
-                //No se encontro el RFC en la Lista Negra
-                if (infListaNegra.Count==0)
-                {
-                    exAcuseListaNegra.DataSource = listaNegraDetalle;
-                    exAcuseListaNegra.RequestParameters = false;
-                    exAcuseListaNegra.Parameters["NumExpediente"].Value = expedientes.IdExpediente;
-                    exAcuseListaNegra.Parameters["EstatusConsulta"].Value = infListaNegra.First().SitucacionContribuyente;
-                    exAcuseListaNegra.Parameters["TituloResultadoConsulta"].Value = "No se encontraron registro de la persona en Lista Negra";
-                    exAcuseListaNegra.Parameters["Folio"].Value = infListaNegra.First().NoFolio;
-                    exAcuseListaNegra.Parameters["Nombre"].Value = infListaNegra.First().NombreContribuyente;
-                    exAcuseListaNegra.Parameters["Rfc"].Value = infListaNegra.First().RFC;
-                    exAcuseListaNegra.Parameters["FechaDatosLN"].Value = infListaNegra.First().FechaDatos;
-                    exAcuseListaNegra.Parameters["FechaConsulta"].Value = infListaNegra.First().FechaConsulta;
-                    exAcuseListaNegra.CreateDocument();
-                    reporte.Pages.AddRange(exAcuseListaNegra.Pages);
-
-                }
+      
 
                 if (infListaNegra.Count > 0)
                 {
@@ -103,9 +87,21 @@ namespace SGN.Web.Reportes
                     exAcuseListaNegra.RequestParameters = false;
                     exAcuseListaNegra.Parameters["NumExpediente"].Value = expedientes.IdExpediente;
                     exAcuseListaNegra.Parameters["EstatusConsulta"].Value = infListaNegra.First().SitucacionContribuyente;
-                    exAcuseListaNegra.Parameters["TituloResultadoConsulta"].Value = "Persona encontrada en la lista Artículo 69-B del CFF";
+
+                    if (infListaNegra.FirstOrDefault().SitucacionContribuyente== "No localizado")
+                    {
+                        exAcuseListaNegra.Parameters["TituloResultadoConsulta"].Value = "No se encontraron registro de la persona en Lista Negra";
+                        exAcuseListaNegra.Parameters["Nombre"].Value = "";
+                    }
+                    else
+                    {
+                        exAcuseListaNegra.Parameters["TituloResultadoConsulta"].Value = "Persona encontrada en la lista Artículo 69-B del CFF";
+                        exAcuseListaNegra.Parameters["Nombre"].Value = infListaNegra.First().NombreContribuyente;
+                    }
+
+                
                     exAcuseListaNegra.Parameters["Folio"].Value = infListaNegra.First().NoFolio;
-                    exAcuseListaNegra.Parameters["Nombre"].Value = infListaNegra.First().NombreContribuyente;
+                    
                     exAcuseListaNegra.Parameters["Rfc"].Value = infListaNegra.First().RFC;
                     exAcuseListaNegra.Parameters["FechaDatosLN"].Value = infListaNegra.First().FechaDatos;
                     exAcuseListaNegra.Parameters["FechaConsulta"].Value = infListaNegra.First().FechaConsulta;
