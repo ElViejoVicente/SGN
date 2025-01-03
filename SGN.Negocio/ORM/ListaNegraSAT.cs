@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SGN.Negocio.Operativa;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,10 @@ namespace SGN.Negocio.ORM
 {
     public  class ListaNegraSAT
     {
-
-        public long No { get; set; } = 0;
+         
+        public long NoFolio { get; set; } = 0;
+        public DateTime FechaDatos  { get; set; }  = Constantes.FechaGlobal;
+        public string UsuarioConsulto { get; set; } = string.Empty;
         public string RFC { get; set; } = string.Empty;
         public string NombreContribuyente { get; set; }= string.Empty;
         public string SitucacionContribuyente { get; set; } = string.Empty;
@@ -29,5 +32,6 @@ namespace SGN.Negocio.ORM
         public string PubSentencioFavarable { get; set; } = string.Empty;
         public string NumFechaOficioGlobalSentenciaFavorableDof { get; set; } = string.Empty;
         public string PubDofSentenciaFavorable { get; set; } = string.Empty;
+        public DateTime FechaConsulta { get; set; } = Constantes.FechaGlobal;
     }
 }

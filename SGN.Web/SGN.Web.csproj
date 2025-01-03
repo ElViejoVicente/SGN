@@ -344,6 +344,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
     <Content Include="Reportes\reporteExUnico.aspx" />
     <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -738,6 +739,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.designer.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\reporteExUnico.aspx.cs">
       <DependentUpon>reporteExUnico.aspx</DependentUpon>
