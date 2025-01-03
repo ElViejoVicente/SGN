@@ -32,7 +32,7 @@ namespace SGN.Negocio.ExpedienteUnico
                         sql: "sp_DameExUnicoPorFecha", param: new
                         {
                             fechaInicial,
-                            fechaFinal,                            
+                            fechaFinal,
                             todasLasFechas
 
                         }, commandType: CommandType.StoredProcedure
@@ -46,6 +46,36 @@ namespace SGN.Negocio.ExpedienteUnico
 
                 throw new Exception("Error al ejecutar sp_DameExUnicoPorFecha , detalle: \n" + ex.Message, ex);
             }
+        }
+
+
+        public List<ListaNegraSAT> DameRfcEnListaNegra(string RFC, string NombreUsuarioConsulta)
+        {
+            try
+            {
+                List<ListaNegraSAT> resultado = new List<ListaNegraSAT>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<ListaNegraSAT>
+                        (
+                        sql: "sp_DameRFCEnListaNegra", param: new
+                        {
+                            RFC,
+                            NombreUsuarioConsulta              
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameRFCEnListaNegra , detalle: \n" + ex.Message, ex);
+            }
+
         }
 
         public ListaExpedienteUnico DameExpedienteUnico(int IdRegistroCliente)
