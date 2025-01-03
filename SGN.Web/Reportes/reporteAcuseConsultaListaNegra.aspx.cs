@@ -90,7 +90,7 @@ namespace SGN.Web.Reportes
                     exAcuseListaNegra.Parameters["NumExpediente"].Value = expedientes.IdExpediente;
                     exAcuseListaNegra.Parameters["EstatusConsulta"].Value = infListaNegra.First().SitucacionContribuyente;
 
-                    if (infListaNegra.FirstOrDefault().SitucacionContribuyente== "No localizado")
+                    if (infListaNegra.FirstOrDefault().SitucacionContribuyente== "Busqueda sin resultados.")
                     {
                         exAcuseListaNegra.Parameters["TituloResultadoConsulta"].Value = "No se encontraron registro de la persona en Lista Negra";
                         exAcuseListaNegra.Parameters["Nombre"].Value = infReporte.Nombres+" " + infReporte.ApellidoPaterno +" " + infReporte.ApellidoMaterno;

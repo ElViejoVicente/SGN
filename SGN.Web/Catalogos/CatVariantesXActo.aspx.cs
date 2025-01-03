@@ -146,7 +146,7 @@ namespace SGN.Web.Catalogos
             nuevoRegisto.TextoVariante = e.NewValues["TextoVariante"].ToString();
             nuevoRegisto.Descripcion = e.NewValues["Descripcion"].ToString();
             nuevoRegisto.Activo = Convert.ToBoolean(e.NewValues["Activo"].ToString());
-            nuevoRegisto.RequiereExUnico= Convert.ToBoolean(e.NewValues["RequiereExUnico"].ToString());
+            //nuevoRegisto.RequiereExUnico= Convert.ToBoolean(e.NewValues["RequiereExUnico"].ToString());
 
             datosCrud.AltaCatVariantePorActo(nuevoRegisto);
 
@@ -193,7 +193,7 @@ namespace SGN.Web.Catalogos
                 miRegistro.TextoVariante = e.NewValues["TextoVariante"].ToString();
                 miRegistro.Descripcion = e.NewValues["Descripcion"].ToString();
                 miRegistro.Activo = Convert.ToBoolean(e.NewValues["Activo"].ToString());
-                miRegistro.RequiereExUnico= Convert.ToBoolean(e.NewValues["RequiereExUnico"].ToString());
+                //miRegistro.RequiereExUnico= Convert.ToBoolean(e.NewValues["RequiereExUnico"].ToString());
 
             }
 
