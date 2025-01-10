@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="CRUD\DatosCrud.cs" />
     <Compile Include="ExpedienteUnico\DatosExpedienteUnico.cs" />
+    <Compile Include="ExpedienteUnico\ListaConsultaBasicaLN.cs" />
     <Compile Include="ExpedienteUnico\ListaExpedienteUnico.cs" />
     <Compile Include="Expediente\DatosExpedientes.cs" />
     <Compile Include="Expediente\ListaExpedientes.cs" />

@@ -174,6 +174,7 @@
     <Content Include="ExpedientesTramites\ArchivosExpedientes.aspx" />
     <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
+    <Content Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx" />
     <Content Include="ExpedienteUnico\PanelExpedienteUnico.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\ExUnico\DatosCompletos.png" />
@@ -345,6 +346,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
+    <Content Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx" />
     <Content Include="Reportes\reporteExUnico.aspx" />
     <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -630,6 +632,13 @@
     <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.designer.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx.cs">
+      <DependentUpon>ConsultaSimpleListaNegra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx.designer.cs">
+      <DependentUpon>ConsultaSimpleListaNegra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.cs">
       <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -746,6 +755,13 @@
     </Compile>
     <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.designer.cs">
       <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegraSimple.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx.designer.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegraSimple.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\reporteExUnico.aspx.cs">
       <DependentUpon>reporteExUnico.aspx</DependentUpon>
