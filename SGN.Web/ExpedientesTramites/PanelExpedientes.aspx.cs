@@ -1284,8 +1284,297 @@ namespace SGN.Web.ExpedientesTramites
 
                     }
 
+                    //2025-01-20 bitacora de cambios
+                    // registro de cambios OJo tratar de mantener el orden de campos y el mismo numero de registros
+
+                    #region Validacion de Cambios LOG
+
+                    BitacoraExpediente logCambios = new BitacoraExpediente();
+
+                    logCambios.UsuarioImplicado = UsuarioPagina.Nombre;
+                    logCambios.IdExpediente = RegistroExistente.IdExpediente;
+                    logCambios.NombreModulo = "Expediente";
 
 
+                    if (RegistroExistente.Otorga != txtExfnOtorga.Text)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Ortorga" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.Otorga + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + txtExfnOtorga.Text + " | ";
+                    }
+
+                    if (RegistroExistente.UbicacionPredio != txtExfnUbicacionPredio.Text)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Ubicacion de predio" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.UbicacionPredio + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + txtExfnUbicacionPredio.Text + " | ";
+                    }
+
+
+                    //Aviso preventivo
+
+                    if (RegistroExistente.FechaElaboracion != dtAPfnFechaElaboracion.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso preventivo-Elaboracion" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaElaboracion + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAPfnFechaElaboracion.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaEnvioRPP != dtAPfnFechaEnvioAlRPP.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso preventivo-Envio al R.P.P." + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaEnvioRPP + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAPfnFechaEnvioAlRPP.Date + " | ";
+                    }
+                    if (RegistroExistente.EsTramitePorSistema != chkAPfnEsTramitePorSistema.Checked)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso preventivo-Es tramite por sistema" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.EsTramitePorSistema + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + chkAPfnEsTramitePorSistema.Checked + " | ";
+                    }
+                    if (RegistroExistente.FechaPagoBoleta != dtAPfnFechaPagoBoleta.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso preventivo-Pago de la boleta" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaPagoBoleta + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAPfnFechaPagoBoleta.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaRecibidoRPP != dtAPfnFechaRecibido.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso preventivo-Recibido" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaRecibidoRPP + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAPfnFechaRecibido.Date + " | ";
+                    }
+
+
+
+                    //Proyecto
+
+                    if (RegistroExistente.NombreProyectista != (cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString()))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Proyecto-Proyectista" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.NombreProyectista + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString()) + " | ";
+                    }
+                    if (RegistroExistente.FechaAsignacionProyectista != dtPRfnFechaAsignacionProyectista.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Proyecto-Asignacion" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaAsignacionProyectista + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtPRfnFechaAsignacionProyectista.Date + " | ";
+
+                    }
+                    if (RegistroExistente.FechaPrevistaTerminoProyectista != dtPRfnFechaPrevistaTermino.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Proyecto-Prevision de termino" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaPrevistaTerminoProyectista + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtPRfnFechaPrevistaTermino.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaAvisoPreventivo != dtPRfnFechaAvisoPreventivo.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Proyecto-Aviso Preventivo" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaAvisoPreventivo + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtPRfnFechaAvisoPreventivo.Date + " | ";
+                    }
+                    if (RegistroExistente.ValorOperacion != (txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Proyecto-Valor Operacion" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.ValorOperacion + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString())) + " | ";
+                    }
+
+
+
+                    //Firmas
+
+                    if (RegistroExistente.NotasFirma != txtFIfnNotasFirmas.Text)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Firmas-Notas" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.NotasFirma + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + txtFIfnNotasFirmas.Text + " | ";
+                    }
+                    if (RegistroExistente.Escritura != (txtFIfnNumEscritura.Value == null ? 0 : Convert.ToInt32(txtFIfnNumEscritura.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Firmas-Num Escritura" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.Escritura + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtFIfnNumEscritura.Value == null ? 0 : Convert.ToInt32(txtFIfnNumEscritura.Value.ToString())) + " | ";
+                    }
+                    if (RegistroExistente.Volumen != (txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Firmas-Num Volumen" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.Volumen + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString())) + " | ";
+                    }
+                    if (RegistroExistente.AplicaTraslado != chkFIfnAplicaTraslado.Checked)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Firmas-Aplica traslado" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.AplicaTraslado + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + chkFIfnAplicaTraslado.Checked + " | ";
+                    }
+                    if (RegistroExistente.FechaRecepcionTerminoEscritura != dtFIfnFechaRecepcionTerminoEscritura.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Firmas-Recepcion para termino escritura" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaRecepcionTerminoEscritura + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtFIfnFechaRecepcionTerminoEscritura.Date + " | ";
+                    }
+
+
+
+
+                    //Aviso definitivo
+
+                    if (RegistroExistente.FechaElaboracionDefinitivo != dtAdfnFechaElaboracion.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso definitivo-Elaboracion" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaElaboracionDefinitivo + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAdfnFechaElaboracion.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaEnvioRPPDefinitivo != dtAdfnFechaEnvioRPP.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso definitivo-Envio R.P.P." + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaEnvioRPPDefinitivo + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAdfnFechaEnvioRPP.Date + " | ";
+                    }
+                    if (RegistroExistente.EsTramitePorSistemaDefinitivo != chkAdfnEsTramitePorSistema.Checked)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso definitivo-Tramite por sistema" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.EsTramitePorSistemaDefinitivo + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + chkAdfnEsTramitePorSistema.Checked + " | ";
+                    }
+                    if (RegistroExistente.FechaPagoBoletaDefinitivo != dtAdfnFechaPagoBoleta.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso definitivo-Pago boleta" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaPagoBoletaDefinitivo + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAdfnFechaPagoBoleta.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaRecibidoRPPDefinitivo != dtAdfnFechaRecibido.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Aviso definitivo-Recibido" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaRecibidoRPPDefinitivo + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAdfnFechaRecibido.Date + " | ";
+                    }
+
+
+
+                    //Escrituracion 
+
+                    if (RegistroExistente.FechaRecibioTraslado != dtEsfnRecibioTraslado.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Escrituracion-Recibio traslado" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaRecibioTraslado + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtEsfnRecibioTraslado.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaAsignacionMesa != dtAdfnFechaAsignacionMesa.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Escrituracion-Asignacion a mesa" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaAsignacionMesa + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAdfnFechaAsignacionMesa.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaTerminoMesa != dtAdfnFechaTerminoTramite.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Escrituracion-Termino del tramite" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaTerminoMesa + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtAdfnFechaTerminoTramite.Date + " | ";
+                    }
+
+
+                    //Entregas
+
+
+                    if (RegistroExistente.ObservacionesEngrega != txtEnfnObservacionesEntrega.Text)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-Observaciones" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.ObservacionesEngrega + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + txtEnfnObservacionesEntrega.Text  + " | ";
+                    }
+                    if (RegistroExistente.RegistroEntrega != chkEnfnRegistroSolicitado.Checked)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-¿Requiere Registro?" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.RegistroEntrega + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + chkEnfnRegistroSolicitado.Checked + " | ";
+                    }
+                    if (RegistroExistente.FechaRegistroEntrega != dtEnfnFechaRegistro.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-Registro" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaRegistroEntrega + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtEnfnFechaRegistro.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaBoletaPagoRegistroEntrega != dtEnfnFechaBoletaPago.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-Boleta Pago" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaBoletaPagoRegistroEntrega + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtEnfnFechaBoletaPago.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaRegresoRegistro != dtEnfnFechaRegresoRegistro.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-Regreso registro" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaRegresoRegistro + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtEnfnFechaRegresoRegistro.Date + " | ";
+                    }
+                    if (RegistroExistente.FechaSalida != dtEnfnFechaSalida.Date)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-Salida" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.FechaSalida + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + dtEnfnFechaSalida.Date + " | ";
+                    }
+                    if (RegistroExistente.ObservacionesTramiteTerminado != txtEnfnObservacionesSobreTramiteTerminado.Text)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Entregas-Observaciones del tramite terminado" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.ObservacionesTramiteTerminado + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + txtEnfnObservacionesSobreTramiteTerminado.Text  + " | ";
+                    }
+
+                    //Contabilidad 
+
+                    if (RegistroExistente.ISR != (txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Contabilidad-I.S.R." + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.ISR + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString())).ToString() + " | ";
+                    }
+                    if (RegistroExistente.ISRcalculado != (txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Contabilidad-I.S.R. Calculado" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.ISRcalculado + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString())).ToString() + " | ";
+                    }
+                    if (RegistroExistente.AvaluoCatastral != (txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Contabilidad-Avaluo Catastral" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.AvaluoCatastral + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString())).ToString() + " | ";
+                    }
+                    if (RegistroExistente.AvaluoFiscal != (txtContAvaluoFiscal.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoFiscal.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Contabilidad-Avaluo Fiscal" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.AvaluoFiscal + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtContAvaluoFiscal.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoFiscal.Value.ToString())).ToString() + " | ";
+                    }
+                    if (RegistroExistente.AvaluoComercial != (txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "Contabilidad-Avaluo Comercial" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.AvaluoComercial + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + (txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString())).ToString() + " | ";
+                    }
+
+
+
+
+                    //PLD
+                 
+
+                    if (RegistroExistente.ActividadVulnerable != txtPldActividadVulnerable.Text)
+                    {
+                        logCambios.NombreCampo = logCambios.NombreCampo + "PLD-Actividad Vulnerable" + " | ";
+                        logCambios.ValorOriginal = logCambios.ValorOriginal + RegistroExistente.ActividadVulnerable + " | ";
+                        logCambios.ValorImputado = logCambios.ValorImputado + txtPldActividadVulnerable.Text  + " | ";
+                    }
+
+                    // guardar  bitacora de cambios
+
+
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+
+
+
+                    #endregion
 
 
 
@@ -1348,8 +1637,6 @@ namespace SGN.Web.ExpedientesTramites
                     //PLD
 
                     RegistroExistente.ActividadVulnerable = txtPldActividadVulnerable.Text;
-
-
 
                     if (datosCrud.ActualizarExpediente(RegistroExistente))
                     {

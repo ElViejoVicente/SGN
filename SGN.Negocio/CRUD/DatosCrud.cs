@@ -148,13 +148,13 @@ namespace SGN.Negocio.CRUD
                         values.Rfc,
                         values.NombreIdentificacionID,
                         values.AutoridadEmiteID,
-                        values.NumeroSerieID ,       
+                        values.NumeroSerieID,
                         values.RazonSocial,
                         values.FechaConstitucion,
                         values.PaisRazonSocial,
                         values.ActividadRazonSocial,
                         values.SeValidoEnListaNegra,
-                        values.FechaPrimeraValidacion ,
+                        values.FechaPrimeraValidacion,
                         values.ObsePrimeraValidacion,
                         values.FechaSegundaValicacion,
                         values.ObseSegundaValidacion
@@ -216,13 +216,13 @@ namespace SGN.Negocio.CRUD
                         values.Rfc,
                         values.NombreIdentificacionID,
                         values.AutoridadEmiteID,
-                        values.NumeroSerieID,          
+                        values.NumeroSerieID,
                         values.RazonSocial,
                         values.FechaConstitucion,
                         values.PaisRazonSocial,
                         values.ActividadRazonSocial,
                         values.SeValidoEnListaNegra,
-                        values.FechaPrimeraValidacion ,
+                        values.FechaPrimeraValidacion,
                         values.ObsePrimeraValidacion,
                         values.FechaSegundaValicacion,
                         values.ObseSegundaValidacion
@@ -241,7 +241,7 @@ namespace SGN.Negocio.CRUD
 
         }
 
-    
+
 
         #endregion
 
@@ -726,7 +726,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_VariantesPorActo_Delete", param: new
                     {
-                        values.IdVariante 
+                        values.IdVariante
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1136,7 +1136,7 @@ namespace SGN.Negocio.CRUD
                         values.AvaluoCatastral,
                         values.AvaluoFiscal,
                         values.AvaluoComercial,
-                        values.ActividadVulnerable 
+                        values.ActividadVulnerable
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1169,7 +1169,6 @@ namespace SGN.Negocio.CRUD
         }
 
         #endregion
-
 
         #region Alertas
 
@@ -1273,5 +1272,46 @@ namespace SGN.Negocio.CRUD
 
 
         #endregion
+
+        #region BitacoraExpediente
+
+
+        public Boolean AltaBitacoraExpediente(BitacoraExpediente values)
+        {
+            try
+            {
+
+                using (var db = new SqlConnection(cnn))
+                {
+
+
+                    db.Execute(sql: "sp_CRUD_BitacoraExpediente_Insert", param: new
+                    {
+                        values.UsuarioImplicado,
+                        values.IdExpediente,
+                        values.NombreCampo,
+                        values.ValorOriginal,
+                        values.ValorImputado,
+                        values.NombreModulo
+                        
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_BitacoraExpediente_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+        #endregion
+
     }
 }
