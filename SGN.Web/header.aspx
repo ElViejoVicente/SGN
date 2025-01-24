@@ -79,8 +79,8 @@
                 <asp:HiddenField ID="HidUsuario" runat="server" ClientIDMode="Static" />
 
                 <div style="position: absolute; width: 13%; height: 100%; display: inline-block; padding-top: 0.3%">
-                    <img class="imagenGG" src="imagenes/login/LogoNotaria.svg" height="30px"  />
-                    <div class="logo" style="">SGN</div>
+                    <img class="imagenGG" src="imagenes/header/logoTiSimple.png" height="30px"  />
+                    <div class="logo" style="">{ SGN }</div>
                 </div>
                 <div style="position: absolute; width: 71%; height: 100%; display: inline-block; margin-left: 14%; padding-top: 3px;">
                     <div style="width: 70%; height: 100%; display: inline-block;">
