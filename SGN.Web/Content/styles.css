@@ -52,7 +52,7 @@ body {
     margin-left: 41%;
     margin-top: 4%;
     /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-    background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.2);
+    background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 50% rgba(0, 0, 0, 0.2);
     background-color: rgba(211, 214, 223, 0.48) !important;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
 }
@@ -247,13 +247,13 @@ input:focus {
 @media screen and (max-width:1650px) {
     .bb {
         width: 400px;
-        height: 200px;
+        height: 300px;
         /*margin-left: 670px;
         margin-top: 130px;*/
         margin-left: 37%;
         margin-top: 6%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -273,13 +273,13 @@ input:focus {
 @media screen and (max-width:1300px) {
     .bb {
         width: 400px;
-        height: 200px;
+        height: 300px;
         /*margin-left: 450px;
         margin-top: 130px;*/
         margin-left: 36%;
         margin-top: 6%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -301,13 +301,13 @@ input:focus {
 @media screen and (max-width:1024px) {
     .bb {
         width: 260px;
-        height: 130px;
+        height: 300px;
         /*margin-left: 470px;
         margin-top: 80px;*/
         margin-left: 40%;
         margin-top: 6%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -362,13 +362,13 @@ input:focus {
 @media screen and (max-width:768px) {
     .bb {
         width: 230px;
-        height: 130px;
+        height: 300px;
         /*margin-left: 340px;
         margin-top: 80px;*/
         margin-left: 25%;
         margin-top: 6%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -391,13 +391,13 @@ input:focus {
 
     .bb {
         width: 200px;
-        height: 100px;
+        height: 300px;
         /*margin-left: 340px;
         margin-top: 80px;*/
         margin-left: 25%;
         margin-top: 6%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -425,7 +425,7 @@ input:focus {
         width: 200px;
         height: 100px;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -479,7 +479,7 @@ input:focus {
         margin-left: 30%;
         margin-top: 10%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -531,11 +531,11 @@ input:focus {
 
     .bb {
         width: 500px;
-        height: 250px;
+        height: 300px;
         margin-left: 25%;
         margin-top: 10%;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
@@ -660,7 +660,7 @@ input:focus {
         width: 330px;
         height: 150px;
         /*background: url('../imagenes/login/logo_gallardo_big.jpg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);*/
-        background: url('../imagenes/login/LogoNotaria.svg') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
+        background: url('../imagenes/login/LogoNotaria.png') no-repeat 50% / 70% rgba(0, 0, 0, 0.1);
         background-color: rgba(211, 214, 223, 0.48) !important;
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }

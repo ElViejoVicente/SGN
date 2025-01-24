@@ -90,6 +90,7 @@
             this.xrLabel20 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel21 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
+            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             this.DetailReport1 = new DevExpress.XtraReports.UI.DetailReportBand();
             this.Detail2 = new DevExpress.XtraReports.UI.DetailBand();
             this.xrLine2 = new DevExpress.XtraReports.UI.XRLine();
@@ -144,12 +145,11 @@
             this.xrLabel64 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel57 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel63 = new DevExpress.XtraReports.UI.XRLabel();
-            this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
@@ -238,7 +238,7 @@
             this.xrLabel12.StylePriority.UseFont = false;
             this.xrLabel12.StylePriority.UseForeColor = false;
             this.xrLabel12.StylePriority.UseTextAlignment = false;
-            this.xrLabel12.Text = "USO EXCLUSIVO NOTARIA 01 (v1.2)";
+            this.xrLabel12.Text = "USO EXCLUSIVO NOTARIA 03 (v1.2)";
             this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel11
@@ -486,10 +486,10 @@
             // 
             // xrPageInfo1
             // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(651.7502F, 9.999974F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(710.0835F, 9.999974F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(41.66669F, 23F);
             this.xrPageInfo1.StylePriority.UseTextAlignment = false;
             this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
@@ -499,11 +499,11 @@
             this.xrLabel65.LocationFloat = new DevExpress.Utils.PointFloat(0F, 9.999974F);
             this.xrLabel65.Name = "xrLabel65";
             this.xrLabel65.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel65.SizeF = new System.Drawing.SizeF(651.7502F, 18.74998F);
+            this.xrLabel65.SizeF = new System.Drawing.SizeF(710.0835F, 18.74998F);
             this.xrLabel65.StylePriority.UseFont = false;
             this.xrLabel65.StylePriority.UseTextAlignment = false;
-            this.xrLabel65.Text = "Notaría Pública 1 Demarcación de Juárez, Estado de Tlaxcala.       Notarío Lic. C" +
-    "arlos Ixtlapale Pérez";
+            this.xrLabel65.Text = "Calle Niños Héroes No. 18, centro, Zacatelco, CP. 90740, Tlaxcala.      Notarío L" +
+    "ic. Jose German Alberto Escobar";
             this.xrLabel65.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLabel62
@@ -908,6 +908,11 @@
             this.xrLabel22.StylePriority.UseFont = false;
             this.xrLabel22.StylePriority.UsePadding = false;
             this.xrLabel22.Text = "Apellido Materno";
+            // 
+            // objectDataSource1
+            // 
+            this.objectDataSource1.DataSource = typeof(SGN.Negocio.Reportes.dsHojaDatos);
+            this.objectDataSource1.Name = "objectDataSource1";
             // 
             // DetailReport1
             // 
@@ -1569,11 +1574,6 @@
     "ato son correctos por haber sido proporcionados por:";
             this.xrLabel63.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopJustify;
             // 
-            // objectDataSource1
-            // 
-            this.objectDataSource1.DataSource = typeof(SGN.Negocio.Reportes.dsHojaDatos);
-            this.objectDataSource1.Name = "objectDataSource1";
-            // 
             // XtraHojaDatos
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1597,10 +1597,10 @@
             this.Watermarks.AddRange(new DevExpress.XtraPrinting.Drawing.Watermark[] {
             xrWatermark1});
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

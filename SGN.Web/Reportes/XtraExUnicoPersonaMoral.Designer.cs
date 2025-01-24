@@ -175,7 +175,7 @@
             this.xrLabel12.StylePriority.UseFont = false;
             this.xrLabel12.StylePriority.UseForeColor = false;
             this.xrLabel12.StylePriority.UseTextAlignment = false;
-            this.xrLabel12.Text = "USO EXCLUSIVO NOTARIA 01 (v1.0)";
+            this.xrLabel12.Text = "USO EXCLUSIVO NOTARIA 03 (v1.0)";
             this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrPictureBox1
@@ -200,22 +200,22 @@
             // xrLabel65
             // 
             this.xrLabel65.Font = new DevExpress.Drawing.DXFont("Arial", 10F);
-            this.xrLabel65.LocationFloat = new DevExpress.Utils.PointFloat(0F, 9.999974F);
+            this.xrLabel65.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10.0001F);
             this.xrLabel65.Name = "xrLabel65";
             this.xrLabel65.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel65.SizeF = new System.Drawing.SizeF(651.7502F, 18.74998F);
+            this.xrLabel65.SizeF = new System.Drawing.SizeF(720.5002F, 18.74998F);
             this.xrLabel65.StylePriority.UseFont = false;
             this.xrLabel65.StylePriority.UseTextAlignment = false;
-            this.xrLabel65.Text = "Notaría Pública 1 Demarcación de Juárez, Estado de Tlaxcala.       Notarío Lic. C" +
-    "arlos Ixtlapale Pérez";
+            this.xrLabel65.Text = "Calle Niños Héroes No. 18, centro, Zacatelco, CP. 90740, Tlaxcala.      Notarío L" +
+    "ic. Jose German Alberto Escobar";
             this.xrLabel65.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrPageInfo1
             // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(651.7502F, 9.999974F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(720.5002F, 10.0001F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(31.25F, 23F);
             this.xrPageInfo1.StylePriority.UseTextAlignment = false;
             this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             // 
@@ -593,8 +593,8 @@
             this.xrLabel51.StylePriority.UseFont = false;
             this.xrLabel51.StylePriority.UseForeColor = false;
             this.xrLabel51.StylePriority.UseTextAlignment = false;
-            this.xrLabel51.Text = "CARLOS IXTLAPALE PEREZ.\r\nTITULAR DE LA NOTARIA PUBLICA NUMERO 1 DE LA \r\nDEMARCACI" +
-    "ON DE JUAREZ, HUAMANTLA, ESTADO DE TLAXCALA.\r\n\r\n";
+            this.xrLabel51.Text = "JOSE GERMAN ALBERTO ESCOBAR Y ARRONA\r\nTITULAR DE LA NOTARIA PUBLICA NUMERO 3 DE L" +
+    "A \r\nDEMARCACIÓN ZARAGOZA, Y DEL PATRIMONIO INMOBILIARIO FEDERAL\r\n\r\n";
             this.xrLabel51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel50
@@ -887,7 +887,7 @@
             this.xrLabel25.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel25.SizeF = new System.Drawing.SizeF(131.25F, 23F);
             this.xrLabel25.StylePriority.UseFont = false;
-            this.xrLabel25.Text = "MINUCIPIO:";
+            this.xrLabel25.Text = "MINICIPIO:";
             // 
             // xrLabel24
             // 

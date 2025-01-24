@@ -107,12 +107,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer">
-                        <div class="textmin1 d-flex justify-content-center links">
-                            Notaria Pública Humantla Tlax.  
-                        </div>
-
-                    </div>
+             
                 </div>
             </div>
         </div>
