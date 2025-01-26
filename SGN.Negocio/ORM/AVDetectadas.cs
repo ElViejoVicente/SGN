@@ -21,6 +21,7 @@ namespace SGN.Negocio.ORM
         public int Volumen { get; set; } = 0;
         public decimal ValorOperacion { get; set; } = 0;
         public decimal UmbralAcVulnerable { get; set; } = 0;
+        public string UsuarioGestionaAviso { get; set; } = string.Empty;
         public bool AvActiva { get; set; }=false;
         public string FolioDeAviso { get; set; } = string.Empty;
         public string Observaciones { get; set; } = string.Empty;

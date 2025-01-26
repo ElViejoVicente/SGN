@@ -1313,5 +1313,43 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
+        #region AVDetectadas
+        public Boolean ActualizarAVDetectadas(AVDetectadas values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_AVDetectadas_Update", param: new
+                    {
+                        values.IdAV,
+                        values.TipoAVDetectada,
+                        values.IdExpediente,
+                        values.FechaIngreso,
+                        values.IdEstatus,
+                        values.TextoEstatus,
+                        values.TextoActo,
+                        values.TextoVariante,
+                        values.Escritura,
+                        values.Volumen,
+                        values.UmbralAcVulnerable,
+                        values.AvActiva,
+                        values.UsuarioGestionaAviso,
+                        values.FolioDeAviso,
+                        values.Observaciones
+
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_AVDetectadas_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        #endregion
+
     }
 }
