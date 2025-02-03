@@ -85,13 +85,7 @@ namespace SGN.Web.Configuracion
                 {
                     MiUsuario = false;
                 }
-                //DataTable confiPAgina = datosUsuario.DameConfiguracionPagina(codPAgina);
-                //if (confiPAgina.Rows.Count > 0)
-                //{
-                //    imagenLogo.ImageUrl = confiPAgina.Rows[0]["fiUrlIcoLarge"].ToString();
-                //    lblNombrePagina.Text = confiPAgina.Rows[0]["fcDesModuloLargo"].ToString();
-                //    lblVersion.Text = confiPAgina.Rows[0]["fiVersion"].ToString();
-                //}
+
             }
             catch (Exception ex)
             {
@@ -176,13 +170,14 @@ namespace SGN.Web.Configuracion
 
                     if (!MiUsuario)
                     {
-                        miUsuario.UserName = e.OldValues["UserName"].ToString();
+                        //miUsuario.UserName = e.OldValues["UserName"].ToString();
                         miUsuario.Nombre = e.NewValues["Nombre"].ToString();
-                        miUsuario.FechaAlta = DateTime.Parse(e.NewValues["FechaAlta"].ToString());
+                        //miUsuario.FechaAlta = DateTime.Parse(e.NewValues["FechaAlta"].ToString());
                         miUsuario.Activo = Boolean.Parse(e.NewValues["Activo"].ToString());
                         miUsuario.Mail = e.NewValues["Mail"].ToString();
                         miUsuario.FechaBaja = DateTime.Parse(e.NewValues["FechaBaja"].ToString());
                         miUsuario.EsProyectista = Boolean.Parse(e.NewValues["EsProyectista"].ToString());
+                        miUsuario.EsCreditos = Boolean.Parse(e.NewValues["EsCreditos"].ToString());
 
                         miUsuario.Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString());
                         if (e.OldValues["Contraseña"].ToString() != e.NewValues["Contraseña"].ToString())
@@ -252,26 +247,6 @@ namespace SGN.Web.Configuracion
             try
             {
 
-                //Validar que el usuario a crear no exista la en la lista de usuarios
-
-                var usuarioExistente = ListaUsuarios.Find(x => x.UserName == e.NewValues["UserName"].ToString().Trim());
-
-                if (usuarioExistente != null)
-                {
-
-                    cuInfoMsgbox1.mostrarMensaje("El nombre de usuario: " + e.NewValues["UserName"].ToString() + " Ya existe utilice otro.", Controles.Usuario.InfoMsgBox.tipoMsg.error);
-                    return;
-                }
-                if (e.NewValues["Contraseña"].ToString().Length < 8 || e.NewValues["Contraseña"].ToString() == "12345678" || e.NewValues["Contraseña"].ToString() == "87654321")
-                {
-                    cuInfoMsgbox1.mostrarMensaje("La contraseña no cumple los niveles de seguridad. Introduzca una contraseña con al menos 8 carácteres", Controles.Usuario.InfoMsgBox.tipoMsg.warning);
-
-
-                    e.Cancel = true;
-                    return;
-                }
-                
-
 
                 Usuario nuevoUsuario = new Usuario()
                 {
@@ -279,11 +254,12 @@ namespace SGN.Web.Configuracion
                     UserName = e.NewValues["UserName"].ToString(),
                     Contraseña = e.NewValues["Contraseña"].ToString(),
                     Nombre = e.NewValues["Nombre"].ToString(),
-                    FechaAlta = DateTime.Parse(e.NewValues["FechaAlta"].ToString()),
+                    FechaAlta = DateTime.Now,
                     Activo = Boolean.Parse(e.NewValues["Activo"].ToString()),
                     Mail = e.NewValues["Mail"].ToString(),
                     FechaBaja = DateTime.Parse(e.NewValues["FechaBaja"].ToString()),
                     EsProyectista = Boolean.Parse(e.NewValues["EsProyectista"].ToString()),
+                    EsCreditos = Boolean.Parse(e.NewValues["EsCreditos"].ToString()),
                     Avisoemail = Boolean.Parse(e.NewValues["Avisoemail"].ToString()),
                     Creado = false
                 };
@@ -310,6 +286,7 @@ namespace SGN.Web.Configuracion
             try
             {
                 (gvUsuarios.Columns["Contraseña"] as GridViewDataColumn).EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
+                (gvUsuarios.Columns["UserName"] as GridViewDataColumn).EditFormSettings.Visible = DevExpress.Utils.DefaultBoolean.True;
                 e.NewValues.Add("FechaAlta", DateTime.Now);
                 e.NewValues.Add("FechaBaja", Constantes.FechaGlobal);
                 e.NewValues.Add("UserName", "");
@@ -383,6 +360,31 @@ namespace SGN.Web.Configuracion
                 {
                     e.Visible = true;
                 }
+            }
+        }
+
+        protected void gvUsuarios_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+        {
+            if (e.IsNewRow)
+            {
+
+                //Validar que el usuario a crear no exista la en la lista de usuarios
+
+                var usuarioExistente = ListaUsuarios.Find(x => x.UserName == e.NewValues["UserName"].ToString().Trim());
+
+                if (usuarioExistente != null)
+                {
+
+                    e.RowError += "El nombre de usuario: " + e.NewValues["UserName"].ToString() + " Ya existe utilice otro. \n ";
+           
+                }
+                if (e.NewValues["Contraseña"].ToString().Length < 8 || e.NewValues["Contraseña"].ToString() == "12345678" || e.NewValues["Contraseña"].ToString() == "87654321")
+                {
+                    e.RowError += "La contraseña no cumple los niveles de seguridad. Introduzca una contraseña con al menos 8 carácteres. \n ";
+
+                }
+
+
             }
         }
     }

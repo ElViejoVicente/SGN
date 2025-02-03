@@ -45,9 +45,9 @@ namespace SGN.Negocio.Operativa
                     Avisoemail = Convert.ToBoolean(dtresultado.Rows[0]["usAvisosEmail"]),
                     AreaTrabajo = dtresultado.Rows[0]["usArea"].ToString().Trim(),
                     EsProyectista = Convert.ToBoolean(dtresultado.Rows[0]["usEsproyectista"]),
+                    EsCreditos = Convert.ToBoolean(dtresultado.Rows[0]["usEsCreditos"]),
                     Perfil = Convert.ToInt32((dtresultado.Rows[0]["puPerfil"]) != DBNull.Value ? dtresultado.Rows[0]["puPerfil"] : ""),
                     NombrePerfil = dtresultado.Rows[0]["usNombrePerfil"].ToString().Trim(),
-
                     Creado = true
                 };
 
@@ -77,7 +77,8 @@ namespace SGN.Negocio.Operativa
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@FechaBaja", SqlDbType.DateTime), _SqlValue: miUsuario.FechaBaja),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@avisoemail", SqlDbType.Bit), _SqlValue: miUsuario.Avisoemail),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@AreaTrabajo", SqlDbType.VarChar), _SqlValue: miUsuario.AreaTrabajo),
-                new SqlParamTranfer( _SqlParameter: new SqlParameter("@esProyectista", SqlDbType.Bit), _SqlValue: miUsuario.EsProyectista)
+                new SqlParamTranfer( _SqlParameter: new SqlParameter("@esProyectista", SqlDbType.Bit), _SqlValue: miUsuario.EsProyectista),
+                new SqlParamTranfer( _SqlParameter: new SqlParameter("@esCreditos", SqlDbType.Bit), _SqlValue: miUsuario.EsCreditos )
                 };
 
                 dtresultado = BaseDatossql.LoadDataSet("sp_AltaNuevoUsuario", parametros).Tables[0];
@@ -118,6 +119,7 @@ namespace SGN.Negocio.Operativa
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@contrasena", SqlDbType.Bit), _SqlValue: miUsuario.Contraseña),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@AreaTrabajo", SqlDbType.VarChar), _SqlValue: miUsuario.AreaTrabajo),
                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@esProyectista", SqlDbType.Bit), _SqlValue: miUsuario.EsProyectista),
+                 new SqlParamTranfer( _SqlParameter: new SqlParameter("@esCreditos", SqlDbType.Bit), _SqlValue: miUsuario.EsCreditos),
                 };
 
 
@@ -212,6 +214,7 @@ namespace SGN.Negocio.Operativa
                                            Avisoemail = Convert.ToBoolean(elemento["usAvisosEmail"]),
                                            AreaTrabajo = elemento["usArea"].ToString().Trim(),
                                            EsProyectista = Convert.ToBoolean(elemento["usEsproyectista"]),
+                                           EsCreditos =  Convert.ToBoolean(elemento["usEsCreditos"]),
                                            Creado = true
                                        }).ToList();
                     return miListaUsuarios;
@@ -232,6 +235,7 @@ namespace SGN.Negocio.Operativa
                                            Avisoemail = Convert.ToBoolean(elemento["usAvisosEmail"]),
                                            AreaTrabajo = elemento["usArea"].ToString().Trim(),
                                            EsProyectista = Convert.ToBoolean(elemento["usEsproyectista"]),
+                                           EsCreditos = Convert.ToBoolean(elemento["usEsCreditos"]),
                                            Creado = true
                                        }).ToList();
                     return miListaUsuarios;

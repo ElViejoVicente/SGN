@@ -1,18 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usuarios.aspx.cs" Inherits=" SGN.Web.Configuracion.usuarios" %>
 
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="stylesheet" href="../Content/bootstrap.min.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../Content/all.css" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../Content/generic/pageStyle.css" crossorigin="anonymous" />
-    <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../Content/all.css" />
+    <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
+    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/mensajes.js"></script>
 
 
     <script src="../Scripts/sweetalert.min.js"></script>
@@ -21,11 +19,42 @@
 
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <script>
-        function iconMaxMin() {
-            var i = $('#iconCollapse');
-            i.attr('class', i.hasClass('fas fa-angle-double-down') ? 'fas fa-angle-double-up' : i.attr('data-original'));
+    <title>SGN</title>
+    <script type="text/javascript">
+
+
+        window.onresize = function (event) {
+            AdjustSize();
+        };
+
+        function OnInit(s, e) {
+            s.GetWindowElement(-1).className += " popupStyle";
+        }
+
+        function AdjustSize() {
+
+            var height = document.getElementById('maindiv').clientHeight - 10;  // I have some buttons below the grid so needed -50
+
+            gvUsuarios.SetHeight(height);
+
+        }
+
+
+        function OnToolbarItemClick(s, e) {
+
+            switch (e.item.name) {
+
+                case "CustomExportToXLS":
+                    e.processOnServer = true;
+                    e.usePostBack = true;
+                    break;
+                case "CustomExportToXLSX":
+                    e.processOnServer = true;
+                    e.usePostBack = true;
+                    break;
+
+
+            }
         }
 
     </script>
@@ -34,60 +63,65 @@
 <body>
     <form id="frmPage" runat="server" class="Principal">
         <uc1:cuInfoMsgbox runat="server" ID="cuInfoMsgbox1" />
-     
-        <section class="CLPageContent">
+
+        <section class="CLPageContent" id="maindiv">
             <div class="">
-                  <asp:HiddenField ID="HidContrasena" runat="server" ClientIDMode="Static" />
-                       <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvUsuarios"></dx:ASPxGridViewExporter>
-                <dx:ASPxGridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" KeyFieldName="Id" Width="100%" EnableCallBacks="false"
+                <asp:HiddenField ID="HidContrasena" runat="server" ClientIDMode="Static" />
+                <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvUsuarios"></dx:ASPxGridViewExporter>
+                <dx:ASPxGridView ID="gvUsuarios" ClientInstanceName="gvUsuarios" runat="server" AutoGenerateColumns="False" KeyFieldName="Id" Width="100%" EnableCallBacks="false" Caption="Usuarios del Sistema"
                     OnDataBinding="gvUsuarios_DataBinding"
                     OnRowUpdating="gvUsuarios_RowUpdating"
                     OnRowInserting="gvUsuarios_RowInserting"
                     OnInitNewRow="gvUsuarios_InitNewRow"
                     OnDataBound="gvUsuarios_DataBound"
-                    OnCommandButtonInitialize="gvUsuarios_CommandButtonInitialize"
-                    >
-                    <Toolbars>
-                        <dx:GridViewToolbar>
-                            <Items>
-                                <dx:GridViewToolbarItem Command="ExportToXls"></dx:GridViewToolbarItem>
-                            </Items>
-                        </dx:GridViewToolbar>
-                    </Toolbars>
-                    <Settings HorizontalScrollBarMode="Visible" />
-                     <SettingsPager PageSize="50" ></SettingsPager>
-                    <SettingsEditing Mode="EditForm"></SettingsEditing>
-                    <SettingsAdaptivity AdaptivityMode="HideDataCellsWindowLimit"
-                        AllowOnlyOneAdaptiveDetailExpanded="true"
-                        AllowHideDataCellsByColumnMinWidth="true">
-                    </SettingsAdaptivity>
-                    <%-- <Settings ShowFilterRow="True" />--%>
-                    <SettingsSearchPanel Visible="True" ShowClearButton="true" />
-                    <EditFormLayoutProperties>
-                        <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit"></SettingsAdaptivity>
-                    </EditFormLayoutProperties>
+                    OnRowValidating="gvUsuarios_RowValidating"
+                    OnCommandButtonInitialize="gvUsuarios_CommandButtonInitialize">
+
+                    <ClientSideEvents Init="AdjustSize" />
+
+                    <ClientSideEvents ToolbarItemClick="OnToolbarItemClick" />
+
+
+                    <SettingsPager Mode="ShowAllRecords" />
+
+                    <Settings ShowFooter="True" ShowFilterRow="false"
+                        ShowFilterBar="Auto" ShowFilterRowMenu="false"
+                        ShowHeaderFilterButton="True" ShowGroupPanel="false"
+                        VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+
+                    <SettingsResizing ColumnResizeMode="Control" />
+
+                    <SettingsEditing Mode="PopupEditForm" />
+
+                    <SettingsPager Mode="ShowPager" PageSize="100" />
+
+                    <SettingsDetail ExportMode="All" ShowDetailRow="false" />
+
+                    <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
+
                     <Columns>
                         <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="0" ButtonRenderMode="Button" ButtonType="Button" />
 
                         <dx:GridViewDataTextColumn FieldName="Id" Caption="ID" VisibleIndex="1" Visible="false" />
-                        <dx:GridViewDataTextColumn FieldName="UserName"   Caption="" VisibleIndex="2">
-                              
+                        <dx:GridViewDataTextColumn FieldName="UserName" Caption="Nombre de Usuario" VisibleIndex="2">
+
+                            <PropertiesTextEdit>
+                                <ValidationSettings>
+                                    <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
+                                </ValidationSettings>
+                            </PropertiesTextEdit>
+                            <EditFormSettings Visible="False"  />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="Contraseña" Caption="" VisibleIndex="3" Visible="false">
+                            <EditFormSettings Visible="True" />
                             <PropertiesTextEdit>
                                 <ValidationSettings>
                                     <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
                                 </ValidationSettings>
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Contraseña" Caption="" VisibleIndex="3"  Visible="false" >
-                                 <EditFormSettings Visible="True" />
-                            <PropertiesTextEdit  >
-                                <ValidationSettings>
-                                    <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
-                                </ValidationSettings>
-                            </PropertiesTextEdit>
-                        </dx:GridViewDataTextColumn>
-                  
-                        <dx:GridViewDataTextColumn FieldName="Nombre" Caption="" VisibleIndex="4"  Width="200px">
+
+                        <dx:GridViewDataTextColumn FieldName="Nombre" Caption="" VisibleIndex="4" Width="250px">
                             <PropertiesTextEdit>
                                 <ValidationSettings>
                                     <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
@@ -102,9 +136,10 @@
                                     <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
                                 </ValidationSettings>
                             </PropertiesDateEdit>
+                            <EditFormSettings Visible="False" />
                         </dx:GridViewDataDateColumn>
                         <dx:GridViewDataCheckColumn FieldName="Activo" Caption="" VisibleIndex="6" />
-                        <dx:GridViewDataTextColumn FieldName="Mail" Caption="" VisibleIndex="7"  Width="250px">
+                        <dx:GridViewDataTextColumn FieldName="Mail" Caption="" VisibleIndex="7" Width="250px">
                             <PropertiesTextEdit>
                                 <ValidationSettings>
                                     <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
@@ -112,19 +147,26 @@
                             </PropertiesTextEdit>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataDateColumn FieldName="FechaBaja" Caption="" VisibleIndex="8" />
-            
+
                         <dx:GridViewDataCheckColumn FieldName="Avisoemail" Caption="Aviso Email" VisibleIndex="12" />
 
-                                 <dx:GridViewDataCheckColumn FieldName="EsProyectista" Caption="Es proyectista" VisibleIndex="13" />
+                        <dx:GridViewDataCheckColumn FieldName="EsProyectista" Caption="Es proyectista" VisibleIndex="13" />
+
+                        <dx:GridViewDataCheckColumn FieldName="EsCreditos" Caption="Es Usuario de Creditos" VisibleIndex="13"  Width="150px"/>
                     </Columns>
-                      <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
+
+                    <Toolbars>
+                        <dx:GridViewToolbar>
+                            <Items>
+                                <dx:GridViewToolbarItem Command="ExportToXls"></dx:GridViewToolbarItem>
+                            </Items>
+                        </dx:GridViewToolbar>
+                    </Toolbars>
+
                 </dx:ASPxGridView>
             </div>
         </section>
 
-        <%--<footer class="CLPageFooter">
-            © Derechos Reservados 2020-2021 CL Grupo Industrial Todos los Derechos Reservados.
-        </footer>--%>
     </form>
 
 </body>

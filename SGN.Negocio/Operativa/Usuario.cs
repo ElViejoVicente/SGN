@@ -23,6 +23,8 @@ namespace SGN.Negocio.Operativa
         public Boolean Avisoemail { get; set; } = false;
         public string AreaTrabajo { get; set; } = string.Empty;
         public Boolean EsProyectista { get; set; } = false;
+        public Boolean EsCreditos { get; set; } = false;
+        
         public int Perfil { get; set; } = 0;
         public Boolean Creado { get;  set; } = false;
       
