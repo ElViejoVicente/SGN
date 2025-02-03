@@ -1205,10 +1205,37 @@ namespace SGN.Web.ExpedientesTramites
 
                 RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
 
+
                 if (RegistroExistente != null)
                 {
 
                     // cargamos los campos en el form layaout
+
+                    //2025-02-03 se ocultan las secciones que no estan activas en el catalogo
+
+                    var miExpediente = lsExpediente.Where(x => x.IdExpediente == RegistroExistente.IdExpediente).FirstOrDefault();
+
+                    var tipoActo = catActos.Where(x => x.TextoActo == miExpediente.TextoActo).FirstOrDefault();
+
+
+                    if (tipoActo != null)
+                    {
+                        frmExpedienteExistente.FindItemOrGroupByName("TapAP").ClientVisible = tipoActo.TapAP;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapProyecto").ClientVisible = tipoActo.TapProyecto;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapFirmas").ClientVisible = tipoActo.TapFirmas;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapEscritura").ClientVisible = tipoActo.TapEscritura;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapAD").ClientVisible = tipoActo.TapAD ;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapEntrega").ClientVisible = tipoActo.TapEntrega;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapContabilidad").ClientVisible = tipoActo.TapContabilidad;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapPLD").ClientVisible = tipoActo.TapPLD;
+
+
+                    }
+
+
+
+
+
 
                     //Expediente 
                     txtNumExpediente.Text = RegistroExistente.IdExpediente;

@@ -1065,7 +1065,7 @@
 
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Aviso preventivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapAP">
                                     <Items>
                                         <dx:LayoutItem Caption="Elaboracion" FieldName="APfnFechaElaboracion" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
@@ -1104,7 +1104,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Proyecto" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Proyecto" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapProyecto">
                                     <Items>
                                         <dx:LayoutItem Caption="Proyectista" FieldName="PRfnProyectista" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
@@ -1145,7 +1145,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Firmas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Firmas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapFirmas">
                                     <Items>
                                         <dx:LayoutItem Caption="Notas" FieldName="FIfnNotasFirmas" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
@@ -1184,7 +1184,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapAD" >
                                     <Items>
                                         <dx:LayoutItem ColSpan="1" Caption="Elaboracion" FieldName="AdfnFechaElaboracion">
                                             <LayoutItemNestedControlCollection>
@@ -1223,7 +1223,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Escrituracion" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Escrituracion" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" name="TapEscritura">
                                     <Items>
                                         <dx:LayoutItem ColSpan="1" Caption="Recibio traslado" FieldName="EsfnRecibioTraslado">
                                             <LayoutItemNestedControlCollection>
@@ -1248,7 +1248,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapEntrega">
                                     <Items>
                                         <dx:LayoutItem ColSpan="2" ColumnSpan="2" Caption="Observaciones" FieldName="EnfnObservacionesEntrega">
                                             <LayoutItemNestedControlCollection>
@@ -1301,7 +1301,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="Contabilidad" ColCount="2" ColumnCount="2" ColSpan="3" ColumnSpan="3">
+                                <dx:LayoutGroup Caption="Contabilidad" ColCount="2" ColumnCount="2" ColSpan="3" ColumnSpan="3" Name="TapContabilidad">
                                     <Items>
                                         <dx:LayoutItem Caption="I.S.R." FieldName="ContISR" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
@@ -1351,7 +1351,7 @@
                                         </dx:LayoutItem>
                                     </Items>
                                 </dx:LayoutGroup>
-                                <dx:LayoutGroup Caption="PLD" ColCount="3" ColumnCount="3" ColSpan="2" ColumnSpan="2">
+                                <dx:LayoutGroup Caption="PLD" ColCount="3" ColumnCount="3" ColSpan="2" ColumnSpan="2" Name="TapPLD">
                                     <Items>
                                         <dx:LayoutItem Caption="Actividad Vulnerable" FieldName="PldActVulnerable" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
