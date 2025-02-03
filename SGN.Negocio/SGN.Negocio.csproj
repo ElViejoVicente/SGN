@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bitacora\DatosBitacora.cs" />
     <Compile Include="CRUD\DatosCrud.cs" />
     <Compile Include="ExpedienteUnico\DatosExpedienteUnico.cs" />
     <Compile Include="ExpedienteUnico\ListaConsultaBasicaLN.cs" />
@@ -190,6 +191,7 @@
     <Content Include="DLL\Microsoft.Exchange.WebServices.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="PLD\" />
     <Folder Include="Produccion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

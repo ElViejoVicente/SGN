@@ -145,6 +145,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bitacora\HistoricoCambios.aspx" />
     <Content Include="Catalogos\CatActos.aspx" />
     <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
     <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
@@ -345,6 +346,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="PLD\ActiviadesVulnerables.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx" />
     <Content Include="Reportes\reporteExUnico.aspx" />
@@ -555,6 +557,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Bitacora\HistoricoCambios.aspx.cs">
+      <DependentUpon>HistoricoCambios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bitacora\HistoricoCambios.aspx.designer.cs">
+      <DependentUpon>HistoricoCambios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\CatActos.aspx.cs">
       <DependentUpon>CatActos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -742,6 +751,13 @@
     </Compile>
     <Compile Include="menu.aspx.designer.cs">
       <DependentUpon>menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PLD\ActiviadesVulnerables.aspx.cs">
+      <DependentUpon>ActiviadesVulnerables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PLD\ActiviadesVulnerables.aspx.designer.cs">
+      <DependentUpon>ActiviadesVulnerables.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
