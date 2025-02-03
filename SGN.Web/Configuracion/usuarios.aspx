@@ -93,6 +93,12 @@
 
                     <SettingsEditing Mode="PopupEditForm" />
 
+                    <SettingsPopup>
+                        <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                        </EditForm>
+
+                    </SettingsPopup>
+
                     <SettingsPager Mode="ShowPager" PageSize="100" />
 
                     <SettingsDetail ExportMode="All" ShowDetailRow="false" />
@@ -110,7 +116,7 @@
                                     <RequiredField IsRequired="True" ErrorText="Campo requerido."></RequiredField>
                                 </ValidationSettings>
                             </PropertiesTextEdit>
-                            <EditFormSettings Visible="False"  />
+                            <EditFormSettings Visible="False" />
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn FieldName="Contraseña" Caption="" VisibleIndex="3" Visible="false">
                             <EditFormSettings Visible="True" />
@@ -152,7 +158,7 @@
 
                         <dx:GridViewDataCheckColumn FieldName="EsProyectista" Caption="Es proyectista" VisibleIndex="13" />
 
-                        <dx:GridViewDataCheckColumn FieldName="EsCreditos" Caption="Es Usuario de Creditos" VisibleIndex="13"  Width="150px"/>
+                        <dx:GridViewDataCheckColumn FieldName="EsCreditos" Caption="Es Usuario de Creditos" VisibleIndex="13" Width="150px" />
                     </Columns>
 
                     <Toolbars>

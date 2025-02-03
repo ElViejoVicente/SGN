@@ -112,7 +112,13 @@
 
                 <SettingsResizing ColumnResizeMode="Control" />
 
-                <SettingsEditing Mode="EditForm" />
+                <SettingsEditing Mode="PopupEditForm" />
+
+                <SettingsPopup>
+                    <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                    </EditForm>
+
+                </SettingsPopup>
 
                 <SettingsPager Mode="ShowPager" PageSize="100" />
 
@@ -174,7 +180,7 @@
                     </dx:GridViewDataTextColumn>
 
 
-                    <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Descripcion" FieldName="Descripcion" Width="550px">
+                    <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Descripcion" FieldName="Descripcion" Width="250px">
                     </dx:GridViewDataTextColumn>
 
 
@@ -182,14 +188,52 @@
                     </dx:GridViewDataCheckColumn>
 
 
-                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Requiere Aviso por Actividad Vulnerable" FieldName="AvisoAcVulnerable" Width="250px">
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="5" Caption="Requiere Aviso por AV" FieldName="AvisoAcVulnerable" Width="150px">
                     </dx:GridViewDataCheckColumn>
 
-                    <dx:GridViewDataTextColumn Visible="true"  VisibleIndex="4"  Caption="Umbral de aviso en MN. Actividad Vulnerable" FieldName="UmbralAcVulnerable" Width="250px" >
-                        <PropertiesTextEdit>
+                    <dx:GridViewDataTextColumn Visible="true" VisibleIndex="6" Caption="Umbral Actividad Vulnerable" FieldName="UmbralAcVulnerable" Width="200px">
+                        <PropertiesTextEdit DisplayFormatString="{0:C2}" >
+                            
                             <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
-                        </PropertiesTextEdit>                   
+                        </PropertiesTextEdit>
+                        <EditFormSettings Caption="Umbral AV $" />
                     </dx:GridViewDataTextColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="7" Caption="Traslado" FieldName="ReqTraslado" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="8" Caption="M.Aviso Preventivo" FieldName="TapAP" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="9" Caption="M.Proyecto" FieldName="TapProyecto" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="10" Caption="M.Firmas" FieldName="TapFirmas" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="11" Caption="M.Aviso Definitivo" FieldName="TapAD" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="12" Caption="M.Escritura" FieldName="TapEscritura" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="13" Caption="M.Entrega" FieldName="TapEntrega" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="14" Caption="M.Contabilidad" FieldName="TapContabilidad" Width="110px">
+                    </dx:GridViewDataCheckColumn>
+
+
+                    <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="15" Caption="M.PLD" FieldName="TapPLD" Width="110px">
+                    </dx:GridViewDataCheckColumn>
 
 
                 </Columns>

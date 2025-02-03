@@ -7,6 +7,7 @@ using SGN.Negocio.ORM;
 using SGN.Negocio.PLD;
 using SGN.Negocio.Reportes;
 using SGN.Web.Catalogos;
+using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ using System.Web.UI.WebControls;
 
 namespace SGN.Web.PLD
 {
-    public partial class ActiviadesVulnerables : System.Web.UI.Page
+    public partial class ActiviadesVulnerables : PageBase
     {
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
@@ -126,6 +127,7 @@ namespace SGN.Web.PLD
             {
 
                 miRegistro.AvActiva = Convert.ToBoolean(e.NewValues["AvActiva"].ToString());
+                miRegistro.UsuarioGestionaAviso = UsuarioPagina.Nombre;
                 miRegistro.FolioDeAviso = e.NewValues["FolioDeAviso"].ToString();                
                 miRegistro.Observaciones = e.NewValues["Observaciones"].ToString();
 
@@ -157,6 +159,49 @@ namespace SGN.Web.PLD
 
 
                 }
+            }
+        }
+
+        protected void gvAVDetectadas_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e)
+        {
+            if (e.DataColumn.FieldName == "IdExpediente")
+            {
+
+                if (e.CellValue != null)
+                {
+
+                    var miExpediente = lsAVDetectadas.Where(x => x.IdAV.ToString() == e.KeyValue.ToString()).FirstOrDefault();
+
+                    if (miExpediente != null)
+                    {
+
+                        ASPxImage Campo = (ASPxImage)gvAVDetectadas.FindRowCellTemplateControl(e.VisibleIndex, e.DataColumn, "imgExpedienteAlerta");
+                        Campo.Caption = Convert.ToString(e.CellValue);
+
+                        if (miExpediente.AvActiva==false && miExpediente.UsuarioGestionaAviso != "")
+                        {
+                            Campo.EmptyImage.IconID = "actions_apply_16x16";
+                            return;
+                        }
+
+                        var diferencia = DateTime.Now.Subtract(miExpediente.FechaIngreso);
+
+
+
+                        if (diferencia.Days>=15)
+                        {
+                            Campo.EmptyImage.IconID = "iconbuilder_security_warningcircled1_svg_16x16";
+                        }
+                        else
+                        {
+                            Campo.EmptyImage.IconID = "iconbuilder_security_warning_svg_16x16";
+                        }
+
+                        return;
+
+                    }
+                }
+
             }
         }
     }

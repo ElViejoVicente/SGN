@@ -99,6 +99,17 @@ namespace SGN.Web.Catalogos
             nuevoActo.AvisoAcVulnerable= Convert.ToBoolean(e.NewValues["AvisoAcVulnerable"].ToString());
             nuevoActo.UmbralAcVulnerable = Convert.ToDecimal(e.NewValues["UmbralAcVulnerable"].ToString());
 
+            nuevoActo.ReqTraslado = Convert.ToBoolean(e.NewValues["ReqTraslado"].ToString());
+            nuevoActo.TapAP = Convert.ToBoolean(e.NewValues["TapAP"].ToString());
+            nuevoActo.TapProyecto = Convert.ToBoolean(e.NewValues["TapProyecto"].ToString());        
+            nuevoActo.TapFirmas = Convert.ToBoolean(e.NewValues["TapFirmas"].ToString());
+            nuevoActo.TapAD= Convert.ToBoolean(e.NewValues["TapAD"].ToString());
+            nuevoActo.TapEscritura = Convert.ToBoolean(e.NewValues["TapEscritura"].ToString());
+            nuevoActo.TapEntrega = Convert.ToBoolean(e.NewValues["TapEntrega"].ToString());
+            nuevoActo.TapContabilidad = Convert.ToBoolean(e.NewValues["TapContabilidad"].ToString());
+            nuevoActo.TapPLD= Convert.ToBoolean(e.NewValues["TapPLD"].ToString());
+
+
             datosCrud.AltaCatActos(nuevoActo);
 
             e.Cancel = true;
@@ -146,6 +157,15 @@ namespace SGN.Web.Catalogos
                 miRegistro.AvisoAcVulnerable = Convert.ToBoolean(e.NewValues["AvisoAcVulnerable"].ToString());
                 miRegistro.UmbralAcVulnerable = Convert.ToDecimal(e.NewValues["UmbralAcVulnerable"].ToString());
 
+                miRegistro.ReqTraslado = Convert.ToBoolean(e.NewValues["ReqTraslado"].ToString());
+                miRegistro.TapAP = Convert.ToBoolean(e.NewValues["TapAP"].ToString());
+                miRegistro.TapProyecto = Convert.ToBoolean(e.NewValues["TapProyecto"].ToString());
+                miRegistro.TapFirmas = Convert.ToBoolean(e.NewValues["TapFirmas"].ToString());
+                miRegistro.TapAD = Convert.ToBoolean(e.NewValues["TapAD"].ToString());
+                miRegistro.TapEscritura = Convert.ToBoolean(e.NewValues["TapEscritura"].ToString());
+                miRegistro.TapEntrega = Convert.ToBoolean(e.NewValues["TapEntrega"].ToString());
+                miRegistro.TapContabilidad = Convert.ToBoolean(e.NewValues["TapContabilidad"].ToString());
+                miRegistro.TapPLD = Convert.ToBoolean(e.NewValues["TapPLD"].ToString());
             }
 
             datosCrud.ActualizarCatActos(miRegistro);

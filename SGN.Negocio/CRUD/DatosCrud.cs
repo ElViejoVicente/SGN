@@ -778,7 +778,17 @@ namespace SGN.Negocio.CRUD
                         values.Descripcion,
                         values.Activo,
                         values.AvisoAcVulnerable,
-                        values.UmbralAcVulnerable
+                        values.UmbralAcVulnerable,
+                        values.ReqTraslado,
+                        values.TapAP,
+                        values.TapProyecto,
+                        values.TapFirmas,
+                        values.TapAD,
+                        values.TapEscritura,
+                        values.TapEntrega,
+                        values.TapContabilidad,
+                        values.TapPLD
+
 
 
                     }, commandType: CommandType.StoredProcedure);
@@ -806,7 +816,16 @@ namespace SGN.Negocio.CRUD
                         values.Descripcion,
                         values.Activo,
                         values.AvisoAcVulnerable,
-                        values.UmbralAcVulnerable
+                        values.UmbralAcVulnerable,
+                        values.ReqTraslado,
+                        values.TapAP,
+                        values.TapProyecto,
+                        values.TapFirmas,
+                        values.TapAD,
+                        values.TapEscritura,
+                        values.TapEntrega,
+                        values.TapContabilidad,
+                        values.TapPLD
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1333,6 +1352,7 @@ namespace SGN.Negocio.CRUD
                         values.TextoVariante,
                         values.Escritura,
                         values.Volumen,
+                        values.ValorOperacion,
                         values.UmbralAcVulnerable,
                         values.AvActiva,
                         values.UsuarioGestionaAviso,

@@ -178,7 +178,8 @@
                 OnCustomCallback="gvAVDetectadas_CustomCallback"
                 OnToolbarItemClick="gvAVDetectadas_ToolbarItemClick"
                 OnRowUpdating="gvAVDetectadas_RowUpdating"
-                OnRowValidating="gvAVDetectadas_RowValidating">
+                OnRowValidating="gvAVDetectadas_RowValidating"
+                OnHtmlDataCellPrepared="gvAVDetectadas_HtmlDataCellPrepared">
 
                 <ClientSideEvents Init="AdjustSize" EndCallback="gridView_EndCallback" />
 
@@ -195,6 +196,13 @@
 
 
                 <SettingsDetail ExportMode="Expanded" ShowDetailRow="false" />
+
+                <SettingsEditing Mode="PopupEditForm" />
+                <SettingsPopup>
+                    <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                    </EditForm>
+
+                </SettingsPopup>
 
                 <SettingsBehavior
                     AllowGroup="true"
@@ -240,7 +248,7 @@
                     <SelectedRow BackColor="#0066ff"></SelectedRow>
                 </Styles>
 
-                <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="true"  />
+                <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="true" />
                 <SettingsSearchPanel Visible="true" />
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
@@ -258,8 +266,20 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Expediente" FieldName="IdExpediente" Width="100px" Visible="true">
+                    <dx:GridViewDataTextColumn VisibleIndex="3" Caption="Expediente" FieldName="IdExpediente" Width="105px" Visible="true">
                         <EditFormSettings Visible="False"></EditFormSettings>
+
+
+                        <DataItemTemplate>
+
+                            <dx:ASPxImage ID="imgExpedienteAlerta" runat="server" ImageAlign="Right" ClientInstanceName="imgExpedienteAlerta">
+                                <CaptionSettings ShowColon="false" Position="Right" />
+
+                            </dx:ASPxImage>
+
+                        </DataItemTemplate>
+
+
                     </dx:GridViewDataTextColumn>
 
 
@@ -314,7 +334,7 @@
                         <EditFormSettings Visible="True"></EditFormSettings>
                     </dx:GridViewDataCheckColumn>
                     <dx:GridViewDataTextColumn VisibleIndex="14" Caption="Usuario Gestiona Aviso" FieldName="UsuarioGestionaAviso" Width="200px" Visible="true">
-                        <EditFormSettings Visible="True"></EditFormSettings>
+                        <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
                     <dx:GridViewDataTextColumn VisibleIndex="15" Caption="Folio de Aviso" FieldName="FolioDeAviso" Width="200px" Visible="true">
@@ -363,7 +383,39 @@
 
 
             </dx:ASPxGridView>
+            <dx:ASPxPanel ID="BottomPanel" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true">
+                <PanelCollection>
+                    <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                        <table>
+                            <tr>
+                                <td>
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="actions_apply_16x16" Caption="AV Gestionada / Folio Informado."></dx:ASPxImage>
 
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="iconbuilder_security_warning_svg_16x16" Caption="Av Detectada  con menos de 15 dias"></dx:ASPxImage>
+                                </td>
+
+
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="iconbuilder_security_warningcircled1_svg_16x16" Caption="Av Detectada  con mas de 15 dias"></dx:ASPxImage>
+                                </td>
+
+
+
+                            </tr>
+                        </table>
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxPanel>
 
 
 
