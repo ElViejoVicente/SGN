@@ -100,6 +100,7 @@
     <Compile Include="ORM\ListaNegraSAT.cs" />
     <Compile Include="ORM\PerfilesXestatus.cs" />
     <Compile Include="ORM\RecibosDePago.cs" />
+    <Compile Include="PLD\DatosPld.cs" />
     <Compile Include="Properties\ApiGoogle\ApiGoogle.cs" />
     <Compile Include="Operativa\Constantes.cs" />
     <Compile Include="Operativa\DatosUsuario.cs" />
@@ -191,7 +192,6 @@
     <Content Include="DLL\Microsoft.Exchange.WebServices.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PLD\" />
     <Folder Include="Produccion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
