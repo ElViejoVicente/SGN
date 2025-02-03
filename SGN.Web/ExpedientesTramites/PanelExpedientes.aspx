@@ -485,9 +485,9 @@
                 <Templates>
                     <DetailRow>
                         <div style="padding: 3px 3px 2px 3px">
-                            <dx:ASPxPageControl runat="server" ID="pageControl" Width="100%" EnableCallBacks="true">
+                            <dx:ASPxPageControl runat="server" ID="pageControl" ClientInstanceName="pageControl" Width="100%" EnableCallBacks="true">
                                 <TabPages>
-                                    <dx:TabPage Text="Aviso preventivo" Visible="true">
+                                    <dx:TabPage Text="Aviso preventivo"  Name="TapAP" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
 
@@ -525,7 +525,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Proyecto" Visible="true">
+                                    <dx:TabPage Text="Proyecto" Name="TapProyecto" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvProyecto" ClientInstanceName="gvProyecto" KeyFieldName="IdExpediente"
@@ -568,7 +568,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Firmas" Visible="true">
+                                    <dx:TabPage Text="Firmas" Name="TapFirmas" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvFirmas" ClientInstanceName="gvFirmas" KeyFieldName="IdExpediente"
@@ -603,7 +603,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Aviso Definitivo" Visible="true">
+                                    <dx:TabPage Text="Aviso Definitivo" Name="TapAD" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvAvisoDefinitivo" ClientInstanceName="gvAvisoDefinitivo" KeyFieldName="IdExpediente"
@@ -639,7 +639,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Escrituracion" Visible="true">
+                                    <dx:TabPage Text="Escrituracion" Name="TapEscritura" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvEscrituracion" ClientInstanceName="gvEscrituracion" KeyFieldName="IdExpediente"
@@ -662,7 +662,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Entregas" Visible="true">
+                                    <dx:TabPage Text="Entregas" Name="TapEntrega" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvEntregas" ClientInstanceName="gvEntregas" KeyFieldName="IdExpediente"
@@ -704,7 +704,7 @@
                                             </dx:ContentControl>
                                         </ContentCollection>
                                     </dx:TabPage>
-                                    <dx:TabPage Text="Contabilidad" Visible="true">
+                                    <dx:TabPage Text="Contabilidad" name="TapContabilidad" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvContabilidad" ClientInstanceName="gvContabilidad" KeyFieldName="IdExpediente"
@@ -755,7 +755,7 @@
                                         </ContentCollection>
                                     </dx:TabPage>
 
-                                    <dx:TabPage Text="PLD" Visible="true">
+                                    <dx:TabPage Text="PLD" Name="TapPLD" Visible="true">
                                         <ContentCollection>
                                             <dx:ContentControl>
                                                 <dx:ASPxGridView runat="server" ID="gvPld" ClientInstanceName="gvPld" KeyFieldName="IdExpediente"

@@ -889,9 +889,43 @@ namespace SGN.Web.ExpedientesTramites
 
 
                     }
+
+
+                    //ocultar el tag que corresponda
+
+                    ASPxPageControl TabControl = (ASPxPageControl)gvExpedientes.FindDetailRowTemplateControl(e.VisibleIndex, "pageControl");
+                    if (TabControl != null)
+                    {
+
+                        // optenemos el tipo de acto vs el catalogo para tener del detalle
+
+                        var tipoActo = catActos.Where(x => x.TextoActo == miExpediente.TextoActo).FirstOrDefault();
+                        if (tipoActo != null)
+                        {
+                            TabControl.TabPages.FindByName("TapAP").ClientVisible = tipoActo.TapAP;
+                            TabControl.TabPages.FindByName("TapProyecto").ClientVisible = tipoActo.TapProyecto;
+                            TabControl.TabPages.FindByName("TapFirmas").ClientVisible = tipoActo.TapFirmas;
+                            TabControl.TabPages.FindByName("TapAD").ClientVisible = tipoActo.TapAD;
+                            TabControl.TabPages.FindByName("TapEscritura").ClientVisible = tipoActo.TapEscritura;
+                            TabControl.TabPages.FindByName("TapEntrega").ClientVisible = tipoActo.TapEntrega;
+                            TabControl.TabPages.FindByName("TapContabilidad").ClientVisible = tipoActo.TapContabilidad;
+                            TabControl.TabPages.FindByName("TapPLD").ClientVisible = tipoActo.TapPLD;
+                        }
+
+
+                     
+                    }
+
+
+
                 }
 
+                return;
             }
+
+
+   
+
         }
 
         //protected void ppOrdenNuevoExpediente_WindowCallback(object source, DevExpress.Web.PopupWindowCallbackArgs e)
