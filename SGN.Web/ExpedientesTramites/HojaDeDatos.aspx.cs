@@ -937,7 +937,7 @@ namespace SGN.Web.ExpedientesTramites
             nuevaHoja.NumTelCelular1 = txtNumCelular.Text;
             nuevaHoja.CorreoElectronico = txtCorreoElectronico.Text;
 
-            if (datosCrud.AltaHojaDatos(ref nuevaHoja))
+            if (datosCrud.AltaHojaDatos(ref nuevaHoja,UsuarioPagina.Id))
             {
                 nuevaHojaComplemento.IdHojaDatos = nuevaHoja.IdHojaDatos;
                 nuevaHojaComplemento.IdActo = cbActosNuevo.Value == null ? 0 : Convert.ToInt32(cbActosNuevo.Value);

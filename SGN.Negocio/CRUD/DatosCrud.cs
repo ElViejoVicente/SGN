@@ -348,7 +348,7 @@ namespace SGN.Negocio.CRUD
         #endregion
 
         #region HojaDatos
-        public Boolean AltaHojaDatos(ref HojaDatos values)
+        public Boolean AltaHojaDatos(ref HojaDatos values, int idUsuarioSistema)
         {
             try
             {
@@ -367,7 +367,8 @@ namespace SGN.Negocio.CRUD
                         values.NumbreUsuarioTramita,
                         values.NumTelCelular1,
                         values.NumTelCelular2,
-                        values.CorreoElectronico
+                        values.CorreoElectronico,
+                        idUsuarioSistema
 
 
                     }, commandType: CommandType.StoredProcedure);
