@@ -1202,9 +1202,9 @@ namespace SGN.Web.ExpedientesTramites
                   gvOtorgaSolicita.Columns["RolOperacion"] as GridViewDataComboBoxColumn,
                   "cbRolOtorgaSolicita")).Value;
 
-            //object sexo = ((ASPxComboBox)gvOtorgaSolicita.FindEditRowCellTemplateControl(
-            //    gvOtorgaSolicita.Columns["Sexo"] as GridViewDataComboBoxColumn,
-            //    "cbSexoOtorgaSolicita")).Value;
+            object sexo = ((ASPxComboBox)gvOtorgaSolicita.FindEditRowCellTemplateControl(
+                gvOtorgaSolicita.Columns["Sexo"] as GridViewDataComboBoxColumn,
+                "cbSexoOtorgaSolicita")).Value;
 
             object estadoCivil = ((ASPxComboBox)gvOtorgaSolicita.FindEditRowCellTemplateControl(
                 gvOtorgaSolicita.Columns["EstadoCivil"] as GridViewDataComboBoxColumn,
@@ -1220,15 +1220,15 @@ namespace SGN.Web.ExpedientesTramites
                 e.RowError += "El campo Rol Operacion es obligatorio.\n ";
             }
 
-            //if (sexo == null)
-            //{
-            //    e.RowError += "El campo sexo  es obligatorio.\n ";
-            //}
+            if (sexo == null)
+            {
+                e.RowError += "El campo sexo  es obligatorio.\n ";
+            }
 
-            //if (e.NewValues["FechaNacimiento"] == null)
-            //{
-            //    e.RowError += "El fecha nacimiento es obligatorio.\n ";
-            //}
+            if (e.NewValues["FechaNacimiento"] == null)
+            {
+                e.RowError += "El fecha nacimiento es obligatorio.\n ";
+            }
 
             if (estadoCivil == null)
             {
@@ -1286,11 +1286,12 @@ namespace SGN.Web.ExpedientesTramites
             datos.IdHojaDatos = 0;
             datos.FiguraOperacion = "Otorga o Solicita";
             datos.RolOperacion = e.NewValues["RolOperacion"].ToString();
+            datos.TipoRegimen = e.NewValues["TipoRegimen"] == null ? "" : e.NewValues["TipoRegimen"].ToString();
             datos.Nombres = e.NewValues["Nombres"].ToString();
             datos.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
             datos.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
-            //datos.Sexo = e.NewValues["Sexo"].ToString();
-            //datos.FechaNacimiento= Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
+            datos.Sexo = e.NewValues["Sexo"].ToString();
+            datos.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
             datos.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
             datos.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
             datos.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
@@ -1318,9 +1319,9 @@ namespace SGN.Web.ExpedientesTramites
                     gvaFavorDe.Columns["RolOperacion"] as GridViewDataComboBoxColumn,
                     "cbRolAfavorDe")).Value;
 
-            //object sexo = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
-            //    gvaFavorDe.Columns["Sexo"] as GridViewDataComboBoxColumn,
-            //    "cbSexoAfavorDe")).Value;
+            object sexo = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
+                gvaFavorDe.Columns["Sexo"] as GridViewDataComboBoxColumn,
+                "cbSexoAfavorDe")).Value;
 
             object estadoCivil = ((ASPxComboBox)gvaFavorDe.FindEditRowCellTemplateControl(
                 gvaFavorDe.Columns["EstadoCivil"] as GridViewDataComboBoxColumn,
@@ -1336,15 +1337,15 @@ namespace SGN.Web.ExpedientesTramites
                 e.RowError += "El campo Rol Operacion es obligatorio.\n ";
             }
 
-            //if (sexo == null)
-            //{
-            //    e.RowError += "El campo sexo  es obligatorio.\n ";
-            //}
+            if (sexo == null)
+            {
+                e.RowError += "El campo sexo  es obligatorio.\n ";
+            }
 
-            //if (e.NewValues["FechaNacimiento"] == null)
-            //{
-            //    e.RowError += "El fecha nacimiento es obligatorio.\n ";
-            //}
+            if (e.NewValues["FechaNacimiento"] == null)
+            {
+                e.RowError += "El fecha nacimiento es obligatorio.\n ";
+            }
 
             if (estadoCivil == null)
             {
@@ -1380,11 +1381,12 @@ namespace SGN.Web.ExpedientesTramites
             datos.IdHojaDatos = 0;
             datos.FiguraOperacion = "A favor de";
             datos.RolOperacion = e.NewValues["RolOperacion"].ToString();
+            datos.TipoRegimen = e.NewValues["TipoRegimen"] == null ? "" : e.NewValues["TipoRegimen"].ToString();
             datos.Nombres = e.NewValues["Nombres"].ToString();
             datos.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
             datos.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
-            //datos.Sexo = e.NewValues["Sexo"].ToString();
-            //datos.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
+            datos.Sexo = e.NewValues["Sexo"].ToString();
+            datos.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
             datos.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
             datos.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
             datos.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
@@ -1568,11 +1570,12 @@ namespace SGN.Web.ExpedientesTramites
 
                 //miRegistro.FiguraOperacion = "Otorga o Solicita";
                 miRegistro.RolOperacion = e.NewValues["RolOperacion"].ToString();
+                miRegistro.TipoRegimen = e.NewValues["TipoRegimen"] == null ? "" : e.NewValues["TipoRegimen"].ToString();
                 miRegistro.Nombres = e.NewValues["Nombres"].ToString();
                 miRegistro.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
                 miRegistro.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
-                //datos.Sexo = e.NewValues["Sexo"].ToString();
-                //datos.FechaNacimiento= Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
+                miRegistro.Sexo = e.NewValues["Sexo"].ToString();
+                miRegistro.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
                 miRegistro.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
                 miRegistro.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
                 miRegistro.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
@@ -1621,11 +1624,12 @@ namespace SGN.Web.ExpedientesTramites
 
                // miRegistro.FiguraOperacion = "A favor de";
                 miRegistro.RolOperacion = e.NewValues["RolOperacion"].ToString();
+                miRegistro.TipoRegimen = e.NewValues["TipoRegimen"] == null ? "" : e.NewValues["TipoRegimen"].ToString();
                 miRegistro.Nombres = e.NewValues["Nombres"].ToString();
                 miRegistro.ApellidoPaterno = e.NewValues["ApellidoPaterno"].ToString();
                 miRegistro.ApellidoMaterno = e.NewValues["ApellidoMaterno"].ToString();
-                //datos.Sexo = e.NewValues["Sexo"].ToString();
-                //datos.FechaNacimiento= Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
+                miRegistro.Sexo = e.NewValues["Sexo"].ToString();
+                miRegistro.FechaNacimiento = Convert.ToDateTime(e.NewValues["FechaNacimiento"].ToString());
                 miRegistro.Ocupacion = e.NewValues["Ocupacion"] == null ? "" : e.NewValues["Ocupacion"].ToString();
                 miRegistro.EstadoCivil = e.NewValues["EstadoCivil"].ToString();
                 miRegistro.RegimenConyugal = e.NewValues["RegimenConyugal"].ToString();
@@ -1639,6 +1643,12 @@ namespace SGN.Web.ExpedientesTramites
             e.Cancel = true;
             gvaFavorDe.DataBind();
 
+        }
+
+        protected void cbTipoRegimen_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.SelectedIndex = -1;
         }
     }
 }

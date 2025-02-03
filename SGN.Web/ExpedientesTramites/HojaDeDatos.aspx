@@ -240,14 +240,30 @@
                     ConfirmDelete="true"
                     EnableCustomizationWindow="true"></SettingsBehavior>
 
+
                 <SettingsCommandButton>
                     <EditButton Text="" ButtonType="Image">
                         <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
                     </EditButton>
 
                     <DeleteButton Text="" ButtonType="Image">
-                        <Image ToolTip="Eliminar Fabricacion" IconID="edit_delete_16x16"></Image>
+                        <Image ToolTip="Eliminar" IconID="edit_delete_16x16"></Image>
                     </DeleteButton>
+
+                    <NewButton Text="" ButtonType="Image">
+                        <Image ToolTip="Nuevo" IconID="actions_add_16x16"></Image>
+                    </NewButton>
+
+                    <UpdateButton Text="" ButtonType="Image">
+
+
+                        <Image ToolTip="Aceptar" IconID="actions_apply_16x16"></Image>
+                    </UpdateButton>
+
+                    <CancelButton Text="" ButtonType="Image">
+                        <Image ToolTip="Cancelar" IconID="actions_cancel_16x16"></Image>
+                    </CancelButton>
+
                 </SettingsCommandButton>
 
                 <Styles>
@@ -407,6 +423,10 @@
                                                         <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Rol" FieldName="RolOperacion" Width="120px" Visible="true" Settings-AllowSort="False">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
+                                                        
+                                                        <dx:GridViewDataTextColumn VisibleIndex="2" Caption="T.Persona" FieldName="TipoRegimen" Width="120px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Nombre(s)" FieldName="Nombres" Width="120px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
@@ -420,14 +440,14 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <%--        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
 
-                                                        <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="100px" Visible="true">
+                                                        <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="50px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>--%>
+                                                        </dx:GridViewDataTextColumn>
 
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Sabe Leer/escribir " FieldName="SabeLeerEscribir" Width="100px" Visible="true">
@@ -473,6 +493,10 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
+                                                        <dx:GridViewDataTextColumn VisibleIndex="2" Caption="T.Persona" FieldName="TipoRegimen" Width="120px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataTextColumn>
+
                                                         <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Nombre(s)" FieldName="Nombres" Width="120px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
@@ -485,14 +509,14 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <%--             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
 
-                                                        <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="100px" Visible="true">
+                                                        <dx:GridViewDataTextColumn VisibleIndex="6" Caption="Sexo" FieldName="Sexo" Width="50px" Visible="true">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataTextColumn>--%>
+                                                        </dx:GridViewDataTextColumn>
 
 
                                                         <dx:GridViewDataTextColumn VisibleIndex="7" Caption="Sabe Leer/escribir " FieldName="SabeLeerEscribir" Width="100px" Visible="true">
@@ -674,6 +698,12 @@
 
                                                         <SettingsEditing Mode="PopupEditForm" />
 
+                                                        <SettingsPopup>
+                                                            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                                                            </EditForm>
+
+                                                        </SettingsPopup>
+
                                                         <SettingsDetail ExportMode="All" ShowDetailRow="false" />
 
                                                         <SettingsBehavior
@@ -739,6 +769,26 @@
 
                                                             </dx:GridViewDataComboBoxColumn>
 
+
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="3" FieldName="TipoRegimen" Caption="T.Persona" Width="80px">
+
+
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbTipoRegimen" ClientInstanceName="cbTipoRegimen" runat="server" Value='<%# Bind("TipoRegimen") %>' Width="100%"
+                                                                        OnInit="cbTipoRegimen_Init">
+
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Fisica" Value="Fisica" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Moral" Value="Moral"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Apoderado" Value="Apoderado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Fideicomiso" Value="Fideicomiso"></dx:ListEditItem>
+                                                                        </Items>
+
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
+
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombres" FieldName="Nombres" Width="80px">
                                                             </dx:GridViewDataTextColumn>
 
@@ -750,16 +800,15 @@
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
                                                             </dx:GridViewDataTextColumn>
 
-                                                            <%--       <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
                                                                         OnInit="cbSexoOtorgaSolicita_Init">
 
                                                                         <Items>
-                                                                            <dx:ListEditItem Text="Masculino" Value="Masculino" Selected="true"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Femenino" Value="Femenino"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Otro" Value="Otro"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Masculino" Value="M" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Femenino" Value="F"></dx:ListEditItem>
                                                                         </Items>
 
                                                                     </dx:ASPxComboBox>
@@ -767,17 +816,15 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
-                                                            </dx:GridViewDataDateColumn>--%>
+                                                            </dx:GridViewDataDateColumn>
 
 
-
-
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="8" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="9" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
                                                             </dx:GridViewDataTextColumn>
 
 
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="EstadoCivil" Caption="Estado civil">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="EstadoCivil" Caption="Estado civil">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbEstadoCivilOtorgaSolicita" ClientInstanceName="cbEstadoCivilOtorgaSolicita" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
                                                                         OnInit="cbEstadoCivilOtorgaSolicita_Init">
@@ -790,7 +837,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="11" FieldName="RegimenConyugal" Caption="Regimen conyugal">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRegimenConyugalOtorgaSolicita" ClientInstanceName="cbRegimenConyugalOtorgaSolicita" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
                                                                         OnInit="cbRegimenConyugalOtorgaSolicita_Init">
@@ -803,7 +850,7 @@
                                                                 </EditItemTemplate>
                                                             </dx:GridViewDataComboBoxColumn>
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="11" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="12" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbAnafabetaOtorgaSolicita" ClientInstanceName="cbAnafabetaOtorgaSolicita" OnCallback="cbAnafabetaOtorgaSolicita_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
                                                                         <Items>
@@ -817,7 +864,7 @@
 
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="13" Caption="Anotacion especial" FieldName="Notas" Width="100%">
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>
@@ -875,6 +922,12 @@
                                                         <SettingsResizing ColumnResizeMode="Control" />
 
                                                         <SettingsEditing Mode="PopupEditForm" />
+
+                                                        <SettingsPopup>
+                                                            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                                                            </EditForm>
+
+                                                        </SettingsPopup>
 
                                                         <SettingsDetail ExportMode="All" ShowDetailRow="false" />
 
@@ -941,6 +994,24 @@
 
                                                             </dx:GridViewDataComboBoxColumn>
 
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="3" FieldName="TipoRegimen" Caption="T.Persona" Width="80px">
+
+
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbTipoRegimen" ClientInstanceName="cbTipoRegimen" runat="server" Value='<%# Bind("TipoRegimen") %>' Width="100%"
+                                                                        OnInit="cbTipoRegimen_Init">
+
+                                                                        <Items>
+                                                                            <dx:ListEditItem Text="Fisica" Value="Fisica" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Moral" Value="Moral"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Apoderado" Value="Apoderado"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Fideicomiso" Value="Fideicomiso"></dx:ListEditItem>
+                                                                        </Items>
+
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
+
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombres" FieldName="Nombres" Width="80px">
                                                             </dx:GridViewDataTextColumn>
 
@@ -952,16 +1023,15 @@
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
                                                             </dx:GridViewDataTextColumn>
 
-                                                            <%--                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoAfavorDe" ClientInstanceName="cbSexoAfavorDe" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
                                                                         OnInit="cbSexoAfavorDe_Init">
 
                                                                         <Items>
-                                                                            <dx:ListEditItem Text="Masculino" Value="Masculino" Selected="true"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Femenino" Value="Femenino"></dx:ListEditItem>
-                                                                            <dx:ListEditItem Text="Otro" Value="Otro"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Masculino" Value="M" Selected="true"></dx:ListEditItem>
+                                                                            <dx:ListEditItem Text="Femenino" Value="F"></dx:ListEditItem>
                                                                         </Items>
 
                                                                     </dx:ASPxComboBox>
@@ -969,7 +1039,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
-                                                            </dx:GridViewDataDateColumn>--%>
+                                                            </dx:GridViewDataDateColumn>
 
 
 

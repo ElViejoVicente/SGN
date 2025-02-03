@@ -145,7 +145,7 @@
 
 
 
-        function onCallbackValidarEnListaNegra(value) {            
+        function onCallbackValidarEnListaNegra(value) {
 
             window.open("../Reportes/reporteAcuseConsultaListaNegra?idRegistro=" + value, "_blank");
         }
@@ -359,10 +359,10 @@
                     <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="120px" Visible="true" ReadOnly="true">
                         <%--                        <EditFormSettings Visible="False"></EditFormSettings>--%>
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataDateColumn VisibleIndex="11" Caption="F. Nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
+                    <dx:GridViewDataDateColumn VisibleIndex="11" Caption="F. Nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" >
                     </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="12" Caption="Sexo" FieldName="Sexo" Width="60px" Visible="true" CellStyle-HorizontalAlign="Center">
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="12" Caption="Sexo" FieldName="Sexo" Width="60px" Visible="true" CellStyle-HorizontalAlign="Center"  >
 
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -397,7 +397,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="18" Caption="T.Persona" FieldName="TipoRegimen" Width="80px" Visible="true" CellStyle-Font-Bold="true">
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="18" Caption="T.Persona" FieldName="TipoRegimen" Width="80px" Visible="true" CellStyle-Font-Bold="true" >
 
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbTipoRegimen" ClientInstanceName="cbTipoRegimen" runat="server" Value='<%# Bind("TipoRegimen") %>' Width="100%"
@@ -407,6 +407,7 @@
                                     <dx:ListEditItem Text="Fisica" Value="Fisica" Selected="true"></dx:ListEditItem>
                                     <dx:ListEditItem Text="Moral" Value="Moral"></dx:ListEditItem>
                                     <dx:ListEditItem Text="Apoderado" Value="Apoderado"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Fideicomiso" Value="Fideicomiso"></dx:ListEditItem>
                                 </Items>
 
                             </dx:ASPxComboBox>
@@ -574,7 +575,7 @@
                                 <td>
                                     <dx:ASPxImage runat="server" ImageUrl="~/imagenes/ExUnico/FaltanDatos.png" Caption="Datos Incompletos"></dx:ASPxImage>
                                 </td>
-    
+
 
 
                             </tr>
