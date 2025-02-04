@@ -187,11 +187,6 @@
     <Content Include="imagenes\header\fondoHeaderBlack.png" />
     <Content Include="imagenes\header\fondoHeaderGPS.png" />
     <Content Include="imagenes\header\fondoHeaderGPSBborde.png" />
-    <Content Include="imagenes\header\logo-sikno.png" />
-    <Content Include="imagenes\header\logo-siknoT.png" />
-    <Content Include="imagenes\header\LogoNotariaRecorte.png" />
-    <Content Include="imagenes\header\logoS.png" />
-    <Content Include="imagenes\header\Sikno.png" />
     <Content Include="imagenes\Iconos\application-pdf-2.ico" />
     <Content Include="imagenes\Iconos\image-x-generic.ico" />
     <Content Include="imagenes\Iconos\text-x-generic.ico" />
