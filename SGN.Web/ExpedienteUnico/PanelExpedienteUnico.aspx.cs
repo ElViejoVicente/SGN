@@ -168,9 +168,9 @@ namespace SGN.Web.ExpedienteUnico
         {
             ASPxComboBox cb = (ASPxComboBox)sender;
 
-            cb.DataSource = catPaises;
+            //cb.DataSource = catPaises;
             cb.TextField = "TextoPais";
-            cb.ValueField = "IdPais";
+            cb.ValueField = "TextoPais";
             cb.ValueType = typeof(string);
 
             cb.DataSource = catPaises;
@@ -186,9 +186,9 @@ namespace SGN.Web.ExpedienteUnico
         {
             ASPxComboBox cb = (ASPxComboBox)sender;
 
-            cb.DataSource = catPaises;
+            //cb.DataSource = catPaises;
             cb.TextField = "TextoPais";
-            cb.ValueField = "IdPais";
+            cb.ValueField = "TextoPais";
             cb.ValueType = typeof(string);
 
             cb.DataSource = catPaises;
@@ -205,9 +205,9 @@ namespace SGN.Web.ExpedienteUnico
         {
             ASPxComboBox cb = (ASPxComboBox)sender;
 
-            cb.DataSource = catPaises;
+            //cb.DataSource = catPaises;
             cb.TextField = "TextoPais";
-            cb.ValueField = "IdPais";
+            cb.ValueField = "TextoPais";
             cb.ValueType = typeof(string);
 
             cb.DataSource = catPaises;
@@ -223,9 +223,9 @@ namespace SGN.Web.ExpedienteUnico
         {
             ASPxComboBox cb = (ASPxComboBox)sender;
 
-            cb.DataSource = catPaises;
+            //cb.DataSource = catPaises;
             cb.TextField = "TextoPais";
-            cb.ValueField = "IdPais";
+            cb.ValueField = "TextoPais";
             cb.ValueType = typeof(string);
 
             cb.DataSource = catPaises;
@@ -265,6 +265,7 @@ namespace SGN.Web.ExpedienteUnico
 
 
             var miRegistro = datosCrud.ConsultaDatosParticipantes(Convert.ToInt32(e.Keys[0]));
+            var miRegistroOld = datosCrud.ConsultaDatosParticipantes(Convert.ToInt32(e.Keys[0]));
 
             if (miRegistro != null)
             {
@@ -302,7 +303,211 @@ namespace SGN.Web.ExpedienteUnico
                 miRegistro.ActividadRazonSocial = e.NewValues["ActividadRazonSocial"]==null? "-": e.NewValues["ActividadRazonSocial"].ToString();
 
 
+
+
+
                 datosCrud.ActualizaDatosParticipantes(miRegistro);
+
+
+
+                #region Validacion de Cambios LOG
+
+
+                HojaDatos hojaDatos = datosCrud.ConsultaHojaDatos(miRegistro.IdHojaDatos);
+
+                BitacoraExpediente logCambios = new BitacoraExpediente();
+                logCambios.UsuarioImplicado = UsuarioPagina.Nombre;
+                logCambios.IdExpediente = hojaDatos.numExpediente;
+                logCambios.NombreModulo = "Expediente Unico";
+
+                if (miRegistro.Sexo != miRegistroOld.Sexo)
+                {
+                    logCambios.NombreCampo = "Eu-Sexo";
+                    logCambios.ValorOriginal = miRegistroOld.Sexo;
+                    logCambios.ValorImputado = miRegistro.Sexo;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Ocupacion != miRegistroOld.Ocupacion)
+                {
+                    logCambios.NombreCampo = "Eu-Actividad/Ocupacion";
+                    logCambios.ValorOriginal = miRegistroOld.Ocupacion;
+                    logCambios.ValorImputado = miRegistro.Ocupacion;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.FechaNacimiento != miRegistroOld.FechaNacimiento)
+                {
+                    logCambios.NombreCampo = "Eu-F. Nacimiento";
+                    logCambios.ValorOriginal = miRegistroOld.FechaNacimiento.ToString();
+                    logCambios.ValorImputado = miRegistro.FechaNacimiento.ToString();
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.TipoRegimen != miRegistroOld.TipoRegimen)
+                {
+                    logCambios.NombreCampo = "Eu-Sexo";
+                    logCambios.ValorOriginal = miRegistroOld.TipoRegimen;
+                    logCambios.ValorImputado = miRegistro.TipoRegimen;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.PaisNacimiento != miRegistroOld.PaisNacimiento)
+                {
+                    logCambios.NombreCampo = "Eu-P.Nacimiento";
+                    logCambios.ValorOriginal = miRegistroOld.PaisNacimiento;
+                    logCambios.ValorImputado = miRegistro.PaisNacimiento;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.PaisNacionalidad != miRegistroOld.PaisNacionalidad)
+                {
+                    logCambios.NombreCampo = "Eu-P.Nacionalidad";
+                    logCambios.ValorOriginal = miRegistroOld.PaisNacionalidad;
+                    logCambios.ValorImputado = miRegistro.PaisNacionalidad;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Domicilio != miRegistroOld.Domicilio)
+                {
+                    logCambios.NombreCampo = "Eu-Domicilio (Calle)";
+                    logCambios.ValorOriginal = miRegistroOld.Domicilio;
+                    logCambios.ValorImputado = miRegistro.Domicilio;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.NumeroExterior != miRegistroOld.NumeroExterior)
+                {
+                    logCambios.NombreCampo = "Eu-Num.Exterior";
+                    logCambios.ValorOriginal = miRegistroOld.NumeroExterior;
+                    logCambios.ValorImputado = miRegistro.NumeroExterior;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.NumeroInterior != miRegistroOld.NumeroInterior)
+                {
+                    logCambios.NombreCampo = "Eu-Num.Interior";
+                    logCambios.ValorOriginal = miRegistroOld.NumeroInterior;
+                    logCambios.ValorImputado = miRegistro.NumeroInterior;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Colonia != miRegistroOld.Colonia)
+                {
+                    logCambios.NombreCampo = "Eu-Colonia";
+                    logCambios.ValorOriginal = miRegistroOld.Colonia;
+                    logCambios.ValorImputado = miRegistro.Colonia;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Municipio != miRegistroOld.Municipio)
+                {
+                    logCambios.NombreCampo = "Eu-Municipio";
+                    logCambios.ValorOriginal = miRegistroOld.Municipio;
+                    logCambios.ValorImputado = miRegistro.Municipio;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Ciudad != miRegistroOld.Ciudad)
+                {
+                    logCambios.NombreCampo = "Eu-Ciudad";
+                    logCambios.ValorOriginal = miRegistroOld.Ciudad;
+                    logCambios.ValorImputado = miRegistro.Ciudad;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Estado != miRegistroOld.Estado)
+                {
+                    logCambios.NombreCampo = "Eu-Estado";
+                    logCambios.ValorOriginal = miRegistroOld.Estado;
+                    logCambios.ValorImputado = miRegistro.Estado;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.PaisDomicilio != miRegistroOld.PaisDomicilio)
+                {
+                    logCambios.NombreCampo = "Eu-P.Domicilio";
+                    logCambios.ValorOriginal = miRegistroOld.PaisDomicilio;
+                    logCambios.ValorImputado = miRegistro.PaisDomicilio;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.CP != miRegistroOld.CP)
+                {
+                    logCambios.NombreCampo = "Eu-CP";
+                    logCambios.ValorOriginal = miRegistroOld.CP;
+                    logCambios.ValorImputado = miRegistro.CP;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.NumeroTefonico != miRegistroOld.NumeroTefonico)
+                {
+                    logCambios.NombreCampo = "Eu-Num.Tefonico";
+                    logCambios.ValorOriginal = miRegistroOld.NumeroTefonico;
+                    logCambios.ValorImputado = miRegistro.NumeroTefonico;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.CorreoElectronico != miRegistroOld.CorreoElectronico)
+                {
+                    logCambios.NombreCampo = "Eu-Correo E.";
+                    logCambios.ValorOriginal = miRegistroOld.CorreoElectronico;
+                    logCambios.ValorImputado = miRegistro.CorreoElectronico;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Curp != miRegistroOld.Curp)
+                {
+                    logCambios.NombreCampo = "Eu-Curp";
+                    logCambios.ValorOriginal = miRegistroOld.Curp;
+                    logCambios.ValorImputado = miRegistro.Curp;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.Rfc != miRegistroOld.Rfc)
+                {
+                    logCambios.NombreCampo = "Eu-Rfc";
+                    logCambios.ValorOriginal = miRegistroOld.Rfc;
+                    logCambios.ValorImputado = miRegistro.Rfc;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.NombreIdentificacionID != miRegistroOld.NombreIdentificacionID)
+                {
+                    logCambios.NombreCampo = "Eu-Identificacion";
+                    logCambios.ValorOriginal = miRegistroOld.NombreIdentificacionID;
+                    logCambios.ValorImputado = miRegistro.NombreIdentificacionID;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.AutoridadEmiteID != miRegistroOld.AutoridadEmiteID)
+                {
+                    logCambios.NombreCampo = "Eu-Autoridad Emite";
+                    logCambios.ValorOriginal = miRegistroOld.AutoridadEmiteID;
+                    logCambios.ValorImputado = miRegistro.AutoridadEmiteID;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.NumeroSerieID != miRegistroOld.NumeroSerieID)
+                {
+                    logCambios.NombreCampo = "Eu-Numero ID";
+                    logCambios.ValorOriginal = miRegistroOld.NumeroSerieID;
+                    logCambios.ValorImputado = miRegistro.NumeroSerieID;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.RazonSocial != miRegistroOld.RazonSocial)
+                {
+                    logCambios.NombreCampo = "Eu-Razon Social";
+                    logCambios.ValorOriginal = miRegistroOld.RazonSocial;
+                    logCambios.ValorImputado = miRegistro.RazonSocial;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.FechaConstitucion != miRegistroOld.FechaConstitucion)
+                {
+                    logCambios.NombreCampo = "Eu-F.Constitucion";
+                    logCambios.ValorOriginal = miRegistroOld.FechaConstitucion.ToString();
+                    logCambios.ValorImputado = miRegistro.FechaConstitucion.ToString();
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.PaisRazonSocial != miRegistroOld.PaisRazonSocial)
+                {
+                    logCambios.NombreCampo = "Eu-P.RazonSocial";
+                    logCambios.ValorOriginal = miRegistroOld.PaisRazonSocial;
+                    logCambios.ValorImputado = miRegistro.PaisRazonSocial;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+                if (miRegistro.ActividadRazonSocial != miRegistroOld.ActividadRazonSocial)
+                {
+                    logCambios.NombreCampo = "Eu-Actividad Razon Social";
+                    logCambios.ValorOriginal = miRegistroOld.ActividadRazonSocial;
+                    logCambios.ValorImputado = miRegistro.ActividadRazonSocial;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
+
+
+
+
+                #endregion  
+
 
 
             }
