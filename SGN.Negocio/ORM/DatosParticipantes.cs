@@ -52,6 +52,8 @@ namespace SGN.Negocio.ORM
         public string ObsePrimeraValidacion { get; set; } = "";
         public DateTime FechaSegundaValicacion { get; set; } = Constantes.FechaGlobal;
         public string ObseSegundaValidacion { get; set; } = "";
+
+        public string IdFideicomiso { get; set; } = "";
     }
 }
 

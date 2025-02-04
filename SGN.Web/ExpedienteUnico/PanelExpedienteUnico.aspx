@@ -508,6 +508,11 @@
                         <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
+                    
+                    <dx:GridViewDataTextColumn VisibleIndex="42" Caption="Num. Fideicomiso" FieldName="IdFideicomiso" Width="200px" Visible="true">
+                        <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
+                    </dx:GridViewDataTextColumn>
+
                 </Columns>
 
 

@@ -157,7 +157,8 @@ namespace SGN.Negocio.CRUD
                         values.FechaPrimeraValidacion,
                         values.ObsePrimeraValidacion,
                         values.FechaSegundaValicacion,
-                        values.ObseSegundaValidacion
+                        values.ObseSegundaValidacion,
+                        values.IdFideicomiso
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -225,7 +226,8 @@ namespace SGN.Negocio.CRUD
                         values.FechaPrimeraValidacion,
                         values.ObsePrimeraValidacion,
                         values.FechaSegundaValicacion,
-                        values.ObseSegundaValidacion
+                        values.ObseSegundaValidacion,
+                        values.IdFideicomiso
 
                     }, commandType: CommandType.StoredProcedure);
                 }

@@ -302,7 +302,7 @@ namespace SGN.Web.ExpedienteUnico
 
                 miRegistro.ActividadRazonSocial = e.NewValues["ActividadRazonSocial"]==null? "-": e.NewValues["ActividadRazonSocial"].ToString();
 
-
+                miRegistro.IdFideicomiso = e.NewValues["IdFideicomiso"] == null ? "-" : e.NewValues["IdFideicomiso"].ToString();
 
 
 
@@ -336,14 +336,14 @@ namespace SGN.Web.ExpedienteUnico
                 }
                 if (miRegistro.FechaNacimiento != miRegistroOld.FechaNacimiento)
                 {
-                    logCambios.NombreCampo = "Eu-F. Nacimiento";
+                    logCambios.NombreCampo = "Eu-F.Nacimiento";
                     logCambios.ValorOriginal = miRegistroOld.FechaNacimiento.ToString();
                     logCambios.ValorImputado = miRegistro.FechaNacimiento.ToString();
                     datosCrud.AltaBitacoraExpediente(logCambios);
                 }
                 if (miRegistro.TipoRegimen != miRegistroOld.TipoRegimen)
                 {
-                    logCambios.NombreCampo = "Eu-Sexo";
+                    logCambios.NombreCampo = "Eu-T.Persona";
                     logCambios.ValorOriginal = miRegistroOld.TipoRegimen;
                     logCambios.ValorImputado = miRegistro.TipoRegimen;
                     datosCrud.AltaBitacoraExpediente(logCambios);
@@ -502,7 +502,13 @@ namespace SGN.Web.ExpedienteUnico
                     logCambios.ValorImputado = miRegistro.ActividadRazonSocial;
                     datosCrud.AltaBitacoraExpediente(logCambios);
                 }
-
+                if (miRegistro.IdFideicomiso != miRegistroOld.IdFideicomiso)
+                {
+                    logCambios.NombreCampo = "Eu-Num.Fideicomiso";
+                    logCambios.ValorOriginal = miRegistroOld.IdFideicomiso;
+                    logCambios.ValorImputado = miRegistro.IdFideicomiso;
+                    datosCrud.AltaBitacoraExpediente(logCambios);
+                }
 
 
 

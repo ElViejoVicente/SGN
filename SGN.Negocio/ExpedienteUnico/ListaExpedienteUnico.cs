@@ -64,6 +64,8 @@ namespace SGN.Negocio.ExpedienteUnico
         public DateTime FechaSegundaValicacion { get; set; } = Constantes.FechaGlobal;
         public string ObseSegundaValidacion { get; set; } = "";
 
+        public string IdFideicomiso { get; set; } = "";
+
         public string Resumen
         {
             get 

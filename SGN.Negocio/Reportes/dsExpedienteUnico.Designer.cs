@@ -381,6 +381,8 @@ namespace SGN.Negocio.Reportes {
             
             private global::System.Data.DataColumn columnResumenIdentificacion;
             
+            private global::System.Data.DataColumn columnNumFideicomiso;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ExpedienteUnicoDataTable() {
@@ -824,6 +826,14 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NumFideicomisoColumn {
+                get {
+                    return this.columnNumFideicomiso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -910,7 +920,8 @@ namespace SGN.Negocio.Reportes {
                         System.DateTime FechaSegundaValicacion, 
                         string ObseSegundaValidacion, 
                         string Resumen, 
-                        string ResumenIdentificacion) {
+                        string ResumenIdentificacion, 
+                        string NumFideicomiso) {
                 ExpedienteUnicoRow rowExpedienteUnicoRow = ((ExpedienteUnicoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdExpediente,
@@ -963,7 +974,8 @@ namespace SGN.Negocio.Reportes {
                         FechaSegundaValicacion,
                         ObseSegundaValidacion,
                         Resumen,
-                        ResumenIdentificacion};
+                        ResumenIdentificacion,
+                        NumFideicomiso};
                 rowExpedienteUnicoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowExpedienteUnicoRow);
                 return rowExpedienteUnicoRow;
@@ -1037,6 +1049,7 @@ namespace SGN.Negocio.Reportes {
                 this.columnObseSegundaValidacion = base.Columns["ObseSegundaValidacion"];
                 this.columnResumen = base.Columns["Resumen"];
                 this.columnResumenIdentificacion = base.Columns["ResumenIdentificacion"];
+                this.columnNumFideicomiso = base.Columns["NumFideicomiso"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1144,6 +1157,8 @@ namespace SGN.Negocio.Reportes {
                 base.Columns.Add(this.columnResumen);
                 this.columnResumenIdentificacion = new global::System.Data.DataColumn("ResumenIdentificacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnResumenIdentificacion);
+                this.columnNumFideicomiso = new global::System.Data.DataColumn("NumFideicomiso", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumFideicomiso);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2122,6 +2137,22 @@ namespace SGN.Negocio.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NumFideicomiso {
+                get {
+                    try {
+                        return ((string)(this[this.tableExpedienteUnico.NumFideicomisoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumFideicomiso\' de la tabla \'ExpedienteUnico\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableExpedienteUnico.NumFideicomisoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsIdExpedienteNull() {
                 return this.IsNull(this.tableExpedienteUnico.IdExpedienteColumn);
             }
@@ -2730,6 +2761,18 @@ namespace SGN.Negocio.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetResumenIdentificacionNull() {
                 this[this.tableExpedienteUnico.ResumenIdentificacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNumFideicomisoNull() {
+                return this.IsNull(this.tableExpedienteUnico.NumFideicomisoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNumFideicomisoNull() {
+                this[this.tableExpedienteUnico.NumFideicomisoColumn] = global::System.Convert.DBNull;
             }
         }
         

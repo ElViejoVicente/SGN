@@ -50,7 +50,7 @@ namespace SGN.Web.Reportes
                     PaisRazonSocial: datosReporte.PaisRazonSocial, ActividadRazonSocial: datosReporte.ActividadRazonSocial, SeValidoEnListaNegra: datosReporte.SeValidoEnListaNegra,
                     FechaPrimeraValidacion: datosReporte.FechaPrimeraValidacion, ObsePrimeraValidacion: datosReporte.ObsePrimeraValidacion,
                     FechaSegundaValicacion: datosReporte.FechaSegundaValicacion, ObseSegundaValidacion: datosReporte.ObseSegundaValidacion, Resumen: datosReporte.Resumen,
-                    ResumenIdentificacion: datosReporte.NombreIdentificacionID+","+ datosReporte.AutoridadEmiteID+","+datosReporte.NumeroSerieID
+                    ResumenIdentificacion: datosReporte.NombreIdentificacionID+","+ datosReporte.AutoridadEmiteID+","+datosReporte.NumeroSerieID,datosReporte.IdFideicomiso
                     );
 
 
