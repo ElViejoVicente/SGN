@@ -799,6 +799,12 @@
     <Compile Include="Reportes\XtraAcuseListaNegra.Designer.cs">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\XtraExUnicoFideicomiso.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoFideicomiso.Designer.cs">
+      <DependentUpon>XtraExUnicoFideicomiso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\XtraExUnicoApoderado.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -883,6 +889,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraAcuseListaNegra.resx">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoFideicomiso.resx">
+      <DependentUpon>XtraExUnicoFideicomiso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraExUnicoApoderado.resx">
       <DependentUpon>XtraExUnicoApoderado.cs</DependentUpon>

@@ -128,23 +128,23 @@
     <value>DOCUMENTOS PROPORCIONADOS POR EL CLIENTE O USUARIO.
 
 
-I.- IDENTIFICACION, CONSISTENTE EN (SEÑALAR EL DOCUMENTO DE IDENTIFICACION):
-Nota: Considerar lo dispuesto en las Reglas de Carácter General (Anexo TRES inciso b) i).
+I.- IDENTIFICACIÓN.
 
 
-II.- CONSTANCIA DE LA  CLAVE UNICA DE REGISTRO DE POBLACION, CUANDO EL CLIENTE O USUARIO CUENTE CON ELLA.
+II.- CONSTANCIA DE LA  CLAVE ÚNICA DE REGISTRO DE POBLACIÓN.
 
 
-III.- CEDULA DE IDENTIFICACION FISCAL, CUANDO EL CLIENTE O USUARIO CUENTE CON ELLA.
+III.- CÉDULA DE IDENTIFICACIÓN FISCAL.
 
 
 IV.- COMPROBANTE DE DOMICILIO, (CON UNA ANTIGÜEDAD NO MAYOR A TRES MESES A SU FECHA 
-DE EMISION)
+DE EMISIÓN).
 
 
 V.- CONSTANCIA, POR LA QUE SE ACREDITA QUE SE LE SOLICITO AL CLIENTE O USUARIO 
-INFORMACION ACERCA DE SI TIENE CONOCIMIENTO DE LA EXISTENCIA DEL DUEÑO BENEFICIARIO, 
+INFORMACIÓN ACERCA DE SI TIENE CONOCIMIENTO DE LA EXISTENCIA DEL DUEÑO BENEFICIARIO, 
 LA CUAL SE ENCUENTRA DEBIDAMENTE FIRMADA.
+
 
 </value>
   </data>
@@ -152,9 +152,9 @@ LA CUAL SE ENCUENTRA DEBIDAMENTE FIRMADA.
     <value>EL DIA: [?Dia]  DEL MES: [?Mes]   DEL AÑO [?Anio]  SE INTEGRA EL EXPEDIENTE ÚNICO DE IDENTIFICACIÓN DURANTE LA REALIZACIÓN DE LA ACTIVIDAD VULNERABLE CON NÚMERO DE ESCRITURA: [?NumEscritura] , VOLUMEN: [?Volumen] TIPO DE ACTIVIDAD VULNERABLE: [?ActividadVulnerable]</value>
   </data>
   <data name="xrLabel45.Text" xml:space="preserve">
-    <value>ADICIONALMENTE, tratándose de personas que tengan su lugar de residencia en el EXTRANJERO y a la vez cuenten con domicilio en TERRITORIO NACIONAL en donde puedan recibir correspondencia dirigidas a ellas, se deberá asentar en el expediente los datos relativos a dicho domicilio (Compuesto del nombre de la calle, avenida o vía de que se trate, número exterior y, en su caso, interior, colonia o urbanización, demarcación territorial, municipio o demarcación política similar  que corresponda, ciudad o población, entidad federativa, estado, provincia, departamento o demarcación política similar que corresponda, código postal y país). </value>
+    <value>ADICIONALMENTE, tratándose de personas que tengan su lugar de residencia en el EXTRANJERO y a la vez cuenten con domicilio en TERRITORIO NACIONAL en donde puedan recibir correspondencia dirigidas a ellas, se deberá asentar en el expediente los datos relativos a dicho domicilio (Compuesto del nombre de la calle, avenida o vía de que se trate, número exterior y, en su caso, interior, colonia o urbanización, demarcación territorial, municipio o demarcación política similar  que corresponda, ciudad o población, entidad federativa, estado, provincia, departamento o demarcación política similar que corresponda, código postal y país):</value>
   </data>
   <data name="xrLabel2.Text" xml:space="preserve">
-    <value>EN TÉRMINOS DE LO PREVISTO POR LOS ARTÍCULOS 1,2,3 FRACCIONES I, II, III, VII, VIII, 17 FRACCIÓN XII APARTADO A, 18, 21 y 22 DE LA LEY FEDERAL PARA LA PREVENCIÓN E IDENTIFICACIÓN DE OPERACIONES CON RECURSOS DE PROCEDENCIA ILICITA; ARTÍCULOS 1. 2, 5, 7, 10,14 Y 15 DEL REGLAMENTO DE LA MENCIONADA LEY FEDERAL; 1, 3 FRACCIONES I,II,IV,V,VII,XI Y XV, 11, 12, 13 Y 27, ASÍ COMO EL ANEXO 3 DEL ACUERDO 02/2013, DE LAS REGLAS DE CARÁCTER GENERAL A QUE SE REFIERE LA LEY FEDERAL PARA LA PREVENCIÓN E IDENTIFICACIÓN DE OPERACIONES CON RECURSOS DE PROCEDENCIA ILÍCITA, DURANTE LA REALIZACIÓN DEL ACTO JURÍDICO U OPERACIÓN CORRESPONDIENTE, EL SUSCRITO NOTARIO, PROCEDO A INTEGRAR EL EXPEDIENTE ÚNICO DE IDENTIFICACIÓN, DEL CLIENTE O USUARIO, QUIEN ME PROPORCIONA LA INFORMACIÓN Y DOCUMENTACIÓN SIGUIENTE:</value>
+    <value>EN TÉRMINOS DE LO PREVISTO POR LOS ARTÍCULOS 1, 2, 3 FRACCIONES I, II, III, VII, VIII, 17 FRACCIÓN XII APARTADO A, 18, 21 y 22 DE LA LEY FEDERAL PARA LA PREVENCIÓN E IDENTIFICACIÓN DE OPERACIONES CON RECURSOS DE PROCEDENCIA ILÍCITA; ARTÍCULOS 1, 2, 5, 7, 10, 14 Y 15 DEL REGLAMENTO DE LA MENCIONADA LEY FEDERAL; 1, 3 FRACCIONES I, II, IV, V, VII, XI Y XV, 11, 12, 13 Y 27, ASÍ COMO EL ANEXO 3 DEL ACUERDO 02/2013 DE LAS REGLAS DE CARÁCTER GENERAL A QUE SE REFIERE LA LEY FEDERAL PARA LA PREVENCIÓN E IDENTIFICACIÓN DE OPERACIONES CON RECURSOS DE PROCEDENCIA ILÍCITA, DURANTE LA REALIZACIÓN DEL ACTO JURÍDICO U OPERACIÓN CORRESPONDIENTE, EL SUSCRITO NOTARIO, PROCEDO A INTEGRAR EL EXPEDIENTE ÚNICO DE IDENTIFICACIÓN, DEL CLIENTE O USUARIO, QUIEN ME PROPORCIONA LA INFORMACIÓN Y DOCUMENTACIÓN SIGUIENTE:</value>
   </data>
 </root>

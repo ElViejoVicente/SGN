@@ -61,6 +61,7 @@ namespace SGN.Web.Reportes
                 XtraExUnicoPersonaFisica exUnicoPerFisica = new XtraExUnicoPersonaFisica();
                 XtraExUnicoPersonaMoral exUnicoPerMoral = new XtraExUnicoPersonaMoral();
                 XtraExUnicoApoderado exUnicoApoderado = new XtraExUnicoApoderado();
+                XtraExUnicoFideicomiso exUnicoFideicomiso = new XtraExUnicoFideicomiso();
 
 
 
@@ -87,7 +88,7 @@ namespace SGN.Web.Reportes
                     exUnicoPerMoral.RequestParameters = false;
                     exUnicoPerMoral.Parameters["ActividadVulnerable"].Value = " " + expedientes.ActividadVulnerable + " ";
                     exUnicoPerMoral.Parameters["Anio"].Value = DateTime.Now.Year;
-                    exUnicoPerMoral.Parameters["Asesor"].Value = "aa";
+                    exUnicoPerMoral.Parameters["Asesor"].Value = "";
                     exUnicoPerMoral.Parameters["Dia"].Value = DateTime.Now.Day;
                     exUnicoPerMoral.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
                     exUnicoPerMoral.Parameters["NumEscritura"].Value = " " + expedientes.Escritura.ToString() + " ";
@@ -104,7 +105,7 @@ namespace SGN.Web.Reportes
                     exUnicoApoderado.RequestParameters = false;
                     exUnicoApoderado.Parameters["ActividadVulnerable"].Value = " " + expedientes.ActividadVulnerable + " ";
                     exUnicoApoderado.Parameters["Anio"].Value = DateTime.Now.Year;
-                    exUnicoApoderado.Parameters["Asesor"].Value = "aa";
+                    exUnicoApoderado.Parameters["Asesor"].Value = "";
                     exUnicoApoderado.Parameters["Dia"].Value = DateTime.Now.Day;
                     exUnicoApoderado.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
                     exUnicoApoderado.Parameters["NumEscritura"].Value = " " + expedientes.Escritura.ToString() + " ";
@@ -113,6 +114,23 @@ namespace SGN.Web.Reportes
                     reporte.Pages.AddRange(exUnicoApoderado.Pages);
 
                 }
+
+                if (datosReporte.TipoRegimen == "Fideicomiso")
+                {
+                    exUnicoFideicomiso.DataSource = origen;
+                    exUnicoFideicomiso.RequestParameters = false;
+                    exUnicoFideicomiso.Parameters["ActividadVulnerable"].Value = " " + expedientes.ActividadVulnerable + " ";
+                    exUnicoFideicomiso.Parameters["Anio"].Value = DateTime.Now.Year;
+                    exUnicoFideicomiso.Parameters["Asesor"].Value = "";
+                    exUnicoFideicomiso.Parameters["Dia"].Value = DateTime.Now.Day;
+                    exUnicoFideicomiso.Parameters["Mes"].Value = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es")).ToUpper();
+                    exUnicoFideicomiso.Parameters["NumEscritura"].Value = " " + expedientes.Escritura.ToString() + " ";
+                    exUnicoFideicomiso.Parameters["Volumen"].Value = expedientes.Volumen.ToString();
+                    exUnicoFideicomiso.CreateDocument();
+                    reporte.Pages.AddRange(exUnicoFideicomiso.Pages);
+
+                }
+
 
                 reportePrinsipalView.OpenReport(reporte);
 
