@@ -61,7 +61,7 @@
                     <div class="card-header">
                         <h1 class="titles-header">Bienvenido</h1>
                         <h3>Bienvenido</h3>
-                        <h4>Sistema de Gestión Notarial v1.6</h4>
+                        <h4>Sistema de Gestión Notarial v1.8</h4>
                     </div>
                     <div class="card-body">
                         <form id="frmLogin" runat="server">
@@ -108,9 +108,7 @@
                         </form>
                     </div>
                     <div class="card-footer">
-                        <div class="textmin1 d-flex justify-content-center links">
-                            Notaria Pública Humantla Tlax.  
-                        </div>
+                 
 
                     </div>
                 </div>
@@ -118,7 +116,7 @@
         </div>
     </div>
     <div class="footer">
-        © 2025 Derechos Reservados | c : <a href="www.consultoria-it.com" target="_blank">Consultoria IT  |  55 4800 5547 Francisco I. Madero 3A Humantla, Tlax.</a>
+        © 2025 Derechos Reservados | <a href="www.consultoria-it.com" target="_blank">Consultoria IT  |  55 4800 5547 Francisco I. Madero 3A Humantla, Tlax,| Producto Orgullosamente Tlaxcalteca. </a>
     </div>
 </body>
 </html>
