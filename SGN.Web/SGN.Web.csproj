@@ -187,6 +187,8 @@
     <Content Include="imagenes\header\fondoHeaderBlack.png" />
     <Content Include="imagenes\header\fondoHeaderGPS.png" />
     <Content Include="imagenes\header\fondoHeaderGPSBborde.png" />
+    <Content Include="imagenes\header\logoTi.png" />
+    <Content Include="imagenes\header\logoTiSimple.png" />
     <Content Include="imagenes\Iconos\application-pdf-2.ico" />
     <Content Include="imagenes\Iconos\image-x-generic.ico" />
     <Content Include="imagenes\Iconos\text-x-generic.ico" />
