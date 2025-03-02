@@ -67,13 +67,10 @@
                         <form id="frmLogin" runat="server">
                             <uc1:cuInfoMsgbox runat="server" ID="cuInfoMsgbox1" OnRespuestaClick="cuInfoMsgbox1_RespuestaClicked" />
 
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <dx:ASPxTextBox runat="server" ID="txtUsername" Width="75%"
-                                    CssClass="form-control cajas" NullText="Username">
-                                    <FocusedStyle CssClass="AccountNameFocused" />
+                            <div class="input-group form-group" >
+                            
+                                <dx:ASPxTextBox runat="server" ID="txtUsername" Width="100%"  CssClass="form-control cajas" NullText="Usuario">
+                        
                                     <ValidationSettings ErrorDisplayMode="Text" Display="Dynamic" ErrorTextPosition="Bottom"
                                         SetFocusOnError="true" ErrorFrameStyle-CssClass="AccountNameError" ValidateOnLeave="false">
                                         <RegularExpression ErrorText="Usuario No válido" ValidationExpression=".+" />
@@ -85,13 +82,11 @@
                                 </dx:ASPxTextBox>
 
                             </div>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                <dx:ASPxTextBox ID="txtPassword" runat="server" Password="true" Width="75%"
-                                    CssClass="form-control cajas" NullText="Enter Password">
-                                    <FocusedStyle CssClass="AccountNameFocused" />
+                            <div class="input-group form-group" style="margin-top:15px" >
+                             
+                                <dx:ASPxTextBox ID="txtPassword" runat="server" Password="true" Width="100%"
+                                    CssClass="form-control cajas" NullText="Contreseña">
+                            
                                     <ValidationSettings ErrorDisplayMode="Text" Display="Dynamic" ErrorTextPosition="Bottom"
                                         SetFocusOnError="true" ErrorFrameStyle-CssClass="AccountNameError" ValidateOnLeave="false">
 
