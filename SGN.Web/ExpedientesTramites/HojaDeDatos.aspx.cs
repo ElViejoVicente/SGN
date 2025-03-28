@@ -592,8 +592,11 @@ namespace SGN.Web.ExpedientesTramites
 
                     foreach (var doc in hojaSeleccionada.DetalleDocumentosAfavorDe)
                     {
-                        lbDocumentacionAfavorDe.Items.FindByText(doc.TextoDocumento).Selected = true;
-
+                      
+                        if (lbDocumentacionAfavorDe.Items.FindByText(doc.TextoDocumento)!=null)
+                        {
+                            lbDocumentacionAfavorDe.Items.FindByText(doc.TextoDocumento).Selected = true;
+                        }
                         docAfavorDe[contador] = doc.IdDoc;
                         contador++;
                     }
@@ -607,7 +610,13 @@ namespace SGN.Web.ExpedientesTramites
                     contador = 0;
                     foreach (var doc in hojaSeleccionada.DetalleDocumentosOtorgSolicita)
                     {
-                        lbDocumentacionOtorgaSolicita.Items.FindByText(doc.TextoDocumento).Selected = true;
+                       // lbDocumentacionOtorgaSolicita.Items.FindByText(doc.TextoDocumento).Selected = true;
+
+                        if (lbDocumentacionOtorgaSolicita.Items.FindByText(doc.TextoDocumento)!= null)
+                        {
+                            lbDocumentacionOtorgaSolicita.Items.FindByText(doc.TextoDocumento).Selected = true;
+                        }
+
 
                         //docSelecOtorgaSol = docSelecOtorgaSol + doc.IdDoc.ToString() + ",";
                         docSelecOtorgaSol[contador] = doc.IdDoc;
