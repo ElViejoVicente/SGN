@@ -1096,6 +1096,10 @@ namespace SGN.Negocio.CRUD
                         values.AvaluoFiscal,
                         values.AvaluoComercial,
                         values.ActividadVulnerable,
+                        values.FirmaDeTraslado,
+                        values.FechaDeOtorgamiento,
+                        values.FechaDeAvaluo,
+                        values.FechaAutorizacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1158,7 +1162,11 @@ namespace SGN.Negocio.CRUD
                         values.AvaluoCatastral,
                         values.AvaluoFiscal,
                         values.AvaluoComercial,
-                        values.ActividadVulnerable
+                        values.ActividadVulnerable,
+                        values.FirmaDeTraslado,
+                        values.FechaDeOtorgamiento,
+                        values.FechaDeAvaluo,
+                        values.FechaAutorizacion
 
                     }, commandType: CommandType.StoredProcedure);
                 }

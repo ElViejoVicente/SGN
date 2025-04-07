@@ -338,6 +338,8 @@ namespace SGN.Web.ExpedientesTramites
             frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("PRfnValorOperacion").ClientVisible = false;
+
 
 
             frmExpedienteExistente.FindItemByFieldName("ContISR").ClientVisible = false;
@@ -345,9 +347,15 @@ namespace SGN.Web.ExpedientesTramites
             frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = false;
             frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ConFechaDeAvaluo").ClientVisible = false;
+
 
             frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = false;
 
+            frmExpedienteExistente.FindItemByFieldName("FIfnFirmaTraslado").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("FIfnFEchaOtorgamiento").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("EnfnFechaAutorizacion").ClientVisible = false;
+            frmExpedienteExistente.FindItemByFieldName("ConFechaDeAvaluo").ClientVisible = false;
 
 
             switch (nombrePerfil)
@@ -407,6 +415,13 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = true;
 
 
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFirmaTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFEchaOtorgamiento").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaAutorizacion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnValorOperacion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ConFechaDeAvaluo").ClientVisible = true;
+
+
 
                     break;
                 case "Dirección":
@@ -463,6 +478,14 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
 
                     frmExpedienteExistente.FindItemByFieldName("PldActVulnerable").ClientVisible = true;
+
+
+
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFirmaTraslado").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFEchaOtorgamiento").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("EnfnFechaAutorizacion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("PRfnValorOperacion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ConFechaDeAvaluo").ClientVisible = true;
 
 
                     break;
@@ -569,6 +592,12 @@ namespace SGN.Web.ExpedientesTramites
                     //frmExpedienteExistente.FindItemByFieldName("EnfnFechaRegresoRegistro").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("EnfnFechaSalida").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
+
+
+             
+                    frmExpedienteExistente.FindItemByFieldName("FIfnFEchaOtorgamiento").ClientVisible = true;
+
+
                     break;
 
                 case "Capturista":
@@ -631,6 +660,11 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("ContAvaluoCatastral").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("ContAvaluoFiscal").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("ContAvaluoComercial").ClientVisible = true;
+
+
+
+                    frmExpedienteExistente.FindItemByFieldName("PRfnValorOperacion").ClientVisible = true;
+                    frmExpedienteExistente.FindItemByFieldName("ConFechaDeAvaluo").ClientVisible = true;
 
 
                     break;
@@ -1259,7 +1293,7 @@ namespace SGN.Web.ExpedientesTramites
                     dtPRfnFechaPrevistaTermino.Date = RegistroExistente.FechaPrevistaTerminoProyectista;
                     dtPRfnFechaAvisoPreventivo.Date = RegistroExistente.FechaAvisoPreventivo;
                 
-                    txtPRfnValorOperacion.Value = RegistroExistente.ValorOperacion;
+                  
 
                     //Firmas
                     txtFIfnNotasFirmas.Text = RegistroExistente.NotasFirma;
@@ -1267,6 +1301,8 @@ namespace SGN.Web.ExpedientesTramites
                     txtFIfnNumVolumen.Value = RegistroExistente.Volumen;
                     chkFIfnAplicaTraslado.Checked = RegistroExistente.AplicaTraslado;
                     dtFIfnFechaRecepcionTerminoEscritura.Date = RegistroExistente.FechaRecepcionTerminoEscritura;
+                    dtFirmaTraslado.Value = RegistroExistente.FirmaDeTraslado;
+                    fnFechaOtorgamiento.Value = RegistroExistente.FechaDeOtorgamiento;
 
                     //Aviso definitivo
                     dtAdfnFechaElaboracion.Date = RegistroExistente.FechaElaboracionDefinitivo;
@@ -1288,6 +1324,7 @@ namespace SGN.Web.ExpedientesTramites
                     dtEnfnFechaRegresoRegistro.Date = RegistroExistente.FechaRegresoRegistro;
                     dtEnfnFechaSalida.Date = RegistroExistente.FechaSalida;
                     txtEnfnObservacionesSobreTramiteTerminado.Text = RegistroExistente.ObservacionesTramiteTerminado;
+                    dtFechaAutorizacion.Value = RegistroExistente.FechaAutorizacion;
 
                     //Contabilidad
 
@@ -1296,6 +1333,8 @@ namespace SGN.Web.ExpedientesTramites
                     txtContAvaluoCatastral.Value = RegistroExistente.AvaluoCatastral;
                     txtContAvaluoComercial.Value = RegistroExistente.AvaluoComercial;
                     txtContAvaluoFiscal.Value = RegistroExistente.AvaluoFiscal;
+                    txtPRfnValorOperacion.Value = RegistroExistente.ValorOperacion;
+                    fnFechaAvaluo.Value = RegistroExistente.FechaDeAvaluo;
 
 
 
@@ -1445,13 +1484,7 @@ namespace SGN.Web.ExpedientesTramites
                         logCambios.ValorImputado = dtPRfnFechaAvisoPreventivo.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
-                    if (RegistroExistente.ValorOperacion != (txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString())))
-                    {
-                        logCambios.NombreCampo =  "Proyecto-Valor Operacion" ;
-                        logCambios.ValorOriginal =  RegistroExistente.ValorOperacion.ToString();
-                        logCambios.ValorImputado = (txtPRfnValorOperacion.Value == null ? "" : txtPRfnValorOperacion.Value.ToString()) ;
-                        datosCrud.AltaBitacoraExpediente(logCambios);
-                    }
+            
 
 
 
@@ -1490,6 +1523,22 @@ namespace SGN.Web.ExpedientesTramites
                         logCambios.NombreCampo =  "Firmas-Recepcion para termino escritura" ;
                         logCambios.ValorOriginal =  RegistroExistente.FechaRecepcionTerminoEscritura.ToString();
                         logCambios.ValorImputado = dtFIfnFechaRecepcionTerminoEscritura.Date.ToString();
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
+                    if (RegistroExistente.FirmaDeTraslado != dtFirmaTraslado.Date)
+                    {
+                        logCambios.NombreCampo = "Firmas-Firma Traslado";
+                        logCambios.ValorOriginal = RegistroExistente.FirmaDeTraslado.ToString();
+                        logCambios.ValorImputado = dtFirmaTraslado.Date.ToString();
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
+                    if (RegistroExistente.FechaDeOtorgamiento != fnFechaOtorgamiento.Date)
+                    {
+                        logCambios.NombreCampo = "Firmas-Fecha Otorgamiento";
+                        logCambios.ValorOriginal = RegistroExistente.FechaDeOtorgamiento.ToString();
+                        logCambios.ValorImputado = fnFechaOtorgamiento.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
@@ -1614,6 +1663,14 @@ namespace SGN.Web.ExpedientesTramites
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
+                    if (RegistroExistente.FechaAutorizacion != dtFechaAutorizacion.Date)
+                    {
+                        logCambios.NombreCampo = "Entregas-Fecha de Autorizacion";
+                        logCambios.ValorOriginal = RegistroExistente.FechaAutorizacion.ToString();
+                        logCambios.ValorImputado = dtFechaAutorizacion.Date.ToString();
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
                     //Contabilidad 
 
                     if (RegistroExistente.ISR != (txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString())))
@@ -1652,8 +1709,24 @@ namespace SGN.Web.ExpedientesTramites
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
+                    if (RegistroExistente.ValorOperacion != (txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString())))
+                    {
+                        logCambios.NombreCampo = "Contabilidad-Valor Operacion";
+                        logCambios.ValorOriginal = RegistroExistente.ValorOperacion.ToString();
+                        logCambios.ValorImputado = (txtPRfnValorOperacion.Value == null ? "" : txtPRfnValorOperacion.Value.ToString());
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
+                    if (RegistroExistente.FechaDeAvaluo != fnFechaAvaluo.Date)
+                    {
+                        logCambios.NombreCampo = "Contabilidad-Fecha de Avaluo";
+                        logCambios.ValorOriginal = RegistroExistente.FechaDeAvaluo.ToString();
+                        logCambios.ValorImputado = fnFechaAvaluo.Date.ToString();
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
                     //PLD
-                 
+
 
                     if (RegistroExistente.ActividadVulnerable != txtPldActividadVulnerable.Text)
                     {
@@ -1692,7 +1765,7 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaAsignacionProyectista = dtPRfnFechaAsignacionProyectista.Date;
                     RegistroExistente.FechaPrevistaTerminoProyectista = dtPRfnFechaPrevistaTermino.Date;
                     RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;                 
-                    RegistroExistente.ValorOperacion= txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString());
+                   
 
                     //Firmas
                     RegistroExistente.NotasFirma = txtFIfnNotasFirmas.Text;
@@ -1700,6 +1773,9 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.Volumen = txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString());
                     RegistroExistente.AplicaTraslado = chkFIfnAplicaTraslado.Checked;
                     RegistroExistente.FechaRecepcionTerminoEscritura = dtFIfnFechaRecepcionTerminoEscritura.Date;
+                    RegistroExistente.FirmaDeTraslado= dtFirmaTraslado.Date;
+                    RegistroExistente.FechaDeOtorgamiento = fnFechaOtorgamiento.Date;
+
 
                     //Aviso definitivo
                     RegistroExistente.FechaElaboracionDefinitivo = dtAdfnFechaElaboracion.Date;
@@ -1721,6 +1797,7 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaRegresoRegistro = dtEnfnFechaRegresoRegistro.Date;
                     RegistroExistente.FechaSalida = dtEnfnFechaSalida.Date;
                     RegistroExistente.ObservacionesTramiteTerminado = txtEnfnObservacionesSobreTramiteTerminado.Text;
+                    RegistroExistente.FechaAutorizacion = dtFechaAutorizacion.Date;
 
                     //Contabilidad 
                     RegistroExistente.ISR = txtContISR .Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString());
@@ -1728,6 +1805,8 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.AvaluoCatastral = txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString());
                     RegistroExistente.AvaluoFiscal = txtContAvaluoFiscal.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoFiscal.Value.ToString());
                     RegistroExistente.AvaluoComercial = txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString());
+                    RegistroExistente.ValorOperacion = txtPRfnValorOperacion.Value == null ? 0 : Convert.ToDecimal(txtPRfnValorOperacion.Value.ToString());
+                    RegistroExistente.FechaDeAvaluo = fnFechaAvaluo.Date;
 
 
                     //PLD

@@ -46,9 +46,12 @@ namespace SGN.Negocio.Expediente
 		public int Volumen { get; set; } = 0;
         public bool AplicaTraslado { get; set; } = false;
         public DateTime FechaRecepcionTerminoEscritura { get; set; } = Constantes.FechaGlobal;
-		
-		//Aviso definitivo
-      	public DateTime FechaElaboracionDefinitivo { get; set; } = Constantes.FechaGlobal;
+        public DateTime FirmaDeTraslado { get; set; } = Constantes.FechaGlobal;
+        public DateTime FechaDeOtorgamiento { get; set; } = Constantes.FechaGlobal;
+
+
+        //Aviso definitivo
+        public DateTime FechaElaboracionDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaEnvioRPPDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public bool EsTramitePorSistemaDefinitivo { get; set; } = false;
 		public DateTime FechaPagoBoletaDefinitivo { get; set; } = Constantes.FechaGlobal;
@@ -67,6 +70,7 @@ namespace SGN.Negocio.Expediente
         public DateTime FechaRegresoRegistro { get; set; } = Constantes.FechaGlobal;
         public DateTime FechaSalida { get; set; } = Constantes.FechaGlobal;
         public string ObservacionesTramiteTerminado { get; set; } = "";
+        public DateTime FechaAutorizacion { get; set; } = Constantes.FechaGlobal;
 
 
         //contabilidad
@@ -79,6 +83,7 @@ namespace SGN.Negocio.Expediente
         public decimal AvaluoFiscal { get; set; } = 0;
 
         public decimal AvaluoComercial { get; set; } = 0;
+        public DateTime FechaDeAvaluo { get; set; } = Constantes.FechaGlobal;
 
         //PLD
         public string ActividadVulnerable { get; set; } = "";
