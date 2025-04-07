@@ -61,7 +61,7 @@
                     <div class="card-header">
                         <h1 class="titles-header">Bienvenido</h1>
                         <h3>Bienvenido</h3>
-                        <h4>Sistema de Gestión Notarial v1.8</h4>
+                        <h4>Sistema de Gestión Notarial v1.1.9</h4>
                     </div>
                     <div class="card-body">
                         <form id="frmLogin" runat="server">
