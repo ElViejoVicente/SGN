@@ -1303,6 +1303,128 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
+        #region Inventario
+
+        public Inventario ConsultaInventario(int IdInventario)
+        {
+            try
+            {
+
+                Inventario resultado = new Inventario();
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Inventario>
+                        (
+                        sql: "sp_CRUD_Inventario_Select", param: new
+                        {
+                            IdInventario
+                        },commandType: CommandType.StoredProcedure
+
+                        ).FirstOrDefault(); 
+                }
+                return resultado;
+
+
+            }
+            catch (Exception ex )
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Inventario_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+        public Boolean AltaInventario(Inventario values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Inventario_Insert", param: new
+                    {
+                        values.Modelo,
+                        values.Nombre ,
+                        values.Marca,
+                        values.FechaAlta,
+                        values.FechaBaja,
+                        values.ValorCompra,
+                        values.AreaOficina,
+                        values.Responsable,
+                        values.FechaAsignacion,
+                        values.Activo,
+                        values.Observaciones 
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Inventario_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarInventario(Inventario values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Inventario_Update", param: new
+                    {
+                        values.IdInventario,
+                        values.Modelo,
+                        values.Nombre,
+                        values.Marca,
+                        values.FechaAlta,
+                        values.FechaBaja,
+                        values.ValorCompra,
+                        values.AreaOficina,
+                        values.Responsable,
+                        values.FechaAsignacion,
+                        values.Activo,
+                        values.Observaciones
+
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Inventario_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarInventario(Inventario values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Inventario_Delete", param: new
+                    {
+                        values.IdInventario 
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Inventario_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+        #endregion
+
+
         #region BitacoraExpediente
 
 
@@ -1323,7 +1445,7 @@ namespace SGN.Negocio.CRUD
                         values.ValorOriginal,
                         values.ValorImputado,
                         values.NombreModulo
-                        
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }

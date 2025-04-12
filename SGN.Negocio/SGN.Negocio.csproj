@@ -81,6 +81,7 @@
     <Compile Include="Expediente\DatosExpedientes.cs" />
     <Compile Include="Expediente\ListaExpedientes.cs" />
     <Compile Include="Expediente\ListaHojaDatos.cs" />
+    <Compile Include="Inventarios\DatosInventario.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
     <Compile Include="ORM\Alertas.cs" />
     <Compile Include="ORM\AVDetectadas.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="ORM\DatosVariantes.cs" />
     <Compile Include="ORM\Expedientes.cs" />
     <Compile Include="ORM\HojaDatos.cs" />
+    <Compile Include="ORM\Inventario.cs" />
     <Compile Include="ORM\ListaNegraSAT.cs" />
     <Compile Include="ORM\PerfilesXestatus.cs" />
     <Compile Include="ORM\RecibosDePago.cs" />
