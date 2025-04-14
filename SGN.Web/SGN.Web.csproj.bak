@@ -51,53 +51,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.6.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
-    </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.6.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.CodeParser.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataAccess.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Drawing.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Docs.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v23.1.Export, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Charts.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataVisualization.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Spreadsheet.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxPivotGrid.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxScheduler.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.ASPxTreeList.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.Bootstrap.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.Resources.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpo.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v23.1.UI, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v23.1.Web, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.CodeParser.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Docs.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v23.2.Export, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataVisualization.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxScheduler.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Bootstrap.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.Web, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v23.1, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v23.1.Web, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v23.1.Web.WebForms, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v23.1.Core.Desktop, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v23.1.Core, Version=23.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
-    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v23.2.Web, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.2.Web.WebForms, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.2.Core.Desktop, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v23.2.Core, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
@@ -144,14 +136,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bitacora\HistoricoCambios.aspx" />
+    <Content Include="Catalogos\CatActos.aspx" />
+    <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
+    <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
+    <Content Include="Catalogos\CatVariantesXActo.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
     <Content Include="Content\AsignacionMatricula.js" />
     <Content Include="Content\AsignacionRet.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Expediciones.js" />
     <Content Include="Content\ExpedicionesAsig.js" />
     <Content Include="Content\generic\pageMinimalStyle.css" />
@@ -166,9 +175,14 @@
     <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
+    <Content Include="ExpedientesTramites\ArchivosExpedientes.aspx" />
     <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
+    <Content Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx" />
+    <Content Include="ExpedienteUnico\PanelExpedienteUnico.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="imagenes\ExUnico\DatosCompletos.png" />
+    <Content Include="imagenes\ExUnico\FaltanDatos.png" />
     <Content Include="imagenes\favicon.ico" />
     <Content Include="imagenes\header\ban-spain.png" />
     <Content Include="imagenes\header\ban-usa.png" />
@@ -176,11 +190,8 @@
     <Content Include="imagenes\header\fondoHeaderBlack.png" />
     <Content Include="imagenes\header\fondoHeaderGPS.png" />
     <Content Include="imagenes\header\fondoHeaderGPSBborde.png" />
-    <Content Include="imagenes\header\logo-sikno.png" />
-    <Content Include="imagenes\header\logo-siknoT.png" />
-    <Content Include="imagenes\header\LogoNotariaRecorte.png" />
-    <Content Include="imagenes\header\logoS.png" />
-    <Content Include="imagenes\header\Sikno.png" />
+    <Content Include="imagenes\header\logoTi.png" />
+    <Content Include="imagenes\header\logoTiSimple.png" />
     <Content Include="imagenes\Iconos\application-pdf-2.ico" />
     <Content Include="imagenes\Iconos\image-x-generic.ico" />
     <Content Include="imagenes\Iconos\text-x-generic.ico" />
@@ -229,12 +240,30 @@
     <Content Include="imagenes\menu\sociedades1.ico" />
     <Content Include="imagenes\menu\materialesLarge.ico" />
     <Content Include="imagenes\menu\materiales.ico" />
+    <Content Include="imagenes\Produccion\AD2.png" />
+    <Content Include="imagenes\Produccion\CO2.png" />
+    <Content Include="imagenes\Produccion\EN1.png" />
+    <Content Include="imagenes\Produccion\EN2.png" />
+    <Content Include="imagenes\Produccion\EN3.png" />
+    <Content Include="imagenes\Produccion\EN4.png" />
+    <Content Include="imagenes\Produccion\EN5.png" />
+    <Content Include="imagenes\Produccion\EN6.png" />
     <Content Include="imagenes\Produccion\enmarcha.png" />
     <Content Include="imagenes\Produccion\enmarchaSmall.png" />
+    <Content Include="imagenes\Produccion\EX1.png" />
+    <Content Include="imagenes\Produccion\EX2.png" />
+    <Content Include="imagenes\Produccion\FI2.png" />
+    <Content Include="imagenes\Produccion\FI3.png" />
     <Content Include="imagenes\Produccion\finalizado.png" />
     <Content Include="imagenes\Produccion\finalizadoSmall.png" />
     <Content Include="imagenes\Produccion\pendiente.png" />
     <Content Include="imagenes\Produccion\pendienteSmall.png" />
+    <Content Include="imagenes\Produccion\PR1.png" />
+    <Content Include="imagenes\Produccion\PR2.png" />
+    <Content Include="imagenes\Produccion\PR3.png" />
+    <Content Include="imagenes\Produccion\PR4.png" />
+    <Content Include="imagenes\Produccion\PR5.png" />
+    <Content Include="Inventarios\PanelInventario.aspx" />
     <Content Include="paginaConstruccion.aspx" />
     <Content Include="PlantillaMovil.aspx">
       <BrowseToURL>~/PlantillaMovil.aspx</BrowseToURL>
@@ -261,8 +290,6 @@
     <Content Include="Content\AsignacionExp.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ContentMovil.css" />
     <Content Include="Content\dialog-con-estilo.css" />
     <Content Include="Content\estilos.css" />
@@ -303,24 +330,42 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="fonts\DINEngschrift.ttf" />
     <Content Include="fonts\DINRegular.ttf" />
     <Content Include="fonts\fa-solid-900.woff" />
     <Content Include="fonts\fa-solid-900.woff2" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="PLD\ActiviadesVulnerables.aspx" />
+    <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
+    <Content Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx" />
+    <Content Include="Reportes\reporteExUnico.aspx" />
     <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="Scripts\bootstrap\css\bootstrap-reboot.css.map" />
@@ -342,6 +387,8 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -366,8 +413,6 @@
     <Content Include="menu.aspx" />
     <Content Include="PaginaVacia.html" />
     <Content Include="Scripts\active.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.min.css" />
@@ -525,6 +570,41 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Bitacora\HistoricoCambios.aspx.cs">
+      <DependentUpon>HistoricoCambios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bitacora\HistoricoCambios.aspx.designer.cs">
+      <DependentUpon>HistoricoCambios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatActos.aspx.cs">
+      <DependentUpon>CatActos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatActos.aspx.designer.cs">
+      <DependentUpon>CatActos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXVariante.aspx.cs">
+      <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXVariante.aspx.designer.cs">
+      <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.cs">
+      <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.designer.cs">
+      <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatVariantesXActo.aspx.cs">
+      <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatVariantesXActo.aspx.designer.cs">
+      <DependentUpon>CatVariantesXActo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion\modulos.aspx.cs">
       <DependentUpon>modulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -553,6 +633,13 @@
     <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
       <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
     </Compile>
+    <Compile Include="ExpedientesTramites\ArchivosExpedientes.aspx.cs">
+      <DependentUpon>ArchivosExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedientesTramites\ArchivosExpedientes.aspx.designer.cs">
+      <DependentUpon>ArchivosExpedientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ExpedientesTramites\HojaDeDatos.aspx.cs">
       <DependentUpon>HojaDeDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -566,6 +653,27 @@
     </Compile>
     <Compile Include="ExpedientesTramites\PanelExpedientes.aspx.designer.cs">
       <DependentUpon>PanelExpedientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx.cs">
+      <DependentUpon>ConsultaSimpleListaNegra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx.designer.cs">
+      <DependentUpon>ConsultaSimpleListaNegra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.cs">
+      <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.designer.cs">
+      <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inventarios\PanelInventario.aspx.cs">
+      <DependentUpon>PanelInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inventarios\PanelInventario.aspx.designer.cs">
+      <DependentUpon>PanelInventario.aspx</DependentUpon>
     </Compile>
     <Compile Include="paginaConstruccion.aspx.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>
@@ -664,11 +772,39 @@
     <Compile Include="menu.aspx.designer.cs">
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PLD\ActiviadesVulnerables.aspx.cs">
+      <DependentUpon>ActiviadesVulnerables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PLD\ActiviadesVulnerables.aspx.designer.cs">
+      <DependentUpon>ActiviadesVulnerables.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.designer.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegraSimple.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx.designer.cs">
+      <DependentUpon>reporteAcuseConsultaListaNegraSimple.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\reporteExUnico.aspx.cs">
+      <DependentUpon>reporteExUnico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteExUnico.aspx.designer.cs">
+      <DependentUpon>reporteExUnico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\reporteHojaDatos.aspx.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
@@ -677,11 +813,53 @@
     <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\XtraHojaDatosSinOtorga.cs">
+    <Compile Include="Reportes\XtraAcuseListaNegra.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\XtraHojaDatosSinOtorga.Designer.cs">
-      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    <Compile Include="Reportes\XtraAcuseListaNegra.Designer.cs">
+      <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoFideicomiso.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoFideicomiso.Designer.cs">
+      <DependentUpon>XtraExUnicoFideicomiso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoApoderado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoApoderado.Designer.cs">
+      <DependentUpon>XtraExUnicoApoderado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraAcuseConsultaListaNegra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraAcuseConsultaListaNegra.Designer.cs">
+      <DependentUpon>XtraAcuseConsultaListaNegra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoPersonaMoral.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoPersonaMoral.Designer.cs">
+      <DependentUpon>XtraExUnicoPersonaMoral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoPersonaFisica.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraExUnicoPersonaFisica.Designer.cs">
+      <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSoloFavorDe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSoloFavorDe.Designer.cs">
+      <DependentUpon>XtraHojaDatosSoloFavorDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSoloOtorga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraHojaDatosSoloOtorga.Designer.cs">
+      <DependentUpon>XtraHojaDatosSoloOtorga.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\XtraHojaDatos.cs">
       <SubType>Component</SubType>
@@ -729,8 +907,29 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\XtraHojaDatosSinOtorga.resx">
-      <DependentUpon>XtraHojaDatosSinOtorga.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\XtraAcuseListaNegra.resx">
+      <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoFideicomiso.resx">
+      <DependentUpon>XtraExUnicoFideicomiso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoApoderado.resx">
+      <DependentUpon>XtraExUnicoApoderado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraAcuseConsultaListaNegra.resx">
+      <DependentUpon>XtraAcuseConsultaListaNegra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoPersonaMoral.resx">
+      <DependentUpon>XtraExUnicoPersonaMoral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraExUnicoPersonaFisica.resx">
+      <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatosSoloFavorDe.resx">
+      <DependentUpon>XtraHojaDatosSoloFavorDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraHojaDatosSoloOtorga.resx">
+      <DependentUpon>XtraHojaDatosSoloOtorga.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraHojaDatos.resx">
       <DependentUpon>XtraHojaDatos.cs</DependentUpon>
