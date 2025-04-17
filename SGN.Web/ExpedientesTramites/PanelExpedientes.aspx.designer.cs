@@ -474,6 +474,15 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxDateEdit dtAdfnFechaTerminoTramite;
 
         /// <summary>
+        /// Control dtFechaAutorizacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dtFechaAutorizacion;
+
+        /// <summary>
         /// Control txtEnfnObservacionesEntrega.
         /// </summary>
         /// <remarks>
@@ -537,15 +546,6 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxMemo txtEnfnObservacionesSobreTramiteTerminado;
 
         /// <summary>
-        /// Control dtFechaAutorizacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit dtFechaAutorizacion;
-
-        /// <summary>
         /// Control txtPRfnValorOperacion.
         /// </summary>
         /// <remarks>
@@ -607,6 +607,15 @@ namespace SGN.Web.ExpedientesTramites
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxDateEdit fnFechaAvaluo;
+
+        /// <summary>
+        /// Control fnFechaPagoAvaluo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit fnFechaPagoAvaluo;
 
         /// <summary>
         /// Control txtPldActividadVulnerable.
