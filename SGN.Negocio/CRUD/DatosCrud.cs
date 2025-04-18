@@ -1321,15 +1321,15 @@ namespace SGN.Negocio.CRUD
                         sql: "sp_CRUD_Inventario_Select", param: new
                         {
                             IdInventario
-                        },commandType: CommandType.StoredProcedure
+                        }, commandType: CommandType.StoredProcedure
 
-                        ).FirstOrDefault(); 
+                        ).FirstOrDefault();
                 }
                 return resultado;
 
 
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
 
                 throw new Exception("Error al ejecutar sp_CRUD_Inventario_Select, detalle: \n" + ex.Message, ex);
@@ -1347,7 +1347,7 @@ namespace SGN.Negocio.CRUD
                     db.Execute(sql: "sp_CRUD_Inventario_Insert", param: new
                     {
                         values.Modelo,
-                        values.Nombre ,
+                        values.Nombre,
                         values.Marca,
                         values.FechaAlta,
                         values.FechaBaja,
@@ -1356,7 +1356,7 @@ namespace SGN.Negocio.CRUD
                         values.Responsable,
                         values.FechaAsignacion,
                         values.Activo,
-                        values.Observaciones 
+                        values.Observaciones
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1410,7 +1410,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Inventario_Delete", param: new
                     {
-                        values.IdInventario 
+                        values.IdInventario
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1427,6 +1427,188 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
+        #region Cat_TipoInventario
+
+        public List<Cat_TipoInventario> ConsultaCatTipoInventario()
+        {
+            try
+            {
+                List<Cat_TipoInventario> resultado = new List<Cat_TipoInventario>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_TipoInventario>(sql: "[sp_CRUD_Cat_TipoInventario_Select]").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar [sp_CRUD_Cat_TipoInventario_Select], detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaCatTipoInventario(Cat_TipoInventario values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_TipoInventario_Insert", param: new
+                    {
+                        values.idTipoInventario,
+                        values.TextoInventario,
+                        values.Activo,
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_TipoInventario_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean ActualizarCatTipoInventario(Cat_TipoInventario values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_TipoInventario_Update", param: new
+                    {
+                        values.idTipoInventario,
+                        values.TextoInventario,
+                        values.Activo,
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_TipoInventario_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarCatTipoInventario(Cat_TipoInventario values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_TipoInventario_Delete", param: new
+                    {
+                        values.idTipoInventario
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_TipoInventario_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        #endregion
+
+        #region Cat_AreaOficina
+
+        public List<Cat_AreaOficina> ConsultaCatAreaOficina ()
+        {
+            try
+            {
+                List<Cat_AreaOficina> resultado = new List<Cat_AreaOficina>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_AreaOficina>(sql: "[sp_CRUD_Cat_AreaOficina_Select]").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar [sp_CRUD_Cat_AreaOficina_Select], detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaCatAreaOfinica(Cat_AreaOficina values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_AreaOficina_Insert", param: new
+                    {
+                        values.IdArea,
+                        values.TextoAreaOficina,
+                        values.Activo,
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_AreaOficina_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+        public Boolean ActualizarCatAreaOficina(Cat_AreaOficina values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_AreaOficina_Update", param: new
+                    {
+                        values.IdArea,
+                        values.TextoAreaOficina,
+                        values.Activo,
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_AreaOficina_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarCatAreaOficina(Cat_AreaOficina values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_AreaOficina_Delete", param: new
+                    {
+                        values.IdArea
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_AreaOficina_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        #endregion
 
         #region BitacoraExpediente
 
@@ -1509,3 +1691,4 @@ namespace SGN.Negocio.CRUD
 
     }
 }
+
