@@ -3,6 +3,7 @@ using SGN.Negocio.ORM;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace SGN.Negocio.Inventarios
 {
-    public  class DatosInventario
+    public class DatosInventario
     {
 
         protected String cnn = ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
 
 
 
-        public List<Inventario> DameListaInventario()
+        public List<Inventario> DameListaInventario(DateTime fechaInventario, Boolean todasLasFechas, Boolean inventarioActivo)
         {
             try
             {
@@ -25,7 +26,13 @@ namespace SGN.Negocio.Inventarios
 
                 using (var db = new SqlConnection(cnn))
                 {
-                    resultado = db.Query<Inventario>(sql: "sp_DameListaInventario").ToList();
+                    resultado = db.Query<Inventario>(sql: "sp_DameListaInventario", param: new
+                    {
+                        fechaInventario,
+                        todasLasFechas,
+                        inventarioActivo
+                    }, commandType: CommandType.StoredProcedure
+                    ).ToList();
                 }
                 return resultado;
             }

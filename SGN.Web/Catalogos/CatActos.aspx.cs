@@ -177,9 +177,6 @@ namespace SGN.Web.Catalogos
 
         }
 
-
-        #endregion
-
         protected void gvActos_ToolbarItemClick(object source, DevExpress.Web.Data.ASPxGridViewToolbarItemClickEventArgs e)
         {
 
@@ -208,6 +205,11 @@ namespace SGN.Web.Catalogos
             }
 
         }
+
+
+        #endregion
+
+
 
 
     }

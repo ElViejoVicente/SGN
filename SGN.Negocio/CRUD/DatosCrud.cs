@@ -1346,6 +1346,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Inventario_Insert", param: new
                     {
+                        values.TipoInventario,
                         values.Modelo,
                         values.Nombre,
                         values.Marca,

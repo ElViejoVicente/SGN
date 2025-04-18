@@ -42,13 +42,13 @@ namespace SGN.Web.Inventarios
         protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel1;
 
         /// <summary>
-        /// Control Fecha.
+        /// Control dtFechaAlta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit Fecha;
+        protected global::DevExpress.Web.ASPxDateEdit dtFechaAlta;
 
         /// <summary>
         /// Control chkBusquedaCompleta.
@@ -60,13 +60,13 @@ namespace SGN.Web.Inventarios
         protected global::DevExpress.Web.ASPxCheckBox chkBusquedaCompleta;
 
         /// <summary>
-        /// Control Activo.
+        /// Control chkSoloInventarioActivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCheckBox Activo;
+        protected global::DevExpress.Web.ASPxCheckBox chkSoloInventarioActivo;
 
         /// <summary>
         /// Control btnActualizar.
@@ -78,15 +78,6 @@ namespace SGN.Web.Inventarios
         protected global::DevExpress.Web.ASPxButton btnActualizar;
 
         /// <summary>
-        /// Control gridActivos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView gridActivos;
-
-        /// <summary>
         /// Control gridExporter.
         /// </summary>
         /// <remarks>
@@ -94,5 +85,14 @@ namespace SGN.Web.Inventarios
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridViewExporter gridExporter;
+
+        /// <summary>
+        /// Control gvInventario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gvInventario;
     }
 }
