@@ -658,6 +658,12 @@
                                                         <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="4" Caption="Fecha Autorizacion" FieldName="FechaAutorizacion" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+
                                                     </Columns>
                                                 </dx:ASPxGridView>
                                             </dx:ContentControl>
@@ -701,9 +707,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="8" Caption="Fecha Autorizacion" FieldName="FechaAutorizacion" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
+
                                                     </Columns>
                                                 </dx:ASPxGridView>
                                             </dx:ContentControl>
@@ -757,7 +761,11 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataTextColumn FieldName="ValorOperacion" ReadOnly="True" Width="100px" Caption="Valor Operacion" VisibleIndex="5">
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Fecha pago Avaluo" FieldName="FechaPagoAvaluo" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataTextColumn FieldName="ValorOperacion" ReadOnly="True" Width="100px" Caption="Valor Operacion" VisibleIndex="7">
                                                             <PropertiesTextEdit>
                                                                 <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </PropertiesTextEdit>
@@ -1267,6 +1275,14 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Fecha de Autorizacion" ColSpan="1" FieldName="EnfnFechaAutorizacion">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaAutorizacion" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapEntrega">
@@ -1320,13 +1336,7 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Fecha de Autorizacion" ColSpan="1" FieldName="EnfnFechaAutorizacion">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaAutorizacion" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Contabilidad" ColCount="2" ColumnCount="2" ColSpan="3" ColumnSpan="3" Name="TapContabilidad">
@@ -1390,10 +1400,19 @@
                                         <dx:LayoutItem Caption="Fecha de Avaluo" ColSpan="1" FieldName="ConFechaDeAvaluo">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                      <dx:ASPxDateEdit runat="server" ID="fnFechaAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="fnFechaAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
+
+                                        <dx:LayoutItem Caption="Fecha pago Avaluo" ColSpan="1" FieldName="ConFechaPagoAvaluo">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="fnFechaPagoAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="PLD" ColCount="3" ColumnCount="3" ColSpan="2" ColumnSpan="2" Name="TapPLD">

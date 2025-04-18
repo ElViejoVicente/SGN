@@ -89,6 +89,10 @@ namespace SGN.Negocio.ORM
 
         public DateTime FechaDeAvaluo { get; set; } = Constantes.FechaGlobal;
 
+        public DateTime FechaPagoAvaluo { get; set; } = Constantes.FechaGlobal;
+
+        
+
 
     }
 }

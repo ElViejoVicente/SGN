@@ -84,6 +84,7 @@ namespace SGN.Negocio.Expediente
 
         public decimal AvaluoComercial { get; set; } = 0;
         public DateTime FechaDeAvaluo { get; set; } = Constantes.FechaGlobal;
+        public DateTime FechaPagoAvaluo { get; set; } = Constantes.FechaGlobal;
 
         //PLD
         public string ActividadVulnerable { get; set; } = "";

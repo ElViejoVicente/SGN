@@ -1099,7 +1099,8 @@ namespace SGN.Negocio.CRUD
                         values.FirmaDeTraslado,
                         values.FechaDeOtorgamiento,
                         values.FechaDeAvaluo,
-                        values.FechaAutorizacion
+                        values.FechaAutorizacion,
+                        values.FechaPagoAvaluo
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1166,7 +1167,9 @@ namespace SGN.Negocio.CRUD
                         values.FirmaDeTraslado,
                         values.FechaDeOtorgamiento,
                         values.FechaDeAvaluo,
-                        values.FechaAutorizacion
+                        values.FechaAutorizacion,
+                        values.FechaPagoAvaluo
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }
