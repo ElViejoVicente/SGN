@@ -139,6 +139,7 @@
     <Content Include="Bitacora\HistoricoCambios.aspx" />
     <Content Include="Catalogos\CatActos.aspx" />
     <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
+    <Content Include="Catalogos\CatInventario.html" />
     <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
     <Content Include="Catalogos\CatVariantesXActo.aspx" />
     <Content Include="Configuracion\modulos.aspx" />

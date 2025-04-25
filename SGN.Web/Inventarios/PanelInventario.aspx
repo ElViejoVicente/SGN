@@ -148,7 +148,7 @@
 
                 <SettingsPager Mode="ShowPager" PageSize="100" />
 
-                <SettingsDetail ExportMode="All" ShowDetailRow="false" />
+                <SettingsDetail ExportMode="All" ShowDetailRow="true" />
 
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
@@ -218,6 +218,7 @@
                     <dx:GridViewDataTextColumn FieldName="Modelo" Caption="Modelo" VisibleIndex="4" Width="100px" />
                     <dx:GridViewDataTextColumn FieldName="Marca" Caption="Marca" VisibleIndex="5"  Width="100px"/>
                     <dx:GridViewDataTextColumn FieldName="Nombre" Caption="Nombre del Articulo" VisibleIndex="6" Width=" 200px" />
+                    <dx:GridViewDataTextColumn FieldName="NumeroSerie" Caption="Serie del Articulo" VisibleIndex="6" Width=" 200px" />
 
                     <dx:GridViewDataDateColumn FieldName="FechaAlta" Caption="Fecha Alta" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="7" Width="90px" />
                     <dx:GridViewDataDateColumn FieldName="FechaBaja" Caption="Fecha Baja" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="8" Width="90px" />
