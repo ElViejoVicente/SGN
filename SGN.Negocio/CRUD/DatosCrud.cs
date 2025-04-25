@@ -1350,6 +1350,7 @@ namespace SGN.Negocio.CRUD
                         values.Modelo,
                         values.Nombre,
                         values.Marca,
+                        values.NumeroSerie,
                         values.FechaAlta,
                         values.FechaBaja,
                         values.ValorCompra,
@@ -1379,10 +1380,11 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Inventario_Update", param: new
                     {
-                        values.IdInventario,
+                        values.TipoInventario,
                         values.Modelo,
                         values.Nombre,
                         values.Marca,
+                        values.NumeroSerie,
                         values.FechaAlta,
                         values.FechaBaja,
                         values.ValorCompra,

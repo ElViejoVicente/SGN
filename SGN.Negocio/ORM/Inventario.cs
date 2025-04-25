@@ -14,6 +14,7 @@ namespace SGN.Negocio.ORM
         public string Modelo { get; set; } = "";
         public string Nombre { get; set; } = "";
         public string Marca { get; set; } = "";
+        public string NumeroSerie { get; set; } = "";
         public DateTime FechaAlta { get; set; }= Constantes.FechaGlobal;
         public DateTime FechaBaja { get; set; }=Constantes.FechaGlobal;
         public decimal ValorCompra { get; set; } = 0;

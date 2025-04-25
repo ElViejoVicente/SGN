@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,6 +15,7 @@ using SGN.Negocio.CRUD;
 using SGN.Negocio.Inventarios;
 using SGN.Negocio.Operativa;
 using SGN.Negocio.ORM;
+using SGN.Negocio.Reportes;
 using SGN.Web.Catalogos;
 using SGN.Web.Controles.Servidor;
 
@@ -27,7 +29,6 @@ namespace SGN.Web.Inventarios
 
         DatosCrud datosCrud = new DatosCrud();
         DatosInventario datosInventario = new DatosInventario();
-
 
         public List<Inventario> lsInventario
         {
@@ -97,8 +98,8 @@ namespace SGN.Web.Inventarios
         #region Funciones
         private void DameCatalogos()
         {
-            catAreasOficina = datosCrud.ConsultaCatAreaOficina().Where(x=> x.Activo==true).ToList();
-            catTipoInventario = datosCrud.ConsultaCatTipoInventario().Where(x => x.Activo == true).ToList(); 
+            catAreasOficina = datosCrud.ConsultaCatAreaOficina().Where(x => x.Activo == true).ToList();
+            catTipoInventario = datosCrud.ConsultaCatTipoInventario().Where(x => x.Activo == true).ToList();
 
         }
 
@@ -165,6 +166,11 @@ namespace SGN.Web.Inventarios
                 e.RowError += "El campo Marca  es obligatorio.\n ";
             }
 
+            if (e.NewValues["NumeroSerie"] == null)
+            {
+                e.RowError += "El campo Numero de series obligatorio.\n";
+            }
+
             //if (e.NewValues["Responsable"] == null)
             //{
             //    e.RowError += "El campo Responsable  es obligatorio.\n ";
@@ -199,7 +205,7 @@ namespace SGN.Web.Inventarios
 
 
 
-        
+
         protected void gvInventario_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             Inventario nuevoObjeto = new Inventario();
@@ -207,7 +213,7 @@ namespace SGN.Web.Inventarios
             DateTime fechaBaja = Constantes.FechaGlobal;
             DateTime fechaDeAsignacion = Constantes.FechaGlobal;
             String nombreResponsable = string.Empty;
-    
+
 
             if (e.NewValues["FechaBaja"] != null)
             {
@@ -231,6 +237,7 @@ namespace SGN.Web.Inventarios
             nuevoObjeto.Modelo = e.NewValues["Modelo"].ToString();
             nuevoObjeto.Nombre = e.NewValues["Nombre"].ToString();
             nuevoObjeto.Marca = e.NewValues["Marca"].ToString();
+            nuevoObjeto.NumeroSerie = e.NewValues["NumeroSerie"].ToString();
             nuevoObjeto.FechaAlta = Convert.ToDateTime(e.NewValues["FechaAlta"].ToString());
             nuevoObjeto.FechaBaja = fechaBaja;
             nuevoObjeto.ValorCompra = Convert.ToDecimal(e.NewValues["ValorCompra"].ToString());
@@ -254,7 +261,60 @@ namespace SGN.Web.Inventarios
 
         protected void gvInventario_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            DateTime fechaBaja = Constantes.FechaGlobal;
+            DateTime fechaDeAsignacion = Constantes.FechaGlobal;
+            String nombreResponsable = string.Empty;
 
+            Boolean existenCambios = false;
+
+
+            foreach (DictionaryEntry item in e.OldValues)
+            {
+                if (e.NewValues.Contains(item.Key))
+                {
+
+                    if (e.NewValues[item.Key] != null && !e.NewValues[item.Key].Equals(item.Value))
+                    {
+                        existenCambios = true;
+                        break;
+                    }
+                }
+            }
+
+            if (existenCambios == false)
+            {
+               gvInventario.CancelEdit();
+                e.Cancel = true;
+                return;
+            }
+
+            var miRegistro = lsInventario.Where(x => x.IdInventario == Convert.ToInt64(e.Keys[0])).First();
+
+
+            if (miRegistro != null)
+            {
+
+                miRegistro.IdInventario = 0;
+                miRegistro.TipoInventario = e.NewValues["TipoInventario"] == null ? "" : e.NewValues["TipoInventario"].ToString();
+                miRegistro.Modelo = e.NewValues["Modelo"].ToString();
+                miRegistro.Nombre = e.NewValues["Nombre"].ToString();
+                miRegistro.Marca = e.NewValues["Marca"].ToString();
+                miRegistro.FechaAlta = Convert.ToDateTime(e.NewValues["FechaAlta"].ToString());
+                miRegistro.FechaBaja = fechaBaja;
+                miRegistro.ValorCompra = Convert.ToDecimal(e.NewValues["ValorCompra"].ToString());
+                miRegistro.AreaOficina = e.NewValues["AreaOficina"] == null ? "" : e.NewValues["AreaOficina"].ToString();
+                miRegistro.Responsable = nombreResponsable;
+                miRegistro.FechaAsignacion = fechaDeAsignacion;
+                miRegistro.Activo = e.NewValues["Activo"] == null ? false : Convert.ToBoolean(e.NewValues["Activo"].ToString());
+                miRegistro.Observaciones = e.NewValues["Observaciones"].ToString();
+            }
+
+            datosCrud.ActualizarInventario(miRegistro);
+
+            e.Cancel = true;
+            gvInventario.CancelEdit();
+
+           
         }
 
 
