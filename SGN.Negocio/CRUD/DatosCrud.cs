@@ -1349,8 +1349,7 @@ namespace SGN.Negocio.CRUD
                         values.TipoInventario,
                         values.Modelo,
                         values.Nombre,
-                        values.Marca,
-                        values.NumeroSerie,
+                        values.Marca,           
                         values.FechaAlta,
                         values.FechaBaja,
                         values.ValorCompra,
@@ -1358,7 +1357,8 @@ namespace SGN.Negocio.CRUD
                         values.Responsable,
                         values.FechaAsignacion,
                         values.Activo,
-                        values.Observaciones
+                        values.Observaciones,
+                        values.NumeroSerie,
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1380,11 +1380,11 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Inventario_Update", param: new
                     {
+                        values.IdInventario,
                         values.TipoInventario,
                         values.Modelo,
                         values.Nombre,
-                        values.Marca,
-                        values.NumeroSerie,
+                        values.Marca,                        
                         values.FechaAlta,
                         values.FechaBaja,
                         values.ValorCompra,
@@ -1392,7 +1392,8 @@ namespace SGN.Negocio.CRUD
                         values.Responsable,
                         values.FechaAsignacion,
                         values.Activo,
-                        values.Observaciones
+                        values.Observaciones,
+                        values.NumeroSerie
 
 
                     }, commandType: CommandType.StoredProcedure);

@@ -236,8 +236,7 @@ namespace SGN.Web.Inventarios
             nuevoObjeto.TipoInventario = e.NewValues["TipoInventario"] == null ? "" : e.NewValues["TipoInventario"].ToString();
             nuevoObjeto.Modelo = e.NewValues["Modelo"].ToString();
             nuevoObjeto.Nombre = e.NewValues["Nombre"].ToString();
-            nuevoObjeto.Marca = e.NewValues["Marca"].ToString();
-            nuevoObjeto.NumeroSerie = e.NewValues["NumeroSerie"].ToString();
+            nuevoObjeto.Marca = e.NewValues["Marca"].ToString();        
             nuevoObjeto.FechaAlta = Convert.ToDateTime(e.NewValues["FechaAlta"].ToString());
             nuevoObjeto.FechaBaja = fechaBaja;
             nuevoObjeto.ValorCompra = Convert.ToDecimal(e.NewValues["ValorCompra"].ToString());
@@ -246,6 +245,7 @@ namespace SGN.Web.Inventarios
             nuevoObjeto.FechaAsignacion = fechaDeAsignacion;
             nuevoObjeto.Activo = e.NewValues["Activo"] == null ? false : Convert.ToBoolean(e.NewValues["Activo"].ToString());
             nuevoObjeto.Observaciones = e.NewValues["Observaciones"].ToString();
+            nuevoObjeto.NumeroSerie = e.NewValues["NumeroSerie"].ToString();
 
             lsInventario.Add(nuevoObjeto);
 
@@ -294,7 +294,7 @@ namespace SGN.Web.Inventarios
             if (miRegistro != null)
             {
 
-                miRegistro.IdInventario = 0;
+                //miRegistro.IdInventario = 0;
                 miRegistro.TipoInventario = e.NewValues["TipoInventario"] == null ? "" : e.NewValues["TipoInventario"].ToString();
                 miRegistro.Modelo = e.NewValues["Modelo"].ToString();
                 miRegistro.Nombre = e.NewValues["Nombre"].ToString();
@@ -307,6 +307,7 @@ namespace SGN.Web.Inventarios
                 miRegistro.FechaAsignacion = fechaDeAsignacion;
                 miRegistro.Activo = e.NewValues["Activo"] == null ? false : Convert.ToBoolean(e.NewValues["Activo"].ToString());
                 miRegistro.Observaciones = e.NewValues["Observaciones"].ToString();
+                miRegistro.NumeroSerie = e.NewValues["NumeroSerie"] == null ? "" : e.NewValues["NumeroSerie"].ToString();
             }
 
             datosCrud.ActualizarInventario(miRegistro);

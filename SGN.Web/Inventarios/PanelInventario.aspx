@@ -148,7 +148,7 @@
 
                 <SettingsPager Mode="ShowPager" PageSize="100" />
 
-                <SettingsDetail ExportMode="All" ShowDetailRow="true" />
+                <SettingsDetail ExportMode="All" ShowDetailRow="false" />
 
                 <SettingsExport EnableClientSideExportAPI="true" ExcelExportMode="DataAware" />
 
