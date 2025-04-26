@@ -1460,7 +1460,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_TipoInventario_Insert", param: new
                     {
-                        values.idTipoInventario,
+                        
                         values.TextoInventario,
                         values.Activo,
 
@@ -1543,7 +1543,7 @@ namespace SGN.Negocio.CRUD
             }
         }
 
-        public Boolean AltaCatAreaOfinica(Cat_AreaOficina values)
+        public Boolean AltaCatAreaOficina(Cat_AreaOficina values)
         {
             try
             {
@@ -1551,7 +1551,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_AreaOficina_Insert", param: new
                     {
-                        values.IdArea,
+                      
                         values.TextoAreaOficina,
                         values.Activo,
 
