@@ -168,7 +168,7 @@ namespace SGN.Web.Inventarios
 
             if (e.NewValues["NumeroSerie"] == null)
             {
-                e.RowError += "El campo Numero de series obligatorio.\n";
+                e.RowError += "El campo Numero de serie es obligatorio.\n";
             }
 
             //if (e.NewValues["Responsable"] == null)
@@ -184,7 +184,7 @@ namespace SGN.Web.Inventarios
 
             if (e.NewValues["FechaAlta"] == null)
             {
-                e.RowError += "El campo Observaciones  es obligatorio.\n ";
+                e.RowError += "El campo FechaAlta  es obligatorio.\n ";
             }
 
 
@@ -290,6 +290,20 @@ namespace SGN.Web.Inventarios
 
             var miRegistro = lsInventario.Where(x => x.IdInventario == Convert.ToInt64(e.Keys[0])).First();
 
+
+            if (e.NewValues["FechaBaja"] != null)
+            {
+                fechaBaja = Convert.ToDateTime(e.NewValues["FechaBaja"].ToString());
+            }
+
+            if (e.NewValues["FechaAsignacion"] != null)
+            {
+                fechaDeAsignacion = Convert.ToDateTime(e.NewValues["FechaAsignacion"].ToString());
+            }
+            if (e.NewValues["Responsable"] != null)
+            {
+                nombreResponsable = e.NewValues["Responsable"].ToString();
+            }
 
             if (miRegistro != null)
             {
