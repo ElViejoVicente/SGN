@@ -207,7 +207,7 @@
                         <EditFormSettings Visible="false" />
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="3" FieldName="TipoInventario" Name="TipoInventario" Caption="Tipo Inventario" Width="150px">
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="3" FieldName="TipoInventario" Name="TipoInventario" Caption="Tipo Inventario" Width="150px" GroupIndex="0">
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbTipoInventario" ClientInstanceName="cbTipoInventario" Value='<%# Bind("TipoInventario") %>' runat="server" AutoPostBack="false"
                                 OnInit="cbTipoInventario_Init" Width="100%">
@@ -216,7 +216,7 @@
                     </dx:GridViewDataComboBoxColumn>
 
                     <dx:GridViewDataTextColumn FieldName="Modelo" Caption="Modelo" VisibleIndex="4" Width="100px" />
-                    <dx:GridViewDataTextColumn FieldName="Marca" Caption="Marca" VisibleIndex="5"  Width="100px"/>
+                    <dx:GridViewDataTextColumn FieldName="Marca" Caption="Marca" VisibleIndex="5" Width="100px" />
                     <dx:GridViewDataTextColumn FieldName="Nombre" Caption="Nombre del Articulo" VisibleIndex="6" Width=" 200px" />
                     <dx:GridViewDataTextColumn FieldName="NumeroSerie" Caption="Serie del Articulo" VisibleIndex="6" Width=" 200px" />
 
@@ -224,8 +224,8 @@
                     <dx:GridViewDataDateColumn FieldName="FechaBaja" Caption="Fecha Baja" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="8" Width="90px" />
                     <dx:GridViewDataTextColumn FieldName="ValorCompra" Caption="Valor" PropertiesTextEdit-DisplayFormatString="c2" VisibleIndex="9" Width="90px" />
 
-                  
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="10" FieldName="AreaOficina" Name="AreaOficina" Caption="Área/Oficina"  Width="150px">
+
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="10" FieldName="AreaOficina" Name="AreaOficina" Caption="Área/Oficina" Width="150px">
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbAreaOficina" ClientInstanceName="cbAreaOficina" Value='<%# Bind("AreaOficina") %>' runat="server" AutoPostBack="false"
                                 OnInit="cbAreaOficina_Init" Width="100%">
@@ -235,7 +235,7 @@
 
 
 
-                    <dx:GridViewDataTextColumn FieldName="Responsable" Caption="Nombre del Responsable" VisibleIndex="11"  Width="200px" />
+                    <dx:GridViewDataTextColumn FieldName="Responsable" Caption="Nombre del Responsable" VisibleIndex="11" Width="200px" />
                     <dx:GridViewDataDateColumn FieldName="FechaAsignacion" Caption="Asignación" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="12" Width="100px" />
                     <dx:GridViewDataCheckColumn FieldName="Activo" Caption="Activo" VisibleIndex="13" Width="60px" />
                     <dx:GridViewDataTextColumn FieldName="Observaciones" Caption="Observaciones" VisibleIndex="14" Width="250px" />
