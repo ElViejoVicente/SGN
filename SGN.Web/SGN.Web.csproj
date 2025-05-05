@@ -140,6 +140,7 @@
     <Content Include="Catalogos\CatActos.aspx" />
     <Content Include="Catalogos\CatAreaOficina.aspx" />
     <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
+    <Content Include="Catalogos\CatEstadosRepublica.aspx" />
     <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
     <Content Include="Catalogos\CatTipoInventario.aspx" />
     <Content Include="Catalogos\CatVariantesXActo.aspx" />
@@ -599,6 +600,13 @@
     </Compile>
     <Compile Include="Catalogos\CatDocumentosXVariante.aspx.designer.cs">
       <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatEstadosRepublica.aspx.cs">
+      <DependentUpon>CatEstadosRepublica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatEstadosRepublica.aspx.designer.cs">
+      <DependentUpon>CatEstadosRepublica.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\CatRolParticipantesXActo.aspx.cs">
       <DependentUpon>CatRolParticipantesXActo.aspx</DependentUpon>

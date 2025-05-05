@@ -1692,7 +1692,254 @@ namespace SGN.Negocio.CRUD
             }
         }
         #endregion
+       
+        #region DatosAvisoNotarial
+
+        public DatosAvisoNotarial ConsultaDatosAvisoNotarial(string numExp)
+        {
+            try
+            {
+                DatosAvisoNotarial resultado = new DatosAvisoNotarial();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<DatosAvisoNotarial>
+                        (
+                        sql: "sp_CRUD_DatosAvisoNotarial_Select", param: new
+                        {
+                            IdExpediente = numExp
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosAvisoNotarial_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean AltaDatosAvisoNotarial(DatosAvisoNotarial values)
+        {
+            try
+            {
+
+                using (var db = new SqlConnection(cnn))
+                {
+
+
+                    db.Execute(sql: "sp_CRUD_DatosAvisoNotarial_Insert", param: new
+                    {
+                        values.IdExpediente,
+                        values.ClaveCatastral,
+                        values.InstitucionPracticoAvaluo,
+                        values.NaturalezaActoConceptoAdquisicion,
+                        values.DatCatastroSuperficie,
+                        values.DatCatastroVendida,
+                        values.DatCatastroRestante,
+                        values.DatCatastroConstruida,
+                        values.DatCatastroPlantas,
+                        values.DatDiNoRePuPartida,
+                        values.DatDiNoRePuFojas,
+                        values.DatDiNoRePuSeccion,
+                        values.DatDiNoRePuVolumen,
+                        values.DatDiNoRePuDistrito,
+                        values.DatDiNoRePuFolioRealElectronico,
+                        values.DatDiNoRePuSelloRegistral,
+                        values.UbicacionDescripcionDeLosBienes,
+                        values.MedidasColindancias,
+                        values.ObservacionesAclaraciones,
+                        values.ReciboPagoImpuestoPredial,
+                        values.FechaUltimoPago,  
+                        values.UbiPredioCalle,
+                        values.UbiPredioNumero,
+                        values.UbiPredioColonia,
+                        values.UbiPredioEstado,
+                        values.UbiPredioMunicipio,
+                        values.UbiPredioLocalidad,
+                        values.ObservacionesSolicitudPropiedad
+                        
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_DatosAvisoNotarial_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean ActualizarDatosAvisoNotarial(DatosAvisoNotarial values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosAvisoNotarial_Update", param: new
+                    {
+                        values.IdExpediente,
+                        values.ClaveCatastral,
+                        values.InstitucionPracticoAvaluo,
+                        values.NaturalezaActoConceptoAdquisicion,
+                        values.DatCatastroSuperficie,
+                        values.DatCatastroVendida,
+                        values.DatCatastroRestante,
+                        values.DatCatastroConstruida,
+                        values.DatCatastroPlantas,
+                        values.DatDiNoRePuPartida,
+                        values.DatDiNoRePuFojas,
+                        values.DatDiNoRePuSeccion,
+                        values.DatDiNoRePuVolumen,
+                        values.DatDiNoRePuDistrito,
+                        values.DatDiNoRePuFolioRealElectronico,
+                        values.DatDiNoRePuSelloRegistral,
+                        values.UbicacionDescripcionDeLosBienes,
+                        values.MedidasColindancias,
+                        values.ObservacionesAclaraciones,
+                        values.ReciboPagoImpuestoPredial,
+                        values.FechaUltimoPago,
+                        values.UbiPredioCalle,
+                        values.UbiPredioNumero,
+                        values.UbiPredioColonia,
+                        values.UbiPredioEstado,
+                        values.UbiPredioMunicipio,
+                        values.UbiPredioLocalidad,
+                        values.ObservacionesSolicitudPropiedad
+
+
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_DatosAvisoNotarial_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+        public Boolean EliminarDatosAvisoNotarial(DatosAvisoNotarial values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_DatosAvisoNotarial_Delete", param: new
+                    {
+                        values.IdExpediente
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_DatosAvisoNotarial_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
+
+        #endregion
+
+        #region Cat_EstadosRepublica
+
+        public List<Cat_EstadosRepublica> ConsultaCatEstadosRepublica()
+        {
+            try
+            {
+                List<Cat_EstadosRepublica> resultado = new List<Cat_EstadosRepublica>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_EstadosRepublica>(sql: "sp_CRUD_Cat_EstadosRepublica_Select").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_EstadosRepublica_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaCatEstadosRepublica(Cat_EstadosRepublica values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_EstadosRepublica_Insert", param: new
+                    {
+
+                        values.IdEstado,
+                        values.TextoEstado,
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_EstadosRepublica_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean ActualizarCatEstadosRepublica(Cat_EstadosRepublica values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_EstadosRepublica_Update", param: new
+                    {
+                        values.IdEstado,
+                        values.TextoEstado,
+                        
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_EstadosRepublica_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarCatEstadosRepublica(Cat_EstadosRepublica values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_EstadosRepublica_Delete", param: new
+                    {
+                        values.IdEstado
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_EstadosRepublica_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+        #endregion
 
     }
 }
+
 
