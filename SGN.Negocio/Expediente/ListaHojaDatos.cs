@@ -1,4 +1,5 @@
-﻿using SGN.Negocio.Operativa;
+﻿using Microsoft.Exchange.WebServices.Data;
+using SGN.Negocio.Operativa;
 using SGN.Negocio.ORM;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace SGN.Negocio.Expediente
         public string TextoVariante { get; set; } = "";
         public string Otorga { get; set; } = "";
         public string AfavorDe { get; set; } = "";
+        public Boolean ReqTraslado { get; set; } = false;
 
 
         public HojaDatos DetalleHojaDatos { get; set; } = null;
