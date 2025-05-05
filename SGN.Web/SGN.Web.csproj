@@ -873,6 +873,24 @@
     <Compile Include="Reportes\XtraExUnicoPersonaFisica.Designer.cs">
       <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\XtraTrasladosSoloOtorga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraTrasladosSoloOtorga.Designer.cs">
+      <DependentUpon>XtraTrasladosSoloOtorga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraTrasladosSoloFavorDe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraTrasladosSoloFavorDe.Designer.cs">
+      <DependentUpon>XtraTrasladosSoloFavorDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraTraslados.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraTraslados.Designer.cs">
+      <DependentUpon>XtraTraslados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\XtraHojaDatosSoloFavorDe.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -948,6 +966,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraExUnicoPersonaFisica.resx">
       <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraTrasladosSoloOtorga.resx">
+      <DependentUpon>XtraTrasladosSoloOtorga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraTrasladosSoloFavorDe.resx">
+      <DependentUpon>XtraTrasladosSoloFavorDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraTraslados.resx">
+      <DependentUpon>XtraTraslados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraHojaDatosSoloFavorDe.resx">
       <DependentUpon>XtraHojaDatosSoloFavorDe.cs</DependentUpon>

@@ -24,7 +24,7 @@ namespace SGN.Web.Reportes
                 string idHojaDatos = Server.UrlEncode(Request.QueryString["idHojaDatos"]);
                 string numReciboPagoIni = "";
 
-                //consutamos los datos de la hoja de datos para tenerlos en la memoria del reporte.
+                //consultamos los datos de la hoja de datos para tenerlos en la memoria del reporte.
                 ListaHojaDatos datosReporte = new ListaHojaDatos();
 
 
@@ -53,7 +53,7 @@ namespace SGN.Web.Reportes
                     datosReporte.TextoVariante, datosReporte.Otorga, datosReporte.AfavorDe, numReciboPagoIni);
 
 
-                // se rellenana los dt de los prticipantes
+                // se rellenan los dt de los prticipantes
                 foreach (var item in datosReporte.DetalleParticipantes.Where(x=> x.FiguraOperacion== "Otorga o Solicita").ToList())
                 {
                     origen.DatosParticipantesOtorga.AddDatosParticipantesOtorgaRow(item.IdRegistro, item.IdHojaDatos, item.FiguraOperacion, item.RolOperacion,
@@ -97,12 +97,29 @@ namespace SGN.Web.Reportes
                 XtraHojaDatosSoloOtorga hojaDatosSinAfavor = new XtraHojaDatosSoloOtorga();
                 XtraHojaDatosSoloFavorDe hojaDatosSinOtorga = new XtraHojaDatosSoloFavorDe();
 
+
+                XtraTraslados traslados = new XtraTraslados();
+                XtraTrasladosSoloOtorga trasladosSinAfavor = new XtraTrasladosSoloOtorga();
+                XtraTrasladosSoloFavorDe trasladosSinOtorga = new XtraTrasladosSoloFavorDe();
+
+
                 if (origen.DatosParticipantesAfavorDe.Count==0 & origen.DatosDocumentosAfavorDe.Count ==0)
                 {
                     hojaDatosSinAfavor.DataSource = origen;
                     hojaDatosSinAfavor.RequestParameters = false;
                     hojaDatosSinAfavor.CreateDocument();
+
                     report.Pages.AddRange(hojaDatosSinAfavor.Pages);
+
+                    if (datosReporte.ReqTraslado)
+                    {
+                        trasladosSinAfavor.DataSource = origen;
+                        trasladosSinAfavor.RequestParameters = false;
+                        trasladosSinAfavor.CreateDocument();
+
+                        report.Pages.AddRange(trasladosSinAfavor.Pages);
+                    }
+
 
                 }
                 else if (origen.DatosParticipantesOtorga.Count == 0 & origen.DatosDocumentosOtorga.Count==0  )
@@ -110,7 +127,23 @@ namespace SGN.Web.Reportes
                     hojaDatosSinOtorga.DataSource = origen;
                     hojaDatosSinOtorga.RequestParameters = false;
                     hojaDatosSinOtorga.CreateDocument();
+
                     report.Pages.AddRange(hojaDatosSinOtorga.Pages);
+
+                    if (datosReporte.ReqTraslado)
+                    {
+                        trasladosSinOtorga.DataSource = origen;
+                        trasladosSinOtorga.RequestParameters = false;
+                        trasladosSinOtorga.CreateDocument();
+
+                        report.Pages.AddRange(trasladosSinOtorga.Pages);
+
+                    }
+
+
+
+    
+          
                 }
                 else
                 {
@@ -118,7 +151,23 @@ namespace SGN.Web.Reportes
                     hojaDatos.DataSource = origen;
                     hojaDatos.RequestParameters = false;
                     hojaDatos.CreateDocument();
+
                     report.Pages.AddRange(hojaDatos.Pages);
+
+
+                    if (datosReporte.ReqTraslado)
+                    {
+
+                        traslados.DataSource = origen;
+                        traslados.RequestParameters = false;
+                        traslados.CreateDocument();
+                        report.Pages.AddRange(traslados.Pages);
+                    }
+
+
+
+
+
 
 
                 }
