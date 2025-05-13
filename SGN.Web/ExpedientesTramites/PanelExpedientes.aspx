@@ -64,6 +64,7 @@
                 ppCambiarEstatus.Hide();
                 ppArchivos.Hide();
                 ppAlertasExpediente.Hide();
+                ppEditarAvisoNotarial.Hide();
 
                 //2024-06-26 borramos seleccion
 
@@ -162,10 +163,25 @@
 
                     }
 
+                case "cmdAvisoNotarial":
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackEditarAvisoNotarial);
+
+                    }
+
+
 
             }
         }
 
+
+        function onCallbackEditarAvisoNotarial(value) {
+            console.log(value);
+            ppEditarAvisoNotarial.Show();
+            ppEditarAvisoNotarial.PerformCallback("CargarRegistros~" + value);
+
+        }
 
 
         function onCallbackEditarRegistroExp(value) {
@@ -450,6 +466,10 @@
                             <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
 
                             <dx:GridViewToolbarItem Text="Alertas" Image-IconID="status_warning_16x16" Name="cmdAlertasExpediente" />
+
+                            <dx:GridViewToolbarItem Text="Aviso Notarial" Image-IconID="functionlibrary_information_16x16" Name="cmdAvisoNotarial" />
+
+                            <dx:GridViewToolbarItem Text="Impresion Aviso Notarial" Image-IconID="actions_print_16x16devav" Name="cmdImpresionAvisoNotarial" />
 
 
                             <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
@@ -1469,6 +1489,73 @@
                 </ContentCollection>
 
             </dx:ASPxPopupControl>
+
+
+
+            <dx:ASPxPopupControl runat="server" ID="ppEditarAvisoNotarial" ClientInstanceName="ppEditarAvisoNotarial" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Datos Avisono Notarial"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarAvisoNotarial_WindowCallback" ScrollBars="Auto">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+                        <dx:ASPxFormLayout runat="server" ID="frmAvisoNotarial" ClientInstanceName="frmAvisoNotarial" ColCount="3" ColumnCount="3" Width="100%">
+
+                            <Items>
+                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                    <Items>
+                                        <dx:LayoutItem ColSpan="2" Caption="Numero" ColumnSpan="2" FieldName="ExfnNumeroExpediente">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxLabel runat="server" ID="lblAnExpediente" Font-Bold="true" Font-Size="Medium"></dx:ASPxLabel>
+
+
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
+                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="lblAnOtorga" AutoPostBack="false" Width="100%" ClientEnabled="false">
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxMemo runat="server" ID="lblAnSolicita" AutoPostBack="false" Width="100%" ClientEnabled="false">
+                                                    </dx:ASPxMemo>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
+           
+
+                                    </Items>
+                                </dx:LayoutGroup>
+         
+         
+                            </Items>
+                        </dx:ASPxFormLayout>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
+                <FooterContentTemplate>
+                    <div>
+                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="AceptarCambios" AutoPostBack="false" ClientInstanceName="btnAceptar">
+                            <ClientSideEvents Click="function(s, e) 
+                                                        {                                             
+                                                        ppEditarAvisoNotarial.PerformCallback('guardarCambios');                                                      
+                                                        }" />
+
+                        </dx:ASPxButton>
+                    </div>
+                </FooterContentTemplate>
+
+            </dx:ASPxPopupControl>
+
+
 
         </section>
 

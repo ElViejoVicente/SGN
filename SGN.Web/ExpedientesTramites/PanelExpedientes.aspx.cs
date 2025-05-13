@@ -2044,8 +2044,47 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+
         #endregion
 
-     
+        protected void ppEditarAvisoNotarial_WindowCallback(object source, PopupWindowCallbackArgs e)
+        {
+
+            if (e.Parameter.Contains("CargarRegistros"))
+            {
+                RegistroExistente = new Expedientes();
+
+
+                string numExpediente = e.Parameter.Split('~')[1].ToString();
+
+                RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
+
+
+                if (RegistroExistente != null)
+                {
+
+
+                    var miExpediente = lsExpediente.Where(x => x.IdExpediente == RegistroExistente.IdExpediente).FirstOrDefault();
+
+                    var tipoActo = catActos.Where(x => x.TextoActo == miExpediente.TextoActo).FirstOrDefault();
+
+
+
+                    //Expediente 
+                    lblAnExpediente .Text = RegistroExistente.IdExpediente;
+
+                    lblAnOtorga .Text = RegistroExistente.Otorga;
+                    lblAnSolicita .Text = RegistroExistente.AfavorDe;
+
+                   
+
+
+                }
+
+
+                return;
+            }
+
+        }
     }
 }
