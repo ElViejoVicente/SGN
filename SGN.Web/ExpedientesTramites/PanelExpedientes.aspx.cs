@@ -194,6 +194,29 @@ namespace SGN.Web.ExpedientesTramites
         }
 
 
+        public DatosAvisoNotarial RegistroAvisoNotarial
+        {
+            get
+
+            {
+                DatosAvisoNotarial ssRegistroAvisoNotarial = new DatosAvisoNotarial();
+                if (this.Session["ssRegistroAvisoNotarial"] != null)
+                {
+                    ssRegistroAvisoNotarial = (DatosAvisoNotarial)this.Session["ssRegistroAvisoNotarial"];
+                }
+
+                return ssRegistroAvisoNotarial;
+            }
+            set
+            {
+                this.Session["ssRegistroAvisoNotarial"] = value;
+            }
+
+        }
+
+
+
+
         public string rutaArchivosRoot
         {
             get
@@ -2053,33 +2076,106 @@ namespace SGN.Web.ExpedientesTramites
             if (e.Parameter.Contains("CargarRegistros"))
             {
                 RegistroExistente = new Expedientes();
+                RegistroAvisoNotarial = new DatosAvisoNotarial();
+
+                ListaHojaDatos DetalleExpediente = new ListaHojaDatos();
 
 
                 string numExpediente = e.Parameter.Split('~')[1].ToString();
 
                 RegistroExistente = datosCrud.ConsultaExpediente(numExp: numExpediente);
+                RegistroAvisoNotarial = datosCrud.ConsultaDatosAvisoNotarial(numExp: numExpediente);
+                DetalleExpediente = datosExpediente.DameHojaDatosDetalle(idHojaDatosdate: RegistroExistente.IdHojaDatos);
 
-
-                if (RegistroExistente != null)
+                if (RegistroExistente != null && DetalleExpediente != null)
                 {
 
 
-                    var miExpediente = lsExpediente.Where(x => x.IdExpediente == RegistroExistente.IdExpediente).FirstOrDefault();
-
-                    var tipoActo = catActos.Where(x => x.TextoActo == miExpediente.TextoActo).FirstOrDefault();
 
 
+                    // carga de registros de Expediente
 
-                    //Expediente 
-                    lblAnExpediente .Text = RegistroExistente.IdExpediente;
+                    txtAnFolioSistena.Text = RegistroExistente.IdExpediente;
+                    dtAnFechaOtorgamiento.Date = RegistroExistente.FechaDeOtorgamiento;
+                    txtAnEscritura.Text = RegistroExistente.Escritura.ToString();
+                    txtAnEscrituraVolumen.Text = RegistroExistente.Volumen.ToString();
+                    txtAnUbicacion.Text = RegistroExistente.UbicacionPredio.ToString();
+                    txtAnValorOperacionFiscal.Text = RegistroExistente.ValorOperacion.ToString();
 
-                    lblAnOtorga .Text = RegistroExistente.Otorga;
-                    lblAnSolicita .Text = RegistroExistente.AfavorDe;
 
-                   
+
+                    decimal maxAvaluo = Math.Max(Math.Max(RegistroExistente.AvaluoCatastral, RegistroExistente.AvaluoComercial), RegistroExistente.AvaluoFiscal);
+
+                    string nombreCompradores = "";
+                    string nombreVendedores = "";
+
+                    string domicilioCompradores = "";
+                    string domicilioVendedores = "";
+
+                    txtAnValorAvaluo.Text = maxAvaluo.ToString();
+                    dtAnFechaAvaluo.Date = RegistroExistente.FechaDeAvaluo;
+
+
+   
+
+
+                    foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x=> x.FiguraOperacion== "Otorga o Solicita" && x.RolOperacion.Trim()== "Vendedor (a)")) // vendedor
+                    {
+                        nombreVendedores = nombreVendedores + " "+item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + Environment.NewLine;
+
+                        domicilioVendedores = domicilioVendedores + " Domicilio: " + item.Domicilio + " Numero Exterior: " + item.NumeroExterior + " Numero Interior: " + item.NumeroInterior + " Colonia: " + item.Colonia + " Municipio: " + item.Municipio + " Estado: " + item.Estado + " Pais: " + item.PaisDomicilio+ Environment.NewLine;
+
+                    }
+                    nombreVendedores = nombreVendedores.Substring(0, nombreVendedores.Length - 1);
+                    domicilioVendedores = domicilioVendedores.Substring(0, domicilioVendedores.Length - 1);
+
+
+                    foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de" && x.RolOperacion.Trim()== "Comprador (a)")) // comprador
+                    {
+
+                        nombreCompradores = nombreCompradores + " " +item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + Environment.NewLine;
+
+                        domicilioCompradores = domicilioCompradores + " Domicilio: " + item.Domicilio + " Numero Exterior: " + item.NumeroExterior + " Numero Interior: " + item.NumeroInterior + " Colonia: " + item.Colonia + " Municipio: " + item.Municipio + " Estado: " + item.Estado + " Pais: " + item.PaisDomicilio + Environment.NewLine;
+
+                    }
+
+                    nombreCompradores = nombreCompradores.Substring(0, nombreCompradores.Length - 1);
+                    domicilioCompradores = domicilioCompradores.Substring(0, domicilioCompradores.Length - 1);
+
+
+
+                    txtAnContraVendedores.Text = nombreVendedores;
+                    txtAnContraCompradores.Text = nombreCompradores;
+
+                    txtAnDomiciVededores.Text = domicilioVendedores;
+                    txtAnDomiciCompradores.Text = domicilioCompradores;
+
+                    //txtAnDomiciVededores.Text=RegistroExistente
+
+
+
+
+
+
+                    //carga datos de Aviso
+
+                    txtAnClaveCatrastal.Text = RegistroAvisoNotarial.ClaveCatastral;
+                    txtAnInstitucionPracticoAvaluo.Text = RegistroAvisoNotarial.InstitucionPracticoAvaluo;
+                    txtAnNaturalezaActoAdquisicion.Text = RegistroAvisoNotarial.NaturalezaActoConceptoAdquisicion;
+                    txtAnSuperficie.Text = RegistroAvisoNotarial.DatCatastroSuperficie.ToString();
+                    txtAnVendida.Text = RegistroAvisoNotarial.DatCatastroVendida.ToString();
+                    txtAnRestante.Text = RegistroAvisoNotarial.DatCatastroRestante.ToString();
+                    txtAnConstruida.Text=RegistroAvisoNotarial.DatCatastroConstruida .ToString();
+                    txtAnPlantas.Text =RegistroAvisoNotarial.DatCatastroPlantas.ToString();
+
+
 
 
                 }
+
+
+
+                
 
 
                 return;

@@ -218,6 +218,7 @@ namespace SGN.Negocio.Expediente
         }
 
 
+
         public List<DatosVariantes> DameDatosVariantes(int idHojaDatos)
         {
             try

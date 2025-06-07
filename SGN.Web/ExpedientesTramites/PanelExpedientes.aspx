@@ -1466,7 +1466,7 @@
             </dx:ASPxPopupControl>
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false"
+            <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false" Modal="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Archivos del expediente"
                 PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppArchivos_WindowCallback">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
@@ -1492,7 +1492,7 @@
 
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppEditarAvisoNotarial" ClientInstanceName="ppEditarAvisoNotarial" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
+            <dx:ASPxPopupControl runat="server" ID="ppEditarAvisoNotarial" ClientInstanceName="ppEditarAvisoNotarial" Height="700px" Width="1100px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Datos Avisono Notarial"
                 PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarAvisoNotarial_WindowCallback" ScrollBars="Auto">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
@@ -1501,41 +1501,431 @@
                         <dx:ASPxFormLayout runat="server" ID="frmAvisoNotarial" ClientInstanceName="frmAvisoNotarial" ColCount="3" ColumnCount="3" Width="100%">
 
                             <Items>
-                                <dx:LayoutGroup Caption="Expediente" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2">
+                                <dx:LayoutGroup Caption="Aviso Notarial" ColSpan="3" ColumnSpan="3">
                                     <Items>
-                                        <dx:LayoutItem ColSpan="2" Caption="Numero" ColumnSpan="2" FieldName="ExfnNumeroExpediente">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxLabel runat="server" ID="lblAnExpediente" Font-Bold="true" Font-Size="Medium"></dx:ASPxLabel>
+                                        <dx:LayoutGroup Caption="Generales" ColCount="4" ColumnCount="4" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Oficio Numero" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxLabel runat="server" Font-Bold="True" ID="txtAnFolioSistena" Width="100%" ClientEnabled="false"></dx:ASPxLabel>
 
 
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fecha Otorgamiento" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
 
-                                        <dx:LayoutItem Caption="Otorga" FieldName="ExfnOtorga" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="lblAnOtorga" AutoPostBack="false" Width="100%" ClientEnabled="false">
-                                                    </dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="A favor de" FieldName="EXfnAfavorde" ColSpan="2" ColumnSpan="2">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxMemo runat="server" ID="lblAnSolicita" AutoPostBack="false" Width="100%" ClientEnabled="false">
-                                                    </dx:ASPxMemo>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+                                                            <dx:ASPxDateEdit runat="server" ID="dtAnFechaOtorgamiento" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ClientEnabled="false"></dx:ASPxDateEdit>
 
-           
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="N&#176; Escritura" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnEscritura" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Volumen" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnEscrituraVolumen" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Ubicacion" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbicacion" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Clave catastral" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnClaveCatrastal" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Datos de la operacion" ColCount="7" ColumnCount="7" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Valor Operacion/Fiscal" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorOperacionFiscal" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+                                                            <masksettings mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Valor del Avaluo" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorAvaluo" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+                                                                <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fecha del Avaluo" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                  
+                                                             <dx:ASPxDateEdit runat="server" ID="dtAnFechaAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ClientEnabled="false"></dx:ASPxDateEdit>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Institucion que practico el avaluo(Anexo)" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnInstitucionPracticoAvaluo" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Naturaleza del acto o concepto de la adquisici&#243;n" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnNaturalezaActoAdquisicion" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Datos catastrales" ColCount="5" ColumnCount="5" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Superficie" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnSuperficie" Width="100%"></dx:ASPxTextBox>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Vendida" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnVendida" Width="100%"></dx:ASPxTextBox>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Restante" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnRestante" Width="100%"></dx:ASPxTextBox>
+                                                                       <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Construida" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnConstruida" Width="100%"></dx:ASPxTextBox>
+                                                                       <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Plantas" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnPlantas" Width="100%"></dx:ASPxTextBox>
+                                                                       <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Contratantes" ColCount="2" ColumnCount="2" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Vendedor (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnContraVendedores" Width="100%" Height="100px" Native="true" ClientEnabled="false"  ></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Comprador (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnContraCompradores" Width="100%" Height="100px" Native="true" ClientEnabled="false"  ></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Domicilio de los contratantes" ColCount="2" ColumnCount="2" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Vendedor (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnDomiciVededores" Width="100%" Height="100px" Native="true"  ClientEnabled="false" ></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Comprador (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnDomiciCompradores" Width="100%" Height="100px" Native="true" ClientEnabled="false"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Datos de la direccion de notarias y registro publico del estado" ColCount="6" ColumnCount="6" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Partida" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnPartida" Width="100%" ></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fojas" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnFojas" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Seccion" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnSeccion" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Volumen" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnVolumen" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Distrito" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnDistrito" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Folio real electronico" ColSpan="3" ColumnSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnFolioRealElectronico" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Sello registral" ColSpan="3" ColumnSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnSelloRegistral" Width="100%"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Ubicacion / Descripcion de los bienes" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnUbicacionDescripcionBienes" Width="100%"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Medidas y colindancias" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnMedidasColindancias" Width="100%"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Observaciones y/o aclaraciones" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnObservacionesAclaraciones" Width="100%"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
 
                                     </Items>
                                 </dx:LayoutGroup>
-         
-         
+
+
+                                <dx:LayoutGroup Caption="Solicitud - Informe de propiedad territorial" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutGroup Caption="Generales" ColCount="2" ColumnCount="2" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Recibo pago impuesto predial (Folio)" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnReciboPagoImpuestaPre" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fecha de ultimo pago" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnFechaUltimoPago" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Ubicacion del predio" ColCount="3" ColumnCount="3" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Calle" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiCalle" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Numero" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiNumero" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Colonia" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiColonia" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Estado" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiEstado" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Municipio" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiMunicipio" Width="100%"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Localidad" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiLocalidad"></dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Observaciones" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo Width="100%" runat="server" ID="txtAnUbiObservaciones"></dx:ASPxMemo>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+
+                                    </Items>
+                                </dx:LayoutGroup>
                             </Items>
                         </dx:ASPxFormLayout>
                     </dx:PopupControlContentControl>
