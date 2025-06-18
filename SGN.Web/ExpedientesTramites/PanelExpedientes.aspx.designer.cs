@@ -933,13 +933,13 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxTextBox txtAnReciboPagoImpuestaPre;
 
         /// <summary>
-        /// Control txtAnFechaUltimoPago.
+        /// Control dtAnFechaUltimoPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtAnFechaUltimoPago;
+        protected global::DevExpress.Web.ASPxDateEdit dtAnFechaUltimoPago;
 
         /// <summary>
         /// Control txtAnUbiCalle.

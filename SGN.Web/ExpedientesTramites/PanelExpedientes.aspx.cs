@@ -382,7 +382,7 @@ namespace SGN.Web.ExpedientesTramites
             frmExpedienteExistente.FindItemByFieldName("ConFechaPagoAvaluo").ClientVisible = false;
 
 
-            
+
 
 
             switch (nombrePerfil)
@@ -406,7 +406,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-       
+
 
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -471,7 +471,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-                 
+
 
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -535,7 +535,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-   
+
 
                     //frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     //frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -622,7 +622,7 @@ namespace SGN.Web.ExpedientesTramites
                     //frmExpedienteExistente.FindItemByFieldName("EnfnObservacionesSobreTramiteTerminado").ClientVisible = true;
 
 
-             
+
                     frmExpedienteExistente.FindItemByFieldName("FIfnFEchaOtorgamiento").ClientVisible = true;
 
 
@@ -765,7 +765,7 @@ namespace SGN.Web.ExpedientesTramites
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAsignacionProyectista").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaPrevistaTermino").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("PRfnFechaAvisoPreventivo").ClientVisible = true;
-     
+
 
                     frmExpedienteExistente.FindItemByFieldName("FIfnNotasFirmas").ClientVisible = true;
                     frmExpedienteExistente.FindItemByFieldName("FIfnNumEscritura").ClientVisible = true;
@@ -808,7 +808,7 @@ namespace SGN.Web.ExpedientesTramites
 
         #region Eventos
 
-    
+
 
 
         protected void Page_Init(object sender, EventArgs e)
@@ -975,7 +975,7 @@ namespace SGN.Web.ExpedientesTramites
                         }
 
 
-                     
+
                     }
 
 
@@ -986,7 +986,7 @@ namespace SGN.Web.ExpedientesTramites
             }
 
 
-   
+
 
         }
 
@@ -1286,7 +1286,7 @@ namespace SGN.Web.ExpedientesTramites
                         frmExpedienteExistente.FindItemOrGroupByName("TapProyecto").ClientVisible = tipoActo.TapProyecto;
                         frmExpedienteExistente.FindItemOrGroupByName("TapFirmas").ClientVisible = tipoActo.TapFirmas;
                         frmExpedienteExistente.FindItemOrGroupByName("TapEscritura").ClientVisible = tipoActo.TapEscritura;
-                        frmExpedienteExistente.FindItemOrGroupByName("TapAD").ClientVisible = tipoActo.TapAD ;
+                        frmExpedienteExistente.FindItemOrGroupByName("TapAD").ClientVisible = tipoActo.TapAD;
                         frmExpedienteExistente.FindItemOrGroupByName("TapEntrega").ClientVisible = tipoActo.TapEntrega;
                         frmExpedienteExistente.FindItemOrGroupByName("TapContabilidad").ClientVisible = tipoActo.TapContabilidad;
                         frmExpedienteExistente.FindItemOrGroupByName("TapPLD").ClientVisible = tipoActo.TapPLD;
@@ -1320,8 +1320,8 @@ namespace SGN.Web.ExpedientesTramites
                     dtPRfnFechaAsignacionProyectista.Date = RegistroExistente.FechaAsignacionProyectista;
                     dtPRfnFechaPrevistaTermino.Date = RegistroExistente.FechaPrevistaTerminoProyectista;
                     dtPRfnFechaAvisoPreventivo.Date = RegistroExistente.FechaAvisoPreventivo;
-                
-                  
+
+
 
                     //Firmas
                     txtFIfnNotasFirmas.Text = RegistroExistente.NotasFirma;
@@ -1353,7 +1353,7 @@ namespace SGN.Web.ExpedientesTramites
                     dtEnfnFechaRegresoRegistro.Date = RegistroExistente.FechaRegresoRegistro;
                     dtEnfnFechaSalida.Date = RegistroExistente.FechaSalida;
                     txtEnfnObservacionesSobreTramiteTerminado.Text = RegistroExistente.ObservacionesTramiteTerminado;
-                  
+
 
                     //Contabilidad
 
@@ -1400,7 +1400,7 @@ namespace SGN.Web.ExpedientesTramites
 
                         var ValorExpediente = catEstatusFull.Where(x => x.IdEstatus == RegistroExistente.IdEstatus).First();
 
-                        if ( ValorExpediente.Orden >= ValorEnI.Orden )
+                        if (ValorExpediente.Orden >= ValorEnI.Orden)
                         {
                             // no se permite ser moficado por el perfil
                             ppEditarExpediente.JSProperties["cp_swMsg"] = "El expediente se encuentra en un estatus: " + ValorExpediente.TextoEstatus.Trim() +
@@ -1427,17 +1427,17 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.Otorga != txtExfnOtorga.Text)
                     {
-                        logCambios.NombreCampo =  "Ortorga" ;
-                        logCambios.ValorOriginal =  RegistroExistente.Otorga ;
-                        logCambios.ValorImputado = txtExfnOtorga.Text ;
+                        logCambios.NombreCampo = "Ortorga";
+                        logCambios.ValorOriginal = RegistroExistente.Otorga;
+                        logCambios.ValorImputado = txtExfnOtorga.Text;
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
                     if (RegistroExistente.UbicacionPredio != txtExfnUbicacionPredio.Text)
                     {
-                        logCambios.NombreCampo =  "Ubicacion de predio" ;
-                        logCambios.ValorOriginal =  RegistroExistente.UbicacionPredio ;
-                        logCambios.ValorImputado = txtExfnUbicacionPredio.Text ;
+                        logCambios.NombreCampo = "Ubicacion de predio";
+                        logCambios.ValorOriginal = RegistroExistente.UbicacionPredio;
+                        logCambios.ValorImputado = txtExfnUbicacionPredio.Text;
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
@@ -1446,36 +1446,36 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.FechaElaboracion != dtAPfnFechaElaboracion.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso preventivo-Elaboracion" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaElaboracion.ToString() ;
+                        logCambios.NombreCampo = "Aviso preventivo-Elaboracion";
+                        logCambios.ValorOriginal = RegistroExistente.FechaElaboracion.ToString();
                         logCambios.ValorImputado = dtAPfnFechaElaboracion.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaEnvioRPP != dtAPfnFechaEnvioAlRPP.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso preventivo-Envio al R.P.P." ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaEnvioRPP.ToString();
+                        logCambios.NombreCampo = "Aviso preventivo-Envio al R.P.P.";
+                        logCambios.ValorOriginal = RegistroExistente.FechaEnvioRPP.ToString();
                         logCambios.ValorImputado = dtAPfnFechaEnvioAlRPP.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.EsTramitePorSistema != chkAPfnEsTramitePorSistema.Checked)
                     {
-                        logCambios.NombreCampo =  "Aviso preventivo-Es tramite por sistema" ;
-                        logCambios.ValorOriginal =  RegistroExistente.EsTramitePorSistema.ToString();
+                        logCambios.NombreCampo = "Aviso preventivo-Es tramite por sistema";
+                        logCambios.ValorOriginal = RegistroExistente.EsTramitePorSistema.ToString();
                         logCambios.ValorImputado = chkAPfnEsTramitePorSistema.Checked.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaPagoBoleta != dtAPfnFechaPagoBoleta.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso preventivo-Pago de la boleta" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaPagoBoleta.ToString();
+                        logCambios.NombreCampo = "Aviso preventivo-Pago de la boleta";
+                        logCambios.ValorOriginal = RegistroExistente.FechaPagoBoleta.ToString();
                         logCambios.ValorImputado = dtAPfnFechaPagoBoleta.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaRecibidoRPP != dtAPfnFechaRecibido.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso preventivo-Recibido" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaRecibidoRPP.ToString();
+                        logCambios.NombreCampo = "Aviso preventivo-Recibido";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRecibidoRPP.ToString();
                         logCambios.ValorImputado = dtAPfnFechaRecibido.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
@@ -1486,34 +1486,34 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.NombreProyectista != (cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString()))
                     {
-                        logCambios.NombreCampo =  "Proyecto-Proyectista" ;
-                        logCambios.ValorOriginal =  RegistroExistente.NombreProyectista ;
-                        logCambios.ValorImputado = (cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString()) ;
+                        logCambios.NombreCampo = "Proyecto-Proyectista";
+                        logCambios.ValorOriginal = RegistroExistente.NombreProyectista;
+                        logCambios.ValorImputado = (cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString());
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaAsignacionProyectista != dtPRfnFechaAsignacionProyectista.Date)
                     {
-                        logCambios.NombreCampo =  "Proyecto-Asignacion" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaAsignacionProyectista.ToString();
+                        logCambios.NombreCampo = "Proyecto-Asignacion";
+                        logCambios.ValorOriginal = RegistroExistente.FechaAsignacionProyectista.ToString();
                         logCambios.ValorImputado = dtPRfnFechaAsignacionProyectista.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
 
                     }
                     if (RegistroExistente.FechaPrevistaTerminoProyectista != dtPRfnFechaPrevistaTermino.Date)
                     {
-                        logCambios.NombreCampo =  "Proyecto-Prevision de termino" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaPrevistaTerminoProyectista.ToString();
+                        logCambios.NombreCampo = "Proyecto-Prevision de termino";
+                        logCambios.ValorOriginal = RegistroExistente.FechaPrevistaTerminoProyectista.ToString();
                         logCambios.ValorImputado = dtPRfnFechaPrevistaTermino.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaAvisoPreventivo != dtPRfnFechaAvisoPreventivo.Date)
                     {
-                        logCambios.NombreCampo =  "Proyecto-Aviso Preventivo" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaAvisoPreventivo.ToString();
+                        logCambios.NombreCampo = "Proyecto-Aviso Preventivo";
+                        logCambios.ValorOriginal = RegistroExistente.FechaAvisoPreventivo.ToString();
                         logCambios.ValorImputado = dtPRfnFechaAvisoPreventivo.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
-            
+
 
 
 
@@ -1521,36 +1521,36 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.NotasFirma != txtFIfnNotasFirmas.Text)
                     {
-                        logCambios.NombreCampo =  "Firmas-Notas" ;
-                        logCambios.ValorOriginal =  RegistroExistente.NotasFirma ;
-                        logCambios.ValorImputado = txtFIfnNotasFirmas.Text ;
+                        logCambios.NombreCampo = "Firmas-Notas";
+                        logCambios.ValorOriginal = RegistroExistente.NotasFirma;
+                        logCambios.ValorImputado = txtFIfnNotasFirmas.Text;
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.Escritura != (txtFIfnNumEscritura.Value == null ? 0 : Convert.ToInt32(txtFIfnNumEscritura.Value.ToString())))
                     {
-                        logCambios.NombreCampo =  "Firmas-Num Escritura" ;
-                        logCambios.ValorOriginal =  RegistroExistente.Escritura.ToString() ;
+                        logCambios.NombreCampo = "Firmas-Num Escritura";
+                        logCambios.ValorOriginal = RegistroExistente.Escritura.ToString();
                         logCambios.ValorImputado = (txtFIfnNumEscritura.Value == null ? 0 : Convert.ToInt32(txtFIfnNumEscritura.Value.ToString())).ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.Volumen != (txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString())))
                     {
-                        logCambios.NombreCampo =  "Firmas-Num Volumen" ;
-                        logCambios.ValorOriginal =  RegistroExistente.Volumen.ToString();
+                        logCambios.NombreCampo = "Firmas-Num Volumen";
+                        logCambios.ValorOriginal = RegistroExistente.Volumen.ToString();
                         logCambios.ValorImputado = (txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString())).ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.AplicaTraslado != chkFIfnAplicaTraslado.Checked)
                     {
-                        logCambios.NombreCampo =  "Firmas-Aplica traslado" ;
-                        logCambios.ValorOriginal =  RegistroExistente.AplicaTraslado.ToString();
+                        logCambios.NombreCampo = "Firmas-Aplica traslado";
+                        logCambios.ValorOriginal = RegistroExistente.AplicaTraslado.ToString();
                         logCambios.ValorImputado = chkFIfnAplicaTraslado.Checked.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaRecepcionTerminoEscritura != dtFIfnFechaRecepcionTerminoEscritura.Date)
                     {
-                        logCambios.NombreCampo =  "Firmas-Recepcion para termino escritura" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaRecepcionTerminoEscritura.ToString();
+                        logCambios.NombreCampo = "Firmas-Recepcion para termino escritura";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRecepcionTerminoEscritura.ToString();
                         logCambios.ValorImputado = dtFIfnFechaRecepcionTerminoEscritura.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
@@ -1578,36 +1578,36 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.FechaElaboracionDefinitivo != dtAdfnFechaElaboracion.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso definitivo-Elaboracion" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaElaboracionDefinitivo.ToString();
+                        logCambios.NombreCampo = "Aviso definitivo-Elaboracion";
+                        logCambios.ValorOriginal = RegistroExistente.FechaElaboracionDefinitivo.ToString();
                         logCambios.ValorImputado = dtAdfnFechaElaboracion.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaEnvioRPPDefinitivo != dtAdfnFechaEnvioRPP.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso definitivo-Envio R.P.P." ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaEnvioRPPDefinitivo.ToString();
+                        logCambios.NombreCampo = "Aviso definitivo-Envio R.P.P.";
+                        logCambios.ValorOriginal = RegistroExistente.FechaEnvioRPPDefinitivo.ToString();
                         logCambios.ValorImputado = dtAdfnFechaEnvioRPP.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.EsTramitePorSistemaDefinitivo != chkAdfnEsTramitePorSistema.Checked)
                     {
-                        logCambios.NombreCampo =  "Aviso definitivo-Tramite por sistema" ;
-                        logCambios.ValorOriginal =  RegistroExistente.EsTramitePorSistemaDefinitivo.ToString();
+                        logCambios.NombreCampo = "Aviso definitivo-Tramite por sistema";
+                        logCambios.ValorOriginal = RegistroExistente.EsTramitePorSistemaDefinitivo.ToString();
                         logCambios.ValorImputado = chkAdfnEsTramitePorSistema.Checked.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaPagoBoletaDefinitivo != dtAdfnFechaPagoBoleta.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso definitivo-Pago boleta" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaPagoBoletaDefinitivo.ToString();
+                        logCambios.NombreCampo = "Aviso definitivo-Pago boleta";
+                        logCambios.ValorOriginal = RegistroExistente.FechaPagoBoletaDefinitivo.ToString();
                         logCambios.ValorImputado = dtAdfnFechaPagoBoleta.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaRecibidoRPPDefinitivo != dtAdfnFechaRecibido.Date)
                     {
-                        logCambios.NombreCampo =  "Aviso definitivo-Recibido" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaRecibidoRPPDefinitivo.ToString();
+                        logCambios.NombreCampo = "Aviso definitivo-Recibido";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRecibidoRPPDefinitivo.ToString();
                         logCambios.ValorImputado = dtAdfnFechaRecibido.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
@@ -1618,22 +1618,22 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.FechaRecibioTraslado != dtEsfnRecibioTraslado.Date)
                     {
-                        logCambios.NombreCampo =  "Escrituracion-Recibio traslado" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaRecibioTraslado.ToString();
+                        logCambios.NombreCampo = "Escrituracion-Recibio traslado";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRecibioTraslado.ToString();
                         logCambios.ValorImputado = dtEsfnRecibioTraslado.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaAsignacionMesa != dtAdfnFechaAsignacionMesa.Date)
                     {
-                        logCambios.NombreCampo =  "Escrituracion-Asignacion a mesa" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaAsignacionMesa.ToString();
+                        logCambios.NombreCampo = "Escrituracion-Asignacion a mesa";
+                        logCambios.ValorOriginal = RegistroExistente.FechaAsignacionMesa.ToString();
                         logCambios.ValorImputado = dtAdfnFechaAsignacionMesa.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaTerminoMesa != dtAdfnFechaTerminoTramite.Date)
                     {
-                        logCambios.NombreCampo =  "Escrituracion-Termino del tramite" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaTerminoMesa.ToString();
+                        logCambios.NombreCampo = "Escrituracion-Termino del tramite";
+                        logCambios.ValorOriginal = RegistroExistente.FechaTerminoMesa.ToString();
                         logCambios.ValorImputado = dtAdfnFechaTerminoTramite.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
@@ -1651,77 +1651,77 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.ObservacionesEngrega != txtEnfnObservacionesEntrega.Text)
                     {
-                        logCambios.NombreCampo =  "Entregas-Observaciones" ;
-                        logCambios.ValorOriginal =  RegistroExistente.ObservacionesEngrega ;
-                        logCambios.ValorImputado = txtEnfnObservacionesEntrega.Text  ;
+                        logCambios.NombreCampo = "Entregas-Observaciones";
+                        logCambios.ValorOriginal = RegistroExistente.ObservacionesEngrega;
+                        logCambios.ValorImputado = txtEnfnObservacionesEntrega.Text;
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.RegistroEntrega != chkEnfnRegistroSolicitado.Checked)
                     {
-                        logCambios.NombreCampo =  "Entregas-¿Requiere Registro?" ;
-                        logCambios.ValorOriginal =  RegistroExistente.RegistroEntrega.ToString();
+                        logCambios.NombreCampo = "Entregas-¿Requiere Registro?";
+                        logCambios.ValorOriginal = RegistroExistente.RegistroEntrega.ToString();
                         logCambios.ValorImputado = chkEnfnRegistroSolicitado.Checked.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaRegistroEntrega != dtEnfnFechaRegistro.Date)
                     {
-                        logCambios.NombreCampo =  "Entregas-Registro" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaRegistroEntrega.ToString();
+                        logCambios.NombreCampo = "Entregas-Registro";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRegistroEntrega.ToString();
                         logCambios.ValorImputado = dtEnfnFechaRegistro.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaBoletaPagoRegistroEntrega != dtEnfnFechaBoletaPago.Date)
                     {
-                        logCambios.NombreCampo =  "Entregas-Boleta Pago" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaBoletaPagoRegistroEntrega.ToString();
+                        logCambios.NombreCampo = "Entregas-Boleta Pago";
+                        logCambios.ValorOriginal = RegistroExistente.FechaBoletaPagoRegistroEntrega.ToString();
                         logCambios.ValorImputado = dtEnfnFechaBoletaPago.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaRegresoRegistro != dtEnfnFechaRegresoRegistro.Date)
                     {
-                        logCambios.NombreCampo =  "Entregas-Regreso registro" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaRegresoRegistro.ToString();
+                        logCambios.NombreCampo = "Entregas-Regreso registro";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRegresoRegistro.ToString();
                         logCambios.ValorImputado = dtEnfnFechaRegresoRegistro.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.FechaSalida != dtEnfnFechaSalida.Date)
                     {
-                        logCambios.NombreCampo =  "Entregas-Salida" ;
-                        logCambios.ValorOriginal =  RegistroExistente.FechaSalida.ToString();
+                        logCambios.NombreCampo = "Entregas-Salida";
+                        logCambios.ValorOriginal = RegistroExistente.FechaSalida.ToString();
                         logCambios.ValorImputado = dtEnfnFechaSalida.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.ObservacionesTramiteTerminado != txtEnfnObservacionesSobreTramiteTerminado.Text)
                     {
-                        logCambios.NombreCampo =  "Entregas-Observaciones del tramite terminado" ;
-                        logCambios.ValorOriginal =  RegistroExistente.ObservacionesTramiteTerminado ;
-                        logCambios.ValorImputado = txtEnfnObservacionesSobreTramiteTerminado.Text  ;
+                        logCambios.NombreCampo = "Entregas-Observaciones del tramite terminado";
+                        logCambios.ValorOriginal = RegistroExistente.ObservacionesTramiteTerminado;
+                        logCambios.ValorImputado = txtEnfnObservacionesSobreTramiteTerminado.Text;
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
-                   
+
 
                     //Contabilidad 
 
                     if (RegistroExistente.ISR != (txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString())))
                     {
-                        logCambios.NombreCampo =  "Contabilidad-I.S.R." ;
-                        logCambios.ValorOriginal =  RegistroExistente.ISR.ToString();
-                        logCambios.ValorImputado = (txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString())).ToString() ;
+                        logCambios.NombreCampo = "Contabilidad-I.S.R.";
+                        logCambios.ValorOriginal = RegistroExistente.ISR.ToString();
+                        logCambios.ValorImputado = (txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString())).ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.ISRcalculado != (txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString())))
                     {
-                        logCambios.NombreCampo =  "Contabilidad-I.S.R. Calculado" ;
-                        logCambios.ValorOriginal =  RegistroExistente.ISRcalculado.ToString();
-                        logCambios.ValorImputado = (txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString())).ToString() ;
+                        logCambios.NombreCampo = "Contabilidad-I.S.R. Calculado";
+                        logCambios.ValorOriginal = RegistroExistente.ISRcalculado.ToString();
+                        logCambios.ValorImputado = (txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString())).ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.AvaluoCatastral != (txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString())))
                     {
-                        logCambios.NombreCampo =  "Contabilidad-Avaluo Catastral" ;
-                        logCambios.ValorOriginal =  RegistroExistente.AvaluoCatastral.ToString();
-                        logCambios.ValorImputado = (txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString())).ToString() ;
+                        logCambios.NombreCampo = "Contabilidad-Avaluo Catastral";
+                        logCambios.ValorOriginal = RegistroExistente.AvaluoCatastral.ToString();
+                        logCambios.ValorImputado = (txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString())).ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
                     if (RegistroExistente.AvaluoFiscal != (txtContAvaluoFiscal.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoFiscal.Value.ToString())))
@@ -1733,9 +1733,9 @@ namespace SGN.Web.ExpedientesTramites
                     }
                     if (RegistroExistente.AvaluoComercial != (txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString())))
                     {
-                        logCambios.NombreCampo =  "Contabilidad-Avaluo Comercial" ;
-                        logCambios.ValorOriginal =  RegistroExistente.AvaluoComercial.ToString();
-                        logCambios.ValorImputado = (txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString())).ToString() ;
+                        logCambios.NombreCampo = "Contabilidad-Avaluo Comercial";
+                        logCambios.ValorOriginal = RegistroExistente.AvaluoComercial.ToString();
+                        logCambios.ValorImputado = (txtContAvaluoComercial.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoComercial.Value.ToString())).ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
@@ -1768,9 +1768,9 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (RegistroExistente.ActividadVulnerable != txtPldActividadVulnerable.Text)
                     {
-                        logCambios.NombreCampo =  "PLD-Actividad Vulnerable" ;
-                        logCambios.ValorOriginal =  RegistroExistente.ActividadVulnerable ;
-                        logCambios.ValorImputado = txtPldActividadVulnerable.Text  ;
+                        logCambios.NombreCampo = "PLD-Actividad Vulnerable";
+                        logCambios.ValorOriginal = RegistroExistente.ActividadVulnerable;
+                        logCambios.ValorImputado = txtPldActividadVulnerable.Text;
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
@@ -1802,8 +1802,8 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.NombreProyectista = cbPRfnProyectista.Value == null ? "" : cbPRfnProyectista.Value.ToString();
                     RegistroExistente.FechaAsignacionProyectista = dtPRfnFechaAsignacionProyectista.Date;
                     RegistroExistente.FechaPrevistaTerminoProyectista = dtPRfnFechaPrevistaTermino.Date;
-                    RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;                 
-                   
+                    RegistroExistente.FechaAvisoPreventivo = dtPRfnFechaAvisoPreventivo.Date;
+
 
                     //Firmas
                     RegistroExistente.NotasFirma = txtFIfnNotasFirmas.Text;
@@ -1811,7 +1811,7 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.Volumen = txtFIfnNumVolumen.Value == null ? 0 : Convert.ToInt32(txtFIfnNumVolumen.Value.ToString());
                     RegistroExistente.AplicaTraslado = chkFIfnAplicaTraslado.Checked;
                     RegistroExistente.FechaRecepcionTerminoEscritura = dtFIfnFechaRecepcionTerminoEscritura.Date;
-                    RegistroExistente.FirmaDeTraslado= dtFirmaTraslado.Date;
+                    RegistroExistente.FirmaDeTraslado = dtFirmaTraslado.Date;
                     RegistroExistente.FechaDeOtorgamiento = fnFechaOtorgamiento.Date;
 
 
@@ -1836,10 +1836,10 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaRegresoRegistro = dtEnfnFechaRegresoRegistro.Date;
                     RegistroExistente.FechaSalida = dtEnfnFechaSalida.Date;
                     RegistroExistente.ObservacionesTramiteTerminado = txtEnfnObservacionesSobreTramiteTerminado.Text;
-                 
+
 
                     //Contabilidad 
-                    RegistroExistente.ISR = txtContISR .Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString());
+                    RegistroExistente.ISR = txtContISR.Value == null ? 0 : Convert.ToDecimal(txtContISR.Value.ToString());
                     RegistroExistente.ISRcalculado = txtContISRCalculado.Value == null ? 0 : Convert.ToDecimal(txtContISRCalculado.Value.ToString());
                     RegistroExistente.AvaluoCatastral = txtContAvaluoCatastral.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoCatastral.Value.ToString());
                     RegistroExistente.AvaluoFiscal = txtContAvaluoFiscal.Value == null ? 0 : Convert.ToDecimal(txtContAvaluoFiscal.Value.ToString());
@@ -2116,24 +2116,24 @@ namespace SGN.Web.ExpedientesTramites
                     dtAnFechaAvaluo.Date = RegistroExistente.FechaDeAvaluo;
 
 
-   
 
 
-                    foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x=> x.FiguraOperacion== "Otorga o Solicita" && x.RolOperacion.Trim()== "Vendedor (a)")) // vendedor
+
+                    foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x => x.FiguraOperacion == "Otorga o Solicita" && x.RolOperacion.Trim() == "Vendedor (a)")) // vendedor
                     {
-                        nombreVendedores = nombreVendedores + " "+item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + Environment.NewLine;
+                        nombreVendedores = nombreVendedores + " " + item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + Environment.NewLine;
 
-                        domicilioVendedores = domicilioVendedores + " Domicilio: " + item.Domicilio + " Numero Exterior: " + item.NumeroExterior + " Numero Interior: " + item.NumeroInterior + " Colonia: " + item.Colonia + " Municipio: " + item.Municipio + " Estado: " + item.Estado + " Pais: " + item.PaisDomicilio+ Environment.NewLine;
+                        domicilioVendedores = domicilioVendedores + " Domicilio: " + item.Domicilio + " Numero Exterior: " + item.NumeroExterior + " Numero Interior: " + item.NumeroInterior + " Colonia: " + item.Colonia + " Municipio: " + item.Municipio + " Estado: " + item.Estado + " Pais: " + item.PaisDomicilio + Environment.NewLine;
 
                     }
                     nombreVendedores = nombreVendedores.Substring(0, nombreVendedores.Length - 1);
                     domicilioVendedores = domicilioVendedores.Substring(0, domicilioVendedores.Length - 1);
 
 
-                    foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de" && x.RolOperacion.Trim()== "Comprador (a)")) // comprador
+                    foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de" && x.RolOperacion.Trim() == "Comprador (a)")) // comprador
                     {
 
-                        nombreCompradores = nombreCompradores + " " +item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + Environment.NewLine;
+                        nombreCompradores = nombreCompradores + " " + item.Nombres + " " + item.ApellidoPaterno + " " + item.ApellidoMaterno + Environment.NewLine;
 
                         domicilioCompradores = domicilioCompradores + " Domicilio: " + item.Domicilio + " Numero Exterior: " + item.NumeroExterior + " Numero Interior: " + item.NumeroInterior + " Colonia: " + item.Colonia + " Municipio: " + item.Municipio + " Estado: " + item.Estado + " Pais: " + item.PaisDomicilio + Environment.NewLine;
 
@@ -2150,10 +2150,6 @@ namespace SGN.Web.ExpedientesTramites
                     txtAnDomiciVededores.Text = domicilioVendedores;
                     txtAnDomiciCompradores.Text = domicilioCompradores;
 
-                    //txtAnDomiciVededores.Text=RegistroExistente
-
-
-
 
 
 
@@ -2165,8 +2161,37 @@ namespace SGN.Web.ExpedientesTramites
                     txtAnSuperficie.Text = RegistroAvisoNotarial.DatCatastroSuperficie.ToString();
                     txtAnVendida.Text = RegistroAvisoNotarial.DatCatastroVendida.ToString();
                     txtAnRestante.Text = RegistroAvisoNotarial.DatCatastroRestante.ToString();
-                    txtAnConstruida.Text=RegistroAvisoNotarial.DatCatastroConstruida .ToString();
-                    txtAnPlantas.Text =RegistroAvisoNotarial.DatCatastroPlantas.ToString();
+                    txtAnConstruida.Text = RegistroAvisoNotarial.DatCatastroConstruida.ToString();
+                    txtAnPlantas.Text = RegistroAvisoNotarial.DatCatastroPlantas.ToString();
+
+
+                    txtAnPartida.Text = RegistroAvisoNotarial.DatDiNoRePuPartida;
+                    txtAnFojas.Text = RegistroAvisoNotarial.DatDiNoRePuFojas;
+                    txtAnSeccion.Text = RegistroAvisoNotarial.DatDiNoRePuSeccion;
+                    txtAnVolumen.Text = RegistroAvisoNotarial.DatDiNoRePuVolumen;
+                    txtAnDistrito.Text = RegistroAvisoNotarial.DatDiNoRePuDistrito;
+                    txtAnFolioRealElectronico.Text = RegistroAvisoNotarial.DatDiNoRePuFolioRealElectronico;
+                    txtAnSelloRegistral.Text = RegistroAvisoNotarial.DatDiNoRePuSelloRegistral;
+
+
+
+                    txtAnUbicacionDescripcionBienes.Text = RegistroAvisoNotarial.UbicacionDescripcionDeLosBienes;
+                    txtAnMedidasColindancias.Text = RegistroAvisoNotarial.MedidasColindancias;
+                    txtAnObservacionesAclaraciones.Text = RegistroAvisoNotarial.ObservacionesAclaraciones;
+
+
+
+                    txtAnReciboPagoImpuestaPre.Text = RegistroAvisoNotarial.ReciboPagoImpuestoPredial;
+                    dtAnFechaUltimoPago.Date = RegistroAvisoNotarial.FechaUltimoPago;
+
+
+                    txtAnUbiCalle.Text = RegistroAvisoNotarial.UbiPredioCalle;
+                    txtAnUbiNumero.Text = RegistroAvisoNotarial.UbiPredioNumero;
+                    txtAnUbiColonia.Text = RegistroAvisoNotarial.UbiPredioColonia;
+                    txtAnUbiEstado.Text = RegistroAvisoNotarial.UbiPredioEstado;
+                    txtAnUbiMunicipio.Text = RegistroAvisoNotarial.UbiPredioMunicipio;
+                    txtAnUbiLocalidad.Text = RegistroAvisoNotarial.UbiPredioLocalidad;
+                    txtAnUbiObservaciones.Text = RegistroAvisoNotarial.ObservacionesSolicitudPropiedad;
 
 
 
@@ -2175,10 +2200,18 @@ namespace SGN.Web.ExpedientesTramites
 
 
 
-                
+
 
 
                 return;
+            }
+
+            if (e.Parameter.Contains("guardarCambios"))
+            {
+
+
+
+
             }
 
         }
