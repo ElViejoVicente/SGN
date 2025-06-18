@@ -2072,11 +2072,12 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppEditarAvisoNotarial_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
+            RegistroAvisoNotarial = new DatosAvisoNotarial();
 
             if (e.Parameter.Contains("CargarRegistros"))
             {
                 RegistroExistente = new Expedientes();
-                RegistroAvisoNotarial = new DatosAvisoNotarial();
+            
 
                 ListaHojaDatos DetalleExpediente = new ListaHojaDatos();
 
@@ -2208,6 +2209,68 @@ namespace SGN.Web.ExpedientesTramites
 
             if (e.Parameter.Contains("guardarCambios"))
             {
+
+                if (RegistroAvisoNotarial != null)
+                {
+
+
+                    // Guardar Cambios
+
+                    RegistroAvisoNotarial.ClaveCatastral = txtAnClaveCatrastal.Text;
+                    RegistroAvisoNotarial.InstitucionPracticoAvaluo = txtAnInstitucionPracticoAvaluo.Text;
+                    RegistroAvisoNotarial.NaturalezaActoConceptoAdquisicion = txtAnNaturalezaActoAdquisicion.Text;
+                    RegistroAvisoNotarial.DatCatastroSuperficie = string.IsNullOrWhiteSpace(txtAnSuperficie.Text) ? 0 : Convert.ToDecimal(txtAnSuperficie.Text);
+                    RegistroAvisoNotarial.DatCatastroVendida = string.IsNullOrWhiteSpace(txtAnVendida.Text) ? 0 : Convert.ToDecimal(txtAnVendida.Text);
+                    RegistroAvisoNotarial.DatCatastroRestante = string.IsNullOrWhiteSpace(txtAnRestante.Text) ? 0 : Convert.ToDecimal(txtAnRestante.Text);
+                    RegistroAvisoNotarial.DatCatastroConstruida = string.IsNullOrWhiteSpace(txtAnConstruida.Text) ? 0 : Convert.ToDecimal(txtAnConstruida.Text);
+                    RegistroAvisoNotarial.DatCatastroPlantas = string.IsNullOrWhiteSpace(txtAnPlantas.Text) ? 0 : Convert.ToDecimal(txtAnPlantas.Text);
+
+                    RegistroAvisoNotarial.DatDiNoRePuPartida = txtAnPartida.Text;
+                    RegistroAvisoNotarial.DatDiNoRePuFojas = txtAnFojas.Text;
+                    RegistroAvisoNotarial.DatDiNoRePuSeccion = txtAnSeccion.Text;
+                    RegistroAvisoNotarial.DatDiNoRePuVolumen = txtAnVolumen.Text;
+                    RegistroAvisoNotarial.DatDiNoRePuDistrito = txtAnDistrito.Text;
+                    RegistroAvisoNotarial.DatDiNoRePuFolioRealElectronico = txtAnFolioRealElectronico.Text;
+                    RegistroAvisoNotarial.DatDiNoRePuSelloRegistral = txtAnSelloRegistral.Text;
+
+                    RegistroAvisoNotarial.UbicacionDescripcionDeLosBienes = txtAnUbicacionDescripcionBienes.Text;
+                    RegistroAvisoNotarial.MedidasColindancias = txtAnMedidasColindancias.Text;
+                    RegistroAvisoNotarial.ObservacionesAclaraciones = txtAnObservacionesAclaraciones.Text;
+
+                    RegistroAvisoNotarial.ReciboPagoImpuestoPredial = txtAnReciboPagoImpuestaPre.Text;
+                    RegistroAvisoNotarial.FechaUltimoPago = dtAnFechaUltimoPago.Date;
+
+                    RegistroAvisoNotarial.UbiPredioCalle = txtAnUbiCalle.Text;
+                    RegistroAvisoNotarial.UbiPredioNumero = txtAnUbiNumero.Text;
+                    RegistroAvisoNotarial.UbiPredioColonia = txtAnUbiColonia.Text;
+                    RegistroAvisoNotarial.UbiPredioEstado = txtAnUbiEstado.Text;
+                    RegistroAvisoNotarial.UbiPredioMunicipio = txtAnUbiMunicipio.Text;
+                    RegistroAvisoNotarial.UbiPredioLocalidad = txtAnUbiLocalidad.Text;
+                    RegistroAvisoNotarial.ObservacionesSolicitudPropiedad = txtAnUbiObservaciones.Text;
+
+
+
+
+                    if (datosCrud.ActualizarDatosAvisoNotarial(RegistroAvisoNotarial))
+                    {
+                        ppEditarExpediente.JSProperties["cp_swMsg"] = "Registro Modificado!";
+                        ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+
+                    }
+                    else
+                    {
+
+                        ppEditarExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el registro.";
+                        ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+
+                    }
+
+
+                    return;
+
+                }
+
+
 
 
 
