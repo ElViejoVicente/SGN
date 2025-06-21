@@ -2127,8 +2127,18 @@ namespace SGN.Web.ExpedientesTramites
                         domicilioVendedores = domicilioVendedores + " Domicilio: " + item.Domicilio + " Numero Exterior: " + item.NumeroExterior + " Numero Interior: " + item.NumeroInterior + " Colonia: " + item.Colonia + " Municipio: " + item.Municipio + " Estado: " + item.Estado + " Pais: " + item.PaisDomicilio + Environment.NewLine;
 
                     }
-                    nombreVendedores = nombreVendedores.Substring(0, nombreVendedores.Length - 1);
-                    domicilioVendedores = domicilioVendedores.Substring(0, domicilioVendedores.Length - 1);
+
+                    if (nombreVendedores.Length>0)
+                    {
+                        nombreVendedores = nombreVendedores.Substring(0, nombreVendedores.Length - 1);
+                    }
+
+                    if (domicilioVendedores.Length>0)
+                    {
+                        domicilioVendedores = domicilioVendedores.Substring(0, domicilioVendedores.Length - 1);
+                    }
+
+     
 
 
                     foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de" && x.RolOperacion.Trim() == "Comprador (a)")) // comprador
@@ -2140,8 +2150,17 @@ namespace SGN.Web.ExpedientesTramites
 
                     }
 
-                    nombreCompradores = nombreCompradores.Substring(0, nombreCompradores.Length - 1);
-                    domicilioCompradores = domicilioCompradores.Substring(0, domicilioCompradores.Length - 1);
+                    if (nombreCompradores.Length>0)
+                    {
+                        nombreCompradores = nombreCompradores.Substring(0, nombreCompradores.Length - 1);
+                    }
+                    if (domicilioCompradores.Length > 0)
+                    {
+
+                        domicilioCompradores = domicilioCompradores.Substring(0, domicilioCompradores.Length - 1);
+                    }
+
+
 
 
 
@@ -2214,7 +2233,8 @@ namespace SGN.Web.ExpedientesTramites
 
                 if (RegistroAvisoNotarial != null)
                 {
-               
+                    RegistroAvisoNotarial = new DatosAvisoNotarial();
+
                     RegistroAvisoNotarial.ClaveCatastral = txtAnClaveCatrastal.Text;
                     RegistroAvisoNotarial.InstitucionPracticoAvaluo = txtAnInstitucionPracticoAvaluo.Text;
                     RegistroAvisoNotarial.NaturalezaActoConceptoAdquisicion = txtAnNaturalezaActoAdquisicion.Text;
@@ -2274,7 +2294,12 @@ namespace SGN.Web.ExpedientesTramites
                 else
                 {
 
+
+
                     RegistroAvisoNotarial.IdExpediente = numExpediente;
+
+
+
 
 
                     if (datosCrud.AltaDatosAvisoNotarial(RegistroAvisoNotarial))

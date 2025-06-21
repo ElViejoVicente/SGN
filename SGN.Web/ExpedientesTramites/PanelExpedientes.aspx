@@ -162,6 +162,7 @@
 
 
                     }
+                    break;
 
                 case "cmdAvisoNotarial":
                     if (gvExpedientes.GetFocusedRowIndex() >= 0) {
@@ -169,6 +170,7 @@
                         gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackEditarAvisoNotarial);
 
                     }
+                    break;
 
 
                 case "cmdImpresionAvisoNotarial":
@@ -178,7 +180,7 @@
                     gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackReportAvisoNotarial);
 
                     }
-
+                    break;
 
             }
         }
