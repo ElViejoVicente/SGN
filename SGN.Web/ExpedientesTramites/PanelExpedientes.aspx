@@ -171,8 +171,21 @@
                     }
 
 
+                case "cmdImpresionAvisoNotarial":
+
+                if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+
+                    gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackReportAvisoNotarial);
+
+                    }
+
 
             }
+        }
+
+        function onCallbackReportAvisoNotarial(value) {
+
+            window.open("../Reportes/reporteAvisoNotarial?idExpediente=" + value, "_blank");
         }
 
 
