@@ -2072,12 +2072,12 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppEditarAvisoNotarial_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
-            RegistroAvisoNotarial = new DatosAvisoNotarial();
+          
 
             if (e.Parameter.Contains("CargarRegistros"))
             {
                 RegistroExistente = new Expedientes();
-            
+                RegistroAvisoNotarial = new DatosAvisoNotarial();
 
                 ListaHojaDatos DetalleExpediente = new ListaHojaDatos();
 
@@ -2210,12 +2210,11 @@ namespace SGN.Web.ExpedientesTramites
             if (e.Parameter.Contains("guardarCambios"))
             {
 
+                string numExpediente = e.Parameter.Split('~')[1].ToString();
+
                 if (RegistroAvisoNotarial != null)
                 {
-
-
-                    // Guardar Cambios
-
+               
                     RegistroAvisoNotarial.ClaveCatastral = txtAnClaveCatrastal.Text;
                     RegistroAvisoNotarial.InstitucionPracticoAvaluo = txtAnInstitucionPracticoAvaluo.Text;
                     RegistroAvisoNotarial.NaturalezaActoConceptoAdquisicion = txtAnNaturalezaActoAdquisicion.Text;
@@ -2249,26 +2248,58 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroAvisoNotarial.ObservacionesSolicitudPropiedad = txtAnUbiObservaciones.Text;
 
 
+                }
 
+                // Guardar Cambios
+
+
+                if (RegistroAvisoNotarial.IdExpediente!=null)
+                {
 
                     if (datosCrud.ActualizarDatosAvisoNotarial(RegistroAvisoNotarial))
                     {
-                        ppEditarExpediente.JSProperties["cp_swMsg"] = "Registro Modificado!";
-                        ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+                        ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Registro Modificado!";
+                        ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
 
                     }
                     else
                     {
 
-                        ppEditarExpediente.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el registro.";
-                        ppEditarExpediente.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+                        ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el registro.";
+                        ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
 
                     }
 
+                }
+                else
+                {
 
-                    return;
+                    RegistroAvisoNotarial.IdExpediente = numExpediente;
+
+
+                    if (datosCrud.AltaDatosAvisoNotarial(RegistroAvisoNotarial))
+                    {
+                        ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Registro Modificado!";
+                        ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
+
+                    }
+                    else
+                    {
+
+                        ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Ocurrio un error al intentar Modificar el registro.";
+                        ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.error;
+
+                    }
 
                 }
+
+
+
+
+
+                return;
+
+
 
 
 

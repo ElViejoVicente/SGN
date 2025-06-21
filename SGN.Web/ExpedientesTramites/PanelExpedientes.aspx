@@ -176,6 +176,14 @@
         }
 
 
+        function onCallbackgGuardarAvisoNotarial(value) {
+            console.log(value);
+          
+            ppEditarAvisoNotarial.PerformCallback("guardarCambios~" + value);
+
+        }
+
+
         function onCallbackEditarAvisoNotarial(value) {
             console.log(value);
             ppEditarAvisoNotarial.Show();
@@ -2049,7 +2057,7 @@
                                                         { 
                                                             if (ASPxClientEdit.ValidateGroup('requerido'))                                                                
                                                                 {
-                                                                ppEditarAvisoNotarial.PerformCallback('guardarCambios');                                                      
+                                                                gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackgGuardarAvisoNotarial);                                                                                                                      
                                                                 }
                                         
                                                         }" />
