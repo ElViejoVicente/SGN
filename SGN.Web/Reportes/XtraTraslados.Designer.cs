@@ -426,7 +426,7 @@
             this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel14.Font = new DevExpress.Drawing.DXFont("Arial", 14F);
             this.xrLabel14.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(6.357829E-05F, 0F);
             this.xrLabel14.Multiline = true;
             this.xrLabel14.Name = "xrLabel14";
             this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

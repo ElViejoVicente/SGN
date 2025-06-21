@@ -361,6 +361,7 @@
     <Content Include="PLD\ActiviadesVulnerables.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx" />
+    <Content Include="Reportes\reporteAvisoNotarial.aspx" />
     <Content Include="Reportes\reporteExUnico.aspx" />
     <Content Include="Reportes\reporteHojaDatos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -823,6 +824,13 @@
     <Compile Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx.designer.cs">
       <DependentUpon>reporteAcuseConsultaListaNegraSimple.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\reporteAvisoNotarial.aspx.cs">
+      <DependentUpon>reporteAvisoNotarial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteAvisoNotarial.aspx.designer.cs">
+      <DependentUpon>reporteAvisoNotarial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\reporteExUnico.aspx.cs">
       <DependentUpon>reporteExUnico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -842,6 +850,12 @@
     </Compile>
     <Compile Include="Reportes\XtraAcuseListaNegra.Designer.cs">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraAvisoNotarialHoja2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraAvisoNotarialHoja2.Designer.cs">
+      <DependentUpon>XtraAvisoNotarialHoja2.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\XtraExUnicoFideicomiso.cs">
       <SubType>Component</SubType>
@@ -872,6 +886,12 @@
     </Compile>
     <Compile Include="Reportes\XtraExUnicoPersonaFisica.Designer.cs">
       <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraAvisoNotarialHoja1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraAvisoNotarialHoja1.Designer.cs">
+      <DependentUpon>XtraAvisoNotarialHoja1.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\XtraTrasladosSoloOtorga.cs">
       <SubType>Component</SubType>
@@ -952,6 +972,9 @@
     <EmbeddedResource Include="Reportes\XtraAcuseListaNegra.resx">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraAvisoNotarialHoja2.resx">
+      <DependentUpon>XtraAvisoNotarialHoja2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraExUnicoFideicomiso.resx">
       <DependentUpon>XtraExUnicoFideicomiso.cs</DependentUpon>
     </EmbeddedResource>
@@ -966,6 +989,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraExUnicoPersonaFisica.resx">
       <DependentUpon>XtraExUnicoPersonaFisica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraAvisoNotarialHoja1.resx">
+      <DependentUpon>XtraAvisoNotarialHoja1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraTrasladosSoloOtorga.resx">
       <DependentUpon>XtraTrasladosSoloOtorga.cs</DependentUpon>
