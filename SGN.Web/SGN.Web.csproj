@@ -851,6 +851,12 @@
     <Compile Include="Reportes\XtraAcuseListaNegra.Designer.cs">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\XtraSolicitudPropiedadTerritorial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraSolicitudPropiedadTerritorial.Designer.cs">
+      <DependentUpon>XtraSolicitudPropiedadTerritorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\XtraAvisoNotarialHoja2.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -971,6 +977,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraAcuseListaNegra.resx">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraSolicitudPropiedadTerritorial.resx">
+      <DependentUpon>XtraSolicitudPropiedadTerritorial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraAvisoNotarialHoja2.resx">
       <DependentUpon>XtraAvisoNotarialHoja2.cs</DependentUpon>

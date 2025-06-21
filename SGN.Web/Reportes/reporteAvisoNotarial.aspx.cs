@@ -56,6 +56,7 @@ namespace SGN.Web.Reportes
 
                     XtraAvisoNotarialHoja1 exAvisoHoja1 = new XtraAvisoNotarialHoja1();
                     XtraAvisoNotarialHoja2 exAvisoHoja2 = new XtraAvisoNotarialHoja2();
+                    XtraSolicitudPropiedadTerritorial exSolPropedadTerritorial = new XtraSolicitudPropiedadTerritorial();
 
                     string nombreCompradores = "";
                     string nombreVendedores = "";
@@ -67,6 +68,7 @@ namespace SGN.Web.Reportes
 
                     exAvisoHoja1.RequestParameters = false;
                     exAvisoHoja2.RequestParameters = false;
+                    exSolPropedadTerritorial.RequestParameters = false;
 
                     exAvisoHoja1.Parameters["IdExpediente"].Value = RegistroExistente.IdExpediente;
                     exAvisoHoja1.Parameters["FechaDeOtorgamiento"].Value = RegistroExistente.FechaDeOtorgamiento.ToString("dd/MM/yyyy");
@@ -190,11 +192,55 @@ namespace SGN.Web.Reportes
 
 
 
+
+                    exSolPropedadTerritorial.Parameters["IdExpediente"].Value = RegistroExistente.IdExpediente;
+                    exSolPropedadTerritorial.Parameters["FechaDeOtorgamiento"].Value = RegistroExistente.FechaDeOtorgamiento.ToString("dd/MM/yyyy");
+                    exSolPropedadTerritorial.Parameters["Escritura"].Value = RegistroExistente.Escritura;
+                    exSolPropedadTerritorial.Parameters["Volumen"].Value = RegistroExistente.Volumen;
+                    exSolPropedadTerritorial.Parameters["UbicacionPredio"].Value = RegistroExistente.UbicacionPredio;
+                    exSolPropedadTerritorial.Parameters["ValorOperacion"].Value = RegistroExistente.ValorOperacion;
+                    exSolPropedadTerritorial.Parameters["ValorAvaluo"].Value = maxAvaluo;
+                    exSolPropedadTerritorial.Parameters["FechaDeAvaluo"].Value = RegistroExistente.FechaDeAvaluo.ToString("dd/MM/yyyy");
+                    exSolPropedadTerritorial.Parameters["ClaveCatastral"].Value = RegistroAvisoNotarial.ClaveCatastral;
+                    exSolPropedadTerritorial.Parameters["InstitucionPracticoAvaluo"].Value = RegistroAvisoNotarial.InstitucionPracticoAvaluo;
+                    exSolPropedadTerritorial.Parameters["NaturalezaActoConceptoAdquisicion"].Value = RegistroAvisoNotarial.NaturalezaActoConceptoAdquisicion;
+                    exSolPropedadTerritorial.Parameters["DatCatastroSuperficie"].Value = RegistroAvisoNotarial.DatCatastroSuperficie.ToString();
+                    exSolPropedadTerritorial.Parameters["DatCatastroVendida"].Value = RegistroAvisoNotarial.DatCatastroVendida.ToString();
+                    exSolPropedadTerritorial.Parameters["DatCatastroRestante"].Value = RegistroAvisoNotarial.DatCatastroRestante.ToString();
+                    exSolPropedadTerritorial.Parameters["DatCatastroConstruida"].Value = RegistroAvisoNotarial.DatCatastroConstruida.ToString();
+                    exSolPropedadTerritorial.Parameters["DatCatastroPlantas"].Value = RegistroAvisoNotarial.DatCatastroPlantas.ToString();
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuPartida"].Value = RegistroAvisoNotarial.DatDiNoRePuPartida;
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuFojas"].Value = RegistroAvisoNotarial.DatDiNoRePuFojas;
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuSeccion"].Value = RegistroAvisoNotarial.DatDiNoRePuSeccion;
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuVolumen"].Value = RegistroAvisoNotarial.DatDiNoRePuVolumen;
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuDistrito"].Value = RegistroAvisoNotarial.DatDiNoRePuDistrito;
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuFolioRealElectronico"].Value = RegistroAvisoNotarial.DatDiNoRePuFolioRealElectronico;
+                    exSolPropedadTerritorial.Parameters["DatDiNoRePuSelloRegistral"].Value = RegistroAvisoNotarial.DatDiNoRePuSelloRegistral;
+                    exSolPropedadTerritorial.Parameters["UbicacionDescripcionDeLosBienes"].Value = RegistroAvisoNotarial.UbicacionDescripcionDeLosBienes;
+                    exSolPropedadTerritorial.Parameters["MedidasColindancias"].Value = RegistroAvisoNotarial.MedidasColindancias;
+                    exSolPropedadTerritorial.Parameters["ObservacionesAclaraciones"].Value = RegistroAvisoNotarial.ObservacionesAclaraciones;
+                    exSolPropedadTerritorial.Parameters["ReciboPagoImpuestoPredial"].Value = RegistroAvisoNotarial.ReciboPagoImpuestoPredial;
+                    exSolPropedadTerritorial.Parameters["FechaUltimoPago"].Value = RegistroAvisoNotarial.FechaUltimoPago.ToString("dd/MM/yyyy");
+                    exSolPropedadTerritorial.Parameters["UbiPredioCalle"].Value = RegistroAvisoNotarial.UbiPredioCalle;
+                    exSolPropedadTerritorial.Parameters["UbiPredioNumero"].Value = RegistroAvisoNotarial.UbiPredioNumero;
+                    exSolPropedadTerritorial.Parameters["UbiPredioColonia"].Value = RegistroAvisoNotarial.UbiPredioColonia;
+                    exSolPropedadTerritorial.Parameters["UbiPredioEstado"].Value = RegistroAvisoNotarial.UbiPredioEstado;
+                    exSolPropedadTerritorial.Parameters["UbiPredioMunicipio"].Value = RegistroAvisoNotarial.UbiPredioMunicipio;
+                    exSolPropedadTerritorial.Parameters["UbiPredioLocalidad"].Value = RegistroAvisoNotarial.UbiPredioLocalidad;
+                    exSolPropedadTerritorial.Parameters["ObservacionesSolicitudPropiedad"].Value = RegistroAvisoNotarial.ObservacionesSolicitudPropiedad;
+                    exSolPropedadTerritorial.Parameters["AñoActual"].Value = DateTime.Now.Year.ToString(CultureInfo.InvariantCulture);
+                    exSolPropedadTerritorial.Parameters["FechaCompleta"].Value = "Huamantla Tlaxcala a " + DateTime.Now.Day.ToString() + " de " + DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-MX")) + " de " + DateTime.Now.Year.ToString(CultureInfo.InvariantCulture);
+
+
+                    exSolPropedadTerritorial.CreateDocument();
+
+
                     reporte.Pages.AddRange(exAvisoHoja1.Pages);
 
                     reporte.Pages.AddRange(exAvisoHoja2.Pages);
 
 
+                    reporte.Pages.AddRange(exSolPropedadTerritorial.Pages);
 
 
 
