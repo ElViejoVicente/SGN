@@ -193,6 +193,7 @@ namespace SGN.Web.Reportes
 
 
 
+                    exSolPropedadTerritorial.Parameters["nombreVendedores"].Value = nombreVendedores;
                     exSolPropedadTerritorial.Parameters["IdExpediente"].Value = RegistroExistente.IdExpediente;
                     exSolPropedadTerritorial.Parameters["FechaDeOtorgamiento"].Value = RegistroExistente.FechaDeOtorgamiento.ToString("dd/MM/yyyy");
                     exSolPropedadTerritorial.Parameters["Escritura"].Value = RegistroExistente.Escritura;
