@@ -1275,6 +1275,9 @@ namespace SGN.Web.ExpedientesTramites
 
                     //2025-02-03 se ocultan las secciones que no estan activas en el catalogo
 
+
+
+
                     var miExpediente = lsExpediente.Where(x => x.IdExpediente == RegistroExistente.IdExpediente).FirstOrDefault();
 
                     var tipoActo = catActos.Where(x => x.TextoActo == miExpediente.TextoActo).FirstOrDefault();
@@ -2088,7 +2091,20 @@ namespace SGN.Web.ExpedientesTramites
                 RegistroAvisoNotarial = datosCrud.ConsultaDatosAvisoNotarial(numExp: numExpediente);
                 DetalleExpediente = datosExpediente.DameHojaDatosDetalle(idHojaDatosdate: RegistroExistente.IdHojaDatos);
 
+                // validamos si es un acto valido para aviso
+
+
+                if (DetalleExpediente.ReqTraslado==false)
+                {
+
+                    ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Este Expediente/Acto no está habilitado para poder generar Avisos, contacta  a tu coordinador , para resolver tus dudas.";
+                    ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.warning ;
+                        return;
+                }
+
+
                 dtAnFechaUltimoPago.Date = DateTime.Now;
+                txtAnNaturalezaActoAdquisicion.Text = DetalleExpediente.TextoActo;
 
                 if (RegistroExistente != null && DetalleExpediente != null)
                 {
@@ -2105,6 +2121,7 @@ namespace SGN.Web.ExpedientesTramites
                     txtAnUbicacion.Text = RegistroExistente.UbicacionPredio.ToString();
                     txtAnValorOperacionFiscal.Text = RegistroExistente.ValorOperacion.ToString();
 
+                   
 
 
                     decimal maxAvaluo = Math.Max(Math.Max(RegistroExistente.AvaluoCatastral, RegistroExistente.AvaluoComercial), RegistroExistente.AvaluoFiscal);
