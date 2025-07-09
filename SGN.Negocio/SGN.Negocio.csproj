@@ -84,6 +84,8 @@
   <ItemGroup>
     <Compile Include="Bitacora\DatosBitacora.cs" />
     <Compile Include="CRUD\DatosCrud.cs" />
+    <Compile Include="Estadistica\DatosEstadisticas.cs" />
+    <Compile Include="Estadistica\ListaEstatusExpedientes.cs" />
     <Compile Include="ExpedienteUnico\DatosExpedienteUnico.cs" />
     <Compile Include="ExpedienteUnico\ListaConsultaBasicaLN.cs" />
     <Compile Include="ExpedienteUnico\ListaExpedienteUnico.cs" />
