@@ -12,10 +12,66 @@
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
     <script src="../Scripts/sweetalert.min.js"></script>
     <script src="../Scripts/mensajes.js"></script>
-
     <title>SGN</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #f4f6fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .Principal {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e3eafc 0%, #f9f9f9 100%);
+        }
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .chart-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.04);
+            padding: 32px 32px 24px 32px;
+            margin: 32px 0;
+            transition: box-shadow 0.2s;
+            max-width: 1300px;
+            width: 100%;
+        }
+        .chart-title {
+            font-size: 2.1rem;
+            font-weight: 600;
+            color: #2a3b4c;
+            margin-bottom: 18px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .powered-by {
+            text-align: right;
+            font-size: 1rem;
+            color: #7a869a;
+            margin-top: 12px;
+        }
+        @media (max-width: 1400px) {
+            .chart-card {
+                padding: 18px 8px 12px 8px;
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 900px) {
+            .chart-card {
+                padding: 8px 2px 8px 2px;
+            }
+            .chart-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
     <script type="text/javascript">
-        /* Script de funcionalidad de la pagina OJO solo colocar en este bloque */
         window.onresize = function (event) {
             AdjustSize();
         };
@@ -25,58 +81,51 @@
         }
 
         function AdjustSize() {
-
-            var height = document.getElementById('maindiv').clientHeight - 100;  // I have some buttons below the grid so needed -50
-
-            gvArea.SetHeight(height);
-
+            var height = document.getElementById('maindiv') ? document.getElementById('maindiv').clientHeight - 100 : 600;
+            if (window.gvArea) gvArea.SetHeight(height);
         }
-
-
-
-
-
     </script>
 </head>
 <body>
     <form id="form1" runat="server" class="Principal">
 
-        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-            <dx:WebChartControl ID="chartEstadisticaActosSimple" runat="server" Height="700px"
-                Width="1200px"
-                ClientInstanceName="chartEstadisticaActosSimple" OnCustomCallback="chartEstadisticaActosSimple_CustomCallback"
-                ToolTipEnabled="True" CrosshairEnabled="True" RenderFormat="Svg">
-                <Legend Name="Default Legend" AlignmentVertical="Top"  ></Legend>
-                <SeriesSerializable>
-                    <dx:Series Name="Estatus"    LegendTextPattern="{A} : {V:F1}">
-                        <Points>
-                        </Points>
-                        <ViewSerializable>
-                            <dx:PieSeriesView Rotation="90" RuntimeExploding="True">
-                                <Titles>
-                                    <dx:SeriesTitle Dock="Bottom" Text="Total: {TV:#} Expedientes" />
-                                </Titles>
-                            </dx:PieSeriesView>
-                        </ViewSerializable>
-                        <LabelSerializable>
-                            <dx:PieSeriesLabel Position="Radial"  ColumnIndent="50" TextColor="Black" BackColor="Transparent" Font="Tahoma, 8pt, style=Bold" TextPattern="{VP:P0}">
-                                <Border Visibility="False"></Border>
-                            </dx:PieSeriesLabel>
-                        </LabelSerializable>
-                    </dx:Series>
-                </SeriesSerializable>
-                <BorderOptions Visibility="False" />
-                <Titles>
-                    <dx:ChartTitle Text="Powered by Consultoria-It.Com"></dx:ChartTitle>
-
-                </Titles>
-                <DiagramSerializable>
-                    <dx:SimpleDiagram></dx:SimpleDiagram>
-                </DiagramSerializable>
-            </dx:WebChartControl>
+             <div class="center-container">
+            <div class="chart-title">Estadística de operacion, Año:  <%= DateTime.Now.Year %> Notaria 01 Huamantla Tlaxcala</div>
+            <div class="chart-card">
+                <dx:WebChartControl ID="chartEstadisticaActosSimple" runat="server" Height="600px"
+                    Width="1100px"
+                    ClientInstanceName="chartEstadisticaActosSimple" OnCustomCallback="chartEstadisticaActosSimple_CustomCallback"
+                    ToolTipEnabled="True" CrosshairEnabled="True" RenderFormat="Svg">
+                    <Legend Name="Default Legend" AlignmentVertical="Top" Font="Tahoma, 10pt, style=Bold" TextColor="DimGray"></Legend>
+                    <SeriesSerializable>
+                        <dx:Series Name="Estatus"  LegendTextPattern="{A} : {V:F1}">
+                            <Points>
+                            </Points>
+                            <ViewSerializable>
+                                <dx:PieSeriesView Rotation="90" RuntimeExploding="True">
+                                    <Titles>
+                                        <dx:SeriesTitle Dock="Bottom" Text="Total: {TV:#} Expedientes" Font="Tahoma, 16pt, style=Bold" />
+                                    </Titles>
+                                </dx:PieSeriesView>
+                            </ViewSerializable>
+                            <LabelSerializable>
+                                <dx:PieSeriesLabel Position="Radial"  ColumnIndent="50" TextColor="#2a3b4c" BackColor="Transparent" Font="Tahoma, 9pt, style=Bold" TextPattern="{VP:P0}">
+                                    <Border Visibility="False"></Border>
+                                </dx:PieSeriesLabel>
+                            </LabelSerializable>
+                        </dx:Series>
+                    </SeriesSerializable>
+                    <BorderOptions Visibility="False" />
+                    <Titles>
+                        <dx:ChartTitle Text="" />
+                    </Titles>
+                    <DiagramSerializable>
+                        <dx:SimpleDiagram></dx:SimpleDiagram>
+                    </DiagramSerializable>
+                </dx:WebChartControl>
+                <div class="powered-by">Powered by Consultoria-It</div>
+            </div>
         </div>
-
-
     </form>
-</body>
+    </body> 
 </html>

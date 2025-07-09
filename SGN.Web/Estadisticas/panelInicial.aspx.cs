@@ -1,4 +1,5 @@
-﻿using DevExpress.Utils;
+﻿using DevExpress.Spreadsheet.Charts;
+using DevExpress.Utils;
 using SGN.Negocio.Estadistica;
 using SGN.Web.Controles.Servidor;
 using System;
@@ -19,6 +20,9 @@ namespace SGN.Web.Estadisticas
             if (!Page.IsPostBack)
             {
                 CargaDatos();
+
+
+                
             }
 
         }
@@ -36,9 +40,11 @@ namespace SGN.Web.Estadisticas
 
             serie.Points.Clear();
 
-            chartEstadisticaActosSimple.Titles[0].Text = "Operativa actual, Notaria 01, Año: " + DateTime.Now.Year.ToString();
+            chartEstadisticaActosSimple.Titles[0].Text = "";
 
-            
+           
+
+
             List<ListaEstatusExpedientes> listaEstatusExpedientes = new List<ListaEstatusExpedientes>();
 
             listaEstatusExpedientes= datosEstadisticas.DameEstatusExpedientesXAnual(DateTime.Now.Year);
@@ -47,9 +53,12 @@ namespace SGN.Web.Estadisticas
             foreach (var item in listaEstatusExpedientes)
             {
                 var punto = new DevExpress.XtraCharts.SeriesPoint(item.NombreEstatus , item.NumExpedientes );
-                //punto.Tag = item.IdEstatus;
+                
                 serie.Points.Add(punto);
             }
+
+
+
 
             return;
 
