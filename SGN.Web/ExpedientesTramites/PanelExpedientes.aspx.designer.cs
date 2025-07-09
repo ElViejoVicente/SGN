@@ -897,6 +897,15 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxTextBox txtAnSelloRegistral;
 
         /// <summary>
+        /// Control frmAvisoNotarial_E1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton frmAvisoNotarial_E1;
+
+        /// <summary>
         /// Control txtAnUbicacionDescripcionBienes.
         /// </summary>
         /// <remarks>

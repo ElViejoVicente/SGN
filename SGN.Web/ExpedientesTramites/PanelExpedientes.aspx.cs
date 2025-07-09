@@ -2088,6 +2088,8 @@ namespace SGN.Web.ExpedientesTramites
                 RegistroAvisoNotarial = datosCrud.ConsultaDatosAvisoNotarial(numExp: numExpediente);
                 DetalleExpediente = datosExpediente.DameHojaDatosDetalle(idHojaDatosdate: RegistroExistente.IdHojaDatos);
 
+                dtAnFechaUltimoPago.Date = DateTime.Now;
+
                 if (RegistroExistente != null && DetalleExpediente != null)
                 {
 
@@ -2202,7 +2204,16 @@ namespace SGN.Web.ExpedientesTramites
 
 
                     txtAnReciboPagoImpuestaPre.Text = RegistroAvisoNotarial.ReciboPagoImpuestoPredial;
-                    dtAnFechaUltimoPago.Date = RegistroAvisoNotarial.FechaUltimoPago;
+
+                    // Validar si FechaUltimoPago es una fecha válida, si no, asignar la fecha de hoy
+                    if (RegistroAvisoNotarial.FechaUltimoPago == DateTime.MinValue || RegistroAvisoNotarial.FechaUltimoPago == default(DateTime))
+                    {
+                        dtAnFechaUltimoPago.Date = DateTime.Now;
+                    }
+                    else
+                    {
+                        dtAnFechaUltimoPago.Date = RegistroAvisoNotarial.FechaUltimoPago;
+                    }
 
 
                     txtAnUbiCalle.Text = RegistroAvisoNotarial.UbiPredioCalle;
@@ -2273,7 +2284,7 @@ namespace SGN.Web.ExpedientesTramites
                 // Guardar Cambios
 
 
-                if (RegistroAvisoNotarial.IdExpediente!=null)
+                if (RegistroAvisoNotarial.IdExpediente!="")
                 {
 
                     if (datosCrud.ActualizarDatosAvisoNotarial(RegistroAvisoNotarial))
@@ -2304,7 +2315,7 @@ namespace SGN.Web.ExpedientesTramites
 
                     if (datosCrud.AltaDatosAvisoNotarial(RegistroAvisoNotarial))
                     {
-                        ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Registro Modificado!";
+                        ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Datos del Aviso actualizados..!";
                         ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.success;
 
                     }

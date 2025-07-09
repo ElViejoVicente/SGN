@@ -266,6 +266,7 @@
     <Content Include="imagenes\Produccion\PR3.png" />
     <Content Include="imagenes\Produccion\PR4.png" />
     <Content Include="imagenes\Produccion\PR5.png" />
+    <Content Include="imagenes\Produccion\segob.png" />
     <Content Include="Inventarios\PanelInventario.aspx" />
     <Content Include="paginaConstruccion.aspx" />
     <Content Include="PlantillaMovil.aspx">

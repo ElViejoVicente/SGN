@@ -175,9 +175,9 @@
 
                 case "cmdImpresionAvisoNotarial":
 
-                if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
 
-                    gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackReportAvisoNotarial);
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackReportAvisoNotarial);
 
                     }
                     break;
@@ -193,7 +193,7 @@
 
         function onCallbackgGuardarAvisoNotarial(value) {
             console.log(value);
-          
+
             ppEditarAvisoNotarial.PerformCallback("guardarCambios~" + value);
 
         }
@@ -1590,8 +1590,10 @@
                                                 <dx:LayoutItem Caption="Valor Operacion/Fiscal" ColSpan="1">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer runat="server">
-                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorOperacionFiscal" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
-                                                            <masksettings mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorOperacionFiscal" Width="100%" ClientEnabled="false">
+                                                                <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
 
@@ -1600,8 +1602,10 @@
                                                 <dx:LayoutItem Caption="Valor del Avaluo" ColSpan="1">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer runat="server">
-                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorAvaluo" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
-                                                            <masksettings mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorAvaluo" Width="100%" ClientEnabled="false">
+                                                                <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
 
@@ -1656,8 +1660,9 @@
                                                                 <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                                 </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </dx:ASPxTextBox>
-                                                            <masksettings mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
 
@@ -1670,8 +1675,9 @@
                                                                 <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                                 </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </dx:ASPxTextBox>
-                                                            <masksettings mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
 
@@ -1684,8 +1690,9 @@
                                                                 <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                                 </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </dx:ASPxTextBox>
-                                                            <masksettings mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
 
@@ -1698,8 +1705,9 @@
                                                                 <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                                 </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </dx:ASPxTextBox>
-                                                            <masksettings mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+
 
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
@@ -1713,8 +1721,9 @@
                                                                 <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
                                                                     <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
                                                                 </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </dx:ASPxTextBox>
-                                                            <masksettings mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" includeliterals="DecimalSymbol"></masksettings>
+
                                                         </dx:LayoutItemNestedControlContainer>
                                                     </LayoutItemNestedControlCollection>
 
@@ -1856,7 +1865,7 @@
 
                                                     <CaptionSettings Location="Top"></CaptionSettings>
                                                 </dx:LayoutItem>
-                                                <dx:LayoutItem Caption="Sello registral" ColSpan="3" ColumnSpan="3">
+                                                <dx:LayoutItem Caption="Sello registral" ColSpan="2" ColumnSpan="2">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer runat="server">
                                                             <dx:ASPxTextBox runat="server" ID="txtAnSelloRegistral" Width="100%">
@@ -1869,6 +1878,15 @@
                                                     </LayoutItemNestedControlCollection>
 
                                                     <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="SEGOB" ColSpan="1" ShowCaption="False" >
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxButton runat="server" ID="frmAvisoNotarial_E1" Image-Url="~/imagenes/Produccion/segob.png" Image-Height="30" Image-Width="70" AutoPostBack="false"   >
+                                                                <ClientSideEvents Click="function(s, e) { window.open('https://consultas.tlaxcala.gob.mx/', '_blank'); }" />
+                                                            </dx:ASPxButton>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
                                                 </dx:LayoutItem>
                                             </Items>
                                         </dx:LayoutGroup>
