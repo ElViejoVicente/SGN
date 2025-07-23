@@ -247,7 +247,7 @@
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="170px" HeaderText="Opciones de consulta:" View="GroupBox">
+                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox">
                                     <PanelCollection>
                                         <dx:PanelContent>
 
@@ -255,12 +255,12 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
@@ -297,6 +297,24 @@
                                                     </td>
                                                     <td>&nbsp;</td>
 
+                                                    <td>
+                                                        <dx:ASPxCheckBox runat="server" ID="chkEsActoVulnerable" Width="150px"  ClientInstanceName="chkEsActoVulnerable" Text="Ver Solo Activiades Vulnerables" ToggleSwitchDisplayMode="Always">
+                                                            <ClientSideEvents CheckedChanged="function(s, e) {
+                                                                var cb = chkEsActoVulnerable.GetMainElement();
+                                                                if (chkEsActoVulnerable.GetChecked()) {
+                                                                    cb.style.backgroundColor = '#ff6961';
+                                                                } else {
+                                                                    cb.style.backgroundColor = '';
+                                                                }
+                                                            }" />
+                                                        </dx:ASPxCheckBox>
+
+                                                    </td>
+
+
+
+
+                                                    <td>&nbsp;</td>
 
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
@@ -1879,10 +1897,10 @@
 
                                                     <CaptionSettings Location="Top"></CaptionSettings>
                                                 </dx:LayoutItem>
-                                                <dx:LayoutItem Caption="SEGOB" ColSpan="1" ShowCaption="False" >
+                                                <dx:LayoutItem Caption="SEGOB" ColSpan="1" ShowCaption="False">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer runat="server">
-                                                            <dx:ASPxButton runat="server" ID="frmAvisoNotarial_E1" Image-Url="~/imagenes/Produccion/segob.png" Image-Height="30" Image-Width="70" AutoPostBack="false"   >
+                                                            <dx:ASPxButton runat="server" ID="frmAvisoNotarial_E1" Image-Url="~/imagenes/Produccion/segob.png" Image-Height="30" Image-Width="70" AutoPostBack="false">
                                                                 <ClientSideEvents Click="function(s, e) { window.open('https://consultas.tlaxcala.gob.mx/', '_blank'); }" />
                                                             </dx:ASPxButton>
                                                         </dx:LayoutItemNestedControlContainer>

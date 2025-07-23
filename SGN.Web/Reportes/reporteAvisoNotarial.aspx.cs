@@ -236,12 +236,14 @@ namespace SGN.Web.Reportes
                     exSolPropedadTerritorial.CreateDocument();
 
 
-                    reporte.Pages.AddRange(exAvisoHoja1.Pages);
-
-                    reporte.Pages.AddRange(exAvisoHoja2.Pages);
 
 
                     reporte.Pages.AddRange(exSolPropedadTerritorial.Pages);
+
+
+                    reporte.Pages.AddRange(exAvisoHoja1.Pages);
+
+                    reporte.Pages.AddRange(exAvisoHoja2.Pages);
 
 
 

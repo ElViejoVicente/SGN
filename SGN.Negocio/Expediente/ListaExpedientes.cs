@@ -88,6 +88,7 @@ namespace SGN.Negocio.Expediente
 
         //PLD
         public string ActividadVulnerable { get; set; } = "";
+        public bool EsActoVulnerable { get; set; } = false;
 
     }
 }

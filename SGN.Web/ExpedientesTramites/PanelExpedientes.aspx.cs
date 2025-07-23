@@ -883,6 +883,14 @@ namespace SGN.Web.ExpedientesTramites
                 }
 
 
+                if (chkEsActoVulnerable.Checked)
+
+                {
+                    lsExpediente= lsExpediente.Where(x => x.EsActoVulnerable == true).ToList();
+                }
+
+
+
                 gvExpedientes.DataBind();
                 return;
             }
@@ -948,6 +956,12 @@ namespace SGN.Web.ExpedientesTramites
                             Campo.EmptyImage.IconID = "status_warning_svg_gray_16x16";
                         }
 
+
+                        if (miExpediente.EsActoVulnerable)
+                        {
+                            e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff6961");
+                        
+                        }
 
 
                     }
