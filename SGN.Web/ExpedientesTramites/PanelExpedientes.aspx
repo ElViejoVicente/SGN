@@ -1208,14 +1208,14 @@
                                         <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
+                                        <dx:LayoutItem Caption="Fecha del Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" BackColor="#fdf9c4"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
