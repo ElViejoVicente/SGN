@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v23.2, Version=23.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -64,6 +64,7 @@
                 ppCambiarEstatus.Hide();
                 ppArchivos.Hide();
                 ppAlertasExpediente.Hide();
+                ppEditarAvisoNotarial.Hide();
 
                 //2024-06-26 borramos seleccion
 
@@ -161,11 +162,49 @@
 
 
                     }
+                    break;
 
+                case "cmdAvisoNotarial":
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackEditarAvisoNotarial);
+
+                    }
+                    break;
+
+
+                case "cmdImpresionAvisoNotarial":
+
+                    if (gvExpedientes.GetFocusedRowIndex() >= 0) {
+
+                        gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackReportAvisoNotarial);
+
+                    }
+                    break;
 
             }
         }
 
+        function onCallbackReportAvisoNotarial(value) {
+
+            window.open("../Reportes/reporteAvisoNotarial?idExpediente=" + value, "_blank");
+        }
+
+
+        function onCallbackgGuardarAvisoNotarial(value) {
+            console.log(value);
+
+            ppEditarAvisoNotarial.PerformCallback("guardarCambios~" + value);
+
+        }
+
+
+        function onCallbackEditarAvisoNotarial(value) {
+            console.log(value);
+            ppEditarAvisoNotarial.Show();
+            ppEditarAvisoNotarial.PerformCallback("CargarRegistros~" + value);
+
+        }
 
 
         function onCallbackEditarRegistroExp(value) {
@@ -208,7 +247,7 @@
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="170px" HeaderText="Opciones de consulta:" View="GroupBox">
+                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox">
                                     <PanelCollection>
                                         <dx:PanelContent>
 
@@ -216,12 +255,12 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                         </dx:ASPxDateEdit>
                                                     </td>
                                                     <td>&nbsp;</td>
@@ -258,6 +297,24 @@
                                                     </td>
                                                     <td>&nbsp;</td>
 
+                                                    <td>
+                                                        <dx:ASPxCheckBox runat="server" ID="chkEsActoVulnerable" Width="150px"  ClientInstanceName="chkEsActoVulnerable" Text="Ver Solo Activiades Vulnerables" ToggleSwitchDisplayMode="Always">
+                                                            <ClientSideEvents CheckedChanged="function(s, e) {
+                                                                var cb = chkEsActoVulnerable.GetMainElement();
+                                                                if (chkEsActoVulnerable.GetChecked()) {
+                                                                    cb.style.backgroundColor = '#ff6961';
+                                                                } else {
+                                                                    cb.style.backgroundColor = '';
+                                                                }
+                                                            }" />
+                                                        </dx:ASPxCheckBox>
+
+                                                    </td>
+
+
+
+
+                                                    <td>&nbsp;</td>
 
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
@@ -450,6 +507,10 @@
                             <dx:GridViewToolbarItem Text="Cambiar Estatus" Image-IconID="dashboards_scatterchartlabeloptions_svg_16x16" Name="cmdEstatusExpediente" />
 
                             <dx:GridViewToolbarItem Text="Alertas" Image-IconID="status_warning_16x16" Name="cmdAlertasExpediente" />
+
+                            <dx:GridViewToolbarItem Text="Aviso Notarial" Image-IconID="functionlibrary_information_16x16" Name="cmdAvisoNotarial" />
+
+                            <dx:GridViewToolbarItem Text="Impresion Aviso Notarial" Image-IconID="actions_print_16x16devav" Name="cmdImpresionAvisoNotarial" />
 
 
                             <%--        <dx:GridViewToolbarItem Text="Archivos" Image-IconID="businessobjects_bofolder_16x16" Name="cmdArchivos" />--%>
@@ -658,6 +719,12 @@
                                                         <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="3" Caption="Fecha termino mesa" FieldName="FechaTerminoMesa" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="4" Caption="Fecha Autorizacion" FieldName="FechaAutorizacion" Width="100px" Visible="true" ToolTip="">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+
                                                     </Columns>
                                                 </dx:ASPxGridView>
                                             </dx:ContentControl>
@@ -701,9 +768,7 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataTextColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="8" Caption="Fecha Autorizacion" FieldName="FechaAutorizacion" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
+
                                                     </Columns>
                                                 </dx:ASPxGridView>
                                             </dx:ContentControl>
@@ -757,7 +822,11 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataTextColumn FieldName="ValorOperacion" ReadOnly="True" Width="100px" Caption="Valor Operacion" VisibleIndex="5">
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Fecha pago Avaluo" FieldName="FechaPagoAvaluo" Width="100px" Visible="true">
+                                                            <EditFormSettings Visible="False"></EditFormSettings>
+                                                        </dx:GridViewDataDateColumn>
+
+                                                        <dx:GridViewDataTextColumn FieldName="ValorOperacion" ReadOnly="True" Width="100px" Caption="Valor Operacion" VisibleIndex="7">
                                                             <PropertiesTextEdit>
                                                                 <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
                                                             </PropertiesTextEdit>
@@ -1139,14 +1208,14 @@
                                         <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
+                                        <dx:LayoutItem Caption="Fecha del Aviso Preventivo" FieldName="PRfnFechaAvisoPreventivo" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaAvisoPreventivo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" BackColor="#fdf9c4"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -1267,6 +1336,14 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Fecha de Autorizacion" ColSpan="1" FieldName="EnfnFechaAutorizacion">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaAutorizacion" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Entregas" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapEntrega">
@@ -1320,13 +1397,7 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Fecha de Autorizacion" ColSpan="1" FieldName="EnfnFechaAutorizacion">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFechaAutorizacion" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Contabilidad" ColCount="2" ColumnCount="2" ColSpan="3" ColumnSpan="3" Name="TapContabilidad">
@@ -1390,10 +1461,19 @@
                                         <dx:LayoutItem Caption="Fecha de Avaluo" ColSpan="1" FieldName="ConFechaDeAvaluo">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                      <dx:ASPxDateEdit runat="server" ID="fnFechaAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="fnFechaAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
+
+                                        <dx:LayoutItem Caption="Fecha pago Avaluo" ColSpan="1" FieldName="ConFechaPagoAvaluo">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit runat="server" ID="fnFechaPagoAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="PLD" ColCount="3" ColumnCount="3" ColSpan="2" ColumnSpan="2" Name="TapPLD">
@@ -1427,7 +1507,7 @@
             </dx:ASPxPopupControl>
 
 
-            <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false"
+            <dx:ASPxPopupControl runat="server" ID="ppArchivos" ClientInstanceName="ppArchivos" Height="300px" Width="900px" EnableClientSideAPI="true" ShowFooter="false" Modal="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Archivos del expediente"
                 PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppArchivos_WindowCallback">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
@@ -1450,6 +1530,596 @@
                 </ContentCollection>
 
             </dx:ASPxPopupControl>
+
+
+
+            <dx:ASPxPopupControl runat="server" ID="ppEditarAvisoNotarial" ClientInstanceName="ppEditarAvisoNotarial" Height="700px" Width="1100px" EnableClientSideAPI="true" ShowFooter="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Datos Avisono Notarial"
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarAvisoNotarial_WindowCallback" ScrollBars="Auto">
+                <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
+                <ContentCollection>
+                    <dx:PopupControlContentControl runat="server">
+                        <dx:ASPxFormLayout runat="server" ID="frmAvisoNotarial" ClientInstanceName="frmAvisoNotarial" ColCount="3" ColumnCount="3" Width="100%">
+
+                            <Items>
+                                <dx:LayoutGroup Caption="Aviso Notarial" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutGroup Caption="Generales" ColCount="4" ColumnCount="4" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Oficio Numero" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxLabel runat="server" Font-Bold="True" ID="txtAnFolioSistena" Width="100%" ClientEnabled="false"></dx:ASPxLabel>
+
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fecha Otorgamiento" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+
+                                                            <dx:ASPxDateEdit runat="server" ID="dtAnFechaOtorgamiento" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ClientEnabled="false"></dx:ASPxDateEdit>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="N&#176; Escritura" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnEscritura" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Volumen" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnEscrituraVolumen" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Ubicacion" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbicacion" Width="100%" ClientEnabled="false"></dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Clave catastral" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnClaveCatrastal" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Datos de la operacion" ColCount="7" ColumnCount="7" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Valor Operacion/Fiscal" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorOperacionFiscal" Width="100%" ClientEnabled="false">
+                                                                <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Valor del Avaluo" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnValorAvaluo" Width="100%" ClientEnabled="false">
+                                                                <MaskSettings Mask="$&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fecha del Avaluo" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+
+                                                            <dx:ASPxDateEdit runat="server" ID="dtAnFechaAvaluo" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ClientEnabled="false"></dx:ASPxDateEdit>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Institucion que practico el avaluo(Anexo)" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnInstitucionPracticoAvaluo" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Naturaleza del acto o concepto de la adquisici&#243;n" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnNaturalezaActoAdquisicion" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Datos catastrales" ColCount="5" ColumnCount="5" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Superficie" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnSuperficie" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Vendida" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnVendida" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Restante" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnRestante" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Construida" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnConstruida" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Plantas" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnPlantas" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                                <MaskSettings Mask="&lt;0..9999999999g&gt;.&lt;00..99&gt;" IncludeLiterals="DecimalSymbol"></MaskSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Contratantes" ColCount="2" ColumnCount="2" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Vendedor (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnContraVendedores" Width="100%" Height="100px" Native="true" ClientEnabled="false"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Comprador (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnContraCompradores" Width="100%" Height="100px" Native="true" ClientEnabled="false"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Domicilio de los contratantes" ColCount="2" ColumnCount="2" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Vendedor (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnDomiciVededores" Width="100%" Height="100px" Native="true" ClientEnabled="false"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Comprador (es)" ColSpan="1" RowSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnDomiciCompradores" Width="100%" Height="100px" Native="true" ClientEnabled="false"></dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Datos de la direccion de notarias y registro publico del estado" ColCount="6" ColumnCount="6" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Partida" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnPartida" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fojas" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnFojas" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Seccion" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnSeccion" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Volumen" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnVolumen" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Distrito" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnDistrito" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Folio real electronico" ColSpan="3" ColumnSpan="3">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnFolioRealElectronico" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Sello registral" ColSpan="2" ColumnSpan="2">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnSelloRegistral" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="SEGOB" ColSpan="1" ShowCaption="False">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxButton runat="server" ID="frmAvisoNotarial_E1" Image-Url="~/imagenes/Produccion/segob.png" Image-Height="30" Image-Width="70" AutoPostBack="false">
+                                                                <ClientSideEvents Click="function(s, e) { window.open('https://consultas.tlaxcala.gob.mx/', '_blank'); }" />
+                                                            </dx:ASPxButton>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Ubicacion / Descripcion de los bienes" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnUbicacionDescripcionBienes" Width="100%" Height="100px" Native="true">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Medidas y colindancias" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnMedidasColindancias" Width="100%" Height="100px" Native="true">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Observaciones y/o aclaraciones" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo runat="server" ID="txtAnObservacionesAclaraciones" Width="100%" Height="100px" Native="true">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxMemo>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+
+                                    </Items>
+                                </dx:LayoutGroup>
+
+
+                                <dx:LayoutGroup Caption="Solicitud - Informe de propiedad territorial" ColSpan="3" ColumnSpan="3">
+                                    <Items>
+                                        <dx:LayoutGroup Caption="Generales" ColCount="2" ColumnCount="2" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Recibo pago impuesto predial (Folio)" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnReciboPagoImpuestaPre" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Fecha de ultimo pago" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+
+                                                            <dx:ASPxDateEdit runat="server" ID="dtAnFechaUltimoPago" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxDateEdit>
+
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Ubicacion del predio" ColCount="3" ColumnCount="3" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Calle" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiCalle" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Numero" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiNumero" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Colonia" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiColonia" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Estado" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiEstado" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Municipio" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiMunicipio" Width="100%">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Localidad" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxTextBox runat="server" ID="txtAnUbiLocalidad">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxTextBox>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+
+                                                    <CaptionSettings Location="Top"></CaptionSettings>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Observaciones" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem ShowCaption="False" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxMemo Width="100%" runat="server" ID="txtAnUbiObservaciones" Height="100px" Native="true">
+                                                                <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                                    <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                                </ValidationSettings>
+                                                            </dx:ASPxMemo>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+
+                                    </Items>
+                                </dx:LayoutGroup>
+                            </Items>
+                        </dx:ASPxFormLayout>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+
+                <FooterContentTemplate>
+                    <div>
+                        <dx:ASPxButton Style="float: right" Image-IconID="richedit_trackingchanges_accept_svg_16x16" HorizontalAlign="Right" runat="server" ID="btnAceptar" Text="AceptarCambios" AutoPostBack="false" ClientInstanceName="btnAceptar">
+                            <ClientSideEvents Click="function(s, e) 
+                                                        { 
+                                                            if (ASPxClientEdit.ValidateGroup('requerido'))                                                                
+                                                                {
+                                                                gvExpedientes.GetRowValues(gvExpedientes.GetFocusedRowIndex(), 'IdExpediente', onCallbackgGuardarAvisoNotarial);                                                                                                                      
+                                                                }
+                                        
+                                                        }" />
+
+                        </dx:ASPxButton>
+                    </div>
+                </FooterContentTemplate>
+
+            </dx:ASPxPopupControl>
+
+
 
         </section>
 

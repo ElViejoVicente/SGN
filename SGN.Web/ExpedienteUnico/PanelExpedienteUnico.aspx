@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedienteUnico.aspx.cs" Inherits="SGN.Web.ExpedienteUnico.PanelExpedienteUnico" %>
 
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -121,6 +121,13 @@
                     }
                     break;
 
+                case "cmdFormConociCliente":
+                    if (gvExpedienteUnico.GetFocusedRowIndex() >= 0) {
+                        gvExpedienteUnico.GetRowValues(gvExpedienteUnico.GetFocusedRowIndex(), 'IdRegistro', onCallbackFormConocimientoCliente);
+                    }
+                    break;
+
+
 
             }
         }
@@ -140,6 +147,14 @@
 
 
             window.open("../Reportes/reporteExUnico?idRegistro=" + value, "_blank");
+        }
+
+
+        function onCallbackFormConocimientoCliente(value) {
+
+
+
+            window.open("../Reportes/reporteFormConociendoCliente?idRegistro=" + value, "_blank");
         }
 
 
@@ -359,10 +374,10 @@
                     <dx:GridViewDataTextColumn VisibleIndex="10" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="120px" Visible="true" ReadOnly="true">
                         <%--                        <EditFormSettings Visible="False"></EditFormSettings>--%>
                     </dx:GridViewDataTextColumn>
-                    <dx:GridViewDataDateColumn VisibleIndex="11" Caption="F. Nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" >
+                    <dx:GridViewDataDateColumn VisibleIndex="11" Caption="F. Nacimiento" FieldName="FechaNacimiento" Width="100px" Visible="true" PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy">
                     </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="12" Caption="Sexo" FieldName="Sexo" Width="60px" Visible="true" CellStyle-HorizontalAlign="Center"  >
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="12" Caption="Sexo" FieldName="Sexo" Width="60px" Visible="true" CellStyle-HorizontalAlign="Center">
 
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -397,7 +412,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    <dx:GridViewDataComboBoxColumn VisibleIndex="18" Caption="T.Persona" FieldName="TipoRegimen" Width="80px" Visible="true" CellStyle-Font-Bold="true" >
+                    <dx:GridViewDataComboBoxColumn VisibleIndex="18" Caption="T.Persona" FieldName="TipoRegimen" Width="80px" Visible="true" CellStyle-Font-Bold="true">
 
                         <EditItemTemplate>
                             <dx:ASPxComboBox ID="cbTipoRegimen" ClientInstanceName="cbTipoRegimen" runat="server" Value='<%# Bind("TipoRegimen") %>' Width="100%"
@@ -508,7 +523,7 @@
                         <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
 
-                    
+
                     <dx:GridViewDataTextColumn VisibleIndex="42" Caption="Num. Fideicomiso" FieldName="IdFideicomiso" Width="200px" Visible="true">
                         <EditFormSettings Visible="True" ColumnSpan="2"></EditFormSettings>
                     </dx:GridViewDataTextColumn>
@@ -525,7 +540,9 @@
 
                             <dx:GridViewToolbarItem Text="Buscar en Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdValidarEnListaNegra" />
 
-                            <dx:GridViewToolbarItem Text="Generar Impresion del Expediente" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
+                            <dx:GridViewToolbarItem Text="Impresion de Expediente Unico" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
+
+                            <dx:GridViewToolbarItem Text="Formulario de conocimiento del cliente" Image-IconID="actions_print_16x16devav" Name="cmdFormConociCliente" />
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
