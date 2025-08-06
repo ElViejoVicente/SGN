@@ -24,12 +24,12 @@ namespace SGN.Web.Reportes
         protected global::System.Web.UI.HtmlControls.HtmlForm frmPage;
 
         /// <summary>
-        /// Control reportePrinsipalView.
+        /// Control reportePrinsipalView2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.XtraReports.Web.ASPxWebDocumentViewer reportePrinsipalView;
+        protected global::DevExpress.XtraReports.Web.ASPxWebDocumentViewer reportePrinsipalView2;
     }
 }

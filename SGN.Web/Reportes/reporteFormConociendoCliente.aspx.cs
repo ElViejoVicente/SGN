@@ -62,7 +62,7 @@ namespace SGN.Web.Reportes
                 exFormConocimientoCliente.CreateDocument();
                 reporte.Pages.AddRange(exFormConocimientoCliente.Pages);
 
-                reportePrinsipalView.OpenReport(reporte);
+                reportePrinsipalView2.OpenReport(reporte);
 
             }
 

@@ -19,7 +19,7 @@
  <form id="frmPage" runat="server" class="Principal">
      
      <section class="CLPageContent" id="maindiv">
-         <dx:ASPxWebDocumentViewer runat="server" ID="reportePrinsipalView">
+         <dx:ASPxWebDocumentViewer runat="server" ID="reportePrinsipalView2">
 
          </dx:ASPxWebDocumentViewer>
      </section>

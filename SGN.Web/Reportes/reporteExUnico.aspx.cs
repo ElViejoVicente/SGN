@@ -58,7 +58,7 @@ namespace SGN.Web.Reportes
 
                 XtraReport reporte = new XtraReport();
                 reporte.CreateDocument();
-                XtraFormConocCliente exUnicoPerFisica = new XtraFormConocCliente();
+                XtraExUnicoPersonaFisica exUnicoPerFisica = new XtraExUnicoPersonaFisica();
                 XtraExUnicoPersonaMoral exUnicoPerMoral = new XtraExUnicoPersonaMoral();
                 XtraExUnicoApoderado exUnicoApoderado = new XtraExUnicoApoderado();
                 XtraExUnicoFideicomiso exUnicoFideicomiso = new XtraExUnicoFideicomiso();
