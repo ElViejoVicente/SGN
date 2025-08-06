@@ -37,16 +37,26 @@ namespace SGN.Web.Reportes
                 XtraFormConocCliente exFormConocimientoCliente = new XtraFormConocCliente();
 
                 exFormConocimientoCliente.RequestParameters = false;
-                exFormConocimientoCliente.Parameters["IdRegistro"].Value = datosReporte.IdRegistro;
 
-
-
-
-
-
-
-
-
+                exFormConocimientoCliente.Parameters["ApellidoPaterno"].Value = datosReporte.ApellidoPaterno;
+                exFormConocimientoCliente.Parameters["ApellidoMaterno"].Value = datosReporte.ApellidoMaterno;
+                exFormConocimientoCliente.Parameters["Nombres"].Value = datosReporte.Nombres;
+                exFormConocimientoCliente.Parameters["FechaNacimiento"].Value = datosReporte.FechaNacimiento.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                exFormConocimientoCliente.Parameters["PaisNacimiento"].Value = datosReporte.PaisNacimiento;
+                exFormConocimientoCliente.Parameters["PaisNacionalidad"].Value = datosReporte.PaisNacionalidad;
+                exFormConocimientoCliente.Parameters["Ocupacion"].Value = datosReporte.Ocupacion;
+                //exFormConocimientoCliente.Parameters["SabeLeerEscribir"].Value = datosReporte.SabeLeerEscribir ? "Sí" : "No";
+                exFormConocimientoCliente.Parameters["Domicilio"].Value = datosReporte.Domicilio;
+                exFormConocimientoCliente.Parameters["NumeroExterior"].Value = datosReporte.NumeroExterior;
+                exFormConocimientoCliente.Parameters["NumeroInterior"].Value = datosReporte.NumeroInterior;
+                exFormConocimientoCliente.Parameters["Colonia"].Value = datosReporte.Colonia;
+                exFormConocimientoCliente.Parameters["Municipio"].Value = datosReporte.Municipio;
+                exFormConocimientoCliente.Parameters["Ciudad"].Value = datosReporte.Ciudad;
+                exFormConocimientoCliente.Parameters["Estado"].Value = datosReporte.Estado;
+                exFormConocimientoCliente.Parameters["CP"].Value = datosReporte.CP;
+                exFormConocimientoCliente.Parameters["PaisDomicilio"].Value = datosReporte.PaisDomicilio;
+                exFormConocimientoCliente.Parameters["FechaAplicacion"].Value = DateTime.Now.ToString("dd/MM/yyyy hh:mm:G", CultureInfo.InvariantCulture);
+                exFormConocimientoCliente.Parameters["NumExpediente"].Value= datosReporte.IdExpediente.ToString();
 
 
                 exFormConocimientoCliente.CreateDocument();
