@@ -45,7 +45,7 @@ namespace SGN.Web.Reportes
                 exFormConocimientoCliente.Parameters["PaisNacimiento"].Value = datosReporte.PaisNacimiento;
                 exFormConocimientoCliente.Parameters["PaisNacionalidad"].Value = datosReporte.PaisNacionalidad;
                 exFormConocimientoCliente.Parameters["Ocupacion"].Value = datosReporte.Ocupacion;
-                //exFormConocimientoCliente.Parameters["SabeLeerEscribir"].Value = datosReporte.SabeLeerEscribir ? "Sí" : "No";
+                exFormConocimientoCliente.Parameters["SabeLeerEscribir"].Value = datosReporte.SabeLeerEscribir;
                 exFormConocimientoCliente.Parameters["Domicilio"].Value = datosReporte.Domicilio;
                 exFormConocimientoCliente.Parameters["NumeroExterior"].Value = datosReporte.NumeroExterior;
                 exFormConocimientoCliente.Parameters["NumeroInterior"].Value = datosReporte.NumeroInterior;
@@ -55,7 +55,7 @@ namespace SGN.Web.Reportes
                 exFormConocimientoCliente.Parameters["Estado"].Value = datosReporte.Estado;
                 exFormConocimientoCliente.Parameters["CP"].Value = datosReporte.CP;
                 exFormConocimientoCliente.Parameters["PaisDomicilio"].Value = datosReporte.PaisDomicilio;
-                exFormConocimientoCliente.Parameters["FechaAplicacion"].Value = DateTime.Now.ToString("dd/MM/yyyy hh:mm:G", CultureInfo.InvariantCulture);
+                exFormConocimientoCliente.Parameters["FechaAplicacion"].Value = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.InvariantCulture).ToLower();
                 exFormConocimientoCliente.Parameters["NumExpediente"].Value= datosReporte.IdExpediente.ToString();
 
 
