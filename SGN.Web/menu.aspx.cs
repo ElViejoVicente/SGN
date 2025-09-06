@@ -109,8 +109,8 @@ namespace SGN.Web
                     Session["idUltimaPagina"] = id;
                     //EjecutarJavaScript("vernodo(" + ruta + ");");
                     //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "vernodo("+ ruta + ")", true);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.headerGPB.location ='" + "header.aspx" + "'", true);
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.basefrm.location ='" + ruta + "'", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.headerGPB.location ='" + "header.aspx" + "'; ", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), Guid.NewGuid().ToString(), "parent.basefrm.location ='" + ruta + "'; ", true);
                 }
                 else
                 {
@@ -136,7 +136,7 @@ namespace SGN.Web
                     lblPerfil.Text = user.NombrePerfil.Trim();
                     lblNomUsuario.Text = user.Nombre;
                     lblMail.Text = user.Mail;
-                    imagenUser.ImageUrl = "imagenes/menu/avatar-face-head.png";
+                   // imagenUser.ImageUrl = "imagenes/menu/avatar-face-head.png";
                 }
 
                 //DataTable confiPagina = datosUsuario.DameConfiguracionPagina(codPAgina);

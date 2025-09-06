@@ -33,15 +33,6 @@ namespace SGN.Web
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// Control HidUsuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HidUsuario;
-
-        /// <summary>
         /// Control lblNombrePagina.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace SGN.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel lblNombrePagina;
+
+        /// <summary>
+        /// Control HidUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HidUsuario;
 
         /// <summary>
         /// Control btnCerrarSesion.

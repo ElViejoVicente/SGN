@@ -172,6 +172,9 @@
     <Content Include="Content\jquery.countdown.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\menuMovil.css" />
+    <Content Include="Content\NuevoMenu\header.css" />
+    <Content Include="Content\NuevoMenu\login.css" />
+    <Content Include="Content\NuevoMenu\menu.css" />
     <Content Include="Content\paginas\flujo-procesos.css" />
     <Content Include="Content\paginas\flujo-procesos.js" />
     <Content Include="Content\stylePc.css" />
@@ -201,6 +204,7 @@
     <Content Include="imagenes\Iconos\text-x-generic.ico" />
     <Content Include="imagenes\Iconos\x-office-document.ico" />
     <Content Include="imagenes\Iconos\x-office-spreadsheet.ico" />
+    <Content Include="imagenes\login\fondoSGN.jpg" />
     <Content Include="imagenes\login\LogoNotaria.svg" />
     <Content Include="imagenes\login\notaria-inicioOpa90.jpg" />
     <Content Include="imagenes\menu\avatar-face-head.png" />
