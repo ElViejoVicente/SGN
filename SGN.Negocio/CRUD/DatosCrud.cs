@@ -1349,7 +1349,7 @@ namespace SGN.Negocio.CRUD
                         values.TipoInventario,
                         values.Modelo,
                         values.Nombre,
-                        values.Marca,           
+                        values.Marca,
                         values.FechaAlta,
                         values.FechaBaja,
                         values.ValorCompra,
@@ -1384,7 +1384,7 @@ namespace SGN.Negocio.CRUD
                         values.TipoInventario,
                         values.Modelo,
                         values.Nombre,
-                        values.Marca,                        
+                        values.Marca,
                         values.FechaAlta,
                         values.FechaBaja,
                         values.ValorCompra,
@@ -1460,7 +1460,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_TipoInventario_Insert", param: new
                     {
-                        
+
                         values.TextoInventario,
                         values.Activo,
 
@@ -1524,7 +1524,7 @@ namespace SGN.Negocio.CRUD
 
         #region Cat_AreaOficina
 
-        public List<Cat_AreaOficina> ConsultaCatAreaOficina ()
+        public List<Cat_AreaOficina> ConsultaCatAreaOficina()
         {
             try
             {
@@ -1551,7 +1551,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_AreaOficina_Insert", param: new
                     {
-                      
+
                         values.TextoAreaOficina,
                         values.Activo,
 
@@ -1692,7 +1692,7 @@ namespace SGN.Negocio.CRUD
             }
         }
         #endregion
-       
+
         #region DatosAvisoNotarial
 
         public DatosAvisoNotarial ConsultaDatosAvisoNotarial(string numExp)
@@ -1750,7 +1750,7 @@ namespace SGN.Negocio.CRUD
                         values.MedidasColindancias,
                         values.ObservacionesAclaraciones,
                         values.ReciboPagoImpuestoPredial,
-                        values.FechaUltimoPago,  
+                        values.FechaUltimoPago,
                         values.UbiPredioCalle,
                         values.UbiPredioNumero,
                         values.UbiPredioColonia,
@@ -1758,7 +1758,7 @@ namespace SGN.Negocio.CRUD
                         values.UbiPredioMunicipio,
                         values.UbiPredioLocalidad,
                         values.ObservacionesSolicitudPropiedad
-                        
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1903,7 +1903,7 @@ namespace SGN.Negocio.CRUD
                     {
                         values.IdEstado,
                         values.TextoEstado,
-                        
+
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1939,7 +1939,99 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
+        #region Cat_Clientes
+
+        public List<Cat_Clientes> ConsultaCatClientes()
+        {
+            try
+            {
+                List<Cat_Clientes> resultado = new List<Cat_Clientes>();
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_Clientes>(sql: "[sp_CRUD_Cat_Clientes_Select]").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar [sp_CRUD_Cat_Clientes_Select], detalle: \n " + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaCatClientes(Cat_Clientes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_Clientes_Insert", param: new
+                    {
+                        values.Gestor,
+                        values.NumTelefonico,
+                        values.CorreoElectronico,
+                        values.Observaciones
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Clientes_Insert, detalle : \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean ActualizarCatClientes(Cat_Clientes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_Clientes_Update", param: new
+                    {
+                        
+                        values.Gestor,
+                        values.NumTelefonico,
+                        values.CorreoElectronico,
+                        values.Observaciones
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true; 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Clientes_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarCatClientes(Cat_Clientes values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_Cat_Clientes_Delete", param: new
+                    {
+                       
+                        values.Gestor,
+                        values.NumTelefonico,
+                        values.CorreoElectronico,
+                        values.Observaciones
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Clientes_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+        #endregion
+
     }
+
 }
 
 
