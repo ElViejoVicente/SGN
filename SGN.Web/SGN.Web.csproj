@@ -136,6 +136,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="APP\ConsultaExpediente.aspx" />
     <Content Include="Bitacora\HistoricoCambios.aspx" />
     <Content Include="Catalogos\CatActos.aspx" />
     <Content Include="Catalogos\CatAreaOficina.aspx" />
@@ -579,6 +580,13 @@
     <Content Include="webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APP\ConsultaExpediente.aspx.cs">
+      <DependentUpon>ConsultaExpediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="APP\ConsultaExpediente.aspx.designer.cs">
+      <DependentUpon>ConsultaExpediente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bitacora\HistoricoCambios.aspx.cs">
