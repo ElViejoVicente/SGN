@@ -25,7 +25,7 @@
 
             var height = document.getElementById('maindiv').clientHeight - 100;  // I have some buttons below the grid so needed -50
 
-            gvInventario.SetHeight(height);
+            gvClientes.SetHeight(height);
 
             //  console.log(height);
 
@@ -70,7 +70,7 @@
                                                 <tr>
                                                     <td>
                                                         <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="True" Enabled="True">
-                                                            <ClientSideEvents Click="function(s, e) {gvClientes.PerformCallback('CargarLista')´}" />
+                                                            <ClientSideEvents Click="function(s, e) {gvClientes.PerformCallback('CargarLista')}" />
                                                         </dx:ASPxButton>
                                                     </td>
                                                 </tr>
@@ -141,18 +141,22 @@
                         <Image ToolTip="Editar" IconID="edit_edit_16x16"></Image>
                     </EditButton>
 
-                    
+                    <DeleteButton Text="" ButtonType="Image">
+                        <Image ToolTip="Eliminar" IconID="edit_delete_16x16"></Image>
+                    </DeleteButton>
 
                     <NewButton Text="" ButtonType="Image">
-                        <Image ToolTip="Nuevo" IconID="edit_delete_16x16"></Image>
+                        <Image ToolTip="Nuevo" IconID="actions_add_16x16"></Image>
                     </NewButton>
 
                     <UpdateButton Text="" ButtonType="Image">
-                        <Image ToolTip="Aceptar" IconID="edit_delete_16x16"></Image>
+
+
+                        <Image ToolTip="Aceptar" IconID="actions_apply_16x16"></Image>
                     </UpdateButton>
 
                     <CancelButton Text="" ButtonType="Image">
-                        <Image ToolTip="Cancelar" IconID="edit_delete_16x16"></Image>
+                        <Image ToolTip="Cancelar" IconID="actions_cancel_16x16"></Image>
                     </CancelButton>
 
                 </SettingsCommandButton>
@@ -161,48 +165,49 @@
                 <Columns>
 
 
-                    <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
+                    <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false"
+                        ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px" ></dx:GridViewCommandColumn>
 
                     <dx:GridViewDataTextColumn FieldName="IdCliente" Caption="#" Width="50px" VisibleIndex="2">
-                         <EditFormSettings Visible="false" />
+                        <EditFormSettings Visible="false" />
                     </dx:GridViewDataTextColumn>
 
-                     <dx:GridViewDataTextColumn FieldName="Gestor" Caption="Nombre Gestor" VisibleIndex="3" Width="200px" />
-                     <dx:GridViewDataTextColumn FieldName="NumTelefonico" Caption="Numero Telefonico" VisibleIndex="4" Width="250px" />
-                     <dx:GridViewDataTextColumn FieldName="CorreoElectronico" Caption="Correo Electronico" VisibleIndex="5" Width="200px" />
-                     <dx:GridViewDataTextColumn FieldName="Observaciones" Caption="Observaciones" VisibleIndex="6" Width="250px" />
-                    
-                    </Columns>
+                    <dx:GridViewDataTextColumn FieldName="Gestor" Caption="Nombre Gestor" VisibleIndex="3" Width="200px" />
+                    <dx:GridViewDataTextColumn FieldName="NumTelefonico" Caption="Numero Telefonico" VisibleIndex="4" Width="250px" />
+                    <dx:GridViewDataTextColumn FieldName="CorreoElectronico" Caption="Correo Electronico" VisibleIndex="5" Width="200px" />
+                    <dx:GridViewDataTextColumn FieldName="Observaciones" Caption="Observaciones" VisibleIndex="6" Width="250px" />
+
+                </Columns>
 
                 <Toolbars>
-    <dx:GridViewToolbar>
-        <Items>
+                    <dx:GridViewToolbar>
+                        <Items>
 
-            <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
-            <dx:GridViewToolbarItem Text="Export to" Image-IconID="actions_download_16x16office2013" BeginGroup="true" AdaptivePriority="1" Alignment="Right">
-                <Items>
-                    <dx:GridViewToolbarItem Command="ExportToPdf" />
-                    <dx:GridViewToolbarItem Command="ExportToDocx" />
-                    <dx:GridViewToolbarItem Command="ExportToRtf" />
-                    <dx:GridViewToolbarItem Command="ExportToCsv" />
-                    <dx:GridViewToolbarItem Command="ExportToXls" Text="Export to XLS(DataAware)" />
-                    <dx:GridViewToolbarItem Name="CustomExportToXLS" Text="Export to XLS(WYSIWYG)" Image-IconID="export_exporttoxls_16x16office2013">
-                        <Image IconID="export_exporttoxls_16x16office2013"></Image>
-                    </dx:GridViewToolbarItem>
-                    <dx:GridViewToolbarItem Command="ExportToXlsx" Text="Export to XLSX(DataAware)" />
-                    <dx:GridViewToolbarItem Name="CustomExportToXLSX" Text="Export to XLSX(WYSIWYG)" Image-IconID="export_exporttoxlsx_16x16office2013">
-                        <Image IconID="export_exporttoxlsx_16x16office2013"></Image>
-                    </dx:GridViewToolbarItem>
-                </Items>
+                            <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />
+                            <dx:GridViewToolbarItem Text="Export to" Image-IconID="actions_download_16x16office2013" BeginGroup="true" AdaptivePriority="1" Alignment="Right">
+                                <Items>
+                                    <dx:GridViewToolbarItem Command="ExportToPdf" />
+                                    <dx:GridViewToolbarItem Command="ExportToDocx" />
+                                    <dx:GridViewToolbarItem Command="ExportToRtf" />
+                                    <dx:GridViewToolbarItem Command="ExportToCsv" />
+                                    <dx:GridViewToolbarItem Command="ExportToXls" Text="Export to XLS(DataAware)" />
+                                    <dx:GridViewToolbarItem Name="CustomExportToXLS" Text="Export to XLS(WYSIWYG)" Image-IconID="export_exporttoxls_16x16office2013">
+                                        <Image IconID="export_exporttoxls_16x16office2013"></Image>
+                                    </dx:GridViewToolbarItem>
+                                    <dx:GridViewToolbarItem Command="ExportToXlsx" Text="Export to XLSX(DataAware)" />
+                                    <dx:GridViewToolbarItem Name="CustomExportToXLSX" Text="Export to XLSX(WYSIWYG)" Image-IconID="export_exporttoxlsx_16x16office2013">
+                                        <Image IconID="export_exporttoxlsx_16x16office2013"></Image>
+                                    </dx:GridViewToolbarItem>
+                                </Items>
 
-                <Image IconID="actions_download_16x16office2013"></Image>
-            </dx:GridViewToolbarItem>
+                                <Image IconID="actions_download_16x16office2013"></Image>
+                            </dx:GridViewToolbarItem>
 
-        </Items>
+                        </Items>
 
-        <SettingsAdaptivity Enabled="True" EnableCollapseRootItemsToIcons="True"></SettingsAdaptivity>
-    </dx:GridViewToolbar>
-</Toolbars>
+                        <SettingsAdaptivity Enabled="True" EnableCollapseRootItemsToIcons="True"></SettingsAdaptivity>
+                    </dx:GridViewToolbar>
+                </Toolbars>
 
 
 

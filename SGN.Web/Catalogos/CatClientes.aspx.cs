@@ -18,34 +18,34 @@ using SGN.Web.Controles.Servidor;
 namespace SGN.Web.Catalogos
 {
 
-    public partial class CatClientes : System.Web.UI.Page
+    public partial class CatClientes : PageBase
     {
 
 
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
-    public List<Cat_Clientes> catClientes
-    {
-        get
-
+        public List<Cat_Clientes> catClientes
         {
-            List<Cat_Clientes> sseCliente = new List<Cat_Clientes>();
-            if (this.Session["sseCatCliente"] != null)
+            get
+
             {
-                sseCliente = (List<Cat_Clientes>)this.Session["sseCliente"];
+                List<Cat_Clientes> sseCliente = new List<Cat_Clientes>();
+                if (this.Session["sseCatCliente"] != null)
+                {
+                    sseCliente = (List<Cat_Clientes>)this.Session["sseCliente"];
+                }
+
+                return sseCliente;
+            }
+            set
+            {
+                this.Session["sseCliente"] = value;
             }
 
-            return sseCliente;
-        }
-        set
-        {
-            this.Session["sseCliente"] = value;
         }
 
-    }
+        #endregion
 
-    #endregion
-   
         private void DameCatalogos()
         {
             catClientes = datosCrud.ConsultaCatClientes();
@@ -67,10 +67,10 @@ namespace SGN.Web.Catalogos
         protected void gvClientes_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
             Cat_Clientes nuevoObjeto = new Cat_Clientes();
-            nuevoObjeto.Gestor = e.NewValues["Texto Gestor"].ToString();
-            nuevoObjeto.NumTelefonico = e.NewValues["Texto Numero Telefonico"].ToString();
+            nuevoObjeto.Gestor = e.NewValues["Gestor"].ToString();
+            nuevoObjeto.NumTelefonico = e.NewValues["NumTelefonico"].ToString();
             nuevoObjeto.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
-            nuevoObjeto.Observaciones = e.NewValues["Texto Observaciones"].ToString();
+            nuevoObjeto.Observaciones = e.NewValues["Observaciones"].ToString();
 
             datosCrud.AltaCatClientes(nuevoObjeto);
 
@@ -79,13 +79,13 @@ namespace SGN.Web.Catalogos
 
             DameCatalogos();
 
-         }
+        }
 
         protected void gvClientes_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             Boolean exitenCambios = false;
 
-             foreach(DictionaryEntry item in e.OldValues)
+            foreach (DictionaryEntry item in e.OldValues)
             {
                 if (e.NewValues.Contains(item.Key))
                 {
@@ -109,10 +109,10 @@ namespace SGN.Web.Catalogos
 
             if (miRegistro != null)
             {
-                miRegistro.Gestor = e.NewValues["Texto gestor"].ToString();
-                miRegistro.NumTelefonico = e.NewValues["Texto Numero Telefonico"].ToString();
+                miRegistro.Gestor = e.NewValues["Gestor"].ToString();
+                miRegistro.NumTelefonico = e.NewValues["NumTelefonico"].ToString();
                 miRegistro.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
-                miRegistro.Observaciones = e.NewValues["Texto Observaciones"].ToString();
+                miRegistro.Observaciones = e.NewValues["Observaciones"].ToString();
             }
 
             datosCrud.ActualizarCatClientes(miRegistro);
@@ -126,12 +126,12 @@ namespace SGN.Web.Catalogos
         protected void gvClientes_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
 
-            if (e.NewValues["Texto Gestor"] == null)
+            if (e.NewValues["Gestor"] == null)
             {
                 e.RowError += "El campo Texto Gestor es obligatorio.\n ";
             }
 
-            if (e.NewValues["Texto Numero Telefonico"] == null)
+            if (e.NewValues["NumTelefonico"] == null)
             {
                 e.RowError += "El campo Texto Numero Telefonico es obligatorio.\n ";
             }
@@ -141,7 +141,7 @@ namespace SGN.Web.Catalogos
                 e.RowError += "El campo CorreoElectronico es obligatorio.\n ";
             }
 
-            if (e.NewValues["Texto Observaciones"] == null)
+            if (e.NewValues["Observaciones"] == null)
             {
                 e.RowError += "El campo Texto Observaciones es obligatorio.\n ";
             }

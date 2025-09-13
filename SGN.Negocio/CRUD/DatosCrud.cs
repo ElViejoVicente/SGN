@@ -1966,7 +1966,7 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_Clientes_Insert", param: new
                     {
-                        values.idCliente,
+                  
                         values.Gestor,
                         values.NumTelefonico,
                         values.CorreoElectronico,
@@ -2012,11 +2012,8 @@ namespace SGN.Negocio.CRUD
                 {
                     db.Execute(sql: "sp_CRUD_Cat_Clientes_Delete", param: new
                     {
-                        values.idCliente,
-                        values.Gestor,
-                        values.NumTelefonico,
-                        values.CorreoElectronico,
-                        values.Observaciones
+                        values.idCliente
+                    
                     }, commandType: CommandType.StoredProcedure);
                 }
                 return true;
