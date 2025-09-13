@@ -89,7 +89,7 @@
         <section class="CLPageContent" id="maindiv">
             <dx:ASPxGridViewExporter ID="gridExporter" runat="server" GridViewID="gvClientes"></dx:ASPxGridViewExporter>
 
-            <dx:ASPxGridView runat="server" ID="gvClientes" ClientInstanceName="gvClientes" AutoGenerateColumns="false" Width="100%" KeyFieldName=""
+            <dx:ASPxGridView runat="server" ID="gvClientes" ClientInstanceName="gvClientes" AutoGenerateColumns="false" Width="100%" KeyFieldName="idCliente"
                 OnDataBinding="gvClientes_DataBinding"
                 OnRowInserting="gvClientes_RowInserting"
                 OnRowUpdating="gvClientes_RowUpdating"
@@ -168,7 +168,7 @@
                     <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false"
                         ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px" ></dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataTextColumn FieldName="IdCliente" Caption="#" Width="50px" VisibleIndex="2">
+                    <dx:GridViewDataTextColumn FieldName="idCliente" Caption="#" Width="50px" VisibleIndex="2">
                         <EditFormSettings Visible="false" />
                     </dx:GridViewDataTextColumn>
 

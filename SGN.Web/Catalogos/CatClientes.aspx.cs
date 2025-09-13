@@ -24,31 +24,23 @@ namespace SGN.Web.Catalogos
 
         #region Propiedades
         DatosCrud datosCrud = new DatosCrud();
-        public List<Cat_Clientes> catClientes
+
+
+
+        public List<Cat_Clientes> ListaClientes
         {
-            get
-
-            {
-                List<Cat_Clientes> sseCliente = new List<Cat_Clientes>();
-                if (this.Session["sseCatCliente"] != null)
-                {
-                    sseCliente = (List<Cat_Clientes>)this.Session["sseCliente"];
-                }
-
-                return sseCliente;
-            }
-            set
-            {
-                this.Session["sseCliente"] = value;
-            }
-
+            get => Session["sseCatCliente"] as List<Cat_Clientes> ?? new List<Cat_Clientes>();
+            set => Session["sseCatCliente"] = value;
         }
+
+
+
 
         #endregion
 
         private void DameCatalogos()
         {
-            catClientes = datosCrud.ConsultaCatClientes();
+            ListaClientes = datosCrud.ConsultaCatClientes();
             gvClientes.DataBind();
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -61,90 +53,120 @@ namespace SGN.Web.Catalogos
 
         protected void gvClientes_DataBinding(object sender, EventArgs e)
         {
-            gvClientes.DataSource = catClientes;
+            gvClientes.DataSource = ListaClientes;
         }
 
         protected void gvClientes_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            Cat_Clientes nuevoObjeto = new Cat_Clientes();
-            nuevoObjeto.Gestor = e.NewValues["Gestor"].ToString();
-            nuevoObjeto.NumTelefonico = e.NewValues["NumTelefonico"].ToString();
-            nuevoObjeto.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
-            nuevoObjeto.Observaciones = e.NewValues["Observaciones"].ToString();
+            try
+            {
+                Cat_Clientes nuevoObjeto = new Cat_Clientes();
+                nuevoObjeto.Gestor = e.NewValues["Gestor"].ToString();
+                nuevoObjeto.NumTelefonico = e.NewValues["NumTelefonico"].ToString();
+                nuevoObjeto.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
+                nuevoObjeto.Observaciones = e.NewValues["Observaciones"].ToString();
 
-            datosCrud.AltaCatClientes(nuevoObjeto);
+                datosCrud.AltaCatClientes(nuevoObjeto);
 
-            e.Cancel = true;
-            gvClientes.CancelEdit();
+                e.Cancel = true;
+                gvClientes.CancelEdit();
 
-            DameCatalogos();
+                DameCatalogos();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 
         protected void gvClientes_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            Boolean exitenCambios = false;
-
-            foreach (DictionaryEntry item in e.OldValues)
+            try
             {
-                if (e.NewValues.Contains(item.Key))
-                {
-                    if (e.NewValues[item.Key] != null && !e.NewValues[item.Key].Equals(item.Value))
-                    {
+                Boolean exitenCambios = false;
 
-                        exitenCambios = true;
-                        break;
+                foreach (DictionaryEntry item in e.OldValues)
+                {
+                    if (e.NewValues.Contains(item.Key))
+                    {
+                        if (e.NewValues[item.Key] != null && !e.NewValues[item.Key].Equals(item.Value))
+                        {
+
+                            exitenCambios = true;
+                            break;
+                        }
                     }
                 }
-            }
 
-            if (exitenCambios == false)
-            {
-                gvClientes.CancelEdit();
+                if (exitenCambios == false)
+                {
+                    gvClientes.CancelEdit();
+                    e.Cancel = true;
+                    return;
+                }
+
+                var miRegistro = ListaClientes.Where(x => x.idCliente == Convert.ToInt64(e.Keys[0])).First();
+
+                if (miRegistro != null)
+                {
+                    miRegistro.Gestor = e.NewValues["Gestor"].ToString();
+                    miRegistro.NumTelefonico = e.NewValues["NumTelefonico"].ToString();
+                    miRegistro.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
+                    miRegistro.Observaciones = e.NewValues["Observaciones"].ToString();
+                }
+
+                datosCrud.ActualizarCatClientes(miRegistro);
+
                 e.Cancel = true;
-                return;
+                gvClientes.CancelEdit();
+                DameCatalogos();
+
             }
-
-            var miRegistro = catClientes.Where(x => x.idCliente == Convert.ToInt64(e.Keys[0])).First();
-
-            if (miRegistro != null)
+            catch (Exception)
             {
-                miRegistro.Gestor = e.NewValues["Gestor"].ToString();
-                miRegistro.NumTelefonico = e.NewValues["NumTelefonico"].ToString();
-                miRegistro.CorreoElectronico = e.NewValues["CorreoElectronico"].ToString();
-                miRegistro.Observaciones = e.NewValues["Observaciones"].ToString();
+
+                throw;
             }
 
-            datosCrud.ActualizarCatClientes(miRegistro);
-
-            e.Cancel = true;
-            gvClientes.CancelEdit();
-            DameCatalogos();
+  
 
         }
 
         protected void gvClientes_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
-
-            if (e.NewValues["Gestor"] == null)
+            try
             {
-                e.RowError += "El campo Texto Gestor es obligatorio.\n ";
+                if (e.NewValues["Gestor"] == null)
+                {
+                    e.RowError += "El campo Texto Gestor es obligatorio.\n ";
+                }
+
+                if (e.NewValues["NumTelefonico"] == null)
+                {
+                    e.RowError += "El campo Texto Numero Telefonico es obligatorio.\n ";
+                }
+
+                if (e.NewValues["CorreoElectronico"] == null)
+                {
+                    e.RowError += "El campo CorreoElectronico es obligatorio.\n ";
+                }
+
+                if (e.NewValues["Observaciones"] == null)
+                {
+                    e.RowError += "El campo Texto Observaciones es obligatorio.\n ";
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
-            if (e.NewValues["NumTelefonico"] == null)
-            {
-                e.RowError += "El campo Texto Numero Telefonico es obligatorio.\n ";
-            }
-
-            if (e.NewValues["CorreoElectronico"] == null)
-            {
-                e.RowError += "El campo CorreoElectronico es obligatorio.\n ";
-            }
-
-            if (e.NewValues["Observaciones"] == null)
-            {
-                e.RowError += "El campo Texto Observaciones es obligatorio.\n ";
-            }
+       
         }
 
         protected void gvClientes_ToolbarItemClick(object source, DevExpress.Web.Data.ASPxGridViewToolbarItemClickEventArgs e)
