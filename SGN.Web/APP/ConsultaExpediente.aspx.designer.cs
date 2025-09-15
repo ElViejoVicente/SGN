@@ -33,6 +33,15 @@ namespace SGN.Web.APP
         protected global::DevExpress.Web.ASPxTextBox txtFolioIterno;
 
         /// <summary>
+        /// Control captcha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCaptcha captcha;
+
+        /// <summary>
         /// Control btnConsultar.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace SGN.Web.APP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxMemo txtEstatusFolio;
-
-        /// <summary>
-        /// Control captcha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxCaptcha captcha;
 
         /// <summary>
         /// Control ASPxGlobalEvents1.
