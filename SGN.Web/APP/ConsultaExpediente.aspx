@@ -73,13 +73,15 @@
             width: 100%;
             max-width: 360px;
             margin: 0 auto;
-            padding: 10px 14px;
+            padding: 14px 18px;
             border: 2px solid #cbd6df;
             border-radius: 4px;
             background: #fff;
             text-align: center;
-            font-size: 16px;
+            font-size: 22px;
             color: #111827;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .input-error {
@@ -129,12 +131,14 @@
             width: 100%;
             max-width: 320px;
             margin-top: 12px;
-            padding: 10px 12px;
+            padding: 14px 16px;
             border: 1px solid #cbd6df;
             border-radius: 4px;
-            font-size: 15px;
+            font-size: 20px;
             text-align: center;
             background: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .captcha-refresh {
@@ -183,10 +187,13 @@
             height: 260px;
             border: 1px solid #c8d6df;
             border-radius: 4px;
-            padding: 10px;
+            padding: 14px;
             resize: none;
             background: #fff;
             color: #334155;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         /* Footer */
@@ -213,51 +220,58 @@
 
     <script type="text/javascript">
         var captchaCode = '';
+        function randomChar() {
+            var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            return chars.charAt(Math.floor(Math.random() * chars.length));
+        }
         function drawCaptcha() {
             var canvas = document.getElementById('captchaCanvas');
             var ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#f4f6f8';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Generar código aleatorio de 4 dígitos
+            // Generar código aleatorio de 5 caracteres (letras y números)
             captchaCode = '';
-            for (var i = 0; i < 4; i++) {
-                captchaCode += Math.floor(Math.random() * 10);
+            for (var i = 0; i < 5; i++) {
+                captchaCode += randomChar();
             }
-            // Dibujar el código
-            ctx.font = 'bold 38px Segoe UI, Tahoma';
-            ctx.fillStyle = '#2c3e50';
-            ctx.save();
-            ctx.translate(30, 50);
-            ctx.rotate((Math.random() - 0.5) * 0.2);
-            ctx.fillText(captchaCode.substring(0, 2), 0, 0);
-            ctx.restore();
-            ctx.save();
-            ctx.translate(120, 40);
-            ctx.rotate((Math.random() - 0.5) * 0.2);
-            ctx.fillText(captchaCode.substring(2), 0, 0);
-            ctx.restore();
-            // Ruido
-            for (var i = 0; i < 8; i++) {
+            // Dibujar el código con distorsión y colores
+            for (var i = 0; i < captchaCode.length; i++) {
+                ctx.save();
+                ctx.font = (32 + Math.floor(Math.random()*10)) + 'px Segoe UI, Tahoma, Arial';
+                ctx.fillStyle = (i%2==0)?'#2c3e50':'#0f5a85';
+                ctx.translate(30 + i*35, 40 + Math.random()*10);
+                ctx.rotate((Math.random()-0.5)*0.5);
+                ctx.fillText(captchaCode[i], 0, 0);
+                ctx.restore();
+            }
+            // Líneas de ruido
+            for (var i = 0; i < 5; i++) {
                 ctx.beginPath();
-                ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 6, 0, 2 * Math.PI);
-                ctx.fillStyle = '#cbd6df';
+                ctx.moveTo(Math.random()*canvas.width, Math.random()*canvas.height);
+                ctx.lineTo(Math.random()*canvas.width, Math.random()*canvas.height);
+                ctx.strokeStyle = '#cbd6df';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+            // Puntos de ruido
+            for (var i = 0; i < 12; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, Math.random()*5, 0, 2*Math.PI);
+                ctx.fillStyle = '#b0b7c3';
                 ctx.fill();
             }
             document.getElementById('captchaError').textContent = '';
             document.getElementById('txtCodigoCaptcha').value = '';
         }
-
         function validateCaptchaAndFolio() {
             var folioInput = document.getElementById('txtFolioIterno_I');
             var folioValue = folioInput.value.trim();
             var folioError = document.getElementById('folioError');
             var folioRegex = /^\d{1,3}-\d{1,2}-\d{4}[SC]$/i;
-            var captchaInput = document.getElementById('txtCodigoCaptcha').value.trim();
+            var captchaInput = document.getElementById('txtCodigoCaptcha').value.trim().toUpperCase();
             var captchaError = document.getElementById('captchaError');
             var valid = true;
-
-            // Validar folio
             if (folioValue === '') {
                 folioError.textContent = 'El folio es obligatorio.';
                 folioInput.classList.add('input-error');
@@ -270,8 +284,6 @@
                 folioError.textContent = '';
                 folioInput.classList.remove('input-error');
             }
-
-            // Validar captcha
             if (captchaInput !== captchaCode) {
                 captchaError.textContent = 'Código incorrecto. Intente de nuevo.';
                 drawCaptcha();
@@ -279,10 +291,8 @@
             } else {
                 captchaError.textContent = '';
             }
-
             return valid;
         }
-
         window.onload = function () {
             drawCaptcha();
         };
