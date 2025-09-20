@@ -179,22 +179,52 @@
             border: 1px solid #e2e9ef;
             padding: 14px;
             border-radius: 6px;
+            position: relative;
+            transition: all 0.3s;
         }
-        .status-panel h3 { margin: 4px 0 10px; font-size: 15px; color: #243240; }
-
-        .status-memo {
-            width: 100%;
-            height: 260px;
-            border: 1px solid #c8d6df;
-            border-radius: 4px;
-            padding: 14px;
-            resize: none;
+        .status-panel.maximized {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            max-width: none;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            border-radius: 0;
             background: #fff;
-            color: #334155;
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            box-shadow: 0 0 0 9999px rgba(36,50,64,0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
         }
+        .status-panel .maximize-btn {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: #0f5a85;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 14px;
+            font-size: 15px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .status-panel.maximized .maximize-btn {
+            right: 18px;
+            top: 18px;
+            background: #c0392b;
+        }
+        .status-panel.maximized .status-memo {
+            height: calc(100vh - 80px);
+            font-size: 22px;
+        }
+        .status-panel.maximized h3 {
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+        .status-panel.maximized ~ * { display: none !important; }
 
         /* Footer */
         .page-footer {
@@ -293,6 +323,16 @@
             }
             return valid;
         }
+        function toggleMaximizeStatusPanel() {
+            var panel = document.getElementById('statusPanel');
+            if (panel.classList.contains('maximized')) {
+                panel.classList.remove('maximized');
+                document.body.style.overflow = '';
+            } else {
+                panel.classList.add('maximized');
+                document.body.style.overflow = 'hidden';
+            }
+        }
         window.onload = function () {
             drawCaptcha();
         };
@@ -340,7 +380,8 @@
                                         </dx:ASPxButton>
                                     </div>
                                 </div>
-                                <div class="status-panel">
+                                <div class="status-panel" id="statusPanel">
+                                    <button type="button" class="maximize-btn" onclick="toggleMaximizeStatusPanel()" title="Maximizar/Restaurar">&#x26F6;</button>
                                     <h3>Estatus del folio:</h3>
                                     <dx:ASPxMemo runat="server" ID="txtEstatusFolio" ClientInstanceName="txtEstatusFolio"
                                         CssClass="status-memo" Width="100%" Rows="15" NullText="Necesita pasar la verificación de seguridad para consultar su estatus" ReadOnly="true" />
