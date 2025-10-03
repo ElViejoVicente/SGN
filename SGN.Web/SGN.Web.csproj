@@ -136,9 +136,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="APP\ConsultaExpediente.aspx" />
     <Content Include="Bitacora\HistoricoCambios.aspx" />
     <Content Include="Catalogos\CatActos.aspx" />
     <Content Include="Catalogos\CatAreaOficina.aspx" />
+    <Content Include="Catalogos\CatClientes.aspx" />
     <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
     <Content Include="Catalogos\CatEstadosRepublica.aspx" />
     <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
@@ -578,6 +580,13 @@
     <Content Include="webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APP\ConsultaExpediente.aspx.cs">
+      <DependentUpon>ConsultaExpediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="APP\ConsultaExpediente.aspx.designer.cs">
+      <DependentUpon>ConsultaExpediente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bitacora\HistoricoCambios.aspx.cs">
@@ -600,6 +609,13 @@
     </Compile>
     <Compile Include="Catalogos\CatAreaOficina.aspx.designer.cs">
       <DependentUpon>CatAreaOficina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatClientes.aspx.cs">
+      <DependentUpon>CatClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatClientes.aspx.designer.cs">
+      <DependentUpon>CatClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\CatDocumentosXVariante.aspx.cs">
       <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
