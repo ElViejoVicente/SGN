@@ -393,7 +393,7 @@
             </main>
 
             <footer class="page-footer">
-                © 2025 Derechos Reservados | <a href="http://www.consultoria-it.com" target="_blank" style="color:inherit; text-decoration:underline;">Consultoria IT | 55 4800 5547 | Francisco I. Madero 3A Humantla, Tlax</a>
+                © 2025 | <a href="http://www.consultoria-it.com" target="_blank" style="color:inherit; text-decoration:underline;">Consultoria IT | 56 3731 8762 | Francisco I. Madero 3A Humantla, Tlax</a>
             </footer>
         </div>
 

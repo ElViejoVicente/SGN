@@ -7,7 +7,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SLE</title>
+    <title>SGN</title>
     <link rel="icon" href="imagenes/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="Content/NuevoMenu/login.css" />
     <script src="Scripts/jquery-3.3.1.min.js"></script>
@@ -21,7 +21,7 @@
                 <header class="card-header">
                     <img src="imagenes/login/LogoNotaria.svg" alt="Logo Sistema" class="logo-animated" />
                     <h1 class="title">Bienvenido</h1>
-                    <h4 class="subtitle">Sistema de Gestión Notarial v1.8</h4>
+                    <h4 class="subtitle">Sistema de Gestión Notarial v1.9</h4>
                 </header>
 
                 <div class="card-body">
@@ -54,9 +54,9 @@
         </main>
 
         <footer class="footer">
-            © 2025 Derechos Reservados |
+            © 2026 Derechos Reservados |
             <a href="http://www.consultoria-it.com" target="_blank">
-                Consultoria IT | 55 4800 5547 | Francisco I. Madero 3A Humantla, Tlax | Sistema Orgullosamente Tlaxcalteca
+                Consultoria IT | 56 3731 8762 | Francisco I. Madero 3A Humantla, Tlax | Sistema Orgullosamente Tlaxcalteca
             </a>
         </footer>
     </div>

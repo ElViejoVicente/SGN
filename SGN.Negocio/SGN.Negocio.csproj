@@ -82,6 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APP\DatosAPP.cs" />
+    <Compile Include="APP\ListaConsultaFolio.cs" />
     <Compile Include="Bitacora\DatosBitacora.cs" />
     <Compile Include="CRUD\DatosCrud.cs" />
     <Compile Include="Estadistica\DatosEstadisticas.cs" />

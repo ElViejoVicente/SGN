@@ -1,72 +1,57 @@
 ﻿using System;
+using System.Text;
 using System.Web.UI;
 using DevExpress.Web;
+using SGN.Negocio.APP;
 
 namespace SGN.Web.APP
 {
     public partial class ConsultaExpediente : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-        }
-
-        protected void btnConsultar_Click(object sender, EventArgs e)
-        {
-            // Obtener el folio ingresado por el usuario
-            string folio = txtFolioIterno.Text.Trim();
-
-            // Simular procesamiento del folio (aquí va tu lógica real)
-            string estado = "";
-            if (string.IsNullOrEmpty(folio))
-            {
-                estado = "El folio no puede estar vacío.";
-            }
-            else if (folio == "125-9-2025S")
-            {
-                estado = "Folio encontrado: ESTATUS = FINALIZADO";
-            }
-            else if (folio == "12-10-2024C")
-            {
-                estado = "Folio encontrado: ESTATUS = EN PROCESO";
-            }
-            else if (folio == "1-1-2026S")
-            {
-                estado = "Folio encontrado: ESTATUS = PENDIENTE";
-            }
-            else
-            {
-                estado = "Folio no encontrado o formato incorrecto.";
-            }
-
-            // Mostrar el estado en el memo
-            txtEstatusFolio.Text = estado;
-        }
 
         protected void cpConsultaFolio_Callback(object sender, CallbackEventArgsBase e)
         {
-            string folio = e.Parameter?.Trim() ?? "";
-            string estado = "";
-            if (string.IsNullOrEmpty(folio))
+            string mensajeRespuesta = string.Empty;
+            try
             {
-                estado = "El folio no puede estar vacío.";
+                string folio = e.Parameter?.Trim() ?? "";
+
+                DatosAPP datosApp = new DatosAPP();
+
+                var resultadoConsulta = datosApp.ConsultaMiFolio(folio);
+
+                if (resultadoConsulta != null)
+                {
+                    // Extraer valores de forma segura
+                    string fecha = Convert.ToString(resultadoConsulta.FechaUltimoTratamiento);
+                    string estatusId = Convert.ToString(resultadoConsulta.IdEstatus);
+                    string descripcion = Convert.ToString(resultadoConsulta.Descripcion);
+
+                    // Construir mensaje con saltos de línea e iconos
+                    var sb = new StringBuilder();
+                    sb.AppendLine($"📅 Fecha de último tratamiento: {fecha}");
+                    sb.AppendLine($"✅ Estatus (ID): {estatusId}");
+                    sb.AppendLine($"📝 Descripción: {descripcion}");
+                    sb.AppendLine();
+                    sb.AppendLine("ℹ️ Si necesita más detalles, contacte al área correspondiente.");
+
+                    mensajeRespuesta = sb.ToString();
+                }
+                else
+                {
+                    // Mensaje cuando no se encuentra el folio
+                    mensajeRespuesta = $"❗ No se encontró información para el folio '{folio}'.{Environment.NewLine}Por favor verifique el número e inténtelo de nuevo.";
+                }
             }
-            else if (folio == "125-9-2025S")
+            catch (Exception ex)
             {
-                estado = "Folio encontrado: ESTATUS = FINALIZADO";
+                // Mensaje amistoso en caso de error
+                mensajeRespuesta = $"❗ Ocurrió un error al consultar el folio. {Environment.NewLine}Por favor intente de nuevo más tarde.";
+                // Loguear la excepción en el sistema de logging si existe (no mostrado aquí).
             }
-            else if (folio == "12-10-2024C")
-            {
-                estado = "Folio encontrado: ESTATUS = EN PROCESO";
-            }
-            else if (folio == "1-1-2026S")
-            {
-                estado = "Folio encontrado: ESTATUS = PENDIENTE";
-            }
-            else
-            {
-                estado = "Folio no encontrado o formato incorrecto.";
-            }
-            txtEstatusFolio.Text = estado;
+
+            // Asignar resultado al control de interfaz (usa saltos de línea)
+            txtEstatusFolio.Text = mensajeRespuesta;
         }
     }
 }

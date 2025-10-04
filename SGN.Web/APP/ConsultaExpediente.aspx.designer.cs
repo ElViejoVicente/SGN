@@ -33,6 +33,15 @@ namespace SGN.Web.APP
         protected global::DevExpress.Web.ASPxTextBox txtFolioIterno;
 
         /// <summary>
+        /// Control cpConsultaFolio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel cpConsultaFolio;
+
+        /// <summary>
         /// Control btnConsultar.
         /// </summary>
         /// <remarks>
