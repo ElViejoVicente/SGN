@@ -306,10 +306,6 @@
                 folioError.textContent = 'El folio es obligatorio.';
                 folioInput.classList.add('input-error');
                 valid = false;
-            } else if (!folioRegex.test(folioValue)) {
-                folioError.textContent = 'Formato de folio inválido. Ejemplo: 125-9-2025S';
-                folioInput.classList.add('input-error');
-                valid = false;
             } else {
                 folioError.textContent = '';
                 folioInput.classList.remove('input-error');
