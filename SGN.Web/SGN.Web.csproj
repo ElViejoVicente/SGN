@@ -148,41 +148,13 @@
     <Content Include="Catalogos\CatVariantesXActo.aspx" />
     <Content Include="Configuracion\modulos.aspx" />
     <Content Include="Configuracion\sociedades.aspx" />
-    <Content Include="Content\AsignacionMatricula.js" />
-    <Content Include="Content\AsignacionRet.js" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-grid.rtl.css" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap-reboot.rtl.css" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
-    <Content Include="Content\bootstrap-utilities.css" />
-    <Content Include="Content\bootstrap-utilities.min.css" />
-    <Content Include="Content\bootstrap-utilities.rtl.css" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap.rtl.css" />
-    <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\Expediciones.js" />
-    <Content Include="Content\ExpedicionesAsig.js" />
     <Content Include="Content\generic\pageMinimalStyle.css" />
-    <Content Include="Content\headers.css" />
-    <Content Include="Content\indexMovil.css" />
-    <Content Include="Content\jquery.countdown.css" />
-    <Content Include="Content\menu.css" />
-    <Content Include="Content\menuMovil.css" />
     <Content Include="Content\NuevoMenu\header.css" />
     <Content Include="Content\NuevoMenu\login.css" />
     <Content Include="Content\NuevoMenu\menu.css" />
     <Content Include="Content\paginas\flujo-procesos.css" />
     <Content Include="Content\paginas\flujo-procesos.js" />
-    <Content Include="Content\stylePc.css" />
-    <Content Include="Content\styles.css" />
     <Content Include="Controles\paginas\Error.aspx" />
-    <Content Include="Controles\Usuario\InfoMsgBoxMovil.ascx" />
     <Content Include="Estadisticas\panelInicial.aspx" />
     <Content Include="ExpedientesTramites\ArchivosExpedientes.aspx" />
     <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
@@ -276,9 +248,6 @@
     <Content Include="imagenes\Produccion\segob.png" />
     <Content Include="Inventarios\PanelInventario.aspx" />
     <Content Include="paginaConstruccion.aspx" />
-    <Content Include="PlantillaMovil.aspx">
-      <BrowseToURL>~/PlantillaMovil.aspx</BrowseToURL>
-    </Content>
     <Content Include="assets\css\fullcalendar.css" />
     <Content Include="assets\css\fullcalendar.print.css" />
     <Content Include="assets\js\fullcalendar.js" />
@@ -298,17 +267,8 @@
     <Content Include="Configuracion\perfiles.aspx" />
     <Content Include="Configuracion\usuarios.aspx" />
     <Content Include="Content\all.css" />
-    <Content Include="Content\AsignacionExp.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\ContentMovil.css" />
-    <Content Include="Content\dialog-con-estilo.css" />
-    <Content Include="Content\estilos.css" />
-    <Content Include="Content\example.css" />
     <Content Include="Content\generic\pageStyle.css" />
     <Content Include="Content\generic\StylesMovil.css" />
-    <Content Include="Content\headerMovil.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="headerMovil.aspx" />
     <Content Include="imagenes\menu\configuracion.ico" />
     <Content Include="imagenes\menu\controlProduccion.ico" />
@@ -333,36 +293,8 @@
     <Content Include="imagenes\pages\excel-icon.jpg" />
     <Content Include="indexMovil.aspx" />
     <Content Include="menuMovil.aspx" />
-    <Content Include="PaginaPlantilla.aspx" />
     <Content Include="Controles\Usuario\InfoMsgBox.ascx" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="fonts\DINEngschrift.ttf" />
-    <Content Include="fonts\DINRegular.ttf" />
-    <Content Include="fonts\fa-solid-900.woff" />
-    <Content Include="fonts\fa-solid-900.woff2" />
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <Content Include="PLD\ActiviadesVulnerables.aspx" />
@@ -372,12 +304,6 @@
     <Content Include="Reportes\reporteExUnico.aspx" />
     <Content Include="Reportes\reporteFormConociendoCliente.aspx" />
     <Content Include="Reportes\reporteHojaDatos.aspx" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.esm.js" />
-    <Content Include="Scripts\bootstrap.esm.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="Scripts\bootstrap\css\bootstrap-reboot.css.map" />
@@ -397,12 +323,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="header.aspx" />
     <Content Include="imagenes\header\cerrarSession.png" />
@@ -425,7 +345,6 @@
     <Content Include="menu.aspx" />
     <Content Include="PaginaVacia.html" />
     <Content Include="Scripts\active.js" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Scripts\bootstrap\css\bootstrap-reboot.css" />
@@ -441,11 +360,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
-    <Content Include="Scripts\jquery-3.6.0.js" />
-    <Content Include="Scripts\jquery-3.6.0.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Scripts\jquery-latest.js" />
     <Content Include="Scripts\jquery.countdown.js" />
     <Content Include="Scripts\jquery.ui.touch-punch.min.js" />
@@ -544,34 +458,6 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="SwitcherResources\Content\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Cerulean\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Cosmo\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Cyborg\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Darkly\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Flatly\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Journal\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\litera\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Lumen\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\lux\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\materia\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\minty\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\pages.css" />
-    <Content Include="SwitcherResources\Content\pulse\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Sandstone\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Simplex\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\sketchy\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Slate\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\solar\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Spacelab\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Superhero\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\themes.css" />
-    <Content Include="SwitcherResources\Content\United\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Content\Yeti\bootstrap.min.css" />
-    <Content Include="SwitcherResources\Scripts\bootstrap.min.js" />
-    <Content Include="SwitcherResources\Scripts\jquery-3.1.1.js" />
-    <Content Include="SwitcherResources\Scripts\popper.min.js" />
-    <Content Include="SwitcherResources\Themes.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -673,13 +559,6 @@
     <Compile Include="Controles\paginas\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.cs">
-      <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\Usuario\InfoMsgBoxMovil.ascx.designer.cs">
-      <DependentUpon>InfoMsgBoxMovil.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Estadisticas\panelInicial.aspx.cs">
       <DependentUpon>panelInicial.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -736,13 +615,6 @@
     <Compile Include="paginaConstruccion.aspx.designer.cs">
       <DependentUpon>paginaConstruccion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlantillaMovil.aspx.cs">
-      <DependentUpon>PlantillaMovil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PlantillaMovil.aspx.designer.cs">
-      <DependentUpon>PlantillaMovil.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Configuracion\perfiles.aspx.cs">
       <DependentUpon>perfiles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -777,13 +649,6 @@
     </Compile>
     <Compile Include="menuMovil.aspx.designer.cs">
       <DependentUpon>menuMovil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PaginaPlantilla.aspx.cs">
-      <DependentUpon>PaginaPlantilla.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PaginaPlantilla.aspx.designer.cs">
-      <DependentUpon>PaginaPlantilla.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controles\Servidor\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -980,14 +845,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
     <Folder Include="Produccion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-    <Content Include="SwitcherResources\Content\LICENSE" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />

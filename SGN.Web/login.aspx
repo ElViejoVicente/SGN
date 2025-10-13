@@ -10,7 +10,7 @@
     <title>SGN</title>
     <link rel="icon" href="imagenes/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="Content/NuevoMenu/login.css" />
-    <script src="Scripts/jquery-3.3.1.min.js"></script>
+
 </head>
 <body>
 <form id="frmLogin" runat="server">

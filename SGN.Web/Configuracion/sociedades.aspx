@@ -9,11 +9,10 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="stylesheet" href="../Content/bootstrap.min.css" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="../Content/all.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="../Content/generic/pageStyle.css" crossorigin="anonymous" />
-    <script src="../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
