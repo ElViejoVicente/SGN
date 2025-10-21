@@ -31,6 +31,18 @@
             flex-direction: column;
         }
 
+        /* Logo */
+        .logo-container {
+            text-align: center;
+            padding: 15px 0 0 0;
+            background: #0f2b3d;
+        }
+        .logo {
+            max-width: 120px;
+            max-height: 80px;
+            height: auto;
+        }
+
         /* Header */
         .page-header {
             background: #0f2b3d; /* azul oscuro similar al mockup */
@@ -268,18 +280,18 @@
             // Dibujar el código con distorsión y colores
             for (var i = 0; i < captchaCode.length; i++) {
                 ctx.save();
-                ctx.font = (32 + Math.floor(Math.random()*10)) + 'px Segoe UI, Tahoma, Arial';
-                ctx.fillStyle = (i%2==0)?'#2c3e50':'#0f5a85';
-                ctx.translate(30 + i*35, 40 + Math.random()*10);
-                ctx.rotate((Math.random()-0.5)*0.5);
+                ctx.font = (32 + Math.floor(Math.random() * 10)) + 'px Segoe UI, Tahoma, Arial';
+                ctx.fillStyle = (i % 2 == 0) ? '#2c3e50' : '#0f5a85';
+                ctx.translate(30 + i * 35, 40 + Math.random() * 10);
+                ctx.rotate((Math.random() - 0.5) * 0.5);
                 ctx.fillText(captchaCode[i], 0, 0);
                 ctx.restore();
             }
             // Líneas de ruido
             for (var i = 0; i < 5; i++) {
                 ctx.beginPath();
-                ctx.moveTo(Math.random()*canvas.width, Math.random()*canvas.height);
-                ctx.lineTo(Math.random()*canvas.width, Math.random()*canvas.height);
+                ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
                 ctx.strokeStyle = '#cbd6df';
                 ctx.lineWidth = 2;
                 ctx.stroke();
@@ -287,7 +299,7 @@
             // Puntos de ruido
             for (var i = 0; i < 12; i++) {
                 ctx.beginPath();
-                ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, Math.random()*5, 0, 2*Math.PI);
+                ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 5, 0, 2 * Math.PI);
                 ctx.fillStyle = '#b0b7c3';
                 ctx.fill();
             }
@@ -337,20 +349,21 @@
 <body>
     <form id="form1" runat="server" onsubmit="return validateCaptchaAndFolio();">
 
-
-
-
-
         <div class="page">
+            <!-- Logo agregado aquí -->
+            <div class="logo-container">
+                <img src="/imagenes/login/logo.svg" alt="Logo Notaria" class="logo" />
+            </div>
+
             <header class="page-header">
                 <h1>Notaria 01 Huamantla</h1>
-                <p>Consulta de Folio</p>
+                <p>Consulta de Expediente</p>
             </header>
 
             <main class="page-body">
                 <section class="form-card">
                     <div class="field-row">
-                        <label class="label" for="txtFolioIterno">Folio:</label>
+                        <label class="label" for="txtFolioIterno">Numero de Expediente:</label>
                         <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
                             <dx:ASPxTextBox runat="server" ID="txtFolioIterno" ClientInstanceName="txtFolioIterno" CssClass="folio-box" NullText="Introduzca el número de folio" />
                             <div id="folioError" class="field-error"></div>
@@ -389,7 +402,7 @@
             </main>
 
             <footer class="page-footer">
-                © 2025 | <a href="http://www.consultoria-it.com" target="_blank" style="color:inherit; text-decoration:underline;">Consultoria IT | 56 3731 8762 | Francisco I. Madero 3A Humantla, Tlax</a>
+                © 2025 | <a href="https://www.bing.com/ck/a?!&&p=1a1e56f44becf2a5ea326ed7bd978543dd93fedd822080850fd3d9f4eff3308eJmltdHM9MTc1OTUzNjAwMA&ptn=3&ver=2&hsh=4&fclid=08d34849-2bc1-6527-2027-5cb92a96647a&u=a1L21hcHM_Jm1lcGk9MH5-RW1iZWRkZWR-QWRkcmVzc19MaW5rJnR5PTE4JnE9Tm90YXJpYSUyME5vLjElMjBIdWFtYW50bGElMjBUbGF4LiZzcz15cGlkLllOOTAwMXg2ODQ3ODE0ODQ0NDYwNDk3NjIyJnBwb2lzPTE5LjMxMjI4NDQ2OTYwNDQ5Ml8tOTcuOTI1MzE1ODU2OTMzNl9Ob3RhcmlhJTIwTm8uMSUyMEh1YW1hbnRsYSUyMFRsYXguX1lOOTAwMXg2ODQ3ODE0ODQ0NDYwNDk3NjIyfiZjcD0xOS4zMTIyODR-LTk3LjkyNTMxNiZ2PTImc1Y9MSZGT1JNPU1QU1JQTA" target="_blank" style="color:inherit; text-decoration:underline;">Notaria No.1 Huamantla Tlax. | 247 472 1542 | Avenida Zaragoza Poniente, #213</a>
             </footer>
         </div>
 
