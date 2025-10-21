@@ -114,9 +114,12 @@ namespace SGN.Web
 
                 string moduloClean = Limpiar(nombreModulo);
                 string versionClean = Limpiar(version);
-        
+                string IconoPadreClean = Limpiar(IconoPadre);
+                string IconoModuloClean = Limpiar(IconoModulo);
 
-                return $"{IconoPadre} {nombrePadre} | {IconoModulo} {moduloClean} | 🔢 Versión: {versionClean}";
+
+
+                return $"{IconoPadreClean} {nombrePadre} | {IconoModuloClean} {moduloClean} | 🔢 Versión: {versionClean}";
             }
             catch
             {
