@@ -68,7 +68,7 @@
 
             <!-- Panel con el árbol -->
             <div id="menuPanel" class="menu-panel">
-                <dx:ASPxTreeView ID="rtvMenu"
+                <dx:ASPxTreeView ID="rtvMenu" AllowSelectNode="true" EnableNodeTextWrapping="true" 
                                  runat="server"
                                  
                                  CssClass="treMenu"

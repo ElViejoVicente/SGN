@@ -81,7 +81,7 @@ namespace SGN.Web
         {
             foreach (DataRow childRow in dbRow.GetChildRows("NodeRelation"))
             {
-                TreeViewNode childNode = new TreeViewNode(text: childRow["fcDescModulo"].ToString(),
+                TreeViewNode childNode = new TreeViewNode(text: childRow["fiUrlIco"].ToString() + childRow["fcDescModulo"].ToString(),
                                                         name: childRow["fiIdModulo"].ToString(),
                                                         imageUrl: "",
                                                         navigateUrl: "");

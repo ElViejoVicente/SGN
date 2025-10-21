@@ -90,11 +90,11 @@
 <body>
   <div class="embed-container">
        <div class="embed-container1">
-			    <iframe name="headerGPB" id="headerGPB" src="header.aspx" frameborder="0" allowfullscreen></iframe>
+			    <iframe name="headerGPB" id="headerGPB" src="header.aspx" frameborder="0"  scrolling="no" allowfullscreen></iframe>
        </div>
        <div class="embed-container2">
             
-           <iframe name="menu" id="menu" src="Menu.aspx" frameborder="0" allowfullscreen ></iframe>
+           <iframe name="menu" id="menu" src="Menu.aspx" frameborder="0"  scrolling="no" allowfullscreen ></iframe>
            <iframe name="basefrm" id="basefrm" src="Estadisticas/panelInicial.aspx" frameborder="0" allowfullscreen></iframe>
       </div>
   </div>

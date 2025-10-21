@@ -102,7 +102,7 @@
       </div>
 
       <!-- CENTRO: título de página -->
-      <div class="header-center">
+      <div class="header-left">
         <dx:ASPxLabel ID="lblNombrePagina" runat="server" CssClass="page-title" Text=""></dx:ASPxLabel>
       </div>
 
