@@ -352,7 +352,7 @@
         <div class="page">
             <!-- Logo agregado aquí -->
             <div class="logo-container">
-                <img src="/imagenes/login/logo.svg" alt="Logo Notaria" class="logo" />
+                <img src="../imagenes/login/LogoNotaria.svg" alt="Logo Notaria" class="logo" />
             </div>
 
             <header class="page-header">
