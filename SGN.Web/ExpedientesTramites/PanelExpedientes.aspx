@@ -248,85 +248,51 @@
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox" >
+                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox">
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
+                                                <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
+                                                </dx:ASPxDateEdit>
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {  
-                                                                if (chkBusquedaCompleta.GetChecked()) 
-                                                                {
-                                                                dtFechaInicio.SetEnabled(false);
-                                                                dtFechaFin.SetEnabled(false);
-                                                                }
-                                                                else
-                                                                {
-                                                                dtFechaInicio.SetEnabled(true);
-                                                                dtFechaFin.SetEnabled(true);
-                                                                }                                            }" />
-                                                        </dx:ASPxCheckBox>
-                                                    </td>
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                                                                  if (chkBusquedaCompleta.GetChecked()) 
+                                                                                                  {
+                                                                                                  dtFechaInicio.SetEnabled(false);
+                                                                                                  dtFechaFin.SetEnabled(false);
+                                                                                                  }
+                                                                                                  else
+                                                                                                  {
+                                                                                                  dtFechaInicio.SetEnabled(true);
+                                                                                                  dtFechaFin.SetEnabled(true);
+                                                                                                  }                                            }" />
+                                                </dx:ASPxCheckBox>
 
-                                                    <td>
+                                                <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
+                                                </dx:ASPxDateEdit>
+                                                <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
+                                                <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaNoActiva" Width="150px" ClientInstanceName="chkVerExpAlertaNoActiva" Text="Ver expedientes que tuvieron alertas" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
+                                                <dx:ASPxCheckBox runat="server" ID="chkEsActoVulnerable" Width="150px" ClientInstanceName="chkEsActoVulnerable" Text="Ver Solo Activiades Vulnerables" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {
+                                                                                                   var cb = chkEsActoVulnerable.GetMainElement();
+                                                                                                   if (chkEsActoVulnerable.GetChecked()) {
+                                                                                                       cb.style.backgroundColor = '#ff6961';
+                                                                                                   } else {
+                                                                                                       cb.style.backgroundColor = '';
+                                                                                                   }
+                                                                                               }" />
+                                                </dx:ASPxCheckBox>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
 
-                                                        <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
-                                                        </dx:ASPxCheckBox>
+                                                    <Image IconID="xaf_action_reload_svg_16x16"></Image>
+                                                </dx:ASPxButton>
 
-                                                    </td>
-                                                    <td>&nbsp;</td>
-
-                                                    <td>
-
-                                                        <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaNoActiva" Width="150px" ClientInstanceName="chkVerExpAlertaNoActiva" Text="Ver expedientes que tuvieron alertas" ToggleSwitchDisplayMode="Always">
-                                                        </dx:ASPxCheckBox>
-
-                                                    </td>
-                                                    <td>&nbsp;</td>
-
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkEsActoVulnerable" Width="150px"  ClientInstanceName="chkEsActoVulnerable" Text="Ver Solo Activiades Vulnerables" ToggleSwitchDisplayMode="Always">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {
-                                                                var cb = chkEsActoVulnerable.GetMainElement();
-                                                                if (chkEsActoVulnerable.GetChecked()) {
-                                                                    cb.style.backgroundColor = '#ff6961';
-                                                                } else {
-                                                                    cb.style.backgroundColor = '';
-                                                                }
-                                                            }" />
-                                                        </dx:ASPxCheckBox>
-
-                                                    </td>
-
-
-
-
-                                                    <td>&nbsp;</td>
-
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
-
-                                                            <Image IconID="xaf_action_reload_svg_16x16"></Image>
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -1206,7 +1172,7 @@
                                         <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
