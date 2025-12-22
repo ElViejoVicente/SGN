@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedienteUnico.aspx.cs" Inherits="SGN.Web.ExpedienteUnico.PanelExpedienteUnico" %>
 
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -121,6 +121,13 @@
                     }
                     break;
 
+                case "cmdFormConociCliente":
+                    if (gvExpedienteUnico.GetFocusedRowIndex() >= 0) {
+                        gvExpedienteUnico.GetRowValues(gvExpedienteUnico.GetFocusedRowIndex(), 'IdRegistro', onCallbackFormConocimientoCliente);
+                    }
+                    break;
+
+
 
             }
         }
@@ -140,6 +147,14 @@
 
 
             window.open("../Reportes/reporteExUnico?idRegistro=" + value, "_blank");
+        }
+
+
+        function onCallbackFormConocimientoCliente(value) {
+
+
+
+            window.open("../Reportes/reporteFormConociendoCliente?idRegistro=" + value, "_blank");
         }
 
 
@@ -525,9 +540,9 @@
 
                             <dx:GridViewToolbarItem Text="Buscar en Lista Negra" Image-IconID="actions_show_16x16gray" Name="cmdValidarEnListaNegra" />
 
-                            <dx:GridViewToolbarItem Text="Generar Impresion del Expediente" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
+                            <dx:GridViewToolbarItem Text="Impresion de Expediente Unico" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
 
-                            <dx:GridViewToolbarItem Text="Generar Impresion del Expediente" Image-IconID="actions_print_16x16devav" Name="cmdReporteExpUnico" />
+                            <dx:GridViewToolbarItem Text="Formulario de conocimiento del cliente" Image-IconID="actions_print_16x16devav" Name="cmdFormConociCliente" />
 
 
                             <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />

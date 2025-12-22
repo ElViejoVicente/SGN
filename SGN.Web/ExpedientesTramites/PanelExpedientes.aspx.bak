@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v24.2, Version=24.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -27,9 +27,10 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 9;   // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight - 50;   // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
+
 
         }
 
@@ -247,7 +248,7 @@
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox">
+                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox" >
                                     <PanelCollection>
                                         <dx:PanelContent>
 
@@ -336,9 +337,6 @@
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxPanel>
-
-
-
 
         <section class="CLPageContent" id="maindiv">
             <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvExpedientes"></dx:ASPxGridViewExporter>
