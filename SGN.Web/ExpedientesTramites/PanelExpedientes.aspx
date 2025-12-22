@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
-
 <%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
@@ -9,11 +7,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../../SwitcherResources/Content/Cosmo/bootstrap.min.css" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
-    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css"/>
     <script src="../Scripts/mensajes.js"></script>
+
 
     <script type="text/javascript">
 
@@ -27,13 +27,28 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 50;   // I have some buttons below the grid so needed -50
+            var topPanelEl = document.getElementById('TopPanel');
+            if (!topPanelEl) {
+                // try selector by css class (the control has CssClass="topPanel")
+                topPanelEl = document.querySelector('.topPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!topPanelEl && typeof TopPanel !== 'undefined' && TopPanel.GetMainElement) {
+                topPanelEl = TopPanel.GetMainElement();
+            }
+
+            var topHeight = 0;
+            if (topPanelEl) {
+                topHeight = (topPanelEl.offsetHeight || topPanelEl.clientHeight || 0);
+            }
+
+
+            var height = document.getElementById('maindiv').clientHeight - topHeight;   // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
 
 
         }
-
 
         function gridView_EndCallback(s, e) {
 
@@ -242,7 +257,7 @@
 
 
 
-        <dx:ASPxPanel ID="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
+        <dx:ASPxPanel ID="TopPanel" ClientInstanceName="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                     <table>

@@ -9,11 +9,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
-    <script src="../Scripts/sweetalert.min.js"></script>
-    <script src="../Scripts/mensajes.js"></script>
-
-
-    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css"/>
     <script src="../Scripts/mensajes.js"></script>
 
 
@@ -33,7 +30,23 @@
 
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 10;  // I have some buttons below the grid so needed -50
+
+            var topPanelEl = document.getElementById('TopPanel');
+            if (!topPanelEl) {
+                // try selector by css class (the control has CssClass="topPanel")
+                topPanelEl = document.querySelector('.topPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!topPanelEl && typeof TopPanel !== 'undefined' && TopPanel.GetMainElement) {
+                topPanelEl = TopPanel.GetMainElement();
+            }
+
+            var topHeight = 0;
+            if (topPanelEl) {
+                topHeight = (topPanelEl.offsetHeight || topPanelEl.clientHeight || 0);
+            }
+
+            var height = document.getElementById('maindiv').clientHeight - topHeight;  // I have some buttons below the grid so needed -50
 
             gvUsuarios.SetHeight(height);
 

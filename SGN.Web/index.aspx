@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>SISTEMA SGN</title>
    <%-- <link rel="stylesheet" href="Content/bootstrap.min.css" crossorigin="anonymous" />--%>
-    <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
+<%--    <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>--%>
 <%--    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>--%>
 
     <link rel="shortcut icon" href="imagenes/header/LogoNotariaRecorte.png" type="image/x-icon" />

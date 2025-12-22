@@ -24,12 +24,12 @@ namespace SGN.Web
                 Session["usuario"] = null;
                 Session["listaSociedades"] = null;
                 Session["sociedadesXusuario"] = null;
-                if (!Page.IsPostBack )
+                if (!Page.IsPostBack)
                 {
                     Response.Expires = 0;
                 }
                 txtUsername.Focus();
-                
+
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace SGN.Web
         protected void BT_ok_Click(object sender, EventArgs e)
         {
             try
-            {        
+            {
                 if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
                 {
                     //ventana de error por que no estan los campos rellenado
@@ -75,7 +75,7 @@ namespace SGN.Web
                     ListaSociedades = datosUsuario.DameDatosSociedades();
                     ListaSociedadesAutorizadas = datosUsuario.DameSociedadesUsuario(user.Id);
 
-                    if (ListaSociedades != null && ListaSociedadesAutorizadas != null && ListaSociedadesAutorizadas.Count>0)
+                    if (ListaSociedades != null && ListaSociedadesAutorizadas != null && ListaSociedadesAutorizadas.Count > 0)
                     {
                         Session["listaSociedades"] = ListaSociedades;
                         Session["sociedadesXusuario"] = ListaSociedadesAutorizadas;
@@ -83,7 +83,7 @@ namespace SGN.Web
                     }
                     else
                     {
-                        cuInfoMsgbox1.mostrarMensaje("El usuario: "+txtUsername.Text + " no cuenta con sociedades asignadas, solicite ayuda al administrador.", Controles.Usuario.InfoMsgBox.tipoMsg.warning);
+                        cuInfoMsgbox1.mostrarMensaje("El usuario: " + txtUsername.Text + " no cuenta con sociedades asignadas, solicite ayuda al administrador.", Controles.Usuario.InfoMsgBox.tipoMsg.warning);
 
                         Session["listaSociedades"] = null;
                         Session["sociedadesXusuario"] = null;
@@ -91,33 +91,19 @@ namespace SGN.Web
                     }
 
 
+                    Response.Redirect("index.aspx");
 
-                    string strUserAgent = Request.UserAgent.ToString().ToLower();
 
-                    if (strUserAgent != null)
-                    {
-                        if (Request.Browser.IsMobileDevice == true || strUserAgent.Contains("iphone") ||
-                        strUserAgent.Contains("blackberry") || strUserAgent.Contains("mobile") ||
-                        strUserAgent.Contains("windows ce") || strUserAgent.Contains("opera mini") ||
-                        strUserAgent.Contains("palm")) 
-                        {
-                            Response.Redirect("indexMovil.aspx");
-                        }
-                        else
-                        {
-                            Response.Redirect("index.aspx");
-                        }
-                    }
-                    
+
                 }
                 else
                 {
                     cuInfoMsgbox1.mostrarMensaje("Usuario/Contraseña incorrectos.", Controles.Usuario.InfoMsgBox.tipoMsg.warning);
-                        //ventana de error por usuario o cony¡traseña no validos
+                    //ventana de error por usuario o cony¡traseña no validos
                     return;
                 }
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 throw;
             }
