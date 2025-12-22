@@ -107,29 +107,19 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
+                                                <dx:ASPxTextBox runat="server" ID="txtNumExpdiente" AutoPostBack="false">
+                                                    <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
+                                                        <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
+                                                    </ValidationSettings>
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxTextBox runat="server" ID="txtNumExpdiente" AutoPostBack="false">
-                                                            <ValidationSettings ValidationGroup="requerido" SetFocusOnError="true" ErrorDisplayMode="ImageWithTooltip">
-                                                                <RequiredField IsRequired="true" ErrorText="Campo obligatorio" />
-                                                            </ValidationSettings>
+                                                </dx:ASPxTextBox>
 
-                                                        </dx:ASPxTextBox>
-                                                    </td>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) {  gvHistoricoCambios.PerformCallback('CargarRegistros'); }" />
+                                                </dx:ASPxButton>
 
-                                                    <td>&nbsp;</td>
-
-
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) {  gvHistoricoCambios.PerformCallback('CargarRegistros'); }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -242,7 +232,7 @@
                         <EditFormSettings Visible="False"></EditFormSettings>
                     </dx:GridViewDataDateColumn>
 
-                    
+
 
                     <%--  columnas datos generales de la hoja de datos--%>
                 </Columns>

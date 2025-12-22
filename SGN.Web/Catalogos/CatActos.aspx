@@ -66,16 +66,13 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvActos.PerformCallback('CargarRegistros'); }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvActos.PerformCallback('CargarRegistros'); }" />
+                                                </dx:ASPxButton>
+
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -192,8 +189,8 @@
                     </dx:GridViewDataCheckColumn>
 
                     <dx:GridViewDataTextColumn Visible="true" VisibleIndex="6" Caption="Umbral Actividad Vulnerable" FieldName="UmbralAcVulnerable" Width="200px">
-                        <PropertiesTextEdit DisplayFormatString="{0:C2}" >
-                            
+                        <PropertiesTextEdit DisplayFormatString="{0:C2}">
+
                             <MaskSettings Mask="$<0..9999999999g>.<00..99>" IncludeLiterals="DecimalSymbol"></MaskSettings>
                         </PropertiesTextEdit>
                         <EditFormSettings Caption="Umbral AV $" />

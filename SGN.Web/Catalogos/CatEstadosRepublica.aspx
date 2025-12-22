@@ -68,16 +68,13 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvEstadosRepublica.PerformCallback('CargarLista'); }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvEstadosRepublica.PerformCallback('CargarLista'); }" />
+                                                </dx:ASPxButton>
+
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -183,9 +180,9 @@
                     <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="TextoEstado" FieldName="TextoEstado" Width="300px">
                     </dx:GridViewDataTextColumn>
 
-                    
 
-                                </Columns>
+
+                </Columns>
 
 
                 <Toolbars>

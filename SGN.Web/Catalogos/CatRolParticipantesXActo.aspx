@@ -80,37 +80,28 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
+                                                <dx:ASPxComboBox runat="server" ID="cbActos"
+                                                    ClientInstanceName="cbActos"
+                                                    Width="200px"
+                                                    AutoPostBack="false"
+                                                    OnDataBinding="cbActos_DataBinding"
+                                                    Caption="Actos:"
+                                                    EnableMultiColumn="false"
+                                                    DropDownStyle="DropDownList"
+                                                    SelectInputTextOnClick="true"
+                                                    IncrementalFilteringMode="None"
+                                                    EnableCallbackMode="true"
+                                                    SelectedIndex="-1">
+                                                    <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvRolXActo.PerformCallback('CargarRegistros~' + s.GetSelectedItem().text );    }" />
+                                                </dx:ASPxComboBox>
 
-                                                    <td>
-                                                        <dx:ASPxComboBox runat="server" ID="cbActos"
-                                                            ClientInstanceName="cbActos"
-                                                            Width="200px"
-                                                            AutoPostBack="false"
-                                                            OnDataBinding="cbActos_DataBinding"
-                                                            Caption="Actos:"
-                                                            EnableMultiColumn="false"
-                                                            DropDownStyle="DropDownList"
-                                                            SelectInputTextOnClick="true"
-                                                            IncrementalFilteringMode="None"
-                                                            EnableCallbackMode="true"
-                                                            SelectedIndex="-1">
-                                                            <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvRolXActo.PerformCallback('CargarRegistros~' + s.GetSelectedItem().text );    }" />
-                                                        </dx:ASPxComboBox>
-                                                    </td>
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvRolXActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text );  }" />
+                                                </dx:ASPxButton>
 
-
-
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvRolXActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text );  }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -147,7 +138,7 @@
 
                 <SettingsResizing ColumnResizeMode="Control" />
 
-                <SettingsEditing Mode="EditForm"/>
+                <SettingsEditing Mode="EditForm" />
 
                 <SettingsPager Mode="ShowPager" PageSize="100" />
 
@@ -228,7 +219,7 @@
 
                     <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="7" Caption="Requiere Expediente Unico" FieldName="RequiereExUnico" Width="180px">
                     </dx:GridViewDataCheckColumn>
-                    
+
 
 
                 </Columns>

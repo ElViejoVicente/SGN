@@ -78,37 +78,28 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
+                                                <dx:ASPxComboBox runat="server" ID="cbActos"
+                                                    ClientInstanceName="cbActos"
+                                                    Width="200px"
+                                                    AutoPostBack="false"
+                                                    OnDataBinding="cbActos_DataBinding"
+                                                    Caption="Actos:"
+                                                    EnableMultiColumn="false"
+                                                    DropDownStyle="DropDownList"
+                                                    SelectInputTextOnClick="true"
+                                                    IncrementalFilteringMode="None"
+                                                    EnableCallbackMode="true"
+                                                    SelectedIndex="-1">
+                                                    <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvVariantesActo.PerformCallback('CargarRegistros~' + s.GetSelectedItem().text );    }" />
+                                                </dx:ASPxComboBox>
 
-                                                    <td>
-                                                        <dx:ASPxComboBox runat="server" ID="cbActos"
-                                                            ClientInstanceName="cbActos"
-                                                            Width="200px"
-                                                            AutoPostBack="false"
-                                                            OnDataBinding="cbActos_DataBinding"
-                                                            Caption="Actos:"
-                                                            EnableMultiColumn="false"
-                                                            DropDownStyle="DropDownList"
-                                                            SelectInputTextOnClick="true"
-                                                            IncrementalFilteringMode="None"
-                                                            EnableCallbackMode="true"
-                                                            SelectedIndex="-1">
-                                                            <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvVariantesActo.PerformCallback('CargarRegistros~' + s.GetSelectedItem().text );    }" />
-                                                        </dx:ASPxComboBox>
-                                                    </td>
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvVariantesActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text );  }" />
+                                                </dx:ASPxButton>
 
-
-
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvVariantesActo.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text );  }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -214,7 +205,7 @@
                     <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="4" Caption="Activo" FieldName="Activo" Width="150px">
                     </dx:GridViewDataCheckColumn>
 
-         
+
 
 
                 </Columns>
