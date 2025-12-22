@@ -241,7 +241,7 @@
 
 
 
-        <dx:ASPxPanel ID="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
+        <dx:ASPxPanel ID="TopPanel" ClientInstanceName="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                     <table>

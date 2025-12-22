@@ -23,7 +23,7 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 130;  // I have some buttons below the grid so needed -50
+            var height = document.getElementById('maindiv').clientHeight - 70;  // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvHojaDatos.SetHeight(height);
 
