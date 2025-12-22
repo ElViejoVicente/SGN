@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="../../SwitcherResources/Content/Cosmo/bootstrap.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
-    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css"/>
     <script src="../Scripts/mensajes.js"></script>
 
     <script  type="text/javascript" >
