@@ -25,8 +25,43 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 9;   // I have some buttons below the grid so needed -50
-            var width = document.getElementById('maindiv').clientWidth;
+
+            var topPanelEl = document.getElementById('TopPanel');
+            if (!topPanelEl) {
+                // try selector by css class (the control has CssClass="topPanel")
+                topPanelEl = document.querySelector('.topPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!topPanelEl && typeof TopPanel !== 'undefined' && TopPanel.GetMainElement) {
+                topPanelEl = TopPanel.GetMainElement();
+            }
+
+
+
+            var BottomPanelEL = document.getElementById('BottomPanel');
+            if (!BottomPanelEL) {
+                // try selector by css class (the control has CssClass="topPanel")
+                BottomPanelEL = document.querySelector('.bottomPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!BottomPanelEL && typeof BottomPanel !== 'undefined' && BottomPanelEL.GetMainElement) {
+                BottomPanelEL = BottomPanel.GetMainElement();
+            }
+
+
+
+            var bootHeight = 0;
+            if (BottomPanelEL) {
+                bootHeight = (BottomPanelEL.offsetHeight || BottomPanelEL.clientHeight || 0);
+            }
+
+            var topHeight = 0;
+            if (topPanelEl) {
+                topHeight = (topPanelEl.offsetHeight || topPanelEl.clientHeight || 0);
+            }
+
+            var height = document.getElementById('maindiv').clientHeight - topHeight - bootHeight;   // I have some buttons below the grid so needed -50
+
             gvExpedienteUnico.SetHeight(height);
 
         }
@@ -173,7 +208,7 @@
 </head>
 <body>
     <form id="frmPage" runat="server" class="Principal">
-        <dx:ASPxPanel ID="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
+        <dx:ASPxPanel ID="TopPanel" ClientInstanceName="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                     <table>
@@ -578,7 +613,7 @@
             </dx:ASPxGridView>
 
 
-            <dx:ASPxPanel ID="BottomPanel" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true">
+            <dx:ASPxPanel ID="BottomPanel" ClientInstanceName="BottomPanel" runat="server" FixedPosition="WindowBottom" FixedPositionOverlap="true">
                 <PanelCollection>
                     <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                         <table>

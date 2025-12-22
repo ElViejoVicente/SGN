@@ -24,7 +24,24 @@
 
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 100;  // I have some buttons below the grid so needed -50
+
+
+            var topPanelEl = document.getElementById('TopPanel');
+            if (!topPanelEl) {
+                // try selector by css class (the control has CssClass="topPanel")
+                topPanelEl = document.querySelector('.topPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!topPanelEl && typeof TopPanel !== 'undefined' && TopPanel.GetMainElement) {
+                topPanelEl = TopPanel.GetMainElement();
+            }
+
+            var topHeight = 0;
+            if (topPanelEl) {
+                topHeight = (topPanelEl.offsetHeight || topPanelEl.clientHeight || 0);
+            }
+
+            var height = document.getElementById('maindiv').clientHeight - topHeight;  // I have some buttons below the grid so needed -50
 
             gvClientes.SetHeight(height);
 
@@ -58,7 +75,7 @@
 </head>
 <body>
     <form id="frmpage" runat="server" class="Principal">
-        <dx:ASPxPanel ID="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
+        <dx:ASPxPanel ID="TopPanel" ClientInstanceName="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                     <table>

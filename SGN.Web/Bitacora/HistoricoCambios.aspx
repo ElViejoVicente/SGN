@@ -7,7 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
-    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css"/>
     <script src="../Scripts/mensajes.js"></script>
     <title>SGN</title>
     <script type="text/javascript">
@@ -22,8 +23,45 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 130;  // I have some buttons below the grid so needed -50
-            var width = document.getElementById('maindiv').clientWidth;
+
+            var topPanelEl = document.getElementById('TopPanel');
+            if (!topPanelEl) {
+                // try selector by css class (the control has CssClass="topPanel")
+                topPanelEl = document.querySelector('.topPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!topPanelEl && typeof TopPanel !== 'undefined' && TopPanel.GetMainElement) {
+                topPanelEl = TopPanel.GetMainElement();
+            }
+
+
+
+            var BottomPanelEL = document.getElementById('BottomPanel');
+            if (!BottomPanelEL) {
+                // try selector by css class (the control has CssClass="topPanel")
+                BottomPanelEL = document.querySelector('.bottomPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!BottomPanelEL && typeof BottomPanel !== 'undefined' && BottomPanelEL.GetMainElement) {
+                BottomPanelEL = BottomPanel.GetMainElement();
+            }
+
+
+
+            var bootHeight = 0;
+            if (BottomPanelEL) {
+                bootHeight = (BottomPanelEL.offsetHeight || BottomPanelEL.clientHeight || 0);
+            }
+
+            var topHeight = 0;
+            if (topPanelEl) {
+                topHeight = (topPanelEl.offsetHeight || topPanelEl.clientHeight || 0);
+            }
+
+
+
+            var height = document.getElementById('maindiv').clientHeight - topHeight - bootHeight;  // I have some buttons below the grid so needed -50
+
             gvHistoricoCambios.SetHeight(height);
 
         }
