@@ -568,7 +568,7 @@
 
             <dx:ASPxPopupControl runat="server" ID="ppNuevaHojaDatos" ClientInstanceName="ppNuevaHojaDatos" Height="700px" Width="1300px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nueva hoja de datos"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppNuevaHojaDatos_WindowCallback1">
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppNuevaHojaDatos_WindowCallback1" Modal="true" >
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">

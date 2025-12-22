@@ -1081,7 +1081,7 @@
 
             <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto">
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto" Modal="true">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
