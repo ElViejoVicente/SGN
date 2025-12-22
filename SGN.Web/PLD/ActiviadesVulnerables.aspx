@@ -146,53 +146,36 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {  
-                                                   if (chkBusquedaCompleta.GetChecked()) 
-                                                   {
-                                                   dtFechaInicio.SetEnabled(false);
-                                                   dtFechaFin.SetEnabled(false);
-                                                   }
-                                                   else
-                                                   {
-                                                   dtFechaInicio.SetEnabled(true);
-                                                   dtFechaFin.SetEnabled(true);
-                                                   }                }" />
-                                                        </dx:ASPxCheckBox>
-                                                    </td>
+                                                <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
+                                                </dx:ASPxDateEdit>
 
+                                                <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
+                                                </dx:ASPxDateEdit>
 
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                                                    if (chkBusquedaCompleta.GetChecked()) 
+                                                                                    {
+                                                                                    dtFechaInicio.SetEnabled(false);
+                                                                                    dtFechaFin.SetEnabled(false);
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                    dtFechaInicio.SetEnabled(true);
+                                                                                    dtFechaFin.SetEnabled(true);
+                                                                                    }                }" />
+                                                </dx:ASPxCheckBox>
 
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkSoloAvActivas" Width="150px" ClientInstanceName="chkSoloAvActivas" Text="Solo Ac Activas" ToggleSwitchDisplayMode="Always">
-                                                        </dx:ASPxCheckBox>
-                                                    </td>
+                                                <dx:ASPxCheckBox runat="server" ID="chkSoloAvActivas" Width="150px" ClientInstanceName="chkSoloAvActivas" Text="Solo Ac Activas" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
 
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) {  gvAVDetectadas.PerformCallback('CargarRegistros'); }" />
+                                                </dx:ASPxButton>
 
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) {  gvAVDetectadas.PerformCallback('CargarRegistros'); }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>

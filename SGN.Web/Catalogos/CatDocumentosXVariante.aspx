@@ -75,7 +75,7 @@
             if (s.cp_Update != null) {
 
                 gvDocumentosXvariente.UnselectRows();
-                gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text + '~' + cbVarientes.GetSelectedItem().text);  
+                gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text + '~' + cbVarientes.GetSelectedItem().text);
                 s.cp_Update = null;
             }
         }
@@ -95,59 +95,45 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
+                                                <dx:ASPxComboBox runat="server" ID="cbActos"
+                                                    ClientInstanceName="cbActos"
+                                                    Width="200px"
+                                                    AutoPostBack="true"
+                                                    OnDataBinding="cbActos_DataBinding"
+                                                    Caption="Actos:"
+                                                    EnableMultiColumn="false"
+                                                    DropDownStyle="DropDownList"
+                                                    SelectInputTextOnClick="true"
+                                                    IncrementalFilteringMode="None"
+                                                    EnableCallbackMode="true"
+                                                    SelectedIndex="-1"
+                                                    OnSelectedIndexChanged="cbActos_SelectedIndexChanged">
+                                                </dx:ASPxComboBox>
 
-                                                    <td>
-                                                        <dx:ASPxComboBox runat="server" ID="cbActos"
-                                                            ClientInstanceName="cbActos"
-                                                            Width="200px"
-                                                            AutoPostBack="true"
-                                                            OnDataBinding="cbActos_DataBinding"
-                                                            Caption="Actos:"
-                                                            EnableMultiColumn="false"
-                                                            DropDownStyle="DropDownList"
-                                                            SelectInputTextOnClick="true"
-                                                            IncrementalFilteringMode="None"
-                                                            EnableCallbackMode="true"
-                                                            SelectedIndex="-1" 
-                                                            OnSelectedIndexChanged="cbActos_SelectedIndexChanged" >
-                                                           
-                                                            
-                                                        </dx:ASPxComboBox>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxComboBox runat="server" ID="cbVarientes"
-                                                            ClientInstanceName="cbVarientes"
-                                                            Width="200px"
-                                                            AutoPostBack="false"
-                                                            OnDataBinding="cbVarientes_DataBinding"                                                           
-                                                            Caption="Varientes:"
-                                                            EnableMultiColumn="false"
-                                                            ClientEnabled="false"
-                                                            DropDownStyle="DropDownList"
-                                                            SelectInputTextOnClick="true"
-                                                            IncrementalFilteringMode="None"                                                    
-                                                            EnableCallbackMode="true"
-                                                            SelectedIndex="-1">
-                                                            <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text +'~'+ s.GetSelectedItem().text  );    }" />
-                                                        </dx:ASPxComboBox>
+                                                <dx:ASPxComboBox runat="server" ID="cbVarientes"
+                                                    ClientInstanceName="cbVarientes"
+                                                    Width="200px"
+                                                    AutoPostBack="false"
+                                                    OnDataBinding="cbVarientes_DataBinding"
+                                                    Caption="Varientes:"
+                                                    EnableMultiColumn="false"
+                                                    ClientEnabled="false"
+                                                    DropDownStyle="DropDownList"
+                                                    SelectInputTextOnClick="true"
+                                                    IncrementalFilteringMode="None"
+                                                    EnableCallbackMode="true"
+                                                    SelectedIndex="-1">
+                                                    <ClientSideEvents SelectedIndexChanged=" function(s, e) {  gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text +'~'+ s.GetSelectedItem().text  );    }" />
+                                                </dx:ASPxComboBox>
 
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text +'~'+ cbVarientes.GetSelectedItem().text  );    }" />
+                                                </dx:ASPxButton>
 
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvDocumentosXvariente.PerformCallback('CargarRegistros~' + cbActos.GetSelectedItem().text +'~'+ cbVarientes.GetSelectedItem().text  );    }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
+                                            </div>
+                                        
                                         </dx:PanelContent>
                                     </PanelCollection>
                                 </dx:ASPxRoundPanel>
@@ -239,7 +225,7 @@
 
                     <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
-                    <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" Caption="Rol" FieldName="TextoFigura" Width="150"  GroupIndex="0">
+                    <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" Caption="Rol" FieldName="TextoFigura" Width="150" GroupIndex="0">
                         <PropertiesComboBox>
                             <Items>
                                 <dx:ListEditItem Text="Otorga o Solicita" Value="Otorga o Solicita" />

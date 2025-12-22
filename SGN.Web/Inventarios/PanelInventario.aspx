@@ -106,38 +106,33 @@
                                 <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="170px" HeaderText="Opciones de Consulta" View="GroupBox">
                                     <PanelCollection>
                                         <dx:PanelContent>
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Fecha De Alta" runat="server" ID="dtFechaAlta" ClientInstanceName="dtFechaAlta" ClientEnabled="false"
-                                                            DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false" />
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta"
-                                                            Text="Todas las fechas" ToggleSwitchDisplayMode="Always" Checked="true">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {
-                                                                if (chkBusquedaCompleta.GetChecked()) {
-                                                                    dtFechaAlta.SetEnabled(false);
-                                                                } else {
-                                                                    dtFechaAlta.SetEnabled(true);
-                                                                }
-                                                            }" />
-                                                        </dx:ASPxCheckBox>
-                                                    </td>
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkSoloInventarioActivo" Width="250px" ClientInstanceName="chkSoloInventarioActivo"
-                                                            Text="Mostrar solo inventario activo" ToggleSwitchDisplayMode="Always" Checked="true" />
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar"
-                                                            AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvInventario.PerformCallback('CargarLista'); }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
+
+                                                <dx:ASPxDateEdit Caption="Fecha De Alta" runat="server" ID="dtFechaAlta" ClientInstanceName="dtFechaAlta" ClientEnabled="false"
+                                                    DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false" />
+
+                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta"
+                                                    Text="Todas las fechas" ToggleSwitchDisplayMode="Always" Checked="true">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {
+                                                                                            if (chkBusquedaCompleta.GetChecked()) {
+                                                                                                dtFechaAlta.SetEnabled(false);
+                                                                                            } else {
+                                                                                                dtFechaAlta.SetEnabled(true);
+                                                                                            }
+                                                                                        }" />
+                                                </dx:ASPxCheckBox>
+
+                                                <dx:ASPxCheckBox runat="server" ID="chkSoloInventarioActivo" Width="250px" ClientInstanceName="chkSoloInventarioActivo"
+                                                    Text="Mostrar solo inventario activo" ToggleSwitchDisplayMode="Always" Checked="true" />
+
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar"
+                                                    AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvInventario.PerformCallback('CargarLista'); }" />
+                                                </dx:ASPxButton>
+
+                                            </div>
+                                            
                                         </dx:PanelContent>
                                     </PanelCollection>
                                 </dx:ASPxRoundPanel>

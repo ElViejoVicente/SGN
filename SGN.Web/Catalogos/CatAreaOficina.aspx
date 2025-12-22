@@ -85,17 +85,14 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) { gvArea.PerformCallback('CargarLista'); }" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) { gvArea.PerformCallback('CargarLista'); }" />
+                                                </dx:ASPxButton>
 
+                                            </div>
+                                        
                                         </dx:PanelContent>
                                     </PanelCollection>
                                 </dx:ASPxRoundPanel>
@@ -200,7 +197,7 @@
                     <dx:GridViewDataCheckColumn Visible="true" VisibleIndex="3" Caption="Activo" FieldName="Activo" Width="100px">
                     </dx:GridViewDataCheckColumn>
 
-                                </Columns>
+                </Columns>
 
 
                 <Toolbars>

@@ -218,46 +218,35 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {  
-                                                                if (chkBusquedaCompleta.GetChecked()) 
-                                                                {
-                                                                dtFechaInicio.SetEnabled(false);
-                                                                dtFechaFin.SetEnabled(false);
-                                                                }
-                                                                else
-                                                                {
-                                                                dtFechaInicio.SetEnabled(true);
-                                                                dtFechaFin.SetEnabled(true);
-                                                                }                                            }" />
-                                                        </dx:ASPxCheckBox>
-                                                    </td>
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                </dx:ASPxDateEdit>
 
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) {  gvExpedienteUnico.PerformCallback('CargarRegistros'); }" />
+                                                <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy">
+                                                </dx:ASPxDateEdit>
 
-                                                            <Image IconID="xaf_action_reload_svg_16x16"></Image>
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                                                         if (chkBusquedaCompleta.GetChecked()) 
+                                                                                         {
+                                                                                         dtFechaInicio.SetEnabled(false);
+                                                                                         dtFechaFin.SetEnabled(false);
+                                                                                         }
+                                                                                         else
+                                                                                         {
+                                                                                         dtFechaInicio.SetEnabled(true);
+                                                                                         dtFechaFin.SetEnabled(true);
+                                                                                         }                                            }" />
+                                                </dx:ASPxCheckBox>
 
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) {  gvExpedienteUnico.PerformCallback('CargarRegistros'); }" />
+
+                                                    <Image IconID="xaf_action_reload_svg_16x16"></Image>
+                                                </dx:ASPxButton>
+
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>

@@ -84,15 +84,19 @@
                                 <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="170px" HeaderText="Opciones de Consula" View="GroupBox">
                                     <PanelCollection>
                                         <dx:PanelContent>
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="True" Enabled="True">
-                                                            <ClientSideEvents Click="function(s, e) {gvClientes.PerformCallback('CargarLista')}" />
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
+
+
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
+
+                                                <dx:ASPxButton ID="ASPxButton1" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="True" Enabled="True">
+                                                    <ClientSideEvents Click="function(s, e) {gvClientes.PerformCallback('CargarLista')}" />
+                                                </dx:ASPxButton>
+
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="True" Enabled="True">
+                                                    <ClientSideEvents Click="function(s, e) {gvClientes.PerformCallback('CargarLista')}" />
+                                                </dx:ASPxButton>
+
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -184,7 +188,8 @@
 
 
                     <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="false"
-                        ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px" ></dx:GridViewCommandColumn>
+                        ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px">
+                    </dx:GridViewCommandColumn>
 
                     <dx:GridViewDataTextColumn FieldName="idCliente" Caption="#" Width="50px" VisibleIndex="2">
                         <EditFormSettings Visible="false" />
