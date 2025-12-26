@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
     <script src="../Scripts/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css" />
     <script src="../Scripts/mensajes.js"></script>
 
 
@@ -627,17 +627,37 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Firma De Traslado" FieldName="FirmaDeTraslado" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
+                                                        <dx:GridViewBandColumn Caption="Primera Firma" VisibleIndex ="6">
+                                                            <Columns>
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Firma De Traslado" FieldName="FirmaDeTraslado" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha De Otorgamiento" FieldName="FechaDeOtorgamiento" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="7" Caption="Fecha De Otorgamiento" FieldName="FechaDeOtorgamiento" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
+                                                            </Columns>
+
+                                                        </dx:GridViewBandColumn>
+
+                                                        <dx:GridViewBandColumn Caption="Segunda Firma" VisibleIndex="7">
+                                                            <Columns>
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscrituraSF" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
+
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha De Otorgamiento" FieldName="FechaDeOtorgamientoSF" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
+
+                                                            </Columns>
+                                                        </dx:GridViewBandColumn>
+
+
 
                                                     </Columns>
                                                 </dx:ASPxGridView>
@@ -1230,27 +1250,52 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFIfnFechaRecepcionTerminoEscritura" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Firma Traslado" ColSpan="1" FieldName="FIfnFirmaTraslado">
+                                        <dx:LayoutItem Caption="Firma Traslado" FieldName="FIfnFirmaTraslado" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxDateEdit runat="server" ID="dtFirmaTraslado" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Fecha Otorgamiento" ColSpan="1" FieldName="FIfnFEchaOtorgamiento">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="fnFechaOtorgamiento" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+                                        <dx:LayoutGroup Caption="Primera firma" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Fecha Otorgamiento" FieldName="FIfnFEchaOtorgamiento" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="fnFechaOtorgamiento"></dx:ASPxDateEdit>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="dtFIfnFechaRecepcionTerminoEscritura"></dx:ASPxDateEdit>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Segunda firma" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Fecha Otorgamiento" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="fnFechaOtorgamientoSF"></dx:ASPxDateEdit>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Recepcion para termino escritura" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="dtFIfnFechaRecepcionTerminoEscrituraSF"></dx:ASPxDateEdit>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapAD">

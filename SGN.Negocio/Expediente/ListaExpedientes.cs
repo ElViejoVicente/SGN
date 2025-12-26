@@ -48,10 +48,12 @@ namespace SGN.Negocio.Expediente
 		public DateTime FechaRecepcionTerminoEscritura { get; set; } = Constantes.FechaGlobal;
 		public DateTime FirmaDeTraslado { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaDeOtorgamiento { get; set; } = Constantes.FechaGlobal;
+        public DateTime FechaDeOtorgamientoSF { get; set; } = Constantes.FechaGlobal;
+        public DateTime FechaRecepcionTerminoEscrituraSF { get; set; } = Constantes.FechaGlobal;
 
 
-		//Aviso definitivo
-		public DateTime FechaElaboracionDefinitivo { get; set; } = Constantes.FechaGlobal;
+        //Aviso definitivo
+        public DateTime FechaElaboracionDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public DateTime FechaEnvioRPPDefinitivo { get; set; } = Constantes.FechaGlobal;
 		public bool EsTramitePorSistemaDefinitivo { get; set; } = false;
 		public DateTime FechaPagoBoletaDefinitivo { get; set; } = Constantes.FechaGlobal;

@@ -953,7 +953,7 @@ namespace SGN.Web.ExpedientesTramites
                 if (chkEsActoVulnerable.Checked)
 
                 {
-                    lsExpediente= lsExpediente.Where(x => x.EsActoVulnerable == true).ToList();
+                    lsExpediente = lsExpediente.Where(x => x.EsActoVulnerable == true).ToList();
                 }
 
 
@@ -1027,7 +1027,7 @@ namespace SGN.Web.ExpedientesTramites
                         if (miExpediente.EsActoVulnerable)
                         {
                             e.Cell.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#ff6961");
-                        
+
                         }
 
 
@@ -1379,10 +1379,6 @@ namespace SGN.Web.ExpedientesTramites
                     }
 
 
-
-
-
-
                     //Expediente 
                     txtNumExpediente.Text = RegistroExistente.IdExpediente;
 
@@ -1415,6 +1411,8 @@ namespace SGN.Web.ExpedientesTramites
                     dtFIfnFechaRecepcionTerminoEscritura.Date = RegistroExistente.FechaRecepcionTerminoEscritura;
                     dtFirmaTraslado.Value = RegistroExistente.FirmaDeTraslado;
                     fnFechaOtorgamiento.Value = RegistroExistente.FechaDeOtorgamiento;
+                    fnFechaOtorgamientoSF.Value = RegistroExistente.FechaDeOtorgamientoSF;
+                    dtFIfnFechaRecepcionTerminoEscrituraSF.Value = RegistroExistente.FechaRecepcionTerminoEscrituraSF;
 
                     //Aviso definitivo
                     dtAdfnFechaElaboracion.Date = RegistroExistente.FechaElaboracionDefinitivo;
@@ -1652,6 +1650,24 @@ namespace SGN.Web.ExpedientesTramites
                         logCambios.NombreCampo = "Firmas-Fecha Otorgamiento";
                         logCambios.ValorOriginal = RegistroExistente.FechaDeOtorgamiento.ToString();
                         logCambios.ValorImputado = fnFechaOtorgamiento.Date.ToString();
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
+
+
+                    if (RegistroExistente.FechaRecepcionTerminoEscrituraSF != dtFIfnFechaRecepcionTerminoEscrituraSF.Date)
+                    {
+                        logCambios.NombreCampo = "Firmas-Recepcion para termino escritura Segunda Firma";
+                        logCambios.ValorOriginal = RegistroExistente.FechaRecepcionTerminoEscrituraSF.ToString();
+                        logCambios.ValorImputado = dtFIfnFechaRecepcionTerminoEscrituraSF.Date.ToString();
+                        datosCrud.AltaBitacoraExpediente(logCambios);
+                    }
+
+                    if (RegistroExistente.FechaDeOtorgamientoSF != fnFechaOtorgamientoSF.Date)
+                    {
+                        logCambios.NombreCampo = "Firmas-Fecha Otorgamiento Segunda Firma";
+                        logCambios.ValorOriginal = RegistroExistente.FechaDeOtorgamientoSF.ToString();
+                        logCambios.ValorImputado = fnFechaOtorgamientoSF.Date.ToString();
                         datosCrud.AltaBitacoraExpediente(logCambios);
                     }
 
@@ -1897,7 +1913,8 @@ namespace SGN.Web.ExpedientesTramites
                     RegistroExistente.FechaRecepcionTerminoEscritura = dtFIfnFechaRecepcionTerminoEscritura.Date;
                     RegistroExistente.FirmaDeTraslado = dtFirmaTraslado.Date;
                     RegistroExistente.FechaDeOtorgamiento = fnFechaOtorgamiento.Date;
-
+                    RegistroExistente.FechaDeOtorgamientoSF= fnFechaOtorgamientoSF.Date;
+                    RegistroExistente.FechaRecepcionTerminoEscrituraSF= dtFIfnFechaRecepcionTerminoEscrituraSF.Date;
 
                     //Aviso definitivo
                     RegistroExistente.FechaElaboracionDefinitivo = dtAdfnFechaElaboracion.Date;
@@ -2156,7 +2173,7 @@ namespace SGN.Web.ExpedientesTramites
 
         protected void ppEditarAvisoNotarial_WindowCallback(object source, PopupWindowCallbackArgs e)
         {
-          
+
 
             if (e.Parameter.Contains("CargarRegistros"))
             {
@@ -2175,12 +2192,12 @@ namespace SGN.Web.ExpedientesTramites
                 // validamos si es un acto valido para aviso
 
 
-                if (DetalleExpediente.ReqTraslado==false)
+                if (DetalleExpediente.ReqTraslado == false)
                 {
 
                     ppEditarAvisoNotarial.JSProperties["cp_swMsg"] = "Este Expediente/Acto no está habilitado para poder generar Avisos, contacta  a tu coordinador , para resolver tus dudas.";
-                    ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.warning ;
-                        return;
+                    ppEditarAvisoNotarial.JSProperties["cp_swType"] = Controles.Usuario.InfoMsgBox.tipoMsg.warning;
+                    return;
                 }
 
 
@@ -2202,7 +2219,7 @@ namespace SGN.Web.ExpedientesTramites
                     txtAnUbicacion.Text = RegistroExistente.UbicacionPredio.ToString();
                     txtAnValorOperacionFiscal.Text = RegistroExistente.ValorOperacion.ToString();
 
-                   
+
 
 
                     decimal maxAvaluo = Math.Max(Math.Max(RegistroExistente.AvaluoCatastral, RegistroExistente.AvaluoComercial), RegistroExistente.AvaluoFiscal);
@@ -2228,17 +2245,17 @@ namespace SGN.Web.ExpedientesTramites
 
                     }
 
-                    if (nombreVendedores.Length>0)
+                    if (nombreVendedores.Length > 0)
                     {
                         nombreVendedores = nombreVendedores.Substring(0, nombreVendedores.Length - 1);
                     }
 
-                    if (domicilioVendedores.Length>0)
+                    if (domicilioVendedores.Length > 0)
                     {
                         domicilioVendedores = domicilioVendedores.Substring(0, domicilioVendedores.Length - 1);
                     }
 
-     
+
 
 
                     foreach (var item in DetalleExpediente.DetalleParticipantes.Where(x => x.FiguraOperacion == "A favor de" && x.RolOperacion.Trim() == "Comprador (a)")) // comprador
@@ -2250,7 +2267,7 @@ namespace SGN.Web.ExpedientesTramites
 
                     }
 
-                    if (nombreCompradores.Length>0)
+                    if (nombreCompradores.Length > 0)
                     {
                         nombreCompradores = nombreCompradores.Substring(0, nombreCompradores.Length - 1);
                     }
@@ -2382,7 +2399,7 @@ namespace SGN.Web.ExpedientesTramites
                 // Guardar Cambios
 
 
-                if (RegistroAvisoNotarial.IdExpediente!="")
+                if (RegistroAvisoNotarial.IdExpediente != "")
                 {
 
                     if (datosCrud.ActualizarDatosAvisoNotarial(RegistroAvisoNotarial))

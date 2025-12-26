@@ -384,15 +384,6 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxCheckBox chkFIfnAplicaTraslado;
 
         /// <summary>
-        /// Control dtFIfnFechaRecepcionTerminoEscritura.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit dtFIfnFechaRecepcionTerminoEscritura;
-
-        /// <summary>
         /// Control dtFirmaTraslado.
         /// </summary>
         /// <remarks>
@@ -409,6 +400,33 @@ namespace SGN.Web.ExpedientesTramites
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxDateEdit fnFechaOtorgamiento;
+
+        /// <summary>
+        /// Control dtFIfnFechaRecepcionTerminoEscritura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dtFIfnFechaRecepcionTerminoEscritura;
+
+        /// <summary>
+        /// Control fnFechaOtorgamientoSF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit fnFechaOtorgamientoSF;
+
+        /// <summary>
+        /// Control dtFIfnFechaRecepcionTerminoEscrituraSF.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dtFIfnFechaRecepcionTerminoEscrituraSF;
 
         /// <summary>
         /// Control dtAdfnFechaElaboracion.

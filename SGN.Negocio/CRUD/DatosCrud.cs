@@ -1100,7 +1100,9 @@ namespace SGN.Negocio.CRUD
                         values.FechaDeOtorgamiento,
                         values.FechaDeAvaluo,
                         values.FechaAutorizacion,
-                        values.FechaPagoAvaluo
+                        values.FechaPagoAvaluo,
+                        values.FechaDeOtorgamientoSF,
+                        values.FechaRecepcionTerminoEscrituraSF 
 
                     }, commandType: CommandType.StoredProcedure);
                 }
@@ -1168,7 +1170,9 @@ namespace SGN.Negocio.CRUD
                         values.FechaDeOtorgamiento,
                         values.FechaDeAvaluo,
                         values.FechaAutorizacion,
-                        values.FechaPagoAvaluo
+                        values.FechaPagoAvaluo,
+                        values.FechaDeOtorgamientoSF,
+                        values.FechaRecepcionTerminoEscrituraSF
 
 
                     }, commandType: CommandType.StoredProcedure);
