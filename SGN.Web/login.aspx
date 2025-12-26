@@ -25,7 +25,7 @@
                     <header class="card-header">
                         <img src="imagenes/login/LogoNotaria.svg" alt="Logo Sistema" class="logo-animated" />
                         <h1 class="title">Bienvenido</h1>
-                        <h4 class="subtitle">Sistema de Gestión Notarial v1.9</h4>
+                        <h4 class="subtitle">Sistema de Gestión Notarial v1.11</h4>
                     </header>
 
                     <div class="card-body">
