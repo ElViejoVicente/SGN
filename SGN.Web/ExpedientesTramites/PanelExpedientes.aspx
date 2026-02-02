@@ -271,6 +271,9 @@
                                                 <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                 </dx:ASPxDateEdit>
 
+                                                <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
+                                                </dx:ASPxDateEdit>
+
                                                 <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
                                                     <ClientSideEvents CheckedChanged="function(s, e) {  
                                                                                                   if (chkBusquedaCompleta.GetChecked()) 
@@ -285,8 +288,7 @@
                                                                                                   }                                            }" />
                                                 </dx:ASPxCheckBox>
 
-                                                <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
-                                                </dx:ASPxDateEdit>
+
                                                 <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
                                                 </dx:ASPxCheckBox>
                                                 <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaNoActiva" Width="150px" ClientInstanceName="chkVerExpAlertaNoActiva" Text="Ver expedientes que tuvieron alertas" ToggleSwitchDisplayMode="Always">
@@ -630,7 +632,7 @@
                                                         <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Firma De Traslado" FieldName="FirmaDeTraslado" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
-                                                        <dx:GridViewBandColumn Caption="Primera Firma" VisibleIndex ="6">
+                                                        <dx:GridViewBandColumn Caption="Primera Firma" VisibleIndex="6">
                                                             <Columns>
                                                                 <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
                                                                     <EditFormSettings Visible="False"></EditFormSettings>

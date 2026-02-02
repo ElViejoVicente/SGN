@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agenda\AgendaCitaDataSource.cs" />
     <Compile Include="APP\DatosAPP.cs" />
     <Compile Include="APP\ListaConsultaFolio.cs" />
     <Compile Include="Bitacora\DatosBitacora.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Expediente\ListaHojaDatos.cs" />
     <Compile Include="Inventarios\DatosInventario.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
+    <Compile Include="ORM\AgendaCitas.cs" />
     <Compile Include="ORM\Alertas.cs" />
     <Compile Include="ORM\AVDetectadas.cs" />
     <Compile Include="ORM\BitacoraExpediente.cs" />
