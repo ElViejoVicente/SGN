@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.Web.ASPxScheduler.Localization;
+using SGN.Web.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +19,10 @@ namespace SGN.Web
             // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ASPxSchedulerLocalizer.Active = new SchedulerLocalizerES();
+
+
         }
         void Session_End(object sender, EventArgs e)
         {

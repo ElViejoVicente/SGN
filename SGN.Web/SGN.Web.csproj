@@ -594,6 +594,7 @@
     <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.designer.cs">
       <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SchedulerLocalizerES.cs" />
     <Compile Include="Inventarios\PanelInventario.aspx.cs">
       <DependentUpon>PanelInventario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

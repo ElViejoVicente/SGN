@@ -41,13 +41,14 @@
 
 
 
-            <dx:ASPxScheduler ID="scAgenda" runat="server" ActiveViewType="WorkWeek">
+            <dx:ASPxScheduler ID="scAgenda" runat="server" ActiveViewType="WorkWeek"  
+                OnAppointmentFormShowing="scAgenda_AppointmentFormShowing"  Images-Menu-NewAppointment-AlternateText="Nueva Cita" >
                 <Views>
                     <WorkWeekView Enabled="true"  />
                     <FullWeekView Enabled="true" />
                     <WeekView Enabled="false" />
                 </Views>
-
+                
 
                 <Storage EnableReminders="false">
                     <Appointments AutoRetrieveId="true" />

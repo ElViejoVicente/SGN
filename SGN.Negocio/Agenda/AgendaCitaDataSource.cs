@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace SGN.Negocio.Agenda
 {
@@ -12,12 +13,24 @@ namespace SGN.Negocio.Agenda
         private string Cnn => ConfigurationManager.AppSettings["sqlConn.ConnectionString"];
 
         // ===== SELECT (ObjectDataSource) =====
+
         public IEnumerable SelectMethodHandler()
         {
-            // Ventana amplia (estable) mientras trabajas.
-            // Si luego quieres “rango visible real” lo afinamos.
-            DateTime desde = DateTime.Today.AddDays(-60);
-            DateTime hasta = DateTime.Today.AddDays(60);
+            // ✅ Rango visible real (lo setea Agenda.aspx.cs antes de DataBind)
+            DateTime desde, hasta;
+
+            //var ctx = HttpContext.Current;
+            //if (ctx != null && ctx.Items["SGN_AGENDA_DESDE"] is DateTime d && ctx.Items["SGN_AGENDA_HASTA"] is DateTime h)
+            //{
+            //    desde = d;
+            //    hasta = h;
+            //}
+            //else
+            //{
+                // fallback (por si alguien llama el datasource fuera del scheduler)
+                desde = DateTime.Today.AddDays(-60);
+                hasta = DateTime.Today.AddDays(60);
+            //}
 
             return SelectRange(desde, hasta);
         }
@@ -36,44 +49,26 @@ namespace SGN.Negocio.Agenda
                 cn.Open();
                 using (var rd = cmd.ExecuteReader())
                 {
-                    int ordIdCita = rd.GetOrdinal("IdCita");
-                    int ordIni = rd.GetOrdinal("FechaInicio");
-                    int ordFin = rd.GetOrdinal("FechaFin");
-                    int ordTodoDia = rd.GetOrdinal("TodoDia");
-                    int ordAsunto = rd.GetOrdinal("Asunto");
-                    int ordDesc = rd.GetOrdinal("Descripcion");
-                    int ordUbic = rd.GetOrdinal("Ubicacion");
-                    int ordEtiqueta = SafeGetOrdinal(rd, "Etiqueta");
-                    int ordEstatus = SafeGetOrdinal(rd, "Estatus");
-                    int ordTipo = SafeGetOrdinal(rd, "Tipo");
-                    int ordRec = SafeGetOrdinal(rd, "RecurrenceInfo");
-                    int ordRem = SafeGetOrdinal(rd, "ReminderInfo");
-                    int ordRecurso = SafeGetOrdinal(rd, "IdRecurso");
-
                     while (rd.Read())
                     {
                         var c = new AgendaCitas
                         {
-                            IdCita = rd.GetInt32(ordIdCita),
-                            FechaInicio = rd.GetDateTime(ordIni),
-                            FechaFin = rd.GetDateTime(ordFin),
-                            TodoDia = rd.GetBoolean(ordTodoDia),
+                            IdCita = Convert.ToInt32(rd["IdCita"]),
+                            FechaInicio = Convert.ToDateTime(rd["FechaInicio"]),
+                            FechaFin = Convert.ToDateTime(rd["FechaFin"]),
+                            TodoDia = Convert.ToBoolean(rd["TodoDia"]),
+                            Asunto = rd["Asunto"] as string,
+                            Descripcion = rd["Descripcion"] as string,
+                            Ubicacion = rd["Ubicacion"] as string,
 
-                            Asunto = rd.IsDBNull(ordAsunto) ? null : rd.GetString(ordAsunto),
-                            Descripcion = (ordDesc >= 0 && !rd.IsDBNull(ordDesc)) ? rd.GetString(ordDesc) : null,
-                            Ubicacion = (ordUbic >= 0 && !rd.IsDBNull(ordUbic)) ? rd.GetString(ordUbic) : null,
+                            Etiqueta = rd["Etiqueta"] == DBNull.Value ? 0 : Convert.ToInt32(rd["Etiqueta"]),
+                            Estatus = rd["Estatus"] == DBNull.Value ? 0 : Convert.ToInt32(rd["Estatus"]),
+                            Tipo = rd["Tipo"] == DBNull.Value ? 0 : Convert.ToInt32(rd["Tipo"]),
 
-                            // ✅ FIX: si viene NULL => 0 (DevExpress feliz)
-                            Etiqueta = (ordEtiqueta >= 0 && !rd.IsDBNull(ordEtiqueta)) ? Convert.ToInt32(rd.GetValue(ordEtiqueta)) : 0,
-                            Estatus = (ordEstatus >= 0 && !rd.IsDBNull(ordEstatus)) ? Convert.ToInt32(rd.GetValue(ordEstatus)) : 0,
+                            RecurrenceInfo = rd["RecurrenceInfo"] as string,
+                            ReminderInfo = rd["ReminderInfo"] as string,
 
-                            Tipo = (ordTipo >= 0 && !rd.IsDBNull(ordTipo)) ? Convert.ToInt32(rd.GetValue(ordTipo)) : 0,
-
-                            RecurrenceInfo = (ordRec >= 0 && !rd.IsDBNull(ordRec)) ? rd.GetString(ordRec) : null,
-                            ReminderInfo = (ordRem >= 0 && !rd.IsDBNull(ordRem)) ? rd.GetString(ordRem) : null,
-
-                            // ✅ NUEVO: recurso/sala
-                            IdRecurso = (ordRecurso >= 0 && !rd.IsDBNull(ordRecurso)) ? Convert.ToInt32(rd.GetValue(ordRecurso)) : 0
+                            IdRecurso = rd["IdRecurso"] == DBNull.Value ? 0 : Convert.ToInt32(rd["IdRecurso"])
                         };
 
                         list.Add(c);
