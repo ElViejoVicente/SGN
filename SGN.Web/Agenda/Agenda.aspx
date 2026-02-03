@@ -31,7 +31,21 @@
         }
 
         function OnSchedulerInit(s, e) { AdjustSize(); }
+
+
+
+
+
     </script>
+
+    <script type="text/javascript">
+        setInterval(function () {
+            if (typeof scAgenda !== "undefined") {
+                scAgenda.Refresh();
+            }
+        }, 30000); // cada 30 segundos
+    </script>
+
 </head>
 
 <body>
