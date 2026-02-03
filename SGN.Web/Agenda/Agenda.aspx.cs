@@ -7,15 +7,17 @@ using DevExpress.Web.ASPxScheduler;
 using DevExpress.XtraScheduler;
 
 using SGN.Negocio.Agenda;
+using SGN.Web.Controles.Servidor;
 
 namespace SGN.Web.Agenda
 {
-    public partial class Agenda : System.Web.UI.Page
+    public partial class Agenda : PageBase
     {
         private ASPxSchedulerStorage Storage => scAgenda.Storage;
 
 
-   
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,6 +38,14 @@ namespace SGN.Web.Agenda
 
             // ✅ DataBind SIEMPRE (callbacks)
             scAgenda.DataBind();
+
+
+
+            if (UsuarioPagina.NombrePerfil!="Datos")
+            {
+                ConfigurarAgendaSoloLectura();
+            }
+
         }
 
         private void SetupMappings()
@@ -212,5 +222,40 @@ namespace SGN.Web.Agenda
                     yield return child;
             }
         }
+
+        private void ConfigurarAgendaSoloLectura()
+        {
+            // 1️⃣ No permitir crear citas
+            scAgenda.OptionsCustomization.AllowAppointmentCreate = UsedAppointmentType.None;
+
+            // 2️⃣ No permitir editar
+            scAgenda.OptionsCustomization.AllowAppointmentEdit = UsedAppointmentType.None;
+
+            // 3️⃣ No permitir eliminar
+            scAgenda.OptionsCustomization.AllowAppointmentDelete = UsedAppointmentType.None;
+
+            // 4️⃣ No permitir mover ni redimensionar
+            scAgenda.OptionsCustomization.AllowAppointmentDrag = UsedAppointmentType.None;
+            scAgenda.OptionsCustomization.AllowAppointmentResize = UsedAppointmentType.None;
+
+            // 5️⃣ Ocultar menú contextual completo (clic derecho)
+            // scAgenda.EnableContextMenu = false; // ❌ Línea incorrecta, propiedad no existe
+            // scAgenda.OptionsCustomization.allowdisAllowDisplayContextMenu = false; // ✅ Usar la propiedad correcta
+
+            // 6️⃣ Evitar doble clic para editar
+            //scAgenda.ClientSideEvents.AppointmentDoubleClick =
+            //    "function(s,e){ e.handled = true; }";
+
+            // 7️⃣ Evitar selección de rango para crear cita
+            //scAgenda.ClientSideEvents.SelectionChanged =
+            //    "function(s,e){ s.Unselect(); }";
+
+            // 8️⃣ Visual feedback: cursor normal
+            //scAgenda.ClientSideEvents.Init =
+            //    "function(s,e){ s.GetMainElement().style.cursor = 'default'; }";
+        }
+
+
+
     }
 }
