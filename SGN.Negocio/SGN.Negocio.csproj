@@ -83,6 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agenda\AgendaCitaDataSource.cs" />
+    <Compile Include="Agenda\CatAgendaEtiquetaDataSource.cs" />
+    <Compile Include="Agenda\CatAgendaRecursoDataSource.cs" />
     <Compile Include="APP\DatosAPP.cs" />
     <Compile Include="APP\ListaConsultaFolio.cs" />
     <Compile Include="Bitacora\DatosBitacora.cs" />
@@ -101,6 +103,8 @@
     <Compile Include="ORM\Alertas.cs" />
     <Compile Include="ORM\AVDetectadas.cs" />
     <Compile Include="ORM\BitacoraExpediente.cs" />
+    <Compile Include="ORM\CatAgendaEtiqueta.cs" />
+    <Compile Include="ORM\CatAgendaRecurso.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_AreaOficina.cs" />
     <Compile Include="ORM\Cat_Clientes.cs" />
