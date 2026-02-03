@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="SGN.Web.Login" %>
 
 <%@ Register Assembly="DevExpress.Web.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
 <%@ Register Src="~/Controles/Usuario/InfoMsgBox.ascx" TagPrefix="uc1" TagName="cuInfoMsgbox" %>
 
 <!DOCTYPE html>
@@ -25,7 +26,7 @@
                     <header class="card-header">
                         <img src="imagenes/login/LogoNotaria.svg" alt="Logo Sistema" class="logo-animated" />
                         <h1 class="title">Bienvenido</h1>
-                        <h4 class="subtitle">Sistema de Gestión Notarial v1.11</h4>
+                        <h4 class="subtitle">Sistema de Gestión Notarial v1.21</h4>
                     </header>
 
                     <div class="card-body">

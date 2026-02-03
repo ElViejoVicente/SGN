@@ -41,7 +41,9 @@ namespace SGN.Web.Agenda
 
 
 
-            if (UsuarioPagina.NombrePerfil!="Datos")
+            var perfilesConEdicion = new[] { "Datos", "Consultoria-IT", "Dirección" };
+
+            if (!perfilesConEdicion.Contains(UsuarioPagina.NombrePerfil.Trim()))
             {
                 ConfigurarAgendaSoloLectura();
             }
@@ -97,7 +99,7 @@ namespace SGN.Web.Agenda
             scAgenda.WorkDays.Add(WeekDays.Friday);
             scAgenda.WorkDays.Add(WeekDays.Saturday);
 
-            var workTime = new TimeOfDayInterval(TimeSpan.FromHours(8), TimeSpan.FromHours(17));
+            var workTime = new TimeOfDayInterval(TimeSpan.FromHours(7), TimeSpan.FromHours(18));
 
             // Aplica a vistas usadas
             scAgenda.WorkWeekView.WorkTime = workTime;
