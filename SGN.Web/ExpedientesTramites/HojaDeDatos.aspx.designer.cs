@@ -60,13 +60,31 @@ namespace SGN.Web.ExpedientesTramites
         protected global::DevExpress.Web.ASPxDateEdit dtFechaFin;
 
         /// <summary>
-        /// Control chkBusquedaCompleta.
+        /// Control chkAnioActual.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCheckBox chkBusquedaCompleta;
+        protected global::DevExpress.Web.ASPxCheckBox chkAnioActual;
+
+        /// <summary>
+        /// Control chkAnioPasado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox chkAnioPasado;
+
+        /// <summary>
+        /// Control chkVerCerrados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBox chkVerCerrados;
 
         /// <summary>
         /// Control btnActualizar.

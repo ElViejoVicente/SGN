@@ -1,19 +1,19 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
-
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../../SwitcherResources/Content/Cosmo/bootstrap.min.css" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
-    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="../Scripts/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css" />
     <script src="../Scripts/mensajes.js"></script>
+
 
     <script type="text/javascript">
 
@@ -27,13 +27,28 @@
         }
         function AdjustSize() {
 
-            var height = document.getElementById('maindiv').clientHeight - 50;   // I have some buttons below the grid so needed -50
+            var topPanelEl = document.getElementById('TopPanel');
+            if (!topPanelEl) {
+                // try selector by css class (the control has CssClass="topPanel")
+                topPanelEl = document.querySelector('.topPanel');
+            }
+            // try using client object if available (DevExpress ASPxPanel exposes GetMainElement)
+            if (!topPanelEl && typeof TopPanel !== 'undefined' && TopPanel.GetMainElement) {
+                topPanelEl = TopPanel.GetMainElement();
+            }
+
+            var topHeight = 0;
+            if (topPanelEl) {
+                topHeight = (topPanelEl.offsetHeight || topPanelEl.clientHeight || 0);
+            }
+
+
+            var height = document.getElementById('maindiv').clientHeight - topHeight;   // I have some buttons below the grid so needed -50
             var width = document.getElementById('maindiv').clientWidth;
             gvExpedientes.SetHeight(height);
 
 
         }
-
 
         function gridView_EndCallback(s, e) {
 
@@ -242,91 +257,59 @@
 
 
 
-        <dx:ASPxPanel ID="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
+        <dx:ASPxPanel ID="TopPanel" ClientInstanceName="TopPanel" runat="server" FixedPosition="WindowTop" FixedPositionOverlap="true" CssClass="topPanel">
             <PanelCollection>
                 <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
                     <table>
                         <tr>
                             <td>
-                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox" >
+                                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" ShowCollapseButton="true" Width="230px" HeaderText="Opciones de consulta:" View="GroupBox">
                                     <PanelCollection>
                                         <dx:PanelContent>
 
+                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
+                                                <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
+                                                </dx:ASPxDateEdit>
 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
-                                                        </dx:ASPxDateEdit>
-                                                    </td>
-                                                    <td>&nbsp;</td>
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {  
-                                                                if (chkBusquedaCompleta.GetChecked()) 
-                                                                {
-                                                                dtFechaInicio.SetEnabled(false);
-                                                                dtFechaFin.SetEnabled(false);
-                                                                }
-                                                                else
-                                                                {
-                                                                dtFechaInicio.SetEnabled(true);
-                                                                dtFechaFin.SetEnabled(true);
-                                                                }                                            }" />
-                                                        </dx:ASPxCheckBox>
-                                                    </td>
-                                                    <td>&nbsp;</td>
+                                                <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
+                                                </dx:ASPxDateEdit>
 
-                                                    <td>
-
-                                                        <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
-                                                        </dx:ASPxCheckBox>
-
-                                                    </td>
-                                                    <td>&nbsp;</td>
-
-                                                    <td>
-
-                                                        <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaNoActiva" Width="150px" ClientInstanceName="chkVerExpAlertaNoActiva" Text="Ver expedientes que tuvieron alertas" ToggleSwitchDisplayMode="Always">
-                                                        </dx:ASPxCheckBox>
-
-                                                    </td>
-                                                    <td>&nbsp;</td>
-
-                                                    <td>
-                                                        <dx:ASPxCheckBox runat="server" ID="chkEsActoVulnerable" Width="150px"  ClientInstanceName="chkEsActoVulnerable" Text="Ver Solo Activiades Vulnerables" ToggleSwitchDisplayMode="Always">
-                                                            <ClientSideEvents CheckedChanged="function(s, e) {
-                                                                var cb = chkEsActoVulnerable.GetMainElement();
-                                                                if (chkEsActoVulnerable.GetChecked()) {
-                                                                    cb.style.backgroundColor = '#ff6961';
-                                                                } else {
-                                                                    cb.style.backgroundColor = '';
-                                                                }
-                                                            }" />
-                                                        </dx:ASPxCheckBox>
-
-                                                    </td>
+                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                                                                  if (chkBusquedaCompleta.GetChecked()) 
+                                                                                                  {
+                                                                                                  dtFechaInicio.SetEnabled(false);
+                                                                                                  dtFechaFin.SetEnabled(false);
+                                                                                                  }
+                                                                                                  else
+                                                                                                  {
+                                                                                                  dtFechaInicio.SetEnabled(true);
+                                                                                                  dtFechaFin.SetEnabled(true);
+                                                                                                  }                                            }" />
+                                                </dx:ASPxCheckBox>
 
 
+                                                <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
+                                                <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaNoActiva" Width="150px" ClientInstanceName="chkVerExpAlertaNoActiva" Text="Ver expedientes que tuvieron alertas" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
+                                                <dx:ASPxCheckBox runat="server" ID="chkEsActoVulnerable" Width="150px" ClientInstanceName="chkEsActoVulnerable" Text="Ver Solo Activiades Vulnerables" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {
+                                                                                                   var cb = chkEsActoVulnerable.GetMainElement();
+                                                                                                   if (chkEsActoVulnerable.GetChecked()) {
+                                                                                                       cb.style.backgroundColor = '#ff6961';
+                                                                                                   } else {
+                                                                                                       cb.style.backgroundColor = '';
+                                                                                                   }
+                                                                                               }" />
+                                                </dx:ASPxCheckBox>
+                                                <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
+                                                    <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
 
+                                                    <Image IconID="xaf_action_reload_svg_16x16"></Image>
+                                                </dx:ASPxButton>
 
-                                                    <td>&nbsp;</td>
-
-                                                    <td>
-                                                        <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
-                                                            <ClientSideEvents Click="function(s, e) {  gvExpedientes.PerformCallback('CargarRegistros'); }" />
-
-                                                            <Image IconID="xaf_action_reload_svg_16x16"></Image>
-                                                        </dx:ASPxButton>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
+                                            </div>
 
                                         </dx:PanelContent>
                                     </PanelCollection>
@@ -646,17 +629,37 @@
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataCheckColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
+                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="5" Caption="Firma De Traslado" FieldName="FirmaDeTraslado" Width="100px" Visible="true" ToolTip="">
                                                             <EditFormSettings Visible="False"></EditFormSettings>
                                                         </dx:GridViewDataDateColumn>
+                                                        <dx:GridViewBandColumn Caption="Primera Firma" VisibleIndex="6">
+                                                            <Columns>
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscritura" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="6" Caption="Firma De Traslado" FieldName="FirmaDeTraslado" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha De Otorgamiento" FieldName="FechaDeOtorgamiento" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
 
-                                                        <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="7" Caption="Fecha De Otorgamiento" FieldName="FechaDeOtorgamiento" Width="100px" Visible="true" ToolTip="">
-                                                            <EditFormSettings Visible="False"></EditFormSettings>
-                                                        </dx:GridViewDataDateColumn>
+                                                            </Columns>
+
+                                                        </dx:GridViewBandColumn>
+
+                                                        <dx:GridViewBandColumn Caption="Segunda Firma" VisibleIndex="7">
+                                                            <Columns>
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="1" Caption="Fecha recepcion termino escrituta" FieldName="FechaRecepcionTerminoEscrituraSF" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
+
+                                                                <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" VisibleIndex="2" Caption="Fecha De Otorgamiento" FieldName="FechaDeOtorgamientoSF" Width="100px" Visible="true" ToolTip="">
+                                                                    <EditFormSettings Visible="False"></EditFormSettings>
+                                                                </dx:GridViewDataDateColumn>
+
+                                                            </Columns>
+                                                        </dx:GridViewBandColumn>
+
+
 
                                                     </Columns>
                                                 </dx:ASPxGridView>
@@ -1100,7 +1103,7 @@
 
             <dx:ASPxPopupControl runat="server" ID="ppEditarExpediente" ClientInstanceName="ppEditarExpediente" Height="600px" Width="950px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Editar Expediente"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto">
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppEditarExpediente_WindowCallback" ScrollBars="Auto" Modal="true">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">
@@ -1206,7 +1209,7 @@
                                         <dx:LayoutItem Caption="Prevision de termino" FieldName="PRfnFechaPrevistaTermino" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" ></dx:ASPxDateEdit>
+                                                    <dx:ASPxDateEdit runat="server" ID="dtPRfnFechaPrevistaTermino" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
@@ -1249,27 +1252,52 @@
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="dtFIfnFechaRecepcionTerminoEscritura" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Firma Traslado" ColSpan="1" FieldName="FIfnFirmaTraslado">
+                                        <dx:LayoutItem Caption="Firma Traslado" FieldName="FIfnFirmaTraslado" ColSpan="1">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                     <dx:ASPxDateEdit runat="server" ID="dtFirmaTraslado" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
                                         </dx:LayoutItem>
-                                        <dx:LayoutItem Caption="Fecha Otorgamiento" ColSpan="1" FieldName="FIfnFEchaOtorgamiento">
-                                            <LayoutItemNestedControlCollection>
-                                                <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxDateEdit runat="server" ID="fnFechaOtorgamiento" AutoPostBack="false" Width="100%" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy"></dx:ASPxDateEdit>
-                                                </dx:LayoutItemNestedControlContainer>
-                                            </LayoutItemNestedControlCollection>
-                                        </dx:LayoutItem>
+                                        <dx:LayoutGroup Caption="Primera firma" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Fecha Otorgamiento" FieldName="FIfnFEchaOtorgamiento" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="fnFechaOtorgamiento"></dx:ASPxDateEdit>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Recepcion para termino escritura" FieldName="FIfnFechaRecepcionTerminoEscritura" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="dtFIfnFechaRecepcionTerminoEscritura"></dx:ASPxDateEdit>
+
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+                                        <dx:LayoutGroup Caption="Segunda firma" ColSpan="1">
+                                            <Items>
+                                                <dx:LayoutItem Caption="Fecha Otorgamiento" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="fnFechaOtorgamientoSF"></dx:ASPxDateEdit>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                                <dx:LayoutItem Caption="Recepcion para termino escritura" ColSpan="1">
+                                                    <LayoutItemNestedControlCollection>
+                                                        <dx:LayoutItemNestedControlContainer runat="server">
+                                                            <dx:ASPxDateEdit runat="server" EditFormat="Custom" EditFormatString="dd/MM/yyyy" Width="100%" DisplayFormatString="dd/MM/yyyy" ID="dtFIfnFechaRecepcionTerminoEscrituraSF"></dx:ASPxDateEdit>
+                                                        </dx:LayoutItemNestedControlContainer>
+                                                    </LayoutItemNestedControlCollection>
+                                                </dx:LayoutItem>
+                                            </Items>
+                                        </dx:LayoutGroup>
+
                                     </Items>
                                 </dx:LayoutGroup>
                                 <dx:LayoutGroup Caption="Aviso definitivo" ColSpan="3" ColumnSpan="3" ColCount="2" ColumnCount="2" Name="TapAD">

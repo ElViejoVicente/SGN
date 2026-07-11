@@ -46,7 +46,7 @@ namespace SGN.Negocio.Expediente
         }
 
 
-        public List<ListaHojaDatos> DameListaHojaDatos(DateTime fechaInicial, DateTime fechaFinal, Boolean todasLasFechas)
+        public List<ListaHojaDatos> DameListaHojaDatos(DateTime fechaInicial, DateTime fechaFinal, Boolean AnioActual, Boolean AnioAnterior, Boolean IncluirArchivados)
         {
             try
             {
@@ -62,7 +62,9 @@ namespace SGN.Negocio.Expediente
                         {
                             fechaInicial,
                             fechaFinal,
-                            todasLasFechas
+                            AnioActual,
+                            AnioAnterior,
+                            IncluirArchivados
 
                         }, commandType: CommandType.StoredProcedure
 
@@ -382,7 +384,7 @@ namespace SGN.Negocio.Expediente
             }
         }
 
-        public List<ListaExpedientes> DameListaExpediente(DateTime fechaInicial, DateTime fechaFinal,  int idUsuario, Boolean todasLasFechas)
+        public List<ListaExpedientes> DameListaExpediente(DateTime fechaInicial, DateTime fechaFinal,  int idUsuario, Boolean AnioActual, Boolean AnioAnterior, Boolean IncluirArchivados)
         {
             try
             {
@@ -397,8 +399,10 @@ namespace SGN.Negocio.Expediente
                             fechaInicial,
                             fechaFinal,
                             idUsuario,
-                            todasLasFechas,
-                            
+                            AnioActual,
+                            AnioAnterior,
+                            IncluirArchivados
+
 
                         }, commandType: CommandType.StoredProcedure
                         ).ToList();

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
     <script src="../Scripts/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="../Scripts/sweetalert2.min.css" />
     <script src="../Scripts/mensajes.js"></script>
 
     <script type="text/javascript">
@@ -174,19 +174,40 @@
                                                 <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" AutoPostBack="false">
                                                 </dx:ASPxDateEdit>
 
-                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                <dx:ASPxCheckBox runat="server" ID="chkAnioActual" Width="150px" ClientInstanceName="chkAnioActual" Text="Año Actual" ToggleSwitchDisplayMode="Always">
                                                     <ClientSideEvents CheckedChanged="function(s, e) {  
-                                                                         if (chkBusquedaCompleta.GetChecked()) 
-                                                                         {
-                                                                         dtFechaInicio.SetEnabled(false);
-                                                                         dtFechaFin.SetEnabled(false);
-                                                                         }
-                                                                         else
-                                                                         {
-                                                                         dtFechaInicio.SetEnabled(true);
-                                                                         dtFechaFin.SetEnabled(true);
-                                                                         }                }" />
+                                                              if (chkAnioActual.GetChecked()) 
+                                                              {
+                                                              dtFechaInicio.SetEnabled(false);
+                                                              dtFechaFin.SetEnabled(false);
+                                                              }
+                                                              else
+                                                              {
+                                                              dtFechaInicio.SetEnabled(true);
+                                                              dtFechaFin.SetEnabled(true);
+                                                              }                                            }" />
                                                 </dx:ASPxCheckBox>
+
+                                                <dx:ASPxCheckBox runat="server" ID="chkAnioPasado" Width="150px" ClientInstanceName="chkAnioPasado" Text="Año Pasado" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                             if (chkAnioPasado.GetChecked()) 
+                                                             {
+                                                             dtFechaInicio.SetEnabled(false);
+                                                             dtFechaFin.SetEnabled(false);
+                                                             }
+                                                             else
+                                                             {
+                                                             dtFechaInicio.SetEnabled(true);
+                                                             dtFechaFin.SetEnabled(true);
+                                                             }                                            }" />
+                                                </dx:ASPxCheckBox>
+
+                                                <dx:ASPxCheckBox runat="server" ID="chkVerCerrados" Width="150px" ClientInstanceName="chkVerCerrados" Text="Buscar en Archivo" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
+
+
+
+
 
                                                 <dx:ASPxButton ID="btnActualizar" runat="server" Image-IconID="xaf_action_reload_svg_16x16" Text="Actualizar" AutoPostBack="false" Enabled="true">
                                                     <ClientSideEvents Click="function(s, e) {  gvHojaDatos.PerformCallback('CargarRegistros'); }" />
@@ -568,7 +589,7 @@
 
             <dx:ASPxPopupControl runat="server" ID="ppNuevaHojaDatos" ClientInstanceName="ppNuevaHojaDatos" Height="700px" Width="1300px" EnableClientSideAPI="true" ShowFooter="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nueva hoja de datos"
-                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppNuevaHojaDatos_WindowCallback1" Modal="true" >
+                PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppNuevaHojaDatos_WindowCallback1" Modal="true">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
                     <dx:PopupControlContentControl runat="server">

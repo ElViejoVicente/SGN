@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="reporteAcuseConsultaListaNegra.aspx.cs" Inherits="SGN.Web.Reportes.reporteAcuseConsultaListaNegra" %>
 
-<%@ Register Assembly="DevExpress.XtraReports.v25.2.Web.WebForms, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.XtraReports.v25.2.Web.WebForms, Version=25.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
 
-<%@ Register TagPrefix="cc1" Namespace="DevExpress.XtraReports.Web.ClientControls" Assembly="DevExpress.XtraReports.v25.2.Web.WebForms, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="cc1" Namespace="DevExpress.XtraReports.Web.ClientControls" Assembly="DevExpress.XtraReports.v25.2.Web.WebForms, Version=25.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 
 <!DOCTYPE html>
 

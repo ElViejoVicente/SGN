@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PanelExpedientes.aspx.cs" Inherits="SGN.Web.ExpedientesTramites.PanelExpedientes" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.2, Version=25.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -267,16 +267,20 @@
                                     <PanelCollection>
                                         <dx:PanelContent>
 
-                                            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: nowrap;">
+                                            <div style="display: flex; gap: 5px; align-items: flex-end; flex-wrap: nowrap;">
+
+
+
+
                                                 <dx:ASPxDateEdit Caption="Inicio" runat="server" ID="dtFechaInicio" ClientInstanceName="dtFechaInicio" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                 </dx:ASPxDateEdit>
 
                                                 <dx:ASPxDateEdit Caption="Fin" runat="server" ID="dtFechaFin" ClientInstanceName="dtFechaFin" AutoPostBack="false" DisplayFormatString="dd/MM/yyyy" EditFormatString="dd/MM/yyyy" Width="90px">
                                                 </dx:ASPxDateEdit>
 
-                                                <dx:ASPxCheckBox runat="server" ID="chkBusquedaCompleta" Width="150px" ClientInstanceName="chkBusquedaCompleta" Text="Todas las fechas" ToggleSwitchDisplayMode="Always">
+                                                <dx:ASPxCheckBox runat="server" ID="chkAnioActual" Width="150px" ClientInstanceName="chkAnioActual" Text="Año Actual" ToggleSwitchDisplayMode="Always">
                                                     <ClientSideEvents CheckedChanged="function(s, e) {  
-                                                                                                  if (chkBusquedaCompleta.GetChecked()) 
+                                                                                                  if (chkAnioActual.GetChecked()) 
                                                                                                   {
                                                                                                   dtFechaInicio.SetEnabled(false);
                                                                                                   dtFechaFin.SetEnabled(false);
@@ -288,6 +292,24 @@
                                                                                                   }                                            }" />
                                                 </dx:ASPxCheckBox>
 
+                                                <dx:ASPxCheckBox runat="server" ID="chkAnioPasado" Width="150px" ClientInstanceName="chkAnioPasado" Text="Año Pasado" ToggleSwitchDisplayMode="Always">
+                                                    <ClientSideEvents CheckedChanged="function(s, e) {  
+                                                             if (chkAnioPasado.GetChecked()) 
+                                                             {
+                                                             dtFechaInicio.SetEnabled(false);
+                                                             dtFechaFin.SetEnabled(false);
+                                                             }
+                                                             else
+                                                             {
+                                                             dtFechaInicio.SetEnabled(true);
+                                                             dtFechaFin.SetEnabled(true);
+                                                             }                                            }" />
+                                                </dx:ASPxCheckBox>
+
+
+
+                                                <dx:ASPxCheckBox runat="server" ID="chkVerCerrados" Width="150px" ClientInstanceName="chkVerCerrados" Text="Buscar en Archivo" ToggleSwitchDisplayMode="Always">
+                                                </dx:ASPxCheckBox>
 
                                                 <dx:ASPxCheckBox runat="server" ID="chkVerExpAlertaActiva" Width="150px" ClientInstanceName="chkVerExpAlertaActiva" Text="Ver expedientes con alertas" ToggleSwitchDisplayMode="Always">
                                                 </dx:ASPxCheckBox>

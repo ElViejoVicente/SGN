@@ -39,8 +39,8 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Xpo.v25.1, Version=25.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.9, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.9\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agenda\AgendaCitaDataSource.cs" />
+    <Compile Include="Agenda\CatAgendaEtiquetaDataSource.cs" />
+    <Compile Include="Agenda\CatAgendaRecursoDataSource.cs" />
     <Compile Include="APP\DatosAPP.cs" />
     <Compile Include="APP\ListaConsultaFolio.cs" />
     <Compile Include="Bitacora\DatosBitacora.cs" />
@@ -96,9 +99,12 @@
     <Compile Include="Expediente\ListaHojaDatos.cs" />
     <Compile Include="Inventarios\DatosInventario.cs" />
     <Compile Include="Operativa\PerfilXOperaciones.cs" />
+    <Compile Include="ORM\AgendaCitas.cs" />
     <Compile Include="ORM\Alertas.cs" />
     <Compile Include="ORM\AVDetectadas.cs" />
     <Compile Include="ORM\BitacoraExpediente.cs" />
+    <Compile Include="ORM\CatAgendaEtiqueta.cs" />
+    <Compile Include="ORM\CatAgendaRecurso.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_AreaOficina.cs" />
     <Compile Include="ORM\Cat_Clientes.cs" />
