@@ -1,234 +1,611 @@
-﻿/* =========================
-   ⚙️ Variables (paleta base)
-   Cambia SOLO --brand para rebrand rápido
-   ========================= */
+﻿```css
+/* ============================================================
+   SGN - LOGIN MODERNO
+   ============================================================ */
 :root {
-    /* Color base */
     --brand: #054f77;
-    /* Tonos más oscuros (derivados de #054f77) */
-    --brand-600: #043f5f;
-    --brand-700: #033048;
-    --brand-800: #022030;
-    /* Overlays (mismos RGB que el base, con alfa) */
-    --brand-alpha-55: rgba(5, 79, 119, .55); /* overlay principal */
-    --brand-alpha-35: rgba(5, 79, 119, .35); /* overlay sutil */
-    /* Texto (oscuro en grises/neutros, no verdes) */
-    --text-dark: #1a1a1a;
-    --text-muted: #4d5a66;
-    /* Fondos */
-    --card-bg-top: #ffffff;
-    --card-bg-btm: #f5f7fa;
+    --brand-light: #0875ab;
+    --brand-dark: #02334f;
+    --brand-deep: #011f31;
+    --accent: #29a5d9;
+    --text: #17212b;
+    --text-muted: #667687;
+    --surface: rgba(255, 255, 255, .96);
+    --border: #dce5ec;
+    --shadow-lg: 0 32px 80px rgba(0, 26, 44, .30);
+    --shadow-md: 0 14px 32px rgba(0, 40, 65, .16);
 }
 
-/* ===== Reset + estructura ===== */
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: var(--text-dark);
 }
 
-/* Página: main centrado + footer pegado al pie */
-.page {
+body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+}
+
+
+/* ============================================================
+   PÁGINA
+   ============================================================ */
+
+.login-page {
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* Fondo con imagen + overlay más ligero para que se vea mejor */
-    background: linear-gradient(135deg, var(--brand-alpha-35), var(--brand-alpha-55)), url("../../imagenes/login/notaria-inicioOpa90.jpg") center/cover no-repeat fixed;
+    overflow: hidden;
+    background: url("../../imagenes/login/notaria-inicioOpa90.jpg") center center / cover no-repeat fixed;
 }
 
-.main {
+
+/* Overlay del fondo */
+
+.login-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient( 120deg, rgba(1, 26, 41, .88) 0%, rgba(3, 48, 72, .74) 45%, rgba(5, 79, 119, .38) 100% );
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL
+   ============================================================ */
+
+.login-main {
+    position: relative;
+    z-index: 1;
     flex: 1;
     display: flex;
-    align-items: center; /* centra vertical */
-    justify-content: center; /* centra horizontal */
-    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 28px;
 }
 
-/* ===== Tarjeta ===== */
-.card {
+
+.login-container {
     width: 100%;
-    max-width: 480px;
-    background: linear-gradient(180deg, var(--card-bg-top) 0%, var(--card-bg-btm) 100%);
-    border-radius: 22px;
-    box-shadow: 0 14px 34px rgba(0,0,0,.33), 0 2px 10px rgba(0,0,0,.08);
-    padding: 30px 26px 24px;
-    text-align: center;
+    max-width: 1060px;
+    min-height: 580px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(400px, .85fr);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .20);
+    border-radius: 28px;
+    box-shadow: var(--shadow-lg);
+    animation: pageEnter .65s ease-out;
+}
+
+
+/* ============================================================
+   PANEL IZQUIERDO
+   ============================================================ */
+
+.login-brand-panel {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
+    overflow: hidden;
+    color: white;
+    background: linear-gradient( 145deg, rgba(2, 43, 66, .90), rgba(5, 79, 119, .74) );
+}
+
+
+    /* Decoración circular */
+
+    .login-brand-panel::before {
+        content: "";
+        position: absolute;
+        width: 340px;
+        height: 340px;
+        top: -120px;
+        right: -100px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .05);
+    }
+
+
+    .login-brand-panel::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        left: -80px;
+        bottom: -90px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, .10);
+    }
+
+
+.brand-content {
+    position: relative;
+    z-index: 2;
+    max-width: 530px;
+}
+
+
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, .28);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: rgba(255, 255, 255, .10);
     backdrop-filter: blur(6px);
 }
 
-/* Encabezado */
-.card-header {
-    margin-bottom: 12px;
-}
 
-.logo-animated {
-    width: 96px; /* ⬆ resalta más el logo */
-    height: auto;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,.25));
-    animation: bounce 2.2s infinite;
-}
-
-.title {
-    margin: 8px 0 4px;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--brand-700);
-}
-
-.subtitle {
+.brand-title {
+    max-width: 500px;
     margin: 0;
-    font-weight: 600;
-    color: var(--text-muted);
-    opacity: .95;
+    font-size: clamp( 34px, 4vw, 50px );
+    line-height: 1.08;
+    font-weight: 750;
+    letter-spacing: -.8px;
 }
 
-/* Cuerpo */
-.card-body {
-    margin-top: 10px;
+
+.brand-description {
+    max-width: 500px;
+    margin: 24px 0 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba( 255, 255, 255, .82 );
 }
 
-.form-row {
+
+.brand-divider {
+    width: 70px;
+    height: 3px;
+    margin: 30px 0;
+    border-radius: 999px;
+    background: rgba( 255, 255, 255, .80 );
+}
+
+
+.brand-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin-top: 14px;
+    font-size: 15px;
+    color: rgba( 255, 255, 255, .88 );
 }
 
-/* ===== DevExpress inputs ===== */
-.dxEditors_edt {
-    width: 100% !important;
-    border-radius: 12px !important;
-    padding: 12px 10px !important;
-    font-size: 15px !important;
-    background-color: #fff !important;
-    transition: box-shadow .25s ease, transform .12s ease, border-color .25s ease;
+
+.feature-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba( 255, 255, 255, .15 );
 }
 
-    .dxEditors_edt:hover,
-    .dxEditors_edt:focus {
-        box-shadow: 0 0 0 2px rgba(72,118,46,.18), 0 0 10px rgba(72,118,46,.35) !important;
-        transform: translateY(-1px);
+
+/* ============================================================
+   PANEL DERECHO
+   ============================================================ */
+
+.login-card {
+    display: flex;
+    align-items: center;
+    background: var( --surface );
+    backdrop-filter: blur( 20px );
+}
+
+
+.login-card-content {
+    width: 100%;
+    padding: 56px 54px 42px;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.login-header {
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+
+.logo-container {
+    width: 108px;
+    height: 108px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 28px;
+    background: linear-gradient( 145deg, #ffffff, #eef5f8 );
+    border: 1px solid rgba( 5, 79, 119, .10 );
+    box-shadow: 0 14px 30px rgba( 5, 79, 119, .14 );
+}
+
+
+.login-logo {
+    width: 78px;
+    max-height: 78px;
+    object-fit: contain;
+}
+
+
+.login-title {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 750;
+    color: var( --brand-dark );
+    letter-spacing: -.4px;
+}
+
+
+.login-subtitle {
+    margin: 8px 0 0;
+    font-size: 15px;
+    color: var( --text-muted );
+}
+
+
+/* ============================================================
+   FORMULARIO
+   ============================================================ */
+
+.login-body {
+    width: 100%;
+}
+
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #415261;
+}
+
+
+.input-wrapper {
+    position: relative;
+}
+
+
+.input-icon {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 16px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY( -50% );
+    pointer-events: none;
+}
+
+
+    .input-icon svg {
+        width: 19px;
+        height: 19px;
+        fill: #7591a2;
     }
 
-/* Autocomplete Chrome */
+
+/* ============================================================
+   DEVEXPRESS TEXTBOX
+   ============================================================ */
+
+.modern-input {
+    width: 100% !important;
+}
+
+
+/*
+DevExpress genera una tabla internamente.
+Estas reglas afectan el control completo.
+*/
+
+.modern-input {
+    border: 1px solid var( --border ) !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+
+    .modern-input:hover {
+        border-color: #9cb8c7 !important;
+    }
+
+
+    .modern-input:focus-within {
+        border-color: var( --brand-light ) !important;
+        box-shadow: 0 0 0 4px rgba( 5, 79, 119, .10 ) !important;
+    }
+
+
+    /* Input real generado por DevExpress */
+
+    .modern-input input {
+        width: 100% !important;
+        height: 52px !important;
+        padding: 0 16px 0 48px !important;
+        border: 0 !important;
+        outline: none !important;
+        background: transparent !important;
+        font-family: "Segoe UI", Arial, sans-serif !important;
+        font-size: 15px !important;
+        color: var( --text ) !important;
+    }
+
+
+        .modern-input input::placeholder {
+            color: #9aa9b6;
+        }
+
+
+/* ============================================================
+   AUTOCOMPLETADO CHROME
+   ============================================================ */
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 30px #fff inset !important;
-    -webkit-text-fill-color: var(--brand-800) !important;
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+    -webkit-text-fill-color: var( --text ) !important;
 }
 
-/* ===== Botón primario ===== */
-.btn-primary {
-    display: inline-block;
+
+/* ============================================================
+   BOTÓN LOGIN
+   ============================================================ */
+
+.form-actions {
+    margin-top: 30px;
+}
+
+
+.login-button {
     width: 100% !important;
-    border: 0;
-    border-radius: 12px !important;
-    padding: 14px !important;
-    font-weight: 700;
-    color: #fff !important;
-    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-600) 55%, var(--brand) 100%);
-    box-shadow: 0 10px 24px rgba(72,118,46,.35);
-    transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
+    min-height: 54px;
+    border: 0 !important;
+    border-radius: 13px !important;
+    overflow: hidden;
+    color: white !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: .2px;
+    background: linear-gradient( 135deg, var( --brand ), var( --brand-light ) ) !important;
+    box-shadow: 0 14px 26px rgba( 5, 79, 119, .26 );
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
 }
 
-    .btn-primary:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 14px 30px rgba(72,118,46,.48);
-        filter: brightness(1.03);
+
+    .login-button:hover {
+        transform: translateY( -2px );
+        box-shadow: 0 18px 34px rgba( 5, 79, 119, .34 );
+        filter: brightness( 1.05 );
     }
 
-    .btn-primary:active {
-        transform: translateY(0);
+
+    .login-button:active {
+        transform: translateY( 0 );
     }
 
-/* Brillo sutil extra */
-.glow-on-hover:hover {
-    box-shadow: 0 0 0 3px rgba(72,118,46,.22), 0 12px 28px rgba(72,118,46,.55);
+
+    /* Texto interno botón DevExpress */
+
+    .login-button span {
+        color: white !important;
+        font-weight: 700 !important;
+    }
+
+
+/* ============================================================
+   SEGURIDAD
+   ============================================================ */
+
+.login-security {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 22px;
+    font-size: 12px;
+    color: #82909c;
 }
 
-/* ===== Footer full-width, fijo al pie ===== */
-.footer {
-    width: 100%;
-    padding: 12px 16px;
-    text-align: center;
+
+.security-icon {
     font-size: 13px;
-    color: #e9f3e4;
-    background: linear-gradient(90deg, var(--brand-800) 0%, var(--brand-700) 50%, var(--brand-800) 100%);
-    border-top: 1px solid rgba(255,255,255,.06);
 }
 
-    .footer a {
-        color: #cfe8c3;
+
+/* ============================================================
+   FOOTER TARJETA
+   ============================================================ */
+
+.login-card-footer {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid #edf1f4;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #82909c;
+}
+
+
+    .login-card-footer .separator {
+        margin: 0 8px;
+    }
+
+
+/* ============================================================
+   FOOTER GENERAL
+   ============================================================ */
+
+.page-footer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba( 255, 255, 255, .78 );
+    background: rgba( 1, 24, 38, .72 );
+    backdrop-filter: blur( 14px );
+    border-top: 1px solid rgba( 255, 255, 255, .08 );
+}
+
+
+    .page-footer a {
+        color: white;
+        font-weight: 600;
         text-decoration: none;
     }
 
-        .footer a:hover {
+
+        .page-footer a:hover {
             text-decoration: underline;
         }
 
-/* ===== Animaciones ===== */
-@keyframes bounce {
-    0%,100% {
-        transform: translateY(0)
-    }
 
-    50% {
-        transform: translateY(-7px)
-    }
+.footer-separator {
+    margin: 0 8px;
+    opacity: .45;
 }
 
-@keyframes slideUp {
+
+/* ============================================================
+   ANIMACIÓN
+   ============================================================ */
+
+@keyframes pageEnter {
+
     from {
         opacity: 0;
-        transform: translateY(24px)
+        transform: translateY( 20px ) scale( .99 );
     }
 
     to {
         opacity: 1;
-        transform: translateY(0)
+        transform: translateY( 0 ) scale( 1 );
     }
 }
 
-.animate-slide-up {
-    animation: slideUp .9s ease-out;
-}
 
-/* ===== Responsivo ===== */
-@media (max-width: 768px) {
-    .card {
-        max-width: 92%;
-        padding: 26px 18px;
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media ( max-width: 900px ) {
+
+    .login-main {
+        padding: 28px 18px;
     }
 
-    .title {
-        font-size: 24px;
+
+    .login-container {
+        max-width: 520px;
+        min-height: auto;
+        grid-template-columns: 1fr;
     }
 
-    .logo-animated {
-        width: 88px;
-    }
-}
 
-@media (max-width: 480px) {
-    .card {
-        max-width: 96%;
-        padding: 22px 14px;
+    .login-brand-panel {
+        display: none;
     }
 
-    .title {
-        font-size: 22px;
-    }
 
-    .logo-animated {
-        width: 78px;
-    }
-
-    .footer {
-        font-size: 12px;
-        padding: 10px 8px;
+    .login-card-content {
+        padding: 48px 38px 36px;
     }
 }
+
+
+@media ( max-width: 520px ) {
+
+    .login-main {
+        align-items: flex-start;
+        padding: 20px 12px;
+    }
+
+
+    .login-container {
+        border-radius: 20px;
+    }
+
+
+    .login-card-content {
+        padding: 36px 22px 28px;
+    }
+
+
+    .logo-container {
+        width: 92px;
+        height: 92px;
+        border-radius: 22px;
+    }
+
+
+    .login-logo {
+        width: 66px;
+    }
+
+
+    .login-title {
+        font-size: 26px;
+    }
+
+
+    .page-footer {
+        line-height: 1.8;
+        padding: 12px 14px;
+    }
+
+
+    .footer-separator {
+        display: none;
+    }
+
+
+    .page-footer span,
+    .page-footer a {
+        display: block;
+    }
+}
+
+```
