@@ -926,6 +926,13 @@ namespace SGN.Web.ExpedientesTramites
             //ASPxGridView control = (ASPxGridView)sender;
             if (e.Parameters == "CargarRegistros")
             {
+                //limpieza de datos 
+
+                lsExpediente = new List<ListaExpedientes>();
+                gvExpedientes.DataBind();
+
+
+
                 if (UsuarioPagina.NombrePerfil == "Mesas") //2024-03-17 si el perfil es de mesas entonces solo mostramos lo registros del usuario 
                 {
                     lsExpediente = datosExpediente.DameListaExpediente(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date, idUsuario: UsuarioPagina.Id, AnioActual: chkAnioActual.Checked, AnioAnterior: chkAnioPasado.Checked, IncluirArchivados: chkVerCerrados.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos registros
