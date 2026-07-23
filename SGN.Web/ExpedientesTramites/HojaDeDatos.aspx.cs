@@ -386,8 +386,7 @@ namespace SGN.Web.ExpedientesTramites
                 dtFechaInicio.Date = DateTime.Now.Date.AddDays(-30);
                 dtFechaFin.Date = DateTime.Now.Date;
 
-                dtFechaIngreso.Date = DateTime.Now;
-                txtNombreAsesor.Text = UsuarioPagina.Nombre;
+
                 DameCatalogos();
 
             }
@@ -448,6 +447,9 @@ namespace SGN.Web.ExpedientesTramites
             {
                 EsNuevaHojaDatos = true;
 
+                dtFechaIngreso.Date = DateTime.Now;
+                txtNombreAsesor.Text = UsuarioPagina.Nombre;
+
                 lsOtorgaSolicitante = new List<DatosParticipantes>();
                 lsAfavorDE = new List<DatosParticipantes>();
                 OtorgaSolicitanteSeleccion = "";
@@ -468,6 +470,9 @@ namespace SGN.Web.ExpedientesTramites
             {
 
                 EsNuevaHojaDatos = false;
+
+                //dtFechaIngreso.Date = DateTime.Now;
+                //txtNombreAsesor.Text = UsuarioPagina.Nombre;
 
                 // limpieza
                 catDocumentoOtorgaSolicita = new List<Cat_DocumentosPorActo>();
@@ -515,7 +520,7 @@ namespace SGN.Web.ExpedientesTramites
                     txtClienteTramita.Text = hojaSeleccionada.NumbreUsuarioTramita;
                     txtNumCelular.Text = hojaSeleccionada.NumTelCelular1;
                     txtCorreoElectronico.Text = hojaSeleccionada.CorreoElectronico;
-
+                    txtNombreAsesor.Text = hojaDatosSeleccionada.NombreAsesor;
 
 
 

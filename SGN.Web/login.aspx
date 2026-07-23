@@ -256,7 +256,7 @@
                                 <span class="separator">•
                                 </span>
 
-                                <span>Versión 1.5
+                                <span>Versión 1.5.1
                                 </span>
 
                             </footer>
