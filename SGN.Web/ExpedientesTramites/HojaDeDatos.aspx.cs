@@ -389,8 +389,46 @@ namespace SGN.Web.ExpedientesTramites
 
                 DameCatalogos();
 
+                MostrarCampoPorPerfil(UsuarioPagina.NombrePerfil);
+
             }
         }
+
+
+        private void MostrarCampoPorPerfil(string nombrePerfil)
+        {
+
+
+
+            var cmdNuevaHojaDatos = gvHojaDatos.Toolbars.FindByName("Tools").Items.FindByName("cmdNuevaHojaDatos");
+
+            var cmdEditarHojaDatos = gvHojaDatos.Toolbars.FindByName("Tools").Items.FindByName("cmdEditarHojaDatos");
+
+            var cmdReporteHojaDatos = gvHojaDatos.Toolbars.FindByName("Tools").Items.FindByName("cmdReporteHojaDatos");
+
+
+            switch (nombrePerfil)
+            {
+            
+
+
+                case "SoloLectura":
+
+                    //desactivar controles del control grid  gvExpedientes
+
+
+                    cmdNuevaHojaDatos.ClientVisible = false;
+                    cmdEditarHojaDatos.ClientVisible = false;
+                    cmdReporteHojaDatos.ClientVisible = false;
+
+
+                    break;
+
+
+
+            }
+        }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             // cbVarienteNuevo.DataBind();

@@ -365,7 +365,7 @@
 
 
                 <Toolbars>
-                    <dx:GridViewToolbar>
+                    <dx:GridViewToolbar  Name="Tools">
                         <Items>
 
 
