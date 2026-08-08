@@ -22,7 +22,7 @@ namespace SGN.Negocio.Agenda
         public string RecurrenceInfo { get; set; }
         public string ReminderInfo { get; set; }
 
-        public int IdRecurso { get; set; } // ResourceId -> Cat_AgendaRecurso.IdRecurso (0 si ninguno)
+        public int? IdRecurso { get; set; } // null representa una cita histórica sin lugar asignado
 
         // opcionales dominio
         public string IdExpediente { get; set; }

@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
+using System.Text.RegularExpressions;
+using DevExpress.Web;
 using DevExpress.Web.ASPxScheduler;
 using DevExpress.XtraScheduler;
 
 using SGN.Negocio.Agenda;
+using SGN.Negocio.CRUD;
+using SGN.Negocio.Expediente;
+using SGN.Negocio.ORM;
 using SGN.Web.Controles.Servidor;
+using SGN.Web.Agenda.CustomForms;
 
 namespace SGN.Web.Agenda
 {
@@ -72,6 +80,9 @@ namespace SGN.Web.Agenda
 
                 // ✅ Recursos por cita
                 mappings.ResourceId = "IdRecurso";
+
+                Storage.Appointments.CustomFieldMappings.Clear();
+                Storage.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping(AgendaCustomFieldNames.IdExpediente, "IdExpediente"));
 
                 // ✅ Catálogo de recursos
                 var rm = Storage.Resources.Mappings;
@@ -182,46 +193,94 @@ namespace SGN.Web.Agenda
             return palette[(orden - 1) % palette.Length];
         }
 
-        /// <summary>
-        /// ✅ Oculta el campo Ubicación en el Appointment Form estándar.
-        /// Usamos AppointmentFormShowing para acceder al contenedor del form. :contentReference[oaicite:7]{index=7}
-        /// </summary>
         protected void scAgenda_AppointmentFormShowing(object sender, AppointmentFormEventArgs e)
         {
-            // Container es el contenedor del form estándar. :contentReference[oaicite:8]{index=8}
-            if (e.Container == null) return;
-
-            // En el template default los IDs suelen incluir "Location".
-            // Lo hacemos robusto: ocultamos cualquier control cuyo ID contenga "Location".
-            HideControlsByIdContains(e.Container, "Location");
-            HideControlsByIdContains(e.Container, "Ubicacion"); // por si tu localización cambia el ID
-
-            // También puedes ocultar por texto del label si lo llegas a localizar.
+            e.Container = new AgendaAppointmentFormTemplateContainer((ASPxScheduler)sender);
         }
 
-        private void HideControlsByIdContains(System.Web.UI.Control root, string token)
+        protected void scAgenda_BeforeExecuteCallbackCommand(object sender, SchedulerCallbackCommandEventArgs e)
         {
-            if (root == null) return;
+            if (e.CommandId == SchedulerCallbackCommandId.AppointmentSave)
+                e.Command = new AgendaAppointmentSaveCallbackCommand((ASPxScheduler)sender);
+        }
 
-            foreach (System.Web.UI.Control c in GetAllControls(root))
+        [WebMethod(EnableSession = true)]
+        public static ResultadoBusquedaExpediente BuscarExpediente(string numeroExpediente)
+        {
+            string expediente = (numeroExpediente ?? string.Empty).Trim().ToUpperInvariant();
+            if (!Regex.IsMatch(expediente, @"^\d{4}-(0[1-9]|1[0-2])-\d+[A-Z]?$"))
+                return ResultadoBusquedaExpediente.Error("El formato del expediente no es válido.");
+
+            try
             {
-                if (!string.IsNullOrEmpty(c.ID) && c.ID.IndexOf(token, StringComparison.OrdinalIgnoreCase) >= 0)
-                {
-                    c.Visible = false;
+                Expedientes registro = new DatosCrud().ConsultaExpediente(expediente);
+                if (registro == null || registro.IdHojaDatos <= 0)
+                    return ResultadoBusquedaExpediente.Error("No se encontró el expediente indicado.");
 
-                    // A veces el editor está dentro de una celda/fila; ocultamos el contenedor si existe
-                    if (c.Parent != null) c.Parent.Visible = false;
-                }
+                ListaHojaDatos detalle = new DatosExpedientes().DameHojaDatosDetalle(registro.IdHojaDatos);
+                if (detalle == null)
+                    return ResultadoBusquedaExpediente.Error("El expediente no tiene hoja de datos disponible.");
+
+                return new ResultadoBusquedaExpediente
+                {
+                    Exito = true,
+                    Expediente = expediente,
+                    Acto = UnirExpedienteYActo(expediente, UnirActo(detalle.TextoActo, detalle.TextoVariante)),
+                    Proyectista = registro.NombreProyectista ?? string.Empty,
+                    Descripcion = CrearDescripcion(detalle)
+                };
+            }
+            catch
+            {
+                return ResultadoBusquedaExpediente.Error("Ocurrió un error al consultar el expediente.");
             }
         }
 
-        private IEnumerable<System.Web.UI.Control> GetAllControls(System.Web.UI.Control root)
+        protected void cbBuscarExpediente_Callback(object source, CallbackEventArgs e)
         {
-            foreach (System.Web.UI.Control c in root.Controls)
+            ResultadoBusquedaExpediente resultado = BuscarExpediente(e.Parameter);
+            e.Result = new JavaScriptSerializer().Serialize(resultado);
+        }
+
+        private static string UnirActo(string acto, string variante)
+        {
+            return string.Join(" - ", new[] { acto, variante }.Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()));
+        }
+
+        private static string UnirExpedienteYActo(string expediente, string acto)
+        {
+            return string.Join(" - ", new[] { expediente, acto }.Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()));
+        }
+
+        private static string CrearDescripcion(ListaHojaDatos detalle)
+        {
+            var lineas = new List<string>();
+            AgregarLinea(lineas, "Estatus", detalle.TextoEstatus);
+            AgregarLinea(lineas, "Otorga", detalle.Otorga);
+            AgregarLinea(lineas, "A favor de", detalle.AfavorDe);
+            AgregarLinea(lineas, "Asesor", detalle.NombreAsesor);
+            AgregarLinea(lineas, "Tramita", detalle.NumbreUsuarioTramita);
+            return string.Join(Environment.NewLine, lineas);
+        }
+
+        private static void AgregarLinea(ICollection<string> lineas, string etiqueta, string valor)
+        {
+            if (!string.IsNullOrWhiteSpace(valor))
+                lineas.Add(etiqueta + ": " + valor.Trim());
+        }
+
+        public sealed class ResultadoBusquedaExpediente
+        {
+            public bool Exito { get; set; }
+            public string Mensaje { get; set; }
+            public string Expediente { get; set; }
+            public string Acto { get; set; }
+            public string Proyectista { get; set; }
+            public string Descripcion { get; set; }
+
+            public static ResultadoBusquedaExpediente Error(string mensaje)
             {
-                yield return c;
-                foreach (var child in GetAllControls(c))
-                    yield return child;
+                return new ResultadoBusquedaExpediente { Exito = false, Mensaje = mensaje };
             }
         }
 

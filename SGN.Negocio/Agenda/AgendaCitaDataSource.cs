@@ -68,7 +68,9 @@ namespace SGN.Negocio.Agenda
                             RecurrenceInfo = rd["RecurrenceInfo"] as string,
                             ReminderInfo = rd["ReminderInfo"] as string,
 
-                            IdRecurso = rd["IdRecurso"] == DBNull.Value ? 0 : Convert.ToInt32(rd["IdRecurso"])
+                            IdRecurso = rd["IdRecurso"] == DBNull.Value ? (int?)null : Convert.ToInt32(rd["IdRecurso"]),
+                            IdExpediente = rd["IdExpediente"] as string,
+                            IdTipoCita = rd["IdTipoCita"] == DBNull.Value ? 0 : Convert.ToInt32(rd["IdTipoCita"])
                         };
 
                         list.Add(c);
@@ -111,11 +113,13 @@ namespace SGN.Negocio.Agenda
                 cmd.Parameters.AddWithValue("@ReminderInfo", (object)cita.ReminderInfo ?? DBNull.Value);
 
                 // ✅ NUEVO: recurso
-                cmd.Parameters.AddWithValue("@IdRecurso", cita.IdRecurso > 0 ? (object)cita.IdRecurso : DBNull.Value);
+                if (!cita.IdRecurso.HasValue || cita.IdRecurso.Value <= 0)
+                    throw new InvalidOperationException("Debe seleccionar un lugar para la cita.");
 
-                // (Opcionales dominio si los manejas en SP)
-                // cmd.Parameters.AddWithValue("@IdExpediente", (object)cita.IdExpediente ?? DBNull.Value);
-                // cmd.Parameters.AddWithValue("@IdTipoCita", cita.IdTipoCita > 0 ? (object)cita.IdTipoCita : DBNull.Value);
+                cmd.Parameters.AddWithValue("@IdRecurso", cita.IdRecurso.Value);
+
+                cmd.Parameters.AddWithValue("@IdExpediente", string.IsNullOrWhiteSpace(cita.IdExpediente) ? (object)DBNull.Value : cita.IdExpediente.Trim());
+                cmd.Parameters.AddWithValue("@IdTipoCita", cita.IdTipoCita > 0 ? (object)cita.IdTipoCita : DBNull.Value);
 
                 var pOut = new SqlParameter("@IdCita", SqlDbType.Int) { Direction = ParameterDirection.Output };
                 cmd.Parameters.Add(pOut);
@@ -159,11 +163,13 @@ namespace SGN.Negocio.Agenda
                 cmd.Parameters.AddWithValue("@ReminderInfo", (object)cita.ReminderInfo ?? DBNull.Value);
 
                 // ✅ NUEVO: recurso
-                cmd.Parameters.AddWithValue("@IdRecurso", cita.IdRecurso > 0 ? (object)cita.IdRecurso : DBNull.Value);
+                if (!cita.IdRecurso.HasValue || cita.IdRecurso.Value <= 0)
+                    throw new InvalidOperationException("Debe seleccionar un lugar para la cita.");
 
-                // (Opcionales dominio)
-                // cmd.Parameters.AddWithValue("@IdExpediente", (object)cita.IdExpediente ?? DBNull.Value);
-                // cmd.Parameters.AddWithValue("@IdTipoCita", cita.IdTipoCita > 0 ? (object)cita.IdTipoCita : DBNull.Value);
+                cmd.Parameters.AddWithValue("@IdRecurso", cita.IdRecurso.Value);
+
+                cmd.Parameters.AddWithValue("@IdExpediente", string.IsNullOrWhiteSpace(cita.IdExpediente) ? (object)DBNull.Value : cita.IdExpediente.Trim());
+                cmd.Parameters.AddWithValue("@IdTipoCita", cita.IdTipoCita > 0 ? (object)cita.IdTipoCita : DBNull.Value);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();

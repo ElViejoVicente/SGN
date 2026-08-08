@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Agenda\Agenda.aspx" />
+    <Content Include="Agenda\CustomForms\AgendaAppointmentForm.ascx" />
     <Content Include="APP\ConsultaExpediente.aspx" />
     <Content Include="Bitacora\HistoricoCambios.aspx" />
     <Content Include="Catalogos\CatActos.aspx" />
@@ -459,6 +460,11 @@
     <Compile Include="Agenda\Agenda.aspx.designer.cs">
       <DependentUpon>Agenda.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Agenda\CustomForms\AgendaAppointmentForm.ascx.cs">
+      <DependentUpon>AgendaAppointmentForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agenda\CustomForms\AgendaAppointmentFormSupport.cs" />
     <Compile Include="APP\ConsultaExpediente.aspx.cs">
       <DependentUpon>ConsultaExpediente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
