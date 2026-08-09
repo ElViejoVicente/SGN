@@ -29,7 +29,7 @@
         gap: 10px;
         align-items: center;
     }
-    .sgn-agenda-form .message-cell { padding: 0 0 0 125px; }
+    .sgn-agenda-form .message-cell { padding: 0 0 0 140px; }
     .sgn-agenda-form .message {
         min-height: 18px;
         line-height: 18px;
@@ -39,7 +39,7 @@
         vertical-align: top;
         padding-top: 5px;
     }
-    .sgn-recurrence { padding: 2px 14px 8px 149px; }
+    .sgn-recurrence { padding: 2px 14px 8px 164px; }
     .sgn-form-actions {
         display: flex;
         justify-content: center;
@@ -51,9 +51,9 @@
 <div runat="server" id="ValidationContainer">
     <table class="sgn-agenda-form">
         <colgroup>
-            <col style="width:125px;" />
+            <col style="width:140px;" />
             <col />
-            <col style="width:125px;" />
+            <col style="width:140px;" />
             <col />
         </colgroup>
         <tr>
@@ -90,6 +90,34 @@
             <td class="field"><dx:ASPxTextBox ID="tbLocation" runat="server" Width="100%" ClientInstanceName="agendaProyectista" Text='<%# ((DevExpress.Web.ASPxScheduler.AppointmentFormTemplateContainer)Container).Appointment.Location %>' /></td>
             <td class="label"><dx:ASPxLabel ID="lblLabel" runat="server" Text="Etiqueta:" AssociatedControlID="edtLabel" /></td>
             <td class="field field-last"><dx:ASPxComboBox ID="edtLabel" runat="server" Width="100%" DataSource='<%# ((DevExpress.Web.ASPxScheduler.AppointmentFormTemplateContainer)Container).LabelDataSource %>' /></td>
+        </tr>
+        <tr>
+            <td class="label"><dx:ASPxLabel ID="lblValorOperacion" runat="server" Text="Valor operaci&#243;n:" AssociatedControlID="tbValorOperacion" /></td>
+            <td class="field">
+                <dx:ASPxSpinEdit ID="tbValorOperacion" runat="server" Width="100%" ClientInstanceName="agendaValorOperacion"
+                    NumberType="Float" DecimalPlaces="2" DisplayFormatString="N2" MinValue="0" AllowNull="false"
+                    Value='<%# ((SGN.Web.Agenda.CustomForms.AgendaAppointmentFormTemplateContainer)Container).ValorOperacion %>' />
+            </td>
+            <td class="label"><dx:ASPxLabel ID="lblISR" runat="server" Text="ISR:" AssociatedControlID="tbISR" /></td>
+            <td class="field field-last">
+                <dx:ASPxSpinEdit ID="tbISR" runat="server" Width="100%" ClientInstanceName="agendaISR"
+                    NumberType="Float" DecimalPlaces="2" DisplayFormatString="N2" MinValue="0" AllowNull="false"
+                    Value='<%# ((SGN.Web.Agenda.CustomForms.AgendaAppointmentFormTemplateContainer)Container).ISR %>' />
+            </td>
+        </tr>
+        <tr>
+            <td class="label"><dx:ASPxLabel ID="lblNumeroEscritura" runat="server" Text="N&#176; escritura:" AssociatedControlID="tbNumeroEscritura" /></td>
+            <td class="field">
+                <dx:ASPxTextBox ID="tbNumeroEscritura" runat="server" Width="100%" MaxLength="250"
+                    ClientInstanceName="agendaNumeroEscritura"
+                    Text='<%# ((SGN.Web.Agenda.CustomForms.AgendaAppointmentFormTemplateContainer)Container).NumeroEscritura %>' />
+            </td>
+            <td class="label"><dx:ASPxLabel ID="lblActividadVulnerable" runat="server" Text="Actividad vulnerable:" AssociatedControlID="tbActividadVulnerable" /></td>
+            <td class="field field-last">
+                <dx:ASPxTextBox ID="tbActividadVulnerable" runat="server" Width="100%" MaxLength="250"
+                    ClientInstanceName="agendaActividadVulnerable"
+                    Text='<%# ((SGN.Web.Agenda.CustomForms.AgendaAppointmentFormTemplateContainer)Container).ActividadVulnerable %>' />
+            </td>
         </tr>
         <tr>
             <td class="label"><dx:ASPxLabel ID="lblStartDate" runat="server" Text="Hora de inicio:" AssociatedControlID="edtStartDate" /></td>
@@ -152,6 +180,7 @@
             <td colspan="3" class="field field-last"><dx:ASPxMemo ID="tbDescription" runat="server" Width="100%" Rows="6" ClientInstanceName="agendaDescripcion" Text='<%# ((DevExpress.Web.ASPxScheduler.AppointmentFormTemplateContainer)Container).Appointment.Description %>' /></td>
         </tr>
     </table>
+
 </div>
 
 <div class="sgn-recurrence">

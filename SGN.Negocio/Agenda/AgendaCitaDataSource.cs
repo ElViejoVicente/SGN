@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web;
+using SGN.Negocio.Operativa;
 
 namespace SGN.Negocio.Agenda
 {
@@ -70,7 +71,15 @@ namespace SGN.Negocio.Agenda
 
                             IdRecurso = rd["IdRecurso"] == DBNull.Value ? (int?)null : Convert.ToInt32(rd["IdRecurso"]),
                             IdExpediente = rd["IdExpediente"] as string,
-                            IdTipoCita = rd["IdTipoCita"] == DBNull.Value ? 0 : Convert.ToInt32(rd["IdTipoCita"])
+                            IdTipoCita = rd["IdTipoCita"] == DBNull.Value ? 0 : Convert.ToInt32(rd["IdTipoCita"]),
+                            ValorOperacion = rd["ValorOperacion"] == DBNull.Value ? 0m : Convert.ToDecimal(rd["ValorOperacion"]),
+                            ISR = rd["ISR"] == DBNull.Value ? 0m : Convert.ToDecimal(rd["ISR"]),
+                            NumeroEscritura = rd["NumeroEscritura"] as string,
+                            ActividadVulnerable = rd["ActividadVulnerable"] as string,
+                            UsuarioCrea = rd["UsuarioCrea"] as string,
+                            FechaCrea = rd["FechaCrea"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(rd["FechaCrea"]),
+                            UsuarioMod = rd["UsuarioMod"] as string,
+                            FechaMod = rd["FechaMod"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(rd["FechaMod"])
                         };
 
                         list.Add(c);
@@ -120,6 +129,11 @@ namespace SGN.Negocio.Agenda
 
                 cmd.Parameters.AddWithValue("@IdExpediente", string.IsNullOrWhiteSpace(cita.IdExpediente) ? (object)DBNull.Value : cita.IdExpediente.Trim());
                 cmd.Parameters.AddWithValue("@IdTipoCita", cita.IdTipoCita > 0 ? (object)cita.IdTipoCita : DBNull.Value);
+                AgregarDecimal(cmd, "@ValorOperacion", cita.ValorOperacion);
+                AgregarDecimal(cmd, "@ISR", cita.ISR);
+                cmd.Parameters.Add("@NumeroEscritura", SqlDbType.VarChar, 250).Value = Limitar(cita.NumeroEscritura, 250);
+                cmd.Parameters.Add("@ActividadVulnerable", SqlDbType.VarChar, 250).Value = Limitar(cita.ActividadVulnerable, 250);
+                cmd.Parameters.Add("@UsuarioCrea", SqlDbType.VarChar, 50).Value = ObtenerUsuarioActual();
 
                 var pOut = new SqlParameter("@IdCita", SqlDbType.Int) { Direction = ParameterDirection.Output };
                 cmd.Parameters.Add(pOut);
@@ -170,6 +184,11 @@ namespace SGN.Negocio.Agenda
 
                 cmd.Parameters.AddWithValue("@IdExpediente", string.IsNullOrWhiteSpace(cita.IdExpediente) ? (object)DBNull.Value : cita.IdExpediente.Trim());
                 cmd.Parameters.AddWithValue("@IdTipoCita", cita.IdTipoCita > 0 ? (object)cita.IdTipoCita : DBNull.Value);
+                AgregarDecimal(cmd, "@ValorOperacion", cita.ValorOperacion);
+                AgregarDecimal(cmd, "@ISR", cita.ISR);
+                cmd.Parameters.Add("@NumeroEscritura", SqlDbType.VarChar, 250).Value = Limitar(cita.NumeroEscritura, 250);
+                cmd.Parameters.Add("@ActividadVulnerable", SqlDbType.VarChar, 250).Value = Limitar(cita.ActividadVulnerable, 250);
+                cmd.Parameters.Add("@UsuarioMod", SqlDbType.VarChar, 50).Value = ObtenerUsuarioActual();
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -188,6 +207,38 @@ namespace SGN.Negocio.Agenda
                 cn.Open();
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        private static void AgregarDecimal(SqlCommand cmd, string nombre, decimal valor)
+        {
+            SqlParameter parametro = cmd.Parameters.Add(nombre, SqlDbType.Decimal);
+            parametro.Precision = 18;
+            parametro.Scale = 2;
+            parametro.Value = valor;
+        }
+
+        private static string Limitar(string valor, int longitud)
+        {
+            string texto = (valor ?? string.Empty).Trim();
+            return texto.Length <= longitud ? texto : texto.Substring(0, longitud);
+        }
+
+        private static string ObtenerUsuarioActual()
+        {
+            HttpContext contexto = HttpContext.Current;
+            Usuario usuario = contexto == null || contexto.Session == null
+                ? null
+                : contexto.Session["usuario"] as Usuario;
+
+            string nombre = usuario == null ? string.Empty : usuario.UserName;
+            if (string.IsNullOrWhiteSpace(nombre) && usuario != null)
+                nombre = usuario.Nombre;
+            if (string.IsNullOrWhiteSpace(nombre) && contexto != null && contexto.User != null)
+                nombre = contexto.User.Identity.Name;
+            if (string.IsNullOrWhiteSpace(nombre))
+                nombre = "Sistema";
+
+            return Limitar(nombre, 50);
         }
     }
 }

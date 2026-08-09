@@ -863,12 +863,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SGN.Negocio\SGN.Negocio.csproj">
-      <Project>{271c2299-dd95-49de-b836-d5f37dc61301}</Project>
-      <Name>SGN.Negocio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -970,5 +964,11 @@
   -->
   <ItemGroup>
     <Analyzer Include="C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.5\analyzers\dotnet\DevExpress.Generator.dll" Visible="false" Condition="Exists('C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.5\analyzers\dotnet\DevExpress.Generator.dll')" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGN.Negocio\SGN.Negocio.csproj">
+      <Project>{271c2299-dd95-49de-b836-d5f37dc61301}</Project>
+      <Name>SGN.Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

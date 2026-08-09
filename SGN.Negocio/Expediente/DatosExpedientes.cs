@@ -815,5 +815,34 @@ namespace SGN.Negocio.Expediente
         }
 
 
+        public ListaExpedientes DameExpedientePorFolio(string numExpediente)
+        {
+            try
+            {
+                ListaExpedientes resultado = new ListaExpedientes();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.QuerySingle<ListaExpedientes>
+                        (
+                        sql: "sp_DameExpedientePorFolio", param: new
+                        {
+                            numExpediente
+
+
+                        }, commandType: CommandType.StoredProcedure
+                        );
+                }
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameExpedientePorFolio , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
     }
 }

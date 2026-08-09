@@ -27,5 +27,15 @@ namespace SGN.Negocio.Agenda
         // opcionales dominio
         public string IdExpediente { get; set; }
         public int IdTipoCita { get; set; }
+        public decimal ValorOperacion { get; set; }
+        public decimal ISR { get; set; }
+        public string NumeroEscritura { get; set; }
+        public string ActividadVulnerable { get; set; }
+
+        // auditoría
+        public string UsuarioCrea { get; set; }
+        public DateTime FechaCrea { get; set; }
+        public string UsuarioMod { get; set; }
+        public DateTime? FechaMod { get; set; }
     }
 }

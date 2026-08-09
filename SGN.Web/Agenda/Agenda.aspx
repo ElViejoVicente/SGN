@@ -75,6 +75,10 @@
                 agendaActo.SetText(result.Acto || '');
                 agendaProyectista.SetText(result.Proyectista || '');
                 agendaDescripcion.SetText(result.Descripcion || '');
+                agendaValorOperacion.SetValue(result.ValorOperacion || 0);
+                agendaISR.SetValue(result.ISR || 0);
+                agendaNumeroEscritura.SetText(result.NumeroEscritura || '');
+                agendaActividadVulnerable.SetText(result.ActividadVulnerable || '');
                 mensaje.style.color = '#067647';
                 mensaje.textContent = 'Expediente cargado correctamente.';
             } catch (error) {
@@ -121,6 +125,7 @@
 
             <dx:ASPxScheduler ID="scAgenda" runat="server" ActiveViewType="Day"
                 OnAppointmentFormShowing="scAgenda_AppointmentFormShowing"
+                OnPrepareAppointmentFormPopupContainer="scAgenda_PrepareAppointmentFormPopupContainer"
                 OnBeforeExecuteCallbackCommand="scAgenda_BeforeExecuteCallbackCommand"
                 Images-Menu-NewAppointment-AlternateText="Nueva Cita" Width="100%">
                 <ClientSideEvents EndCallback="OnSchedulerEndCallback" />

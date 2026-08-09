@@ -36,6 +36,14 @@ namespace SGN.Web.Agenda.CustomForms
         protected ASPxComboBox edtResource;
         protected ASPxLabel lblDescription;
         protected ASPxMemo tbDescription;
+        protected ASPxLabel lblValorOperacion;
+        protected ASPxSpinEdit tbValorOperacion;
+        protected ASPxLabel lblISR;
+        protected ASPxSpinEdit tbISR;
+        protected ASPxLabel lblNumeroEscritura;
+        protected ASPxTextBox tbNumeroEscritura;
+        protected ASPxLabel lblActividadVulnerable;
+        protected ASPxTextBox tbActividadVulnerable;
         protected AppointmentRecurrenceForm AppointmentRecurrenceForm1;
         protected ASPxButton btnOk;
         protected ASPxButton btnCancel;
@@ -113,7 +121,9 @@ namespace SGN.Web.Agenda.CustomForms
             {
                 lblExpediente, tbExpediente, lblSubject, tbSubject, lblLocation, tbLocation,
                 lblLabel, edtLabel, lblStartDate, edtStartDate, lblEndDate, edtEndDate,
-                lblStatus, edtStatus, chkAllDay, lblResource, edtResource, lblDescription, tbDescription
+                lblStatus, edtStatus, chkAllDay, lblResource, edtResource, lblDescription, tbDescription,
+                lblValorOperacion, tbValorOperacion, lblISR, tbISR,
+                lblNumeroEscritura, tbNumeroEscritura, lblActividadVulnerable, tbActividadVulnerable
             };
         }
 

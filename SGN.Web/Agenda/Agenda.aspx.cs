@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -83,6 +84,10 @@ namespace SGN.Web.Agenda
 
                 Storage.Appointments.CustomFieldMappings.Clear();
                 Storage.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping(AgendaCustomFieldNames.IdExpediente, "IdExpediente"));
+                Storage.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping(AgendaCustomFieldNames.ValorOperacion, "ValorOperacion"));
+                Storage.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping(AgendaCustomFieldNames.ISR, "ISR"));
+                Storage.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping(AgendaCustomFieldNames.NumeroEscritura, "NumeroEscritura"));
+                Storage.Appointments.CustomFieldMappings.Add(new AppointmentCustomFieldMapping(AgendaCustomFieldNames.ActividadVulnerable, "ActividadVulnerable"));
 
                 // ✅ Catálogo de recursos
                 var rm = Storage.Resources.Mappings;
@@ -198,6 +203,17 @@ namespace SGN.Web.Agenda
             e.Container = new AgendaAppointmentFormTemplateContainer((ASPxScheduler)sender);
         }
 
+        protected void scAgenda_PrepareAppointmentFormPopupContainer(
+            object sender,
+            ASPxSchedulerPrepareFormPopupContainerEventArgs e)
+        {
+            e.Popup.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+            e.Popup.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+            e.Popup.PopupHorizontalOffset = 0;
+            e.Popup.PopupVerticalOffset = 0;
+            e.Popup.AutoUpdatePosition = true;
+        }
+
         protected void scAgenda_BeforeExecuteCallbackCommand(object sender, SchedulerCallbackCommandEventArgs e)
         {
             if (e.CommandId == SchedulerCallbackCommandId.AppointmentSave)
@@ -217,6 +233,9 @@ namespace SGN.Web.Agenda
                 if (registro == null || registro.IdHojaDatos <= 0)
                     return ResultadoBusquedaExpediente.Error("No se encontró el expediente indicado.");
 
+                ListaExpedientes otroDetalle = new DatosExpedientes().DameExpedientePorFolio(expediente);
+
+
                 ListaHojaDatos detalle = new DatosExpedientes().DameHojaDatosDetalle(registro.IdHojaDatos);
                 if (detalle == null)
                     return ResultadoBusquedaExpediente.Error("El expediente no tiene hoja de datos disponible.");
@@ -227,7 +246,11 @@ namespace SGN.Web.Agenda
                     Expediente = expediente,
                     Acto = UnirExpedienteYActo(expediente, UnirActo(detalle.TextoActo, detalle.TextoVariante)),
                     Proyectista = registro.NombreProyectista ?? string.Empty,
-                    Descripcion = CrearDescripcion(detalle)
+                    Descripcion = CrearDescripcion(detalle, registro, otroDetalle),
+                    ValorOperacion = registro.ValorOperacion,
+                    ISR = registro.ISR,
+                    NumeroEscritura = registro.Escritura > 0 ? registro.Escritura.ToString(CultureInfo.InvariantCulture) : string.Empty,
+                    ActividadVulnerable = otroDetalle.EsActoVulnerable ? "Sí" : "No"
                 };
             }
             catch
@@ -252,7 +275,7 @@ namespace SGN.Web.Agenda
             return string.Join(" - ", new[] { expediente, acto }.Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()));
         }
 
-        private static string CrearDescripcion(ListaHojaDatos detalle)
+        private static string CrearDescripcion(ListaHojaDatos detalle, Expedientes expediente, ListaExpedientes otroDetalle )
         {
             var lineas = new List<string>();
             AgregarLinea(lineas, "Estatus", detalle.TextoEstatus);
@@ -260,6 +283,9 @@ namespace SGN.Web.Agenda
             AgregarLinea(lineas, "A favor de", detalle.AfavorDe);
             AgregarLinea(lineas, "Asesor", detalle.NombreAsesor);
             AgregarLinea(lineas, "Tramita", detalle.NumbreUsuarioTramita);
+            AgregarLinea(lineas, "Valor operación", expediente.ValorOperacion.ToString("N2", CultureInfo.GetCultureInfo("es-MX")));
+            AgregarLinea(lineas, "ISR", expediente.ISR.ToString("N2", CultureInfo.GetCultureInfo("es-MX")));
+            AgregarLinea(lineas, "Actividad Vulnerable", otroDetalle.EsActoVulnerable ? "Si" : "No" );
             return string.Join(Environment.NewLine, lineas);
         }
 
@@ -277,6 +303,10 @@ namespace SGN.Web.Agenda
             public string Acto { get; set; }
             public string Proyectista { get; set; }
             public string Descripcion { get; set; }
+            public decimal ValorOperacion { get; set; }
+            public decimal ISR { get; set; }
+            public string NumeroEscritura { get; set; }
+            public string ActividadVulnerable { get; set; }
 
             public static ResultadoBusquedaExpediente Error(string mensaje)
             {
