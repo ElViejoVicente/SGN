@@ -23,6 +23,8 @@ namespace SGN.Web.Agenda
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
+        protected global::System.Web.UI.WebControls.HiddenField hfReporteAgendaUrl;
+
         /// <summary>
         /// Control cbBuscarExpediente.
         /// </summary>
@@ -31,6 +33,8 @@ namespace SGN.Web.Agenda
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxCallback cbBuscarExpediente;
+
+        protected global::DevExpress.Web.ASPxButton btnMostrarReporteAgenda;
 
         /// <summary>
         /// Control scAgenda.
@@ -67,5 +71,15 @@ namespace SGN.Web.Agenda
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource labelDataSource;
+
+        protected global::DevExpress.Web.ASPxPopupControl ppAgendaReporte;
+
+        protected global::DevExpress.Web.ASPxCallbackPanel cpAgendaReporte;
+
+        protected global::DevExpress.Web.ASPxCalendar calAgendaReporte;
+
+        protected global::DevExpress.Web.ASPxButton btnAceptarReporteAgenda;
+
+        protected global::DevExpress.Web.ASPxButton btnCancelarReporteAgenda;
     }
 }

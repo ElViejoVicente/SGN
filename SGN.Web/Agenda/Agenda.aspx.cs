@@ -24,12 +24,28 @@ namespace SGN.Web.Agenda
     {
         private ASPxSchedulerStorage Storage => scAgenda.Storage;
 
+        private HashSet<DateTime> FechasDisponiblesReporte
+        {
+            get
+            {
+                const string key = "SGN_AGENDA_FECHAS_REPORTE";
+                var fechas = HttpContext.Current.Items[key] as HashSet<DateTime>;
+                if (fechas == null)
+                {
+                    fechas = new DatosAgenda().DameFechasConAgenda();
+                    HttpContext.Current.Items[key] = fechas;
+                }
+                return fechas;
+            }
+        }
+
 
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            hfReporteAgendaUrl.Value = ResolveUrl("~/Reportes/ReporteAgenda");
             SetupMappings();
 
             ConfigurarHorarioLaboral();
@@ -263,6 +279,19 @@ namespace SGN.Web.Agenda
         {
             ResultadoBusquedaExpediente resultado = BuscarExpediente(e.Parameter);
             e.Result = new JavaScriptSerializer().Serialize(resultado);
+        }
+
+        protected void cpAgendaReporte_Callback(object sender, CallbackEventArgsBase e)
+        {
+            DateTime hoy = DateTime.Today;
+            calAgendaReporte.VisibleDate = hoy;
+            calAgendaReporte.SelectedDate = hoy;
+            btnAceptarReporteAgenda.ClientEnabled = FechasDisponiblesReporte.Contains(hoy);
+        }
+
+        protected void calAgendaReporte_CustomDisabledDate(object sender, CalendarCustomDisabledDateEventArgs e)
+        {
+            e.IsDisabled = !FechasDisponiblesReporte.Contains(e.Date.Date);
         }
 
         private static string UnirActo(string acto, string variante)

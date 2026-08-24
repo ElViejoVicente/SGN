@@ -44,6 +44,24 @@ namespace SGN.Negocio.Agenda
             }
         }
 
+        public HashSet<DateTime> DameFechasConAgenda()
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    return new HashSet<DateTime>(db.Query<DateTime>(
+                        @"SELECT DISTINCT CONVERT(date, FechaInicio)
+                          FROM dbo.AgendaCitas
+                          ORDER BY CONVERT(date, FechaInicio);"));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al consultar las fechas disponibles de la agenda, detalle: \n" + ex.Message, ex);
+            }
+        }
+
 
     }
 }

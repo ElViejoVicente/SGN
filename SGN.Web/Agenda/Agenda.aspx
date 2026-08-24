@@ -17,6 +17,24 @@
 
     <title>SGN - Agenda</title>
 
+    <style type="text/css">
+        #maindiv { position: relative; }
+        .agenda-print-button {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+        .agenda-report-content { padding: 8px 14px 12px; text-align: center; }
+        .agenda-report-actions {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding-top: 14px;
+        }
+    </style>
+
     <script type="text/javascript">
         var agendaResizeTimer = null;
 
@@ -97,6 +115,23 @@
             e.handled = true;
         }
 
+        function MostrarSelectorReporteAgenda() {
+            cpAgendaReporte.PerformCallback();
+        }
+
+        function ImprimirAgendaSeleccionada() {
+            var fecha = calAgendaReporte.GetSelectedDate();
+            if (!fecha) return;
+
+            var yyyy = fecha.getFullYear();
+            var mm = ('0' + (fecha.getMonth() + 1)).slice(-2);
+            var dd = ('0' + fecha.getDate()).slice(-2);
+            var baseUrl = document.getElementById('hfReporteAgendaUrl').value;
+
+            window.open(baseUrl + '?fechaAgenda=' + yyyy + '-' + mm + '-' + dd, '_blank', 'noopener');
+            ppAgendaReporte.Hide();
+        }
+
     </script>
 
     <script type="text/javascript">
@@ -111,6 +146,8 @@
 
 <body>
     <form id="form1" runat="server" class="Principal">
+        <asp:HiddenField ID="hfReporteAgendaUrl" runat="server" ClientIDMode="Static" />
+
         <dx:ASPxCallback ID="cbBuscarExpediente" runat="server"
             ClientInstanceName="agendaBusquedaCallback"
             OnCallback="cbBuscarExpediente_Callback">
@@ -119,10 +156,12 @@
         </dx:ASPxCallback>
 
         <section class="CLPageContent" id="maindiv">
-
-
-
-
+            <div class="agenda-print-button">
+                <dx:ASPxButton ID="btnMostrarReporteAgenda" runat="server" Text="Imprimir"
+                    Width="130px" Height="34px" AutoPostBack="false" CausesValidation="false">
+                    <ClientSideEvents Click="function(s,e){ MostrarSelectorReporteAgenda(); }" />
+                </dx:ASPxButton>
+            </div>
             <dx:ASPxScheduler ID="scAgenda" runat="server" ActiveViewType="Day"
                 OnAppointmentFormShowing="scAgenda_AppointmentFormShowing"
                 OnPrepareAppointmentFormPopupContainer="scAgenda_PrepareAppointmentFormPopupContainer"
@@ -162,6 +201,44 @@
                 SelectMethod="SelectMethodHandler" />
 
         </section>
+
+        <dx:ASPxPopupControl ID="ppAgendaReporte" runat="server"
+            ClientInstanceName="ppAgendaReporte" HeaderText="Imprimir agenda por d&#237;a"
+            Width="350px" Modal="true" CloseAction="CloseButton" CloseOnEscape="true"
+            AllowDragging="false" AllowResize="false" AutoUpdatePosition="true"
+            PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter">
+            <ContentCollection>
+                <dx:PopupControlContentControl runat="server">
+                    <dx:ASPxCallbackPanel ID="cpAgendaReporte" runat="server"
+                        ClientInstanceName="cpAgendaReporte" OnCallback="cpAgendaReporte_Callback">
+                        <ClientSideEvents EndCallback="function(s,e){ ppAgendaReporte.Show(); }" />
+                        <PanelCollection>
+                            <dx:PanelContent runat="server">
+                                <div class="agenda-report-content">
+                                    <dx:ASPxCalendar ID="calAgendaReporte" runat="server"
+                                        ClientInstanceName="calAgendaReporte" Width="100%"
+                                        EnableMultiSelect="false"
+                                        OnCustomDisabledDate="calAgendaReporte_CustomDisabledDate">
+                                        <ClientSideEvents SelectionChanged="function(s,e){ btnAceptarReporteAgenda.SetEnabled(s.GetSelectedDate() != null); }" />
+                                    </dx:ASPxCalendar>
+                                    <div class="agenda-report-actions">
+                                        <dx:ASPxButton ID="btnAceptarReporteAgenda" runat="server" Text="Aceptar"
+                                            ClientInstanceName="btnAceptarReporteAgenda" Width="95px"
+                                            AutoPostBack="false" CausesValidation="false">
+                                            <ClientSideEvents Click="function(s,e){ ImprimirAgendaSeleccionada(); }" />
+                                        </dx:ASPxButton>
+                                        <dx:ASPxButton ID="btnCancelarReporteAgenda" runat="server" Text="Cancelar"
+                                            Width="95px" AutoPostBack="false" CausesValidation="false">
+                                            <ClientSideEvents Click="function(s,e){ ppAgendaReporte.Hide(); }" />
+                                        </dx:ASPxButton>
+                                    </div>
+                                </div>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxCallbackPanel>
+                </dx:PopupControlContentControl>
+            </ContentCollection>
+        </dx:ASPxPopupControl>
     </form>
 </body>
 </html>
