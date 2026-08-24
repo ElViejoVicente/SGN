@@ -301,6 +301,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <Content Include="PLD\ActiviadesVulnerables.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
+    <Content Include="Reportes\reporteAgenda.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx" />
     <Content Include="Reportes\reporteAvisoNotarial.aspx" />
     <Content Include="Reportes\reporteExUnico.aspx" />
@@ -711,6 +712,13 @@
     <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.designer.cs">
       <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\reporteAgenda.aspx.cs">
+      <DependentUpon>reporteAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\reporteAgenda.aspx.designer.cs">
+      <DependentUpon>reporteAgenda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx.cs">
       <DependentUpon>reporteAcuseConsultaListaNegraSimple.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -745,6 +753,12 @@
     </Compile>
     <Compile Include="Reportes\reporteHojaDatos.aspx.designer.cs">
       <DependentUpon>reporteHojaDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraAgenda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraAgenda.Designer.cs">
+      <DependentUpon>XtraAgenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\XtraAcuseListaNegra.cs">
       <SubType>Component</SubType>
@@ -867,6 +881,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraAgenda.resx">
+      <DependentUpon>XtraAgenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraAcuseListaNegra.resx">
       <DependentUpon>XtraAcuseListaNegra.cs</DependentUpon>

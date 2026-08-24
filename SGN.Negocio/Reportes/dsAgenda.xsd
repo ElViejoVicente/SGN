@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAgenda" targetNamespace="http://tempuri.org/dsAgenda.xsd" xmlns:mstns="http://tempuri.org/dsAgenda.xsd" xmlns="http://tempuri.org/dsAgenda.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAgenda" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsAgenda" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAgenda">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AgendaNotaria" msprop:Generator_RowClassName="AgendaNotariaRow" msprop:Generator_RowEvHandlerName="AgendaNotariaRowChangeEventHandler" msprop:Generator_RowDeletedName="AgendaNotariaRowDeleted" msprop:Generator_RowDeletingName="AgendaNotariaRowDeleting" msprop:Generator_RowEvArgName="AgendaNotariaRowChangeEvent" msprop:Generator_TablePropName="AgendaNotaria" msprop:Generator_RowChangedName="AgendaNotariaRowChanged" msprop:Generator_UserTableName="AgendaNotaria" msprop:Generator_RowChangingName="AgendaNotariaRowChanging" msprop:Generator_TableClassName="AgendaNotariaDataTable" msprop:Generator_TableVarName="tableAgendaNotaria">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="agHorario" msprop:Generator_UserColumnName="agHorario" msprop:Generator_ColumnPropNameInTable="agHorarioColumn" msprop:Generator_ColumnPropNameInRow="agHorario" msprop:Generator_ColumnVarNameInTable="columnagHorario" type="xs:string" minOccurs="0" />
+              <xs:element name="agMesa" msprop:Generator_UserColumnName="agMesa" msprop:Generator_ColumnPropNameInTable="agMesaColumn" msprop:Generator_ColumnPropNameInRow="agMesa" msprop:Generator_ColumnVarNameInTable="columnagMesa" type="xs:string" minOccurs="0" />
+              <xs:element name="agExpediente" msprop:Generator_UserColumnName="agExpediente" msprop:Generator_ColumnPropNameInTable="agExpedienteColumn" msprop:Generator_ColumnPropNameInRow="agExpediente" msprop:Generator_ColumnVarNameInTable="columnagExpediente" type="xs:string" minOccurs="0" />
+              <xs:element name="agVendedor" msprop:Generator_UserColumnName="agVendedor" msprop:Generator_ColumnPropNameInTable="agVendedorColumn" msprop:Generator_ColumnPropNameInRow="agVendedor" msprop:Generator_ColumnVarNameInTable="columnagVendedor" type="xs:string" minOccurs="0" />
+              <xs:element name="agComprador" msprop:Generator_UserColumnName="agComprador" msprop:Generator_ColumnPropNameInTable="agCompradorColumn" msprop:Generator_ColumnPropNameInRow="agComprador" msprop:Generator_ColumnVarNameInTable="columnagComprador" type="xs:string" minOccurs="0" />
+              <xs:element name="agActo" msprop:Generator_UserColumnName="agActo" msprop:Generator_ColumnPropNameInTable="agActoColumn" msprop:Generator_ColumnPropNameInRow="agActo" msprop:Generator_ColumnVarNameInTable="columnagActo" type="xs:string" minOccurs="0" />
+              <xs:element name="agValorOperacion" msprop:Generator_UserColumnName="agValorOperacion" msprop:Generator_ColumnPropNameInTable="agValorOperacionColumn" msprop:Generator_ColumnPropNameInRow="agValorOperacion" msprop:Generator_ColumnVarNameInTable="columnagValorOperacion" type="xs:string" minOccurs="0" />
+              <xs:element name="agNumeroEscritura" msprop:Generator_UserColumnName="agNumeroEscritura" msprop:Generator_ColumnPropNameInTable="agNumeroEscrituraColumn" msprop:Generator_ColumnPropNameInRow="agNumeroEscritura" msprop:Generator_ColumnVarNameInTable="columnagNumeroEscritura" type="xs:decimal" minOccurs="0" />
+              <xs:element name="agISR" msprop:Generator_UserColumnName="agISR" msprop:Generator_ColumnPropNameInTable="agISRColumn" msprop:Generator_ColumnPropNameInRow="agISR" msprop:Generator_ColumnVarNameInTable="columnagISR" type="xs:decimal" minOccurs="0" />
+              <xs:element name="agActividadVulnerable" msprop:Generator_UserColumnName="agActividadVulnerable" msprop:Generator_ColumnPropNameInTable="agActividadVulnerableColumn" msprop:Generator_ColumnPropNameInRow="agActividadVulnerable" msprop:Generator_ColumnVarNameInTable="columnagActividadVulnerable" type="xs:string" minOccurs="0" />
+              <xs:element name="agLugar" msprop:Generator_UserColumnName="agLugar" msprop:Generator_ColumnPropNameInTable="agLugarColumn" msprop:Generator_ColumnPropNameInRow="agLugar" msprop:Generator_ColumnVarNameInTable="columnagLugar" type="xs:string" minOccurs="0" />
+              <xs:element name="agIDRegistro" msprop:Generator_ColumnPropNameInRow="agIDRegistro" msprop:Generator_ColumnPropNameInTable="agIDRegistroColumn" msprop:Generator_ColumnVarNameInTable="columnagIDRegistro" msprop:Generator_UserColumnName="agIDRegistro" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
