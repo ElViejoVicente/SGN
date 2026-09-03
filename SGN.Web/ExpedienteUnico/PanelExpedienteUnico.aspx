@@ -146,7 +146,7 @@
 
                     }
 
-
+                    break;
                 case "cmdReporteExpUnico":
                     if (gvExpedienteUnico.GetFocusedRowIndex() >= 0) {
                         gvExpedienteUnico.GetRowValues(gvExpedienteUnico.GetFocusedRowIndex(), 'IdRegistro', onCallbackReport);

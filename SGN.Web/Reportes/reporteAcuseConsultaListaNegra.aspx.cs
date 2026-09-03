@@ -37,7 +37,17 @@ namespace SGN.Web.Reportes
 
 
                 infReporte = datosExpedienteUnico.DameExpedienteUnico(int.Parse(idRegistroCliente));
-                infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: infReporte.Rfc,NombreUsuarioConsulta: infUsuarioConsulta);
+
+
+                //infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: infReporte.Rfc,NombreUsuarioConsulta: infUsuarioConsulta);
+
+                infListaNegra = datosExpedienteUnico.DameRfcEnListaNegraXnombre(
+                    RFC: infReporte.Rfc, 
+                    nombres: infReporte.Nombres, 
+                    appMaterno: infReporte.ApellidoMaterno, 
+                    appPaterno: infReporte.ApellidoPaterno, 
+                    fechaNacimiento: infReporte.FechaNacimiento,
+                    NombreUsuarioConsulta: infUsuarioConsulta);
 
 
                 Expedientes expedientes = datosExpedientes.ConsultaExpedienteXHojaDatos(infReporte.IdHojaDatos);

@@ -103,10 +103,8 @@
                                         <dx:LayoutItem Caption="RFC" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="txtRFC" Width="100%">
-                                                        <ValidationSettings ValidationGroup="validacion">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo Obligatorio." />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxTextBox runat="server" ID="txtRFC"  ClientInstanceName="txtRFC" Width="100%">
+                                     
                                                     </dx:ASPxTextBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -124,11 +122,18 @@
                                                                                      {
                                                                                           txtNombreSociedad.SetEnabled(false);
                                                                                           txtNombreSociedad.SetValue('No requerido');
+
+                                                                                          txtRFC.SetEnabled(false);
+                                                                                          txtRFC.SetValue('');
+
                                                                                      }
                                                                                      else
                                                                                      {
                                                                                           txtNombreSociedad.SetEnabled(true);
                                                                                           txtNombreSociedad.SetValue('');
+
+                                                                                          txtRFC.SetEnabled(true);
+                                                                                          txtRFC.SetValue('');
                                                                                      }
                                                                                  }" />
 

@@ -30,10 +30,17 @@ namespace SGN.Web.Reportes
 
 
                 List<ListaNegraSAT> infListaNegra = new List<ListaNegraSAT>();
-         
-                infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: sseDetalleBusqueda.Rfc , NombreUsuarioConsulta: sseDetalleBusqueda.NombreUsuarioConsulta);
+
+               // infListaNegra = datosExpedienteUnico.DameRfcEnListaNegra(RFC: sseDetalleBusqueda.Rfc , NombreUsuarioConsulta: sseDetalleBusqueda.NombreUsuarioConsulta);
 
 
+               infListaNegra = datosExpedienteUnico.DameRfcEnListaNegraXnombre (
+                   RFC: sseDetalleBusqueda.Rfc , 
+                   nombres: sseDetalleBusqueda.Nombres, 
+                   appMaterno: sseDetalleBusqueda.ApellidoMaterno , 
+                   appPaterno: sseDetalleBusqueda.ApellidoPaterno,
+                   fechaNacimiento: sseDetalleBusqueda.FechaNacimiento,
+                   NombreUsuarioConsulta: sseDetalleBusqueda.NombreUsuarioConsulta);
 
 
                 Negocio.Reportes.dsDetConsListaNegra listaNegraDetalle = new Negocio.Reportes.dsDetConsListaNegra();

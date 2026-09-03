@@ -43,8 +43,14 @@ namespace SGN.Web.ExpedienteUnico
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            dtFechaNacimiento.Value = DateTime.Now.AddYears(-18);
-            DetalleBusqueda = new ListaConsultaBasicaLN();
+
+            if (!IsPostBack)
+            {
+                dtFechaNacimiento.Value = DateTime.Now.AddYears(-18);
+                DetalleBusqueda = new ListaConsultaBasicaLN();
+
+            }
+
         }
 
         protected void pnBusquedaListaNegra_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e)

@@ -78,6 +78,42 @@ namespace SGN.Negocio.ExpedienteUnico
 
         }
 
+
+        public List<ListaNegraSAT> DameRfcEnListaNegraXnombre(string RFC,  string nombres, string appMaterno, string @appPaterno, DateTime fechaNacimiento,   string NombreUsuarioConsulta)
+        {
+            try
+            {
+                List<ListaNegraSAT> resultado = new List<ListaNegraSAT>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<ListaNegraSAT>
+                        (
+                        sql: "sp_DameRFCEnListaNegraV2", param: new
+                        {
+                            RFC,
+                            nombres,
+                            appMaterno,
+                            appPaterno,
+                            fechaNacimiento,
+                            NombreUsuarioConsulta
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameRFCEnListaNegra , detalle: \n" + ex.Message, ex);
+            }
+
+        }
+
+
+
         public ListaExpedienteUnico DameExpedienteUnico(int IdRegistroCliente)
         {
             try
