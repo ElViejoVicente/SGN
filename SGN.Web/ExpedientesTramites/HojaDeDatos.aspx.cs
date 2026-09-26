@@ -84,6 +84,27 @@ namespace SGN.Web.ExpedientesTramites
 
         }
 
+
+        public List<Cat_ActividadesEconomicas> catActividadesEcon
+        {
+            get
+
+            {
+                List<Cat_ActividadesEconomicas> ssecatActividadesEcon = new List<Cat_ActividadesEconomicas>();
+                if (this.Session["ssecatActividadesEcon"] != null)
+                {
+                    ssecatActividadesEcon = (List<Cat_ActividadesEconomicas>)this.Session["ssecatActividadesEcon"];
+                }
+
+                return ssecatActividadesEcon;
+            }
+            set
+            {
+                this.Session["ssecatActividadesEcon"] = value;
+            }
+
+        }
+
         public List<Cat_VariantesPorActo> catVarientesPorActo
         {
             get
@@ -1207,6 +1228,8 @@ namespace SGN.Web.ExpedientesTramites
         {
             catActos = datosCrud.ConsultaCatActos().Where(x=> x.Activo==true).ToList();
             cbActosNuevo.DataBind();
+            catActividadesEcon = datosCrud.ConsultaActividadesEconomicas();
+     
 
         }
 

@@ -107,6 +107,7 @@
     <Compile Include="ORM\BitacoraExpediente.cs" />
     <Compile Include="ORM\CatAgendaEtiqueta.cs" />
     <Compile Include="ORM\CatAgendaRecurso.cs" />
+    <Compile Include="ORM\Cat_ActividadesEconomicas.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
     <Compile Include="ORM\Cat_AreaOficina.cs" />
     <Compile Include="ORM\Cat_Clientes.cs" />

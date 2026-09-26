@@ -2032,6 +2032,25 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
+        #region Cat_ActividadesEconomicas
+        public List<Cat_ActividadesEconomicas> ConsultaActividadesEconomicas()
+        {
+            try
+            {
+                List<Cat_ActividadesEconomicas> resultado = new List<Cat_ActividadesEconomicas>();
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<Cat_ActividadesEconomicas>(sql: "[sp_CRUD_Cat_ActividadesEconomicas_Select]").ToList();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar [sp_CRUD_Cat_ActividadesEconomicas_Select], detalle: \n " + ex.Message, ex);
+            }
+        }
+        #endregion
+
     }
 
 }
