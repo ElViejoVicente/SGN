@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="../Scripts/sweetalert2.min.css" />
     <script src="../Scripts/mensajes.js"></script>
 
+    <style type="text/css">
+        .hoja-datos-popup,
+        .hoja-datos-popup td,
+        .hoja-datos-popup input,
+        .hoja-datos-popup label,
+        .hoja-datos-popup span,
+        .hoja-datos-popup select,
+        .hoja-datos-popup textarea,
+        .hoja-datos-popup button {
+            font-size: 11px !important;
+        }
+    </style>
+
     <script type="text/javascript">
 
         /* Script de funcionalidad de la pagina OJO solo colocar en este bloque */
@@ -588,7 +601,7 @@
 
 
             <dx:ASPxPopupControl runat="server" ID="ppNuevaHojaDatos" ClientInstanceName="ppNuevaHojaDatos" Height="700px" Width="1300px" EnableClientSideAPI="true" ShowFooter="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="false" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nueva hoja de datos"
+                CssClass="hoja-datos-popup" ScrollBars="None" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AllowResize="true" AllowDragging="true" CloseAction="CloseButton" HeaderText="Nueva hoja de datos"
                 PopupAnimationType="Auto" AutoUpdatePosition="true" CloseOnEscape="true" OnWindowCallback="ppNuevaHojaDatos_WindowCallback1" Modal="true">
                 <ClientSideEvents EndCallback="CerrarModalyVerAlertas" Init="AdjustStylePopUp" />
                 <ContentCollection>
@@ -718,14 +731,15 @@
                                                         <Settings ShowFooter="True" ShowFilterRow="false"
                                                             ShowFilterBar="Auto" ShowFilterRowMenu="false"
                                                             ShowHeaderFilterButton="True" ShowGroupPanel="false"
-                                                            VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+                                                            VerticalScrollBarMode="Auto" VerticalScrollableHeight="170"
+                                                            HorizontalScrollBarMode="Auto" />
 
                                                         <SettingsResizing ColumnResizeMode="Control" />
 
-                                                        <SettingsEditing Mode="PopupEditForm" />
+                                                        <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="3" />
 
                                                         <SettingsPopup>
-                                                            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                                                            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true" Width="960px" AllowResize="true">
                                                             </EditForm>
 
                                                         </SettingsPopup>
@@ -780,7 +794,8 @@
                                                             <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="80px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="100px">
+                                                                <EditFormSettings VisibleIndex="0" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRolOtorgaSolicita" ClientInstanceName="cbRolOtorgaSolicita" Value='<%# Bind("RolOperacion") %>' runat="server" AutoPostBack="false"
                                                                         OnInit="cbRolOtorgaSolicita_Init" Width="100%">
@@ -797,6 +812,7 @@
 
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="3" FieldName="TipoRegimen" Caption="T.Persona" Width="80px">
+                                                                <EditFormSettings VisibleIndex="1" />
 
 
                                                                 <EditItemTemplate>
@@ -816,17 +832,21 @@
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombres" FieldName="Nombres" Width="80px">
+                                                                <EditFormSettings VisibleIndex="3" />
                                                             </dx:GridViewDataTextColumn>
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="4" Caption="Apellido paterno" FieldName="ApellidoPaterno" Width="">
+                                                                <EditFormSettings VisibleIndex="4" />
                                                             </dx:GridViewDataTextColumn>
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
+                                                                <EditFormSettings VisibleIndex="5" />
                                                             </dx:GridViewDataTextColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                                <EditFormSettings VisibleIndex="2" />
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoOtorgaSolicita" ClientInstanceName="cbSexoOtorgaSolicita" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -842,15 +862,31 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
+                                                                <EditFormSettings VisibleIndex="6" />
                                                             </dx:GridViewDataDateColumn>
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="9" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
-                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" Caption="Ocupación" FieldName="Ocupacion" Width="160px">
+                                                                <EditFormSettings VisibleIndex="9" ColumnSpan="2" />
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbOcupacionOtorgaSolicita" runat="server" Width="100%"
+                                                                        Value='<%# Bind("Ocupacion") %>' OnInit="cbOcupacion_Init"
+                                                                        DropDownStyle="DropDown" IncrementalFilteringMode="Contains"
+                                                                        TextField="DescripcionActividad" ValueField="DescripcionActividad" ValueType="System.String"
+                                                                        TextFormatString="{1}" DropDownWindowWidth="800px">
+                                                                        <Columns>
+                                                                            <dx:ListBoxColumn FieldName="Clave" Caption="Clave" Width="90px" />
+                                                                            <dx:ListBoxColumn FieldName="DescripcionActividad" Caption="Descripción de la actividad" Width="280px" />
+                                                                            <dx:ListBoxColumn FieldName="ActividadesQueIncluye" Caption="Actividades que incluye" Width="410px" />
+                                                                        </Columns>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
 
 
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="EstadoCivil" Caption="Estado civil">
+                                                                <EditFormSettings VisibleIndex="7" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbEstadoCivilOtorgaSolicita" ClientInstanceName="cbEstadoCivilOtorgaSolicita" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
                                                                         OnInit="cbEstadoCivilOtorgaSolicita_Init">
@@ -864,6 +900,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="11" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                                <EditFormSettings VisibleIndex="8" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRegimenConyugalOtorgaSolicita" ClientInstanceName="cbRegimenConyugalOtorgaSolicita" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
                                                                         OnInit="cbRegimenConyugalOtorgaSolicita_Init">
@@ -877,6 +914,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="12" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                                <EditFormSettings VisibleIndex="10" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbAnafabetaOtorgaSolicita" ClientInstanceName="cbAnafabetaOtorgaSolicita" OnCallback="cbAnafabetaOtorgaSolicita_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
                                                                         <Items>
@@ -891,6 +929,7 @@
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="13" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                                <EditFormSettings VisibleIndex="11" ColumnSpan="3" />
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>
@@ -911,7 +950,7 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita" ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionOtorgaSolicita" ClientInstanceName="lbDocumentacionOtorgaSolicita" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="220px" AutoPostBack="false"
                                                         OnDataBinding="lbDocumentacionOtorgaSolicita_DataBinding">
                                                         <FilteringSettings ShowSearchUI="true" />
                                                         <ClientSideEvents SelectedIndexChanged="function(s, e) 
@@ -943,14 +982,15 @@
                                                         <Settings ShowFooter="True" ShowFilterRow="false"
                                                             ShowFilterBar="Auto" ShowFilterRowMenu="false"
                                                             ShowHeaderFilterButton="True" ShowGroupPanel="false"
-                                                            VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Auto" />
+                                                            VerticalScrollBarMode="Auto" VerticalScrollableHeight="170"
+                                                            HorizontalScrollBarMode="Auto" />
 
                                                         <SettingsResizing ColumnResizeMode="Control" />
 
-                                                        <SettingsEditing Mode="PopupEditForm" />
+                                                        <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="3" />
 
                                                         <SettingsPopup>
-                                                            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true">
+                                                            <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="true" Width="960px" AllowResize="true">
                                                             </EditForm>
 
                                                         </SettingsPopup>
@@ -1005,7 +1045,8 @@
                                                             <dx:GridViewCommandColumn Visible="true" VisibleIndex="1" ShowNewButton="false" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="50px"></dx:GridViewCommandColumn>
 
 
-                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="80px">
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="2" FieldName="RolOperacion" Name="RolOperacion" Caption="Rol" Width="100px">
+                                                                <EditFormSettings VisibleIndex="0" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRolAfavorDe" ClientInstanceName="cbRolAfavorDe" Value='<%# Bind("RolOperacion") %>' runat="server" AutoPostBack="false"
                                                                         OnInit="cbRolAfavorDe_Init" Width="100%">
@@ -1021,6 +1062,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="3" FieldName="TipoRegimen" Caption="T.Persona" Width="80px">
+                                                                <EditFormSettings VisibleIndex="1" />
 
 
                                                                 <EditItemTemplate>
@@ -1039,17 +1081,21 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="3" Caption="Nombres" FieldName="Nombres" Width="80px">
+                                                                <EditFormSettings VisibleIndex="3" />
                                                             </dx:GridViewDataTextColumn>
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="4" Caption="Apellido paterno" FieldName="ApellidoPaterno" Width="">
+                                                                <EditFormSettings VisibleIndex="4" />
                                                             </dx:GridViewDataTextColumn>
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="5" Caption="Apellido Materno" FieldName="ApellidoMaterno" Width="">
+                                                                <EditFormSettings VisibleIndex="5" />
                                                             </dx:GridViewDataTextColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="6" FieldName="Sexo" Caption="Sexo" Width="60px">
+                                                                <EditFormSettings VisibleIndex="2" />
 
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbSexoAfavorDe" ClientInstanceName="cbSexoAfavorDe" runat="server" Value='<%# Bind("Sexo") %>' Width="100%"
@@ -1065,16 +1111,32 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataDateColumn PropertiesDateEdit-DisplayFormatString="dd/MM/yyyy" Visible="true" VisibleIndex="7" FieldName="FechaNacimiento" Caption="Fecha nacimiento">
+                                                                <EditFormSettings VisibleIndex="6" />
                                                             </dx:GridViewDataDateColumn>
 
 
 
-                                                            <dx:GridViewDataTextColumn Visible="true" VisibleIndex="8" Caption="Ocupacion" FieldName="Ocupacion" Width="100px">
-                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="8" Caption="Ocupación" FieldName="Ocupacion" Width="160px">
+                                                                <EditFormSettings VisibleIndex="9" ColumnSpan="2" />
+                                                                <EditItemTemplate>
+                                                                    <dx:ASPxComboBox ID="cbOcupacionAfavorDe" runat="server" Width="100%"
+                                                                        Value='<%# Bind("Ocupacion") %>' OnInit="cbOcupacion_Init"
+                                                                        DropDownStyle="DropDown" IncrementalFilteringMode="Contains"
+                                                                        TextField="DescripcionActividad" ValueField="DescripcionActividad" ValueType="System.String"
+                                                                        TextFormatString="{1}" DropDownWindowWidth="800px">
+                                                                        <Columns>
+                                                                            <dx:ListBoxColumn FieldName="Clave" Caption="Clave" Width="90px" />
+                                                                            <dx:ListBoxColumn FieldName="DescripcionActividad" Caption="Descripción de la actividad" Width="280px" />
+                                                                            <dx:ListBoxColumn FieldName="ActividadesQueIncluye" Caption="Actividades que incluye" Width="410px" />
+                                                                        </Columns>
+                                                                    </dx:ASPxComboBox>
+                                                                </EditItemTemplate>
+                                                            </dx:GridViewDataComboBoxColumn>
 
 
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="9" FieldName="EstadoCivil" Caption="Estado civil">
+                                                                <EditFormSettings VisibleIndex="7" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbEstadoCivilAfavorDe" ClientInstanceName="cbEstadoCivilAfavorDe" Value='<%# Bind("EstadoCivil") %>' runat="server" Width="100%"
                                                                         OnInit="cbEstadoCivilAfavorDe_Init">
@@ -1089,6 +1151,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="10" FieldName="RegimenConyugal" Caption="Regimen conyugal">
+                                                                <EditFormSettings VisibleIndex="8" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbRegimenConyugalAfavorDe" ClientInstanceName="cbRegimenConyugalAfavorDe" Value='<%# Bind("RegimenConyugal") %>' runat="server" Width="100%"
                                                                         OnInit="cbRegimenConyugalAfavorDe_Init">
@@ -1102,6 +1165,7 @@
                                                             </dx:GridViewDataComboBoxColumn>
 
                                                             <dx:GridViewDataComboBoxColumn Visible="true" VisibleIndex="11" FieldName="SabeLeerEscribir" Caption="Sabe leer" Width="80px">
+                                                                <EditFormSettings VisibleIndex="10" />
                                                                 <EditItemTemplate>
                                                                     <dx:ASPxComboBox ID="cbAnafabetaAFavorDe" ClientInstanceName="cbAnafabetaAFavorDe" OnCallback="cbAnafabetaAFavorDe_Callback" Value='<%# Bind("SabeLeerEscribir") %>' runat="server" Width="100%">
                                                                         <Items>
@@ -1116,6 +1180,7 @@
 
 
                                                             <dx:GridViewDataTextColumn Visible="true" VisibleIndex="12" Caption="Anotacion especial" FieldName="Notas" Width="100%">
+                                                                <EditFormSettings VisibleIndex="11" ColumnSpan="3" />
                                                             </dx:GridViewDataTextColumn>
 
                                                             <%--  columnas datos generales de la hoja de datos--%>
@@ -1134,7 +1199,7 @@
                                         <dx:LayoutItem ColSpan="4" ColumnSpan="4" ShowCaption="False">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" ClientInstanceName="lbDocumentacionAfavorDe" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="255px" AutoPostBack="false"
+                                                    <dx:ASPxListBox runat="server" ID="lbDocumentacionAfavorDe" ClientInstanceName="lbDocumentacionAfavorDe" SelectionMode="CheckColumn" EnableSelectAll="true" Width="100%" Height="220px" AutoPostBack="false"
                                                         OnDataBinding="lbDocumentacionAfavorDe_DataBinding">
                                                         <FilteringSettings ShowSearchUI="true" />
                                                         <ClientSideEvents SelectedIndexChanged="function(s, e) 

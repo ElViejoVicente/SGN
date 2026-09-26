@@ -1725,5 +1725,11 @@ namespace SGN.Web.ExpedientesTramites
             ASPxComboBox cb = (ASPxComboBox)sender;
             cb.SelectedIndex = -1;
         }
+
+        protected void cbOcupacion_Init(object sender, EventArgs e)
+        {
+            ASPxComboBox cb = (ASPxComboBox)sender;
+            cb.DataSource = catActividadesEcon;
+        }
     }
 }
