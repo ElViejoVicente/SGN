@@ -1,7 +1,7 @@
 ﻿
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="SGN.Web.Login" %>
 
-<%@ Register Assembly="DevExpress.Web.v25.2, Version=25.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.v26.1, Version=26.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web"
     TagPrefix="dx" %>
 

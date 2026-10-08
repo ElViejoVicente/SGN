@@ -308,8 +308,8 @@ namespace SGN.Web.Agenda
         {
             var lineas = new List<string>();
             AgregarLinea(lineas, "Estatus", detalle.TextoEstatus);
-            AgregarLinea(lineas, "Otorga", detalle.Otorga);
-            AgregarLinea(lineas, "A favor de", detalle.AfavorDe);
+            AgregarLinea(lineas, "Otorga", otroDetalle.Otorga);
+            AgregarLinea(lineas, "A favor de", otroDetalle.AfavorDe);
             AgregarLinea(lineas, "Asesor", detalle.NombreAsesor);
             AgregarLinea(lineas, "Tramita", detalle.NumbreUsuarioTramita);
             AgregarLinea(lineas, "Valor operación", expediente.ValorOperacion.ToString("N2", CultureInfo.GetCultureInfo("es-MX")));

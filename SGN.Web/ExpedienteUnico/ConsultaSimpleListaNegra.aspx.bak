@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConsultaSimpleListaNegra.aspx.cs" Inherits="SGN.Web.ExpedienteUnico.ConsultaSimpleListaNegra" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v25.2, Version=25.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.2, Version=25.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v25.2, Version=25.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -103,10 +103,8 @@
                                         <dx:LayoutItem Caption="RFC" ColSpan="2" ColumnSpan="2">
                                             <LayoutItemNestedControlCollection>
                                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                                    <dx:ASPxTextBox runat="server" ID="txtRFC" Width="100%">
-                                                        <ValidationSettings ValidationGroup="validacion">
-                                                            <RequiredField IsRequired="true" ErrorText="Campo Obligatorio." />
-                                                        </ValidationSettings>
+                                                    <dx:ASPxTextBox runat="server" ID="txtRFC"  ClientInstanceName="txtRFC" Width="100%">
+                                     
                                                     </dx:ASPxTextBox>
                                                 </dx:LayoutItemNestedControlContainer>
                                             </LayoutItemNestedControlCollection>
@@ -124,11 +122,18 @@
                                                                                      {
                                                                                           txtNombreSociedad.SetEnabled(false);
                                                                                           txtNombreSociedad.SetValue('No requerido');
+
+                                                                                          txtRFC.SetEnabled(false);
+                                                                                          txtRFC.SetValue('');
+
                                                                                      }
                                                                                      else
                                                                                      {
                                                                                           txtNombreSociedad.SetEnabled(true);
                                                                                           txtNombreSociedad.SetValue('');
+
+                                                                                          txtRFC.SetEnabled(true);
+                                                                                          txtRFC.SetValue('');
                                                                                      }
                                                                                  }" />
 
