@@ -164,6 +164,7 @@
     <Content Include="ExpedientesTramites\HojaDeDatos.aspx" />
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx" />
+    <Content Include="ExpedienteUnico\PanelExpedienteUnicoV2.aspx" />
     <Content Include="ExpedienteUnico\PanelExpedienteUnico.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\ExUnico\DatosCompletos.png" />
@@ -609,6 +610,13 @@
     </Compile>
     <Compile Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx.designer.cs">
       <DependentUpon>ConsultaSimpleListaNegra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpedienteUnico\PanelExpedienteUnicoV2.aspx.cs">
+      <DependentUpon>PanelExpedienteUnicoV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExpedienteUnico\PanelExpedienteUnicoV2.aspx.designer.cs">
+      <DependentUpon>PanelExpedienteUnicoV2.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExpedienteUnico\PanelExpedienteUnico.aspx.cs">
       <DependentUpon>PanelExpedienteUnico.aspx</DependentUpon>
