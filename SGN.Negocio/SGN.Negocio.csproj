@@ -109,9 +109,11 @@
     <Compile Include="ORM\CatAgendaRecurso.cs" />
     <Compile Include="ORM\Cat_ActividadesEconomicas.cs" />
     <Compile Include="ORM\Cat_Actos.cs" />
+    <Compile Include="ORM\Cat_Anexos.cs" />
     <Compile Include="ORM\Cat_AreaOficina.cs" />
     <Compile Include="ORM\Cat_Clientes.cs" />
     <Compile Include="ORM\Cat_DocumentosPorActo.cs" />
+    <Compile Include="ORM\Cat_DocumentosPorAnexo.cs" />
     <Compile Include="ORM\Cat_EstadosRepublica.cs" />
     <Compile Include="ORM\Cat_Estatus.cs" />
     <Compile Include="ORM\Cat_Paises.cs" />

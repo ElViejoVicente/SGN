@@ -749,6 +749,176 @@ namespace SGN.Negocio.CRUD
 
         #endregion
 
+        #region Cat_Anexos
+
+        public List<Cat_Anexos> ConsultaCatAnexos(string idAnexo = null)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    return db.Query<Cat_Anexos>("usp_Cat_AnexosSelect",
+                        new { IdAnexo = idAnexo }, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_AnexosSelect, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaCatAnexos(Cat_Anexos values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute("usp_Cat_AnexosInsert", new
+                    {
+                        values.IdAnexo,
+                        values.NombreAnexo,
+                        values.Descripcion,
+                        values.Activo
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_AnexosInsert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean ActualizarCatAnexos(Cat_Anexos values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute("usp_Cat_AnexosUpdate", new
+                    {
+                        values.IdAnexo,
+                        values.NombreAnexo,
+                        values.Descripcion,
+                        values.Activo
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_AnexosUpdate, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarCatAnexos(Cat_Anexos values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute("usp_Cat_AnexosDelete", new { values.IdAnexo },
+                        commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_AnexosDelete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        #endregion
+
+        #region Cat_DocumentosPorAnexo
+
+        public List<Cat_DocumentosPorAnexo> ConsultaCatDocumentosPorAnexo(string idAnexo = null, string textoDocumento = null)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    return db.Query<Cat_DocumentosPorAnexo>("usp_Cat_DocumentosPorAnexoSelect", new
+                    {
+                        IDAnexo = idAnexo,
+                        TextoDocuemento = textoDocumento
+                    }, commandType: CommandType.StoredProcedure).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoSelect, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaCatDocumentosPorAnexo(Cat_DocumentosPorAnexo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute("usp_Cat_DocumentosPorAnexoInsert", new
+                    {
+                        values.IDAnexo,
+                        values.TextoDocuemento,
+                        values.CopiaRequerida,
+                        values.Descripcion,
+                        values.Activo
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoInsert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean ActualizarCatDocumentosPorAnexo(Cat_DocumentosPorAnexo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute("usp_Cat_DocumentosPorAnexoUpdate", new
+                    {
+                        values.IDAnexo,
+                        values.TextoDocuemento,
+                        values.CopiaRequerida,
+                        values.Descripcion,
+                        values.Activo
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoUpdate, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarCatDocumentosPorAnexo(Cat_DocumentosPorAnexo values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute("usp_Cat_DocumentosPorAnexoDelete", new
+                    {
+                        values.IDAnexo,
+                        values.TextoDocuemento
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoDelete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        #endregion
+
         #region Cat_Actos
         public List<Cat_Actos> ConsultaCatActos()
         {

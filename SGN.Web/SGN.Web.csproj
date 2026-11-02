@@ -141,8 +141,10 @@
     <Content Include="APP\ConsultaExpediente.aspx" />
     <Content Include="Bitacora\HistoricoCambios.aspx" />
     <Content Include="Catalogos\CatActos.aspx" />
+    <Content Include="Catalogos\CatAnexos.aspx" />
     <Content Include="Catalogos\CatAreaOficina.aspx" />
     <Content Include="Catalogos\CatClientes.aspx" />
+    <Content Include="Catalogos\CatDocumentosXAnexo.aspx" />
     <Content Include="Catalogos\CatDocumentosXVariante.aspx" />
     <Content Include="Catalogos\CatEstadosRepublica.aspx" />
     <Content Include="Catalogos\CatRolParticipantesXActo.aspx" />
@@ -489,6 +491,13 @@
     <Compile Include="Catalogos\CatActos.aspx.designer.cs">
       <DependentUpon>CatActos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\CatAnexos.aspx.cs">
+      <DependentUpon>CatAnexos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatAnexos.aspx.designer.cs">
+      <DependentUpon>CatAnexos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\CatAreaOficina.aspx.cs">
       <DependentUpon>CatAreaOficina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -502,6 +511,13 @@
     </Compile>
     <Compile Include="Catalogos\CatClientes.aspx.designer.cs">
       <DependentUpon>CatClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXAnexo.aspx.cs">
+      <DependentUpon>CatDocumentosXAnexo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\CatDocumentosXAnexo.aspx.designer.cs">
+      <DependentUpon>CatDocumentosXAnexo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\CatDocumentosXVariante.aspx.cs">
       <DependentUpon>CatDocumentosXVariante.aspx</DependentUpon>
