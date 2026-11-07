@@ -1,7 +1,7 @@
 namespace SGN.Negocio.ExpedienteUnico.ANEXOS
 {
     /// <summary>Datos de la rejilla de ANEXO 8.docx.</summary>
-    public class Anexo8
+    public class Anexo8 : AnexoBase
     {
         public string DenominacionRazonSocialFiduciario { get; set; } = "";
         public string NumeroReferenciaIdentificadorFideicomiso { get; set; } = "";

@@ -1,0 +1,243 @@
+.exp-page {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px 14px 14px;
+    overflow: hidden;
+}
+
+.exp-filter {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.exp-filter-options {
+    flex: 0 0 auto;
+}
+
+.exp-filter-kpi {
+    flex: 1 1 auto;
+    min-width: 260px;
+}
+
+.exp-filter-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.exp-kpi-content {
+    min-height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 18px;
+    color: #606c78;
+}
+
+.kpi-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 105px;
+}
+
+.kpi-title {
+    color: #65758b;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.kpi-value {
+    color: #273445;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.kpi-warning .kpi-value { color: #d97706; }
+.kpi-success .kpi-value,
+.kpi-compliance .kpi-value { color: #1d8f55; }
+
+.kpi-divider {
+    align-self: stretch;
+    width: 1px;
+    background: rgba(101, 117, 139, .22);
+}
+
+.exp-content {
+    box-sizing: border-box;
+    height: calc(100% - 80px);
+    min-height: 250px;
+    padding: 12px;
+    overflow: auto;
+}
+
+.exp-grid {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.exp-grid .dxgvTable {
+    border-collapse: separate !important;
+    border-spacing: 0 7px !important;
+    background: transparent !important;
+}
+
+.exp-grid .dxgvGroupRow {
+    border: 1px solid #dce3ea !important;
+    border-radius: 7px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+
+.exp-grid .dxgvGroupRow td {
+    height: 37px;
+    padding: 0 !important;
+}
+
+.exp-group-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 37px;
+    padding: 0 14px;
+}
+
+.exp-group-icon {
+    width: 14px;
+    color: #718096;
+    font-size: 10px;
+    text-align: center;
+}
+
+.exp-group-title {
+    color: #2769d8;
+    font-weight: 700;
+}
+
+.exp-grid .dxgvDataRow td {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.exp-grid .dxgvEmptyDataRow td {
+    padding: 28px !important;
+    color: #6c7782;
+}
+
+.exp-grid .dxgvPagerBottomPanel {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.person-card {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(250px, 1.25fr) minmax(410px, 2.5fr) auto;
+    align-items: center;
+    gap: 18px;
+    min-height: 70px;
+    margin: 0 12px;
+    padding: 10px 12px;
+    border: 1px solid #dce3ea;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .035);
+}
+
+.person-name {
+    display: block;
+    color: #273445;
+    font-weight: 700;
+    line-height: 17px;
+    text-transform: uppercase;
+}
+
+.person-subtitle {
+    display: block;
+    margin-top: 3px;
+    color: #718096;
+    font-size: 11px;
+}
+
+.person-warning {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 2px 8px;
+    border: 1px solid #ffb7b7;
+    border-radius: 10px;
+    background: #fff3f3;
+    color: #d83a3a;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.person-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #303640;
+    white-space: nowrap;
+}
+
+.meta-icon {
+    width: 16px;
+    color: #65758b;
+    text-align: center;
+}
+
+.person-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+@media (max-width: 1050px) {
+    .person-card {
+        grid-template-columns: minmax(220px, 1fr) 2fr;
+    }
+
+    .person-actions {
+        grid-column: 1 / -1;
+        padding-top: 2px;
+    }
+}
+
+@media (max-width: 700px) {
+    .exp-filter {
+        flex-direction: column;
+    }
+
+    .exp-kpi-content {
+        justify-content: flex-start;
+        gap: 12px;
+        overflow-x: auto;
+    }
+
+    .exp-content {
+        height: calc(100% - 145px);
+        padding: 7px;
+    }
+
+    .person-card {
+        grid-template-columns: 1fr;
+        gap: 9px;
+        margin: 0 4px;
+    }
+
+    .person-actions {
+        grid-column: auto;
+        justify-content: flex-start;
+    }
+}

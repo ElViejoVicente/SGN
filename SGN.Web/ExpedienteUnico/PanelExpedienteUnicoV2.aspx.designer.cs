@@ -24,15 +24,6 @@ namespace SGN.Web.ExpedienteUnico
         protected global::System.Web.UI.HtmlControls.HtmlForm frmPage;
 
         /// <summary>
-        /// Control TopPanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel TopPanel;
-
-        /// <summary>
         /// Control ASPxRoundPanel1.
         /// </summary>
         /// <remarks>
@@ -78,13 +69,40 @@ namespace SGN.Web.ExpedienteUnico
         protected global::DevExpress.Web.ASPxRoundPanel ASPxRoundPanel2;
 
         /// <summary>
-        /// Control ASPxGridViewExporter1.
+        /// Control lblKpiExpedientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridViewExporter ASPxGridViewExporter1;
+        protected global::DevExpress.Web.ASPxLabel lblKpiExpedientes;
+
+        /// <summary>
+        /// Control lblKpiSinAnexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblKpiSinAnexo;
+
+        /// <summary>
+        /// Control lblKpiConAnexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblKpiConAnexo;
+
+        /// <summary>
+        /// Control lblKpiCumplimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel lblKpiCumplimiento;
 
         /// <summary>
         /// Control gvExpedienteUnico.
@@ -94,14 +112,5 @@ namespace SGN.Web.ExpedienteUnico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView gvExpedienteUnico;
-
-        /// <summary>
-        /// Control BottomPanel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel BottomPanel;
     }
 }

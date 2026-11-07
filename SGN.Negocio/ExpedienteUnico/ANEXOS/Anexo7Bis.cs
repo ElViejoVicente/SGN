@@ -1,7 +1,7 @@
 namespace SGN.Negocio.ExpedienteUnico.ANEXOS
 {
     /// <summary>Datos de la rejilla de ANEXO 7 BIS.docx.</summary>
-    public class Anexo7Bis
+    public class Anexo7Bis : AnexoBase
     {
         public string NombrePersonaMoralDerechoPublico { get; set; } = "";
         public string FechaCreacionORfc { get; set; } = "";

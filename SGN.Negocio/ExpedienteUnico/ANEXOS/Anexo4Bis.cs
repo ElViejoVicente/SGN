@@ -1,7 +1,7 @@
 namespace SGN.Negocio.ExpedienteUnico.ANEXOS
 {
     /// <summary>Datos de la rejilla de ANEXO 4 BIS.docx.</summary>
-    public class Anexo4Bis
+    public class Anexo4Bis: AnexoBase
     {
         public string NombrePersonaMoralMexicanaDerechoPublico { get; set; } = "";
         public string FechaCreacionConstitucion { get; set; } = "";

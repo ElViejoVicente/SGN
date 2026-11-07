@@ -165,6 +165,7 @@
     <Content Include="ExpedientesTramites\PanelExpedientes.aspx" />
     <Content Include="ExpedienteUnico\ConsultaSimpleListaNegra.aspx" />
     <Content Include="ExpedienteUnico\PanelExpedienteUnicoV2.aspx" />
+    <Content Include="ExpedienteUnico\PanelExpedienteUnicoV2.aspx.css" />
     <Content Include="ExpedienteUnico\PanelExpedienteUnico.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="imagenes\ExUnico\DatosCompletos.png" />

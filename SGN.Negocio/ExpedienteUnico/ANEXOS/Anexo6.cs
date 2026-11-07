@@ -1,7 +1,7 @@
 namespace SGN.Negocio.ExpedienteUnico.ANEXOS
 {
     /// <summary>Datos de la rejilla de ANEXO 6.docx.</summary>
-    public class Anexo6
+    public class Anexo6 : AnexoBase
     {
         public string DenominacionRazonSocial { get; set; } = "";
         public string FechaConstitucion { get; set; } = "";

@@ -105,6 +105,7 @@
     <Compile Include="ExpedienteUnico\ANEXOS\Anexo7.cs" />
     <Compile Include="ExpedienteUnico\ANEXOS\Anexo7Bis.cs" />
     <Compile Include="ExpedienteUnico\ANEXOS\Anexo8.cs" />
+    <Compile Include="ExpedienteUnico\ANEXOS\AnexoBase.cs" />
     <Compile Include="ExpedienteUnico\DatosExpedienteUnico.cs" />
     <Compile Include="ExpedienteUnico\ListaConsultaBasicaLN.cs" />
     <Compile Include="ExpedienteUnico\ListaExpedienteUnico.cs" />
@@ -207,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ExpedienteUnico\ANEXOS\MAPEO_CAMPOS_ANEXOS.md" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <Content Include="Reportes\dsHojaDatos.xsc">

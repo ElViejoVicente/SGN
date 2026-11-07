@@ -51,7 +51,7 @@ namespace SGN.Negocio.ExpedienteUnico
         {
             get
             {
-                return IdExpediente.Trim() + " - " + TextoActo.Trim() + " - " + TextoVariante.Trim() + " - " + FechaIngreso.ToString() + " - " + TextoEstatus;
+                return IdExpediente.Trim() + " - " + TextoActo.Trim();
             }
 
         }

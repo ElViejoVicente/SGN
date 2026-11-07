@@ -8,10 +8,10 @@ namespace SGN.Negocio.ORM
 {
     public class ExpedienteUnicoControl
     {
-        public string IdExpedienteUnico { get; set; }
-        public int NumeroVersion { get; set; }
+        public string IdExpedienteUnico { get; set; } = string.Empty;
+        public int NumeroVersion { get; set; } = 0;
         public string NumExpediente { get; set; }
-        public int Estatus { get; set; }
+        public int Estatus { get; set; } = 1;
         public string UsuarioAutor { get; set; }
         public DateTime FechaCreacionVersion { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }

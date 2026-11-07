@@ -1,13 +1,14 @@
-﻿using SGN.Web.Controles.Servidor;
-using DevExpress.Web;
+﻿using DevExpress.Web;
 using DevExpress.Web.Internal.XmlProcessor;
 using DevExpress.XtraEditors.Filtering.Templates;
 using SGN.Negocio.CRUD;
 using SGN.Negocio.Expediente;
 using SGN.Negocio.ExpedienteUnico;
+using SGN.Negocio.ExpedienteUnico.ANEXOS;
 using SGN.Negocio.Operativa;
 using SGN.Negocio.ORM;
 using SGN.Web.Catalogos;
+using SGN.Web.Controles.Servidor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace SGN.Web.ExpedienteUnico
             set
             {
                 this.Session["ListaExpedienteUnicoV2"] = value;
-            }
+            } 
 
         }
 
@@ -64,6 +65,68 @@ namespace SGN.Web.ExpedienteUnico
 
         }
 
+        public List<Cat_Anexos> CatAnexos
+        {
+            get
+
+            {
+                List<Cat_Anexos> sseCatAnexos = new List<Cat_Anexos>();
+                if (this.Session["sseCatAnexos"] != null)
+                {
+                    sseCatAnexos = (List<Cat_Anexos>)this.Session["sseCatAnexos"];
+                }
+
+                return sseCatAnexos;
+            }
+            set
+            {
+                this.Session["sseCatAnexos"] = value;
+            }
+
+        }
+
+
+        public ExpedienteUnicoControl ExpedienteControlSeleccionado
+        {
+            get
+
+            {
+                ExpedienteUnicoControl ssExpedienteUnicoControl = null;
+                if (this.Session["ssExpedienteUnicoControl"] != null)
+                {
+                    ssExpedienteUnicoControl = (ExpedienteUnicoControl)Session["ssExpedienteUnicoControl"];
+                }
+
+                return ssExpedienteUnicoControl;
+            }
+            set
+            {
+                this.Session["ssExpedienteUnicoControl"] = value;
+            }
+
+        }
+
+
+        public AnexoBase AnexoSeleccionado
+        {
+            get
+
+            {
+                AnexoBase ssAnexoSeleccionado = null;
+                if (this.Session["ssAnexoSeleccionado"] != null)
+                {
+                    ssAnexoSeleccionado = (AnexoBase)Session["ssAnexoSeleccionado"];
+                }
+
+                return ssAnexoSeleccionado;
+            }
+            set
+            {
+                this.Session["ssAnexoSeleccionado"] = value;
+            }
+
+        }
+
 
         #endregion
 
@@ -73,8 +136,10 @@ namespace SGN.Web.ExpedienteUnico
         {
             try
             {
-
+             
                 catPaises = datosCrud.ConsultaCatPaises();
+
+                CatAnexos = datosCrud.ConsultaCatAnexos().Where(x=> x.Activo).ToList();
 
                 //  cbPaisNacimiento.
 
@@ -92,15 +157,73 @@ namespace SGN.Web.ExpedienteUnico
 
         private void CargarDatos()
         {
-          
 
-                lsExpedienteUnico = datosExpUnico.DameListaExpedienteUnicoV2(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,
+
+            //limpieza de la variable que se puede quedar en sessionstate 
+            ExpedienteControlSeleccionado = new ExpedienteUnicoControl();
+
+
+             lsExpedienteUnico = datosExpUnico.DameListaExpedienteUnicoV2(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,
                     todasLasFechas: false).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
 
-
+                ActualizarKpi();
                 gvExpedienteUnico.DataBind();
                 return; 
             
+        }
+
+        protected string GetNombreCompleto(object nombres, object apellidoPaterno, object apellidoMaterno)
+        {
+            return string.Join(" ", new[] { Convert.ToString(nombres), Convert.ToString(apellidoPaterno), Convert.ToString(apellidoMaterno) }.Where(x => !string.IsNullOrWhiteSpace(x))).Trim();
+        }
+
+        protected string GetDescripcionParticipante(object rol, object sexo, object ocupacion)
+        {
+            string textoSexo = Convert.ToString(sexo).Equals("F", StringComparison.OrdinalIgnoreCase) ? "F" : "M";
+            return string.Format("{0} · {1} · {2}", Convert.ToString(rol), textoSexo, Convert.ToString(ocupacion));
+        }
+
+        protected bool TieneExpediente(object idExpedienteUnico) { return !string.IsNullOrWhiteSpace(Convert.ToString(idExpedienteUnico)); }
+
+        protected string GetAnexo(object nombreAnexo, object idExpedienteUnico)
+        {
+            string anexo = Convert.ToString(nombreAnexo);
+            return string.IsNullOrWhiteSpace(anexo) ? Convert.ToString(idExpedienteUnico) : anexo;
+        }
+
+        protected string FormatFecha(object valor)
+        {
+            DateTime fecha;
+            return DateTime.TryParse(Convert.ToString(valor), out fecha) && fecha.Year > 1900 ? fecha.ToString("dd/MM/yyyy HH:mm") : "Sin fecha";
+        }
+
+        protected string GetTextoEncabezado(string groupText)
+        {
+            int separador = groupText.IndexOf(':');
+            string encabezado = separador >= 0 ? groupText.Substring(separador + 1).Trim() : groupText;
+            return HttpUtility.HtmlDecode(encabezado);
+        }
+
+        private void ActualizarKpi()
+        {
+            int expedientes = lsExpedienteUnico
+                .Select(x => x.IdExpediente)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .Count();
+            int conAnexo = lsExpedienteUnico.Count(x => !string.IsNullOrWhiteSpace(x.IdExpedienteUnico));
+            int sinAnexo = lsExpedienteUnico.Count - conAnexo;
+            decimal cumplimiento = lsExpedienteUnico.Count == 0 ? 0 : (decimal)conAnexo / lsExpedienteUnico.Count * 100;
+
+            lblKpiExpedientes.Text = expedientes.ToString("N0");
+            lblKpiSinAnexo.Text = sinAnexo.ToString("N0");
+            lblKpiConAnexo.Text = conAnexo.ToString("N0");
+            lblKpiCumplimiento.Text = cumplimiento.ToString("0.#") + "%";
+
+            gvExpedienteUnico.JSProperties["cp_KpiExpedientes"] = lblKpiExpedientes.Text;
+            gvExpedienteUnico.JSProperties["cp_KpiSinAnexo"] = lblKpiSinAnexo.Text;
+            gvExpedienteUnico.JSProperties["cp_KpiConAnexo"] = lblKpiConAnexo.Text;
+            gvExpedienteUnico.JSProperties["cp_KpiCumplimiento"] = lblKpiCumplimiento.Text;
         }
 
         #endregion

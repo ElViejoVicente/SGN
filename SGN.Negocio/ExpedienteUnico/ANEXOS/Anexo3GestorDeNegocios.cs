@@ -1,7 +1,7 @@
 namespace SGN.Negocio.ExpedienteUnico.ANEXOS
 {
     /// <summary>Datos de las rejillas de ANEXO 3 GESTOR DE NEGOCIOS.docx.</summary>
-    public class Anexo3GestorDeNegocios
+    public class Anexo3GestorDeNegocios : AnexoBase
     {
         public string ApellidoPaterno { get; set; } = "";
         public string ApellidoMaterno { get; set; } = "";
