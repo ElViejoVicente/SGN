@@ -24,22 +24,22 @@ namespace SGN.Web.ExpedienteUnico
         DatosCrud datosCrud = new DatosCrud();
         DatosExpedienteUnico datosExpUnico = new DatosExpedienteUnico();
 
-        public List<ListaExpedienteUnico> lsExpedienteUnico
+        public List<ListaExpedienteUnicoV2> lsExpedienteUnico
         {
             get
 
             {
-                List<ListaExpedienteUnico> sseListaExpediente = new List<ListaExpedienteUnico>();
-                if (this.Session["sseListaExpedienteUnico"] != null)
+                List<ListaExpedienteUnicoV2> sseListaExpediente = new List<ListaExpedienteUnicoV2>();
+                if (this.Session["ListaExpedienteUnicoV2"] != null)
                 {
-                    sseListaExpediente = (List<ListaExpedienteUnico>)this.Session["sseListaExpedienteUnico"];
+                    sseListaExpediente = (List<ListaExpedienteUnicoV2>)this.Session["ListaExpedienteUnicoV2"];
                 }
 
                 return sseListaExpediente;
             }
             set
             {
-                this.Session["sseListaExpedienteUnico"] = value;
+                this.Session["ListaExpedienteUnicoV2"] = value;
             }
 
         }
@@ -94,7 +94,7 @@ namespace SGN.Web.ExpedienteUnico
         {
           
 
-                lsExpedienteUnico = datosExpUnico.DameListaExpedienteUnico(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,
+                lsExpedienteUnico = datosExpUnico.DameListaExpedienteUnicoV2(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,
                     todasLasFechas: chkBusquedaCompleta.Checked).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
 
 

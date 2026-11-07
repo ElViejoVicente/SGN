@@ -54,6 +54,9 @@ namespace SGN.Negocio.ORM
         public string ObseSegundaValidacion { get; set; } = "";
 
         public string IdFideicomiso { get; set; } = "";
+
+        public string IdExpedienteUnico { get; set; } = "";
+
     }
 }
 

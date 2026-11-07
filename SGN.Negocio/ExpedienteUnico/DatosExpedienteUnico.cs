@@ -49,6 +49,38 @@ namespace SGN.Negocio.ExpedienteUnico
         }
 
 
+        public List<ListaExpedienteUnicoV2> DameListaExpedienteUnicoV2(DateTime fechaInicial, DateTime fechaFinal, Boolean todasLasFechas)
+        {
+            try
+            {
+                List<ListaExpedienteUnicoV2> resultado = new List<ListaExpedienteUnicoV2>();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<ListaExpedienteUnicoV2>
+                        (
+                        sql: "sp_DameExUnicoV2PorFecha", param: new
+                        {
+                            fechaInicial,
+                            fechaFinal,
+                            todasLasFechas
+
+                        }, commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+                return resultado;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al ejecutar sp_DameExUnicoV2PorFecha , detalle: \n" + ex.Message, ex);
+            }
+        }
+
+
+
+
         public List<ListaNegraSAT> DameRfcEnListaNegra(string RFC, string NombreUsuarioConsulta)
         {
             try
