@@ -2223,6 +2223,117 @@ namespace SGN.Negocio.CRUD
         }
         #endregion
 
+        #region ExpedienteUnicoControl
+
+        public ExpedienteUnicoControl ConsultaExpedienteUnicoControl(string IdExpedienteUnico, int NumeroVersion)
+        {
+            try
+            {
+                ExpedienteUnicoControl resultado = new ExpedienteUnicoControl();
+
+                using (var db = new SqlConnection(cnn))
+                {
+                    resultado = db.Query<ExpedienteUnicoControl>
+                        (
+                        sql: "sp_CRUD_ExpedienteUnicoControl_Select", param: new
+                        {
+                            IdExpedienteUnico,
+                            NumeroVersion
+                        }, commandType: CommandType.StoredProcedure
+                        ).FirstOrDefault();
+                }
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_ExpedienteUnicoControl_Select, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean AltaExpedienteUnicoControl(ExpedienteUnicoControl values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_ExpedienteUnicoControl_Insert", param: new
+                    {
+                        values.IdExpedienteUnico,
+                        values.NumeroVersion,
+                        values.NumExpediente,
+                        values.Estatus,
+                        values.UsuarioAutor,
+                        values.FechaCreacionVersion,
+                        values.FechaUltimaModificacion,
+                        values.NumVersionAnexo,
+                        values.NombreDelAnexo,
+                        values.Instrumento,
+                        values.Volumen,
+                        values.ActividadVulnerable,
+                        values.AnexoSnapshot
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_ExpedienteUnicoControl_Insert, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean ActualizarExpedienteUnicoControl(ExpedienteUnicoControl values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_ExpedienteUnicoControl_Update", param: new
+                    {
+                        values.IdExpedienteUnico,
+                        values.NumeroVersion,
+                        values.NumExpediente,
+                        values.Estatus,
+                        values.UsuarioAutor,
+                        values.FechaCreacionVersion,
+                        values.FechaUltimaModificacion,
+                        values.NumVersionAnexo,
+                        values.NombreDelAnexo,
+                        values.Instrumento,
+                        values.Volumen,
+                        values.ActividadVulnerable,
+                        values.AnexoSnapshot
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_ExpedienteUnicoControl_Update, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        public Boolean EliminarExpedienteUnicoControl(ExpedienteUnicoControl values)
+        {
+            try
+            {
+                using (var db = new SqlConnection(cnn))
+                {
+                    db.Execute(sql: "sp_CRUD_ExpedienteUnicoControl_Delete", param: new
+                    {
+                        values.IdExpedienteUnico,
+                        values.NumeroVersion
+                    }, commandType: CommandType.StoredProcedure);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al ejecutar sp_CRUD_ExpedienteUnicoControl_Delete, detalle: \n" + ex.Message, ex);
+            }
+        }
+
+        #endregion
+
     }
 
 }
