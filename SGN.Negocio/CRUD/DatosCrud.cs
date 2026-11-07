@@ -2250,13 +2250,13 @@ namespace SGN.Negocio.CRUD
             }
         }
 
-        public Boolean AltaExpedienteUnicoControl(ExpedienteUnicoControl values)
+        public Boolean AltaExpedienteUnicoControl(ref ExpedienteUnicoControl values)
         {
             try
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute(sql: "sp_CRUD_ExpedienteUnicoControl_Insert", param: new
+                    ExpedienteUnicoControl resultado = db.Query<ExpedienteUnicoControl>(sql: "sp_CRUD_ExpedienteUnicoControl_Insert", param: new
                     {
                         values.IdExpedienteUnico,
                         values.NumeroVersion,
@@ -2271,9 +2271,12 @@ namespace SGN.Negocio.CRUD
                         values.Volumen,
                         values.ActividadVulnerable,
                         values.AnexoSnapshot
-                    }, commandType: CommandType.StoredProcedure);
+                    }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                    values = resultado;
+                    return true;
                 }
-                return true;
+             
             }
             catch (Exception ex)
             {

@@ -208,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ExpedienteUnico\ANEXOS\MAPEO_CAMPOS_ANEXOS.md" />
+    <EmbeddedResource Include="ExpedienteUnico\ANEXOS\MAPEO_CAMPOS_ANEXOS.md" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <Content Include="Reportes\dsHojaDatos.xsc">

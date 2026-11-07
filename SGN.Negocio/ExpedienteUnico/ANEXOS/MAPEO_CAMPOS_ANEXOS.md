@@ -50,6 +50,9 @@ La misma estructura de rejillas se conserva por separado en las siguientes clase
 | `DomicilioNacionalCodigoPostal` | Segunda rejilla: CODIGO POSTAL |
 | `DomicilioNacionalPais` | Segunda rejilla: PAIS |
 
+Agrupar o mostrar por separado los campos de  : "Segunda rejilla" y llamar o titular a esta agrupacion como : "TRATANDOSE DE PERSONAS QUE TENGAN SU LUGAR DE RESIDENCIA EN EL EXTRANJERO Y A LA VEZ CUENTEN CON DOMICILIO EN TERRITORIO NACIONAL DONDE PUEDAN RECIBIR CORRESPONDENCIA SE DEBERA ASENTAR LOS DATOS RELATIVOS A DICHO DOMICILIO " 
+
+
 ## Anexo 4
 
 Clase `Anexo4`; origen: `ANEXO 4.docx`.
@@ -82,6 +85,9 @@ Clase `Anexo4`; origen: `ANEXO 4.docx`.
 | `RepresentanteAutoridadEmisoraIdentificacion` | Representante: AUTORIDAD QUE LA EMITE |
 | `RepresentanteNumeroIdentificacion` | Representante: NUMERO DE IDENTIFICACION |
 
+Agrupar o mostrar por separado los campos de  : "Representante" y llamar o titular a esta agrupacion como : "DEL REPRESENTANTE, APODERADOS LEGALES O PERSONAS QUE REALIZAN EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL" 
+
+
 ## Anexo 4 Bis
 
 Clase `Anexo4Bis`; origen: `ANEXO 4 BIS.docx`.
@@ -111,6 +117,9 @@ Clase `Anexo4Bis`; origen: `ANEXO 4 BIS.docx`.
 | `ServidorPublicoNombreIdentificacion` | Servidor publico: NOMBRE DE LA IDENTIFICACION |
 | `ServidorPublicoAutoridadEmisoraIdentificacion` | Servidor publico: AUTORIDAD QUE LA EMITE |
 | `ServidorPublicoNumeroIdentificacion` | Servidor publico: NUMERO DE IDENTIFICACION |
+
+Agrupar o mostrar por separado los campos de  : "Servidor publico" y llamar o titular a esta agrupacion como : "SERVIDOR PUBLICO QUE REALIZA EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL MEXICANA DE DERECHO PUBLICO DE QUE SE TRATE" 
+
 
 ## Anexo 5
 
@@ -149,6 +158,9 @@ Clase `Anexo5`; origen: `ANEXO 5.docx`.
 | `DomicilioNacionalCodigoPostal` | Segunda rejilla: CODIGO POSTAL |
 | `DomicilioNacionalPais` | Segunda rejilla: PAIS |
 
+Agrupar o mostrar por separado los campos de  : "Segunda rejilla" y llamar o titular a esta agrupacion como : "TRATANDOSE DE PERSONAS QUE TENGAN SU LUGAR DE RESIDENCIA EN EL EXTRANJERO Y A LA VEZ CUENTEN CON DOMICILIO EN TERRITORIO NACIONAL DONDE PUEDAN RECIBIR CORRESPONDENCIA SE DEBERA ASENTAR LOS DATOS RELATIVOS A DICHO DOMICILIO " 
+
+
 ## Anexo 6
 
 Clase `Anexo6`; origen: `ANEXO 6.docx`.
@@ -182,6 +194,9 @@ Clase `Anexo6`; origen: `ANEXO 6.docx`.
 | `RepresentanteAutoridadEmisoraIdentificacion` | Representante: AUTORIDAD QUE LA EMITE |
 | `RepresentanteNumeroIdentificacion` | Representante: NUMERO DE IDENTIFICACION |
 
+Agrupar o mostrar por separado los campos de  : "Representante" y llamar o titular a esta agrupacion como : "DEL REPRESENTANTE, APODERADOS LEGALES O PERSONAS QUE REALIZAN EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL" 
+
+
 ## Anexo 6 Bis
 
 Clase `Anexo6Bis`; origen: `ANEXO 6 BIS.docx`.
@@ -210,6 +225,9 @@ Clase `Anexo6Bis`; origen: `ANEXO 6 BIS.docx`.
 | `RepresentanteNombreIdentificacion` | Representante: NOMBRE DE LA IDENTIFICACION |
 | `RepresentanteAutoridadEmisoraIdentificacion` | Representante: AUTORIDAD QUE LA EMITE |
 | `RepresentanteNumeroIdentificacion` | Representante: NUMERO DE IDENTIFICACION |
+
+Agrupar o mostrar por separado los campos de  : "Representante" y llamar o titular a esta agrupacion como : "REPRESENTANTE, APODERADO LEGAL O PERSONA QUE REALIZA EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL DE QUE SE TRATE" 
+
 
 ## Anexo 7
 
@@ -242,6 +260,9 @@ Clase `Anexo7`; origen: `ANEXO 7.docx`.
 | `RepresentanteAutoridadEmisoraIdentificacion` | Representante: AUTORIDAD QUE LA EMITE |
 | `RepresentanteNumeroIdentificacion` | Representante: NUMERO DE IDENTIFICACION |
 
+Agrupar o mostrar por separado los campos de  : "Representante" y llamar o titular a esta agrupacion como : "DEL REPRESENTANTE, APODERADOS LEGALES O PERSONAS QUE REALIZAN EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL" 
+
+
 ## Anexo 7 Bis
 
 Clase `Anexo7Bis`; origen: `ANEXO 7 BIS.docx`.
@@ -267,6 +288,9 @@ Clase `Anexo7Bis`; origen: `ANEXO 7 BIS.docx`.
 | `FuncionarioAutoridadEmisoraIdentificacion` | Funcionario o servidor publico: AUTORIDAD QUE LA EMITE |
 | `FuncionarioNumeroIdentificacion` | Funcionario o servidor publico: NUMERO DE IDENTIFICACION |
 
+Agrupar o mostrar por separado los campos de  : "Funcionario o servidor publico" y llamar o titular a esta agrupacion como : "DEL FUNCIONARIO O SERVIDOR PUBLICO QUE REALIZAN EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL" 
+
+
 ## Anexo 8
 
 Clase `Anexo8`; origen: `ANEXO 8.docx`.
@@ -285,3 +309,6 @@ Clase `Anexo8`; origen: `ANEXO 8.docx`.
 | `ApoderadoDelegadoNombreIdentificacion` | Apoderado legal o delegado fiduciario: NOMBRE DE LA IDENTIFICACION |
 | `ApoderadoDelegadoAutoridadEmisoraIdentificacion` | Apoderado legal o delegado fiduciario: AUTORIDAD QUE LA EMITE |
 | `ApoderadoDelegadoNumeroIdentificacion` | Apoderado legal o delegado fiduciario: NUMERO DE IDENTIFICACION |
+
+Agrupar o mostrar por separado los campos de  : "Apoderado legal o delegado fiduciario" y llamar o titular a esta agrupacion como : "DEL APODERADO LEGAL O DELEGADO  FIDUCIARIO QUE REALIZAN EL ACTO U OPERACIÓN A NOMBRE DE LA PERSONA MORAL" 
+

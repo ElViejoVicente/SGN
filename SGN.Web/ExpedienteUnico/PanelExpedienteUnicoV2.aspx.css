@@ -203,6 +203,145 @@
     white-space: nowrap;
 }
 
+.exp-modal .dxpc-content {
+    padding: 0 !important;
+}
+
+.modal-subtitle {
+    margin: 0 10px 16px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.modal-notice {
+    margin: 0 10px 18px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff7ed;
+    color: #c44d00;
+}
+
+.exp-tabs .dxtc-content {
+    box-sizing: border-box;
+    height: 590px;
+    padding: 16px 10px !important;
+    overflow: hidden;
+}
+
+.anexo-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 555px;
+    min-height: 0;
+}
+
+.anexo-fixed-top,
+.anexo-fixed-bottom {
+    flex: 0 0 auto;
+    padding: 2px 0;
+    background: #fff;
+}
+
+.anexo-fixed-bottom {
+    padding-top: 12px;
+    border-top: 1px solid #e1e7ee;
+}
+
+.modal-section-title {
+    margin: 0 0 10px;
+    color: #526987;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .35px;
+    text-transform: uppercase;
+}
+
+.modal-section-space {
+    margin-top: 24px;
+}
+
+.person-modal-name {
+    margin-bottom: 16px;
+    padding: 18px 16px;
+    border-radius: 8px;
+    background: #f7f9fc;
+    color: #1f2d3d;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.modal-fields,
+.dynamic-form-grid {
+    display: grid;
+    gap: 14px 12px;
+}
+
+.modal-fields-3,
+.dynamic-form-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.modal-field {
+    min-width: 0;
+}
+
+.modal-field > span,
+.dynamic-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.modal-field-span-2 { grid-column: span 2; }
+.modal-field-span-3 { grid-column: span 3; }
+
+.dynamic-form-shell {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 16px;
+    border: 1px solid #d8e0e8;
+    border-radius: 8px;
+    background: #fafbfd;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+}
+
+.dynamic-group-section {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #cfd9e4;
+}
+
+.dynamic-group-title {
+    display: block;
+    margin-bottom: 14px;
+    padding: 9px 12px;
+    border-left: 3px solid #2769d8;
+    background: #edf4ff;
+    color: #294b78;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+.optional-label {
+    margin-left: 6px;
+    color: #8a98a8;
+    font-size: 9px;
+    font-weight: 400;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 10px 2px;
+    border-top: 1px solid #e6ebf0;
+}
+
 @media (max-width: 1050px) {
     .person-card {
         grid-template-columns: minmax(220px, 1fr) 2fr;
@@ -239,5 +378,15 @@
     .person-actions {
         grid-column: auto;
         justify-content: flex-start;
+    }
+
+    .modal-fields-3,
+    .dynamic-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-field-span-2,
+    .modal-field-span-3 {
+        grid-column: auto;
     }
 }
