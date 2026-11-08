@@ -21,6 +21,6 @@ namespace SGN.Negocio.ExpedienteUnico.ANEXOS
         public string FuncionarioNombreIdentificacion { get; set; } = "";
         public string FuncionarioAutoridadEmisoraIdentificacion { get; set; } = "";
         public string FuncionarioNumeroIdentificacion { get; set; } = "";
-        public string DocumentosSeleccionados { get; set; } = "";
+        
     }
 }

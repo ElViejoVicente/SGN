@@ -8,6 +8,8 @@ namespace SGN.Negocio.ExpedienteUnico.ANEXOS
 {
     public  class AnexoBase
     {
-        public string FolioInterno { get; set; }
+
+
+        public List<string> DocumentosSeleccionados { get; set; }
     }
 }

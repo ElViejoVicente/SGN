@@ -33,6 +33,6 @@ namespace SGN.Negocio.ExpedienteUnico.ANEXOS
         public string DomicilioNacionalEstadoEntidadProvinciaDepartamentoDemarcacion { get; set; } = "";
         public string DomicilioNacionalCodigoPostal { get; set; } = "";
         public string DomicilioNacionalPais { get; set; } = "";
-        public string DocumentosSeleccionados { get; set; } = "";
+    
     }
 }

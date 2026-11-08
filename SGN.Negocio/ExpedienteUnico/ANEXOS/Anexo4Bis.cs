@@ -26,6 +26,6 @@ namespace SGN.Negocio.ExpedienteUnico.ANEXOS
         public string ServidorPublicoNombreIdentificacion { get; set; } = "";
         public string ServidorPublicoAutoridadEmisoraIdentificacion { get; set; } = "";
         public string ServidorPublicoNumeroIdentificacion { get; set; } = "";
-        public string DocumentosSeleccionados { get; set; } = "";
+
     }
 }

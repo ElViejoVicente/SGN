@@ -15,6 +15,6 @@ namespace SGN.Negocio.ExpedienteUnico.ANEXOS
         public string ApoderadoDelegadoNombreIdentificacion { get; set; } = "";
         public string ApoderadoDelegadoAutoridadEmisoraIdentificacion { get; set; } = "";
         public string ApoderadoDelegadoNumeroIdentificacion { get; set; } = "";
-        public string DocumentosSeleccionados { get; set; } = "";
+
     }
 }
