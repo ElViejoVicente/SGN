@@ -12,6 +12,7 @@
     <title>Expediente único</title>
     <script type="text/javascript">
         window.onresize = function () { adjustGridHeight(); };
+        var temporizadorFiltroExpediente = null;
         function adjustGridHeight() {
             var content = document.getElementById('expContent');
             if (content && window.gvExpedienteUnico) {
@@ -28,6 +29,105 @@
                 aplicarColorCumplimiento(s.cp_KpiCumplimiento);
             }
             if (s.cp_swMsg) { mostrarMensajeSweet(s.cp_swType, s.cp_swMsg); s.cp_swType = null; s.cp_swMsg = null; }
+            window.setTimeout(function () { buscarEnExpediente(false); }, 0);
+        }
+        function normalizarTextoExpediente(valor) {
+            valor = String(valor || '').toLocaleLowerCase();
+            return valor.normalize ? valor.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : valor;
+        }
+        function limpiarResaltadosExpediente(raiz) {
+            var resaltados = raiz.querySelectorAll('mark.exp-search-match');
+            for (var i = resaltados.length - 1; i >= 0; i--) {
+                var marca = resaltados[i];
+                var padre = marca.parentNode;
+                padre.replaceChild(document.createTextNode(marca.textContent), marca);
+                padre.normalize();
+            }
+        }
+        function crearIndiceNormalizado(texto) {
+            var normalizado = '';
+            var posiciones = [];
+            for (var i = 0; i < texto.length; i++) {
+                var caracter = normalizarTextoExpediente(texto.charAt(i));
+                for (var j = 0; j < caracter.length; j++) {
+                    normalizado += caracter.charAt(j);
+                    posiciones.push(i);
+                }
+            }
+            return { texto: normalizado, posiciones: posiciones };
+        }
+        function resaltarNodoExpediente(nodo, termino) {
+            var contenido = nodo.nodeValue;
+            var indice = crearIndiceNormalizado(contenido);
+            var coincidencias = [];
+            var desde = 0;
+            var posicion;
+            while ((posicion = indice.texto.indexOf(termino, desde)) >= 0) {
+                var inicioOriginal = indice.posiciones[posicion];
+                var finOriginal = indice.posiciones[posicion + termino.length - 1] + 1;
+                coincidencias.push({ inicio: inicioOriginal, fin: finOriginal });
+                desde = posicion + Math.max(termino.length, 1);
+            }
+            if (!coincidencias.length) { return; }
+
+            var fragmento = document.createDocumentFragment();
+            var cursor = 0;
+            for (var i = 0; i < coincidencias.length; i++) {
+                var coincidencia = coincidencias[i];
+                if (coincidencia.inicio > cursor) { fragmento.appendChild(document.createTextNode(contenido.substring(cursor, coincidencia.inicio))); }
+                var marca = document.createElement('mark');
+                marca.className = 'exp-search-match';
+                marca.appendChild(document.createTextNode(contenido.substring(coincidencia.inicio, coincidencia.fin)));
+                fragmento.appendChild(marca);
+                cursor = coincidencia.fin;
+            }
+            if (cursor < contenido.length) { fragmento.appendChild(document.createTextNode(contenido.substring(cursor))); }
+            nodo.parentNode.replaceChild(fragmento, nodo);
+        }
+        function buscarEnExpediente(desplazar) {
+            if (!window.gvExpedienteUnico || !window.txtFiltrarPor) { return; }
+            var raiz = gvExpedienteUnico.GetMainElement();
+            if (!raiz) { return; }
+            limpiarResaltadosExpediente(raiz);
+
+            var termino = normalizarTextoExpediente(txtFiltrarPor.GetText().trim());
+            txtFiltrarPor.GetMainElement().classList.remove('filter-no-results');
+            txtFiltrarPor.GetMainElement().removeAttribute('title');
+            if (!termino) { return; }
+
+            var walker = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, {
+                acceptNode: function (nodo) {
+                    var padre = nodo.parentNode;
+                    if (!padre || !nodo.nodeValue.trim() || /^(SCRIPT|STYLE|TEXTAREA|INPUT|OPTION)$/.test(padre.nodeName)) { return NodeFilter.FILTER_REJECT; }
+                    return normalizarTextoExpediente(nodo.nodeValue).indexOf(termino) >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+                }
+            }, false);
+            var nodos = [];
+            var nodo;
+            while ((nodo = walker.nextNode())) { nodos.push(nodo); }
+            for (var i = 0; i < nodos.length; i++) { resaltarNodoExpediente(nodos[i], termino); }
+
+            var coincidencias = raiz.querySelectorAll('mark.exp-search-match');
+            if (!coincidencias.length) {
+                txtFiltrarPor.GetMainElement().classList.add('filter-no-results');
+                txtFiltrarPor.GetMainElement().setAttribute('title', 'No se encontraron coincidencias en el grid.');
+                return;
+            }
+            var centroVisible = window.innerHeight / 2;
+            var masProxima = coincidencias[0];
+            var distanciaMenor = Number.MAX_VALUE;
+            for (var j = 0; j < coincidencias.length; j++) {
+                var rect = coincidencias[j].getBoundingClientRect();
+                if (!rect.width && !rect.height) { continue; }
+                var distancia = Math.abs((rect.top + rect.height / 2) - centroVisible);
+                if (distancia < distanciaMenor) { distanciaMenor = distancia; masProxima = coincidencias[j]; }
+            }
+            masProxima.classList.add('exp-search-current');
+            if (desplazar !== false) { masProxima.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' }); }
+        }
+        function programarFiltroExpediente() {
+            window.clearTimeout(temporizadorFiltroExpediente);
+            temporizadorFiltroExpediente = window.setTimeout(function () { buscarEnExpediente(true); }, 220);
         }
         function aplicarColorCumplimiento(texto) {
             if (!window.lblKpiCumplimiento) { return; }
@@ -79,14 +179,16 @@
                                     <ClientSideEvents Click="function(s,e){gvExpedienteUnico.PerformCallback('CargarRegistros');}" />
                                 </dx:ASPxButton>
 
-                                <dx:ASPxTextBox runat="server" Caption="Filtrar Por" ClientInstanceName="txtFiltrarPor" ID="txtFiltrarPor" ></dx:ASPxTextBox>
+                                <dx:ASPxTextBox runat="server" Caption="Filtrar Por" ClientInstanceName="txtFiltrarPor" ID="txtFiltrarPor" Width="170px" NullText="Buscar en el grid...">
+                                    <ClientSideEvents KeyUp="function(s,e){programarFiltroExpediente();}" ValueChanged="function(s,e){programarFiltroExpediente();}" />
+                                </dx:ASPxTextBox>
 
 
                             </div>
                         </dx:PanelContent>
                     </PanelCollection>
                 </dx:ASPxRoundPanel>
-                <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="KPI:" View="GroupBox" CssClass="exp-filter-kpi">
+                <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" HeaderText="KPI del rango seleccionado:" View="GroupBox" CssClass="exp-filter-kpi">
                     <PanelCollection>
                         <dx:PanelContent runat="server">
                             <div class="exp-kpi-content">
@@ -116,7 +218,7 @@
             </div>
             <div id="expContent" class="exp-content">
                 <dx:ASPxGridView runat="server" ID="gvExpedienteUnico" ClientInstanceName="gvExpedienteUnico" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdRegistro" CssClass="exp-grid" OnDataBinding="gvExpedienteUnico_DataBinding" OnCustomCallback="gvExpedienteUnico_CustomCallback" OnToolbarItemClick="gvExpedienteUnico_ToolbarItemClick" OnHtmlDataCellPrepared="gvExpedienteUnico_HtmlDataCellPrepared">
-                    <ClientSideEvents Init="function(s,e){adjustGridHeight();}" EndCallback="gridView_EndCallback" />
+                    <ClientSideEvents Init="function(s,e){adjustGridHeight();window.setTimeout(function(){buscarEnExpediente(false);},0);}" EndCallback="gridView_EndCallback" />
                     <Settings ShowColumnHeaders="False" ShowGroupPanel="False" ShowFilterRow="False" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Hidden"  />
                     <SettingsPager Mode="ShowPager" PageSize="50" Position="Bottom" />
                     <SettingsBehavior AutoExpandAllGroups="true" AllowGroup="false" AllowSort="false" AllowFocusedRow="false" EnableRowHotTrack="false" />

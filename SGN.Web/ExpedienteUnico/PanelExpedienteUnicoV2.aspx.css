@@ -28,6 +28,24 @@
     flex-wrap: wrap;
 }
 
+.exp-search-match {
+    padding: 1px 2px;
+    border-radius: 2px;
+    background: #ffe89a;
+    color: inherit;
+    box-shadow: 0 0 0 1px rgba(203, 146, 0, .18);
+}
+
+.exp-search-match.exp-search-current {
+    background: #ffc94d;
+    box-shadow: 0 0 0 2px rgba(210, 123, 0, .38);
+}
+
+.filter-no-results input {
+    border-color: #c85b5b !important;
+    background: #fff5f5 !important;
+}
+
 .exp-kpi-content {
     min-height: 27px;
     display: flex;
