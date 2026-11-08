@@ -144,6 +144,10 @@
             ppExpediente.Show();
             cpExpediente.PerformCallback('Abrir|' + idRegistro);
         }
+        function verReporte(idExpedienteUnico) {
+            if (!idExpedienteUnico) { return; }
+            window.open('../ReportesAnexos/reporteExUnicoV2.aspx?IdExpedienteUnico=' + encodeURIComponent(idExpedienteUnico), '_blank');
+        }
         function guardarExpediente() {
             hidDocumentosAnexo.Set('Seleccionados', cblDocumentosAnexo.GetSelectedValues());
             var valido = ASPxClientEdit.ValidateGroup('Anexo');
@@ -258,10 +262,16 @@
                                     <div class="person-actions">
                                         <dx:ASPxButton runat="server" AutoPostBack="false"
                                             Text='<%# TieneExpediente(Eval("IdExpedienteUnico")) ? "Abrir expediente" : "Generar expediente" %>'
+                                            Image-IconID='<%# TieneExpediente(Eval("IdExpedienteUnico")) ? "actions_open_16x16" : "actions_addfile_16x16" %>'
                                             data-id-registro='<%# Eval("IdRegistro") %>'>
                                             <ClientSideEvents Click="function(s,e){abrirExpediente(s.GetMainElement().getAttribute('data-id-registro'));}" />
                                         </dx:ASPxButton>
-                                        <dx:ASPxButton runat="server" AutoPostBack="false" Text="Generar PDF" />
+                                        <dx:ASPxButton runat="server" AutoPostBack="false" Text="Ver Reporte"
+                                            Enabled='<%# TieneExpediente(Eval("IdExpedienteUnico")) %>'
+                                            data-id-expediente='<%# Eval("IdExpedienteUnico") %>'>
+                                            <Image IconID="export_exporttopdf_16x16" />
+                                            <ClientSideEvents Click="function(s,e){verReporte(s.GetMainElement().getAttribute('data-id-expediente'));}" />
+                                        </dx:ASPxButton>
                                     </div>
                                 </div>
                             </DataItemTemplate>
@@ -292,7 +302,7 @@
                                                 <dx:ContentControl runat="server">
                                                     <div class="persona-vulnerable-block">
                                                         <div class="persona-vulnerable-title"><dx:ASPxImage runat="server" EmptyImage-IconID="iconbuilder_security_warningcircled1_svg_16x16" CssClass="inline-icon" />Actividad vulnerable <span class="required-label">Obligatoria</span></div>
-                                                        <dx:ASPxMemo ID="txtActividadVulnerable" runat="server" ClientInstanceName="txtActividadVulnerable" Width="100%" Rows="3" MaxLength="500" NullText="Describa la actividad vulnerable (mínimo 10 caracteres)">
+                                                        <dx:ASPxMemo ID="txtActividadVulnerable" runat="server" ClientInstanceName="txtActividadVulnerable" Width="100%" Rows="3" MaxLength="500" Font-Size="Medium"  NullText="Describa la actividad vulnerable (mínimo 10 caracteres)">
                                                             <ValidationSettings ValidationGroup="Anexo" Display="Dynamic" ErrorDisplayMode="Text">
                                                                 <RequiredField IsRequired="true" ErrorText="La actividad vulnerable es obligatoria." />
                                                                 <RegularExpression ValidationExpression="^(?=[\s\S]{10,}$)(?=(?:[\s\S]*[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]){3,})[\s\S]*$" ErrorText="Capture una descripción válida de al menos 10 caracteres." />
@@ -301,7 +311,7 @@
                                                     </div>
                                                     <div class="modal-section-title">Participante</div>
                                                     <div class="person-modal-name">
-                                                        <dx:ASPxLabel ID="lblPersonaNombre" runat="server" />
+                                                        <dx:ASPxLabel ID="lblPersonaNombre" Font-Size="Medium" runat="server" />
                                                     </div>
                                                     <div class="modal-fields modal-fields-3">
                                                         <div class="modal-field">

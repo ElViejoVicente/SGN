@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace SGN.Web.Reportes
+namespace SGN.Web.ReportesAnexos
 {
     public partial class XtraAnexo3 : DevExpress.XtraReports.UI.XtraReport
     {

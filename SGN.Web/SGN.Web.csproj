@@ -304,6 +304,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <Content Include="PLD\ActiviadesVulnerables.aspx" />
+    <Content Include="ReportesAnexos\reporteExUnicoV2.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegra.aspx" />
     <Content Include="Reportes\reporteAgenda.aspx" />
     <Content Include="Reportes\reporteAcuseConsultaListaNegraSimple.aspx" />
@@ -729,6 +730,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesAnexos\reporteExUnicoV2.aspx.cs">
+      <DependentUpon>reporteExUnicoV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportesAnexos\reporteExUnicoV2.aspx.designer.cs">
+      <DependentUpon>reporteExUnicoV2.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportesAnexos\XtraAnexo3.cs">
       <SubType>Component</SubType>
