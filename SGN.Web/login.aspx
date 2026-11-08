@@ -1,5 +1,4 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="SGN.Web.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="SGN.Web.Login" %>
 
 <%@ Register Assembly="DevExpress.Web.v26.1, Version=26.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web"
@@ -75,6 +74,12 @@
                                 <span class="feature-icon">✓</span>
                                 <span>Control y seguimiento de actividades</span>
                             </div>
+
+                            <div class="brand-feature">
+                                <span class="feature-icon">✓</span>
+                                <span>Gestion de expediente Unico</span>
+                            </div>
+
 
                             <div class="brand-feature">
                                 <span class="feature-icon">✓</span>
@@ -256,7 +261,7 @@
                                 <span class="separator">•
                                 </span>
 
-                                <span>Versión 1.6
+                                <span>Versión 1.8
                                 </span>
 
                             </footer>
@@ -294,6 +299,13 @@
 
                 <span>Francisco I. Madero 3A, Huamantla, Tlaxcala
                 </span>
+
+                <span class="footer-separator">|
+                </span>
+
+                <span>Hecho en Tlaxcala. Competitivo en cualquier lugar.
+                </span>
+
 
             </footer>
 
