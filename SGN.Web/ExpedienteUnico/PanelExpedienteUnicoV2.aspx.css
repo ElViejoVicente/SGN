@@ -243,6 +243,14 @@
     background: #fff;
 }
 
+.anexo-main-row {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(280px, 1fr);
+    gap: 12px;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
 .anexo-fixed-bottom {
     padding-top: 12px;
     border-top: 1px solid #e1e7ee;
@@ -299,7 +307,6 @@
 .modal-field-span-3 { grid-column: span 3; }
 
 .dynamic-form-shell {
-    flex: 1 1 auto;
     min-height: 0;
     padding: 16px;
     border: 1px solid #d8e0e8;
@@ -307,6 +314,25 @@
     background: #fafbfd;
     overflow-y: auto;
     scrollbar-gutter: stable;
+}
+
+.documents-panel {
+    min-width: 0;
+    padding: 16px 12px;
+    border: 1px solid #d8e0e8;
+    border-radius: 8px;
+    background: #fafbfd;
+    overflow-y: auto;
+}
+
+.documents-list {
+    color: #38475a;
+    font-size: 11px;
+}
+
+.documents-list .dxeListBoxItem {
+    padding: 5px 3px;
+    white-space: normal;
 }
 
 .dynamic-group-section {
@@ -388,5 +414,15 @@
     .modal-field-span-2,
     .modal-field-span-3 {
         grid-column: auto;
+    }
+
+    .anexo-main-row {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+
+    .dynamic-form-shell,
+    .documents-panel {
+        overflow: visible;
     }
 }

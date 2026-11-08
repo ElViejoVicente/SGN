@@ -10,6 +10,6 @@ namespace SGN.Negocio.ExpedienteUnico.ANEXOS
     {
 
 
-        public List<string> DocumentosSeleccionados { get; set; }
+        public Dictionary<string, string> DocumentosSeleccionados { get; set; } = new Dictionary<string, string>();
     }
 }

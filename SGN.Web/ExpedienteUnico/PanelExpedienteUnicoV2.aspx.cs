@@ -1,6 +1,7 @@
 ﻿using DevExpress.Web;
 using DevExpress.Web.Internal.XmlProcessor;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using DevExpress.XtraEditors.Filtering.Templates;
 using SGN.Negocio.CRUD;
 using SGN.Negocio.Expediente;
@@ -46,7 +47,7 @@ namespace SGN.Web.ExpedienteUnico
             set
             {
                 this.Session["ListaExpedienteUnicoV2"] = value;
-            } 
+            }
 
         }
 
@@ -175,10 +176,10 @@ namespace SGN.Web.ExpedienteUnico
         {
             try
             {
-             
+
                 catPaises = datosCrud.ConsultaCatPaises();
 
-                CatAnexos = datosCrud.ConsultaCatAnexos().Where(x=> x.Activo).ToList();
+                CatAnexos = datosCrud.ConsultaCatAnexos().Where(x => x.Activo).ToList();
 
                 CatDocumentosPorAnexo = datosCrud.ConsultaCatDocumentosPorAnexo().Where(x => x.Activo).ToList();
 
@@ -206,13 +207,13 @@ namespace SGN.Web.ExpedienteUnico
             IdRegistroSeleccionado = 0;
 
 
-             lsExpedienteUnico = datosExpUnico.DameListaExpedienteUnicoV2(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,
-                    todasLasFechas: false).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
+            lsExpedienteUnico = datosExpUnico.DameListaExpedienteUnicoV2(fechaInicial: dtFechaInicio.Date, fechaFinal: dtFechaFin.Date,
+                   todasLasFechas: false).OrderByDescending(x => x.FechaIngreso).ToList();// cargamos todos los registros
 
-                ActualizarKpi();
-                gvExpedienteUnico.DataBind();
-                return; 
-            
+            ActualizarKpi();
+            gvExpedienteUnico.DataBind();
+            return;
+
         }
 
         protected string GetNombreCompleto(object nombres, object apellidoPaterno, object apellidoMaterno)
@@ -312,6 +313,8 @@ namespace SGN.Web.ExpedienteUnico
             ExpedienteControlSeleccionado = null;
             AnexoSeleccionado = null;
             phCamposAnexo.Controls.Clear();
+            cblDocumentosAnexo.Items.Clear();
+            hidDocumentosAnexo["Seleccionados"] = new object[0];
             cbAnexo.DataBind();
             cbAnexo.SelectedIndex = -1;
             txtInstrumento.Text = string.Empty;
@@ -331,12 +334,13 @@ namespace SGN.Web.ExpedienteUnico
 
                 AnexoSeleccionado = string.IsNullOrWhiteSpace(ExpedienteControlSeleccionado.AnexoSnapshot)
                     ? (AnexoBase)Activator.CreateInstance(tipo)
-                    : (AnexoBase)JsonConvert.DeserializeObject(ExpedienteControlSeleccionado.AnexoSnapshot, tipo);
+                    : DeserializarAnexo(ExpedienteControlSeleccionado.AnexoSnapshot, tipo, catalogo.IdAnexo);
                 cbAnexo.Value = catalogo.IdAnexo;
                 txtInstrumento.Text = ExpedienteControlSeleccionado.Instrumento;
                 txtVolumen.Text = ExpedienteControlSeleccionado.Volumen;
                 txtActividadVulnerable.Text = ExpedienteControlSeleccionado.ActividadVulnerable;
                 CrearFormularioAnexo(AnexoSeleccionado);
+                CargarDocumentosAnexo(catalogo.IdAnexo, AnexoSeleccionado.DocumentosSeleccionados);
             }
         }
 
@@ -374,7 +378,59 @@ namespace SGN.Web.ExpedienteUnico
             cbAnexo.DataBind();
             cbAnexo.Value = idAnexo;
             CrearFormularioAnexo(AnexoSeleccionado);
+            CargarDocumentosAnexo(idAnexo, AnexoSeleccionado.DocumentosSeleccionados);
             pcExpediente.ActiveTabIndex = 1;
+        }
+
+        private void CargarDocumentosAnexo(string idAnexo, IDictionary<string, string> seleccionados)
+        {
+            List<Cat_DocumentosPorAnexo> documentos = CatDocumentosPorAnexo
+                .Where(x => x.Activo && string.Equals(x.IdAnexo, idAnexo, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(x => x.TextoDocuemento)
+                .ToList();
+
+            cblDocumentosAnexo.DataSource = documentos;
+            cblDocumentosAnexo.DataBind();
+            string[] valoresSeleccionados = seleccionados == null ? new string[0] : seleccionados.Keys.ToArray();
+            hidDocumentosAnexo["Seleccionados"] = valoresSeleccionados.Cast<object>().ToArray();
+            if (seleccionados == null) return;
+
+            foreach (ListEditItem item in cblDocumentosAnexo.Items)
+                item.Selected = seleccionados.ContainsKey(Convert.ToString(item.Value));
+        }
+
+        private AnexoBase DeserializarAnexo(string snapshot, Type tipo, string idAnexo)
+        {
+            try
+            {
+                AnexoBase anexo = (AnexoBase)JsonConvert.DeserializeObject(snapshot, tipo);
+                if (anexo.DocumentosSeleccionados == null) anexo.DocumentosSeleccionados = new Dictionary<string, string>();
+                return anexo;
+            }
+            catch (JsonSerializationException)
+            {
+                // Compatibilidad con snapshots anteriores, donde DocumentosSeleccionados era List<string>.
+                JObject json = JObject.Parse(snapshot);
+                JToken documentosLegacy = json["DocumentosSeleccionados"];
+                json.Remove("DocumentosSeleccionados");
+                AnexoBase anexo = (AnexoBase)json.ToObject(tipo);
+                anexo.DocumentosSeleccionados = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+                JArray lista = documentosLegacy as JArray;
+                if (lista != null)
+                {
+                    foreach (JToken token in lista)
+                    {
+                        string valor = Convert.ToString(token);
+                        Cat_DocumentosPorAnexo catalogo = CatDocumentosPorAnexo.FirstOrDefault(x =>
+                            string.Equals(x.IdAnexo, idAnexo, StringComparison.OrdinalIgnoreCase) &&
+                            (string.Equals(x.IdDocumento, valor, StringComparison.OrdinalIgnoreCase) ||
+                             string.Equals(x.TextoDocuemento, valor, StringComparison.OrdinalIgnoreCase)));
+                        anexo.DocumentosSeleccionados[catalogo == null ? valor : catalogo.IdDocumento] = catalogo == null ? valor : catalogo.TextoDocuemento;
+                    }
+                }
+                return anexo;
+            }
         }
 
         private void PrecargarCamposAnexo(AnexoBase anexo)
@@ -594,6 +650,7 @@ namespace SGN.Web.ExpedienteUnico
             }
 
             Cat_Anexos catalogo = CatAnexos.First(x => x.IdAnexo == Convert.ToString(cbAnexo.Value));
+            AnexoSeleccionado.DocumentosSeleccionados = ObtenerDocumentosSeleccionados();
             bool esNuevo = ExpedienteControlSeleccionado == null || string.IsNullOrWhiteSpace(ExpedienteControlSeleccionado.IdExpedienteUnico);
             if (esNuevo) ExpedienteControlSeleccionado = new ExpedienteUnicoControl { FechaCreacionVersion = DateTime.Now };
 
@@ -620,7 +677,26 @@ namespace SGN.Web.ExpedienteUnico
             datosCliente.IdExpedienteUnico = ExpedienteControlSeleccionado.IdExpedienteUnico;
             datosCrud.ActualizaDatosParticipantes(datosCliente);
 
-            cpExpediente.JSProperties["cp_Guardado"] = string.Format("Expediente {0} correctamente. Expediente: {1}. Anexo: {2}.", esNuevo ? "generado" : "actualizado", registro.IdExpediente, catalogo.NombreAnexo);
+            cpExpediente.JSProperties["cp_Guardado"] = string.Format("Anexo {0} correctamente. Id Expediente: {1}. Tipo de Anexo: {2}.", esNuevo ? "generado" : "actualizado", ExpedienteControlSeleccionado.IdExpedienteUnico, catalogo.NombreAnexo);
+        }
+
+        private Dictionary<string, string> ObtenerDocumentosSeleccionados()
+        {
+            Dictionary<string, string> seleccionados = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            object valorHidden = hidDocumentosAnexo["Seleccionados"];
+            IEnumerable valores = valorHidden as IEnumerable;
+            if (valores == null || valorHidden is string) return seleccionados;
+
+            string idAnexo = Convert.ToString(cbAnexo.Value);
+            foreach (object valor in valores)
+            {
+                string idDocumento = Convert.ToString(valor);
+                Cat_DocumentosPorAnexo documento = CatDocumentosPorAnexo.FirstOrDefault(x =>
+                    string.Equals(x.IdAnexo, idAnexo, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(x.IdDocumento, idDocumento, StringComparison.OrdinalIgnoreCase));
+                if (documento != null) seleccionados[documento.IdDocumento] = documento.TextoDocuemento;
+            }
+            return seleccionados;
         }
 
         private object ObtenerValorEditor(ASPxEdit editor, PropertyInfo propiedad)

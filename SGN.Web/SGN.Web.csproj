@@ -886,6 +886,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Produccion\" />
+    <Folder Include="ReportesAnexos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\umd\popper.min.js.map" />

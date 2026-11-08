@@ -21,24 +21,24 @@
         }
         function gridView_EndCallback(s, e) {
             adjustGridHeight();
-            if(s.cp_KpiExpedientes!==undefined){
+            if (s.cp_KpiExpedientes !== undefined) {
                 lblKpiExpedientes.SetText(s.cp_KpiExpedientes);
                 lblKpiSinAnexo.SetText(s.cp_KpiSinAnexo);
                 lblKpiConAnexo.SetText(s.cp_KpiConAnexo);
                 lblKpiCumplimiento.SetText(s.cp_KpiCumplimiento);
             }
-            if(s.cp_swMsg){mostrarMensajeSweet(s.cp_swType,s.cp_swMsg);s.cp_swType=null;s.cp_swMsg=null;}
+            if (s.cp_swMsg) { mostrarMensajeSweet(s.cp_swType, s.cp_swMsg); s.cp_swType = null; s.cp_swMsg = null; }
         }
-        function abrirExpediente(idRegistro){
+        function abrirExpediente(idRegistro) {
             ppExpediente.Show();
             cpExpediente.PerformCallback('Abrir|' + idRegistro);
         }
-        function expediente_EndCallback(s,e){
-            if(s.cp_Error){mostrarMensajeSweet('error',s.cp_Error);s.cp_Error=null;}
-            if(s.cp_Guardado){
+        function expediente_EndCallback(s, e) {
+            if (s.cp_Error) { mostrarMensajeSweet('error', s.cp_Error); s.cp_Error = null; }
+            if (s.cp_Guardado) {
                 ppExpediente.Hide();
-                mostrarMensajeSweet('success',s.cp_Guardado);
-                s.cp_Guardado=null;
+                mostrarMensajeSweet('success', s.cp_Guardado);
+                s.cp_Guardado = null;
                 gvExpedienteUnico.PerformCallback('CargarRegistros');
             }
         }
@@ -119,7 +119,7 @@
                                         <span class="meta-item"><i class="fas fa-calendar-alt meta-icon"></i>
                                             <dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaCreacionVersion")) %>' />
                                         </span>
-                    <%--                    <span class="meta-item"><i class="fas fa-clock meta-icon"></i>
+                                        <%--                    <span class="meta-item"><i class="fas fa-clock meta-icon"></i>
                                             <dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaUltimaModificacion")) %>' />
                                         </span>--%>
                                         <span class="meta-item"><i class="fas fa-user meta-icon"></i>
@@ -127,10 +127,10 @@
                                         </span>
                                     </div>
                                     <div class="person-actions">
-                                            <dx:ASPxButton runat="server" AutoPostBack="false"
-                                                Text='<%# TieneExpediente(Eval("IdExpedienteUnico")) ? "Abrir expediente" : "Generar expediente" %>'
-                                                data-id-registro='<%# Eval("IdRegistro") %>'>
-                                                <ClientSideEvents Click="function(s,e){abrirExpediente(s.GetMainElement().getAttribute('data-id-registro'));}" />
+                                        <dx:ASPxButton runat="server" AutoPostBack="false"
+                                            Text='<%# TieneExpediente(Eval("IdExpedienteUnico")) ? "Abrir expediente" : "Generar expediente" %>'
+                                            data-id-registro='<%# Eval("IdRegistro") %>'>
+                                            <ClientSideEvents Click="function(s,e){abrirExpediente(s.GetMainElement().getAttribute('data-id-registro'));}" />
                                         </dx:ASPxButton>
                                         <dx:ASPxButton runat="server" AutoPostBack="false" Text="Generar PDF" />
                                     </div>
@@ -144,7 +144,7 @@
 
         <dx:ASPxPopupControl ID="ppExpediente" runat="server" ClientInstanceName="ppExpediente"
             HeaderText="Generar Expediente Individual" Modal="true" CloseAction="CloseButton"
-            PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" Width="920px"
+            PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" Width="1100px"
             AllowDragging="true" CssClass="exp-modal">
             <ContentCollection>
                 <dx:PopupControlContentControl runat="server">
@@ -154,11 +154,11 @@
                         <PanelCollection>
                             <dx:PanelContent runat="server">
                                 <div class="modal-subtitle">Validación previa de la información del participante</div>
-                                <div class="modal-notice"><i class="fas fa-info-circle"></i>Se generará un expediente individual para el participante seleccionado.</div>
+                                <div class="modal-notice"><i class="fas fa-info-circle"></i> Se generará un expediente individual para el participante seleccionado. Todos los cambios son registrados con tu usuario !, Te recomiendo concentracion.</div>
 
                                 <dx:ASPxPageControl ID="pcExpediente" runat="server" ClientInstanceName="pcExpediente" Width="100%" ActiveTabIndex="0" CssClass="exp-tabs">
                                     <TabPages>
-                                        <dx:TabPage Text="Persona" Name="Persona"  TabImage-IconID="people_user_16x16">
+                                        <dx:TabPage Text="Persona" Name="Persona" TabImage-IconID="people_user_16x16">
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server">
                                                     <div class="modal-section-title">Participante</div>
@@ -204,41 +204,52 @@
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server">
                                                     <div class="anexo-layout">
-                                                    <div class="anexo-fixed-top">
-                                                    <div class="modal-section-title">Tipo de anexo</div>
-                                                    <div class="modal-field">
-                                                        <span>Seleccione un anexo</span>
-                                                        <dx:ASPxComboBox ID="cbAnexo" runat="server" ClientInstanceName="cbAnexo" Width="100%"
-                                                            ValueField="IdAnexo" TextField="NombreAnexo" ValueType="System.String"
-                                                            OnDataBinding="cbAnexo_DataBinding">
-                                                            <Columns>
-                                                                <dx:ListBoxColumn FieldName="NombreAnexo" Caption="Anexo" Width="220px" />
-                                                                <dx:ListBoxColumn FieldName="Descripcion" Caption="Descripción" Width="580px" />
-                                                            </Columns>
-                                                            <ValidationSettings ValidationGroup="Anexo" Display="Dynamic">
-                                                                <RequiredField IsRequired="true" ErrorText="Seleccione un anexo." />
-                                                            </ValidationSettings>
-                                                            <ClientSideEvents SelectedIndexChanged="function(s,e){cpExpediente.PerformCallback('Anexo|' + s.GetValue());}" />
-                                                        </dx:ASPxComboBox>
-                                                    </div>
-                                                    </div>
-                                                    <div class="dynamic-form-shell">
-                                                        <asp:PlaceHolder ID="phCamposAnexo" runat="server" />
-                                                    </div>
-                                                    <div class="anexo-fixed-bottom">
-                                                    <div class="modal-section-title">Datos complementarios <span class="optional-label">Opcionales</span></div>
-                                                    <div class="modal-fields modal-fields-3">
-                                                        <div class="modal-field">
-                                                            <span>Instrumento</span><dx:ASPxTextBox ID="txtInstrumento" runat="server" Width="100%" />
+                                                        <div class="anexo-fixed-top">
+                                                            <div class="modal-section-title">Tipo de anexo</div>
+                                                            <div class="modal-field">
+                                                                <span>Seleccione un anexo</span>
+                                                                <dx:ASPxComboBox ID="cbAnexo" runat="server" ClientInstanceName="cbAnexo" Width="100%"
+                                                                    ValueField="IdAnexo" TextField="NombreAnexo" ValueType="System.String"
+                                                                    OnDataBinding="cbAnexo_DataBinding">
+                                                                    <Columns>
+                                                                        <dx:ListBoxColumn FieldName="NombreAnexo" Caption="Anexo" Width="220px" />
+                                                                        <dx:ListBoxColumn FieldName="Descripcion" Caption="Descripción" Width="580px" />
+                                                                    </Columns>
+                                                                    <ValidationSettings ValidationGroup="Anexo" Display="Dynamic">
+                                                                        <RequiredField IsRequired="true" ErrorText="Seleccione un anexo." />
+                                                                    </ValidationSettings>
+                                                                    <ClientSideEvents SelectedIndexChanged="function(s,e){cpExpediente.PerformCallback('Anexo|' + s.GetValue());}" />
+                                                                </dx:ASPxComboBox>
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-field">
-                                                            <span>Volumen</span><dx:ASPxTextBox ID="txtVolumen" runat="server" Width="100%" />
+                                                        <div class="anexo-main-row">
+                                                            <div class="dynamic-form-shell">
+                                                                <asp:PlaceHolder ID="phCamposAnexo" runat="server" />
+                                                            </div>
+                                                            <div class="documents-panel">
+                                                                <div class="modal-section-title">Documentación relacionada</div>
+                                                            <dx:ASPxCheckBoxList ID="cblDocumentosAnexo" runat="server" ClientInstanceName="cblDocumentosAnexo" Width="100%"
+                                                                    ValueField="IdDocumento" TextField="TextoDocuemento"
+                                                                ValueType="System.String" RepeatDirection="Vertical" RepeatLayout="Flow" CssClass="documents-list">
+                                                                <ClientSideEvents SelectedIndexChanged="function(s,e){hidDocumentosAnexo.Set('Seleccionados', s.GetSelectedValues());}" />
+                                                            </dx:ASPxCheckBoxList>
+                                                            <dx:ASPxHiddenField ID="hidDocumentosAnexo" runat="server" ClientInstanceName="hidDocumentosAnexo" />
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-field">
-                                                            <span>Actividad vulnerable</span><dx:ASPxTextBox ID="txtActividadVulnerable" runat="server" Width="100%" />
+                                                        <div class="anexo-fixed-bottom">
+                                                            <div class="modal-section-title">Datos complementarios <span class="optional-label">Opcionales</span></div>
+                                                            <div class="modal-fields modal-fields-3">
+                                                                <div class="modal-field">
+                                                                    <span>Instrumento</span><dx:ASPxTextBox ID="txtInstrumento" runat="server" Width="100%" />
+                                                                </div>
+                                                                <div class="modal-field">
+                                                                    <span>Volumen</span><dx:ASPxTextBox ID="txtVolumen" runat="server" Width="100%" />
+                                                                </div>
+                                                                <div class="modal-field">
+                                                                    <span>Actividad vulnerable</span><dx:ASPxTextBox ID="txtActividadVulnerable" runat="server" Width="100%" />
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    </div>
                                                     </div>
                                                 </dx:ContentControl>
                                             </ContentCollection>
@@ -252,7 +263,7 @@
                                     </dx:ASPxButton>
                                     <dx:ASPxButton ID="btnGuardarExpediente" runat="server" Text="Generar expediente" AutoPostBack="false">
                                         <Image IconID="actions_addfile_16x16" />
-                                        <ClientSideEvents Click="function(s,e){if(ASPxClientEdit.ValidateGroup('Anexo')){cpExpediente.PerformCallback('Guardar');}}" />
+                                        <ClientSideEvents Click="function(s,e){hidDocumentosAnexo.Set('Seleccionados', cblDocumentosAnexo.GetSelectedValues());if(ASPxClientEdit.ValidateGroup('Anexo')){cpExpediente.PerformCallback('Guardar');}}" />
                                     </dx:ASPxButton>
                                 </div>
                             </dx:PanelContent>

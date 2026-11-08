@@ -13,5 +13,6 @@ namespace SGN.Negocio.ORM
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
         public string ClassInterna { get; set; }
+        public string ReportInterna { get; set; }
     }
 }

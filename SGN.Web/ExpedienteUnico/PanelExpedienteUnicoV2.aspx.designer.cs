@@ -249,6 +249,24 @@ namespace SGN.Web.ExpedienteUnico
         protected global::System.Web.UI.WebControls.PlaceHolder phCamposAnexo;
 
         /// <summary>
+        /// Control cblDocumentosAnexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCheckBoxList cblDocumentosAnexo;
+
+        /// <summary>
+        /// Control hidDocumentosAnexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHiddenField hidDocumentosAnexo;
+
+        /// <summary>
         /// Control txtInstrumento.
         /// </summary>
         /// <remarks>
