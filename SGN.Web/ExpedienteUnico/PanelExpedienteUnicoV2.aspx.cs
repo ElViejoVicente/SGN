@@ -91,6 +91,29 @@ namespace SGN.Web.ExpedienteUnico
         }
 
 
+
+        public List<Cat_DocumentosPorAnexo> CatDocumentosPorAnexo
+        {
+            get
+
+            {
+                List<Cat_DocumentosPorAnexo> sseCatDocumentosPorAnexo = new List<Cat_DocumentosPorAnexo>();
+                if (this.Session["sseCatDocumentosPorAnexo"] != null)
+                {
+                    sseCatDocumentosPorAnexo = (List<Cat_DocumentosPorAnexo>)this.Session["sseCatDocumentosPorAnexo"];
+                }
+
+                return sseCatDocumentosPorAnexo;
+            }
+            set
+            {
+                this.Session["sseCatDocumentosPorAnexo"] = value;
+            }
+
+        }
+
+
+
         public ExpedienteUnicoControl ExpedienteControlSeleccionado
         {
             get
@@ -156,6 +179,8 @@ namespace SGN.Web.ExpedienteUnico
                 catPaises = datosCrud.ConsultaCatPaises();
 
                 CatAnexos = datosCrud.ConsultaCatAnexos().Where(x=> x.Activo).ToList();
+
+                CatDocumentosPorAnexo = datosCrud.ConsultaCatDocumentosPorAnexo().Where(x => x.Activo).ToList();
 
                 //  cbPaisNacimiento.
 
@@ -344,11 +369,46 @@ namespace SGN.Web.ExpedienteUnico
                 throw new InvalidOperationException("No se encontró la clase del anexo. ClassInterna: " + (catalogo == null ? "sin catálogo" : catalogo.ClassInterna));
 
             AnexoSeleccionado = (AnexoBase)Activator.CreateInstance(tipo);
+            PrecargarCamposAnexo(AnexoSeleccionado);
             phCamposAnexo.Controls.Clear();
             cbAnexo.DataBind();
             cbAnexo.Value = idAnexo;
             CrearFormularioAnexo(AnexoSeleccionado);
             pcExpediente.ActiveTabIndex = 1;
+        }
+
+        private void PrecargarCamposAnexo(AnexoBase anexo)
+        {
+            AnexoMapeo metadata = ObtenerMapeoAnexo(anexo.GetType().Name);
+            if (metadata.CamposOrigen.Count == 0) return;
+
+            DatosParticipantes participante = datosCrud.ConsultaDatosParticipantes(IdRegistroSeleccionado);
+            if (participante == null)
+                throw new InvalidOperationException("No fue posible consultar los datos del participante para precargar el anexo.");
+
+            foreach (KeyValuePair<string, string> mapeo in metadata.CamposOrigen)
+            {
+                PropertyInfo propiedadDestino = anexo.GetType().GetProperty(mapeo.Key, BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+                PropertyInfo propiedadOrigen = typeof(DatosParticipantes).GetProperty(mapeo.Value, BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+                if (propiedadDestino == null) continue;
+                if (propiedadOrigen == null)
+                    throw new InvalidOperationException("El campo origen '" + mapeo.Value + "' configurado para '" + mapeo.Key + "' no existe en DatosParticipantes.");
+
+                object valorOrigen = propiedadOrigen.GetValue(participante, null);
+                if (valorOrigen == null) continue;
+                Type tipoDestino = Nullable.GetUnderlyingType(propiedadDestino.PropertyType) ?? propiedadDestino.PropertyType;
+                object valorDestino;
+                if (tipoDestino == typeof(string) && valorOrigen is DateTime)
+                {
+                    DateTime fecha = (DateTime)valorOrigen;
+                    valorDestino = fecha.Year > 1900 ? fecha.ToString("dd/MM/yyyy") : string.Empty;
+                }
+                else
+                {
+                    valorDestino = tipoDestino == typeof(string) ? Convert.ToString(valorOrigen) : Convert.ChangeType(valorOrigen, tipoDestino);
+                }
+                propiedadDestino.SetValue(anexo, valorDestino, null);
+            }
         }
 
         private void CrearFormularioAnexo(AnexoBase anexo)
@@ -456,7 +516,7 @@ namespace SGN.Web.ExpedienteUnico
 
         private Dictionary<string, AnexoMapeo> CargarMapeosAnexos()
         {
-            const string cacheKey = "MapeosCamposAnexosV2";
+            const string cacheKey = "MapeosCamposAnexosV3";
             Dictionary<string, AnexoMapeo> cache = Application[cacheKey] as Dictionary<string, AnexoMapeo>;
             if (cache != null) return cache;
             cache = new Dictionary<string, AnexoMapeo>(StringComparer.OrdinalIgnoreCase);
@@ -482,10 +542,16 @@ namespace SGN.Web.ExpedienteUnico
                             continue;
                         }
 
-                        Match campo = Regex.Match(linea, @"^\|\s*`(?<prop>[^`]+)`\s*\|\s*(?<label>[^|]+)\s*\|");
+                        Match campo = Regex.Match(linea, @"^\|\s*`(?<prop>[^`]+)`\s*\|\s*(?<label>[^|]+?)\s*\|(?:\s*(?<origen>[^|]*?)\s*\|)?$");
                         if (campo.Success && clasesActuales.Count > 0)
                         {
-                            foreach (string clase in clasesActuales) cache[clase].Etiquetas[campo.Groups["prop"].Value] = campo.Groups["label"].Value.Trim();
+                            foreach (string clase in clasesActuales)
+                            {
+                                string propiedad = campo.Groups["prop"].Value.Trim();
+                                cache[clase].Etiquetas[propiedad] = campo.Groups["label"].Value.Trim();
+                                string origen = campo.Groups["origen"].Value.Trim();
+                                if (!string.IsNullOrWhiteSpace(origen)) cache[clase].CamposOrigen[propiedad] = origen;
+                            }
                             continue;
                         }
 
@@ -508,6 +574,7 @@ namespace SGN.Web.ExpedienteUnico
         private class AnexoMapeo
         {
             public Dictionary<string, string> Etiquetas { get; private set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            public Dictionary<string, string> CamposOrigen { get; private set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             public string PrefijoGrupo { get; set; }
             public string TituloGrupo { get; set; }
         }
@@ -682,92 +749,8 @@ namespace SGN.Web.ExpedienteUnico
 
         #endregion
 
-        protected void cbSexoOtorgaSolicita_Init(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-            cb.SelectedIndex = -1;
-        }
 
-        protected void cbPaisNacimiento_Init(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-            cb.SelectedIndex = -1;
 
-        }
-
-        protected void cbPaisNacimiento_DataBinding(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-
-            //cb.DataSource = catPaises;
-            cb.TextField = "TextoPais";
-            cb.ValueField = "TextoPais";
-            cb.ValueType = typeof(string);
-
-            cb.DataSource = catPaises;
-        }
-
-        protected void cbPaisNacionalidad_Init(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-            cb.SelectedIndex = -1;
-        }
-
-        protected void cbPaisNacionalidad_DataBinding(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-
-            //cb.DataSource = catPaises;
-            cb.TextField = "TextoPais";
-            cb.ValueField = "TextoPais";
-            cb.ValueType = typeof(string);
-
-            cb.DataSource = catPaises;
-        }
-
-        protected void cbPaisDomicilio_Init(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-            cb.SelectedIndex = -1;
-
-        }
-
-        protected void cbPaisDomicilio_DataBinding(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-
-            //cb.DataSource = catPaises;
-            cb.TextField = "TextoPais";
-            cb.ValueField = "TextoPais";
-            cb.ValueType = typeof(string);
-
-            cb.DataSource = catPaises;
-        }
-
-        protected void cbPaisRazonSocial_Init(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-            cb.DataSource = catPaises;
-        }
-
-        protected void cbPaisRazonSocial_DataBinding(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-
-            //cb.DataSource = catPaises;
-            cb.TextField = "TextoPais";
-            cb.ValueField = "TextoPais";
-            cb.ValueType = typeof(string);
-
-            cb.DataSource = catPaises;
-        }
-
-        protected void cbTipoRegimen_Init(object sender, EventArgs e)
-        {
-            ASPxComboBox cb = (ASPxComboBox)sender;
-            cb.SelectedIndex = -1;
-
-        }
 
 
     }

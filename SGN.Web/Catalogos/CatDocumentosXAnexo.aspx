@@ -41,7 +41,7 @@
     </dx:ASPxPanel>
     <section class="CLPageContent" id="maindiv">
         <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" GridViewID="gvDocumentos" />
-        <dx:ASPxGridView ID="gvDocumentos" ClientInstanceName="gvDocumentos" runat="server" AutoGenerateColumns="false" Width="100%" KeyFieldName="IDAnexo;TextoDocuemento"
+        <dx:ASPxGridView ID="gvDocumentos" ClientInstanceName="gvDocumentos" runat="server" AutoGenerateColumns="false" Width="100%" KeyFieldName="IdAnexo;IdDocumento"
             OnDataBinding="gvDocumentos_DataBinding" OnCustomCallback="gvDocumentos_CustomCallback" OnRowValidating="gvDocumentos_RowValidating"
             OnRowInserting="gvDocumentos_RowInserting" OnRowUpdating="gvDocumentos_RowUpdating" OnRowDeleting="gvDocumentos_RowDeleting"
             OnCellEditorInitialize="gvDocumentos_CellEditorInitialize" OnToolbarItemClick="gvDocumentos_ToolbarItemClick">
@@ -62,10 +62,11 @@
             </SettingsCommandButton>
             <Columns>
                 <dx:GridViewCommandColumn VisibleIndex="0" ShowEditButton="true" ShowDeleteButton="true" ShowNewButtonInHeader="true" ButtonRenderMode="Button" Width="70px" />
-                <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Documento" FieldName="TextoDocuemento" Width="720px" />
-                <dx:GridViewDataMemoColumn VisibleIndex="2" Caption="Descripción" FieldName="Descripcion" Width="250px" />
-                <dx:GridViewDataCheckColumn VisibleIndex="3" Caption="Requiere copia" FieldName="CopiaRequerida" Width="130px" />
-                <dx:GridViewDataCheckColumn VisibleIndex="4" Caption="Activo" FieldName="Activo" Width="100px" />
+                <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Id Documento" FieldName="IdDocumento" Width="150px" />
+                <dx:GridViewDataTextColumn VisibleIndex="2" Caption="Documento" FieldName="TextoDocuemento" Width="570px" />
+                <dx:GridViewDataMemoColumn VisibleIndex="3" Caption="Descripción" FieldName="Descripcion" Width="250px" />
+                <dx:GridViewDataCheckColumn VisibleIndex="4" Caption="Requiere copia" FieldName="CopiaRequerida" Width="130px" />
+                <dx:GridViewDataCheckColumn VisibleIndex="5" Caption="Activo" FieldName="Activo" Width="100px" />
             </Columns>
             <Toolbars><dx:GridViewToolbar><Items>
                 <dx:GridViewToolbarItem Command="ShowCustomizationWindow" Alignment="Right" />

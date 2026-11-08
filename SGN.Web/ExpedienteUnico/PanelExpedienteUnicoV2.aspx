@@ -71,11 +71,11 @@
                                 </div>
                                 <div class="kpi-divider"></div>
                                 <div class="kpi-item kpi-warning">
-                                    <span class="kpi-title">Sin anexo</span><dx:ASPxLabel ID="lblKpiSinAnexo" ClientInstanceName="lblKpiSinAnexo" runat="server" Text="0" CssClass="kpi-value" />
+                                    <span class="kpi-title">Sin Expediente</span><dx:ASPxLabel ID="lblKpiSinAnexo" ClientInstanceName="lblKpiSinAnexo" runat="server" Text="0" CssClass="kpi-value" />
                                 </div>
                                 <div class="kpi-divider"></div>
                                 <div class="kpi-item kpi-success">
-                                    <span class="kpi-title">Con anexo</span><dx:ASPxLabel ID="lblKpiConAnexo" ClientInstanceName="lblKpiConAnexo" runat="server" Text="0" CssClass="kpi-value" />
+                                    <span class="kpi-title">Con Expediente</span><dx:ASPxLabel ID="lblKpiConAnexo" ClientInstanceName="lblKpiConAnexo" runat="server" Text="0" CssClass="kpi-value" />
                                 </div>
                                 <div class="kpi-divider"></div>
                                 <div class="kpi-item kpi-compliance">
@@ -113,15 +113,15 @@
                                         <asp:Panel runat="server" CssClass="person-warning" Visible='<%# !TieneExpediente(Eval("IdExpedienteUnico")) %>'><i class="fas fa-exclamation-triangle"></i>&nbsp;Sin expediente generado</asp:Panel>
                                     </div>
                                     <div class="person-meta" runat="server" visible='<%# TieneExpediente(Eval("IdExpedienteUnico")) %>'>
-                                        <span class="meta-item"><i class="far fa-file-alt meta-icon"></i>
+                                        <span class="meta-item"><i class="fas fa-file-alt meta-icon"></i>
                                             <dx:ASPxLabel runat="server" Text='<%# GetAnexo(Eval("NombreDelAnexo"),Eval("IdExpedienteUnico")) %>' />
                                         </span>
-                                        <span class="meta-item"><i class="far fa-calendar-alt meta-icon"></i>
+                                        <span class="meta-item"><i class="fas fa-calendar-alt meta-icon"></i>
                                             <dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaCreacionVersion")) %>' />
                                         </span>
-                                        <span class="meta-item"><i class="far fa-clock meta-icon"></i>
+                    <%--                    <span class="meta-item"><i class="fas fa-clock meta-icon"></i>
                                             <dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaUltimaModificacion")) %>' />
-                                        </span>
+                                        </span>--%>
                                         <span class="meta-item"><i class="fas fa-user meta-icon"></i>
                                             <dx:ASPxLabel runat="server" Text='<%# Eval("UsuarioAutor") %>' />
                                         </span>

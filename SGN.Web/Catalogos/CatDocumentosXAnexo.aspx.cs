@@ -62,16 +62,18 @@ namespace SGN.Web.Catalogos
 
         protected void gvDocumentos_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(Convert.ToString(e.NewValues["IdDocumento"])))
+                e.RowError += "El campo Id Documento es obligatorio.\n";
             if (string.IsNullOrWhiteSpace(Convert.ToString(e.NewValues["TextoDocuemento"])))
                 e.RowError += "El campo Documento es obligatorio.\n";
             if (string.IsNullOrWhiteSpace(Convert.ToString(e.NewValues["Descripcion"])))
                 e.RowError += "El campo Descripción es obligatorio.\n";
             if (cbAnexos.Value == null) e.RowError += "Debe seleccionar un anexo.\n";
 
-            string texto = Convert.ToString(e.NewValues["TextoDocuemento"]).Trim();
-            bool duplicado = Documentos.Any(x => string.Equals(x.TextoDocuemento, texto, StringComparison.OrdinalIgnoreCase))
-                && (e.IsNewRow || !string.Equals(Convert.ToString(e.Keys["TextoDocuemento"]), texto, StringComparison.OrdinalIgnoreCase));
-            if (duplicado) e.RowError += "El documento ya existe para el anexo seleccionado.\n";
+            string idDocumento = Convert.ToString(e.NewValues["IdDocumento"]).Trim();
+            bool duplicado = Documentos.Any(x => string.Equals(x.IdDocumento, idDocumento, StringComparison.OrdinalIgnoreCase))
+                && (e.IsNewRow || !string.Equals(Convert.ToString(e.Keys["IdDocumento"]), idDocumento, StringComparison.OrdinalIgnoreCase));
+            if (duplicado) e.RowError += "El Id Documento ya existe para el anexo seleccionado.\n";
         }
 
         protected void gvDocumentos_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -85,11 +87,11 @@ namespace SGN.Web.Catalogos
 
         protected void gvDocumentos_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            string idAnexo = Convert.ToString(e.Keys["IDAnexo"]);
+            string idAnexo = Convert.ToString(e.Keys["IdAnexo"]);
             if (HayCambios(e.OldValues, e.NewValues))
             {
                 var documento = CrearDocumento(e.NewValues, idAnexo);
-                documento.TextoDocuemento = Convert.ToString(e.Keys["TextoDocuemento"]);
+                documento.IdDocumento = Convert.ToString(e.Keys["IdDocumento"]);
                 datosCrud.ActualizarCatDocumentosPorAnexo(documento);
             }
             e.Cancel = true;
@@ -101,29 +103,30 @@ namespace SGN.Web.Catalogos
         {
             var documento = new Cat_DocumentosPorAnexo
             {
-                IDAnexo = Convert.ToString(e.Keys["IDAnexo"]),
-                TextoDocuemento = Convert.ToString(e.Keys["TextoDocuemento"])
+                IdAnexo = Convert.ToString(e.Keys["IdAnexo"]),
+                IdDocumento = Convert.ToString(e.Keys["IdDocumento"])
             };
             datosCrud.EliminarCatDocumentosPorAnexo(documento);
             e.Cancel = true;
-            CargarDocumentos(documento.IDAnexo);
+            CargarDocumentos(documento.IdAnexo);
         }
 
         protected void gvDocumentos_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e)
         {
-            if (!gvDocumentos.IsNewRowEditing && e.Column.FieldName == "TextoDocuemento") e.Editor.ReadOnly = true;
+            if (!gvDocumentos.IsNewRowEditing && e.Column.FieldName == "IdDocumento") e.Editor.ReadOnly = true;
         }
 
         private static Cat_DocumentosPorAnexo CrearDocumento(System.Collections.Specialized.OrderedDictionary values, string idAnexo)
         {
             return new Cat_DocumentosPorAnexo
             {
-                IDAnexo = idAnexo,
+                IdAnexo = idAnexo,
                 TextoDocuemento = Convert.ToString(values["TextoDocuemento"]).Trim(),
+                IdDocumento = Convert.ToString(values["IdDocumento"]).Trim(),
                 Descripcion = Convert.ToString(values["Descripcion"]).Trim(),
                 CopiaRequerida = values["CopiaRequerida"] != null && Convert.ToBoolean(values["CopiaRequerida"]),
                 Activo = values["Activo"] != null && Convert.ToBoolean(values["Activo"])
-            };
+            }; ;
         }
 
         private static bool HayCambios(System.Collections.Specialized.OrderedDictionary anteriores, System.Collections.Specialized.OrderedDictionary nuevos)
