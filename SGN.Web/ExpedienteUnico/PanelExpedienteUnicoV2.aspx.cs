@@ -228,6 +228,7 @@ namespace SGN.Web.ExpedienteUnico
         }
 
         protected bool TieneExpediente(object idExpedienteUnico) { return !string.IsNullOrWhiteSpace(Convert.ToString(idExpedienteUnico)); }
+        protected bool TieneActividadVulnerable(object actividadVulnerable) { return !string.IsNullOrWhiteSpace(Convert.ToString(actividadVulnerable)); }
 
         protected string GetAnexo(object nombreAnexo, object idExpedienteUnico)
         {
@@ -319,7 +320,7 @@ namespace SGN.Web.ExpedienteUnico
             cbAnexo.SelectedIndex = -1;
             txtInstrumento.Text = string.Empty;
             txtVolumen.Text = string.Empty;
-            txtActividadVulnerable.Text = string.Empty;
+            txtActividadVulnerable.Text = registro.ActividadVulnerable;
             pcExpediente.ActiveTabIndex = 0;
 
             if (!string.IsNullOrWhiteSpace(registro.IdExpedienteUnico))
@@ -649,6 +650,7 @@ namespace SGN.Web.ExpedienteUnico
                 propiedad.SetValue(AnexoSeleccionado, valor, null);
             }
 
+            string actividadVulnerable = ValidarActividadVulnerable(txtActividadVulnerable.Text);
             Cat_Anexos catalogo = CatAnexos.First(x => x.IdAnexo == Convert.ToString(cbAnexo.Value));
             AnexoSeleccionado.DocumentosSeleccionados = ObtenerDocumentosSeleccionados();
             bool esNuevo = ExpedienteControlSeleccionado == null || string.IsNullOrWhiteSpace(ExpedienteControlSeleccionado.IdExpedienteUnico);
@@ -660,7 +662,7 @@ namespace SGN.Web.ExpedienteUnico
             ExpedienteControlSeleccionado.NombreDelAnexo = catalogo.NombreAnexo;
             ExpedienteControlSeleccionado.Instrumento = txtInstrumento.Text;
             ExpedienteControlSeleccionado.Volumen = txtVolumen.Text;
-            ExpedienteControlSeleccionado.ActividadVulnerable = txtActividadVulnerable.Text;
+            ExpedienteControlSeleccionado.ActividadVulnerable = actividadVulnerable;
             ExpedienteControlSeleccionado.AnexoSnapshot = JsonConvert.SerializeObject(AnexoSeleccionado);
 
             ExpedienteUnicoControl expedienteGuardado = ExpedienteControlSeleccionado;
@@ -678,6 +680,15 @@ namespace SGN.Web.ExpedienteUnico
             datosCrud.ActualizaDatosParticipantes(datosCliente);
 
             cpExpediente.JSProperties["cp_Guardado"] = string.Format("Anexo {0} correctamente. Id Expediente: {1}. Tipo de Anexo: {2}.", esNuevo ? "generado" : "actualizado", ExpedienteControlSeleccionado.IdExpedienteUnico, catalogo.NombreAnexo);
+        }
+
+        private static string ValidarActividadVulnerable(string valor)
+        {
+            string actividad = (valor ?? string.Empty).Trim();
+            int caracteresSignificativos = actividad.Count(char.IsLetterOrDigit);
+            if (actividad.Length < 10 || caracteresSignificativos < 3)
+                throw new InvalidOperationException("La actividad vulnerable es obligatoria. Capture una descripción válida de al menos 10 caracteres.");
+            return actividad;
         }
 
         private Dictionary<string, string> ObtenerDocumentosSeleccionados()

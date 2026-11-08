@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../Content/all.css" />
     <link rel="stylesheet" href="../Content/generic/pageMinimalStyle.css" />
     <script src="../Scripts/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../Scripts/sweetalert2.min.css" />
@@ -26,12 +25,33 @@
                 lblKpiSinAnexo.SetText(s.cp_KpiSinAnexo);
                 lblKpiConAnexo.SetText(s.cp_KpiConAnexo);
                 lblKpiCumplimiento.SetText(s.cp_KpiCumplimiento);
+                aplicarColorCumplimiento(s.cp_KpiCumplimiento);
             }
             if (s.cp_swMsg) { mostrarMensajeSweet(s.cp_swType, s.cp_swMsg); s.cp_swType = null; s.cp_swMsg = null; }
+        }
+        function aplicarColorCumplimiento(texto) {
+            if (!window.lblKpiCumplimiento) { return; }
+            var valor = parseFloat(String(texto || '0').replace(',', '.')) || 0;
+            var contenedor = lblKpiCumplimiento.GetMainElement();
+            while (contenedor && !((' ' + contenedor.className + ' ').indexOf(' kpi-compliance ') >= 0)) {
+                contenedor = contenedor.parentNode;
+            }
+            if (!contenedor) { return; }
+            contenedor.className = contenedor.className.replace(/\s*compliance-(green|orange|red)/g, '');
+            contenedor.className += valor >= 100 ? ' compliance-green' : (valor >= 90 ? ' compliance-orange' : ' compliance-red');
         }
         function abrirExpediente(idRegistro) {
             ppExpediente.Show();
             cpExpediente.PerformCallback('Abrir|' + idRegistro);
+        }
+        function guardarExpediente() {
+            hidDocumentosAnexo.Set('Seleccionados', cblDocumentosAnexo.GetSelectedValues());
+            var valido = ASPxClientEdit.ValidateGroup('Anexo');
+            if (!txtActividadVulnerable.GetIsValid()) {
+                pcExpediente.SetActiveTabIndex(0);
+                txtActividadVulnerable.Focus();
+            }
+            if (valido) { cpExpediente.PerformCallback('Guardar'); }
         }
         function expediente_EndCallback(s, e) {
             if (s.cp_Error) { mostrarMensajeSweet('error', s.cp_Error); s.cp_Error = null; }
@@ -58,6 +78,10 @@
                                     <Image IconID="xaf_action_reload_svg_16x16" />
                                     <ClientSideEvents Click="function(s,e){gvExpedienteUnico.PerformCallback('CargarRegistros');}" />
                                 </dx:ASPxButton>
+
+                                <dx:ASPxTextBox runat="server" Caption="Filtrar Por" ClientInstanceName="txtFiltrarPor" ID="txtFiltrarPor" ></dx:ASPxTextBox>
+
+
                             </div>
                         </dx:PanelContent>
                     </PanelCollection>
@@ -67,19 +91,23 @@
                         <dx:PanelContent runat="server">
                             <div class="exp-kpi-content">
                                 <div class="kpi-item">
-                                    <span class="kpi-title">Expedientes</span><dx:ASPxLabel ID="lblKpiExpedientes" ClientInstanceName="lblKpiExpedientes" runat="server" Text="0" CssClass="kpi-value" />
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="actions_addfile_16x16" CssClass="kpi-icon" />
+                                    <div class="kpi-text"><span class="kpi-title">Expedientes</span><dx:ASPxLabel ID="lblKpiExpedientes" ClientInstanceName="lblKpiExpedientes" runat="server" Text="0" CssClass="kpi-value" /></div>
                                 </div>
                                 <div class="kpi-divider"></div>
                                 <div class="kpi-item kpi-warning">
-                                    <span class="kpi-title">Sin Expediente</span><dx:ASPxLabel ID="lblKpiSinAnexo" ClientInstanceName="lblKpiSinAnexo" runat="server" Text="0" CssClass="kpi-value" />
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="status_warning_16x16" CssClass="kpi-icon" />
+                                    <div class="kpi-text"><span class="kpi-title">Sin Expediente</span><dx:ASPxLabel ID="lblKpiSinAnexo" ClientInstanceName="lblKpiSinAnexo" runat="server" Text="0" CssClass="kpi-value" /></div>
                                 </div>
                                 <div class="kpi-divider"></div>
                                 <div class="kpi-item kpi-success">
-                                    <span class="kpi-title">Con Expediente</span><dx:ASPxLabel ID="lblKpiConAnexo" ClientInstanceName="lblKpiConAnexo" runat="server" Text="0" CssClass="kpi-value" />
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="actions_apply_16x16" CssClass="kpi-icon" />
+                                    <div class="kpi-text"><span class="kpi-title">Con Expediente</span><dx:ASPxLabel ID="lblKpiConAnexo" ClientInstanceName="lblKpiConAnexo" runat="server" Text="0" CssClass="kpi-value" /></div>
                                 </div>
                                 <div class="kpi-divider"></div>
                                 <div class="kpi-item kpi-compliance">
-                                    <span class="kpi-title">Cumplimiento</span><dx:ASPxLabel ID="lblKpiCumplimiento" ClientInstanceName="lblKpiCumplimiento" runat="server" Text="0%" CssClass="kpi-value" />
+                                    <dx:ASPxImage runat="server" EmptyImage-IconID="dashboards_scatterchartlabeloptions_svg_16x16" CssClass="kpi-icon" />
+                                    <div class="kpi-text"><span class="kpi-title">Cumplimiento</span><dx:ASPxLabel ID="lblKpiCumplimiento" ClientInstanceName="lblKpiCumplimiento" runat="server" Text="0%" CssClass="kpi-value"><ClientSideEvents Init="function(s,e){aplicarColorCumplimiento(s.GetText());}" /></dx:ASPxLabel></div>
                                 </div>
                             </div>
                         </dx:PanelContent>
@@ -89,15 +117,17 @@
             <div id="expContent" class="exp-content">
                 <dx:ASPxGridView runat="server" ID="gvExpedienteUnico" ClientInstanceName="gvExpedienteUnico" AutoGenerateColumns="False" Width="100%" KeyFieldName="IdRegistro" CssClass="exp-grid" OnDataBinding="gvExpedienteUnico_DataBinding" OnCustomCallback="gvExpedienteUnico_CustomCallback" OnToolbarItemClick="gvExpedienteUnico_ToolbarItemClick" OnHtmlDataCellPrepared="gvExpedienteUnico_HtmlDataCellPrepared">
                     <ClientSideEvents Init="function(s,e){adjustGridHeight();}" EndCallback="gridView_EndCallback" />
-                    <Settings ShowColumnHeaders="False" ShowGroupPanel="False" ShowFilterRow="False" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Hidden" />
+                    <Settings ShowColumnHeaders="False" ShowGroupPanel="False" ShowFilterRow="False" VerticalScrollBarMode="Auto" HorizontalScrollBarMode="Hidden"  />
                     <SettingsPager Mode="ShowPager" PageSize="50" Position="Bottom" />
                     <SettingsBehavior AutoExpandAllGroups="true" AllowGroup="false" AllowSort="false" AllowFocusedRow="false" EnableRowHotTrack="false" />
                     <SettingsDataSecurity AllowInsert="false" AllowDelete="false" AllowEdit="false" />
                     <SettingsText EmptyDataRow="No se encontraron expedientes para el periodo seleccionado." />
+
+
                     <Templates>
                         <GroupRowContent>
                             <div class="exp-group-header">
-                                <i class="fas fa-chevron-down exp-group-icon"></i>
+                                <dx:ASPxImage runat="server" EmptyImage-IconID="arrows_movedown_16x16" CssClass="exp-group-icon" />
                                 <dx:ASPxLabel runat="server" CssClass="exp-group-title" Text='<%# GetTextoEncabezado(Container.GroupText) %>' />
                             </div>
                         </GroupRowContent>
@@ -110,21 +140,18 @@
                                     <div>
                                         <dx:ASPxLabel runat="server" CssClass="person-name" Text='<%# GetNombreCompleto(Eval("Nombres"),Eval("ApellidoPaterno"),Eval("ApellidoMaterno")) %>' />
                                         <dx:ASPxLabel runat="server" CssClass="person-subtitle" Text='<%# GetDescripcionParticipante(Eval("RolOperacion"),Eval("Sexo"),Eval("Ocupacion")) %>' />
-                                        <asp:Panel runat="server" CssClass="person-warning" Visible='<%# !TieneExpediente(Eval("IdExpedienteUnico")) %>'><i class="fas fa-exclamation-triangle"></i>&nbsp;Sin expediente generado</asp:Panel>
+                                        <asp:Panel runat="server" CssClass="person-warning" Visible='<%# !TieneExpediente(Eval("IdExpedienteUnico")) %>'><dx:ASPxImage runat="server" EmptyImage-IconID="status_warning_16x16" CssClass="inline-icon" />Sin expediente generado</asp:Panel>
                                     </div>
-                                    <div class="person-meta" runat="server" visible='<%# TieneExpediente(Eval("IdExpedienteUnico")) %>'>
-                                        <span class="meta-item"><i class="fas fa-file-alt meta-icon"></i>
-                                            <dx:ASPxLabel runat="server" Text='<%# GetAnexo(Eval("NombreDelAnexo"),Eval("IdExpedienteUnico")) %>' />
-                                        </span>
-                                        <span class="meta-item"><i class="fas fa-calendar-alt meta-icon"></i>
-                                            <dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaCreacionVersion")) %>' />
-                                        </span>
-                                        <%--                    <span class="meta-item"><i class="fas fa-clock meta-icon"></i>
-                                            <dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaUltimaModificacion")) %>' />
-                                        </span>--%>
-                                        <span class="meta-item"><i class="fas fa-user meta-icon"></i>
-                                            <dx:ASPxLabel runat="server" Text='<%# Eval("UsuarioAutor") %>' />
-                                        </span>
+                                    <div class="person-detail-column">
+                                        <div class="person-meta" runat="server" visible='<%# TieneExpediente(Eval("IdExpedienteUnico")) %>'>
+                                            <span class="meta-item"><dx:ASPxImage runat="server" EmptyImage-IconID="support_article_16x16" CssClass="meta-icon" /><dx:ASPxLabel runat="server" Text='<%# GetAnexo(Eval("NombreDelAnexo"),Eval("IdExpedienteUnico")) %>' /></span>
+                                            <span class="meta-item"><dx:ASPxImage runat="server" EmptyImage-IconID="scheduling_calendar_16x16" CssClass="meta-icon" /><dx:ASPxLabel runat="server" Text='<%# FormatFecha(Eval("FechaCreacionVersion")) %>' /></span>
+                                            <span class="meta-item"><dx:ASPxImage runat="server" EmptyImage-IconID="people_user_16x16" CssClass="meta-icon" /><dx:ASPxLabel runat="server" Text='<%# Eval("UsuarioAutor") %>' /></span>
+                                        </div>
+                                        <asp:Panel runat="server" CssClass="person-vulnerable-alert" Visible='<%# TieneActividadVulnerable(Eval("ActividadVulnerable")) %>'>
+                                            <dx:ASPxImage runat="server" EmptyImage-IconID="iconbuilder_security_warningcircled1_svg_16x16" CssClass="vulnerable-icon" />
+                                            <dx:ASPxLabel runat="server" Text='<%# "Actividad vulnerable: " + Convert.ToString(Eval("ActividadVulnerable")) %>' />
+                                        </asp:Panel>
                                     </div>
                                     <div class="person-actions">
                                         <dx:ASPxButton runat="server" AutoPostBack="false"
@@ -154,13 +181,22 @@
                         <PanelCollection>
                             <dx:PanelContent runat="server">
                                 <div class="modal-subtitle">Validación previa de la información del participante</div>
-                                <div class="modal-notice"><i class="fas fa-info-circle"></i> Se generará un expediente individual para el participante seleccionado. Todos los cambios son registrados con tu usuario !, Te recomiendo concentracion.</div>
+                                <div class="modal-notice"><dx:ASPxImage runat="server" EmptyImage-IconID="functionlibrary_information_16x16" CssClass="inline-icon" />Se generará un expediente individual para el participante seleccionado. Todos los cambios son registrados con tu usuario. Te recomiendo concentración.</div>
 
                                 <dx:ASPxPageControl ID="pcExpediente" runat="server" ClientInstanceName="pcExpediente" Width="100%" ActiveTabIndex="0" CssClass="exp-tabs">
                                     <TabPages>
                                         <dx:TabPage Text="Persona" Name="Persona" TabImage-IconID="people_user_16x16">
                                             <ContentCollection>
                                                 <dx:ContentControl runat="server">
+                                                    <div class="persona-vulnerable-block">
+                                                        <div class="persona-vulnerable-title"><dx:ASPxImage runat="server" EmptyImage-IconID="iconbuilder_security_warningcircled1_svg_16x16" CssClass="inline-icon" />Actividad vulnerable <span class="required-label">Obligatoria</span></div>
+                                                        <dx:ASPxMemo ID="txtActividadVulnerable" runat="server" ClientInstanceName="txtActividadVulnerable" Width="100%" Rows="3" MaxLength="500" NullText="Describa la actividad vulnerable (mínimo 10 caracteres)">
+                                                            <ValidationSettings ValidationGroup="Anexo" Display="Dynamic" ErrorDisplayMode="Text">
+                                                                <RequiredField IsRequired="true" ErrorText="La actividad vulnerable es obligatoria." />
+                                                                <RegularExpression ValidationExpression="^(?=[\s\S]{10,}$)(?=(?:[\s\S]*[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]){3,})[\s\S]*$" ErrorText="Capture una descripción válida de al menos 10 caracteres." />
+                                                            </ValidationSettings>
+                                                        </dx:ASPxMemo>
+                                                    </div>
                                                     <div class="modal-section-title">Participante</div>
                                                     <div class="person-modal-name">
                                                         <dx:ASPxLabel ID="lblPersonaNombre" runat="server" />
@@ -238,15 +274,12 @@
                                                         </div>
                                                         <div class="anexo-fixed-bottom">
                                                             <div class="modal-section-title">Datos complementarios <span class="optional-label">Opcionales</span></div>
-                                                            <div class="modal-fields modal-fields-3">
+                                                            <div class="modal-fields modal-fields-2">
                                                                 <div class="modal-field">
                                                                     <span>Instrumento</span><dx:ASPxTextBox ID="txtInstrumento" runat="server" Width="100%" />
                                                                 </div>
                                                                 <div class="modal-field">
                                                                     <span>Volumen</span><dx:ASPxTextBox ID="txtVolumen" runat="server" Width="100%" />
-                                                                </div>
-                                                                <div class="modal-field">
-                                                                    <span>Actividad vulnerable</span><dx:ASPxTextBox ID="txtActividadVulnerable" runat="server" Width="100%" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -263,7 +296,7 @@
                                     </dx:ASPxButton>
                                     <dx:ASPxButton ID="btnGuardarExpediente" runat="server" Text="Generar expediente" AutoPostBack="false">
                                         <Image IconID="actions_addfile_16x16" />
-                                        <ClientSideEvents Click="function(s,e){hidDocumentosAnexo.Set('Seleccionados', cblDocumentosAnexo.GetSelectedValues());if(ASPxClientEdit.ValidateGroup('Anexo')){cpExpediente.PerformCallback('Guardar');}}" />
+                                        <ClientSideEvents Click="function(s,e){guardarExpediente();}" />
                                     </dx:ASPxButton>
                                 </div>
                             </dx:PanelContent>

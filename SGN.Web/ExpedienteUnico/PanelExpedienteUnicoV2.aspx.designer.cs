@@ -60,6 +60,15 @@ namespace SGN.Web.ExpedienteUnico
         protected global::DevExpress.Web.ASPxButton btnActualizar;
 
         /// <summary>
+        /// Control txtFiltrarPor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtFiltrarPor;
+
+        /// <summary>
         /// Control ASPxRoundPanel2.
         /// </summary>
         /// <remarks>
@@ -139,6 +148,15 @@ namespace SGN.Web.ExpedienteUnico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxPageControl pcExpediente;
+
+        /// <summary>
+        /// Control txtActividadVulnerable.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxMemo txtActividadVulnerable;
 
         /// <summary>
         /// Control lblPersonaNombre.
@@ -283,15 +301,6 @@ namespace SGN.Web.ExpedienteUnico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtVolumen;
-
-        /// <summary>
-        /// Control txtActividadVulnerable.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtActividadVulnerable;
 
         /// <summary>
         /// Control btnGuardarExpediente.
