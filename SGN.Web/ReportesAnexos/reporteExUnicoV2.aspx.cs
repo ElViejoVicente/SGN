@@ -82,6 +82,7 @@ namespace SGN.Web.ReportesAnexos
                         Array datosReporte = Array.CreateInstance(tipoAnexo, 1);
                         datosReporte.SetValue(anexo, 0);
                         reporteFormato.DataSource = datosReporte;
+                        VincularBandasDetalle(reporteFormato.Bands, datosReporte, anexo as AnexoBase);
 
                         DateTime fecha = DateTime.Now;
                         CultureInfo cultura = CultureInfo.GetCultureInfo("es-MX");
@@ -167,5 +168,61 @@ namespace SGN.Web.ReportesAnexos
                 .FirstOrDefault(x => string.Equals(x.Name, nombre, StringComparison.OrdinalIgnoreCase));
             if (parametro != null) parametro.Value = valor ?? string.Empty;
         }
+
+        private static void VincularBandasDetalle(BandCollection bandas, object origenDatos, AnexoBase anexo)
+        {
+            foreach (Band banda in bandas)
+            {
+                DetailReportBand detalle = banda as DetailReportBand;
+                if (detalle == null) continue;
+
+                if (string.Equals(detalle.DataMember, "DocumentosSeleccionados", StringComparison.OrdinalIgnoreCase) && anexo != null)
+                {
+                    // XtraReports enumera Dictionary<string,string>, pero no publica
+                    // KeyValuePair.Value como campo para las expresiones del reporte.
+                    // Se usa un modelo explícito para conservar la expresión [Value].
+                    detalle.DataSource = anexo.DocumentosSeleccionados
+                        .Select((x, indice) => new DocumentoSeleccionadoReporte
+                        {
+                            Key = x.Key,
+                            Value = ConvertirARomano(indice + 1) + ".- " + x.Value
+                        })
+                        .ToList();
+                    detalle.DataMember = string.Empty;
+                }
+                else
+                {
+                    detalle.DataSource = origenDatos;
+                }
+
+                VincularBandasDetalle(detalle.Bands, origenDatos, anexo);
+            }
+        }
+
+        private static string ConvertirARomano(int numero)
+        {
+            if (numero <= 0) return string.Empty;
+
+            int[] valores = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+            string[] simbolos = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+            System.Text.StringBuilder resultado = new System.Text.StringBuilder();
+
+            for (int i = 0; i < valores.Length; i++)
+            {
+                while (numero >= valores[i])
+                {
+                    resultado.Append(simbolos[i]);
+                    numero -= valores[i];
+                }
+            }
+
+            return resultado.ToString();
+        }
+    }
+
+    public sealed class DocumentoSeleccionadoReporte
+    {
+        public string Key { get; set; }
+        public string Value { get; set; }
     }
 }

@@ -336,7 +336,7 @@
             this.xrLabel5,
             this.xrLabel4,
             this.xrLabel3});
-            this.Detail.HeightF = 1207.618F;
+            this.Detail.HeightF = 1226.58F;
             this.Detail.Name = "Detail";
             // 
             // xrLabel86
@@ -1350,7 +1350,7 @@
             // 
             this.Detail1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrTable2});
-            this.Detail1.HeightF = 25F;
+            this.Detail1.HeightF = 30.09364F;
             this.Detail1.Name = "Detail1";
             // 
             // xrTable2
