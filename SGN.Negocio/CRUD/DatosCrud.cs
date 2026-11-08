@@ -759,13 +759,13 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    return db.Query<Cat_Anexos>("usp_Cat_AnexosSelect",
+                    return db.Query<Cat_Anexos>("sp_CRUD_Cat_Anexos_Select",
                         new { IdAnexo = idAnexo }, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_AnexosSelect, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Anexos_Select, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -775,7 +775,7 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute("usp_Cat_AnexosInsert", new
+                    db.Execute("sp_CRUD_Cat_Anexos_Insert", new
                     {
                         values.IdAnexo,
                         values.NombreAnexo,
@@ -787,7 +787,7 @@ namespace SGN.Negocio.CRUD
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_AnexosInsert, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Anexos_Insert, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -797,7 +797,7 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute("usp_Cat_AnexosUpdate", new
+                    db.Execute("sp_CRUD_Cat_Anexos_Update", new
                     {
                         values.IdAnexo,
                         values.NombreAnexo,
@@ -809,7 +809,7 @@ namespace SGN.Negocio.CRUD
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_AnexosUpdate, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Anexos_Update, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -819,14 +819,14 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute("usp_Cat_AnexosDelete", new { values.IdAnexo },
+                    db.Execute("sp_CRUD_Cat_Anexos_Delete", new { values.IdAnexo },
                         commandType: CommandType.StoredProcedure);
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_AnexosDelete, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_Anexos_Delete, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -834,22 +834,22 @@ namespace SGN.Negocio.CRUD
 
         #region Cat_DocumentosPorAnexo
 
-        public List<Cat_DocumentosPorAnexo> ConsultaCatDocumentosPorAnexo(string idAnexo = null, string textoDocumento = null)
+        public List<Cat_DocumentosPorAnexo> ConsultaCatDocumentosPorAnexo(string idAnexo = null, string idDocumento = null)
         {
             try
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    return db.Query<Cat_DocumentosPorAnexo>("usp_Cat_DocumentosPorAnexoSelect", new
+                    return db.Query<Cat_DocumentosPorAnexo>("sp_CRUD_Cat_DocumentosPorAnexo_Select", new
                     {
-                        IDAnexo = idAnexo,
-                        TextoDocuemento = textoDocumento
+                        IdAnexo = idAnexo,
+                        IdDocumento = idDocumento
                     }, commandType: CommandType.StoredProcedure).ToList();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoSelect, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorAnexo_Select, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -859,9 +859,10 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute("usp_Cat_DocumentosPorAnexoInsert", new
+                    db.Execute("sp_CRUD_Cat_DocumentosPorAnexo_Insert", new
                     {
-                        values.IDAnexo,
+                        values.IdAnexo,
+                        values.IdDocumento,
                         values.TextoDocuemento,
                         values.CopiaRequerida,
                         values.Descripcion,
@@ -872,7 +873,7 @@ namespace SGN.Negocio.CRUD
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoInsert, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorAnexo_Insert, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -882,9 +883,10 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute("usp_Cat_DocumentosPorAnexoUpdate", new
+                    db.Execute("sp_CRUD_Cat_DocumentosPorAnexo_Update", new
                     {
-                        values.IDAnexo,
+                        values.IdAnexo,
+                        values.IdDocumento,
                         values.TextoDocuemento,
                         values.CopiaRequerida,
                         values.Descripcion,
@@ -895,7 +897,7 @@ namespace SGN.Negocio.CRUD
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoUpdate, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorAnexo_Update, detalle: \n" + ex.Message, ex);
             }
         }
 
@@ -905,17 +907,17 @@ namespace SGN.Negocio.CRUD
             {
                 using (var db = new SqlConnection(cnn))
                 {
-                    db.Execute("usp_Cat_DocumentosPorAnexoDelete", new
+                    db.Execute("sp_CRUD_Cat_DocumentosPorAnexo_Delete", new
                     {
-                        values.IDAnexo,
-                        values.TextoDocuemento
+                        values.IdAnexo,
+                        values.IdDocumento
                     }, commandType: CommandType.StoredProcedure);
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al ejecutar usp_Cat_DocumentosPorAnexoDelete, detalle: \n" + ex.Message, ex);
+                throw new Exception("Error al ejecutar sp_CRUD_Cat_DocumentosPorAnexo_Delete, detalle: \n" + ex.Message, ex);
             }
         }
 
