@@ -667,6 +667,14 @@ namespace SGN.Web.ExpedienteUnico
             {
                 cpExpediente.JSProperties["cp_Error"] = ex.Message;
             }
+            finally
+            {
+                // El callback vuelve a renderizar ambas pestañas. Se hidrata nuevamente
+                // la información de Persona aunque la pestaña activa sea Anexo.
+                ListaExpedienteUnicoV2 participante = RegistroSeleccionado;
+                if (participante != null)
+                    CargarDatosPersona(participante);
+            }
         }
 
 

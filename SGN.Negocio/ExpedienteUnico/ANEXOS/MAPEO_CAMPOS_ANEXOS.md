@@ -15,15 +15,15 @@ La misma estructura de rejillas se conserva por separado en las siguientes clase
 | `Anexo3ConTestigoARuegoYEncargo` | `ANEXO 3 CON TESTIGO A RUEGO Y ENCARGO.docx` |
 | `Anexo3GestorDeNegocios` | `ANEXO 3 GESTOR DE NEGOCIOS.docx` |
 
-| Propiedad | Etiqueta de la rejilla de origen |
+| Propiedad | Etiqueta de la rejilla de origen | PreCargar con el Campo Origen|
 |---|---|
-| `ApellidoPaterno` | APELLIDO PATERNO |
-| `ApellidoMaterno` | APELLIDO MATERNO |
-| `Nombres` | NOMBRE (S) |
-| `FechaNacimiento` | FECHA DE NACIMIENTO |
+| `ApellidoPaterno` | APELLIDO PATERNO | ApellidoPaterno |
+| `ApellidoMaterno` | APELLIDO MATERNO | ApellidoMaterno |
+| `Nombres` | NOMBRE (S) | Nombres |
+| `FechaNacimiento` | FECHA DE NACIMIENTO | FechaNacimiento |
 | `PaisNacimiento` | PAIS DE NACIMIENTO |
 | `PaisNacionalidad` | PAIS DE NACIONALIDAD |
-| `ActividadOcupacionProfesion` | ACTIVIDAD, OCUPACION O PROFESION |
+| `ActividadOcupacionProfesion` | ACTIVIDAD, OCUPACION O PROFESION | Ocupacion |
 | `DomicilioCalleAvenidaVia` | DOMICILIO - CALLE, AVENIDA O VIA |
 | `NumeroExterior` | NUMERO EXTERIOR |
 | `NumeroInterior` | NUMERO INTERIOR |
