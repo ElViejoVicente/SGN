@@ -730,6 +730,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReportesAnexos\XtraAnexo3.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportesAnexos\XtraAnexo3.Designer.cs">
+      <DependentUpon>XtraAnexo3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\reporteAcuseConsultaListaNegra.aspx.cs">
       <DependentUpon>reporteAcuseConsultaListaNegra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -886,7 +892,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Produccion\" />
-    <Folder Include="ReportesAnexos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -907,6 +912,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesAnexos\XtraAnexo3.resx">
+      <DependentUpon>XtraAnexo3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\XtraAgenda.resx">
       <DependentUpon>XtraAgenda.cs</DependentUpon>
