@@ -1093,7 +1093,7 @@
             // 
             // xrLabel47
             // 
-            this.xrLabel47.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
+            this.xrLabel47.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel47.LocationFloat = new DevExpress.Utils.PointFloat(12.00002F, 1103.712F);
             this.xrLabel47.Multiline = true;
             this.xrLabel47.Name = "xrLabel47";

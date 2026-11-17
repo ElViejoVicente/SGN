@@ -738,6 +738,24 @@
     <Compile Include="ReportesAnexos\reporteExUnicoV2.aspx.designer.cs">
       <DependentUpon>reporteExUnicoV2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ReportesAnexos\Anexo3GestorDeNegocios.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportesAnexos\Anexo3GestorDeNegocios.Designer.cs">
+      <DependentUpon>Anexo3GestorDeNegocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesAnexos\XtraAnexo3ConTestigoARuegoYEncargo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportesAnexos\XtraAnexo3ConTestigoARuegoYEncargo.Designer.cs">
+      <DependentUpon>XtraAnexo3ConTestigoARuegoYEncargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesAnexos\XtraAnexo3ConApoderado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportesAnexos\XtraAnexo3ConApoderado.Designer.cs">
+      <DependentUpon>XtraAnexo3ConApoderado.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportesAnexos\XtraAnexo3.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -920,6 +938,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesAnexos\Anexo3GestorDeNegocios.resx">
+      <DependentUpon>Anexo3GestorDeNegocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesAnexos\XtraAnexo3ConTestigoARuegoYEncargo.resx">
+      <DependentUpon>XtraAnexo3ConTestigoARuegoYEncargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesAnexos\XtraAnexo3ConApoderado.resx">
+      <DependentUpon>XtraAnexo3ConApoderado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportesAnexos\XtraAnexo3.resx">
       <DependentUpon>XtraAnexo3.cs</DependentUpon>
